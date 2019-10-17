@@ -2,10 +2,14 @@
 
 public class Enemy : MonoBehaviour
 {
-    public float speed = 10f;
+    [SerializeField]
+    private int waypointIndex = 0;
+    [SerializeField]
+    private float speed = 0f;
+    [SerializeField]
+    private float minimumDistance = 0f;
 
     private Transform target;
-    private int waypointIndex = -1;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -24,7 +28,7 @@ public class Enemy : MonoBehaviour
         Vector3 dir = target.position - this.transform.position;
         this.transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
-        if (dir.magnitude <= .2f)
+        if (dir.magnitude <= minimumDistance)
         {
             getNextWaypoint();
         }
