@@ -107,5 +107,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypointIndex: -1
-  speed: 60
-  minimumDistance: 0.3
+  speed: 30
+  minimumDistance: 0.5

@@ -4,19 +4,35 @@ public class Turret : MonoBehaviour
 {
     [SerializeField]
     private Transform target;
+
+    [Header("Attributes")]
     [SerializeField]
     private float range;
+    // rate of shooting, per second
+    [SerializeField]
+    private float fireRate;
+    [SerializeField]
+    private float fireCountdown;
+
+
+    [Header("Unity Step Fields")]
+    [SerializeField]
+    private string enemyTag;
+
+    [Header("Turret Rotation")]
     [SerializeField]
     private float timeStartTurret;
     [SerializeField]
     private float updatePeriod;
     [SerializeField]
-    private string enemyTag;
-
-    [SerializeField]
     private Transform partToRotate;
     [SerializeField]
     private float rotationSpeed;
+
+    [SerializeField]
+    private GameObject bulletPrefab;
+    [SerializeField]
+    public Transform firePoint;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -67,6 +83,25 @@ public class Turret : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(dir);
             Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
             partToRotate.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
+
+            if(fireCountdown <= 0)
+            {
+                shoot();
+                fireCountdown = 1f / fireRate;
+            }
+
+            fireCountdown -= Time.deltaTime;
+        }
+    }
+
+    void shoot()
+    {
+        Debug.Log("Shoot");
+        GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        if (bullet != null && target != null)
+        {
+            bullet.seek(target);
         }
     }
 
