@@ -6,17 +6,17 @@ public class WaveSpawner : MonoBehaviour
 {    
     
     [SerializeField]
-    private int waveIndex = 0;
+    private int waveIndex;
     
     [SerializeField]
-    private float countdown = 0f;
+    private float countdown;
     [SerializeField]
-    private float timeBeforeWave1 = 0f;
+    private float timeBeforeWave1;
     [SerializeField]
-    private float timeBetweenWaves = 0f;
+    private float timeBetweenWaves;
 
     [SerializeField]
-    private float timeBetweenSpawns = 0f;
+    private float timeBetweenSpawns;
 
     [SerializeField]
     private Transform enemyPrefab;

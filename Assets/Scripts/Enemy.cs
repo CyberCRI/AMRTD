@@ -3,11 +3,11 @@
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private int waypointIndex = 0;
+    private int waypointIndex;
     [SerializeField]
-    private float speed = 0f;
+    private float speed;
     [SerializeField]
-    private float minimumDistance = 0f;
+    private float minimumDistance;
 
     private Transform target;
 
