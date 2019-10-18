@@ -3,36 +3,36 @@
 public class Turret : MonoBehaviour
 {
     [SerializeField]
-    private Transform target;
+    private Transform target = null;
 
     [Header("Attributes")]
     [SerializeField]
-    private float range;
+    private float range = 0f;
     // rate of shooting, per second
     [SerializeField]
-    private float fireRate;
+    private float fireRate = 0f;
     [SerializeField]
-    private float fireCountdown;
+    private float fireCountdown = 0f;
 
 
     [Header("Unity Step Fields")]
     [SerializeField]
-    private string enemyTag;
+    private string enemyTag = "";
 
     [Header("Turret Rotation")]
     [SerializeField]
-    private float timeStartTurret;
+    private float timeStartTurret = 0f;
     [SerializeField]
-    private float updatePeriod;
+    private float updatePeriod = 0f;
     [SerializeField]
-    private Transform partToRotate;
+    private Transform partToRotate = null;
     [SerializeField]
-    private float rotationSpeed;
+    private float rotationSpeed = 0f;
 
     [SerializeField]
-    private GameObject bulletPrefab;
+    private GameObject bulletPrefab = null;
     [SerializeField]
-    public Transform firePoint;
+    public Transform firePoint = null;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -84,7 +84,7 @@ public class Turret : MonoBehaviour
             Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
             partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-            if(fireCountdown <= 0)
+            if (fireCountdown <= 0)
             {
                 shoot();
                 fireCountdown = 1f / fireRate;
@@ -97,7 +97,7 @@ public class Turret : MonoBehaviour
     void shoot()
     {
         Debug.Log("Shoot");
-        GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null && target != null)
         {

@@ -2,11 +2,11 @@
 
 public class Bullet : MonoBehaviour
 {
-    private Transform target;
+    private Transform target = null;
     [SerializeField]
-    private float speed;
+    private float speed = 0f;
     [SerializeField]
-    private ParticleSystem bulletImpactEffect;
+    private ParticleSystem bulletImpactEffect = null;
 
     public void seek(Transform _target)
     {

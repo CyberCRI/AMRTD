@@ -3,12 +3,12 @@
 public class BuildManager : MonoBehaviour
 {
 
-    public static BuildManager instance;
+    public static BuildManager instance = null;
 
-    private GameObject turretToBuild;
+    private GameObject turretToBuild = null;
 
     [SerializeField]
-    private GameObject standardTurretPrefab;
+    private GameObject standardTurretPrefab = null;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.

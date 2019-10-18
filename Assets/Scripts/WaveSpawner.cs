@@ -3,28 +3,28 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
-{    
-    
-    [SerializeField]
-    private int waveIndex;
-    
-    [SerializeField]
-    private float countdown;
-    [SerializeField]
-    private float timeBeforeWave1;
-    [SerializeField]
-    private float timeBetweenWaves;
+{
 
     [SerializeField]
-    private float timeBetweenSpawns;
+    private int waveIndex = 0;
 
     [SerializeField]
-    private Transform enemyPrefab;
+    private float countdown = 0f;
     [SerializeField]
-    private Transform spawnPoint;
+    private float timeBeforeWave1 = 0f;
+    [SerializeField]
+    private float timeBetweenWaves = 0f;
 
     [SerializeField]
-    private Text waveCountdownText;
+    private float timeBetweenSpawns = 0f;
+
+    [SerializeField]
+    private Transform enemyPrefab = null;
+    [SerializeField]
+    private Transform spawnPoint = null;
+
+    [SerializeField]
+    private Text waveCountdownText = null;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.

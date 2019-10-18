@@ -3,13 +3,13 @@
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private int waypointIndex;
+    private int waypointIndex = 0;
     [SerializeField]
-    private float speed;
+    private float speed = 0f;
     [SerializeField]
-    private float minimumDistance;
+    private float minimumDistance = 0f;
 
-    private Transform target;
+    private Transform target = null;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before

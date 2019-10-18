@@ -3,13 +3,13 @@
 public class Node : MonoBehaviour
 {
     [SerializeField]
-    private Color hoverColor;
-    
+    private Color hoverColor = Color.red;
+
     private Color startColor;
     [SerializeField]
-    private Renderer renderor;
+    private Renderer renderor = null;
 
-    private GameObject turret;
+    private GameObject turret = null;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -26,7 +26,7 @@ public class Node : MonoBehaviour
     /// </summary>
     void OnMouseDown()
     {
-        if(turret != null)
+        if (turret != null)
         {
             Debug.Log("Can't build there.");
         }
