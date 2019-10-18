@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Node : MonoBehaviour
 
     private GameObject turret = null;
 
+    BuildManager buildManager;
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -21,20 +24,40 @@ public class Node : MonoBehaviour
     }
 
     /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        buildManager = BuildManager.instance;
+    }
+
+    /// <summary>
     /// OnMouseDown is called when the user has pressed the mouse button while
     /// over the GUIElement or Collider.
     /// </summary>
     void OnMouseDown()
     {
-        if (turret != null)
+        if(!EventSystem.current.IsPointerOverGameObject())
         {
-            Debug.Log("Can't build there.");
-        }
-        else
-        {
-            // Build a turret
-            GameObject turretToBuild = BuildManager.instance.getTurretToBuild();
-            turret = (GameObject)Instantiate(turretToBuild, this.transform.position, this.transform.rotation);
+            if (turret != null)
+            {
+                Debug.Log("Can't build there.");
+            }
+            else
+            {
+                GameObject turretToBuild = buildManager.getTurretToBuild();
+                
+                if (null == turretToBuild)
+                {
+                    Debug.Log("No tower selected.");
+                }
+                else
+                {
+                    // Build a turret
+                    turret = (GameObject)Instantiate(turretToBuild, this.transform.position, this.transform.rotation);
+                }
+            }
         }
     }
 
@@ -43,7 +66,13 @@ public class Node : MonoBehaviour
     /// </summary>
     void OnMouseEnter()
     {
-        renderor.material.color = hoverColor;
+        if(!EventSystem.current.IsPointerOverGameObject())
+        {
+            if (null != buildManager.getTurretToBuild())
+            {
+                renderor.material.color = hoverColor;
+            }
+        }
     }
 
     /// <summary>

@@ -8,7 +8,9 @@ public class BuildManager : MonoBehaviour
     private GameObject turretToBuild = null;
 
     [SerializeField]
-    private GameObject standardTurretPrefab = null;
+    public GameObject standardTurretPrefab = null;
+    [SerializeField]
+    public GameObject anotherTurretPrefab = null;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -23,7 +25,6 @@ public class BuildManager : MonoBehaviour
         else
         {
             instance = this;
-            turretToBuild = standardTurretPrefab;
         }
     }
 
@@ -32,4 +33,8 @@ public class BuildManager : MonoBehaviour
         return turretToBuild;
     }
 
+    public void setTurretToBuild(GameObject turret)
+    {
+        turretToBuild = turret;
+    }
 }
