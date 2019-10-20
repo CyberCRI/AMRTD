@@ -10,7 +10,7 @@ public class BuildManager : MonoBehaviour
     [SerializeField]
     public GameObject standardTurretPrefab = null;
     [SerializeField]
-    public GameObject anotherTurretPrefab = null;
+    public GameObject missileLauncherPrefab = null;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
