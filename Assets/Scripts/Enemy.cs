@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private float speed = 0f;
     [SerializeField]
     private float minimumDistance = 0f;
+    public const string enemyTag = "EnemyTag";
 
     private Transform target = null;
 
@@ -44,5 +45,13 @@ public class Enemy : MonoBehaviour
         {
             target = Waypoints.waypoints[++waypointIndex];
         }
+    }
+
+    /// <summary>
+    /// This function is called when the MonoBehaviour will be destroyed.
+    /// </summary>
+    void OnDestroy()
+    {
+        Debug.Log("Enemy destroyed");
     }
 }

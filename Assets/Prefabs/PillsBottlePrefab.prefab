@@ -86,7 +86,7 @@ MonoBehaviour:
   updatePeriod: 0.3
   partToRotate: {fileID: 3350538081113541128}
   rotationSpeed: 10
-  bulletPrefab: {fileID: 7715285218150925893, guid: 451e1bc3bbf3635428517af906ea1fc5,
+  bulletPrefab: {fileID: 2713133126219711678, guid: 677eebd3a70be104687595f7a3450a39,
     type: 3}
   firePoint: {fileID: 3350538082973273540}
 --- !u!1 &3350538081697809361

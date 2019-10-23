@@ -16,8 +16,6 @@ public class Turret : MonoBehaviour
 
 
     [Header("Unity Step Fields")]
-    [SerializeField]
-    private string enemyTag = "";
 
     [Header("Turret Rotation")]
     [SerializeField]
@@ -45,7 +43,7 @@ public class Turret : MonoBehaviour
 
     void updateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(Enemy.enemyTag);
 
         // find closest enemy
         float shortestDistanceToEnemy = Mathf.Infinity;

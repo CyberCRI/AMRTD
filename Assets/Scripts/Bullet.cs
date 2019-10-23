@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float speed = 0f;
     [SerializeField]
+    private float explosionRadius = 0f;
+    [SerializeField]
     private ParticleSystem bulletImpactEffect = null;
 
     public void seek(Transform _target)
@@ -33,7 +35,9 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                transform.Translate(dirToTarget.normalized * distanceThisFrame, Space.World);
+                this.transform.Translate(dirToTarget.normalized * distanceThisFrame, Space.World);
+
+                this.transform.LookAt(target);
             }
         }
     }
@@ -42,7 +46,42 @@ public class Bullet : MonoBehaviour
     {
         GameObject effect = Instantiate(bulletImpactEffect.gameObject, this.transform.position, this.transform.rotation);
         Destroy(effect, bulletImpactEffect.main.startLifetime.constant);
+
+        if (explosionRadius > 0f)
+        {
+            explode();
+        }
+        else
+        {
+            damage(target);
+        }
+
         Destroy(this.gameObject);
-        Destroy(target.gameObject);
+    }
+
+    void explode()
+    {
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, explosionRadius);
+        foreach(Collider collider in colliders)
+        {
+            if (collider.tag == Enemy.enemyTag)
+            {
+                damage(collider.transform);
+            }
+        }
+    }
+
+    void damage (Transform enemy)
+    {
+        Destroy(enemy.gameObject);
+    }
+
+    /// <summary>
+    /// Callback to draw gizmos only if the object is selected.
+    /// </summary>
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position, explosionRadius);
     }
 }
