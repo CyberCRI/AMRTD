@@ -2,6 +2,11 @@
 
 public class Shop : MonoBehaviour
 {
+    [SerializeField]
+    private TurretBlueprint standardTurret = null;
+    [SerializeField]
+    private TurretBlueprint missileLauncher = null;
+
     private BuildManager buildManager;
     
     /// <summary>
@@ -13,14 +18,14 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    public void purchaseStandardTurret()
+    public void selectStandardTurret()
     {
         Debug.Log("Standard Turret selected.");
-        buildManager.setTurretToBuild(buildManager.standardTurretPrefab);
+        buildManager.selectTurretToBuild(standardTurret);
     }
-    public void purchaseMissileLauncher()
+    public void selectMissileLauncher()
     {
         Debug.Log("Missile Launcher selected.");
-        buildManager.setTurretToBuild(buildManager.missileLauncherPrefab);
+        buildManager.selectTurretToBuild(missileLauncher);
     }
 }

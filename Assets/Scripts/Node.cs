@@ -10,6 +10,8 @@ public class Node : MonoBehaviour
     [SerializeField]
     private Renderer renderor = null;
 
+    [Header("Optional")]
+    [SerializeField]
     private GameObject turret = null;
 
     BuildManager buildManager;
@@ -32,6 +34,11 @@ public class Node : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
+    public void setTurret(GameObject _turret)
+    {
+        turret = _turret;
+    }
+
     /// <summary>
     /// OnMouseDown is called when the user has pressed the mouse button while
     /// over the GUIElement or Collider.
@@ -46,16 +53,13 @@ public class Node : MonoBehaviour
             }
             else
             {
-                GameObject turretToBuild = buildManager.getTurretToBuild();
-                
-                if (null == turretToBuild)
+                if (!buildManager.canBuild)
                 {
                     Debug.Log("No tower selected.");
                 }
                 else
                 {
-                    // Build a turret
-                    turret = (GameObject)Instantiate(turretToBuild, this.transform.position, this.transform.rotation);
+                    buildManager.buildTurretOn(this);
                 }
             }
         }
@@ -68,7 +72,7 @@ public class Node : MonoBehaviour
     {
         if(!EventSystem.current.IsPointerOverGameObject())
         {
-            if (null != buildManager.getTurretToBuild())
+            if (buildManager.canBuild)
             {
                 renderor.material.color = hoverColor;
             }
