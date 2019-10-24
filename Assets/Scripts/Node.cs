@@ -5,6 +5,8 @@ public class Node : MonoBehaviour
 {
     [SerializeField]
     private Color hoverColor = Color.red;
+    [SerializeField]
+    private Color cantBuyColor = Color.red;
 
     private Color startColor;
     [SerializeField]
@@ -74,7 +76,14 @@ public class Node : MonoBehaviour
         {
             if (buildManager.canBuild)
             {
-                renderor.material.color = hoverColor;
+                if (buildManager.canBuy)
+                {
+                    renderor.material.color = hoverColor;
+                }
+                else
+                {
+                    renderor.material.color = cantBuyColor;
+                }
             }
         }
     }

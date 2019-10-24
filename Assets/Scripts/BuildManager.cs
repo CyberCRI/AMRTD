@@ -8,9 +8,12 @@ public class BuildManager : MonoBehaviour
     private TurretBlueprint turretToBuild = null;
 
     [SerializeField]
-    public GameObject standardTurretPrefab = null;
+    private GameObject standardTurretPrefab = null;
     [SerializeField]
-    public GameObject missileLauncherPrefab = null;
+    private GameObject missileLauncherPrefab = null;
+    [SerializeField]
+    private GameObject buildEffect = null;
+    private ParticleSystem buildEffectPS = null;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -25,10 +28,12 @@ public class BuildManager : MonoBehaviour
         else
         {
             instance = this;
+            buildEffectPS = (ParticleSystem)buildEffect.GetComponentsInChildren<ParticleSystem>()[0];
         }
     }
 
     public bool canBuild { get { return null != turretToBuild; } }
+    public bool canBuy   { get { return (null != turretToBuild) && (PlayerStatistics.money >= turretToBuild.cost); } }
 
     public void buildTurretOn(Node node)
     {
@@ -37,6 +42,9 @@ public class BuildManager : MonoBehaviour
             PlayerStatistics.money -= turretToBuild.cost;
             GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.transform.position, Quaternion.identity);
             node.setTurret(turret);
+
+            GameObject effect = (GameObject)Instantiate(buildEffect, node.transform.position, Quaternion.identity);
+            Destroy(effect, buildEffectPS.main.duration + buildEffectPS.main.startLifetime.constant);
             
             Debug.Log("Turret built, money left: " + PlayerStatistics.money);
         }

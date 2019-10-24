@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
     void hitTarget()
     {
         GameObject effect = Instantiate(bulletImpactEffect.gameObject, this.transform.position, this.transform.rotation);
-        Destroy(effect, bulletImpactEffect.main.startLifetime.constant);
+        Destroy(effect, bulletImpactEffect.main.duration + bulletImpactEffect.main.startLifetime.constant);
 
         if (explosionRadius > 0f)
         {
