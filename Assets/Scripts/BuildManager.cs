@@ -8,10 +8,6 @@ public class BuildManager : MonoBehaviour
     private TurretBlueprint turretToBuild = null;
 
     [SerializeField]
-    private GameObject standardTurretPrefab = null;
-    [SerializeField]
-    private GameObject missileLauncherPrefab = null;
-    [SerializeField]
     private GameObject buildEffect = null;
     private ParticleSystem buildEffectPS = null;
 

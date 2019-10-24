@@ -109,3 +109,7 @@ MonoBehaviour:
   waypointIndex: -1
   speed: 20
   minimumDistance: 0.5
+  deathEffect: {fileID: 4562425432993480917, guid: 8f4420b7dc2bcbe4eae5ceec99dd8852,
+    type: 3}
+  health: 100
+  reward: 50

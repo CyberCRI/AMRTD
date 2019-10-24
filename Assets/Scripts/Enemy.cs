@@ -8,7 +8,14 @@ public class Enemy : MonoBehaviour
     private float speed = 0f;
     [SerializeField]
     private float minimumDistance = 0f;
+    [SerializeField]
+    private ParticleSystem deathEffect = null;
     public const string enemyTag = "EnemyTag";
+
+    [SerializeField]
+    private int health = 100;
+    [SerializeField]
+    private int reward = 50;
 
     private Transform target = null;
 
@@ -39,12 +46,36 @@ public class Enemy : MonoBehaviour
     {
         if (waypointIndex >= Waypoints.waypoints.Length - 1)
         {
-            Destroy(this.gameObject);
+            endPath();
         }
         else
         {
             target = Waypoints.waypoints[++waypointIndex];
         }
+    }
+
+    void endPath()
+    {
+        PlayerStatistics.lives--;
+        Destroy(this.gameObject);
+    }
+
+    public void takeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            die();
+        }
+    }
+
+    private void die()
+    {
+        GameObject effect = (GameObject)Instantiate(deathEffect.gameObject, this.transform.position, Quaternion.identity);
+        Destroy(effect.gameObject, deathEffect.main.duration + deathEffect.main.startLifetime.constant);
+        PlayerStatistics.money += reward;
+        Destroy(this.gameObject);
     }
 
     /// <summary>

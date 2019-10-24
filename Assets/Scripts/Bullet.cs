@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
     private float explosionRadius = 0f;
     [SerializeField]
     private ParticleSystem bulletImpactEffect = null;
+    [SerializeField]
+    private int damageAmount = 0;
 
     public void seek(Transform _target)
     {
@@ -62,7 +64,7 @@ public class Bullet : MonoBehaviour
     void explode()
     {
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, explosionRadius);
-        foreach(Collider collider in colliders)
+        foreach (Collider collider in colliders)
         {
             if (collider.tag == Enemy.enemyTag)
             {
@@ -71,9 +73,13 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void damage (Transform enemy)
+    void damage(Transform enemy)
     {
-        Destroy(enemy.gameObject);
+        Enemy e = enemy.GetComponent<Enemy>();
+        if (null != e)
+        {
+            e.takeDamage(damageAmount);
+        }
     }
 
     /// <summary>

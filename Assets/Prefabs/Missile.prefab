@@ -48,6 +48,7 @@ MonoBehaviour:
   explosionRadius: 10
   bulletImpactEffect: {fileID: 7504324585556871736, guid: 66cd6691054fb0d42aba9a3777e3c4b7,
     type: 3}
+  damageAmount: 90
 --- !u!1001 &2713133126718058289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55,6 +56,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2713133126219711677}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 1ea9ecc703ea02044a98b29aed28d97f,
+        type: 3}
+      propertyPath: m_Name
+      value: Pill
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1ea9ecc703ea02044a98b29aed28d97f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -109,11 +115,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 1ea9ecc703ea02044a98b29aed28d97f,
-        type: 3}
-      propertyPath: m_Name
-      value: Pill
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 1ea9ecc703ea02044a98b29aed28d97f,
         type: 3}
