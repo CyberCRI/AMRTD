@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private bool isGameOver = false;
+    public static bool isGameOver = false;
+
+    [SerializeField]
+    private GameObject gameOverUI = null;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        isGameOver = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,6 +32,6 @@ public class GameManager : MonoBehaviour
     private void endGame()
     {
         isGameOver = true;
-        Debug.Log("Game over!");
+        gameOverUI.SetActive(true);
     }
 }

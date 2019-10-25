@@ -20,36 +20,43 @@ public class CameraController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (GameManager.isGameOver)
         {
-            doMovement = !doMovement;
+            this.enabled = false;
         }
-
-        if (doMovement)
+        else
         {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                this.transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
-            }
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y <= panBorderThickness)
-            {
-                this.transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
-            }
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderThickness)
-            {
-                this.transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
-            }
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x <= panBorderThickness)
-            {
-                this.transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
+                doMovement = !doMovement;
             }
 
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
-            Vector3 pos = this.transform.position;
-            pos.y -= scroll * scrollSpeed * Time.deltaTime;
-            pos.y = Mathf.Clamp(pos.y, minY, maxY);
+            if (doMovement)
+            {
+                if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness)
+                {
+                    this.transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
+                }
+                if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y <= panBorderThickness)
+                {
+                    this.transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
+                }
+                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderThickness)
+                {
+                    this.transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
+                }
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x <= panBorderThickness)
+                {
+                    this.transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
+                }
 
-            this.transform.position = pos;
+                float scroll = Input.GetAxis("Mouse ScrollWheel");
+                Vector3 pos = this.transform.position;
+                pos.y -= scroll * scrollSpeed * Time.deltaTime;
+                pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
+                this.transform.position = pos;
+            }
         }
     }
 }
