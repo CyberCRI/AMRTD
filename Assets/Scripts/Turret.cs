@@ -5,14 +5,24 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private Transform target = null;
 
-    [Header("Attributes")]
+    [Header("General")]
     [SerializeField]
     private float range = 0f;
+
+    [Header("Bullets mode (default)")]
+    [SerializeField]
+    private GameObject bulletPrefab = null;
     // rate of shooting, per second
     [SerializeField]
     private float fireRate = 0f;
     [SerializeField]
     private float fireCountdown = 0f;
+
+    [Header("Laser mode")]
+    [SerializeField]
+    private bool userLaser = false;
+    [SerializeField]
+    private LineRenderer lineRenderer = null;
 
 
     [Header("Unity Step Fields")]
@@ -27,8 +37,6 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 0f;
 
-    [SerializeField]
-    private GameObject bulletPrefab = null;
     [SerializeField]
     public Transform firePoint = null;
 
@@ -76,20 +84,50 @@ public class Turret : MonoBehaviour
     {
         if (target != null)
         {
-            // Target lock on
-            Vector3 dir = target.position - this.partToRotate.position;
-            Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
-            partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            lockOnTarget();
 
-            if (fireCountdown <= 0)
+            if (userLaser)
             {
-                shoot();
-                fireCountdown = 1f / fireRate;
+                laser();
             }
+            else
+            {
+                if (fireCountdown <= 0)
+                {
+                    shoot();
+                    fireCountdown = 1f / fireRate;
+                }
 
-            fireCountdown -= Time.deltaTime;
+                fireCountdown -= Time.deltaTime;
+            }
         }
+        else
+        {
+            if (userLaser && lineRenderer.enabled)
+            {
+                lineRenderer.enabled = false;
+            }
+        }
+    }
+
+    void lockOnTarget()
+    {
+        // Target lock on
+        Vector3 dir = target.position - this.partToRotate.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
+        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
+
+    void laser()
+    {
+        if (!lineRenderer.enabled)
+        {
+            lineRenderer.enabled = true;
+        }
+
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target.position);
     }
 
     void shoot()

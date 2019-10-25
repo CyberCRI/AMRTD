@@ -6,6 +6,8 @@ public class Shop : MonoBehaviour
     private TurretBlueprint standardTurret = null;
     [SerializeField]
     private TurretBlueprint missileLauncher = null;
+    [SerializeField]
+    private TurretBlueprint laserBeamer = null;
 
     private BuildManager buildManager;
     
@@ -27,5 +29,10 @@ public class Shop : MonoBehaviour
     {
         Debug.Log("Missile Launcher selected.");
         buildManager.selectTurretToBuild(missileLauncher);
+    }
+    public void selectLaserBeamer()
+    {
+        Debug.Log("Laser Beamer selected.");
+        buildManager.selectTurretToBuild(laserBeamer);
     }
 }
