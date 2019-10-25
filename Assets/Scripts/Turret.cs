@@ -23,6 +23,12 @@ public class Turret : MonoBehaviour
     private bool userLaser = false;
     [SerializeField]
     private LineRenderer lineRenderer = null;
+    [SerializeField]
+    private ParticleSystem laserImpactPS = null;
+    [SerializeField]
+    private Light laserImpactLight = null;
+    [SerializeField]
+    private float laserImpactOffsetFactor = 0f;
 
 
     [Header("Unity Step Fields")]
@@ -106,6 +112,8 @@ public class Turret : MonoBehaviour
             if (userLaser && lineRenderer.enabled)
             {
                 lineRenderer.enabled = false;
+                laserImpactPS.Stop();
+                laserImpactLight.enabled = false;
             }
         }
     }
@@ -124,10 +132,16 @@ public class Turret : MonoBehaviour
         if (!lineRenderer.enabled)
         {
             lineRenderer.enabled = true;
+            laserImpactPS.Play();
+            laserImpactLight.enabled = true;
         }
 
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target.position);
+
+        Vector3 dir = firePoint.position - target.position;
+        laserImpactPS.transform.position = target.position + dir.normalized * target.transform.localScale.x * laserImpactOffsetFactor;
+        laserImpactPS.transform.rotation = Quaternion.LookRotation(dir);
     }
 
     void shoot()
