@@ -2,69 +2,32 @@
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    private int waypointIndex = 0;
-    [SerializeField]
-    private float speed = 0f;
-    [SerializeField]
-    private float minimumDistance = 0f;
-    [SerializeField]
-    private ParticleSystem deathEffect = null;
     public const string enemyTag = "EnemyTag";
+    public float startSpeed = 0f;
+    [HideInInspector]
+    public float speed = 0f;
+    public float minimumDistance = 0f;
 
     [SerializeField]
-    private int health = 100;
+    private ParticleSystem deathEffect = null;
+    [SerializeField]
+    private float health = 100f;
     [SerializeField]
     private int reward = 50;
 
-    private Transform target = null;
-
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
+    /// Awake is called when the script instance is being loaded.
     /// </summary>
-    void Start()
+    void Awake()
     {
-        getNextWaypoint();
+        speed = startSpeed;
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        Vector3 dir = target.position - this.transform.position;
-        this.transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
-        if (dir.magnitude <= minimumDistance)
-        {
-            getNextWaypoint();
-        }
-    }
-
-    void getNextWaypoint()
-    {
-        if (waypointIndex >= Waypoints.waypoints.Length - 1)
-        {
-            endPath();
-        }
-        else
-        {
-            target = Waypoints.waypoints[++waypointIndex];
-        }
-    }
-
-    void endPath()
-    {
-        PlayerStatistics.lives--;
-        Destroy(this.gameObject);
-    }
-
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         health -= damage;
 
-        if (health <= 0)
+        if (health <= 0f)
         {
             die();
         }
@@ -76,6 +39,11 @@ public class Enemy : MonoBehaviour
         Destroy(effect.gameObject, deathEffect.main.duration + deathEffect.main.startLifetime.constant);
         PlayerStatistics.money += reward;
         Destroy(this.gameObject);
+    }
+
+    public void slow(float slowRatioFactor)
+    {
+        speed = startSpeed * (1f - slowRatioFactor);
     }
 
     /// <summary>

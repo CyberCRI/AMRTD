@@ -2,8 +2,8 @@
 
 public class Turret : MonoBehaviour
 {
-    [SerializeField]
     private Transform target = null;
+    private Enemy enemy = null;
 
     [Header("General")]
     [SerializeField]
@@ -29,6 +29,10 @@ public class Turret : MonoBehaviour
     private Light laserImpactLight = null;
     [SerializeField]
     private float laserImpactOffsetFactor = 0f;
+    [SerializeField]
+    private int laserDamageOverTime = 0;
+    [SerializeField]
+    private float slowRatioFactor = 0f;
 
 
     [Header("Unity Step Fields")]
@@ -76,6 +80,7 @@ public class Turret : MonoBehaviour
         if (nearestEnemy != null && shortestDistanceToEnemy <= range)
         {
             target = nearestEnemy.transform;
+            enemy = nearestEnemy.GetComponent<Enemy>();
         }
         else
         {
@@ -129,6 +134,11 @@ public class Turret : MonoBehaviour
 
     void laser()
     {
+        // logics
+        enemy.takeDamage(laserDamageOverTime * Time.deltaTime);
+        enemy.slow(slowRatioFactor);
+
+        // graphics
         if (!lineRenderer.enabled)
         {
             lineRenderer.enabled = true;

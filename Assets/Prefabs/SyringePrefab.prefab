@@ -4801,7 +4801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00301d8369eecc4ebbb623676f72311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   range: 20
   bulletPrefab: {fileID: 0}
   fireRate: 0.25
@@ -4811,6 +4810,8 @@ MonoBehaviour:
   laserImpactPS: {fileID: 1318004266155589866}
   laserImpactLight: {fileID: 6445821511082220410}
   laserImpactOffsetFactor: 0.65
+  laserDamageOverTime: 30
+  slowRatioFactor: 0.5
   timeStartTurret: 0
   updatePeriod: 0.3
   partToRotate: {fileID: 5949064246267832086}
@@ -5206,17 +5207,17 @@ PrefabInstance:
     - target: {fileID: 4464931859154383520, guid: 89ccbe4b87671c049a4ca8c59cfc1477,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4464931859154383520, guid: 89ccbe4b87671c049a4ca8c59cfc1477,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4464931859154383520, guid: 89ccbe4b87671c049a4ca8c59cfc1477,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4464931859154383520, guid: 89ccbe4b87671c049a4ca8c59cfc1477,
         type: 3}
