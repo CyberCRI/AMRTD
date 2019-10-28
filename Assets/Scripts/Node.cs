@@ -13,10 +13,15 @@ public class Node : MonoBehaviour
     private Renderer renderor = null;
 
     [Header("Optional")]
-    [SerializeField]
     private GameObject turret = null;
+    public TurretBlueprint turretBlueprint = null;
+    public bool isUpgraded = false;
 
-    BuildManager buildManager;
+    [SerializeField]
+    private GameObject buildEffect = null;
+    private ParticleSystem buildEffectPS = null;
+
+    private BuildManager buildManager;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -25,6 +30,7 @@ public class Node : MonoBehaviour
     void Awake()
     {
         startColor = renderor.material.color;
+        buildEffectPS = (ParticleSystem)buildEffect.GetComponentsInChildren<ParticleSystem>()[0];
     }
 
     /// <summary>
@@ -34,11 +40,6 @@ public class Node : MonoBehaviour
     void Start()
     {
         buildManager = BuildManager.instance;
-    }
-
-    public void setTurret(GameObject _turret)
-    {
-        turret = _turret;
     }
 
     /// <summary>
@@ -63,7 +64,7 @@ public class Node : MonoBehaviour
                 }
                 else
                 {
-                    buildManager.buildTurretOn(this);
+                    buildTurret(buildManager.getTurretToBuild());
                 }
             }
         }
@@ -96,6 +97,47 @@ public class Node : MonoBehaviour
     void OnMouseExit()
     {
         unhover();
+    }
+
+    void buildTurret(TurretBlueprint blueprint)
+    {
+        if (PlayerStatistics.money >= blueprint.cost)
+        {
+            PlayerStatistics.money -= blueprint.cost;
+            turret = (GameObject)Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
+            turretBlueprint = blueprint;
+
+            GameObject effect = (GameObject)Instantiate(buildEffect, this.transform.position, Quaternion.identity);
+            Destroy(effect, buildEffectPS.main.duration + buildEffectPS.main.startLifetime.constant);
+
+            Debug.Log("Turret built");
+        }
+        else
+        {
+            Debug.Log("Not enough money");
+        }
+    }
+
+    public void upgradeTurret()
+    {
+        if (PlayerStatistics.money >= turretBlueprint.upgradeCost)
+        {
+            PlayerStatistics.money -= turretBlueprint.upgradeCost;
+            Destroy(turret);
+            turret = (GameObject)Instantiate(turretBlueprint.upgradePrefab, this.transform.position, Quaternion.identity);
+
+            GameObject effect = (GameObject)Instantiate(buildEffect, this.transform.position, Quaternion.identity);
+            Destroy(effect, buildEffectPS.main.duration + buildEffectPS.main.startLifetime.constant);
+
+            isUpgraded = true;
+
+            Debug.Log("Turret upgraded");
+        }
+        else
+        {
+            Debug.Log("Not enough money to upgrade");
+        }
+
     }
 
     void unhover()
