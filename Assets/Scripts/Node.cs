@@ -47,11 +47,13 @@ public class Node : MonoBehaviour
     /// </summary>
     void OnMouseDown()
     {
-        if(!EventSystem.current.IsPointerOverGameObject())
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
             if (turret != null)
             {
-                Debug.Log("Can't build there.");
+                Debug.Log("Selecting node.");
+                buildManager.selectNode(this);
+                unhover();
             }
             else
             {
@@ -72,7 +74,7 @@ public class Node : MonoBehaviour
     /// </summary>
     void OnMouseEnter()
     {
-        if(!EventSystem.current.IsPointerOverGameObject())
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
             if (buildManager.canBuild)
             {
@@ -92,6 +94,11 @@ public class Node : MonoBehaviour
     /// Called when the mouse enters the GUIElement or Collider.
     /// </summary>
     void OnMouseExit()
+    {
+        unhover();
+    }
+
+    void unhover()
     {
         renderor.material.color = startColor;
     }

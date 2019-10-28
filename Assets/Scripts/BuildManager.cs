@@ -6,6 +6,9 @@ public class BuildManager : MonoBehaviour
     public static BuildManager instance = null;
 
     private TurretBlueprint turretToBuild = null;
+    private Node selectedNode = null;
+    [SerializeField]
+    private NodeUI nodeUI = null;
 
     [SerializeField]
     private GameObject buildEffect = null;
@@ -28,8 +31,8 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    public bool canBuild { get { return null != turretToBuild; } }
-    public bool canBuy   { get { return (null != turretToBuild) && (PlayerStatistics.money >= turretToBuild.cost); } }
+    public bool canBuild { get { return (null != turretToBuild); } }
+    public bool canBuy { get { return canBuild && (PlayerStatistics.money >= turretToBuild.cost); } }
 
     public void buildTurretOn(Node node)
     {
@@ -41,7 +44,7 @@ public class BuildManager : MonoBehaviour
 
             GameObject effect = (GameObject)Instantiate(buildEffect, node.transform.position, Quaternion.identity);
             Destroy(effect, buildEffectPS.main.duration + buildEffectPS.main.startLifetime.constant);
-            
+
             Debug.Log("Turret built, money left: " + PlayerStatistics.money);
         }
         else
@@ -50,8 +53,30 @@ public class BuildManager : MonoBehaviour
         }
     }
 
+    public void selectNode(Node node)
+    {
+        turretToBuild = null;
+
+        if (selectedNode == node)
+        {
+            deselectNode();
+        }
+        else
+        {
+            selectedNode = node;
+            nodeUI.setTarget(node);
+        }
+    }
+
+    public void deselectNode()
+    {
+        selectedNode = null;
+        nodeUI.hide();
+    }
+
     public void selectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
+        deselectNode();
     }
 }

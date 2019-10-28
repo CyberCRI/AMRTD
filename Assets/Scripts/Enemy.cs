@@ -45,12 +45,4 @@ public class Enemy : MonoBehaviour
     {
         speed = startSpeed * (1f - slowRatioFactor);
     }
-
-    /// <summary>
-    /// This function is called when the MonoBehaviour will be destroyed.
-    /// </summary>
-    void OnDestroy()
-    {
-        Debug.Log("Enemy destroyed");
-    }
 }

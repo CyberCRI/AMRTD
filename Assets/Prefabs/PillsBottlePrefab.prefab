@@ -77,16 +77,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00301d8369eecc4ebbb623676f72311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   range: 30
+  bulletPrefab: {fileID: 2713133126219711678, guid: 677eebd3a70be104687595f7a3450a39,
+    type: 3}
   fireRate: 0.25
   fireCountdown: 0
+  userLaser: 0
+  lineRenderer: {fileID: 0}
+  laserImpactPS: {fileID: 0}
+  laserImpactLight: {fileID: 0}
+  laserImpactOffsetFactor: 0
+  laserDamageOverTime: 0
+  slowRatioFactor: 0
   timeStartTurret: 0
   updatePeriod: 0.3
   partToRotate: {fileID: 3350538081113541128}
   rotationSpeed: 10
-  bulletPrefab: {fileID: 2713133126219711678, guid: 677eebd3a70be104687595f7a3450a39,
-    type: 3}
   firePoint: {fileID: 3350538082973273540}
 --- !u!1 &3350538081697809361
 GameObject:
@@ -287,7 +293,7 @@ BoxCollider:
   m_GameObject: {fileID: 3350538081897602119}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
