@@ -20,6 +20,9 @@ public class Node : MonoBehaviour
     [SerializeField]
     private GameObject buildEffect = null;
     private ParticleSystem buildEffectPS = null;
+    [SerializeField]
+    private GameObject sellEffect = null;
+    private ParticleSystem sellEffectPS = null;
 
     private BuildManager buildManager;
 
@@ -137,7 +140,18 @@ public class Node : MonoBehaviour
         {
             Debug.Log("Not enough money to upgrade");
         }
+    }
 
+    public void sellTurret()
+    {
+        PlayerStatistics.money += turretBlueprint.getSellCost();
+
+        Destroy(turret);
+        turretBlueprint = null;
+        isUpgraded = false;
+
+        GameObject effect = (GameObject)Instantiate(sellEffect, this.transform.position, Quaternion.identity);
+        Destroy(effect, sellEffectPS.main.duration + sellEffectPS.main.startLifetime.constant);
     }
 
     void unhover()

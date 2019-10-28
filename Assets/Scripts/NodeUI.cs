@@ -12,8 +12,6 @@ public class NodeUI : MonoBehaviour
     [SerializeField]
     private Text upgradeCost;
     [SerializeField]
-    private Button sellButton;
-    [SerializeField]
     private Text sellCost;
 
     private Node targetNode;
@@ -33,6 +31,8 @@ public class NodeUI : MonoBehaviour
             upgradeButton.interactable = true;
             upgradeCost.text = target.turretBlueprint.upgradeCost.ToString() + "€";
         }
+        
+        sellCost.text = target.turretBlueprint.getSellCost().ToString() + "€";
 
         ui.SetActive(true);
     }
@@ -45,6 +45,12 @@ public class NodeUI : MonoBehaviour
     public void upgrade()
     {
         targetNode.upgradeTurret();
+        BuildManager.instance.deselectNode();
+    }
+
+    public void sell()
+    {
+        targetNode.sellTurret();
         BuildManager.instance.deselectNode();
     }
 }
