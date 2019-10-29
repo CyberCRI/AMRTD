@@ -56,4 +56,9 @@ public class Enemy : MonoBehaviour
     {
         speed = startSpeed * (1f - slowRatioFactor);
     }
+
+    void OnDestroy()
+    {
+        WaveSpawner.enemiesAlive--;
+    }
 }

@@ -1162,7 +1162,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panSpeed: 30
   panBorderThickness: 10
-  doMovement: 1
   scrollSpeed: 100
   minY: 10
   maxY: 80
@@ -2668,7 +2667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 101.3}
+  m_AnchoredPosition: {x: 0, y: 101.299805}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!225 &262517788
@@ -7610,7 +7609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -129.99}
+  m_AnchoredPosition: {x: 0, y: -129.99023}
   m_SizeDelta: {x: 0, y: 290.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &676818488
@@ -8379,7 +8378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 58.1}
+  m_AnchoredPosition: {x: 0, y: 58.100098}
   m_SizeDelta: {x: 0, y: 116.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692312921
@@ -11809,7 +11808,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panSpeed: 30
   panBorderThickness: 10
-  doMovement: 1
   scrollSpeed: 100
   minY: 10
   maxY: 80
@@ -12148,7 +12146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1896186178, guid: 92362bcef8559d24db00f74f1d82c358, type: 3}
       propertyPath: ShapeModule.radiusThickness
-      value: 1.0000
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92362bcef8559d24db00f74f1d82c358, type: 3}
@@ -20078,10 +20076,32 @@ MonoBehaviour:
   waveIndex: 0
   countdown: 0
   timeBeforeWave1: 1
-  timeBetweenWaves: 10
-  timeBetweenSpawns: 0.5
-  enemyPrefab: {fileID: 7210317865310790305, guid: 43316749ff544524794438d8d878b026,
-    type: 3}
+  timeBetweenWaves: 2
+  waves:
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 43316749ff544524794438d8d878b026,
+      type: 3}
+    count: 2
+    timeBetweenSpawns: 0.5
+  - enemyPrefab: {fileID: 7210317865310790309, guid: d789a1401416c5444a0f200a99c82f92,
+      type: 3}
+    count: 2
+    timeBetweenSpawns: 0.5
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 43316749ff544524794438d8d878b026,
+      type: 3}
+    count: 6
+    timeBetweenSpawns: 0.4
+  - enemyPrefab: {fileID: 7210317865310790309, guid: d789a1401416c5444a0f200a99c82f92,
+      type: 3}
+    count: 6
+    timeBetweenSpawns: 0.2
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
+      type: 3}
+    count: 6
+    timeBetweenSpawns: 0.5
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
+      type: 3}
+    count: 12
+    timeBetweenSpawns: 0.5
   spawnPoint: {fileID: 251317112}
   waveCountdownText: {fileID: 755939185}
 --- !u!4 &1726487682
@@ -23693,7 +23713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1896186178, guid: 92362bcef8559d24db00f74f1d82c358, type: 3}
       propertyPath: ShapeModule.radiusThickness
-      value: 1.0000
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92362bcef8559d24db00f74f1d82c358, type: 3}

@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 9164672832980926939}
   - component: {fileID: -2636601273237785909}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: NormalEnemy
   m_TagString: EnemyTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847202f93c47b5c4f8cadfbccfca37a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 10
+  startSpeed: 25
   speed: 50
   minimumDistance: 0.5
   reward: 50

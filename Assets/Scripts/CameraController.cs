@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour
     private float panSpeed = 0f;
     [SerializeField]
     private float panBorderThickness = 0f;
-    [SerializeField]
-    private bool doMovement = true;
+    
+    private bool doMovement = false;
     [SerializeField]
     private float scrollSpeed = 0f;
     [SerializeField]

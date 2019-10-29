@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneFader : MonoBehaviour
 {
     [SerializeField]
-    private Image image;
+    private Image image = null;
     [SerializeField]
     private AnimationCurve fadeCurve = null;
 

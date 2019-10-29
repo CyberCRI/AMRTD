@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class WaveSpawner : MonoBehaviour
 {
 
+    public static int enemiesAlive = 0;
+
     [SerializeField]
     private int waveIndex = 0;
 
@@ -16,15 +18,14 @@ public class WaveSpawner : MonoBehaviour
     private float timeBetweenWaves = 0f;
 
     [SerializeField]
-    private float timeBetweenSpawns = 0f;
-
-    [SerializeField]
-    private Transform enemyPrefab = null;
+    private Wave[] waves = null;
     [SerializeField]
     private Transform spawnPoint = null;
 
     [SerializeField]
     private Text waveCountdownText = null;
+
+    private bool isDoneSpawning = true;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -39,35 +40,45 @@ public class WaveSpawner : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (countdown <= 0)
+        if (isDoneSpawning && enemiesAlive <= 0)
         {
-            StartCoroutine(spawnWave());
-            countdown = timeBetweenWaves;
+            if (countdown <= 0)
+            {
+                StartCoroutine(spawnWave());
+                countdown = timeBetweenWaves;
+            }
+            else
+            {
+                countdown -= Time.deltaTime;
+                countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+            }
+            waveCountdownText.text = string.Format("{0:00.00}", countdown);
         }
-
-        countdown -= Time.deltaTime;
-        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-
-        waveCountdownText.text = string.Format("{0:00.00}", countdown);
     }
 
     IEnumerator spawnWave()
     {
-        waveIndex++;
+        isDoneSpawning = false;
         PlayerStatistics.waves++;
+        waveIndex = Mathf.Clamp(waveIndex, 0, waves.Length-1);
+        Wave wave = waves[waveIndex];
 
-        Debug.Log("New wave incoming");
+        //Debug.Log("New wave incoming");
 
-        for (int i = 0; i < waveIndex; i++)
+        for (int i = 0; i < wave.count; i++)
         {
-            spawnEnemy();
-            yield return new WaitForSeconds(timeBetweenSpawns);
+            spawnEnemy(wave);
+            yield return new WaitForSeconds(wave.timeBetweenSpawns);
         }
+
+        waveIndex++;
+        isDoneSpawning = true;
     }
 
-    void spawnEnemy()
+    void spawnEnemy(Wave wave)
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(wave.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        enemiesAlive++;
     }
 }
 
