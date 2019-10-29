@@ -123,6 +123,16 @@ public class Turret : MonoBehaviour
         }
     }
 
+    public Quaternion getPartToRotateRotation()
+    {
+        return partToRotate.rotation;
+    }
+
+    public void rotatePartToRotate(Quaternion rotation)
+    {
+        partToRotate.rotation = rotation;
+    }
+
     void lockOnTarget()
     {
         // Target lock on

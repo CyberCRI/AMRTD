@@ -10,10 +10,6 @@ public class BuildManager : MonoBehaviour
     [SerializeField]
     private NodeUI nodeUI = null;
 
-    [SerializeField]
-    private GameObject buildEffect = null;
-    private ParticleSystem buildEffectPS = null;
-
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>

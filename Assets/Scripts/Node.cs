@@ -34,6 +34,7 @@ public class Node : MonoBehaviour
     {
         startColor = renderor.material.color;
         buildEffectPS = (ParticleSystem)buildEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        sellEffectPS = (ParticleSystem)sellEffect.GetComponentsInChildren<ParticleSystem>()[0];
     }
 
     /// <summary>
@@ -126,8 +127,12 @@ public class Node : MonoBehaviour
         if (PlayerStatistics.money >= turretBlueprint.upgradeCost)
         {
             PlayerStatistics.money -= turretBlueprint.upgradeCost;
+            
+            GameObject newTurret = (GameObject)Instantiate(turretBlueprint.upgradePrefab, this.transform.position, Quaternion.identity);
+            Quaternion previousRotation = turret.GetComponent<Turret>().getPartToRotateRotation();
             Destroy(turret);
-            turret = (GameObject)Instantiate(turretBlueprint.upgradePrefab, this.transform.position, Quaternion.identity);
+            turret = newTurret;
+            turret.GetComponent<Turret>().rotatePartToRotate(previousRotation);
 
             GameObject effect = (GameObject)Instantiate(buildEffect, this.transform.position, Quaternion.identity);
             Destroy(effect, buildEffectPS.main.duration + buildEffectPS.main.startLifetime.constant);

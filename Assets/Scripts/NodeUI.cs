@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class NodeUI : MonoBehaviour
 {
     [SerializeField]
-    private GameObject ui;
+    private GameObject ui = null;
     [SerializeField]
-    private Button upgradeButton;
+    private Button upgradeButton = null;
     [SerializeField]
-    private Text upgradeCost;
+    private Text upgradeCost = null;
     [SerializeField]
-    private Text sellCost;
+    private Text sellCost = null;
 
     private Node targetNode;
 
