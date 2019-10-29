@@ -5,6 +5,8 @@ public class PauseUI : MonoBehaviour
 {
     [SerializeField]
     private GameObject ui = null;
+    [SerializeField]
+    private SceneFader sceneFader = null;
 
     // Update is called once per frame
     void Update()
@@ -31,12 +33,15 @@ public class PauseUI : MonoBehaviour
 
     public void retry()
     {
-        toggle();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //toggle();
+        Time.timeScale = 1f;
+        sceneFader.fadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void menu()
     {
-        Debug.Log("MENU");
+        //toggle();
+        Time.timeScale = 1f;
+        sceneFader.fadeTo(MainMenu.sceneName);
     }
 }

@@ -6,6 +6,8 @@ public class GameOver : MonoBehaviour
 {
     [SerializeField]
     private Text wavesText = null;
+    [SerializeField]
+    private SceneFader sceneFader = null;
 
     /// <summary>
     /// This function is called when the object becomes enabled and active.
@@ -17,11 +19,11 @@ public class GameOver : MonoBehaviour
 
     public void pressRetry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        sceneFader.fadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void pressMenu()
     {
-        Debug.Log("Go to menu");
+        sceneFader.fadeTo(MainMenu.sceneName);
     }
 }
