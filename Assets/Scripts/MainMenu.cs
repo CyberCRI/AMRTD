@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private SceneFader sceneFader = null;
 
-    public static string sceneName { get { return "MainMenu"; } }
+    public const string sceneName = "MainMenu";
 
 
     public void play()

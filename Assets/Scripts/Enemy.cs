@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Worth")]
     [SerializeField]
-    private int reward = 50;
+    private int reward = 0;
     
     [Header("Health")]
     [SerializeField]
@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     private float startHealth = 0f;
     [SerializeField]
     private Image healthBar = null;
+    private bool isAlive = false;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
     {
         speed = startSpeed;
         health = startHealth;
+        isAlive = true;
     }
 
     public void takeDamage(float damage)
@@ -38,7 +40,7 @@ public class Enemy : MonoBehaviour
         health -= damage;
         healthBar.fillAmount = health/startHealth;
 
-        if (health <= 0f)
+        if (isAlive && health <= 0f)
         {
             die();
         }
@@ -46,6 +48,7 @@ public class Enemy : MonoBehaviour
 
     private void die()
     {
+        isAlive = false;
         GameObject effect = (GameObject)Instantiate(deathEffect.gameObject, this.transform.position, Quaternion.identity);
         Destroy(effect.gameObject, deathEffect.main.duration + deathEffect.main.startLifetime.constant);
         PlayerStatistics.money += reward;

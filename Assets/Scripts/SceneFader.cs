@@ -9,6 +9,7 @@ public class SceneFader : MonoBehaviour
     private Image image = null;
     [SerializeField]
     private AnimationCurve fadeCurve = null;
+    public const float duration = 1f;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class SceneFader : MonoBehaviour
 
     private IEnumerator fadeIn()
     {
-        float t = 1f;
+        float t = duration;
         while (t > 0f)
         {
             t -= Time.deltaTime;
@@ -34,11 +35,11 @@ public class SceneFader : MonoBehaviour
 
     private IEnumerator fadeOut(string scene)
     {
-        float t = 1f;
+        float t = duration;
         while (t > 0f)
         {
             t -= Time.deltaTime;
-            float a = fadeCurve.Evaluate(1 - t);
+            float a = fadeCurve.Evaluate(duration - t);
             image.color = new Color(0f, 0f, 0f, a);
             yield return 0;
         }

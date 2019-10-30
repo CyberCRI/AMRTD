@@ -3,14 +3,12 @@
 public class GameManager : MonoBehaviour
 {
     public static bool isGameOver = false;
+    public static bool isLevelCompleted = false;
 
     [SerializeField]
     private GameObject gameOverUI = null;
     [SerializeField]
-    private SceneFader sceneFader = null;
-
-    private string nextLevelName = "map2";
-    private int nextLevelIndex = 1;
+    private GameObject completeLevelUI = null;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -18,6 +16,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         isGameOver = false;
+        isLevelCompleted = false;
     }
 
     // Update is called once per frame
@@ -38,10 +37,9 @@ public class GameManager : MonoBehaviour
         gameOverUI.SetActive(true);
     }
 
-    public void winLevel()
+    public void completeLevel()
     {
-        Debug.Log("WON");
-        PlayerPrefs.SetInt(LevelSelector.levelReachedKey, nextLevelIndex);
-        sceneFader.fadeTo(nextLevelName);
+        isLevelCompleted = true;
+        completeLevelUI.SetActive(true);
     }
 }

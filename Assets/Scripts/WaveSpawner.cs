@@ -29,6 +29,7 @@ public class WaveSpawner : MonoBehaviour
     void Awake()
     {
         countdown = timeBeforeWave1;
+        enemiesAlive = 0;
     }
 
     /// <summary>
@@ -45,13 +46,16 @@ public class WaveSpawner : MonoBehaviour
                 {
                     //Debug.Log("PlayerStatistics.waves < waves.Length");
                     StartCoroutine(spawnWave());
-                    countdown = timeBetweenWaves;
+                    if (PlayerStatistics.waves < waves.Length-1)
+                    {
+                        countdown = timeBetweenWaves;
+                    }
                 }
                 else
                 {
                     // level completed
                     //Debug.Log("level completed");
-                    gameManager.winLevel();
+                    gameManager.completeLevel();
                     this.enabled = false;
                 }
             }
