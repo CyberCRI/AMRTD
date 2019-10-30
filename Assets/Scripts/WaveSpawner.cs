@@ -4,28 +4,24 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-
     public static int enemiesAlive = 0;
 
-    [SerializeField]
     private int waveIndex = 0;
+    private float countdown = 0f;
+    private bool isDoneSpawning = true;
 
     [SerializeField]
-    private float countdown = 0f;
+    private Text waveCountdownText = null;
     [SerializeField]
     private float timeBeforeWave1 = 0f;
     [SerializeField]
     private float timeBetweenWaves = 0f;
-
-    [SerializeField]
-    private Wave[] waves = null;
     [SerializeField]
     private Transform spawnPoint = null;
-
     [SerializeField]
-    private Text waveCountdownText = null;
-
-    private bool isDoneSpawning = true;
+    GameManager gameManager = null;
+    [SerializeField]
+    private Wave[] waves = null;    
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -44,15 +40,27 @@ public class WaveSpawner : MonoBehaviour
         {
             if (countdown <= 0)
             {
-                StartCoroutine(spawnWave());
-                countdown = timeBetweenWaves;
+                //Debug.Log("isDoneSpawning && enemiesAlive <= 0 && countdown <= 0");
+                if (PlayerStatistics.waves < waves.Length)
+                {
+                    //Debug.Log("PlayerStatistics.waves < waves.Length");
+                    StartCoroutine(spawnWave());
+                    countdown = timeBetweenWaves;
+                }
+                else
+                {
+                    // level completed
+                    //Debug.Log("level completed");
+                    gameManager.winLevel();
+                    this.enabled = false;
+                }
             }
             else
             {
                 countdown -= Time.deltaTime;
                 countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+                waveCountdownText.text = string.Format("{0:00.00}", countdown);
             }
-            waveCountdownText.text = string.Format("{0:00.00}", countdown);
         }
     }
 

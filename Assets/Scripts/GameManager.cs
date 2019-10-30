@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +6,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject gameOverUI = null;
+    [SerializeField]
+    private SceneFader sceneFader = null;
+
+    private string nextLevelName = "map2";
+    private int nextLevelIndex = 1;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -33,5 +36,12 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         gameOverUI.SetActive(true);
+    }
+
+    public void winLevel()
+    {
+        Debug.Log("WON");
+        PlayerPrefs.SetInt(LevelSelector.levelReachedKey, nextLevelIndex);
+        sceneFader.fadeTo(nextLevelName);
     }
 }

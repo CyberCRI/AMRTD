@@ -8479,6 +8479,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1632376932}
     m_Modifications:
+    - target: {fileID: 7210317865310790309, guid: 43316749ff544524794438d8d878b026,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210317865310790309, guid: 43316749ff544524794438d8d878b026,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7210317865310790305, guid: 43316749ff544524794438d8d878b026,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8532,16 +8542,6 @@ PrefabInstance:
     - target: {fileID: 7210317865310790305, guid: 43316749ff544524794438d8d878b026,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210317865310790309, guid: 43316749ff544524794438d8d878b026,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210317865310790309, guid: 43316749ff544524794438d8d878b026,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -20073,27 +20073,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6171a914dd484646aa9dc1b6f0fa644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveIndex: 0
-  countdown: 0
+  waveCountdownText: {fileID: 755939185}
   timeBeforeWave1: 1
   timeBetweenWaves: 2
+  spawnPoint: {fileID: 251317112}
+  gameManager: {fileID: 1726487685}
   waves:
   - enemyPrefab: {fileID: 7210317865310790309, guid: 43316749ff544524794438d8d878b026,
       type: 3}
     count: 2
-    timeBetweenSpawns: 0.5
+    timeBetweenSpawns: 0.6
   - enemyPrefab: {fileID: 7210317865310790309, guid: d789a1401416c5444a0f200a99c82f92,
       type: 3}
     count: 2
     timeBetweenSpawns: 0.5
   - enemyPrefab: {fileID: 7210317865310790309, guid: 43316749ff544524794438d8d878b026,
       type: 3}
-    count: 6
+    count: 5
     timeBetweenSpawns: 0.4
   - enemyPrefab: {fileID: 7210317865310790309, guid: d789a1401416c5444a0f200a99c82f92,
       type: 3}
-    count: 6
-    timeBetweenSpawns: 0.2
+    count: 8
+    timeBetweenSpawns: 0.3
   - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
       type: 3}
     count: 6
@@ -20101,9 +20102,7 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
       type: 3}
     count: 12
-    timeBetweenSpawns: 0.5
-  spawnPoint: {fileID: 251317112}
-  waveCountdownText: {fileID: 755939185}
+    timeBetweenSpawns: 0.3
 --- !u!4 &1726487682
 Transform:
   m_ObjectHideFlags: 0
@@ -20158,6 +20157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 1463159311}
+  sceneFader: {fileID: 5591449203680623081}
 --- !u!114 &1726487686
 MonoBehaviour:
   m_ObjectHideFlags: 0
