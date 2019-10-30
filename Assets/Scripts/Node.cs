@@ -56,7 +56,6 @@ public class Node : MonoBehaviour
         {
             if (turret != null)
             {
-                //Debug.Log("Selecting node.");
                 buildManager.selectNode(this);
                 unhover();
             }
@@ -64,7 +63,7 @@ public class Node : MonoBehaviour
             {
                 if (!buildManager.canBuild)
                 {
-                    //Debug.Log("No tower selected.");
+                    // no tower selected
                 }
                 else
                 {
@@ -113,12 +112,10 @@ public class Node : MonoBehaviour
 
             GameObject effect = (GameObject)Instantiate(buildEffect, this.transform.position, Quaternion.identity);
             Destroy(effect, buildEffectPS.main.duration + buildEffectPS.main.startLifetime.constant);
-
-            //Debug.Log("Turret built");
         }
         else
         {
-            //Debug.Log("Not enough money");
+            // not enough money
         }
     }
 
@@ -138,12 +135,10 @@ public class Node : MonoBehaviour
             Destroy(effect, buildEffectPS.main.duration + buildEffectPS.main.startLifetime.constant);
 
             isUpgraded = true;
-
-            //Debug.Log("Turret upgraded");
         }
         else
         {
-            //Debug.Log("Not enough money to upgrade");
+            // not enough money to upgrade"
         }
     }
 

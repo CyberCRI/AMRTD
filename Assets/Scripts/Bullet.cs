@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
     {
         if (target == null)
         {
-            Destroy(this.gameObject);
+            hitTarget();
         }
         else
         {
@@ -53,7 +53,7 @@ public class Bullet : MonoBehaviour
         {
             explode();
         }
-        else
+        else if (null != target)
         {
             damage(target);
         }

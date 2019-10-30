@@ -11,7 +11,9 @@ public class CompleteLevel : MonoBehaviour
 
     public void pressContinue()
     {
-        PlayerPrefs.SetInt(LevelSelector.levelReachedKey, nextLevelIndex);
+        int previous = PlayerPrefs.GetInt(LevelSelector.levelReachedKey);
+        int newLevelReached = Mathf.Max(previous, nextLevelIndex);
+        PlayerPrefs.SetInt(LevelSelector.levelReachedKey, newLevelReached);
         sceneFader.fadeTo(nextLevelName);
     }
 
