@@ -2,7 +2,6 @@
 
 public class BuildManager : MonoBehaviour
 {
-
     public static BuildManager instance = null;
 
     private TurretBlueprint turretToBuild = null;

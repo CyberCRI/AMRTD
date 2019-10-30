@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
 {
     private Enemy enemy;
-    private Transform target = null;
+    private Vector3 target = Vector3.zero;
     private int waypointIndex = 0;
+    [SerializeField]
+    private Waypoints.WaypointsMode waypointsMode = Waypoints.WaypointsMode.CONTINUOUS;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        Vector3 dir = target.position - this.transform.position;
+        Vector3 dir = target - this.transform.position;
         this.transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
 
         if (dir.magnitude <= enemy.minimumDistance)
@@ -44,13 +44,10 @@ public class EnemyMovement : MonoBehaviour
 
     void getNextWaypoint()
     {
-        if (waypointIndex >= Waypoints.waypoints.Length)
+        target = Waypoints.instance.getWaypoint(waypointIndex++, waypointsMode);
+        if (Mathf.Infinity == target.x)
         {
             endPath();
-        }
-        else
-        {
-            target = Waypoints.waypoints[waypointIndex++];
         }
     }
 
