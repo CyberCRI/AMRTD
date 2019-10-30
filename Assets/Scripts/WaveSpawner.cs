@@ -17,11 +17,19 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField]
     private float timeBetweenWaves = 0f;
     [SerializeField]
-    private Transform spawnPoint = null;
+    private Transform[] spawnPoints = null;
+    [SerializeField]
+    private SpawnMode spawnMode = SpawnMode.RANDOMDISCRETE;
     [SerializeField]
     GameManager gameManager = null;
     [SerializeField]
-    private Wave[] waves = null;    
+    private Wave[] waves = null;
+
+    private enum SpawnMode
+    {
+        RANDOMDISCRETE,
+        RANDOMCONTINUOUS
+    };
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -41,20 +49,16 @@ public class WaveSpawner : MonoBehaviour
         {
             if (countdown <= 0)
             {
-                //Debug.Log("isDoneSpawning && enemiesAlive <= 0 && countdown <= 0");
                 if (PlayerStatistics.waves < waves.Length)
                 {
-                    //Debug.Log("PlayerStatistics.waves < waves.Length");
                     StartCoroutine(spawnWave());
-                    if (PlayerStatistics.waves < waves.Length-1)
+                    if (PlayerStatistics.waves < waves.Length - 1)
                     {
                         countdown = timeBetweenWaves;
                     }
                 }
                 else
                 {
-                    // level completed
-                    //Debug.Log("level completed");
                     gameManager.completeLevel();
                     this.enabled = false;
                 }
@@ -72,10 +76,8 @@ public class WaveSpawner : MonoBehaviour
     {
         isDoneSpawning = false;
         PlayerStatistics.waves++;
-        waveIndex = Mathf.Clamp(waveIndex, 0, waves.Length-1);
+        waveIndex = Mathf.Clamp(waveIndex, 0, waves.Length - 1);
         Wave wave = waves[waveIndex];
-
-        //Debug.Log("New wave incoming");
 
         for (int i = 0; i < wave.count; i++)
         {
@@ -89,7 +91,26 @@ public class WaveSpawner : MonoBehaviour
 
     void spawnEnemy(Wave wave)
     {
-        Instantiate(wave.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Vector3 spawnPointPosition = spawnPoints[0].position;
+        Quaternion spawnPointRotation = spawnPoints[0].rotation;
+
+        switch (spawnMode)
+        {
+            case SpawnMode.RANDOMCONTINUOUS:
+                foreach (Transform spawnPoint in spawnPoints)
+                {
+                    spawnPointPosition += Random.Range(0f, 1f) * (spawnPoint.position - spawnPoints[0].position);
+                }
+                break;
+
+            case SpawnMode.RANDOMDISCRETE:
+            default:
+                int randomIndex = Random.Range(0, spawnPoints.Length);
+                spawnPointPosition = spawnPoints[randomIndex].position;
+                spawnPointRotation = spawnPoints[randomIndex].rotation;
+                break;
+        }
+        Instantiate(wave.enemyPrefab, spawnPointPosition, spawnPointRotation);
         enemiesAlive++;
     }
 }

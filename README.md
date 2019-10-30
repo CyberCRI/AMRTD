@@ -28,3 +28,7 @@ The current graphical assets are used as placeholders and tests and are therefor
 | [Pill](Assets/Imports/Pill/Pill.fbx) | [Turbosquid pill](https://www.turbosquid.com/FullPreview/Index.cfm/ID/586682) by [Redfox1980](https://www.turbosquid.com/Search/Artists/Redfox1980) |
 | [Pills bottle](Assets/Imports/MissileLauncher/PillsBottle.fbx) | [Turbosquid Pills bottle](https://www.turbosquid.com/FullPreview/Index.cfm/ID/938419) by [romanlebedeff](https://www.turbosquid.com/Search/Artists/romanlebedeff) |
 | [Syringe](Assets/Imports/Syringe/syringe.fbx) | [Clara.io Syringe](https://clara.io/view/244b0aa1-2921-4ff5-8fdf-b40072284669) by [MarianaNT](https://clara.io/user/MarianaNT) derived from [Clara.io Syringe](https://clara.io/view/5bc2ead7-b90e-4175-b9d1-788c9b3d5dc1) by [Democore](https://clara.io/user/Democore) |
+
+## Game Design
+[Game Design document](https://docs.google.com/document/d/1TgTEb7lYKtsqwoqLYiH7x7pFtKUBVrobGOHopfreoxo/edit?usp=sharing) accessible only to members of the [Center for Research and Interdisciplinarity (CRI)](https://cri-paris.org/), located in Paris, France.
+
