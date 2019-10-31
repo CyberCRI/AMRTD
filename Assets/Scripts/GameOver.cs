@@ -13,6 +13,6 @@ public class GameOver : MonoBehaviour
 
     public void pressMenu()
     {
-        sceneFader.fadeTo(MainMenu.sceneName);
+        sceneFader.menu();
     }
 }

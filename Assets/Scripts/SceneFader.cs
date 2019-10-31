@@ -46,4 +46,9 @@ public class SceneFader : MonoBehaviour
 
         SceneManager.LoadScene(scene);
     }
+
+    public void menu()
+    {
+        fadeTo(MainMenu.sceneName);
+    }
 }

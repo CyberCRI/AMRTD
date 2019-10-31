@@ -19,6 +19,6 @@ public class CompleteLevel : MonoBehaviour
 
     public void pressMenu()
     {
-        sceneFader.fadeTo(MainMenu.sceneName);
+        sceneFader.menu();
     }
 }

@@ -42,6 +42,6 @@ public class PauseUI : MonoBehaviour
     {
         //toggle();
         Time.timeScale = 1f;
-        sceneFader.fadeTo(MainMenu.sceneName);
+        sceneFader.menu();
     }
 }
