@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public static WaveSpawner instance;
     public static int enemiesAlive = 0;
 
     private int waveIndex = 0;
@@ -36,8 +37,17 @@ public class WaveSpawner : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        countdown = timeBeforeWave1;
-        enemiesAlive = 0;
+        if (null != instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+
+            countdown = timeBeforeWave1;
+            enemiesAlive = 0;
+        }
     }
 
     /// <summary>
@@ -89,28 +99,38 @@ public class WaveSpawner : MonoBehaviour
         isDoneSpawning = true;
     }
 
-    void spawnEnemy(Wave wave)
+    public void spawnEnemy(Wave wave, int reward = 0, int waypointsIndex = 0, Transform location = null)
     {
         Vector3 spawnPointPosition = spawnPoints[0].position;
         Quaternion spawnPointRotation = spawnPoints[0].rotation;
 
-        switch (spawnMode)
+        if (null == location)
         {
-            case SpawnMode.RANDOMCONTINUOUS:
-                foreach (Transform spawnPoint in spawnPoints)
-                {
-                    spawnPointPosition += Random.Range(0f, 1f) * (spawnPoint.position - spawnPoints[0].position);
-                }
-                break;
+            switch (spawnMode)
+            {
+                case SpawnMode.RANDOMCONTINUOUS:
+                    foreach (Transform spawnPoint in spawnPoints)
+                    {
+                        spawnPointPosition += Random.Range(0f, 1f) * (spawnPoint.position - spawnPoints[0].position);
+                    }
+                    break;
 
-            case SpawnMode.RANDOMDISCRETE:
-            default:
-                int randomIndex = Random.Range(0, spawnPoints.Length);
-                spawnPointPosition = spawnPoints[randomIndex].position;
-                spawnPointRotation = spawnPoints[randomIndex].rotation;
-                break;
+                case SpawnMode.RANDOMDISCRETE:
+                default:
+                    int randomIndex = Random.Range(0, spawnPoints.Length);
+                    spawnPointPosition = spawnPoints[randomIndex].position;
+                    spawnPointRotation = spawnPoints[randomIndex].rotation;
+                    break;
+            }
         }
-        Instantiate(wave.enemyPrefab, spawnPointPosition, spawnPointRotation);
+        else
+        {
+            spawnPointPosition = location.position;
+        }
+        GameObject instantiatedEnemy = (GameObject)Instantiate(wave.enemyPrefab, spawnPointPosition, spawnPointRotation);
+        Enemy enemy = instantiatedEnemy.GetComponent<Enemy>();
+        enemy.initialize(wave, reward, waypointsIndex);
+
         enemiesAlive++;
     }
 }

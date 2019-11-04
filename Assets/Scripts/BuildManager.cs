@@ -14,7 +14,7 @@ public class BuildManager : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        if (instance != null)
+        if (null != instance)
         {
             Destroy(this);
         }

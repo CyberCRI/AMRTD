@@ -18016,6 +18016,30 @@ MonoBehaviour:
       type: 3}
     count: 12
     timeBetweenSpawns: 0.3
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
+      type: 3}
+    count: 12
+    timeBetweenSpawns: 0.3
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
+      type: 3}
+    count: 12
+    timeBetweenSpawns: 0.3
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
+      type: 3}
+    count: 12
+    timeBetweenSpawns: 0.3
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
+      type: 3}
+    count: 12
+    timeBetweenSpawns: 0.3
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
+      type: 3}
+    count: 12
+    timeBetweenSpawns: 0.3
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
+      type: 3}
+    count: 12
+    timeBetweenSpawns: 0.3
 --- !u!4 &1726487682
 Transform:
   m_ObjectHideFlags: 0

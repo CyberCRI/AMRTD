@@ -354,9 +354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847202f93c47b5c4f8cadfbccfca37a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 40
-  speed: 50
-  minimumDistance: 0.5
   reward: 40
   deathEffect: {fileID: 4562425432993480917, guid: 4dda1a16c28566f49a8971fa6d2bd8c9,
     type: 3}
@@ -374,4 +371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797e0148a5e115f43b918bfc9152f645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startSpeed: 40
+  speed: 0
+  minimumDistance: 5
+  waypointIndex: 0
   waypointsMode: 1

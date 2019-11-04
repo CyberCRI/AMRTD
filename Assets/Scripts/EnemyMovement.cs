@@ -3,11 +3,18 @@
 [RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
 {
-    private Enemy enemy;
+
+    [Header("Movement")]
+    public float startSpeed = 0f;
+    [HideInInspector]
+    public float speed = 0f;
+    public float minimumDistance = 0f;
     private Vector3 target = Vector3.zero;
-    private int waypointIndex = 0;
+    [HideInInspector]
+    public int waypointIndex = 0;
     [SerializeField]
     private Waypoints.WaypointsMode waypointsMode = Waypoints.WaypointsMode.CONTINUOUS;
+    private Enemy enemy;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -15,6 +22,7 @@ public class EnemyMovement : MonoBehaviour
     void Awake()
     {
         enemy = this.GetComponent<Enemy>();
+        speed = startSpeed;
     }
 
     /// <summary>
@@ -32,14 +40,19 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         Vector3 dir = target - this.transform.position;
-        this.transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
+        this.transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
-        if (dir.magnitude <= enemy.minimumDistance)
+        if (dir.magnitude <= minimumDistance)
         {
             getNextWaypoint();
         }
 
-        enemy.speed = enemy.startSpeed;
+        speed = startSpeed;
+    }
+
+    public void slow(float slowRatioFactor)
+    {
+        speed = startSpeed * (1f - slowRatioFactor);
     }
 
     void getNextWaypoint()
@@ -48,6 +61,10 @@ public class EnemyMovement : MonoBehaviour
         if (Mathf.Infinity == target.x)
         {
             endPath();
+        }
+        else
+        {
+            enemy.onReachedWaypoint(waypointIndex);
         }
     }
 

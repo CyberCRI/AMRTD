@@ -11,7 +11,7 @@ public class Waypoints : MonoBehaviour
     [SerializeField]
     private Transform waypointsContinuousRoot = null;
     // procedurally filled list of waypoints
-    private Transform[] waypointsContinuousList = null; 
+    private Transform[] waypointsContinuousList = null;
 
     public enum WaypointsMode
     {
@@ -24,23 +24,23 @@ public class Waypoints : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        if (instance != null)
+        if (null != instance)
         {
             Destroy(this);
         }
         else
         {
             instance = this;
-        }
 
-        fillArrayFromRoot(waypointsDiscreteRoot, ref waypointsDiscreteList);
-        fillArrayFromRoot(waypointsContinuousRoot, ref waypointsContinuousList);
+            fillArrayFromRoot(waypointsDiscreteRoot, ref waypointsDiscreteList);
+            fillArrayFromRoot(waypointsContinuousRoot, ref waypointsContinuousList);
+        }
     }
 
     public Vector3 getWaypoint(int depth, WaypointsMode waypointsMode = WaypointsMode.CONTINUOUS)
     {
         Vector3 waypoint = Vector3.zero;
-        switch(waypointsMode)
+        switch (waypointsMode)
         {
             case WaypointsMode.CONTINUOUS:
                 if (depth >= waypointsContinuousList.Length)
@@ -50,8 +50,8 @@ public class Waypoints : MonoBehaviour
                 else
                 {
                     float t = Random.Range(0f, 1f);
-                    waypoint = t*waypointsContinuousList[depth].GetChild(0).position
-                    + (1-t)*waypointsContinuousList[depth].GetChild(1).position;
+                    waypoint = t * waypointsContinuousList[depth].GetChild(0).position
+                    + (1 - t) * waypointsContinuousList[depth].GetChild(1).position;
                 }
                 break;
             case WaypointsMode.DISCRETE:

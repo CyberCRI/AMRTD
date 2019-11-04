@@ -14,18 +14,18 @@ public class LevelSelector : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null)
+        if (null != instance)
         {
             Destroy(this);
         }
         else
         {
             instance = this;
-        }
 
-        updateInteractables();
+            updateInteractables();
+        }
     }
-    
+
     private void updateInteractables()
     {
         int levelReached = PlayerPrefs.GetInt(levelReachedKey, 0);
@@ -44,7 +44,7 @@ public class LevelSelector : MonoBehaviour
     public static void deleteAllPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
-        if (instance != null)
+        if (null != instance)
         {
             instance.updateInteractables();
         }
@@ -53,7 +53,7 @@ public class LevelSelector : MonoBehaviour
     public static void unlockAllLevels()
     {
         PlayerPrefs.SetInt(LevelSelector.levelReachedKey, maxLevelIndex);
-        if (instance != null)
+        if (null != instance)
         {
             instance.updateInteractables();
         }
