@@ -17992,54 +17992,26 @@ MonoBehaviour:
   spawnMode: 1
   gameManager: {fileID: 1726487685}
   waves:
-  - enemyPrefab: {fileID: 7210317865310790309, guid: 43316749ff544524794438d8d878b026,
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 27a5c49d71df18348bf2f41f3528ea75,
       type: 3}
     count: 2
     timeBetweenSpawns: 0.6
-  - enemyPrefab: {fileID: 7210317865310790309, guid: d789a1401416c5444a0f200a99c82f92,
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 933343e9fc5b2654b833195a73cdf1c2,
       type: 3}
-    count: 2
+    count: 4
     timeBetweenSpawns: 0.5
-  - enemyPrefab: {fileID: 7210317865310790309, guid: 43316749ff544524794438d8d878b026,
-      type: 3}
-    count: 5
-    timeBetweenSpawns: 0.4
-  - enemyPrefab: {fileID: 7210317865310790309, guid: d789a1401416c5444a0f200a99c82f92,
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 27a5c49d71df18348bf2f41f3528ea75,
       type: 3}
     count: 8
-    timeBetweenSpawns: 0.3
-  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
+    timeBetweenSpawns: 0.4
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 933343e9fc5b2654b833195a73cdf1c2,
       type: 3}
-    count: 6
+    count: 16
+    timeBetweenSpawns: 0.3
+  - enemyPrefab: {fileID: 7210317865310790309, guid: 10d1673644e561b49ab9570d732d407b,
+      type: 3}
+    count: 32
     timeBetweenSpawns: 0.5
-  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
-      type: 3}
-    count: 12
-    timeBetweenSpawns: 0.3
-  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
-      type: 3}
-    count: 12
-    timeBetweenSpawns: 0.3
-  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
-      type: 3}
-    count: 12
-    timeBetweenSpawns: 0.3
-  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
-      type: 3}
-    count: 12
-    timeBetweenSpawns: 0.3
-  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
-      type: 3}
-    count: 12
-    timeBetweenSpawns: 0.3
-  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
-      type: 3}
-    count: 12
-    timeBetweenSpawns: 0.3
-  - enemyPrefab: {fileID: 7210317865310790309, guid: 9bafaabbed1178146a5a54ec5049d352,
-      type: 3}
-    count: 12
-    timeBetweenSpawns: 0.3
 --- !u!4 &1726487682
 Transform:
   m_ObjectHideFlags: 0

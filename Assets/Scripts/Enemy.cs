@@ -33,7 +33,8 @@ public class Enemy : MonoBehaviour
     public enum DIVISION_STRATEGY
     {
         TIME_BASED,
-        WAYPOINT_BASED
+        WAYPOINT_BASED,
+        NO_DIVISION
     }
 
     /// <summary>
