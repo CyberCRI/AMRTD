@@ -99,7 +99,6 @@ public class Enemy : MonoBehaviour
     {
         if (null != wave)
         {
-            Debug.Log("Division!");
             reward /= 2;
             WaveSpawner.instance.spawnEnemy(wave, reward, waypointIndex, this.transform);
         }

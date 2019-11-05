@@ -10,7 +10,7 @@ public class LevelSelector : MonoBehaviour
     [SerializeField]
     private Button[] levelButtons = null;
     public const string levelReachedKey = "levelReached";
-    public const int maxLevelIndex = 2;
+    public const int maxLevelIndex = 4;
 
     void Awake()
     {
