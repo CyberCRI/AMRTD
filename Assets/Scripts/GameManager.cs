@@ -39,7 +39,10 @@ public class GameManager : MonoBehaviour
 
     public void completeLevel()
     {
-        isLevelCompleted = true;
-        completeLevelUI.SetActive(true);
+        if (!isGameOver)
+        {
+            isLevelCompleted = true;
+            completeLevelUI.SetActive(true);
+        }
     }
 }
