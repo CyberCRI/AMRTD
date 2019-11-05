@@ -16364,11 +16364,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1632376932}
     m_Modifications:
-    - target: {fileID: 7690425728553248048, guid: b61625fc49d6f784abfdfded6bd2557e,
-        type: 3}
-      propertyPath: m_Name
-      value: SellEffect
-      objectReference: {fileID: 0}
     - target: {fileID: 7690425728553248053, guid: b61625fc49d6f784abfdfded6bd2557e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16423,6 +16418,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690425728553248048, guid: b61625fc49d6f784abfdfded6bd2557e,
+        type: 3}
+      propertyPath: m_Name
+      value: SellEffect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b61625fc49d6f784abfdfded6bd2557e, type: 3}
@@ -17655,7 +17655,7 @@ PrefabInstance:
     - target: {fileID: 5661213831112829944, guid: ce90d169841038149a6617207224ff3b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.4
+      value: -4.93
       objectReference: {fileID: 0}
     - target: {fileID: 5661213831112829944, guid: ce90d169841038149a6617207224ff3b,
         type: 3}
@@ -21600,10 +21600,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1283043318913205445, guid: c5d44d76f273f4440974ed576ea33450,
+    - target: {fileID: 1283043318055578876, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
-      propertyPath: m_Name
-      value: GameUI
+      propertyPath: m_FontData.m_FontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283043318055578876, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283043318055578876, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1283043319592278572, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
@@ -21620,20 +21630,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1283043318055578876, guid: c5d44d76f273f4440974ed576ea33450,
+    - target: {fileID: 1283043318913205445, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1283043318055578876, guid: c5d44d76f273f4440974ed576ea33450,
-        type: 3}
-      propertyPath: m_FontData.m_MinSize
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1283043318055578876, guid: c5d44d76f273f4440974ed576ea33450,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 8
+      propertyPath: m_Name
+      value: GameUI
       objectReference: {fileID: 0}
     - target: {fileID: 1283043318913205444, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
@@ -22267,6 +22267,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1726487686}
+    - target: {fileID: 1283043317992997077, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283043319807675286, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -130
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283043318125714774, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 101.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283043318011131322, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -130
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283043318633017238, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 101.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5d44d76f273f4440974ed576ea33450, type: 3}
 --- !u!4 &1578768920127377214 stripped
@@ -22557,11 +22582,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1632376932}
     m_Modifications:
-    - target: {fileID: 5949064246032184775, guid: 92d6fbcbaca940b4d92c7ae9dee11d5c,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 5949064246032184774, guid: 92d6fbcbaca940b4d92c7ae9dee11d5c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22616,6 +22636,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949064246032184775, guid: 92d6fbcbaca940b4d92c7ae9dee11d5c,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92d6fbcbaca940b4d92c7ae9dee11d5c, type: 3}

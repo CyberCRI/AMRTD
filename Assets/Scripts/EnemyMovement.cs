@@ -51,8 +51,8 @@ public class EnemyMovement : MonoBehaviour
         initialRotation = transform.localRotation.eulerAngles;
         enemy = this.GetComponent<Enemy>();
         speed = startSpeed;
-        phase = Random.Range(0, 2*Mathf.PI);
-        phase2 = Random.Range(0, 2*Mathf.PI);
+        phase = Random.Range(0, 2 * Mathf.PI);
+        phase2 = Random.Range(0, 2 * Mathf.PI);
     }
 
     /// <summary>
@@ -69,45 +69,48 @@ public class EnemyMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        Vector3 dir = target - this.transform.position;
-        
-        Vector3 displacement = dir.normalized * speed * Time.deltaTime;
-        Vector3 sinusoidalShiftVector = horizontalShift * new Vector3(
-                Mathf.Cos(
-                    phase +
-                    wobbleShiftSpeedX * speed * Time.timeSinceLevelLoad),
-                0,
-                Mathf.Cos(
-                    phase2 +
-                    wobbleShiftSpeedZ * speed * Time.timeSinceLevelLoad)
-                    );
-        transform.Translate(displacement + sinusoidalShiftVector, Space.World);
-        
-        transform.localRotation = Quaternion.Euler(new Vector3(
-            initialRotation.x,
-            initialRotation.y + angularWobble * Mathf.Cos(
-                phase +
-                wobbleRotateSpeed * speed * Time.timeSinceLevelLoad),
-            initialRotation.z));
-        
-        transform.localScale = new Vector3(
-            ratioFactor * initialScale.x * (scaleFactor + Mathf.Cos(
-                phase +
-                wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
-            //initialScale.y,
-            ratioFactor * initialScale.y * (scaleFactor + Mathf.Cos(
-                phase +
-                wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
-            ratioFactor * initialScale.z * (scaleFactor + Mathf.Cos(
-                Mathf.PI + phase +
-                wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)));
-
-        if (dir.magnitude <= minimumDistance)
+        if (0 != Time.deltaTime)
         {
-            getNextWaypoint();
-        }
+            Vector3 dir = target - this.transform.position;
 
-        speed = startSpeed;
+            Vector3 displacement = dir.normalized * speed * Time.deltaTime;
+            Vector3 sinusoidalShiftVector = horizontalShift * new Vector3(
+                    Mathf.Cos(
+                        phase +
+                        wobbleShiftSpeedX * speed * Time.timeSinceLevelLoad),
+                    0,
+                    Mathf.Cos(
+                        phase2 +
+                        wobbleShiftSpeedZ * speed * Time.timeSinceLevelLoad)
+                        );
+            transform.Translate(displacement + sinusoidalShiftVector, Space.World);
+
+            transform.localRotation = Quaternion.Euler(new Vector3(
+                initialRotation.x,
+                initialRotation.y + angularWobble * Mathf.Cos(
+                    phase +
+                    wobbleRotateSpeed * speed * Time.timeSinceLevelLoad),
+                initialRotation.z));
+
+            transform.localScale = new Vector3(
+                ratioFactor * initialScale.x * (scaleFactor + Mathf.Cos(
+                    phase +
+                    wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
+                //initialScale.y,
+                ratioFactor * initialScale.y * (scaleFactor + Mathf.Cos(
+                    phase +
+                    wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
+                ratioFactor * initialScale.z * (scaleFactor + Mathf.Cos(
+                    Mathf.PI + phase +
+                    wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)));
+
+            if (dir.magnitude <= minimumDistance)
+            {
+                getNextWaypoint();
+            }
+
+            speed = startSpeed;
+        }
     }
 
     public void slow(float slowRatioFactor)

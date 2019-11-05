@@ -390,7 +390,7 @@ MonoBehaviour:
     type: 3}
   startHealth: 50
   healthBar: {fileID: 375250703}
-  divisionPeriod: 1
+  divisionPeriod: 3
   divisionStrategy: 0
 --- !u!114 &-2636601273237785909
 MonoBehaviour:
@@ -404,9 +404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797e0148a5e115f43b918bfc9152f645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 30
+  startSpeed: 20
   speed: 20
-  minimumDistance: 1
+  minimumDistance: 0.5
   waypointIndex: 2
   waypointsMode: 1
   wobbleScaleSpeed: 0.5
