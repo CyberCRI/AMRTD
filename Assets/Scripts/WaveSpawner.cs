@@ -108,14 +108,14 @@ public class WaveSpawner : MonoBehaviour
         Transform location = null
         )
     {
-        Debug.Log(string.Format("WaveSpawner::spawnEnemy({0}, {1}, {2}, {3})"
-            //,wave
-            ,reward
-            ,health
-            ,startHealth
-            ,waypointIndex
-            //,location
-        ));
+        //Debug.Log(string.Format("WaveSpawner::spawnEnemy({0}, {1}, {2}, {3})"
+        //    //,wave
+        //    ,reward
+        //    ,health
+        //    ,startHealth
+        //    ,waypointIndex
+        //    //,location
+        //));
 
         if (enemiesAlive < wave.maxEnemyCount)
         {

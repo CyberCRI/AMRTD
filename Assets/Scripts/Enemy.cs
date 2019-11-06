@@ -27,9 +27,11 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float divisionPeriod = 1f;
     // the wave during which this enemy was created; hold info on the prefab
-    private Wave wave;
+    private Wave wave = null;
     [SerializeField]
-    private DIVISION_STRATEGY divisionStrategy;
+    private DIVISION_STRATEGY divisionStrategy = DIVISION_STRATEGY.TIME_BASED;
+    [SerializeField]
+    private bool canDivideWhileWounded = false;
 
     public enum DIVISION_STRATEGY
     {
@@ -59,15 +61,19 @@ public class Enemy : MonoBehaviour
 
         divisionCooldown -= Time.deltaTime;
 
-        if (
-            (DIVISION_STRATEGY.TIME_BASED == divisionStrategy)
-            && (divisionCooldown <= 0)
-            && (WaveSpawner.enemiesAlive < wave.maxEnemyCount)
-            )
+        if (canDivide(DIVISION_STRATEGY.TIME_BASED))
         {
             divide(enemyMovement.waypointIndex - 1);
             divisionCooldown = divisionPeriod;
         }
+    }
+
+    private bool canDivide(DIVISION_STRATEGY strategy)
+    {
+        return (strategy == divisionStrategy)
+            && (divisionCooldown <= 0)
+            && (WaveSpawner.enemiesAlive < wave.maxEnemyCount)
+            && (canDivideWhileWounded || health == startHealth);
     }
 
     // intialization after procedural instantiation
@@ -79,13 +85,13 @@ public class Enemy : MonoBehaviour
         int _waypointIndex
         )
     {
-        Debug.Log(string.Format("Enemy::initialize({0}, {1}, {2}, {3})",
-            //_wave,
-            _reward,
-            _health,
-            _startHealth,
-            _waypointIndex
-        ));
+        //Debug.Log(string.Format("Enemy::initialize({0}, {1}, {2}, {3})",
+        //    //_wave,
+        //    _reward,
+        //    _health,
+        //    _startHealth,
+        //    _waypointIndex
+        //));
 
         wave = _wave;
         enemyMovement = this.GetComponent<EnemyMovement>();
@@ -156,11 +162,7 @@ public class Enemy : MonoBehaviour
 
     public void onReachedWaypoint(int waypointIndex)
     {
-        if (
-            (DIVISION_STRATEGY.WAYPOINT_BASED == divisionStrategy)
-            && (divisionCooldown <= 0)
-            && (WaveSpawner.enemiesAlive < wave.maxEnemyCount)
-            )
+        if (canDivide(DIVISION_STRATEGY.WAYPOINT_BASED))
         {
             // "this" already has the waypointIndex-th waypoint as target whereas the newly instantiated hasn't
             divide(waypointIndex - 1);
