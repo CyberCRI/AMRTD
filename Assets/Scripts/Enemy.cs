@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Image healthBar = null;
     private bool isAlive = false;
+    private bool doInitializeHealth = true;
 
     [Header("Division")]
     private float divisionCooldown = 0f;
@@ -42,7 +43,10 @@ public class Enemy : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        health = startHealth;
+        if (doInitializeHealth)
+        {
+            health = startHealth;
+        }
         isAlive = true;
         divisionCooldown = divisionPeriod;
     }
@@ -55,7 +59,11 @@ public class Enemy : MonoBehaviour
 
         divisionCooldown -= Time.deltaTime;
 
-        if ((DIVISION_STRATEGY.TIME_BASED == divisionStrategy) && (divisionCooldown <= 0))
+        if (
+            (DIVISION_STRATEGY.TIME_BASED == divisionStrategy)
+            && (divisionCooldown <= 0)
+            && (WaveSpawner.enemiesAlive < wave.maxEnemyCount)
+            )
         {
             divide(enemyMovement.waypointIndex - 1);
             divisionCooldown = divisionPeriod;
@@ -63,8 +71,22 @@ public class Enemy : MonoBehaviour
     }
 
     // intialization after procedural instantiation
-    public void initialize(Wave _wave, int _reward, int _waypointIndex)
+    public void initialize(
+        Wave _wave,
+        int _reward,
+        float _health,
+        float _startHealth,
+        int _waypointIndex
+        )
     {
+        Debug.Log(string.Format("Enemy::initialize({0}, {1}, {2}, {3})",
+            //_wave,
+            _reward,
+            _health,
+            _startHealth,
+            _waypointIndex
+        ));
+
         wave = _wave;
         enemyMovement = this.GetComponent<EnemyMovement>();
         enemyMovement.waypointIndex = _waypointIndex;
@@ -73,12 +95,30 @@ public class Enemy : MonoBehaviour
         {
             reward = _reward;
         }
+
+        if (0f != _health)
+        {
+            health = _health;
+            doInitializeHealth = false;
+        }
+
+        if (0f != _startHealth)
+        {
+            startHealth = _startHealth;
+        }
+
+        updateHealthBar();
+    }
+
+    private void updateHealthBar()
+    {
+        healthBar.fillAmount = health / startHealth;
     }
 
     public void takeDamage(float damage)
     {
         health -= damage;
-        healthBar.fillAmount = health / startHealth;
+        updateHealthBar();
 
         if (isAlive && health <= 0f)
         {
@@ -100,7 +140,8 @@ public class Enemy : MonoBehaviour
         if (null != wave)
         {
             reward /= 2;
-            WaveSpawner.instance.spawnEnemy(wave, reward, waypointIndex, this.transform);
+            WaveSpawner.instance.spawnEnemy(
+                wave, reward, health, startHealth, waypointIndex, this.transform);
         }
         else
         {
@@ -115,7 +156,11 @@ public class Enemy : MonoBehaviour
 
     public void onReachedWaypoint(int waypointIndex)
     {
-        if ((DIVISION_STRATEGY.WAYPOINT_BASED == divisionStrategy) && (divisionCooldown <= 0))
+        if (
+            (DIVISION_STRATEGY.WAYPOINT_BASED == divisionStrategy)
+            && (divisionCooldown <= 0)
+            && (WaveSpawner.enemiesAlive < wave.maxEnemyCount)
+            )
         {
             // "this" already has the waypointIndex-th waypoint as target whereas the newly instantiated hasn't
             divide(waypointIndex - 1);

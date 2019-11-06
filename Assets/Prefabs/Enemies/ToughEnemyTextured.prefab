@@ -406,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 5
   speed: 20
-  minimumDistance: 0.2
+  minimumDistance: 0.5
   waypointIndex: 2
   waypointsMode: 0
   wobbleScaleSpeed: 0.5

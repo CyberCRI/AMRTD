@@ -25,6 +25,7 @@ public class WaveSpawner : MonoBehaviour
     GameManager gameManager = null;
     [SerializeField]
     private Wave[] waves = null;
+    private Wave currentWave = null;
 
     private enum SpawnMode
     {
@@ -59,7 +60,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if (countdown <= 0)
             {
-                if (PlayerStatistics.waves < waves.Length)
+                if (waveIndex < waves.Length)
                 {
                     StartCoroutine(spawnWave());
                     if (PlayerStatistics.waves < waves.Length - 1)
@@ -86,52 +87,70 @@ public class WaveSpawner : MonoBehaviour
     {
         isDoneSpawning = false;
         PlayerStatistics.waves++;
-        waveIndex = Mathf.Clamp(waveIndex, 0, waves.Length - 1);
-        Wave wave = waves[waveIndex];
+        currentWave = waves[waveIndex];
 
-        for (int i = 0; i < wave.count; i++)
+        for (int i = 0; i < currentWave.count; i++)
         {
-            spawnEnemy(wave);
-            yield return new WaitForSeconds(wave.timeBetweenSpawns);
+            spawnEnemy(currentWave);
+            yield return new WaitForSeconds(currentWave.timeBetweenSpawns);
         }
 
         waveIndex++;
         isDoneSpawning = true;
     }
 
-    public void spawnEnemy(Wave wave, int reward = 0, int waypointsIndex = 0, Transform location = null)
+    public void spawnEnemy(
+        Wave wave,
+        int reward = 0,
+        float health = 0f,
+        float startHealth = 0f,
+        int waypointIndex = 0,
+        Transform location = null
+        )
     {
-        Vector3 spawnPointPosition = spawnPoints[0].position;
-        Quaternion spawnPointRotation = spawnPoints[0].rotation;
+        Debug.Log(string.Format("WaveSpawner::spawnEnemy({0}, {1}, {2}, {3})"
+            //,wave
+            ,reward
+            ,health
+            ,startHealth
+            ,waypointIndex
+            //,location
+        ));
 
-        if (null == location)
+        if (enemiesAlive < wave.maxEnemyCount)
         {
-            switch (spawnMode)
+            Vector3 spawnPointPosition = spawnPoints[0].position;
+            Quaternion spawnPointRotation = spawnPoints[0].rotation;
+
+            if (null == location)
             {
-                case SpawnMode.RANDOMCONTINUOUS:
-                    foreach (Transform spawnPoint in spawnPoints)
-                    {
-                        spawnPointPosition += Random.Range(0f, 1f) * (spawnPoint.position - spawnPoints[0].position);
-                    }
-                    break;
+                switch (spawnMode)
+                {
+                    case SpawnMode.RANDOMCONTINUOUS:
+                        foreach (Transform spawnPoint in spawnPoints)
+                        {
+                            spawnPointPosition += Random.Range(0f, 1f) * (spawnPoint.position - spawnPoints[0].position);
+                        }
+                        break;
 
-                case SpawnMode.RANDOMDISCRETE:
-                default:
-                    int randomIndex = Random.Range(0, spawnPoints.Length);
-                    spawnPointPosition = spawnPoints[randomIndex].position;
-                    spawnPointRotation = spawnPoints[randomIndex].rotation;
-                    break;
+                    case SpawnMode.RANDOMDISCRETE:
+                    default:
+                        int randomIndex = Random.Range(0, spawnPoints.Length);
+                        spawnPointPosition = spawnPoints[randomIndex].position;
+                        spawnPointRotation = spawnPoints[randomIndex].rotation;
+                        break;
+                }
             }
-        }
-        else
-        {
-            spawnPointPosition = location.position;
-        }
-        GameObject instantiatedEnemy = (GameObject)Instantiate(wave.enemyPrefab, spawnPointPosition, spawnPointRotation);
-        Enemy enemy = instantiatedEnemy.GetComponent<Enemy>();
-        enemy.initialize(wave, reward, waypointsIndex);
+            else
+            {
+                spawnPointPosition = location.position;
+            }
+            GameObject instantiatedEnemy = (GameObject)Instantiate(wave.enemyPrefab, spawnPointPosition, spawnPointRotation);
+            Enemy enemy = instantiatedEnemy.GetComponent<Enemy>();
+            enemy.initialize(wave, reward, health, startHealth, waypointIndex);
 
-        enemiesAlive++;
+            enemiesAlive++;
+        }
     }
 }
 
