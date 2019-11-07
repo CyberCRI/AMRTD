@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//#define DEVMODE
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,12 @@ public class GameManager : MonoBehaviour
             {
                 endGame();
             }
+#if DEVMODE
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                completeLevel();
+            }
+#endif
         }
     }
 

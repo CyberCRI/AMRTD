@@ -8,6 +8,7 @@ public class LevelSelector : MonoBehaviour
     [SerializeField]
     private SceneFader sceneFader = null;
     [SerializeField]
+    private Transform levelButtonsRoot;
     private Button[] levelButtons = null;
     public const string levelReachedKey = "levelReached";
     public const int maxLevelIndex = 4;
@@ -21,6 +22,12 @@ public class LevelSelector : MonoBehaviour
         else
         {
             instance = this;
+
+            levelButtons = new Button[levelButtonsRoot.childCount];
+            for (int i = 0; i < levelButtons.Length; i++)
+            {
+                levelButtons[i] = levelButtonsRoot.GetChild(i).GetComponent<Button>();
+            }
 
             updateInteractables();
         }

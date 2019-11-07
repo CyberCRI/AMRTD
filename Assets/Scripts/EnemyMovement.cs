@@ -20,6 +20,8 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Wobble")]
     [SerializeField]
+    private Transform wobbledTransform = null;
+    [SerializeField]
     private float wobbleScaleSpeed = 0f;
     [SerializeField]
     private float wobbleRotateSpeed = 0f;
@@ -47,8 +49,12 @@ public class EnemyMovement : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        initialScale = transform.localScale;
-        initialRotation = transform.localRotation.eulerAngles;
+        if (null == wobbledTransform)
+        {
+            wobbledTransform = this.transform;
+        }
+        initialScale = wobbledTransform.localScale;
+        initialRotation = wobbledTransform.localRotation.eulerAngles;
         enemy = this.GetComponent<Enemy>();
         speed = startSpeed;
         phase = Random.Range(0, 2 * Mathf.PI);
@@ -83,16 +89,16 @@ public class EnemyMovement : MonoBehaviour
                         phase2 +
                         wobbleShiftSpeedZ * speed * Time.timeSinceLevelLoad)
                         );
-            transform.Translate(displacement + sinusoidalShiftVector, Space.World);
+            this.transform.Translate(displacement + sinusoidalShiftVector, Space.World);
 
-            transform.localRotation = Quaternion.Euler(new Vector3(
+            wobbledTransform.localRotation = Quaternion.Euler(new Vector3(
                 initialRotation.x,
                 initialRotation.y + angularWobble * Mathf.Cos(
                     phase +
                     wobbleRotateSpeed * speed * Time.timeSinceLevelLoad),
                 initialRotation.z));
 
-            transform.localScale = new Vector3(
+            wobbledTransform.localScale = new Vector3(
                 ratioFactor * initialScale.x * (scaleFactor + Mathf.Cos(
                     phase +
                     wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),

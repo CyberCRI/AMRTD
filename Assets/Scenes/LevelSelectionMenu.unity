@@ -970,6 +970,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 232986529}
     m_Modifications:
+    - target: {fileID: 8278648253409357788, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelButton4
+      objectReference: {fileID: 0}
     - target: {fileID: 8278648253409357789, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1075,11 +1080,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8278648253409357788, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelButton4
-      objectReference: {fileID: 0}
     - target: {fileID: 8278648253409357786, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1137,7 +1137,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5c248859557c2cf4a9e44de0d6df9ab5,
+      objectReference: {fileID: 21300000, guid: 6e7916ceb70ee3240882ac8a51b49489,
         type: 3}
     - target: {fileID: 8278648253409357787, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
@@ -1152,18 +1152,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 912259533}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &912259535 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8278648253409357786, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 912259533}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,12 +1340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneFader: {fileID: 309278436}
-  levelButtons:
-  - {fileID: 8278648252234939143}
-  - {fileID: 1943282050}
-  - {fileID: 1739204776}
-  - {fileID: 912259535}
-  - {fileID: 1773715965}
+  levelButtonsRoot: {fileID: 232986529}
 --- !u!4 &1210677607
 Transform:
   m_ObjectHideFlags: 0
@@ -1650,6 +1633,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 232986529}
     m_Modifications:
+    - target: {fileID: 8278648253409357788, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelButton3
+      objectReference: {fileID: 0}
     - target: {fileID: 8278648253409357789, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1755,11 +1743,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8278648253409357788, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelButton3
-      objectReference: {fileID: 0}
     - target: {fileID: 8278648253409357786, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1817,7 +1800,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bff652ec7bae1c74bb1c70987738d540,
+      objectReference: {fileID: 21300000, guid: 5c248859557c2cf4a9e44de0d6df9ab5,
         type: 3}
     - target: {fileID: 8278648253409357787, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
@@ -1832,18 +1815,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1739204774}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1739204776 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8278648253409357786, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1739204774}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1773715963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1851,6 +1822,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 232986529}
     m_Modifications:
+    - target: {fileID: 8278648253409357788, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelButton5
+      objectReference: {fileID: 0}
     - target: {fileID: 8278648253409357789, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1956,11 +1932,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8278648253409357788, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelButton5
-      objectReference: {fileID: 0}
     - target: {fileID: 8278648253409357786, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2033,18 +2004,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1773715963}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1773715965 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8278648253409357786, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1773715963}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1943282048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2052,6 +2011,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 232986529}
     m_Modifications:
+    - target: {fileID: 8278648253409357788, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelButton2
+      objectReference: {fileID: 0}
     - target: {fileID: 8278648253409357789, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2157,11 +2121,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8278648253409357788, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelButton2
-      objectReference: {fileID: 0}
     - target: {fileID: 8278648253409357786, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2219,7 +2178,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3fee96f066f98fc4c835999d46a96fc5,
+      objectReference: {fileID: 21300000, guid: bff652ec7bae1c74bb1c70987738d540,
         type: 3}
     - target: {fileID: 8278648253409357787, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
@@ -2234,18 +2193,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1943282048}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1943282050 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8278648253409357786, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1943282048}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1983952010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,7 +2274,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 673031271}
   m_HandleRect: {fileID: 673031270}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2412,6 +2359,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 232986529}
     m_Modifications:
+    - target: {fileID: 8278648253409357788, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelButton1
+      objectReference: {fileID: 0}
     - target: {fileID: 8278648253409357789, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2517,11 +2469,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8278648253409357788, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelButton1
-      objectReference: {fileID: 0}
     - target: {fileID: 8278648253409357786, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2579,7 +2526,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6e7916ceb70ee3240882ac8a51b49489,
+      objectReference: {fileID: 21300000, guid: 3fee96f066f98fc4c835999d46a96fc5,
         type: 3}
     - target: {fileID: 8278648253409357787, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
         type: 3}
@@ -2588,15 +2535,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f708f91c7dbf34b45a6a6eb4a52db5e8, type: 3}
---- !u!114 &8278648252234939143 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8278648253409357786, guid: f708f91c7dbf34b45a6a6eb4a52db5e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 8278648252234939142}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
