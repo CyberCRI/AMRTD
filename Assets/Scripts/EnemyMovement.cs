@@ -7,9 +7,9 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Movement")]
     public float startSpeed = 0f;
-    [HideInInspector]
-    public float speed = 0f;
-    public float minimumDistance = 0f;
+    private float speed = 0f;
+    [SerializeField]
+    private float minimumDistance = 0f;
 
     // waypoints
     private Vector3 target = Vector3.zero;
@@ -41,8 +41,11 @@ public class EnemyMovement : MonoBehaviour
     private float angularWobble = 0f;
     [SerializeField]
     private float horizontalShift = 0f;
-    private float phase = 0f;
-    private float phase2 = 0f;
+    private float phaseShiftX = 0f;
+    private float phaseShiftZ = 0f;
+    private float phaseRotatY = 0f;
+    private float phaseScaleX = 0f;
+    private const float distanceSecurityRatio = 1.1f;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -57,8 +60,12 @@ public class EnemyMovement : MonoBehaviour
         initialRotation = wobbledTransform.localRotation.eulerAngles;
         enemy = this.GetComponent<Enemy>();
         speed = startSpeed;
-        phase = Random.Range(0, 2 * Mathf.PI);
-        phase2 = Random.Range(0, 2 * Mathf.PI);
+        phaseShiftX = Random.Range(0, 2 * Mathf.PI);
+        phaseShiftZ = Random.Range(0, 2 * Mathf.PI);
+        phaseRotatY = Random.Range(0, 2 * Mathf.PI);
+        phaseScaleX = Random.Range(0, 2 * Mathf.PI);
+
+        minimumDistance = Mathf.Max(distanceSecurityRatio*horizontalShift, minimumDistance);
     }
 
     /// <summary>
@@ -82,11 +89,11 @@ public class EnemyMovement : MonoBehaviour
             Vector3 displacement = dir.normalized * speed * Time.deltaTime;
             Vector3 sinusoidalShiftVector = horizontalShift * new Vector3(
                     Mathf.Cos(
-                        phase +
+                        phaseShiftX +
                         wobbleShiftSpeedX * speed * Time.timeSinceLevelLoad),
                     0,
                     Mathf.Cos(
-                        phase2 +
+                        phaseShiftZ +
                         wobbleShiftSpeedZ * speed * Time.timeSinceLevelLoad)
                         );
             this.transform.Translate(displacement + sinusoidalShiftVector, Space.World);
@@ -94,20 +101,20 @@ public class EnemyMovement : MonoBehaviour
             wobbledTransform.localRotation = Quaternion.Euler(new Vector3(
                 initialRotation.x,
                 initialRotation.y + angularWobble * Mathf.Cos(
-                    phase +
+                    phaseRotatY +
                     wobbleRotateSpeed * speed * Time.timeSinceLevelLoad),
                 initialRotation.z));
 
             wobbledTransform.localScale = new Vector3(
                 ratioFactor * initialScale.x * (scaleFactor + Mathf.Cos(
-                    phase +
+                    phaseScaleX +
                     wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
                 //initialScale.y,
                 ratioFactor * initialScale.y * (scaleFactor + Mathf.Cos(
-                    phase +
+                    phaseScaleX +
                     wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
                 ratioFactor * initialScale.z * (scaleFactor + Mathf.Cos(
-                    Mathf.PI + phase +
+                    Mathf.PI + phaseScaleX +
                     wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)));
 
             if (dir.magnitude <= minimumDistance)

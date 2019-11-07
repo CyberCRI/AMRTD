@@ -24,7 +24,7 @@ The current graphical assets are used as placeholders and tests and are therefor
 
 | Asset | Source |
 | ------------- | ------------- |
-| [Bacterium 1](Assets/Textures/bacteria/bacterium1.png) | [http://pngimg.com/ Bacteria PNG](http://pngimg.com/download/43382)|
+| [Bacterium 1](Assets/Textures/bacteria/bacterium1.png) | [pngimg Bacteria PNG](http://pngimg.com/download/43382)|
 | [Bacterium 2](Assets/Textures/bacteria/bacterium2.png) | [hiclipart Bacteria transparent background PNG clipart](https://www.hiclipart.com/free-transparent-background-png-clipart-zopdp)|
 | [Bacterium 3](Assets/Textures/bacteria/bacterium3.png) | [imgpng Бактерия PNG](https://imgpng.ru/download/43393)|
 | [Bacterium 4](Assets/Textures/bacteria/bacterium4.png) | [hiclipart Bacteria Cartoon , Bacteria Green transparent background PNG clipart](https://www.hiclipart.com/free-transparent-background-png-clipart-izkzi)|
