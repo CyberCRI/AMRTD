@@ -14,9 +14,15 @@ public class Enemy : MonoBehaviour
     [Header("Health")]
     [SerializeField]
     private ParticleSystem deathEffect = null;
-    private float health = 0f;
+    public float health = 0f;
     [SerializeField]
     private float startHealth = 0f;
+    // how much of startHealth is regained per second
+    [SerializeField]
+    private float healingRatioSpeed = 0f;
+    // how much of damage is taken
+    [SerializeField]
+    private float injuryRatio = 0f;
     [SerializeField]
     private Image healthBar = null;
     private bool isAlive = false;
@@ -65,6 +71,12 @@ public class Enemy : MonoBehaviour
         {
             divide(enemyMovement.waypointIndex - 1);
             divisionCooldown = divisionPeriod;
+        }
+
+        if (health < startHealth)
+        {
+            health = Mathf.Min(startHealth, health + healingRatioSpeed * startHealth * Time.deltaTime);
+            updateHealthBar();
         }
     }
 
@@ -123,7 +135,7 @@ public class Enemy : MonoBehaviour
 
     public void takeDamage(float damage)
     {
-        health -= damage;
+        health -= injuryRatio * damage;
         updateHealthBar();
 
         if (isAlive && health <= 0f)

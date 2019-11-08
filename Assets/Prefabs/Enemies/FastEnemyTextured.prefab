@@ -7,11 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1658957251381275028}
     m_Modifications:
-    - target: {fileID: 768061886737194857, guid: f8e1710acaf79754e8b2e30372b6b432,
-        type: 3}
-      propertyPath: m_Name
-      value: InnerFastEnemyTextured
-      objectReference: {fileID: 0}
     - target: {fileID: 615292079608373710, guid: f8e1710acaf79754e8b2e30372b6b432,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,6 +62,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 768061886737194857, guid: f8e1710acaf79754e8b2e30372b6b432,
+        type: 3}
+      propertyPath: m_Name
+      value: InnerFastEnemyTextured
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8e1710acaf79754e8b2e30372b6b432, type: 3}
 --- !u!4 &903778212175918558 stripped
@@ -86,6 +86,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FastEnemyTextured
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: scaleAffectedTransform
+      value: 
+      objectReference: {fileID: 903778212175918558}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: wobbledTransform
+      value: 
+      objectReference: {fileID: 903778212175918558}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: minimumDistance
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: startSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: angularWobble
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: scaleFactor
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4500849788320993361, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
@@ -157,35 +187,15 @@ PrefabInstance:
       propertyPath: divisionPeriod
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: scaleAffectedTransform
-      value: 
-      objectReference: {fileID: 903778212175918558}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: wobbledTransform
-      value: 
-      objectReference: {fileID: 903778212175918558}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: minimumDistance
-      value: 1.1
+      propertyPath: injuryRatio
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: startSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: angularWobble
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: scaleFactor
-      value: 3
+      propertyPath: healingRatioSpeed
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0702d38ed6887458d2928b3b9c093c, type: 3}

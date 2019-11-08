@@ -12,6 +12,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalEnemyTextured
       objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: scaleAffectedTransform
+      value: 
+      objectReference: {fileID: 5791067525696177173}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: wobbledTransform
+      value: 
+      objectReference: {fileID: 5791067525696177173}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: minimumDistance
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: startSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: angularWobble
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: scaleFactor
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4500849788320993361, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -82,35 +112,15 @@ PrefabInstance:
       propertyPath: divisionPeriod
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: scaleAffectedTransform
-      value: 
-      objectReference: {fileID: 5791067525696177173}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: wobbledTransform
-      value: 
-      objectReference: {fileID: 5791067525696177173}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: minimumDistance
-      value: 1.1
+      propertyPath: injuryRatio
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: startSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: angularWobble
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: scaleFactor
-      value: 5
+      propertyPath: healingRatioSpeed
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0702d38ed6887458d2928b3b9c093c, type: 3}
@@ -127,11 +137,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7667180733465665964}
     m_Modifications:
-    - target: {fileID: 704204758309981477, guid: cf6c0a4cd1a22ad418f4612da105eab4,
-        type: 3}
-      propertyPath: m_Name
-      value: InnerNormalEnemyTextured
-      objectReference: {fileID: 0}
     - target: {fileID: 3430969998141215203, guid: cf6c0a4cd1a22ad418f4612da105eab4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -186,6 +191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 704204758309981477, guid: cf6c0a4cd1a22ad418f4612da105eab4,
+        type: 3}
+      propertyPath: m_Name
+      value: InnerNormalEnemyTextured
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf6c0a4cd1a22ad418f4612da105eab4, type: 3}

@@ -19456,7 +19456,7 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 7667180733465665960, guid: 440515832a7d5284eb06737fae56384c,
       type: 3}
     count: 2
-    maxEnemyCount: 32
+    maxEnemyCount: 8
     timeBetweenSpawns: 0.6
   - enemyPrefab: {fileID: 1658957251381275024, guid: fa20cea45234cca4489560283326f9fb,
       type: 3}

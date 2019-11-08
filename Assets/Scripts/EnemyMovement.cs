@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//#define ENEMIES_NEVER_LEAVE
+
+using UnityEngine;
 
 [RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
@@ -136,11 +138,13 @@ public class EnemyMovement : MonoBehaviour
         target = Waypoints.instance.getWaypoint(waypointIndex++, waypointsMode);
         if (Mathf.Infinity == target.x)
         {
+#if ENEMIES_NEVER_LEAVE
+            // enemies go back and forth forever
+            waypointIndex = 0;
+            target = Waypoints.instance.getWaypoint(waypointIndex++, waypointsMode);
+#else
             endPath();
-
-            // to have enemies go back and forth forever
-            //waypointIndex = 0;
-            //target = Waypoints.instance.getWaypoint(waypointIndex++, waypointsMode);
+#endif
         }
         else
         {
