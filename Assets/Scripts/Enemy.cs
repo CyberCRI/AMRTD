@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour
 {
     public const string enemyTag = "EnemyTag";
 
-    private EnemyMovement enemyMovement;
+    public EnemyMovement enemyMovement;
 
     [Header("Worth")]
     [SerializeField]

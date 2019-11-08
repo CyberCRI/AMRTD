@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3350538081350310104}
   - component: {fileID: 3350538081350310119}
+  - component: {fileID: 7235472888803864142}
   m_Layer: 0
   m_Name: PillsBottlePrefab
   m_TagString: Untagged
@@ -78,6 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 30
+  route: 0
+  attack: {fileID: 7235472888803864142}
   bulletPrefab: {fileID: 2713133126219711678, guid: 677eebd3a70be104687595f7a3450a39,
     type: 3}
   fireRate: 0.25
@@ -94,6 +97,21 @@ MonoBehaviour:
   partToRotate: {fileID: 3350538081113541128}
   rotationSpeed: 10
   firePoint: {fileID: 3350538082973273540}
+--- !u!114 &7235472888803864142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350538081350310105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b106924f65ff2f244963e730b693750f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  substance: 1
+  abilities: 00000000
+  startDuration: 5
 --- !u!1 &3350538081697809361
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5502159585222248707}
   - component: {fileID: 640300916}
+  - component: {fileID: 2799460364339199350}
   m_Layer: 0
   m_Name: Tablet1Prefab
   m_TagString: Untagged
@@ -46,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 15
+  route: 0
+  attack: {fileID: 2799460364339199350}
   bulletPrefab: {fileID: 7715285218150925893, guid: 451e1bc3bbf3635428517af906ea1fc5,
     type: 3}
   fireRate: 2
@@ -62,6 +65,21 @@ MonoBehaviour:
   partToRotate: {fileID: 5502159586406733922}
   rotationSpeed: 10
   firePoint: {fileID: 3416578897236265122}
+--- !u!114 &2799460364339199350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502159585222248708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b106924f65ff2f244963e730b693750f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  substance: 0
+  abilities: 00000000
+  startDuration: 1
 --- !u!1 &5502159585310024968
 GameObject:
   m_ObjectHideFlags: 0

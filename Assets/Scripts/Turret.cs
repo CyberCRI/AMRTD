@@ -2,12 +2,28 @@
 
 public class Turret : MonoBehaviour
 {
+
+    public enum ROUTE_OF_ADMINISTRATION
+    {
+        TOPICAL_SKIN,
+        ENTERAL, // gastrointestinal
+        INJECTION,
+        INHALED
+    }
+
     private Transform target = null;
     private Enemy enemy = null;
+    private bool firstAttack = false;
 
     [Header("General")]
     [SerializeField]
     private float range = 0f;
+    public ROUTE_OF_ADMINISTRATION route;
+
+    [Header("Attack system")]
+    [SerializeField]
+    private Attack attack = null;
+    private Attack enemyAttack = null;
 
     [Header("Bullets mode (default)")]
     [SerializeField]
@@ -67,19 +83,20 @@ public class Turret : MonoBehaviour
         float shortestDistanceToEnemy = Mathf.Infinity;
         GameObject nearestEnemy = null;
 
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemyGO in enemies)
         {
-            float distanceToEnemy = Vector3.Distance(this.transform.position, enemy.transform.position);
+            float distanceToEnemy = Vector3.Distance(this.transform.position, enemyGO.transform.position);
             if (distanceToEnemy < shortestDistanceToEnemy)
             {
                 shortestDistanceToEnemy = distanceToEnemy;
-                nearestEnemy = enemy;
+                nearestEnemy = enemyGO;
             }
         }
 
         if (nearestEnemy != null && shortestDistanceToEnemy <= range)
         {
             target = nearestEnemy.transform;
+            firstAttack = true;
             enemy = nearestEnemy.GetComponent<Enemy>();
         }
         else
@@ -96,6 +113,33 @@ public class Turret : MonoBehaviour
         if (target != null)
         {
             lockOnTarget();
+
+            if (firstAttack)
+            {
+                Attack[] enemyAttacks = target.GetComponents<Attack>();
+                Attack enemyAttack = null;
+                foreach (Attack eAttack in enemyAttacks)
+                {
+                    if (eAttack.substance == attack.substance)
+                    {
+                        enemyAttack = eAttack;
+                        Debug.Log("FOUND ATTACK " + attack.substance);
+                        break;
+                    }
+                }
+
+                if (null == enemyAttack)
+                {
+                // case 1: enemy has no similar undergoing attack
+                    enemyAttack = (Attack)target.gameObject.AddComponent<Attack>();
+                    enemyAttack.initialize(enemy.enemyMovement, true, attack);
+                }
+                else
+                {
+                    // case 2: enemy has a similar undergoing attack
+                }
+                firstAttack = false;
+            }
 
             if (userLaser)
             {
