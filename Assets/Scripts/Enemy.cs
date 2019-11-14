@@ -5,7 +5,8 @@ public class Enemy : MonoBehaviour
 {
     public const string enemyTag = "EnemyTag";
 
-    public EnemyMovement enemyMovement;
+    [SerializeField]
+    private EnemyMovement enemyMovement;
 
     [Header("Worth")]
     [SerializeField]
@@ -41,25 +42,46 @@ public class Enemy : MonoBehaviour
 
     [Header("Indicators")]
     [SerializeField]
+    private GameObject antibio0 = null;
+    [SerializeField]
     private GameObject antibio1 = null;
     [SerializeField]
     private GameObject antibio2 = null;
+
+    [Header("Resistance")]
     [SerializeField]
-    private GameObject antibio3 = null;
+    private bool[] immunities = new bool[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+
+    /*
+        [System.Serializable]
+        public class AntibioticDictionary: Dictionary<Attack.SUBSTANCE, bool> {}
+        [SerializeField]
+        private AntibioticDictionary immunities2 = new AntibioticDictionary()
+                                                {
+                                                    {Attack.SUBSTANCE.ANTIBIOTIC0, false},
+                                                    {Attack.SUBSTANCE.ANTIBIOTIC1, false},
+                                                    {Attack.SUBSTANCE.ANTIBIOTIC2, false}
+                                                };
+    */
+
+    public bool isImmuneTo(Attack.SUBSTANCE antibiotic)
+    {
+        return immunities[(int)antibiotic];
+    }
 
     public void showIndicator(Attack.SUBSTANCE _substance, bool _show)
     {
         switch (_substance)
         {
+            case Attack.SUBSTANCE.ANTIBIOTIC0:
+                antibio0.SetActive(_show);
+                break;
             case Attack.SUBSTANCE.ANTIBIOTIC1:
                 antibio1.SetActive(_show);
                 break;
             case Attack.SUBSTANCE.ANTIBIOTIC2:
-                antibio2.SetActive(_show);
-                break;
-            case Attack.SUBSTANCE.ANTIBIOTIC3:
             default:
-                antibio3.SetActive(_show);
+                antibio2.SetActive(_show);
                 break;
         }
     }
@@ -131,7 +153,6 @@ public class Enemy : MonoBehaviour
         //));
 
         wave = _wave;
-        enemyMovement = this.GetComponent<EnemyMovement>();
         enemyMovement.waypointIndex = _waypointIndex;
 
         if (0 != _reward)

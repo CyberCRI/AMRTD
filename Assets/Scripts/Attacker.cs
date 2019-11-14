@@ -23,13 +23,16 @@ public class Attacker : MonoBehaviour
     protected void doAttack(Transform _target, Enemy _enemy = null)
     {
         _enemy = (_enemy == null) ? _target.GetComponent<Enemy>() : _enemy;
-        
+
         if (null != _enemy)
         {
-            Attack _enemyAttack = strikeAttack(_target, _enemy);
-            if (null != _enemyAttack)
+            if (!_enemy.isImmuneTo(modelAttack.substance))
             {
-                _enemyAttack.apply();
+                Attack _enemyAttack = strikeAttack(_target, _enemy);
+                if (null != _enemyAttack)
+                {
+                    _enemyAttack.apply();
+                }
             }
         }
     }

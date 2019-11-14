@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847202f93c47b5c4f8cadfbccfca37a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMovement: {fileID: 0}
+  enemyMovement: {fileID: 76248867092480059}
   reward: 150
   deathEffect: {fileID: 4562425432993480917, guid: f2773845f5971f848901425ae4563d1d,
     type: 3}
@@ -71,9 +71,10 @@ MonoBehaviour:
   divisionPeriod: 8
   divisionStrategy: 0
   canDivideWhileWounded: 0
-  antibio1: {fileID: 7353253310253906219}
-  antibio2: {fileID: 8292119852672913726}
-  antibio3: {fileID: 7860719504384687338}
+  antibio0: {fileID: 7353253310253906219}
+  antibio1: {fileID: 8292119852672913726}
+  antibio2: {fileID: 7860719504384687338}
+  immunities: 000000
 --- !u!114 &76248867092480059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +361,7 @@ GameObject:
   - component: {fileID: 7549862878303814427}
   - component: {fileID: 7104331317254149680}
   m_Layer: 5
-  m_Name: Antibiotic1Indicator
+  m_Name: Antibiotic0Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,7 +434,7 @@ GameObject:
   - component: {fileID: 2810685689825432984}
   - component: {fileID: 7866479702100658178}
   m_Layer: 5
-  m_Name: Antibiotic3Indicator
+  m_Name: Antibiotic2Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -506,7 +507,7 @@ GameObject:
   - component: {fileID: 1429541327244014182}
   - component: {fileID: 3127150923202303433}
   m_Layer: 5
-  m_Name: Antibiotic2Indicator
+  m_Name: Antibiotic1Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

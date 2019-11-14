@@ -170,8 +170,8 @@ public class Turret : Attacker
     void shoot()
     {
         GameObject bulletGO = (GameObject)Instantiate(
-            bulletPrefab, 
-            firePoint.position, 
+            bulletPrefab,
+            firePoint.position,
             firePoint.rotation);
 
         Bullet bullet = bulletGO.GetComponent<Bullet>();

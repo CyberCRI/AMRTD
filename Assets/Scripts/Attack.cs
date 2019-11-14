@@ -5,9 +5,13 @@ public class Attack : MonoBehaviour
 {
     public enum SUBSTANCE
     {
+        ANTIBIOTIC0,
         ANTIBIOTIC1,
         ANTIBIOTIC2,
-        ANTIBIOTIC3
+
+        // add new antibiotics in-between
+
+        ANTIBIOTICS_COUNT
     }
 
     public enum ABILITY
@@ -139,12 +143,15 @@ public class Attack : MonoBehaviour
     /// </summary>
     void Start()
     {
-        enemy.showIndicator(substance, true);
-
-        if (0f != damageWhenFirstHit)
+        if (onEnemy)
         {
-            enemy.takeDamage(damageWhenFirstHit);
-            damageWhenFirstHit = 0f;
+            enemy.showIndicator(substance, true);
+
+            if (0f != damageWhenFirstHit)
+            {
+                enemy.takeDamage(damageWhenFirstHit);
+                damageWhenFirstHit = 0f;
+            }
         }
     }
 

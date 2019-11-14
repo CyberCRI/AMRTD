@@ -77,17 +77,8 @@ public class Bullet : Attacker
                 {
                     doAttack(collider.transform, _enemy);
                 }
-                
-            }
-        }
-    }
 
-    void damage(Transform enemy)
-    {
-        Enemy e = enemy.GetComponent<Enemy>();
-        if (null != e)
-        {
-            e.takeDamage(damageAmount);
+            }
         }
     }
 
