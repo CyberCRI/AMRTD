@@ -46,14 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00301d8369eecc4ebbb623676f72311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelAttack: {fileID: 3896691279925316961}
   range: 25
   route: 0
-  attack: {fileID: 3896691279925316961}
   bulletPrefab: {fileID: 7715285218150925893, guid: 87d0d0d44d3e0c24c8dcd1bd7894d56a,
     type: 3}
-  fireRate: 3
-  fireCountdown: 0
-  userLaser: 0
+  fireCooldown: 0.5
+  useLaser: 0
   lineRenderer: {fileID: 0}
   laserImpactPS: {fileID: 0}
   laserImpactLight: {fileID: 0}
@@ -79,7 +78,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   substance: 0
   abilities: 00000000
-  startDuration: 5
+  remainingDurationCountdown: 0
+  attackDuration: 2
+  damageWhenFirstHit: 0
+  damageWhenHit: 30
+  blockDivisionActive: 0
+  damagePerSecondActive: 0
+  killAtDivisionActive: 0
+  slowDownFactorActive: 0
+  blockDivisionPassive: 0
+  damagePerSecondPassive: 0
+  killAtDivisionPassive: 0
+  slowDownFactorPassive: 0
 --- !u!1 &5502159585310024968
 GameObject:
   m_ObjectHideFlags: 0

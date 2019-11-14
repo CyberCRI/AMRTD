@@ -46,14 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00301d8369eecc4ebbb623676f72311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelAttack: {fileID: 2799460364339199350}
   range: 15
   route: 0
-  attack: {fileID: 2799460364339199350}
   bulletPrefab: {fileID: 7715285218150925893, guid: 451e1bc3bbf3635428517af906ea1fc5,
     type: 3}
-  fireRate: 2
-  fireCountdown: 0
-  userLaser: 0
+  fireCooldown: 0.7
+  useLaser: 0
   lineRenderer: {fileID: 0}
   laserImpactPS: {fileID: 0}
   laserImpactLight: {fileID: 0}
@@ -79,7 +78,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   substance: 0
   abilities: 00000000
-  startDuration: 1
+  remainingDurationCountdown: 0
+  attackDuration: 1
+  damageWhenFirstHit: 0
+  damageWhenHit: 15
+  blockDivisionActive: 0
+  damagePerSecondActive: 0
+  killAtDivisionActive: 0
+  slowDownFactorActive: 0
+  blockDivisionPassive: 0
+  damagePerSecondPassive: 0
+  killAtDivisionPassive: 0
+  slowDownFactorPassive: 0
 --- !u!1 &5502159585310024968
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +283,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5502159586406733922}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: a572ce3a1583e9f4d9581a04ee9d7de0,
+        type: 3}
+      propertyPath: m_Name
+      value: Tablet1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a572ce3a1583e9f4d9581a04ee9d7de0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -342,11 +357,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: a572ce3a1583e9f4d9581a04ee9d7de0,
-        type: 3}
-      propertyPath: m_Name
-      value: Tablet1
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: a572ce3a1583e9f4d9581a04ee9d7de0,
         type: 3}

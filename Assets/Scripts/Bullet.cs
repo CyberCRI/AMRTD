@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Attacker
 {
-    private Transform target = null;
     [SerializeField]
     private float speed = 0f;
     [SerializeField]
@@ -11,6 +10,11 @@ public class Bullet : MonoBehaviour
     private ParticleSystem bulletImpactEffect = null;
     [SerializeField]
     private int damageAmount = 0;
+
+    public void initialize(Attack _attack)
+    {
+        modelAttack = _attack;
+    }
 
     public void seek(Transform _target)
     {
@@ -24,7 +28,7 @@ public class Bullet : MonoBehaviour
     {
         if (target == null)
         {
-            hitTarget();
+            blowUp();
         }
         else
         {
@@ -33,7 +37,7 @@ public class Bullet : MonoBehaviour
 
             if (dirToTarget.magnitude <= distanceThisFrame)
             {
-                hitTarget();
+                blowUp();
             }
             else
             {
@@ -44,31 +48,36 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void hitTarget()
+    void blowUp()
     {
         GameObject effect = Instantiate(bulletImpactEffect.gameObject, this.transform.position, this.transform.rotation);
         Destroy(effect, bulletImpactEffect.main.duration + bulletImpactEffect.main.startLifetime.constant);
 
         if (explosionRadius > 0f)
         {
-            explode();
+            shrapnel();
         }
         else if (null != target)
         {
-            damage(target);
+            doAttack(target, enemy);
         }
 
         Destroy(this.gameObject);
     }
 
-    void explode()
+    void shrapnel()
     {
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, explosionRadius);
         foreach (Collider collider in colliders)
         {
             if (collider.tag == Enemy.enemyTag)
             {
-                damage(collider.transform);
+                Enemy _enemy = collider.transform.GetComponent<Enemy>();
+                if (null != _enemy)
+                {
+                    doAttack(collider.transform, _enemy);
+                }
+                
             }
         }
     }

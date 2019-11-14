@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : Attacker
 {
-
     public enum ROUTE_OF_ADMINISTRATION
     {
         TOPICAL_SKIN,
@@ -11,32 +10,22 @@ public class Turret : MonoBehaviour
         INHALED
     }
 
-    private Transform target = null;
-    private Enemy enemy = null;
-    private bool firstAttack = false;
-
     [Header("General")]
     [SerializeField]
     private float range = 0f;
     public ROUTE_OF_ADMINISTRATION route;
 
-    [Header("Attack system")]
-    [SerializeField]
-    private Attack attack = null;
-    private Attack enemyAttack = null;
-
     [Header("Bullets mode (default)")]
     [SerializeField]
     private GameObject bulletPrefab = null;
-    // rate of shooting, per second
+    // Cooldown time, in seconds (time between two attacks)
     [SerializeField]
-    private float fireRate = 0f;
-    [SerializeField]
+    private float fireCooldown = 0f;
     private float fireCountdown = 0f;
 
     [Header("Laser mode")]
     [SerializeField]
-    private bool userLaser = false;
+    private bool useLaser = false;
     [SerializeField]
     private LineRenderer lineRenderer = null;
     [SerializeField]
@@ -114,35 +103,9 @@ public class Turret : MonoBehaviour
         {
             lockOnTarget();
 
-            if (firstAttack)
+            if (useLaser)
             {
-                Attack[] enemyAttacks = target.GetComponents<Attack>();
-                Attack enemyAttack = null;
-                foreach (Attack eAttack in enemyAttacks)
-                {
-                    if (eAttack.substance == attack.substance)
-                    {
-                        enemyAttack = eAttack;
-                        Debug.Log("FOUND ATTACK " + attack.substance);
-                        break;
-                    }
-                }
-
-                if (null == enemyAttack)
-                {
-                // case 1: enemy has no similar undergoing attack
-                    enemyAttack = (Attack)target.gameObject.AddComponent<Attack>();
-                    enemyAttack.initialize(enemy.enemyMovement, true, attack);
-                }
-                else
-                {
-                    // case 2: enemy has a similar undergoing attack
-                }
-                firstAttack = false;
-            }
-
-            if (userLaser)
-            {
+                doAttack(target, enemy);
                 laser();
             }
             else
@@ -150,7 +113,7 @@ public class Turret : MonoBehaviour
                 if (fireCountdown <= 0)
                 {
                     shoot();
-                    fireCountdown = 1f / fireRate;
+                    fireCountdown = fireCooldown;
                 }
 
                 fireCountdown -= Time.deltaTime;
@@ -158,7 +121,7 @@ public class Turret : MonoBehaviour
         }
         else
         {
-            if (userLaser && lineRenderer.enabled)
+            if (useLaser && lineRenderer.enabled)
             {
                 lineRenderer.enabled = false;
                 laserImpactPS.Stop();
@@ -188,10 +151,6 @@ public class Turret : MonoBehaviour
 
     void laser()
     {
-        // logics
-        enemy.takeDamage(laserDamageOverTime * Time.deltaTime);
-        enemy.slow(slowRatioFactor);
-
         // graphics
         if (!lineRenderer.enabled)
         {
@@ -210,10 +169,15 @@ public class Turret : MonoBehaviour
 
     void shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = (GameObject)Instantiate(
+            bulletPrefab, 
+            firePoint.position, 
+            firePoint.rotation);
+
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null && target != null)
         {
+            bullet.initialize(modelAttack);
             bullet.seek(target);
         }
     }
