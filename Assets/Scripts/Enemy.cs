@@ -39,6 +39,31 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private bool canDivideWhileWounded = false;
 
+    [Header("Indicators")]
+    [SerializeField]
+    private GameObject antibio1 = null;
+    [SerializeField]
+    private GameObject antibio2 = null;
+    [SerializeField]
+    private GameObject antibio3 = null;
+
+    public void showIndicator(Attack.SUBSTANCE _substance, bool _show)
+    {
+        switch (_substance)
+        {
+            case Attack.SUBSTANCE.ANTIBIOTIC1:
+                antibio1.SetActive(_show);
+                break;
+            case Attack.SUBSTANCE.ANTIBIOTIC2:
+                antibio2.SetActive(_show);
+                break;
+            case Attack.SUBSTANCE.ANTIBIOTIC3:
+            default:
+                antibio3.SetActive(_show);
+                break;
+        }
+    }
+
     public enum DIVISION_STRATEGY
     {
         TIME_BASED,

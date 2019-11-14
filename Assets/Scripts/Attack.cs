@@ -139,6 +139,8 @@ public class Attack : MonoBehaviour
     /// </summary>
     void Start()
     {
+        enemy.showIndicator(substance, true);
+
         if (0f != damageWhenFirstHit)
         {
             enemy.takeDamage(damageWhenFirstHit);
@@ -157,6 +159,7 @@ public class Attack : MonoBehaviour
             if (remainingDurationCountdown <= 0)
             {
                 Debug.Log("Attack is over:" + substance);
+                enemy.showIndicator(substance, false);
                 Destroy(this);
             }
 
