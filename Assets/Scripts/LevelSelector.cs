@@ -10,7 +10,7 @@ public class LevelSelector : MonoBehaviour
     [SerializeField]
     private SceneFader sceneFader = null;
     [SerializeField]
-    private Transform levelButtonsRoot;
+    private Transform levelButtonsRoot = null;
     private Button[] levelButtons = null;
     public const string levelReachedKey = "levelReached";
     public const int maxLevelIndex = 4;

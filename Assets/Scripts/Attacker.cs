@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//#define DEVMODE
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,21 +47,27 @@ public class Attacker : MonoBehaviour
 
         if (_target == null)
         {
-            Debug.Log("Target was apparently shot down recently");
+#if DEVMODE            
+            DEVMODE.Log("Target was apparently shot down recently");
+#endif
             firstAttack = true;
         }
         else
         {
             if (firstAttack || !doesKnowTarget || (null == enemyAttack))
             {
-                Debug.Log("strikeAttack first attack");
+#if DEVMODE                
+                DEVMODE.Log("strikeAttack first attack");
+#endif
                 Attack[] enemyAttacks = _target.GetComponents<Attack>();
                 foreach (Attack eAttack in enemyAttacks)
                 {
                     if (eAttack.substance == modelAttack.substance)
                     {
                         _enemyAttack = eAttack;
-                        Debug.Log("Found matching attack " + eAttack.substance);
+#if DEVMODE                        
+                        DEVMODE.Log("Found matching attack " + eAttack.substance);
+#endif
                         break;
                     }
                 }

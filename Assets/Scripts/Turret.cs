@@ -34,10 +34,6 @@ public class Turret : Attacker
     private Light laserImpactLight = null;
     [SerializeField]
     private float laserImpactOffsetFactor = 0f;
-    [SerializeField]
-    private int laserDamageOverTime = 0;
-    [SerializeField]
-    private float slowRatioFactor = 0f;
 
 
     [Header("Unity Step Fields")]

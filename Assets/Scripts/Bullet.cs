@@ -8,8 +8,6 @@ public class Bullet : Attacker
     private float explosionRadius = 0f;
     [SerializeField]
     private ParticleSystem bulletImpactEffect = null;
-    [SerializeField]
-    private int damageAmount = 0;
 
     public void initialize(Attack _attack)
     {

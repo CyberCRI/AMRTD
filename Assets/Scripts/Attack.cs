@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//#define DEVMODE
+using UnityEngine;
 
 // temporary class, will be turned into a ScriptableObject
 public class Attack : MonoBehaviour
@@ -165,7 +166,9 @@ public class Attack : MonoBehaviour
             remainingDurationCountdown -= Time.deltaTime;
             if (remainingDurationCountdown <= 0)
             {
+#if DEVMODE
                 Debug.Log("Attack is over:" + substance);
+#endif
                 enemy.showIndicator(substance, false);
                 Destroy(this);
             }
