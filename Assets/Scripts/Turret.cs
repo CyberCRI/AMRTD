@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//#define DEVMODE
+using UnityEngine;
 
 public class Turret : Attacker
 {
@@ -80,9 +81,15 @@ public class Turret : Attacker
 
         if (nearestEnemy != null && shortestDistanceToEnemy <= range)
         {
-            target = nearestEnemy.transform;
-            firstAttack = true;
-            enemy = nearestEnemy.GetComponent<Enemy>();
+            if (nearestEnemy.transform != target)
+            {
+#if DEVMODE
+                Debug.Log("firstAttack");
+#endif
+                firstAttack = true;
+                target = nearestEnemy.transform;
+                enemy = nearestEnemy.GetComponent<Enemy>();
+            }
         }
         else
         {

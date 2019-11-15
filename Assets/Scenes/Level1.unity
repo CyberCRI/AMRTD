@@ -19454,17 +19454,17 @@ MonoBehaviour:
   spawnMode: 1
   gameManager: {fileID: 1726487685}
   waves:
-  - enemyPrefab: {fileID: 7667180733465665960, guid: 20b7eb5103e720946b0d2d459c3cbb46,
+  - enemyPrefab: {fileID: 7667180733465665960, guid: 3a840df2841b48345b10dd1259ccf006,
       type: 3}
     count: 2
     maxEnemyCount: 8
     timeBetweenSpawns: 0.6
-  - enemyPrefab: {fileID: 7667180733465665960, guid: ef2138fbb32c70e4ebb3a87494c3ebf0,
+  - enemyPrefab: {fileID: 7667180733465665960, guid: c739d464f3c5af744b7a2f4765a6828a,
       type: 3}
     count: 4
     maxEnemyCount: 32
     timeBetweenSpawns: 0.5
-  - enemyPrefab: {fileID: 7667180733465665960, guid: 3f16de99089ef7f4a81fbfdf01270214,
+  - enemyPrefab: {fileID: 7667180733465665960, guid: 49db360e730f25c4783b1da31cd45fb3,
       type: 3}
     count: 8
     maxEnemyCount: 32

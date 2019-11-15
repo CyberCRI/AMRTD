@@ -67,6 +67,9 @@ public class Attack : MonoBehaviour
     [SerializeField]
     private float slowDownFactorPassive = 0f;
 
+    // TODO
+    // condition for booleans similar to (Random.Range(0, .5) < resistanceFactor)?
+
     public void initialize(
          //        EnemyMovement _enemyMovement
          bool _onEnemy
@@ -86,6 +89,8 @@ public class Attack : MonoBehaviour
         , float _damagePerSecondPassive = 0f
         , bool _killAtDivisionPassive = false
         , float _slowDownFactorPassive = 0f
+
+        , float resistanceFactor = 1f
          )
     {
         //        enemyMovement = _enemyMovement;
@@ -93,20 +98,20 @@ public class Attack : MonoBehaviour
         enemy = _enemy;
         substance = _substance;
 
-        attackDuration = _attackDuration;
-        remainingDurationCountdown = _attackDuration;
-        damageWhenFirstHit = _damageWhenFirstHit;
-        damageWhenHit = _damageWhenHit;
+        attackDuration = _attackDuration * resistanceFactor;
+        remainingDurationCountdown = _attackDuration * resistanceFactor;
+        damageWhenFirstHit = _damageWhenFirstHit * resistanceFactor;
+        damageWhenHit = _damageWhenHit * resistanceFactor;
 
         blockDivisionActive = _blockDivisionActive;
-        damagePerSecondActive = _damagePerSecondActive;
+        damagePerSecondActive = _damagePerSecondActive * resistanceFactor;
         killAtDivisionActive = _killAtDivisionActive;
-        slowDownFactorActive = _slowDownFactorActive;
+        slowDownFactorActive = _slowDownFactorActive * resistanceFactor;
 
         blockDivisionPassive = _blockDivisionPassive;
-        damagePerSecondPassive = _damagePerSecondPassive;
+        damagePerSecondPassive = _damagePerSecondPassive * resistanceFactor;
         killAtDivisionPassive = _killAtDivisionPassive;
-        slowDownFactorPassive = _slowDownFactorPassive;
+        slowDownFactorPassive = _slowDownFactorPassive * resistanceFactor;
     }
 
     public void initialize(
@@ -114,6 +119,7 @@ public class Attack : MonoBehaviour
          bool _onEnemy
         , Attack _attack
         , Enemy _enemy
+        , float resistanceFactor = 1f
         )
     {
         initialize(
@@ -135,6 +141,8 @@ public class Attack : MonoBehaviour
         , _attack.damagePerSecondPassive
         , _attack.killAtDivisionPassive
         , _attack.slowDownFactorPassive
+
+        , resistanceFactor
         );
     }
 
@@ -203,7 +211,7 @@ public class Attack : MonoBehaviour
         }
     }
 
-    public void merge(Attack otherAttack)
+    public void merge(Attack otherAttack, float otherAttackResistanceFactor = 1f)
     {
         initialize(
          //        enemyMovement
@@ -211,19 +219,19 @@ public class Attack : MonoBehaviour
         , enemy
         , substance
 
-        , Mathf.Max(this.remainingDurationCountdown, otherAttack.attackDuration)
-        , Mathf.Max(this.damageWhenFirstHit, otherAttack.damageWhenFirstHit)
-        , Mathf.Max(this.damageWhenHit, otherAttack.damageWhenHit)
+        , Mathf.Max(this.remainingDurationCountdown, otherAttack.attackDuration * otherAttackResistanceFactor)
+        , Mathf.Max(this.damageWhenFirstHit, otherAttack.damageWhenFirstHit * otherAttackResistanceFactor)
+        , Mathf.Max(this.damageWhenHit, otherAttack.damageWhenHit * otherAttackResistanceFactor)
 
         , this.blockDivisionActive || otherAttack.blockDivisionActive
-        , Mathf.Max(this.damagePerSecondActive, otherAttack.damagePerSecondActive)
+        , Mathf.Max(this.damagePerSecondActive, otherAttack.damagePerSecondActive * otherAttackResistanceFactor)
         , this.killAtDivisionActive || otherAttack.killAtDivisionActive
-        , Mathf.Max(this.slowDownFactorActive, otherAttack.slowDownFactorActive)
+        , Mathf.Max(this.slowDownFactorActive, otherAttack.slowDownFactorActive * otherAttackResistanceFactor)
 
         , this.blockDivisionPassive || otherAttack.blockDivisionPassive
-        , Mathf.Max(this.damagePerSecondPassive, otherAttack.damagePerSecondPassive)
+        , Mathf.Max(this.damagePerSecondPassive, otherAttack.damagePerSecondPassive * otherAttackResistanceFactor)
         , this.killAtDivisionPassive || otherAttack.killAtDivisionPassive
-        , Mathf.Max(this.slowDownFactorPassive, otherAttack.slowDownFactorPassive)
+        , Mathf.Max(this.slowDownFactorPassive, otherAttack.slowDownFactorPassive * otherAttackResistanceFactor)
         );
     }
 }

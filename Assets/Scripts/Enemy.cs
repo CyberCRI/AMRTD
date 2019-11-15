@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Enemy : MonoBehaviour
 {
     public const string enemyTag = "EnemyTag";
 
     [SerializeField]
-    private EnemyMovement enemyMovement;
+    private EnemyMovement enemyMovement = null;
 
     [Header("Worth")]
     [SerializeField]
@@ -49,24 +50,20 @@ public class Enemy : MonoBehaviour
     private GameObject antibio2 = null;
 
     [Header("Resistance")]
+    // complete immunities
+    // Attack.SUBSTANCE-indexed array is faster than Dictionary
     [SerializeField]
     private bool[] immunities = new bool[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
-
-    /*
-        [System.Serializable]
-        public class AntibioticDictionary: Dictionary<Attack.SUBSTANCE, bool> {}
-        [SerializeField]
-        private AntibioticDictionary immunities2 = new AntibioticDictionary()
-                                                {
-                                                    {Attack.SUBSTANCE.ANTIBIOTIC0, false},
-                                                    {Attack.SUBSTANCE.ANTIBIOTIC1, false},
-                                                    {Attack.SUBSTANCE.ANTIBIOTIC2, false}
-                                                };
-    */
+    // factors applied to antibiotics effects
+    // by default, enemies are susceptible, which means the factor applied to the effect is 1f
+    public float[] resistances = Enumerable.Repeat(
+        1f,
+        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        ).ToArray();
 
     public bool isImmuneTo(Attack.SUBSTANCE antibiotic)
     {
-        return immunities[(int)antibiotic];
+        return immunities[(int)antibiotic] || (0 == resistances[(int)antibiotic]);
     }
 
     public void showIndicator(Attack.SUBSTANCE _substance, bool _show)

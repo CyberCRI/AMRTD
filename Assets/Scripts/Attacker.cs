@@ -47,8 +47,8 @@ public class Attacker : MonoBehaviour
 
         if (_target == null)
         {
-#if DEVMODE            
-            DEVMODE.Log("Target was apparently shot down recently");
+#if DEVMODE
+            Debug.Log("Target was apparently shot down recently");
 #endif
             firstAttack = true;
         }
@@ -56,8 +56,8 @@ public class Attacker : MonoBehaviour
         {
             if (firstAttack || !doesKnowTarget || (null == enemyAttack))
             {
-#if DEVMODE                
-                DEVMODE.Log("strikeAttack first attack");
+#if DEVMODE
+                Debug.Log("strikeAttack first attack");
 #endif
                 Attack[] enemyAttacks = _target.GetComponents<Attack>();
                 foreach (Attack eAttack in enemyAttacks)
@@ -65,18 +65,20 @@ public class Attacker : MonoBehaviour
                     if (eAttack.substance == modelAttack.substance)
                     {
                         _enemyAttack = eAttack;
-#if DEVMODE                        
-                        DEVMODE.Log("Found matching attack " + eAttack.substance);
+#if DEVMODE
+                        Debug.Log("Found matching attack " + eAttack.substance);
 #endif
                         break;
                     }
                 }
 
+                float resistanceFactor = _enemy.resistances[(int)modelAttack.substance];
+
                 if (null == _enemyAttack)
                 {
                     // case 1: enemy has no similar undergoing attack
                     _enemyAttack = (Attack)_target.gameObject.AddComponent<Attack>();
-                    _enemyAttack.initialize(true, modelAttack, _enemy);
+                    _enemyAttack.initialize(true, modelAttack, _enemy, resistanceFactor);
                     if (doesKnowTarget)
                     {
                         enemyAttack = _enemyAttack;
@@ -88,7 +90,7 @@ public class Attacker : MonoBehaviour
                     // merge the effects
                     // if enemyAttack != null, then enemyAttack == _enemyAttack,
                     // because found through list of unique attacks affecting the enemy
-                    _enemyAttack.merge(modelAttack);
+                    _enemyAttack.merge(modelAttack, resistanceFactor);
                 }
 
                 if (doesKnowTarget)
