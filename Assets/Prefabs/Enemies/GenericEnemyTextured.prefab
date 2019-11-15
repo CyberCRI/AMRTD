@@ -75,6 +75,10 @@ MonoBehaviour:
   antibio1: {fileID: 8292119852672913726}
   antibio2: {fileID: 7860719504384687338}
   immunities: 000000
+  resistances:
+  - 1
+  - 1
+  - 1
 --- !u!114 &76248867092480059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.00000023643176, b: 0, a: 1}
+  m_Color: {r: 0.9829347, g: 1, b: 0, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -553,7 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9818833, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.05830717, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:

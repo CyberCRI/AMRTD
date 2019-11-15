@@ -57,8 +57,6 @@ MonoBehaviour:
   laserImpactPS: {fileID: 0}
   laserImpactLight: {fileID: 0}
   laserImpactOffsetFactor: 0
-  laserDamageOverTime: 0
-  slowRatioFactor: 0
   timeStartTurret: 0
   updatePeriod: 0.5
   partToRotate: {fileID: 5502159586406733922}
@@ -77,7 +75,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   substance: 0
-  abilities: 00000000
   remainingDurationCountdown: 0
   attackDuration: 1
   damageWhenFirstHit: 0
