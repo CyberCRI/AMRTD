@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//#define DEVMODE
+//#define SELLTURRETS
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
@@ -13,13 +15,17 @@ public class Node : MonoBehaviour
     private Renderer renderor = null;
 
     [Header("Optional")]
-    private GameObject turret = null;
+    private GameObject turretGO = null;
+    public Turret turret = null;
     public TurretBlueprint turretBlueprint = null;
     public bool isUpgraded = false;
 
     [SerializeField]
     private GameObject buildEffect = null;
     private ParticleSystem buildEffectPS = null;
+    [SerializeField]
+    private GameObject cantPayEffect = null;
+    private ParticleSystem cantPayEffectPS = null;
     [SerializeField]
     private GameObject damagedEffect = null;
     private ParticleSystem damagedEffectPS = null;
@@ -37,6 +43,7 @@ public class Node : MonoBehaviour
 
     public enum REMOVETOWER
     {
+        CANTPAY,
         DAMAGED,
         EXPIRED,
         SOLD,
@@ -52,6 +59,7 @@ public class Node : MonoBehaviour
         startColor = renderor.material.color;
 
         buildEffectPS =     (ParticleSystem)buildEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        cantPayEffectPS =   (ParticleSystem)cantPayEffect.GetComponentsInChildren<ParticleSystem>()[0];
         damagedEffectPS =   (ParticleSystem)damagedEffect.GetComponentsInChildren<ParticleSystem>()[0];
         expiredEffectPS =   (ParticleSystem)expiredEffect.GetComponentsInChildren<ParticleSystem>()[0];
         sellEffectPS =      (ParticleSystem)sellEffect.GetComponentsInChildren<ParticleSystem>()[0];
@@ -75,7 +83,7 @@ public class Node : MonoBehaviour
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            if (turret != null)
+            if (turretGO != null)
             {
                 buildManager.selectNode(this);
                 unhover();
@@ -134,6 +142,10 @@ public class Node : MonoBehaviour
                 effectPrefab = damagedEffect;
                 effectPS = damagedEffectPS;
                 break;
+            case REMOVETOWER.CANTPAY:
+                effectPrefab = cantPayEffect;
+                effectPS = cantPayEffectPS;
+                break;
             case REMOVETOWER.EXPIRED:
                 effectPrefab = expiredEffect;
                 effectPS = expiredEffectPS;
@@ -172,8 +184,9 @@ public class Node : MonoBehaviour
         if (PlayerStatistics.money >= blueprint.cost)
         {
             PlayerStatistics.money -= blueprint.cost;
-            turret = (GameObject)Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
-            turret.GetComponent<Turret>().node = this;
+            turretGO = (GameObject)Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
+            turret = turretGO.GetComponent<Turret>();
+            turret.node = this;
             turretBlueprint = blueprint;
 
             GameObject effect = (GameObject)Instantiate(buildEffect, this.transform.position, Quaternion.identity);
@@ -192,14 +205,14 @@ public class Node : MonoBehaviour
             PlayerStatistics.money -= turretBlueprint.upgradeCost;
 
             GameObject newTurret = (GameObject)Instantiate(turretBlueprint.upgradePrefab, this.transform.position, Quaternion.identity);
-            Quaternion previousRotation = turret.GetComponent<Turret>().getPartToRotateRotation();
-            GameObject oldTurret = turret;
-            turret = newTurret;
-            Turret t = turret.GetComponent<Turret>();
-            t.rotatePartToRotate(previousRotation);
-            t.node = this;
+            Quaternion previousRotation = turret.getPartToRotateRotation();
+            GameObject oldTurret = turretGO;
+            turretGO = newTurret;
+            turret = turretGO.GetComponent<Turret>();
+            turret.rotatePartToRotate(previousRotation);
+            turret.node = this;
 
-            removeTurret(REMOVETOWER.UPGRADED, turret);
+            removeTurret(REMOVETOWER.UPGRADED, oldTurret);
 
             isUpgraded = true;
         }
@@ -211,9 +224,24 @@ public class Node : MonoBehaviour
 
     public void sellTurret()
     {
+#if DEVMODE
+        Debug.Log("sellTurret");
+#endif
+        
+#if SELLTURRETS       
         PlayerStatistics.money += turretBlueprint.getSellCost();
+#endif
 
-        removeTurret(REMOVETOWER.SOLD, turret);
+        removeTurret(REMOVETOWER.SOLD, turretGO);
+    }
+
+    public void renewTurret()
+    {
+#if DEVMODE
+        Debug.Log("renewTurret");
+#endif
+
+        turret.renew();
     }
 
     void unhover()

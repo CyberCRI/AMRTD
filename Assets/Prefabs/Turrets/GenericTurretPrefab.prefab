@@ -289,8 +289,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelAttack: {fileID: 3241761046887564199}
   range: 0
+  upkeepCost: 1
+  upkeepPeriod: 1
   route: 0
-  lifetimeStart: 2
+  lifetimeStart: 20
   lifetimeRemaining: 0
   node: {fileID: 0}
   lifetimeBar: {fileID: 5318971326639332385}

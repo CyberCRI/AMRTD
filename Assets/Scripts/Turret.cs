@@ -15,6 +15,12 @@ public class Turret : Attacker
     [Header("General")]
     [SerializeField]
     private float range = 0f;
+    // amount of money paid every upkeepPeriod seconds
+    [SerializeField]
+    public int upkeepCost = 0;
+    [SerializeField]
+    private float upkeepPeriod = 0f;
+    private float upkeepCountdown = 0f;
     public ROUTE_OF_ADMINISTRATION route;
 
     [Header("Lifetime")]
@@ -69,10 +75,11 @@ public class Turret : Attacker
     void Start()
     {
         lifetimeRemaining = lifetimeStart;
+        upkeepCountdown = upkeepPeriod;
         InvokeRepeating("updateTarget", timeStartTurret, updatePeriod);
     }
 
-    public void renew(float duration)
+    public void renew(float duration = 10f)
     {
         lifetimeRemaining += duration;
         lifetimeStart = Mathf.Max(lifetimeStart, lifetimeRemaining);
@@ -142,6 +149,25 @@ public class Turret : Attacker
             
             updateLifetimeBar();
             lifetimeRemaining -= Time.deltaTime;
+
+            if (upkeepCountdown <= 0)
+            {
+                if (PlayerStatistics.money < upkeepCost)
+                {
+                    selfDestruct(Node.REMOVETOWER.CANTPAY);
+                    //TODO fix this
+                    return;
+                }
+                else
+                {
+                    PlayerStatistics.money -= upkeepCost;
+                    upkeepCountdown = upkeepPeriod;
+                }
+            }
+            else
+            {
+                upkeepCountdown -= Time.deltaTime;
+            }
 
             if (target != null)
             {

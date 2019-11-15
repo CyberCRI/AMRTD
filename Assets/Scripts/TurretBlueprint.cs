@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//#define SELLTURRETS
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class TurretBlueprint
     public GameObject upgradePrefab;
     public int upgradeCost;
 
+#if SELLTURRETS
     public int getSellCost()
     {
         return cost / 2;

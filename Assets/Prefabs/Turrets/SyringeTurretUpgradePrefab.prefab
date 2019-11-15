@@ -179,6 +179,11 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6646208980962879373, guid: 22059d25cfcb122419eaa231af8be651,
+        type: 3}
+      propertyPath: upkeepCost
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8855692618007227791, guid: 22059d25cfcb122419eaa231af8be651,
         type: 3}
       propertyPath: substance

@@ -177,6 +177,11 @@ PrefabInstance:
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 3192918980716159231}
+    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: upkeepCost
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}
       propertyPath: substance

@@ -117,16 +117,13 @@ MonoBehaviour:
   isUpgraded: 0
   buildEffect: {fileID: 7690425728553248048, guid: 92362bcef8559d24db00f74f1d82c358,
     type: 3}
-  buildEffectPS: {fileID: 0}
-  damagedEffect: {fileID: 7690425728553248048, guid: b61625fc49d6f784abfdfded6bd2557e,
+  cantPayEffect: {fileID: 6202577009173219736, guid: a8fe87a70f8f8d44d992d477c3e8db96,
     type: 3}
-  damagedEffectPS: {fileID: 0}
-  expiredEffect: {fileID: 7690425728553248048, guid: b61625fc49d6f784abfdfded6bd2557e,
+  damagedEffect: {fileID: 6202577009173219736, guid: a8fe87a70f8f8d44d992d477c3e8db96,
     type: 3}
-  expiredEffectPS: {fileID: 0}
+  expiredEffect: {fileID: 6202577009173219736, guid: a8fe87a70f8f8d44d992d477c3e8db96,
+    type: 3}
   sellEffect: {fileID: 7690425728553248048, guid: b61625fc49d6f784abfdfded6bd2557e,
     type: 3}
-  sellEffectPS: {fileID: 0}
   upgradeEffect: {fileID: 7690425728553248048, guid: 92362bcef8559d24db00f74f1d82c358,
     type: 3}
-  upgradeEffectPS: {fileID: 0}
