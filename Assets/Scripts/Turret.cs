@@ -1,5 +1,6 @@
 ﻿//#define DEVMODE
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Turret : Attacker
 {
@@ -15,6 +16,15 @@ public class Turret : Attacker
     [SerializeField]
     private float range = 0f;
     public ROUTE_OF_ADMINISTRATION route;
+
+    [Header("Lifetime")]
+    [SerializeField]
+    private float lifetimeStart = 0;
+    [SerializeField]
+    private float lifetimeRemaining = 0;
+    public Node node;
+    [SerializeField]
+    private Image lifetimeBar = null;
 
     [Header("Bullets mode (default)")]
     [SerializeField]
@@ -58,7 +68,19 @@ public class Turret : Attacker
     /// </summary>
     void Start()
     {
+        lifetimeRemaining = lifetimeStart;
         InvokeRepeating("updateTarget", timeStartTurret, updatePeriod);
+    }
+
+    public void renew(float duration)
+    {
+        lifetimeRemaining += duration;
+        lifetimeStart = Mathf.Max(lifetimeStart, lifetimeRemaining);
+    }
+
+    private void updateLifetimeBar()
+    {
+        lifetimeBar.fillAmount = lifetimeRemaining / lifetimeStart;
     }
 
     void updateTarget()
@@ -83,9 +105,6 @@ public class Turret : Attacker
         {
             if (nearestEnemy.transform != target)
             {
-#if DEVMODE
-                Debug.Log("firstAttack");
-#endif
                 firstAttack = true;
                 target = nearestEnemy.transform;
                 enemy = nearestEnemy.GetComponent<Enemy>();
@@ -97,38 +116,61 @@ public class Turret : Attacker
         }
     }
 
+    private void selfDestruct(Node.REMOVETOWER reason)
+    {
+        node.removeTurret(reason, this.gameObject);
+    }
+
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
-        if (target != null)
+#if DEVMODE
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            lockOnTarget();
+            renew(5f);
+        }
+#endif
 
-            if (useLaser)
-            {
-                doAttack(target, enemy);
-                laser();
-            }
-            else
-            {
-                if (fireCountdown <= 0)
-                {
-                    shoot();
-                    fireCountdown = fireCooldown;
-                }
-
-                fireCountdown -= Time.deltaTime;
-            }
+        if (lifetimeRemaining <= 0)
+        {
+            selfDestruct(Node.REMOVETOWER.EXPIRED);
         }
         else
         {
-            if (useLaser && lineRenderer.enabled)
+            
+            updateLifetimeBar();
+            lifetimeRemaining -= Time.deltaTime;
+
+            if (target != null)
             {
-                lineRenderer.enabled = false;
-                laserImpactPS.Stop();
-                laserImpactLight.enabled = false;
+                lockOnTarget();
+
+                if (useLaser)
+                {
+                    doAttack(target, enemy);
+                    laser();
+                }
+                else
+                {
+                    if (fireCountdown <= 0)
+                    {
+                        shoot();
+                        fireCountdown = fireCooldown;
+                    }
+
+                    fireCountdown -= Time.deltaTime;
+                }
+            }
+            else
+            {
+                if (useLaser && lineRenderer.enabled)
+                {
+                    lineRenderer.enabled = false;
+                    laserImpactPS.Stop();
+                    laserImpactLight.enabled = false;
+                }
             }
         }
     }

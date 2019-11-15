@@ -290,6 +290,10 @@ MonoBehaviour:
   modelAttack: {fileID: 3241761046887564199}
   range: 0
   route: 0
+  lifetimeStart: 2
+  lifetimeRemaining: 0
+  node: {fileID: 0}
+  lifetimeBar: {fileID: 5318971326639332385}
   bulletPrefab: {fileID: 0}
   fireCooldown: 0
   useLaser: 0

@@ -21,10 +21,27 @@ public class Node : MonoBehaviour
     private GameObject buildEffect = null;
     private ParticleSystem buildEffectPS = null;
     [SerializeField]
+    private GameObject damagedEffect = null;
+    private ParticleSystem damagedEffectPS = null;
+    [SerializeField]
+    private GameObject expiredEffect = null;
+    private ParticleSystem expiredEffectPS = null;
+    [SerializeField]
     private GameObject sellEffect = null;
     private ParticleSystem sellEffectPS = null;
+    [SerializeField]
+    private GameObject upgradeEffect = null;
+    private ParticleSystem upgradeEffectPS = null;
 
     private BuildManager buildManager;
+
+    public enum REMOVETOWER
+    {
+        DAMAGED,
+        EXPIRED,
+        SOLD,
+        UPGRADED,
+    }
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -33,8 +50,12 @@ public class Node : MonoBehaviour
     void Awake()
     {
         startColor = renderor.material.color;
-        buildEffectPS = (ParticleSystem)buildEffect.GetComponentsInChildren<ParticleSystem>()[0];
-        sellEffectPS = (ParticleSystem)sellEffect.GetComponentsInChildren<ParticleSystem>()[0];
+
+        buildEffectPS =     (ParticleSystem)buildEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        damagedEffectPS =   (ParticleSystem)damagedEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        expiredEffectPS =   (ParticleSystem)expiredEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        sellEffectPS =      (ParticleSystem)sellEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        upgradeEffectPS =   (ParticleSystem)upgradeEffect.GetComponentsInChildren<ParticleSystem>()[0];
     }
 
     /// <summary>
@@ -102,12 +123,57 @@ public class Node : MonoBehaviour
         unhover();
     }
 
+    public void removeTurret(REMOVETOWER reason, GameObject turretToDestroy)
+    {
+        GameObject effectPrefab;
+        ParticleSystem effectPS;
+
+        switch (reason)
+        {
+            case REMOVETOWER.DAMAGED:
+                effectPrefab = damagedEffect;
+                effectPS = damagedEffectPS;
+                break;
+            case REMOVETOWER.EXPIRED:
+                effectPrefab = expiredEffect;
+                effectPS = expiredEffectPS;
+                break;
+            case REMOVETOWER.SOLD:
+                effectPrefab = sellEffect;
+                effectPS = sellEffectPS;
+                break;
+            case REMOVETOWER.UPGRADED:
+                effectPrefab = upgradeEffect;
+                effectPS = upgradeEffectPS;
+                break;
+            default:
+                effectPrefab = buildEffect;
+                effectPS = buildEffectPS;
+                break;
+        }
+
+        GameObject effect = (GameObject)Instantiate(
+            effectPrefab,
+            this.transform.position,
+            Quaternion.identity);
+        Destroy(effect, effectPS.main.duration + effectPS.main.startLifetime.constant);
+
+        Destroy(turretToDestroy);
+
+        if (reason != REMOVETOWER.UPGRADED)
+        {
+            turretBlueprint = null;
+            isUpgraded = false;
+        }
+    }
+
     void buildTurret(TurretBlueprint blueprint)
     {
         if (PlayerStatistics.money >= blueprint.cost)
         {
             PlayerStatistics.money -= blueprint.cost;
             turret = (GameObject)Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
+            turret.GetComponent<Turret>().node = this;
             turretBlueprint = blueprint;
 
             GameObject effect = (GameObject)Instantiate(buildEffect, this.transform.position, Quaternion.identity);
@@ -124,15 +190,16 @@ public class Node : MonoBehaviour
         if (PlayerStatistics.money >= turretBlueprint.upgradeCost)
         {
             PlayerStatistics.money -= turretBlueprint.upgradeCost;
-            
+
             GameObject newTurret = (GameObject)Instantiate(turretBlueprint.upgradePrefab, this.transform.position, Quaternion.identity);
             Quaternion previousRotation = turret.GetComponent<Turret>().getPartToRotateRotation();
-            Destroy(turret);
+            GameObject oldTurret = turret;
             turret = newTurret;
-            turret.GetComponent<Turret>().rotatePartToRotate(previousRotation);
+            Turret t = turret.GetComponent<Turret>();
+            t.rotatePartToRotate(previousRotation);
+            t.node = this;
 
-            GameObject effect = (GameObject)Instantiate(buildEffect, this.transform.position, Quaternion.identity);
-            Destroy(effect, buildEffectPS.main.duration + buildEffectPS.main.startLifetime.constant);
+            removeTurret(REMOVETOWER.UPGRADED, turret);
 
             isUpgraded = true;
         }
@@ -146,12 +213,7 @@ public class Node : MonoBehaviour
     {
         PlayerStatistics.money += turretBlueprint.getSellCost();
 
-        Destroy(turret);
-        turretBlueprint = null;
-        isUpgraded = false;
-
-        GameObject effect = (GameObject)Instantiate(sellEffect, this.transform.position, Quaternion.identity);
-        Destroy(effect, sellEffectPS.main.duration + sellEffectPS.main.startLifetime.constant);
+        removeTurret(REMOVETOWER.SOLD, turret);
     }
 
     void unhover()
