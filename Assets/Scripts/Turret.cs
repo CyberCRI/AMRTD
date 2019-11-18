@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -136,7 +136,7 @@ public class Turret : Attacker
 #if DEVMODE
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            renew(5f);
+            renew(10f);
         }
 #endif
 

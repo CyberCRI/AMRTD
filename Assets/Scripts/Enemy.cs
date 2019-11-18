@@ -43,11 +43,11 @@ public class Enemy : MonoBehaviour
 
     [Header("Indicators")]
     [SerializeField]
-    private GameObject antibio0 = null;
+    private GameObject[] antibioticAttackIndicators = new GameObject[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
     [SerializeField]
-    private GameObject antibio1 = null;
+    private Image[] antibioticResistanceIndicators = new Image[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
     [SerializeField]
-    private GameObject antibio2 = null;
+    private GameObject[] antibioticResistanceIndicatorBackgrounds = new GameObject[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
 
     [Header("Resistance")]
     // complete immunities
@@ -66,21 +66,15 @@ public class Enemy : MonoBehaviour
         return immunities[(int)antibiotic] || (0 == resistances[(int)antibiotic]);
     }
 
-    public void showIndicator(Attack.SUBSTANCE _substance, bool _show)
+    public void showAntibioticAttackIndicator(Attack.SUBSTANCE _substance, bool _show)
     {
-        switch (_substance)
-        {
-            case Attack.SUBSTANCE.ANTIBIOTIC0:
-                antibio0.SetActive(_show);
-                break;
-            case Attack.SUBSTANCE.ANTIBIOTIC1:
-                antibio1.SetActive(_show);
-                break;
-            case Attack.SUBSTANCE.ANTIBIOTIC2:
-            default:
-                antibio2.SetActive(_show);
-                break;
-        }
+        antibioticAttackIndicators[(int)_substance].SetActive(_show);
+    }
+
+    public void showAntibioticResistanceIndicator(Attack.SUBSTANCE _substance, bool _show, float scale)
+    {
+        antibioticResistanceIndicators[(int)_substance].fillAmount = scale;
+        antibioticResistanceIndicatorBackgrounds[(int)_substance].SetActive(_show);
     }
 
     public enum DIVISION_STRATEGY
@@ -101,6 +95,15 @@ public class Enemy : MonoBehaviour
         }
         isAlive = true;
         divisionCooldown = divisionPeriod;
+
+        Attack.SUBSTANCE substance;
+        float scale;
+        for (int antibioticIndex = 0; antibioticIndex < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; antibioticIndex++)
+        {
+            substance = (Attack.SUBSTANCE)antibioticIndex;
+            scale = 1f - resistances[antibioticIndex];
+            showAntibioticResistanceIndicator(substance, 0f != scale, scale);
+        }
     }
 
     /// <summary>

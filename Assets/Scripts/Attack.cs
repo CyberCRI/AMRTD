@@ -154,7 +154,7 @@ public class Attack : MonoBehaviour
     {
         if (onEnemy)
         {
-            enemy.showIndicator(substance, true);
+            enemy.showAntibioticAttackIndicator(substance, true);
 
             if (0f != damageWhenFirstHit)
             {
@@ -177,7 +177,7 @@ public class Attack : MonoBehaviour
 #if DEVMODE
                 Debug.Log("Attack is over:" + substance);
 #endif
-                enemy.showIndicator(substance, false);
+                enemy.showAntibioticAttackIndicator(substance, false);
                 Destroy(this);
             }
 

@@ -1,4 +1,4 @@
-﻿//#define ENEMIES_NEVER_LEAVE
+﻿#define ENEMIES_NEVER_LEAVE
 
 using UnityEngine;
 

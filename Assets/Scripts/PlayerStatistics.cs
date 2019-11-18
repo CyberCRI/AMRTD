@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#define DEVMODE
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,4 +23,17 @@ public class PlayerStatistics : MonoBehaviour
         lives = startLives;
         waves = 0;
     }
+
+#if DEVMODE
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            money += startMoney;
+        }
+    }
+#endif
 }
