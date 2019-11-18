@@ -75,6 +75,20 @@ public class Enemy : MonoBehaviour
         (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
         ).ToArray();
 
+    // is the healing/ccell repair currently allowed by the absence of this antibiotic, or presence of a harmless one?
+    [HideInInspector]
+    public bool[] isHealingAllowed = Enumerable.Repeat(
+        true,
+        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        ).ToArray();
+
+    // is the division currently safe or insta-killing due to the presence of any antibiotic?
+    [HideInInspector]
+    public bool[] isDivisionSafe = Enumerable.Repeat(
+        true,
+        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        ).ToArray();
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
@@ -111,7 +125,7 @@ public class Enemy : MonoBehaviour
             divisionCooldown = divisionPeriod;
         }
 
-        if (health < startHealth)
+        if ((health < startHealth) && isHealingAllowedTotal())
         {
             health = Mathf.Min(startHealth, health + healingRatioSpeed * startHealth * Time.deltaTime);
             updateHealthBar();
@@ -134,11 +148,48 @@ public class Enemy : MonoBehaviour
         antibioticResistanceIndicatorBackgrounds[(int)_substance].SetActive(_show);
     }
 
+    // TODO use this instead of 3 specific functions "is...()"? Optimization?
+    private bool isAbilityActiveTotal(bool[] _array)
+    {
+        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+        {
+            if (!_array[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private bool isDivisionAllowedTotal()
     {
         for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
         {
             if (!isDivisionAllowed[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private bool isHealingAllowedTotal()
+    {
+        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+        {
+            if (!isHealingAllowed[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private bool isDivisionSafeTotal()
+    {
+        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+        {
+            if (!isDivisionSafe[i])
             {
                 return false;
             }
@@ -221,7 +272,12 @@ public class Enemy : MonoBehaviour
 
     public void divide(int waypointIndex)
     {
-        if (null != wave)
+        if (!isDivisionSafeTotal())
+        {
+            // insta-death
+            takeDamage(health);
+        }
+        else if (null != wave)
         {
             reward /= 2;
             WaveSpawner.instance.spawnEnemy(

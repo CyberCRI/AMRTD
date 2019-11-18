@@ -383,6 +383,8 @@ MonoBehaviour:
   - 1
   - 1
   isDivisionAllowed: 010101
+  isHealingAllowed: 010101
+  isDivisionSafe: 010101
 --- !u!114 &76248867092480059
 MonoBehaviour:
   m_ObjectHideFlags: 0

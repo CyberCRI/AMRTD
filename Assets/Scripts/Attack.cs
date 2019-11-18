@@ -40,37 +40,43 @@ public class Attack : MonoBehaviour
     private float attackDuration = 0f;
 
     // active
-    // needs a constant channelling or a punctual attack
+    // needs a constant channelling or a punctual attack,
+    // for instance a constant attack like a laser one
     [Header("Active")]
+    private bool wasApplied = false;
     [SerializeField]
     private float damageWhenFirstHit = 0f;
     [SerializeField]
     private float damageWhenHit = 0f;
     [SerializeField]
-    private bool blockDivisionActive = false;
-    [SerializeField]
     private float damagePerSecondActive = 0f;
     [SerializeField]
-    private bool killAtDivisionActive = false;
-    [SerializeField]
     private float slowDownFactorActive = 0f;
+    [SerializeField]
+    private bool blockDivisionActive = false;
+    [SerializeField]
+    private bool blockHealingActive = false;
+    [SerializeField]
+    private bool killAtDivisionActive = false;
 
     // passive
     // happens all the time while the Attack exists
     [Header("Passive")]
     [SerializeField]
-    private bool blockDivisionPassive = false;
-    [SerializeField]
     private float damagePerSecondPassive = 0f;
     [SerializeField]
-    private bool killAtDivisionPassive = false;
-    [SerializeField]
     private float slowDownFactorPassive = 0f;
+    [SerializeField]
+    private bool blockDivisionPassive = false;
+    [SerializeField]
+    private bool blockHealingPassive = false;
+    [SerializeField]
+    private bool killAtDivisionPassive = false;
 
     // TODO
     // condition for booleans similar to (Random.Range(0, .5) < resistanceFactor)?
 
-    public void initialize(
+    private void initialize(
          //        EnemyMovement _enemyMovement
          bool _onEnemy
         , Enemy _enemy
@@ -80,15 +86,17 @@ public class Attack : MonoBehaviour
         , float _damageWhenFirstHit = 0f
         , float _damageWhenHit = 0f
 
-        , bool _blockDivisionActive = false
         , float _damagePerSecondActive = 0f
-        , bool _killAtDivisionActive = false
         , float _slowDownFactorActive = 0f
+        , bool _blockDivisionActive = false
+        , bool _blockHealingActive = false
+        , bool _killAtDivisionActive = false
 
-        , bool _blockDivisionPassive = false
         , float _damagePerSecondPassive = 0f
-        , bool _killAtDivisionPassive = false
         , float _slowDownFactorPassive = 0f
+        , bool _blockDivisionPassive = false
+        , bool _blockHealingPassive = false
+        , bool _killAtDivisionPassive = false
 
         , float resistanceFactor = 1f
          )
@@ -103,15 +111,17 @@ public class Attack : MonoBehaviour
         damageWhenFirstHit = _damageWhenFirstHit * resistanceFactor;
         damageWhenHit = _damageWhenHit * resistanceFactor;
 
-        blockDivisionActive = _blockDivisionActive;
         damagePerSecondActive = _damagePerSecondActive * resistanceFactor;
-        killAtDivisionActive = _killAtDivisionActive;
         slowDownFactorActive = _slowDownFactorActive * resistanceFactor;
+        blockDivisionActive = _blockDivisionActive;
+        blockHealingActive = _blockHealingActive;
+        killAtDivisionActive = _killAtDivisionActive;
 
-        blockDivisionPassive = _blockDivisionPassive;
         damagePerSecondPassive = _damagePerSecondPassive * resistanceFactor;
-        killAtDivisionPassive = _killAtDivisionPassive;
         slowDownFactorPassive = _slowDownFactorPassive * resistanceFactor;
+        blockDivisionPassive = _blockDivisionPassive;
+        blockHealingPassive = _blockHealingPassive;
+        killAtDivisionPassive = _killAtDivisionPassive;
     }
 
     public void initialize(
@@ -132,15 +142,17 @@ public class Attack : MonoBehaviour
         , _attack.damageWhenFirstHit
         , _attack.damageWhenHit
 
-        , _attack.blockDivisionActive
         , _attack.damagePerSecondActive
-        , _attack.killAtDivisionActive
         , _attack.slowDownFactorActive
+        , _attack.blockDivisionActive
+        , _attack.blockHealingActive
+        , _attack.killAtDivisionActive
 
-        , _attack.blockDivisionPassive
         , _attack.damagePerSecondPassive
-        , _attack.killAtDivisionPassive
         , _attack.slowDownFactorPassive
+        , _attack.blockDivisionPassive
+        , _attack.blockHealingPassive
+        , _attack.killAtDivisionPassive
 
         , resistanceFactor
         );
@@ -163,6 +175,8 @@ public class Attack : MonoBehaviour
             }
 
             enemy.isDivisionAllowed[(int)substance] = !blockDivisionPassive;
+            enemy.isHealingAllowed[(int)substance] = !blockHealingPassive;
+            enemy.isDivisionSafe[(int)substance] = !killAtDivisionPassive;
         }
     }
 
@@ -181,6 +195,8 @@ public class Attack : MonoBehaviour
 #endif
                 enemy.showAntibioticAttackIndicator(substance, false);
                 enemy.isDivisionAllowed[(int)substance] = true;
+                enemy.isHealingAllowed[(int)substance] = true;
+                enemy.isDivisionSafe[(int)substance] = true;
                 Destroy(this);
             }
 
@@ -192,6 +208,16 @@ public class Attack : MonoBehaviour
             if (0f != slowDownFactorPassive)
             {
                 enemy.slow(slowDownFactorPassive);
+            }
+
+            // TODO make sure this does not happen too soon for Enemy to take it into account
+            // Change script execution order?
+            if (wasApplied)
+            {
+                // revert active abilities
+                enemy.isDivisionAllowed[(int)substance] = blockDivisionPassive;
+                enemy.isHealingAllowed[(int)substance] = blockHealingPassive;
+                wasApplied = false;
             }
         }
     }
@@ -212,6 +238,12 @@ public class Attack : MonoBehaviour
         {
             enemy.takeDamage(damageWhenHit);
         }
+
+        // apply active abilities
+        enemy.isDivisionAllowed[(int)substance] = blockDivisionPassive || !blockDivisionActive;
+        enemy.isHealingAllowed[(int)substance] = blockHealingPassive || !blockHealingActive;
+
+        wasApplied = true;
     }
 
     public void merge(Attack otherAttack, float otherAttackResistanceFactor = 1f)
@@ -226,15 +258,17 @@ public class Attack : MonoBehaviour
         , Mathf.Max(this.damageWhenFirstHit, otherAttack.damageWhenFirstHit * otherAttackResistanceFactor)
         , Mathf.Max(this.damageWhenHit, otherAttack.damageWhenHit * otherAttackResistanceFactor)
 
-        , this.blockDivisionActive || otherAttack.blockDivisionActive
         , Mathf.Max(this.damagePerSecondActive, otherAttack.damagePerSecondActive * otherAttackResistanceFactor)
-        , this.killAtDivisionActive || otherAttack.killAtDivisionActive
         , Mathf.Max(this.slowDownFactorActive, otherAttack.slowDownFactorActive * otherAttackResistanceFactor)
+        , this.blockDivisionActive || otherAttack.blockDivisionActive
+        , this.blockHealingActive || otherAttack.blockHealingActive
+        , this.killAtDivisionActive || otherAttack.killAtDivisionActive
 
-        , this.blockDivisionPassive || otherAttack.blockDivisionPassive
         , Mathf.Max(this.damagePerSecondPassive, otherAttack.damagePerSecondPassive * otherAttackResistanceFactor)
-        , this.killAtDivisionPassive || otherAttack.killAtDivisionPassive
         , Mathf.Max(this.slowDownFactorPassive, otherAttack.slowDownFactorPassive * otherAttackResistanceFactor)
+        , this.blockDivisionPassive || otherAttack.blockDivisionPassive
+        , this.blockHealingPassive || otherAttack.blockHealingPassive
+        , this.killAtDivisionPassive || otherAttack.killAtDivisionPassive
         );
     }
 }
