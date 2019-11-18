@@ -161,6 +161,8 @@ public class Attack : MonoBehaviour
                 enemy.takeDamage(damageWhenFirstHit);
                 damageWhenFirstHit = 0f;
             }
+
+            enemy.isDivisionAllowed[(int)substance] = !blockDivisionPassive;
         }
     }
 
@@ -178,6 +180,7 @@ public class Attack : MonoBehaviour
                 Debug.Log("Attack is over:" + substance);
 #endif
                 enemy.showAntibioticAttackIndicator(substance, false);
+                enemy.isDivisionAllowed[(int)substance] = true;
                 Destroy(this);
             }
 

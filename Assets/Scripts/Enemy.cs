@@ -61,28 +61,19 @@ public class Enemy : MonoBehaviour
         (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
         ).ToArray();
 
-    public bool isImmuneTo(Attack.SUBSTANCE antibiotic)
-    {
-        return immunities[(int)antibiotic] || (0 == resistances[(int)antibiotic]);
-    }
-
-    public void showAntibioticAttackIndicator(Attack.SUBSTANCE _substance, bool _show)
-    {
-        antibioticAttackIndicators[(int)_substance].SetActive(_show);
-    }
-
-    public void showAntibioticResistanceIndicator(Attack.SUBSTANCE _substance, bool _show, float scale)
-    {
-        antibioticResistanceIndicators[(int)_substance].fillAmount = scale;
-        antibioticResistanceIndicatorBackgrounds[(int)_substance].SetActive(_show);
-    }
-
     public enum DIVISION_STRATEGY
     {
         TIME_BASED,
         WAYPOINT_BASED,
         NO_DIVISION
     }
+
+    // is the division currently allowed by the absence of this antibiotic, or presence of a harmless one?
+    [HideInInspector]
+    public bool[] isDivisionAllowed = Enumerable.Repeat(
+        true,
+        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        ).ToArray();
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -127,12 +118,41 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public bool isImmuneTo(Attack.SUBSTANCE antibiotic)
+    {
+        return immunities[(int)antibiotic] || (0 == resistances[(int)antibiotic]);
+    }
+
+    public void showAntibioticAttackIndicator(Attack.SUBSTANCE _substance, bool _show)
+    {
+        antibioticAttackIndicators[(int)_substance].SetActive(_show);
+    }
+
+    public void showAntibioticResistanceIndicator(Attack.SUBSTANCE _substance, bool _show, float scale)
+    {
+        antibioticResistanceIndicators[(int)_substance].fillAmount = scale;
+        antibioticResistanceIndicatorBackgrounds[(int)_substance].SetActive(_show);
+    }
+
+    private bool isDivisionAllowedTotal()
+    {
+        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+        {
+            if (!isDivisionAllowed[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private bool canDivide(DIVISION_STRATEGY strategy)
     {
         return (strategy == divisionStrategy)
             && (divisionCooldown <= 0)
             && (WaveSpawner.enemiesAlive < wave.maxEnemyCount)
-            && (canDivideWhileWounded || health == startHealth);
+            && (canDivideWhileWounded || health == startHealth)
+            && isDivisionAllowedTotal();
     }
 
     // intialization after procedural instantiation
