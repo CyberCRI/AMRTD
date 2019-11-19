@@ -67,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
         phaseRotatY = Random.Range(0, 2 * Mathf.PI);
         phaseScaleX = Random.Range(0, 2 * Mathf.PI);
 
-        minimumDistance = Mathf.Max(distanceSecurityRatio*horizontalShift, minimumDistance);
+        minimumDistance = Mathf.Max(distanceSecurityRatio * horizontalShift, minimumDistance);
     }
 
     /// <summary>

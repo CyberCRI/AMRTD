@@ -86,72 +86,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5079843622002194389, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: m_Name
-      value: PillsBottleTurretPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: range
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 2713133126219711678, guid: 677eebd3a70be104687595f7a3450a39,
-        type: 3}
-    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: fireCooldown
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: updatePeriod
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: partToRotate
-      value: 
-      objectReference: {fileID: 5728084491975913535}
-    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: firePoint
-      value: 
-      objectReference: {fileID: 3192918980716159231}
-    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: upkeepCost
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: substance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: attackDuration
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: damageWhenHit
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: damagePerSecondPassive
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: blockDivisionPassive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5079843622002194386, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -206,6 +140,72 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5079843622002194389, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: m_Name
+      value: PillsBottleTurretPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: range
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 2713133126219711678, guid: 677eebd3a70be104687595f7a3450a39,
+        type: 3}
+    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: fireCooldown
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: updatePeriod
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: partToRotate
+      value: 
+      objectReference: {fileID: 5728084491975913535}
+    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 3192918980716159231}
+    - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: upkeepCost
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: substance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: attackDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: damageWhenHit
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: damagePerSecondPassive
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: blockDivisionPassive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34e3100bbfba6114cad221b3434886d9, type: 3}

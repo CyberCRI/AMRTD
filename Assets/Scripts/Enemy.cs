@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
     // Attack.SUBSTANCE-indexed array is faster than Dictionary
     [SerializeField]
     private bool[] immunities = new bool[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
-    // factors applied to antibiotics effects
+    // [0,1] factors applied to antibiotics effects
     // by default, enemies are susceptible, which means the factor applied to the effect is 1f
     public float[] resistances = Enumerable.Repeat(
         1f,
@@ -75,9 +75,16 @@ public class Enemy : MonoBehaviour
         (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
         ).ToArray();
 
-    // is the healing/ccell repair currently allowed by the absence of this antibiotic, or presence of a harmless one?
+    // is the healing/cell repair currently allowed by the absence of this antibiotic, or presence of a harmless one?
     [HideInInspector]
     public bool[] isHealingAllowed = Enumerable.Repeat(
+        true,
+        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        ).ToArray();
+
+    // is the movement currently allowed by the absence of this antibiotic, or presence of a harmless one?
+    [HideInInspector]
+    public bool[] isMovementAllowed = Enumerable.Repeat(
         true,
         (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
         ).ToArray();
@@ -88,6 +95,32 @@ public class Enemy : MonoBehaviour
         true,
         (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
         ).ToArray();
+
+
+    // current factors applied by antibiotics to the division speed (duration):
+    // the smaller the factor, the smaller the division speed
+    [HideInInspector]
+    public float[] divisionFactor = Enumerable.Repeat(
+        1f,
+        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        ).ToArray();
+
+    // current factors applied by antibiotics to the healing speed (health points per second):
+    // the smaller the factor, the smaller the healing speed
+    [HideInInspector]
+    public float[] healingFactor = Enumerable.Repeat(
+        1f,
+        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        ).ToArray();
+
+    // current factors applied by antibiotics to the movement speed:
+    // the smaller the factor, the smaller the healing speed
+    [HideInInspector]
+    public float[] movementFactor = Enumerable.Repeat(
+        1f,
+        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        ).ToArray();
+
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -117,7 +150,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        divisionCooldown -= Time.deltaTime;
+        divisionCooldown -= Time.deltaTime * getDivisionFactorTotal();
 
         if (canDivide(DIVISION_STRATEGY.TIME_BASED))
         {
@@ -127,9 +160,12 @@ public class Enemy : MonoBehaviour
 
         if ((health < startHealth) && isHealingAllowedTotal())
         {
-            health = Mathf.Min(startHealth, health + healingRatioSpeed * startHealth * Time.deltaTime);
+            health = Mathf.Min(startHealth, health + healingRatioSpeed * getHealingFactorTotal() * startHealth * Time.deltaTime);
             updateHealthBar();
         }
+
+        // slow downs are stacked
+        enemyMovement.slow(getMovementFactorTotal());
     }
 
     public bool isImmuneTo(Attack.SUBSTANCE antibiotic)
@@ -148,8 +184,8 @@ public class Enemy : MonoBehaviour
         antibioticResistanceIndicatorBackgrounds[(int)_substance].SetActive(_show);
     }
 
-    // TODO use this instead of 3 specific functions "is...()"? Optimization?
-    private bool isAbilityActiveTotal(bool[] _array)
+    // TODO Optimization
+    private bool isMechanismSafeTotal(bool[] _array)
     {
         for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
         {
@@ -163,38 +199,48 @@ public class Enemy : MonoBehaviour
 
     private bool isDivisionAllowedTotal()
     {
-        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
-        {
-            if (!isDivisionAllowed[i])
-            {
-                return false;
-            }
-        }
-        return true;
+        return isMechanismSafeTotal(isDivisionAllowed);
     }
 
     private bool isHealingAllowedTotal()
     {
-        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
-        {
-            if (!isHealingAllowed[i])
-            {
-                return false;
-            }
-        }
-        return true;
+        return isMechanismSafeTotal(isHealingAllowed);
+    }
+
+    private bool isMovementAllowedTotal()
+    {
+        return isMechanismSafeTotal(isMovementAllowed);
     }
 
     private bool isDivisionSafeTotal()
     {
+        return isMechanismSafeTotal(isDivisionSafe);
+    }
+
+    // TODO Optimization
+    private float getMechanismFactorTotal(float[] _array)
+    {
+        float result = 1f;
         for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
         {
-            if (!isDivisionSafe[i])
-            {
-                return false;
-            }
+            result *= _array[i];
         }
-        return true;
+        return result;
+    }
+
+    private float getDivisionFactorTotal()
+    {
+        return getMechanismFactorTotal(divisionFactor);
+    }
+
+    private float getHealingFactorTotal()
+    {
+        return getMechanismFactorTotal(healingFactor);
+    }
+
+    private float getMovementFactorTotal()
+    {
+        return getMechanismFactorTotal(movementFactor);
     }
 
     private bool canDivide(DIVISION_STRATEGY strategy)
@@ -287,11 +333,6 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("Tried to divide while wave was unset.");
         }
-    }
-
-    public void slow(float slowRatioFactor)
-    {
-        enemyMovement.slow(slowRatioFactor);
     }
 
     public void onReachedWaypoint(int waypointIndex)

@@ -14,21 +14,8 @@ public class Attack : MonoBehaviour
 
         ANTIBIOTICS_COUNT
     }
-
-    public enum ABILITY
-    {
-        NONE,
-        OVER_TIME,
-        BLOCK_DIVISION,
-        KILL_DIVISION,
-        DIRECT_DAMAGE,
-        SLOW_DOWN
-    }
-
-    ///TODO link SUBSTANCEs to ABILITYs: table, dict, ...
-
+    ///TODO link SUBSTANCEs to their effects: table, dict, ...
     public SUBSTANCE substance;
-    //    public ABILITY[] abilities;
 
     private Enemy enemy;
     //    private EnemyMovement enemyMovement;
@@ -44,12 +31,14 @@ public class Attack : MonoBehaviour
     // for instance a constant attack like a laser one
     [Header("Active")]
     private bool wasApplied = false;
+    [Tooltip("Is applied only once")]
     [SerializeField]
     private float damageWhenFirstHit = 0f;
     [SerializeField]
     private float damageWhenHit = 0f;
     [SerializeField]
     private float damagePerSecondActive = 0f;
+    [Space(20)]
     [SerializeField]
     private float slowDownDivisionFactorActive = 1f;
     [SerializeField]
@@ -129,24 +118,24 @@ public class Attack : MonoBehaviour
         attackDuration = _attackDuration * resistanceFactor;
         remainingDurationCountdown = _attackDuration * resistanceFactor;
 
-        
+
         // active
-        damageWhenFirstHit = _damageWhenFirstHit * resistanceFactor;
-        damageWhenHit = _damageWhenHit * resistanceFactor;
-        damagePerSecondActive = _damagePerSecondActive * resistanceFactor;
-        slowDownDivisionFactorActive = _slowDownDivisionFactorActive * resistanceFactor;
-        slowDownHealingFactorActive = _slowDownHealingFactorActive * resistanceFactor;
-        slowDownMovementFactorActive = _slowDownMovementFactorActive * resistanceFactor;
+        damageWhenFirstHit =            getOverallEffectValue(_damageWhenFirstHit, resistanceFactor);
+        damageWhenHit =                 getOverallEffectValue(_damageWhenHit, resistanceFactor);
+        damagePerSecondActive =         getOverallEffectValue(_damagePerSecondActive, resistanceFactor);
+        slowDownDivisionFactorActive =  getOverallEffectFactor(_slowDownDivisionFactorActive, resistanceFactor);
+        slowDownHealingFactorActive =   getOverallEffectFactor(_slowDownHealingFactorActive, resistanceFactor);
+        slowDownMovementFactorActive =  getOverallEffectFactor(_slowDownMovementFactorActive, resistanceFactor);
         blockDivisionActive = _blockDivisionActive;
         blockHealingActive = _blockHealingActive;
         blockMovementActive = _blockMovementActive;
         killAtDivisionActive = _killAtDivisionActive;
 
         // passive
-        damagePerSecondPassive = _damagePerSecondPassive * resistanceFactor;
-        slowDownDivisionFactorPassive = _slowDownDivisionFactorPassive * resistanceFactor;
-        slowDownHealingFactorPassive = _slowDownHealingFactorPassive * resistanceFactor;
-        slowDownMovementFactorPassive = _slowDownMovementFactorPassive * resistanceFactor;
+        damagePerSecondPassive = getOverallEffectValue(_damagePerSecondPassive, resistanceFactor);
+        slowDownDivisionFactorPassive = getOverallEffectFactor(_slowDownDivisionFactorPassive, resistanceFactor);
+        slowDownHealingFactorPassive =  getOverallEffectFactor(_slowDownHealingFactorPassive, resistanceFactor);
+        slowDownMovementFactorPassive = getOverallEffectFactor(_slowDownMovementFactorPassive, resistanceFactor);
         blockDivisionPassive = _blockDivisionPassive;
         blockHealingPassive = _blockHealingPassive;
         blockMovementPassive = _blockMovementPassive;
@@ -207,11 +196,15 @@ public class Attack : MonoBehaviour
 
             if (0f != damageWhenFirstHit)
             {
+                // resistance is taken into account at creation of Attack
                 enemy.takeDamage(damageWhenFirstHit);
                 damageWhenFirstHit = 0f;
             }
 
             // set all passive abilities
+            enemy.divisionFactor[(int)substance] = slowDownDivisionFactorPassive;
+            enemy.healingFactor[(int)substance] = slowDownHealingFactorPassive;
+            enemy.movementFactor[(int)substance] = slowDownMovementFactorPassive;
             enemy.isDivisionAllowed[(int)substance] = !blockDivisionPassive;
             enemy.isHealingAllowed[(int)substance] = !blockHealingPassive;
             enemy.isMovementAllowed[(int)substance] = !blockMovementPassive;
@@ -235,11 +228,14 @@ public class Attack : MonoBehaviour
                 enemy.showAntibioticAttackIndicator(substance, false);
 
                 // set off active and passive abilities
+                enemy.divisionFactor[(int)substance] = 1f;
+                enemy.healingFactor[(int)substance] = 1f;
+                enemy.movementFactor[(int)substance] = 1f;
                 enemy.isDivisionAllowed[(int)substance] = true;
                 enemy.isHealingAllowed[(int)substance] = true;
                 enemy.isMovementAllowed[(int)substance] = true;
                 enemy.isDivisionSafe[(int)substance] = true;
-                
+
                 Destroy(this);
             }
 
@@ -248,16 +244,14 @@ public class Attack : MonoBehaviour
                 enemy.takeDamage(damagePerSecondPassive * Time.deltaTime);
             }
 
-            if (0f != slowDownMovementFactorPassive)
-            {
-                enemy.slow(slowDownMovementFactorPassive);
-            }
-
             // TODO make sure this does not happen too soon for Enemy to take it into account
             // Change script execution order?
             if (wasApplied)
             {
                 // revert active abilities
+                enemy.divisionFactor[(int)substance] = slowDownDivisionFactorPassive;
+                enemy.healingFactor[(int)substance] = slowDownHealingFactorPassive;
+                enemy.movementFactor[(int)substance] = slowDownMovementFactorPassive;
                 enemy.isDivisionAllowed[(int)substance] = !blockDivisionPassive;
                 enemy.isHealingAllowed[(int)substance] = !blockHealingPassive;
                 enemy.isMovementAllowed[(int)substance] = !blockMovementPassive;
@@ -267,16 +261,33 @@ public class Attack : MonoBehaviour
         }
     }
 
+    // computes the overall antibiotic effect [0, 1] factor applied
+    // works only for [0, 1] mechanism factors
+    // eg movement speed is
+    //   speed                      ie overallEffectFactor = 1f with no antibiotic (antibioticEffect = 1f)
+    //   speed * antibioticEffect   ie overallEffectFactor = antibioticEffect with antibiotic and no resistance ie antibioticResistanceFactor = 1f
+    //   speed                      ie overallEffectFactor = 1f with antibiotic and full resistance ie antibioticResistanceFactor = 0
+    private float getOverallEffectFactor(float antibioticEffect, float antibioticResistanceFactor)
+    {
+        return antibioticEffect + (1f - antibioticEffect) * (1f - antibioticResistanceFactor);
+    }
+
+    // computes the overall antibiotic effect value
+    // works only for effect values that are not [0, 1] mechanism factors
+    // eg damage being dealt
+    //   0 if no antibiotic
+    //   damage if antibiotic and no resistance ie antibioticResistanceFactor = 1f
+    //   0 if full resistance ie antibioticResistanceFactor = 0
+    private float getOverallEffectValue(float antibioticEffect, float antibioticResistanceFactor)
+    {
+        return antibioticEffect * antibioticResistanceFactor;
+    }
+
     public void apply()
     {
         if (0f != damagePerSecondActive)
         {
             enemy.takeDamage(damagePerSecondActive * Time.deltaTime);
-        }
-
-        if (0f != slowDownMovementFactorActive)
-        {
-            enemy.slow(slowDownMovementFactorActive);
         }
 
         if (0f != damageWhenHit)
@@ -285,8 +296,13 @@ public class Attack : MonoBehaviour
         }
 
         // apply active abilities
-        enemy.isDivisionAllowed[(int)substance] = blockDivisionPassive || !blockDivisionActive;
-        enemy.isHealingAllowed[(int)substance] = blockHealingPassive || !blockHealingActive;
+        enemy.divisionFactor[(int)substance] = slowDownDivisionFactorPassive * slowDownDivisionFactorActive;
+        enemy.healingFactor[(int)substance] = slowDownHealingFactorPassive * slowDownHealingFactorActive;
+        enemy.movementFactor[(int)substance] = slowDownMovementFactorPassive * slowDownMovementFactorActive;
+        enemy.isDivisionAllowed[(int)substance] = !blockDivisionPassive && !blockDivisionActive;
+        enemy.isHealingAllowed[(int)substance] = !blockHealingPassive && !blockHealingActive;
+        enemy.isMovementAllowed[(int)substance] = !blockMovementPassive && !blockHealingActive;
+        enemy.isDivisionSafe[(int)substance] = killAtDivisionPassive && !blockHealingActive;
 
         wasApplied = true;
     }
@@ -299,25 +315,25 @@ public class Attack : MonoBehaviour
         , enemy
         , substance
 
-        , Mathf.Max(this.remainingDurationCountdown, otherAttack.attackDuration * otherAttackResistanceFactor)
+        , Mathf.Max(this.remainingDurationCountdown,    getOverallEffectValue(otherAttack.attackDuration, otherAttackResistanceFactor))
 
         // active
-        , Mathf.Max(this.damageWhenFirstHit, otherAttack.damageWhenFirstHit * otherAttackResistanceFactor)
-        , Mathf.Max(this.damageWhenHit, otherAttack.damageWhenHit * otherAttackResistanceFactor)
-        , Mathf.Max(this.damagePerSecondActive, otherAttack.damagePerSecondActive * otherAttackResistanceFactor)
-        , Mathf.Max(this.slowDownDivisionFactorActive, otherAttack.slowDownDivisionFactorActive * otherAttackResistanceFactor)
-        , Mathf.Max(this.slowDownHealingFactorActive, otherAttack.slowDownHealingFactorActive * otherAttackResistanceFactor)
-        , Mathf.Max(this.slowDownMovementFactorActive, otherAttack.slowDownMovementFactorActive * otherAttackResistanceFactor)
+        , Mathf.Max(this.damageWhenFirstHit,            getOverallEffectValue(otherAttack.damageWhenFirstHit, otherAttackResistanceFactor))
+        , Mathf.Max(this.damageWhenHit,                 getOverallEffectValue(otherAttack.damageWhenHit, otherAttackResistanceFactor))
+        , Mathf.Max(this.damagePerSecondActive,         getOverallEffectValue(otherAttack.damagePerSecondActive, otherAttackResistanceFactor))
+        , Mathf.Max(this.slowDownDivisionFactorActive,  getOverallEffectFactor(otherAttack.slowDownDivisionFactorActive, otherAttackResistanceFactor))
+        , Mathf.Max(this.slowDownHealingFactorActive,   getOverallEffectFactor(otherAttack.slowDownHealingFactorActive, otherAttackResistanceFactor))
+        , Mathf.Max(this.slowDownMovementFactorActive,  getOverallEffectFactor(otherAttack.slowDownMovementFactorActive, otherAttackResistanceFactor))
         , this.blockDivisionActive || otherAttack.blockDivisionActive
         , this.blockHealingActive || otherAttack.blockHealingActive
         , this.blockMovementActive || otherAttack.blockMovementActive
         , this.killAtDivisionActive || otherAttack.killAtDivisionActive
 
         // passive
-        , Mathf.Max(this.damagePerSecondPassive, otherAttack.damagePerSecondPassive * otherAttackResistanceFactor)
-        , Mathf.Max(this.slowDownDivisionFactorPassive, otherAttack.slowDownDivisionFactorPassive * otherAttackResistanceFactor)
-        , Mathf.Max(this.slowDownHealingFactorPassive, otherAttack.slowDownHealingFactorPassive * otherAttackResistanceFactor)
-        , Mathf.Max(this.slowDownMovementFactorPassive, otherAttack.slowDownMovementFactorPassive * otherAttackResistanceFactor)
+        , Mathf.Max(this.damagePerSecondPassive,        getOverallEffectValue(otherAttack.damagePerSecondPassive, otherAttackResistanceFactor))
+        , Mathf.Max(this.slowDownDivisionFactorPassive, getOverallEffectFactor(otherAttack.slowDownDivisionFactorPassive, otherAttackResistanceFactor))
+        , Mathf.Max(this.slowDownHealingFactorPassive,  getOverallEffectFactor(otherAttack.slowDownHealingFactorPassive, otherAttackResistanceFactor))
+        , Mathf.Max(this.slowDownMovementFactorPassive, getOverallEffectFactor(otherAttack.slowDownMovementFactorPassive, otherAttackResistanceFactor))
         , this.blockDivisionPassive || otherAttack.blockDivisionPassive
         , this.blockHealingPassive || otherAttack.blockHealingPassive
         , this.blockMovementPassive || otherAttack.blockMovementPassive

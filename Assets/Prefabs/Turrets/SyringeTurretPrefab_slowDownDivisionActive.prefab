@@ -5008,7 +5008,7 @@ PrefabInstance:
     - target: {fileID: 5079843622002194389, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}
       propertyPath: m_Name
-      value: SyringeTurretPrefab_blockHealingPassive
+      value: SyringeTurretPrefab_slowDownDivisionActive
       objectReference: {fileID: 0}
     - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}
@@ -5082,8 +5082,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}
-      propertyPath: blockHealingPassive
-      value: 1
+      propertyPath: slowDownDivisionFactorActive
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2688229265308825203, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}
