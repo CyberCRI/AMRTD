@@ -130,7 +130,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void slow(float slowRatioFactor)
     {
-        speed = startSpeed * (1f - slowRatioFactor);
+        speed = startSpeed * slowRatioFactor;
     }
 
     void getNextWaypoint()
