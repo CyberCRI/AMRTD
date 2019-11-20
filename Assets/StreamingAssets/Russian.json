@@ -1,0 +1,30 @@
+{"items":
+	[
+	{"key":"META.MAIN.LANGUAGE","value":"Russian"},
+	{"key":"META.MAIN.VERSION","value":"0.1"},
+	{"key":"GAME.MENU.PAUSE","value":"ПАУЗА"},
+	{"key":"GAME.MENU.MENU","value":"МЕНЮ"},
+	{"key":"GAME.LIVESCOUNTER.LIVES","value":"ЖИЗНИ"},
+	{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"ПОРАЖЕНИЕ"},
+	{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"Волны выжили"},
+	{"key":"GAME.GAMEOVERSCREEN.RETRY","value":"снова пробовать"},
+	{"key":"GAME.GAMEOVERSCREEN.MENU","value":"МЕНЮ"},
+	{"key":"GAME.PAUSESCREEN.TITLE","value":"В ПАУЗЕ"},
+	{"key":"GAME.PAUSESCREEN.CONTINUE","value":"ПРОДОЛЖАТЬ"},
+	{"key":"GAME.PAUSESCREEN.RETRY","value":"снова пробовать"},
+	{"key":"GAME.PAUSESCREEN.MENU","value":"МЕНЮ"},
+	{"key":"GAME.LEVELCOMPLETEDSCREEN.TITLE","value":"ПОБЕДА!"},
+	{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"Волны выжили"},
+	{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"ПРОДОЛЖАТЬ"},
+	{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"МЕНЮ"},
+	{"key":"MAINMENU.PLAY.LABEL","value":"ИГРАТЬ"},
+	{"key":"MAINMENU.QUIT.LABEL","value":"ВЫЙТИ"},
+	{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"ВЫБЕРИТЕ УРОВЕНЬ"},
+	{"key":"LEVELSELECTMENU.BACK.LABEL","value":"НАЗАД"},
+	{"key":"LEVELSELECTMENU.LEVEL1.TITLE","value":"1\nКОЖА"},
+	{"key":"LEVELSELECTMENU.LEVEL2.TITLE","value":"2\nКОЖА"},
+	{"key":"LEVELSELECTMENU.LEVEL3.TITLE","value":"3\nКОЖА"},
+	{"key":"LEVELSELECTMENU.LEVEL4.TITLE","value":"4\nКОЖА"},
+	{"key":"LEVELSELECTMENU.LEVEL5.TITLE","value":"5\nКОЖА"}
+	]
+}

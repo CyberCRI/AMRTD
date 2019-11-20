@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
 #if DEVMODE
             if (Input.GetKeyDown(KeyCode.End))
             {
+                endGame();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Home))
+            {
                 completeLevel();
             }
 

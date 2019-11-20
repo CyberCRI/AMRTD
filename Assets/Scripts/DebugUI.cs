@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿#define DEVMODE
+using UnityEngine;
 
 public class DebugUI : MonoBehaviour
 {
+#if DEVMODE
     // Update is called once per frame
     void Update()
     {
@@ -12,6 +14,10 @@ public class DebugUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             unlockAllLevels();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            switchLanguage();
         }
     }
 
@@ -24,4 +30,10 @@ public class DebugUI : MonoBehaviour
     {
         LevelSelector.unlockAllLevels();
     }
+
+    public void switchLanguage()
+    {
+        LocalizationManager.instance.language = LocalizationManager.instance.getNextLanguage();
+    }
+#endif
 }
