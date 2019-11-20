@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿#define DEVMODE
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -30,9 +30,19 @@ public class GameManager : MonoBehaviour
                 endGame();
             }
 #if DEVMODE
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.End))
             {
                 completeLevel();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                injureAllEnemies();
+            }
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                killAllButOneEnemy();
             }
 #endif
         }
@@ -50,6 +60,27 @@ public class GameManager : MonoBehaviour
         {
             isLevelCompleted = true;
             completeLevelUI.SetActive(true);
+        }
+    }
+
+    private void injureAllEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(Enemy.enemyTag);
+        foreach (GameObject enemyGO in enemies)
+        {
+            Enemy enemy = enemyGO.GetComponent<Enemy>();
+            enemy.takeDamage(enemy.health / 2);
+        }
+    }
+
+    private void killAllButOneEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(Enemy.enemyTag);
+        for (int i = 0; i < enemies.Length-1; i++)
+        {
+            GameObject enemyGO = enemies[i];
+            Enemy enemy = enemyGO.GetComponent<Enemy>();
+            enemy.takeDamage(enemy.health);
         }
     }
 }

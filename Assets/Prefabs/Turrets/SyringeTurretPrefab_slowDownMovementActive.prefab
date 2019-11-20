@@ -4950,6 +4950,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5079843622002194389, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_slowDownMovementActive
+      objectReference: {fileID: 0}
     - target: {fileID: 5079843622002194386, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5004,11 +5009,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079843622002194389, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_slowDownMovementActive
       objectReference: {fileID: 0}
     - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}
@@ -5083,7 +5083,7 @@ PrefabInstance:
     - target: {fileID: 3241761046887564199, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}
       propertyPath: slowDownMovementFactorActive
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2688229265308825203, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}

@@ -14,9 +14,11 @@ public class Enemy : MonoBehaviour
     private int reward = 0;
 
     [Header("Health")]
+    public float health = 0f;
+    private bool isAlive = false;
+    private bool doInitializeHealth = true;
     [SerializeField]
     private ParticleSystem deathEffect = null;
-    public float health = 0f;
     [SerializeField]
     private float startHealth = 0f;
     // how much of startHealth is regained per second
@@ -27,15 +29,13 @@ public class Enemy : MonoBehaviour
     private float injuryRatio = 0f;
     [SerializeField]
     private Image healthBar = null;
-    private bool isAlive = false;
-    private bool doInitializeHealth = true;
 
     [Header("Division")]
+    // the wave during which this enemy was created; hold info on the prefab
+    private Wave wave = null;
     private float divisionCooldown = 0f;
     [SerializeField]
     private float divisionPeriod = 1f;
-    // the wave during which this enemy was created; hold info on the prefab
-    private Wave wave = null;
     [SerializeField]
     private DIVISION_STRATEGY divisionStrategy = DIVISION_STRATEGY.TIME_BASED;
     [SerializeField]
@@ -326,8 +326,7 @@ public class Enemy : MonoBehaviour
         else if (null != wave)
         {
             reward /= 2;
-            WaveSpawner.instance.spawnEnemy(
-                wave, reward, health, startHealth, waypointIndex, this.transform);
+            WaveSpawner.instance.spawnEnemy(wave, this.gameObject);
         }
         else
         {

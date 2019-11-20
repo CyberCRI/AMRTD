@@ -101,11 +101,11 @@ public class WaveSpawner : MonoBehaviour
 
     public void spawnEnemy(
         Wave wave,
+        GameObject enemyMotherCell = null,
         int reward = 0,
         float health = 0f,
         float startHealth = 0f,
-        int waypointIndex = 0,
-        Transform location = null
+        int waypointIndex = 0
         )
     {
         //Debug.Log(string.Format("WaveSpawner::spawnEnemy({0}, {1}, {2}, {3})"
@@ -117,12 +117,14 @@ public class WaveSpawner : MonoBehaviour
         //    //,location
         //));
 
+        bool divisionMode = (null != enemyMotherCell);
+
         if (enemiesAlive < wave.maxEnemyCount)
         {
             Vector3 spawnPointPosition = spawnPoints[0].position;
             Quaternion spawnPointRotation = spawnPoints[0].rotation;
 
-            if (null == location)
+            if (!divisionMode)
             {
                 switch (spawnMode)
                 {
@@ -143,11 +145,36 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
-                spawnPointPosition = location.position;
+                spawnPointPosition = enemyMotherCell.transform.position;
             }
-            GameObject instantiatedEnemy = (GameObject)Instantiate(wave.enemyPrefab, spawnPointPosition, spawnPointRotation);
+
+            if (!divisionMode)
+            {
+                enemyMotherCell = wave.enemyPrefab;
+            }
+            GameObject instantiatedEnemy = (GameObject)Instantiate(enemyMotherCell, spawnPointPosition, spawnPointRotation);
+            
             Enemy enemy = instantiatedEnemy.GetComponent<Enemy>();
             enemy.initialize(wave, reward, health, startHealth, waypointIndex);
+
+            if (divisionMode)
+            {
+                // initialize Attacks
+                Attack[] originalAttacks = instantiatedEnemy.GetComponents<Attack>();
+                Attack[] instantiatedAttacks = instantiatedEnemy.GetComponents<Attack>();
+
+                foreach (Attack iAttack in originalAttacks)
+                {
+                    foreach(Attack oAttack in instantiatedAttacks)
+                    {
+                        if(iAttack.substance == oAttack.substance)
+                        {
+                            iAttack.initialize(true, oAttack, enemy);
+                            continue;
+                        }
+                    }
+                }
+            }
 
             enemiesAlive++;
         }
