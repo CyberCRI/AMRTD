@@ -20,4 +20,10 @@ public class LocalizedText : MonoBehaviour
         text.text = LocalizationManager.instance.GetLocalizedValue(key);
     }
 
+    public void setKey(string _key)
+    {
+        key = _key;
+        onLanguageChanged();
+    }
+
 }

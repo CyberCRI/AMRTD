@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 27439025}
   - component: {fileID: 1283043318676757393}
   - component: {fileID: 5984154814373249679}
+  - component: {fileID: 6674187655862213758}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -107,6 +108,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.MENU.MENU
+--- !u!114 &6674187655862213758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27439023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.21176471}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &103948883
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +457,7 @@ GameObject:
   - component: {fileID: 1512313193}
   - component: {fileID: 1283043318676757392}
   - component: {fileID: 6651537286761360792}
+  - component: {fileID: 6436502525677592681}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -535,6 +552,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.MENU.PAUSE
+--- !u!114 &6436502525677592681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512313191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.21176471}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &975904752788113527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,6 +1608,7 @@ GameObject:
   - component: {fileID: 1283043318060693971}
   - component: {fileID: 1283043318060693997}
   - component: {fileID: 1283043318060693970}
+  - component: {fileID: 872025532721931720}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -1642,6 +1675,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: STOP
+--- !u!114 &872025532721931720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283043318060693968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406f2b8e4588f4045abc09e73465d906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: GAME.NODEUI.SELL
 --- !u!1 &1283043318078904819
 GameObject:
   m_ObjectHideFlags: 0
@@ -3396,7 +3442,9 @@ MonoBehaviour:
   upgradeButton: {fileID: 1283043319637428879}
   upgradeCost: {fileID: 1283043317778588658}
   sellCost: {fileID: 1283043318662574115}
+  sellText: {fileID: 872025532721931720}
   upkeepCost: {fileID: 5248291174534611411}
+  renewButton: {fileID: 6779187147680336030}
 --- !u!1 &1283043318913205445
 GameObject:
   m_ObjectHideFlags: 0
@@ -4264,6 +4312,7 @@ GameObject:
   - component: {fileID: 1283043319363471143}
   - component: {fileID: 1283043319363471137}
   - component: {fileID: 1283043319363471142}
+  - component: {fileID: 8759842064797100801}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -4330,6 +4379,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: UPGRADE
+--- !u!114 &8759842064797100801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283043319363471140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406f2b8e4588f4045abc09e73465d906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: GAME.NODEUI.UPGRADE
 --- !u!1 &1283043319474126151
 GameObject:
   m_ObjectHideFlags: 0
@@ -5602,6 +5664,7 @@ GameObject:
   - component: {fileID: 8962325851180025560}
   - component: {fileID: 6073036776470288983}
   - component: {fileID: 7053311053189393386}
+  - component: {fileID: 6969527686321031924}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -5668,6 +5731,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: RENEW
+--- !u!114 &6969527686321031924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322588754464343335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406f2b8e4588f4045abc09e73465d906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: GAME.NODEUI.RENEW
 --- !u!1 &5084269308359884178
 GameObject:
   m_ObjectHideFlags: 0
@@ -5831,6 +5907,7 @@ GameObject:
   - component: {fileID: 2243192810719667613}
   - component: {fileID: 8590874487390874153}
   - component: {fileID: 7389555071766066030}
+  - component: {fileID: 5296429947406291611}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -5897,6 +5974,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'UPKEEP:'
+--- !u!114 &5296429947406291611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6213424809195564303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406f2b8e4588f4045abc09e73465d906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: GAME.NODEUI.UPKEEP
 --- !u!1 &6779187147680336030
 GameObject:
   m_ObjectHideFlags: 0
@@ -6144,6 +6234,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SyringeTurretPrefab_damageWhenFirstHit
       objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -6290,6 +6385,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SyringeTurretPrefab_slowDownMovementActive
       objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -6435,6 +6535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SyringeTurretPrefab_slowDownDivisionPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -6863,6 +6968,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SyringeTurretPrefab_blockDivisionPassive
       objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -7008,6 +7118,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SyringeTurretPrefab_slowDownHealingPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -7155,6 +7270,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SyringeTurretPrefab_blockDivisionActive
       objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -7301,6 +7421,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TabletTurretPrefab_damageWhenHit
       objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -7446,6 +7571,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SyringeTurretPrefab_slowDownDivisionActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -7739,6 +7869,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SyringeTurretPrefab_damagePerSecondPassive
       objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -7884,6 +8019,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SyringeTurretPrefab_blockHealingPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -8031,6 +8171,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SyringeTurretPrefab_slowDownHealingActive
       objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -8176,6 +8321,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SyringeTurretPrefab_blockHealingActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -8323,6 +8473,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SyringeTurretPrefab_slowDownMovementPassive
       objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -8468,6 +8623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SyringeTurretPrefab_blockMovementPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -8615,6 +8775,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SyringeTurretPrefab_killAtDivisionPassive
       objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -8760,6 +8925,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SyringeTurretPrefab_damagePerSecondActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -8907,6 +9077,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SyringeTurretPrefab_killAtDivisionActive
       objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -9052,6 +9227,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SyringeTurretPrefab_blockMovementActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}

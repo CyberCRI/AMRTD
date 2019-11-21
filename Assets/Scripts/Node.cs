@@ -185,6 +185,7 @@ public class Node : MonoBehaviour
         {
             PlayerStatistics.money -= blueprint.cost;
             turretGO = (GameObject)Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
+            turretGO.transform.localScale = Vector3.Scale(this.transform.parent.localScale, turretGO.transform.localScale);
             turret = turretGO.GetComponent<Turret>();
             turret.node = this;
             turretBlueprint = blueprint;

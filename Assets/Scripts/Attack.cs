@@ -192,7 +192,9 @@ public class Attack : MonoBehaviour
     {
         if (onEnemy)
         {
+#if DEVMODE
             enemy.showAntibioticAttackIndicator(substance, true);
+#endif
 
             if (0f != damageWhenFirstHit)
             {
@@ -224,8 +226,8 @@ public class Attack : MonoBehaviour
             {
 #if DEVMODE
                 Debug.Log("Attack is over:" + substance);
-#endif
                 enemy.showAntibioticAttackIndicator(substance, false);
+#endif
 
                 // set off active and passive abilities
                 enemy.divisionFactor[(int)substance] = 1f;

@@ -289,10 +289,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelAttack: {fileID: 3241761046887564199}
   range: 0
-  upkeepCost: 1
+  upkeepCost: 0
   upkeepPeriod: 1
   route: 0
-  lifetimeStart: 20
+  lifetimeStart: Infinity
   lifetimeRemaining: 0
   node: {fileID: 0}
   lifetimeBar: {fileID: 5318971326639332385}
@@ -325,14 +325,22 @@ MonoBehaviour:
   attackDuration: 0
   damageWhenFirstHit: 0
   damageWhenHit: 0
-  blockDivisionActive: 0
   damagePerSecondActive: 0
+  slowDownDivisionFactorActive: 1
+  slowDownHealingFactorActive: 1
+  slowDownMovementFactorActive: 1
+  blockDivisionActive: 0
+  blockHealingActive: 0
+  blockMovementActive: 0
   killAtDivisionActive: 0
-  slowDownFactorActive: 0
-  blockDivisionPassive: 0
   damagePerSecondPassive: 0
+  slowDownDivisionFactorPassive: 1
+  slowDownHealingFactorPassive: 1
+  slowDownMovementFactorPassive: 1
+  blockDivisionPassive: 0
+  blockHealingPassive: 0
+  blockMovementPassive: 0
   killAtDivisionPassive: 0
-  slowDownFactorPassive: 0
 --- !u!1 &5079843622877079218
 GameObject:
   m_ObjectHideFlags: 0

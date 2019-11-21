@@ -13,9 +13,27 @@ public class NodeUI : MonoBehaviour
     [SerializeField]
     private Text sellCost = null;
     [SerializeField]
+    private LocalizedText sellText = null;
+    [SerializeField]
     private Text upkeepCost = null;
+    [SerializeField]
+    private GameObject renewButton = null;
 
     private Node targetNode;
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+#if SELLTURRETS
+        sellText.setKey("GAME.NODEUI.SELL");
+#else
+        sellText.setKey("GAME.NODEUI.STOP");
+#endif
+    }
+
 
     public void setTarget(Node target)
     {
@@ -34,9 +52,11 @@ public class NodeUI : MonoBehaviour
         }
 
 #if SELLTURRETS
-        //sellCost.text = target.turretBlueprint.getSellCost().ToString() + "€";
+        sellCost.text = target.turretBlueprint.getSellCost().ToString() + "€";
 #endif
         upkeepCost.text = target.turret.upkeepCost.ToString() + "€/s";
+
+        renewButton.SetActive(target.turret.lifetimeStart != Mathf.Infinity);
 
         ui.SetActive(true);
     }

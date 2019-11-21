@@ -24,8 +24,7 @@ public class Turret : Attacker
     public ROUTE_OF_ADMINISTRATION route;
 
     [Header("Lifetime")]
-    [SerializeField]
-    private float lifetimeStart = 0;
+    public float lifetimeStart = 0;
     [SerializeField]
     private float lifetimeRemaining = 0;
     public Node node;
