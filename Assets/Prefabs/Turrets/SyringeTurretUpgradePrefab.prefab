@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 6646208980962879373, guid: 22059d25cfcb122419eaa231af8be651,
         type: 3}
       propertyPath: upkeepCost
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8855692618007227791, guid: 22059d25cfcb122419eaa231af8be651,
         type: 3}
@@ -213,6 +213,16 @@ PrefabInstance:
         type: 3}
       propertyPath: slowDownFactorPassive
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855692618007227791, guid: 22059d25cfcb122419eaa231af8be651,
+        type: 3}
+      propertyPath: slowDownMovementFactorActive
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855692618007227791, guid: 22059d25cfcb122419eaa231af8be651,
+        type: 3}
+      propertyPath: slowDownMovementFactorPassive
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5559375121619691755, guid: 22059d25cfcb122419eaa231af8be651,
         type: 3}

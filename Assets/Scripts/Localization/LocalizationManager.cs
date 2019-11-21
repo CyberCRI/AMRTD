@@ -26,7 +26,7 @@ public class LocalizationManager : MonoBehaviour
             LoadLocalizedText(_language + ".json");
             languageChanged.Invoke();
 #if DEVMODE
-            Debug.Log("set");
+//            Debug.Log("set");
 #endif
         }
     }
@@ -75,7 +75,7 @@ public class LocalizationManager : MonoBehaviour
         localizedText = new Dictionary<string, string>();
         string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
 #if DEVMODE
-        Debug.Log(filePath);
+//        Debug.Log(filePath);
 #endif
 
         if (File.Exists(filePath))
@@ -88,11 +88,11 @@ public class LocalizationManager : MonoBehaviour
                 localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
             }
 #if DEVMODE
-            Debug.Log("Data loaded, dictionary contains: " + localizedText.Count + " entries");
+//            Debug.Log("Data loaded, dictionary contains: " + localizedText.Count + " entries");
         }
         else
         {
-            Debug.LogError("Cannot find file!");
+//            Debug.LogError("Cannot find file!");
 #endif
         }
 

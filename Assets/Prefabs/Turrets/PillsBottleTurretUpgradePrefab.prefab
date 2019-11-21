@@ -81,12 +81,12 @@ PrefabInstance:
     - target: {fileID: 226770437567635241, guid: 689444336b2a39f46a6f28ae03ea7987,
         type: 3}
       propertyPath: fireCooldown
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 226770437567635241, guid: 689444336b2a39f46a6f28ae03ea7987,
         type: 3}
       propertyPath: upkeepCost
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2737072415960225067, guid: 689444336b2a39f46a6f28ae03ea7987,
         type: 3}
@@ -101,7 +101,7 @@ PrefabInstance:
     - target: {fileID: 2737072415960225067, guid: 689444336b2a39f46a6f28ae03ea7987,
         type: 3}
       propertyPath: damageWhenHit
-      value: 40
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8450573116119425412, guid: 689444336b2a39f46a6f28ae03ea7987,
         type: 3}

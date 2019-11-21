@@ -17,6 +17,10 @@ public class LocalizedText : MonoBehaviour
     
     void onLanguageChanged()
     {
+        if (null == text)
+        {
+            text = GetComponent<Text>();
+        }
         text.text = LocalizationManager.instance.GetLocalizedValue(key);
     }
 

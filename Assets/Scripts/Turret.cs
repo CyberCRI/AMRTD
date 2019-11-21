@@ -1,4 +1,4 @@
-﻿#define DEVMODE
+﻿//#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +13,7 @@ public class Turret : Attacker
     }
 
     [Header("General")]
-    [SerializeField]
-    private float range = 0f;
+    public float range = 0f;
     // amount of money paid every upkeepPeriod seconds
     [SerializeField]
     public int upkeepCost = 0;

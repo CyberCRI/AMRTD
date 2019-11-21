@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5079843622002194389, guid: 34e3100bbfba6114cad221b3434886d9,
+        type: 3}
+      propertyPath: m_Name
+      value: TabletTurretPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 5079843622002194386, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -61,11 +66,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079843622002194389, guid: 34e3100bbfba6114cad221b3434886d9,
-        type: 3}
-      propertyPath: m_Name
-      value: TabletTurretPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 730887305304050085, guid: 34e3100bbfba6114cad221b3434886d9,
         type: 3}
@@ -124,11 +124,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8210510527569166055}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a572ce3a1583e9f4d9581a04ee9d7de0,
-        type: 3}
-      propertyPath: m_Name
-      value: Tablet1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a572ce3a1583e9f4d9581a04ee9d7de0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -198,6 +193,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a572ce3a1583e9f4d9581a04ee9d7de0,
+        type: 3}
+      propertyPath: m_Name
+      value: Tablet1
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: a572ce3a1583e9f4d9581a04ee9d7de0,
         type: 3}

@@ -4804,7 +4804,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelAttack: {fileID: -9006322211279926799}
   range: 30
+  upkeepCost: 0
+  upkeepPeriod: 0
   route: 0
+  lifetimeStart: 0
+  lifetimeRemaining: 0
+  node: {fileID: 0}
+  lifetimeBar: {fileID: 0}
   bulletPrefab: {fileID: 0}
   fireCooldown: 0
   useLaser: 1
@@ -4812,8 +4818,6 @@ MonoBehaviour:
   laserImpactPS: {fileID: 638138008677547875}
   laserImpactLight: {fileID: 6445821511082220410}
   laserImpactOffsetFactor: 0.65
-  laserDamageOverTime: 40
-  slowRatioFactor: 0.7
   timeStartTurret: 0
   updatePeriod: 0.3
   partToRotate: {fileID: 5949064246267832086}
@@ -4832,19 +4836,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   substance: 2
-  abilities: 00000000
   remainingDurationCountdown: 0
   attackDuration: 2
   damageWhenFirstHit: 0
   damageWhenHit: 0
+  damagePerSecondActive: 40
+  slowDownDivisionFactorActive: 1
+  slowDownHealingFactorActive: 1
+  slowDownMovementFactorActive: 1
   blockDivisionActive: 0
-  damagePerSecondActive: 60
+  blockHealingActive: 0
+  blockMovementActive: 0
   killAtDivisionActive: 0
-  slowDownFactorActive: 0.7
-  blockDivisionPassive: 0
   damagePerSecondPassive: 10
+  slowDownDivisionFactorPassive: 1
+  slowDownHealingFactorPassive: 1
+  slowDownMovementFactorPassive: 1
+  blockDivisionPassive: 0
+  blockHealingPassive: 0
+  blockMovementPassive: 0
   killAtDivisionPassive: 0
-  slowDownFactorPassive: 0.4
 --- !u!120 &5209540618180666574
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5313,16 +5324,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5949064246267832086}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 6fc6bc2b8cf9e414ca15cab1b463d32c,
-        type: 3}
-      propertyPath: m_Name
-      value: syringe
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193370286468373378, guid: 6fc6bc2b8cf9e414ca15cab1b463d32c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6fc6bc2b8cf9e414ca15cab1b463d32c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5392,6 +5393,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6fc6bc2b8cf9e414ca15cab1b463d32c,
+        type: 3}
+      propertyPath: m_Name
+      value: syringe
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193370286468373378, guid: 6fc6bc2b8cf9e414ca15cab1b463d32c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797610498116038859, guid: 6fc6bc2b8cf9e414ca15cab1b463d32c,
         type: 3}

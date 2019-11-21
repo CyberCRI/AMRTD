@@ -57,7 +57,7 @@ public class Attacker : MonoBehaviour
             if (firstAttack || !doesKnowTarget || (null == enemyAttack))
             {
 #if DEVMODE
-                Debug.Log("strikeAttack first attack");
+//                Debug.Log("strikeAttack first attack");
 #endif
                 Attack[] enemyAttacks = _target.GetComponents<Attack>();
                 foreach (Attack eAttack in enemyAttacks)
@@ -66,7 +66,7 @@ public class Attacker : MonoBehaviour
                     {
                         _enemyAttack = eAttack;
 #if DEVMODE
-                        Debug.Log("Found matching attack " + eAttack.substance);
+//                        Debug.Log("Found matching attack " + eAttack.substance);
 #endif
                         break;
                     }

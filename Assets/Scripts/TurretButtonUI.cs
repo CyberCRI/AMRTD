@@ -1,4 +1,4 @@
-﻿#define DEVMODE
+﻿//#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 

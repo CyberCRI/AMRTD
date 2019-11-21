@@ -1,4 +1,4 @@
-﻿#define DEVMODE
+﻿//#define DEVMODE
 using UnityEngine;
 
 public class DebugUI : MonoBehaviour

@@ -7,11 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7667180733465665964}
     m_Modifications:
-    - target: {fileID: 704204758309981477, guid: dfbe4cf28f60f864b958934c06d8a5e8,
-        type: 3}
-      propertyPath: m_Name
-      value: NormalEnemyTexturedInnerImmune1
-      objectReference: {fileID: 0}
     - target: {fileID: 3430969998141215203, guid: dfbe4cf28f60f864b958934c06d8a5e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,6 +62,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 704204758309981477, guid: dfbe4cf28f60f864b958934c06d8a5e8,
+        type: 3}
+      propertyPath: m_Name
+      value: NormalEnemyTexturedInnerImmune1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfbe4cf28f60f864b958934c06d8a5e8, type: 3}
 --- !u!4 &1305194333150469912 stripped
@@ -87,40 +87,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalEnemyTexturedResistant1
       objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: reward
-      value: 50
+      propertyPath: scaleAffectedTransform
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: startHealth
-      value: 100
+      propertyPath: wobbledTransform
+      value: 
+      objectReference: {fileID: 1305194333150469912}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: minimumDistance
+      value: 1.1
       objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: divisionPeriod
-      value: 4
+      propertyPath: startSpeed
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: injuryRatio
-      value: 1
+      propertyPath: angularWobble
+      value: 45
       objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: healingRatioSpeed
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: immunities.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: resistances.Array.data[1]
-      value: 0.1
+      propertyPath: scaleFactor
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4500849788320993361, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
@@ -177,35 +172,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: scaleAffectedTransform
-      value: 
+      propertyPath: reward
+      value: 80
       objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: wobbledTransform
-      value: 
-      objectReference: {fileID: 1305194333150469912}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: minimumDistance
-      value: 1.1
+      propertyPath: startHealth
+      value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: startSpeed
-      value: 10
+      propertyPath: divisionPeriod
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: angularWobble
-      value: 45
+      propertyPath: injuryRatio
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: scaleFactor
-      value: 5
+      propertyPath: healingRatioSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: immunities.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: resistances.Array.data[1]
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0702d38ed6887458d2928b3b9c093c, type: 3}

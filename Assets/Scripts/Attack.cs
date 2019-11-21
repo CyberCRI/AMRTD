@@ -225,7 +225,7 @@ public class Attack : MonoBehaviour
             if (remainingDurationCountdown <= 0)
             {
 #if DEVMODE
-                Debug.Log("Attack is over:" + substance);
+//                Debug.Log("Attack is over:" + substance);
                 enemy.showAntibioticAttackIndicator(substance, false);
 #endif
 

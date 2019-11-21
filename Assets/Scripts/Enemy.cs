@@ -326,7 +326,14 @@ public class Enemy : MonoBehaviour
         else if (null != wave)
         {
             reward /= 2;
-            WaveSpawner.instance.spawnEnemy(wave, this.gameObject);
+            WaveSpawner.instance.spawnEnemy(
+                wave,
+                this.gameObject,
+                reward,
+                health,
+                startHealth,
+                waypointIndex
+                );
         }
         else
         {

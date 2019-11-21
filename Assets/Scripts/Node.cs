@@ -184,10 +184,16 @@ public class Node : MonoBehaviour
         if (PlayerStatistics.money >= blueprint.cost)
         {
             PlayerStatistics.money -= blueprint.cost;
+
             turretGO = (GameObject)Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
             turretGO.transform.localScale = Vector3.Scale(this.transform.parent.localScale, turretGO.transform.localScale);
+
             turret = turretGO.GetComponent<Turret>();
             turret.node = this;
+            turret.range = turret.range * Mathf.Max(
+                this.transform.parent.localScale.x,
+                this.transform.parent.localScale.z
+                );
             turretBlueprint = blueprint;
 
             GameObject effect = (GameObject)Instantiate(buildEffect, this.transform.position, Quaternion.identity);
@@ -205,13 +211,19 @@ public class Node : MonoBehaviour
         {
             PlayerStatistics.money -= turretBlueprint.upgradeCost;
 
-            GameObject newTurret = (GameObject)Instantiate(turretBlueprint.upgradePrefab, this.transform.position, Quaternion.identity);
+            GameObject newTurretGO = (GameObject)Instantiate(turretBlueprint.upgradePrefab, this.transform.position, Quaternion.identity);
+            newTurretGO.transform.localScale = Vector3.Scale(this.transform.parent.localScale, newTurretGO.transform.localScale);
+
             Quaternion previousRotation = turret.getPartToRotateRotation();
             GameObject oldTurret = turretGO;
-            turretGO = newTurret;
+            turretGO = newTurretGO;
             turret = turretGO.GetComponent<Turret>();
             turret.rotatePartToRotate(previousRotation);
             turret.node = this;
+            turret.range = turret.range * Mathf.Max(
+                this.transform.parent.localScale.x,
+                this.transform.parent.localScale.z
+                );
 
             removeTurret(REMOVETOWER.UPGRADED, oldTurret);
 
@@ -226,11 +238,11 @@ public class Node : MonoBehaviour
     public void sellTurret()
     {
 #if DEVMODE
-        Debug.Log("sellTurret");
+//        Debug.Log("sellTurret");
 #endif
         
 #if SELLTURRETS       
-        PlayerStatistics.money += turretBlueprint.getSellCost();
+//        PlayerStatistics.money += turretBlueprint.getSellCost();
 #endif
 
         removeTurret(REMOVETOWER.SOLD, turretGO);
