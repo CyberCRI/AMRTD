@@ -26,4 +26,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level5.unity
     guid: 4d5749be664a69a48a792f7ab38f3721
+  - enabled: 1
+    path: Assets/Scenes/2019-11-22_Playtest/Level6_nodivision.unity
+    guid: f3614b5e6565c944192487634188a350
+  - enabled: 1
+    path: Assets/Scenes/2019-11-22_Playtest/Level7_division.unity
+    guid: ad97c650b375f894289e139e4055b09d
+  - enabled: 1
+    path: Assets/Scenes/2019-11-22_Playtest/Level8_PillsBottle.unity
+    guid: ca58c21f55ced8a47b7bd30cc4f4cd1a
+  - enabled: 1
+    path: Assets/Scenes/2019-11-22_Playtest/Level9_Syringe.unity
+    guid: 41ad63827888f014f9223bacf56bca8f
+  - enabled: 1
+    path: Assets/Scenes/2019-11-22_Playtest/Level10_specificity.unity
+    guid: c067ff7682142e64c828d1a19d99b08a
   m_configObjects: {}

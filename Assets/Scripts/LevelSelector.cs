@@ -1,5 +1,4 @@
-﻿#define DEMO
-
+﻿//#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,7 +40,7 @@ public class LevelSelector : MonoBehaviour
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
-#if DEMO
+#if DEVMODE
             levelButtons[i].interactable = true;
 #else
             levelButtons[i].interactable = (i <= levelReached);

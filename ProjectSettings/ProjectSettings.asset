@@ -675,6 +675,7 @@ PlayerSettings:
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
     1: DEVMODE;SELLTURRETS
+    13: SELLTURRETS
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

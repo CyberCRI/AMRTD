@@ -190,10 +190,10 @@ public class Node : MonoBehaviour
 
             turret = turretGO.GetComponent<Turret>();
             turret.node = this;
-            turret.range = turret.range * Mathf.Max(
-                this.transform.parent.localScale.x,
-                this.transform.parent.localScale.z
-                );
+//            turret.range = turret.range * Mathf.Max(
+//                this.transform.parent.localScale.x,
+//                this.transform.parent.localScale.z
+//                );
             turretBlueprint = blueprint;
 
             GameObject effect = (GameObject)Instantiate(buildEffect, this.transform.position, Quaternion.identity);
@@ -220,10 +220,10 @@ public class Node : MonoBehaviour
             turret = turretGO.GetComponent<Turret>();
             turret.rotatePartToRotate(previousRotation);
             turret.node = this;
-            turret.range = turret.range * Mathf.Max(
-                this.transform.parent.localScale.x,
-                this.transform.parent.localScale.z
-                );
+//            turret.range = turret.range * Mathf.Max(
+//                this.transform.parent.localScale.x,
+//                this.transform.parent.localScale.z
+//                );
 
             removeTurret(REMOVETOWER.UPGRADED, oldTurret);
 

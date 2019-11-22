@@ -1,35 +1,41 @@
 {"items":
 	[
-	{"key":"META.MAIN.LANGUAGE","value":"English"},
-	{"key":"META.MAIN.VERSION","value":"0.1"},
-	{"key":"GAME.MENU.PAUSE","value":"PAUSE"},
-	{"key":"GAME.MENU.MENU","value":"MENU"},
-	{"key":"GAME.LIVESCOUNTER.LIVES","value":"LIVES"},
-	{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"GAME OVER"},
-	{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"WAVES SURVIVED"},
-	{"key":"GAME.GAMEOVERSCREEN.RETRY","value":"RETRY"},
-	{"key":"GAME.GAMEOVERSCREEN.MENU","value":"MENU"},
-	{"key":"GAME.PAUSESCREEN.TITLE","value":"PAUSED"},
-	{"key":"GAME.PAUSESCREEN.CONTINUE","value":"CONTINUE"},
-	{"key":"GAME.PAUSESCREEN.RETRY","value":"RETRY"},
-	{"key":"GAME.PAUSESCREEN.MENU","value":"MENU"},
-	{"key":"GAME.LEVELCOMPLETEDSCREEN.TITLE","value":"LEVEL WON!"},
-	{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"WAVES SURVIVED"},
-	{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"CONTINUE"},
-	{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"MENU"},
-	{"key":"GAME.NODEUI.UPKEEP","value":"UPKEEP:"},
-	{"key":"GAME.NODEUI.UPGRADE","value":"UPGRADE"},
-	{"key":"GAME.NODEUI.STOP","value":"STOP"},
-	{"key":"GAME.NODEUI.SELL","value":"SELL"},
-	{"key":"GAME.NODEUI.RENEW","value":"RENEW"},
-	{"key":"MAINMENU.PLAY.LABEL","value":"PLAY"},
-	{"key":"MAINMENU.QUIT.LABEL","value":"QUIT"},
-	{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"SELECT LEVEL"},
-	{"key":"LEVELSELECTMENU.BACK.LABEL","value":"BACK"},
-	{"key":"LEVELSELECTMENU.LEVEL1.TITLE","value":"1\nSKIN"},
-	{"key":"LEVELSELECTMENU.LEVEL2.TITLE","value":"2\nSKIN"},
-	{"key":"LEVELSELECTMENU.LEVEL3.TITLE","value":"3\nSKIN"},
-	{"key":"LEVELSELECTMENU.LEVEL4.TITLE","value":"4\nSKIN"},
-	{"key":"LEVELSELECTMENU.LEVEL5.TITLE","value":"5\nSKIN"}
+	{"key":"META.MAIN.LANGUAGE","value":"English"}
+	,{"key":"META.MAIN.VERSION","value":"0.1"}
+	,{"key":"GAME.MENU.PAUSE","value":"PAUSE"}
+	,{"key":"GAME.MENU.MENU","value":"MENU"}
+	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"LIVES"}
+	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"READY!"}
+	,{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"GAME OVER"}
+	,{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"WAVES SURVIVED"}
+	,{"key":"GAME.GAMEOVERSCREEN.RETRY","value":"RETRY"}
+	,{"key":"GAME.GAMEOVERSCREEN.MENU","value":"MENU"}
+	,{"key":"GAME.PAUSESCREEN.TITLE","value":"PAUSED"}
+	,{"key":"GAME.PAUSESCREEN.CONTINUE","value":"CONTINUE"}
+	,{"key":"GAME.PAUSESCREEN.RETRY","value":"RETRY"}
+	,{"key":"GAME.PAUSESCREEN.MENU","value":"MENU"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.TITLE","value":"LEVEL WON!"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"WAVES SURVIVED"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"CONTINUE"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"MENU"}
+	,{"key":"GAME.NODEUI.UPKEEP","value":"UPKEEP:"}
+	,{"key":"GAME.NODEUI.UPGRADE","value":"UPGRADE"}
+	,{"key":"GAME.NODEUI.STOP","value":"STOP"}
+	,{"key":"GAME.NODEUI.SELL","value":"SELL"}
+	,{"key":"GAME.NODEUI.RENEW","value":"RENEW"}
+	,{"key":"MAINMENU.PLAY.LABEL","value":"PLAY"}
+	,{"key":"MAINMENU.QUIT.LABEL","value":"QUIT"}
+	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"SELECT LEVEL"}
+	,{"key":"LEVELSELECTMENU.BACK.LABEL","value":"BACK"}
+	,{"key":"LEVELSELECTMENU.LEVEL01.TITLE","value":"SKIN 1"}
+	,{"key":"LEVELSELECTMENU.LEVEL02.TITLE","value":"SKIN 2"}
+	,{"key":"LEVELSELECTMENU.LEVEL03.TITLE","value":"SKIN 3"}
+	,{"key":"LEVELSELECTMENU.LEVEL04.TITLE","value":"SKIN 4"}
+	,{"key":"LEVELSELECTMENU.LEVEL05.TITLE","value":"SKIN 5"}
+	,{"key":"LEVELSELECTMENU.LEVEL06.TITLE","value":"1\nStart"}
+	,{"key":"LEVELSELECTMENU.LEVEL07.TITLE","value":"2\nDivision"}
+	,{"key":"LEVELSELECTMENU.LEVEL08.TITLE","value":"3\nPills"}
+	,{"key":"LEVELSELECTMENU.LEVEL09.TITLE","value":"4\nSyringe"}
+	,{"key":"LEVELSELECTMENU.LEVEL10.TITLE","value":"5\nResistance"}
 	]
 }

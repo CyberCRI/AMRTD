@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//#define DEVMODE
+using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
@@ -140,7 +141,9 @@ public class Enemy : MonoBehaviour
         {
             substance = (Attack.SUBSTANCE)antibioticIndex;
             scale = 1f - resistances[antibioticIndex];
+#if DEVMODE
             showAntibioticResistanceIndicator(substance, 0f != scale, scale);
+#endif
         }
     }
 

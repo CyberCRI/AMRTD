@@ -18,7 +18,7 @@ public class CompleteLevel : MonoBehaviour
     /// </summary>
     void Start()
     {
-        if ((0 != overrideNextLevelName.Length) && (-1 != overrideNextLevelIndex))
+        if ((0 != overrideNextLevelName.Length) || (-1 != overrideNextLevelIndex))
         {
             nextLevelName = overrideNextLevelName;
             nextLevelIndex = overrideNextLevelIndex;

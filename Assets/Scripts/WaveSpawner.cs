@@ -58,10 +58,11 @@ public class WaveSpawner : MonoBehaviour
     {
         if (isDoneSpawning && enemiesAlive <= 0)
         {
-            if (countdown <= 0)
+            if (countdown <= 0f)
             {
                 if (waveIndex < waves.Length)
                 {
+                    waveCountdownText.text = string.Format("{0:00.00}", 0f);
                     StartCoroutine(spawnWave());
                     if (PlayerStatistics.waves < waves.Length - 1)
                     {
@@ -83,9 +84,16 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    public void setCountdownToZero()
+    {
+        Debug.Log("setCountdownToZero");
+        countdown = 0f; 
+    }
+
     IEnumerator spawnWave()
     {
         isDoneSpawning = false;
+        yield return new WaitForSeconds(1f);
         PlayerStatistics.waves++;
         currentWave = waves[waveIndex];
 

@@ -217,7 +217,7 @@ PrefabInstance:
     - target: {fileID: 8855692618007227791, guid: 22059d25cfcb122419eaa231af8be651,
         type: 3}
       propertyPath: slowDownMovementFactorActive
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8855692618007227791, guid: 22059d25cfcb122419eaa231af8be651,
         type: 3}

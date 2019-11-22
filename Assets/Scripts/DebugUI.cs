@@ -1,9 +1,10 @@
 ﻿//#define DEVMODE
+//#define EXPERIMENTAL
 using UnityEngine;
 
 public class DebugUI : MonoBehaviour
 {
-#if DEVMODE
+#if DEVMODE || EXPERIMENTAL
     // Update is called once per frame
     void Update()
     {
@@ -34,6 +35,11 @@ public class DebugUI : MonoBehaviour
     public void switchLanguage()
     {
         LocalizationManager.instance.language = LocalizationManager.instance.getNextLanguage();
+    }
+#else
+    void Start()
+    {
+        this.gameObject.SetActive(false);
     }
 #endif
 }

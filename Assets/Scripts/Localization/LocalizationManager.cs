@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.IO;
+using System.Collections;
 
 public class LocalizationManager : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class LocalizationManager : MonoBehaviour
     private bool isReady = false;
     private string missingTextString = "Localized text not found";
 
-    private string[] languages = new string[3] {"English", "French", "Russian"};
+    private const string frenchLanguage = "French";
+    public const string defaultLanguage = frenchLanguage;
+    private string[] languages = new string[3] {"English", frenchLanguage, "Russian"};
     private string _language;
     public string language {
         get {
@@ -23,10 +26,9 @@ public class LocalizationManager : MonoBehaviour
         }
         set {
             _language = value;
-            LoadLocalizedText(_language + ".json");
-            languageChanged.Invoke();
+            StartCoroutine("loadStreamingAsset", _language + ".json");
 #if DEVMODE
-//            Debug.Log("set");
+            Debug.Log("language set");
 #endif
         }
     }
@@ -37,7 +39,7 @@ public class LocalizationManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            language = languages[1];
+            language = defaultLanguage;
         }
         else if (instance != this)
         {
@@ -70,35 +72,6 @@ public class LocalizationManager : MonoBehaviour
         return languages[result];
     }
 
-    public void LoadLocalizedText(string fileName)
-    {
-        localizedText = new Dictionary<string, string>();
-        string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
-#if DEVMODE
-//        Debug.Log(filePath);
-#endif
-
-        if (File.Exists(filePath))
-        {
-            string dataAsJson = File.ReadAllText(filePath);
-            LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(dataAsJson);
-
-            for (int i = 0; i < loadedData.items.Length; i++)
-            {
-                localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
-            }
-#if DEVMODE
-//            Debug.Log("Data loaded, dictionary contains: " + localizedText.Count + " entries");
-        }
-        else
-        {
-//            Debug.LogError("Cannot find file!");
-#endif
-        }
-
-        isReady = true;
-    }
-
     public string GetLocalizedValue(string key)
     {
         string result = missingTextString;
@@ -108,12 +81,45 @@ public class LocalizationManager : MonoBehaviour
         }
 
         return result;
-
     }
 
     public bool GetIsReady()
     {
         return isReady;
+    }
+
+    IEnumerator loadStreamingAsset(string fileName)
+    {
+        localizedText = new Dictionary<string, string>();
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
+        #if DEVMODE
+        Debug.Log(filePath);
+        #endif
+
+        string dataAsJson;
+        if (filePath.Contains("://") || filePath.Contains(":///"))
+        {
+            WWW www = new WWW(filePath);
+            yield return www;
+            dataAsJson = www.text;
+        }
+        else
+        {
+            dataAsJson = System.IO.File.ReadAllText(filePath);
+        }
+
+        LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(dataAsJson);
+
+        for (int i = 0; i < loadedData.items.Length; i++)
+        {
+            localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
+        }
+        #if DEVMODE
+        Debug.Log("Data loaded, dictionary contains: " + localizedText.Count + " entries");
+        #endif
+
+        isReady = true;
+        languageChanged.Invoke();
     }
 
 }

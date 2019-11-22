@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -9,7 +8,6 @@ public class MainMenu : MonoBehaviour
     private SceneFader sceneFader = null;
 
     public const string sceneName = "MainMenu";
-
 
     public void play()
     {

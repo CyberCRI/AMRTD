@@ -250,6 +250,10 @@ public class Attack : MonoBehaviour
             // Change script execution order?
             if (wasApplied)
             {
+                wasApplied = false;
+            }
+            else
+            {
                 // revert active abilities
                 enemy.divisionFactor[(int)substance] = slowDownDivisionFactorPassive;
                 enemy.healingFactor[(int)substance] = slowDownHealingFactorPassive;
@@ -258,7 +262,6 @@ public class Attack : MonoBehaviour
                 enemy.isHealingAllowed[(int)substance] = !blockHealingPassive;
                 enemy.isMovementAllowed[(int)substance] = !blockMovementPassive;
                 enemy.isDivisionSafe[(int)substance] = !killAtDivisionPassive;
-                wasApplied = false;
             }
         }
     }

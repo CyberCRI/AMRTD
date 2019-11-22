@@ -1,35 +1,41 @@
 {"items":
 	[
-	{"key":"META.MAIN.LANGUAGE","value":"Russian"},
-	{"key":"META.MAIN.VERSION","value":"0.1"},
-	{"key":"GAME.MENU.PAUSE","value":"ПАУЗА"},
-	{"key":"GAME.MENU.MENU","value":"МЕНЮ"},
-	{"key":"GAME.LIVESCOUNTER.LIVES","value":"ЖИЗНИ"},
-	{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"ПОРАЖЕНИЕ"},
-	{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"Волны выжили"},
-	{"key":"GAME.GAMEOVERSCREEN.RETRY","value":"снова пробовать"},
-	{"key":"GAME.GAMEOVERSCREEN.MENU","value":"МЕНЮ"},
-	{"key":"GAME.PAUSESCREEN.TITLE","value":"В ПАУЗЕ"},
-	{"key":"GAME.PAUSESCREEN.CONTINUE","value":"ПРОДОЛЖАТЬ"},
-	{"key":"GAME.PAUSESCREEN.RETRY","value":"снова пробовать"},
-	{"key":"GAME.PAUSESCREEN.MENU","value":"МЕНЮ"},
-	{"key":"GAME.LEVELCOMPLETEDSCREEN.TITLE","value":"ПОБЕДА!"},
-	{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"Волны выжили"},
-	{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"ПРОДОЛЖАТЬ"},
-	{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"МЕНЮ"},
-	{"key":"GAME.NODEUI.UPKEEP","value":"UPKEEP:"},
-	{"key":"GAME.NODEUI.UPGRADE","value":"UPGRADE"},
-	{"key":"GAME.NODEUI.STOP","value":"STOP"},
-	{"key":"GAME.NODEUI.SELL","value":"SELL"},
-	{"key":"GAME.NODEUI.RENEW","value":"RENEW"},
-	{"key":"MAINMENU.PLAY.LABEL","value":"ИГРАТЬ"},
-	{"key":"MAINMENU.QUIT.LABEL","value":"ВЫЙТИ"},
-	{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"ВЫБЕРИТЕ УРОВЕНЬ"},
-	{"key":"LEVELSELECTMENU.BACK.LABEL","value":"НАЗАД"},
-	{"key":"LEVELSELECTMENU.LEVEL1.TITLE","value":"1\nКОЖА"},
-	{"key":"LEVELSELECTMENU.LEVEL2.TITLE","value":"2\nКОЖА"},
-	{"key":"LEVELSELECTMENU.LEVEL3.TITLE","value":"3\nКОЖА"},
-	{"key":"LEVELSELECTMENU.LEVEL4.TITLE","value":"4\nКОЖА"},
-	{"key":"LEVELSELECTMENU.LEVEL5.TITLE","value":"5\nКОЖА"}
+	{"key":"META.MAIN.LANGUAGE","value":"Russian"}
+	,{"key":"META.MAIN.VERSION","value":"0.1"}
+	,{"key":"GAME.MENU.PAUSE","value":"ПАУЗА"}
+	,{"key":"GAME.MENU.MENU","value":"МЕНЮ"}
+	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"ЖИЗНИ"}
+	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"READY!"}
+	,{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"ПОРАЖЕНИЕ"}
+	,{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"Волны выжили"}
+	,{"key":"GAME.GAMEOVERSCREEN.RETRY","value":"снова пробовать"}
+	,{"key":"GAME.GAMEOVERSCREEN.MENU","value":"МЕНЮ"}
+	,{"key":"GAME.PAUSESCREEN.TITLE","value":"В ПАУЗЕ"}
+	,{"key":"GAME.PAUSESCREEN.CONTINUE","value":"ПРОДОЛЖАТЬ"}
+	,{"key":"GAME.PAUSESCREEN.RETRY","value":"снова пробовать"}
+	,{"key":"GAME.PAUSESCREEN.MENU","value":"МЕНЮ"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.TITLE","value":"ПОБЕДА!"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"Волны выжили"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"ПРОДОЛЖАТЬ"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"МЕНЮ"}
+	,{"key":"GAME.NODEUI.UPKEEP","value":"UPKEEP:"}
+	,{"key":"GAME.NODEUI.UPGRADE","value":"UPGRADE"}
+	,{"key":"GAME.NODEUI.STOP","value":"STOP"}
+	,{"key":"GAME.NODEUI.SELL","value":"SELL"}
+	,{"key":"GAME.NODEUI.RENEW","value":"RENEW"}
+	,{"key":"MAINMENU.PLAY.LABEL","value":"ИГРАТЬ"}
+	,{"key":"MAINMENU.QUIT.LABEL","value":"ВЫЙТИ"}
+	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"ВЫБЕРИТЕ УРОВЕНЬ"}
+	,{"key":"LEVELSELECTMENU.BACK.LABEL","value":"НАЗАД"}
+	,{"key":"LEVELSELECTMENU.LEVEL01.TITLE","value":"КОЖА 1"}
+	,{"key":"LEVELSELECTMENU.LEVEL02.TITLE","value":"КОЖА 2"}
+	,{"key":"LEVELSELECTMENU.LEVEL03.TITLE","value":"КОЖА 3"}
+	,{"key":"LEVELSELECTMENU.LEVEL04.TITLE","value":"КОЖА 4"}
+	,{"key":"LEVELSELECTMENU.LEVEL05.TITLE","value":"КОЖА 5"}
+	,{"key":"LEVELSELECTMENU.LEVEL06.TITLE","value":"1\nStart"}
+	,{"key":"LEVELSELECTMENU.LEVEL07.TITLE","value":"2\nDivision"}
+	,{"key":"LEVELSELECTMENU.LEVEL08.TITLE","value":"3\nPills"}
+	,{"key":"LEVELSELECTMENU.LEVEL09.TITLE","value":"4\nSyringe"}
+	,{"key":"LEVELSELECTMENU.LEVEL10.TITLE","value":"5\nResistance"}
 	]
 }
