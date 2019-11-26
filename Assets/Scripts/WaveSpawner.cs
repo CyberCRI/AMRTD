@@ -107,7 +107,7 @@ public class WaveSpawner : MonoBehaviour
         isDoneSpawning = true;
     }
 
-    public void spawnEnemy(
+    public Enemy spawnEnemy(
         Wave wave,
         GameObject enemyMotherCell = null,
         int reward = 0,
@@ -126,6 +126,7 @@ public class WaveSpawner : MonoBehaviour
         //));
 
         bool divisionMode = (null != enemyMotherCell);
+        Enemy enemy = null;
 
         if (enemiesAlive < wave.maxEnemyCount)
         {
@@ -162,7 +163,7 @@ public class WaveSpawner : MonoBehaviour
             }
             GameObject instantiatedEnemy = (GameObject)Instantiate(enemyMotherCell, spawnPointPosition, spawnPointRotation);
             
-            Enemy enemy = instantiatedEnemy.GetComponent<Enemy>();
+            enemy = instantiatedEnemy.GetComponent<Enemy>();
             enemy.initialize(wave, reward, health, startHealth, waypointIndex);
 
             if (divisionMode)
@@ -186,6 +187,7 @@ public class WaveSpawner : MonoBehaviour
 
             enemiesAlive++;
         }
+        return enemy;
     }
 }
 

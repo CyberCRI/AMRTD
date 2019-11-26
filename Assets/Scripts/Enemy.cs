@@ -10,6 +10,14 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private EnemyMovement enemyMovement = null;
 
+    [Header("Mutation")]
+    [SerializeField]
+    private float defaultMutationRange = 0.2f;
+    //[SerializeField]
+    private MUTATION_VARIABLES mutationVariables = MUTATION_VARIABLES.DIFFERENT_RANDS;
+    //[SerializeField]
+    private MUTATION_DIRECTION mutationDirection = MUTATION_DIRECTION.RANDOM;
+
     [Header("Worth")]
     [SerializeField]
     private int reward = 0;
@@ -26,15 +34,15 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float healingRatioSpeed = 0f;
     // how much of damage is taken
-    [SerializeField]
-    private float injuryRatio = 0f;
+    //[SerializeField]
+    private float injuryFactor = 1f;
     [SerializeField]
     private Image healthBar = null;
 
     [Header("Division")]
     // the wave during which this enemy was created; hold info on the prefab
     private Wave wave = null;
-    private float divisionCooldown = 0f;
+    private float divisionCountdown = 0f;
     [SerializeField]
     private float divisionPeriod = 1f;
     [SerializeField]
@@ -69,6 +77,7 @@ public class Enemy : MonoBehaviour
         NO_DIVISION
     }
 
+    // current factors applied by antibiotics to the division:
     // is the division currently allowed by the absence of this antibiotic, or presence of a harmless one?
     [HideInInspector]
     public bool[] isDivisionAllowed = Enumerable.Repeat(
@@ -76,6 +85,7 @@ public class Enemy : MonoBehaviour
         (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
         ).ToArray();
 
+    // current factors applied by antibiotics to the cell repair:
     // is the healing/cell repair currently allowed by the absence of this antibiotic, or presence of a harmless one?
     [HideInInspector]
     public bool[] isHealingAllowed = Enumerable.Repeat(
@@ -83,6 +93,7 @@ public class Enemy : MonoBehaviour
         (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
         ).ToArray();
 
+    // current factors applied by antibiotics to the movement:
     // is the movement currently allowed by the absence of this antibiotic, or presence of a harmless one?
     [HideInInspector]
     public bool[] isMovementAllowed = Enumerable.Repeat(
@@ -90,6 +101,7 @@ public class Enemy : MonoBehaviour
         (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
         ).ToArray();
 
+    // current factors applied by antibiotics to the division safety:
     // is the division currently safe or insta-killing due to the presence of any antibiotic?
     [HideInInspector]
     public bool[] isDivisionSafe = Enumerable.Repeat(
@@ -133,14 +145,21 @@ public class Enemy : MonoBehaviour
             health = startHealth;
         }
         isAlive = true;
-        divisionCooldown = divisionPeriod;
+        divisionCountdown = divisionPeriod;
 
         Attack.SUBSTANCE substance;
         float scale;
         for (int antibioticIndex = 0; antibioticIndex < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; antibioticIndex++)
         {
             substance = (Attack.SUBSTANCE)antibioticIndex;
-            scale = 1f - resistances[antibioticIndex];
+            if (immunities[antibioticIndex])
+            {
+                scale = 1f;
+            }
+            else
+            {
+                scale = 1f - resistances[antibioticIndex];
+            }
 #if DEVMODE
             showAntibioticResistanceIndicator(substance, 0f != scale, scale);
 #endif
@@ -153,12 +172,12 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        divisionCooldown -= Time.deltaTime * getDivisionFactorTotal();
+        divisionCountdown -= Time.deltaTime * getDivisionFactorTotal();
 
         if (canDivide(DIVISION_STRATEGY.TIME_BASED))
         {
             divide(enemyMovement.waypointIndex - 1);
-            divisionCooldown = divisionPeriod;
+            divisionCountdown = divisionPeriod;
         }
 
         if ((health < startHealth) && isHealingAllowedTotal())
@@ -249,7 +268,7 @@ public class Enemy : MonoBehaviour
     private bool canDivide(DIVISION_STRATEGY strategy)
     {
         return (strategy == divisionStrategy)
-            && (divisionCooldown <= 0)
+            && (divisionCountdown <= 0)
             && (WaveSpawner.enemiesAlive < wave.maxEnemyCount)
             && (canDivideWhileWounded || health == startHealth)
             && isDivisionAllowedTotal();
@@ -301,7 +320,7 @@ public class Enemy : MonoBehaviour
 
     public void takeDamage(float damage)
     {
-        health -= injuryRatio * damage;
+        health -= injuryFactor * damage;
         updateHealthBar();
 
         if (isAlive && health <= 0f)
@@ -329,7 +348,7 @@ public class Enemy : MonoBehaviour
         else if (null != wave)
         {
             reward /= 2;
-            WaveSpawner.instance.spawnEnemy(
+            Enemy enemy = WaveSpawner.instance.spawnEnemy(
                 wave,
                 this.gameObject,
                 reward,
@@ -337,11 +356,153 @@ public class Enemy : MonoBehaviour
                 startHealth,
                 waypointIndex
                 );
+            if (null != enemy)
+            {
+                enemy.innerMutate(defaultMutationRange);
+            }
         }
         else
         {
             Debug.Log("Tried to divide while wave was unset.");
         }
+    }
+
+    public enum MUTATION_VARIABLES
+    {
+        NONE,
+        DIFFERENT_RANDS,
+        ONE_RAND,
+        CONSTANT,
+    }
+
+    public enum MUTATION_DIRECTION
+    {
+        NONE,
+        RANDOM,
+        MORE_RESISTANCE
+    }
+
+    private void setAllMutable(
+        float _startHealth
+        , float _health
+        , float _healingRatioSpeed
+        , float _injuryRatio
+        , float _divisionPeriod
+        , bool _canDivideWhileWounded
+        , bool[] _immunities
+        , float[] _resistances
+    )
+    {
+        // if reward is increased, letting pathogens mutate is incentivized
+        startHealth = startHealth;
+        health = _health;
+        health = Mathf.Min(startHealth, health);
+        healingRatioSpeed = _healingRatioSpeed;
+        injuryFactor = Mathf.Min(1.0f, _injuryRatio);
+        divisionPeriod = _divisionPeriod;
+        canDivideWhileWounded = _canDivideWhileWounded;
+        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+        {
+            immunities[i] = _immunities[i];
+            resistances[i] = Mathf.Min(1.0f, _resistances[i]);
+        }
+    }
+
+    public void mutate()
+    {
+        if (MUTATION_VARIABLES.NONE != mutationVariables
+        || MUTATION_DIRECTION.NONE != mutationDirection)
+        {
+            switch (mutationVariables)
+            {
+                case MUTATION_VARIABLES.DIFFERENT_RANDS:
+
+                    float minSeed = 0f;
+                    bool[] _immunities = new bool[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+                    float[] _resistances = new float[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+                    bool _canDivideWhileWounded = (Random.Range(0, 1) < defaultMutationRange);
+
+                    if (MUTATION_DIRECTION.RANDOM == mutationDirection)
+                    {
+                        minSeed = -1f;
+                        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+                        {
+                            _immunities[i] = (Random.Range(0, 1) < defaultMutationRange);
+                            _resistances[i] = resistances[i] * (1 - defaultMutationRange * Random.Range(minSeed, 1));
+                        }
+                    }
+                    else // assumes (MUTATION_DIRECTION.MORE_RESISTANCE == directionMode)
+                    {
+                        minSeed = 0f;
+                        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+                        {
+                            _immunities[i] = immunities[i] || (Random.Range(0, 1) < defaultMutationRange);
+                            _resistances[i] = resistances[i] * (1 - defaultMutationRange * Random.Range(minSeed, 1));
+                        }
+                        _canDivideWhileWounded = _canDivideWhileWounded || canDivideWhileWounded;
+                    }
+
+                    setAllMutable(
+                        // if reward is increased, letting pathogens mutate is incentivized
+                        startHealth * (1 + defaultMutationRange * Random.Range(minSeed, 1))
+                        , health * (1 + defaultMutationRange * Random.Range(minSeed, 1))
+                        , healingRatioSpeed * (1 + defaultMutationRange * Random.Range(minSeed, 1))
+                        , 1f //, injuryFactor * (1 - defaultMutationRange * Random.Range(minSeed, 1))
+                        , divisionPeriod * (1 - defaultMutationRange * Random.Range(minSeed, 1))
+                        , _canDivideWhileWounded
+                        , _immunities
+                        , _resistances
+                    );
+                    break;
+
+                case MUTATION_VARIABLES.ONE_RAND:
+                    innerMutate(Random.Range(0f, defaultMutationRange));
+                    break;
+                case MUTATION_VARIABLES.CONSTANT:
+                    innerMutate(defaultMutationRange);
+                    break;
+                default:
+                    innerMutate(defaultMutationRange);
+                    break;
+            }
+        }
+    }
+
+    private void innerMutate(float mutationFactor)
+    {
+        bool[] _immunities = new bool[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+        float[] _resistances = new float[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+        bool _canDivideWhileWounded;
+
+        if (MUTATION_DIRECTION.RANDOM == mutationDirection)
+        {
+            mutationFactor *= Mathf.Sign(Random.Range(-1f, 1f));
+        }
+        // else assumes (MUTATION_DIRECTION.MORE_RESISTANCE == mutationDirection)
+
+        float mutationDecreaseFactor = (1 - mutationFactor);
+        float mutationIncreaseFactor = (1 + mutationFactor);
+        bool mutationBool = (Mathf.Abs(mutationFactor) <= 0.5);
+
+        _immunities = new bool[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+        _resistances = new float[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+        {
+            _resistances[i] = resistances[i] * mutationDecreaseFactor;
+            _immunities[i] = immunities[i] || (_resistances[i] < .5f);
+        }
+
+        setAllMutable(
+            // if reward is increased, letting pathogens mutate is incentivized
+            startHealth * mutationIncreaseFactor
+            , health * mutationIncreaseFactor
+            , healingRatioSpeed * mutationIncreaseFactor
+            , 1f //, injuryFactor * mutationDecreaseFactor
+            , divisionPeriod * mutationDecreaseFactor
+            , mutationBool
+            , _immunities
+            , _resistances
+        );
     }
 
     public void onReachedWaypoint(int waypointIndex)
@@ -350,7 +511,7 @@ public class Enemy : MonoBehaviour
         {
             // "this" already has the waypointIndex-th waypoint as target whereas the newly instantiated hasn't
             divide(waypointIndex - 1);
-            divisionCooldown = divisionPeriod;
+            divisionCountdown = divisionPeriod;
         }
     }
 
