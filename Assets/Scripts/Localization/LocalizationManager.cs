@@ -16,17 +16,22 @@ public class LocalizationManager : MonoBehaviour
     private bool isReady = false;
     private string missingTextString = "Localized text not found";
 
-    private const string frenchLanguage = "French";
-    public const string defaultLanguage = frenchLanguage;
-    private string[] languages = new string[3] {"English", frenchLanguage, "Russian"};
-    private string _language;
-    public string language {
-        get {
-            return _language;
+    public enum LANGUAGES { ENGLISH, FRENCH, RUSSIAN, HINDI, CHINESE, COUNT }
+    private string[] languages = { "English", "French", "Russian", "Hindi", "Chinese" };
+    public const LANGUAGES defaultLanguage = LANGUAGES.FRENCH;
+    private LANGUAGES _languageIndex;
+    private string _languageString;
+    public LANGUAGES language
+    {
+        get
+        {
+            return _languageIndex;
         }
-        set {
-            _language = value;
-            StartCoroutine("loadStreamingAsset", _language + ".json");
+        set
+        {
+            _languageIndex = value;
+            _languageString = languages[(int)_languageIndex];
+            StartCoroutine("loadStreamingAsset", _languageString + ".json");
 #if DEVMODE
             Debug.Log("language set");
 #endif
@@ -49,27 +54,9 @@ public class LocalizationManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public string getNextLanguage()
+    public LANGUAGES getNextLanguage()
     {
-        int tries = 0;
-        int result = 0;
-        int i = 0;
-        bool done = false;
-
-        while(!done && (tries < 10))
-        {
-            if (languages[i] == language)
-            {
-                result = (i + 1) % languages.Length;
-                done = true;
-            }
-            else
-            {
-                i = (i + 1) % languages.Length;
-            }
-            tries++;
-        }
-        return languages[result];
+        return (LANGUAGES)(((int)language + 1) % ((int)LANGUAGES.COUNT));
     }
 
     public string GetLocalizedValue(string key)
@@ -92,9 +79,9 @@ public class LocalizationManager : MonoBehaviour
     {
         localizedText = new Dictionary<string, string>();
         string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
-        #if DEVMODE
+#if DEVMODE
         Debug.Log(filePath);
-        #endif
+#endif
 
         string dataAsJson;
         if (filePath.Contains("://") || filePath.Contains(":///"))
@@ -114,9 +101,9 @@ public class LocalizationManager : MonoBehaviour
         {
             localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
         }
-        #if DEVMODE
+#if DEVMODE
         Debug.Log("Data loaded, dictionary contains: " + localizedText.Count + " entries");
-        #endif
+#endif
 
         isReady = true;
         languageChanged.Invoke();
