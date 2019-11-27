@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1283043318676757393}
   - component: {fileID: 5984154814373249679}
   m_Layer: 5
-  m_Name: Text
+  m_Name: MenuText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 412793004}
   - component: {fileID: 412793005}
   m_Layer: 5
-  m_Name: TopOverlay
+  m_Name: TopMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +267,7 @@ RectTransform:
   - {fileID: 1313879491}
   - {fileID: 103948884}
   m_Father: {fileID: 1283043318537543821}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 1283043318676757392}
   - component: {fileID: 6651537286761360792}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PauseText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1026,7 +1026,7 @@ RectTransform:
   - {fileID: 2896060267908950166}
   - {fileID: 8736279025710521623}
   m_Father: {fileID: 1283043318537543821}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1253,105 +1253,6 @@ MonoBehaviour:
     upgradePrefab: {fileID: 1182066428804159997, guid: e50d022deca33094c9453ce7176aa44c,
       type: 3}
     upgradeCost: 0
---- !u!1 &1283043318010328815
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1283043318010328811}
-  - component: {fileID: 1283043318010328808}
-  - component: {fileID: 1283043318010328809}
-  - component: {fileID: 1283043318010328814}
-  m_Layer: 5
-  m_Name: OverlayTopCanvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1283043318010328811
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283043318010328815}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 1283043319595864793}
-  m_Father: {fileID: 1283043318913205444}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
---- !u!223 &1283043318010328808
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283043318010328815}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!114 &1283043318010328809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283043318010328815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
---- !u!114 &1283043318010328814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283043318010328815}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!1 &1283043318011131323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,7 +1386,7 @@ GameObject:
   - component: {fileID: 1283043318055578876}
   - component: {fileID: 1283043318055578877}
   m_Layer: 5
-  m_Name: Timer
+  m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1498,12 +1399,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283043318055578851}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1283043319592837658}
-  m_RootOrder: 1
+  m_Father: {fileID: 1283043318537543821}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -2533,6 +2434,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1283043319595864793}
+  - {fileID: 1283043319225137350}
+  - {fileID: 1283043318055578850}
   - {fileID: 412793004}
   - {fileID: 1283043317992997077}
   - {fileID: 1283043319565029789}
@@ -3392,7 +3296,7 @@ Transform:
   m_Children:
   - {fileID: 1283043318839884130}
   m_Father: {fileID: 1283043318913205444}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1283043318869310889
 MonoBehaviour:
@@ -3422,6 +3326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1283043318913205444}
+  - component: {fileID: 6534767452122746824}
   m_Layer: 0
   m_Name: GameUI
   m_TagString: Untagged
@@ -3441,12 +3346,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1283043318537543821}
-  - {fileID: 1283043318010328811}
-  - {fileID: 1283043319592837658}
   - {fileID: 1283043318869310894}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6534767452122746824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283043318913205445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f06dc9863234b43a0ba049695dfafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1283043318958960587
 GameObject:
   m_ObjectHideFlags: 0
@@ -3901,7 +3816,7 @@ RectTransform:
   - {fileID: 1283043318853177561}
   - {fileID: 1283043318125714774}
   m_Father: {fileID: 1283043318537543821}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4176,7 +4091,7 @@ GameObject:
   - component: {fileID: 1283043319225137344}
   - component: {fileID: 1283043319225137345}
   m_Layer: 5
-  m_Name: Money
+  m_Name: MoneyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4189,12 +4104,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283043319225137351}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1283043319592837658}
-  m_RootOrder: 0
+  m_Father: {fileID: 1283043318537543821}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4467,7 +4382,7 @@ RectTransform:
   - {fileID: 1283043318958960586}
   - {fileID: 1283043318633017238}
   m_Father: {fileID: 1283043318537543821}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4539,7 +4454,7 @@ RectTransform:
   m_Children:
   - {fileID: 1283043317827204074}
   m_Father: {fileID: 1283043318537543821}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4613,106 +4528,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!1 &1283043319592837662
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1283043319592837658}
-  - component: {fileID: 1283043319592837659}
-  - component: {fileID: 1283043319592837656}
-  - component: {fileID: 1283043319592837657}
-  m_Layer: 5
-  m_Name: OverlayBottomCanvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1283043319592837658
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283043319592837662}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 1283043319225137350}
-  - {fileID: 1283043318055578850}
-  m_Father: {fileID: 1283043318913205444}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
---- !u!223 &1283043319592837659
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283043319592837662}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!114 &1283043319592837656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283043319592837662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
---- !u!114 &1283043319592837657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283043319592837662}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!1 &1283043319595864798
 GameObject:
   m_ObjectHideFlags: 0
@@ -4727,7 +4542,7 @@ GameObject:
   - component: {fileID: 1283043319595864792}
   - component: {fileID: 1283043319595864789}
   m_Layer: 5
-  m_Name: Lives
+  m_Name: LivesText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4740,16 +4555,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283043319595864798}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1283043318010328811}
+  m_Father: {fileID: 1283043318537543821}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 155.6, y: -90.2}
+  m_AnchoredPosition: {x: 150, y: -100}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1283043319595864794
@@ -6092,6 +5907,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_damageWhenFirstHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6197,16 +6022,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_damageWhenFirstHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -6243,6 +6058,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_slowDownMovementActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6348,16 +6173,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_slowDownMovementActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -6394,6 +6209,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_slowDownDivisionPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6499,16 +6324,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_slowDownDivisionPassive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -6545,6 +6360,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: MissileLauncherItem
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6650,11 +6470,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: MissileLauncherItem
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6680,6 +6495,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: LaserBeamerItem
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6785,11 +6605,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: LaserBeamerItem
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -6826,6 +6641,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_blockDivisionPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6931,16 +6756,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_blockDivisionPassive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -6977,6 +6792,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_slowDownHealingPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7082,16 +6907,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_slowDownHealingPassive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -7128,6 +6943,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_blockDivisionActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7233,16 +7058,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_blockDivisionActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -7279,6 +7094,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: TabletTurretPrefab_damageWhenHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7384,16 +7209,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: TabletTurretPrefab_damageWhenHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -7430,6 +7245,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_slowDownDivisionActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7535,16 +7360,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_slowDownDivisionActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -7581,6 +7396,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: StandardTurretItem
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7686,11 +7506,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: StandardTurretItem
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -7727,6 +7542,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_damagePerSecondPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7832,16 +7657,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_damagePerSecondPassive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -7878,6 +7693,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_blockHealingPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7983,16 +7808,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_blockHealingPassive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -8029,6 +7844,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_slowDownHealingActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8134,16 +7959,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_slowDownHealingActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -8180,6 +7995,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_blockHealingActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8285,16 +8110,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_blockHealingActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -8331,6 +8146,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_slowDownMovementPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8436,16 +8261,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_slowDownMovementPassive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -8482,6 +8297,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_blockMovementPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8587,16 +8412,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_blockMovementPassive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -8633,6 +8448,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_killAtDivisionPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8738,16 +8563,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_killAtDivisionPassive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -8784,6 +8599,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_damagePerSecondActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8889,16 +8714,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_damagePerSecondActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -8935,6 +8750,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_killAtDivisionActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9040,16 +8865,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_killAtDivisionActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_Sprite
@@ -9086,6 +8901,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283043317992997077}
     m_Modifications:
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_Name
+      value: SyringeTurretPrefab_blockMovementActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9190,16 +9015,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Name
-      value: SyringeTurretPrefab_blockMovementActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374878, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}

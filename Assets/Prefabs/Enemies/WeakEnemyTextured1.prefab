@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7667180733465665964}
     m_Modifications:
+    - target: {fileID: 704204758309981477, guid: 87ae50e551f8ac24ea7d7520214ffb5c,
+        type: 3}
+      propertyPath: m_Name
+      value: WeakEnemyTexturedInner
+      objectReference: {fileID: 0}
     - target: {fileID: 3430969998141215203, guid: 87ae50e551f8ac24ea7d7520214ffb5c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,16 +67,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -50
       objectReference: {fileID: 0}
-    - target: {fileID: 704204758309981477, guid: 87ae50e551f8ac24ea7d7520214ffb5c,
-        type: 3}
-      propertyPath: m_Name
-      value: WeakEnemyTexturedInner
-      objectReference: {fileID: 0}
-    - target: {fileID: 8617641132585246993, guid: 87ae50e551f8ac24ea7d7520214ffb5c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2c56eefc4f1729746bbc6e9cb778b2ae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87ae50e551f8ac24ea7d7520214ffb5c, type: 3}
 --- !u!4 &4022566247117558501 stripped
@@ -90,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 4500849788320993365, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: m_Name
-      value: WeakEnemyTextured
+      value: WeakEnemyTextured1
       objectReference: {fileID: 0}
     - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
