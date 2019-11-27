@@ -1,6 +1,7 @@
 {"items":
 	[
 	{"key":"META.MAIN.LANGUAGE","value":"French"}
+	,{"key":"META.MAIN.LOCAL","value":"Français"}
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"PAUSE"}
 	,{"key":"GAME.MENU.MENU","value":"MENU"}

@@ -1,0 +1,42 @@
+{"items":
+	[
+    {"key":"META.MAIN.LANGUAGE","value":"Hindi"}
+    ,{"key":"META.MAIN.LOCAL","value":"हिन्दी"}
+	,{"key":"META.MAIN.VERSION","value":"0.1"}
+	,{"key":"GAME.MENU.PAUSE","value":"रोकें"}
+	,{"key":"GAME.MENU.MENU","value":"मेन्यू"}
+	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"रहता है"}
+	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"तैयार!"}
+	,{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"खेल खत्म"}
+	,{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"लहराया जाता है"}
+	,{"key":"GAME.GAMEOVERSCREEN.RETRY","value":"पुन: प्रयास"}
+	,{"key":"GAME.GAMEOVERSCREEN.MENU","value":"मेन्यू"}
+	,{"key":"GAME.PAUSESCREEN.TITLE","value":"रोके गए"}
+	,{"key":"GAME.PAUSESCREEN.CONTINUE","value":"जारी रहना"}
+	,{"key":"GAME.PAUSESCREEN.RETRY","value":"पुन: प्रयास"}
+	,{"key":"GAME.PAUSESCREEN.MENU","value":"मेन्यू"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.TITLE","value":"लेवल वॉन!"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"लहराया जाता है"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"जारी रहना"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"मेन्यू"}
+	,{"key":"GAME.NODEUI.UPKEEP","value":"रखरखाव:"}
+	,{"key":"GAME.NODEUI.UPGRADE","value":"अपग्रेड"}
+	,{"key":"GAME.NODEUI.STOP","value":"रुकें"}
+	,{"key":"GAME.NODEUI.SELL","value":"बेचना"}
+	,{"key":"GAME.NODEUI.RENEW","value":"नवीकरण"}
+	,{"key":"MAINMENU.PLAY.LABEL","value":"प्ले"}
+	,{"key":"MAINMENU.QUIT.LABEL","value":"छोड़ना"}
+	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"स्तर चुनें"}
+	,{"key":"LEVELSELECTMENU.BACK.LABEL","value":"वापस"}
+	,{"key":"LEVELSELECTMENU.LEVEL01.TITLE","value":"स्किन १"}
+	,{"key":"LEVELSELECTMENU.LEVEL02.TITLE","value":"स्किन २"}
+	,{"key":"LEVELSELECTMENU.LEVEL03.TITLE","value":"स्किन ३"}
+	,{"key":"LEVELSELECTMENU.LEVEL04.TITLE","value":"स्किन ४"}
+	,{"key":"LEVELSELECTMENU.LEVEL05.TITLE","value":"स्किन ५"}
+	,{"key":"LEVELSELECTMENU.LEVEL06.TITLE","value":"1\nप्रारंभ"}
+	,{"key":"LEVELSELECTMENU.LEVEL07.TITLE","value":"2\nविभाजन"}
+	,{"key":"LEVELSELECTMENU.LEVEL08.TITLE","value":"3\nगोलियां"}
+	,{"key":"LEVELSELECTMENU.LEVEL09.TITLE","value":"4\nसिरिंज"}
+	,{"key":"LEVELSELECTMENU.LEVEL10.TITLE","value":"5\nप्रतिरोध"}
+	]
+}
