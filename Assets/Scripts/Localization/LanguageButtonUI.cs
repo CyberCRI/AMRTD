@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LanguageButtonUI : MonoBehaviour
 {
     [SerializeField]
-    private LanguageButtonsManagerUI manager;
+    private LanguageButtonsManagerUI manager = null;
     [SerializeField]
     private Vector3 selectedScale = new Vector3(1.2f, 1.2f, 1.2f);
 

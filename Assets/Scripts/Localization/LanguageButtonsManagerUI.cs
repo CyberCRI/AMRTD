@@ -7,7 +7,7 @@ public class LanguageButtonsManagerUI : MonoBehaviour
 {
     private LanguageButtonUI[] languageButtons = null;
     [SerializeField]
-    private Transform languageButtonsRoot;
+    private Transform languageButtonsRoot = null;
 
     // Start is called before the first frame update
     void Start()

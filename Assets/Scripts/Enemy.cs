@@ -394,7 +394,7 @@ public class Enemy : MonoBehaviour
     )
     {
         // if reward is increased, letting pathogens mutate is incentivized
-        startHealth = startHealth;
+        startHealth = _startHealth;
         health = _health;
         health = Mathf.Min(startHealth, health);
         healingRatioSpeed = _healingRatioSpeed;
