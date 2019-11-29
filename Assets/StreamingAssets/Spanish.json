@@ -1,0 +1,42 @@
+{"items":
+	[
+	{"key":"META.MAIN.LANGUAGE","value":"Spanish"}
+	,{"key":"META.MAIN.LOCAL","value":"Español"}
+	,{"key":"META.MAIN.VERSION","value":"0.1"}
+	,{"key":"GAME.MENU.PAUSE","value":"PAUSA"}
+	,{"key":"GAME.MENU.MENU","value":"MENÚ"}
+	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"VIVE"}
+	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"¡LISTO!"}
+	,{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"JUEGO TERMINADO"}
+	,{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"ONDAS SOBREVIVIDAS"}
+	,{"key":"GAME.GAMEOVERSCREEN.RETRY","value":"PROCESAR DE NUEVO"}
+	,{"key":"GAME.GAMEOVERSCREEN.MENU","value":"MENÚ"}
+	,{"key":"GAME.PAUSESCREEN.TITLE","value":"PAUSADO"}
+	,{"key":"GAME.PAUSESCREEN.CONTINUE","value":"CONTINUAR"}
+	,{"key":"GAME.PAUSESCREEN.RETRY","value":"PROCESAR DE NUEVO"}
+	,{"key":"GAME.PAUSESCREEN.MENU","value":"MENÚ"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.TITLE","value":"NIVEL GANADO!"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"ONDAS SOBREVIVIDAS"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"CONTINUAR"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"MENÚ"}
+	,{"key":"GAME.NODEUI.UPKEEP","value":"MANTENIMIENTO:"}
+	,{"key":"GAME.NODEUI.UPGRADE","value":"MEJORAR"}
+	,{"key":"GAME.NODEUI.STOP","value":"DETENER"}
+	,{"key":"GAME.NODEUI.SELL","value":"VENDER"}
+	,{"key":"GAME.NODEUI.RENEW","value":"RENOVAR"}
+	,{"key":"MAINMENU.PLAY.LABEL","value":"JUGAR"}
+	,{"key":"MAINMENU.QUIT.LABEL","value":"DEJAR"}
+	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"SELECCIONA EL NIVEL"}
+	,{"key":"LEVELSELECTMENU.BACK.LABEL","value":"ESPALDA"}
+	,{"key":"LEVELSELECTMENU.LEVEL01.TITLE","value":"PIEL 1"}
+	,{"key":"LEVELSELECTMENU.LEVEL02.TITLE","value":"PIEL 2"}
+	,{"key":"LEVELSELECTMENU.LEVEL03.TITLE","value":"PIEL 3"}
+	,{"key":"LEVELSELECTMENU.LEVEL04.TITLE","value":"PIEL 4"}
+	,{"key":"LEVELSELECTMENU.LEVEL05.TITLE","value":"PIEL 5"}
+	,{"key":"LEVELSELECTMENU.LEVEL06.TITLE","value":"1\nInicio"}
+	,{"key":"LEVELSELECTMENU.LEVEL07.TITLE","value":"2\nDivisión"}
+	,{"key":"LEVELSELECTMENU.LEVEL08.TITLE","value":"3\nPíldoras"}
+	,{"key":"LEVELSELECTMENU.LEVEL09.TITLE","value":"4\nJeringa"}
+	,{"key":"LEVELSELECTMENU.LEVEL10.TITLE","value":"5\nResistencia"}
+	]
+}

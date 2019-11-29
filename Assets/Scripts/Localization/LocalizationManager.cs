@@ -16,8 +16,25 @@ public class LocalizationManager : MonoBehaviour
     private bool isReady = false;
     private string missingTextString = "Localized text not found";
 
-    public enum LANGUAGES { ENGLISH, FRENCH, RUSSIAN, HINDI, CHINESE, COUNT }
-    private string[] languages = { "English", "French", "Russian", "Hindi", "Chinese" };
+    public enum LANGUAGES {
+        ENGLISH
+        , FRENCH
+        , RUSSIAN
+        , HINDI
+        , CHINESE
+        , SPANISH
+        , ARABIC
+        , COUNT
+        }
+    private string[] languages = {
+        "English"
+        ,"French"
+        ,"Russian"
+        ,"Hindi"
+        ,"Chinese"
+        ,"Spanish"
+        ,"Arabic"
+    };
     public const LANGUAGES defaultLanguage = LANGUAGES.FRENCH;
     private LANGUAGES _languageIndex;
     private string _languageString;
@@ -32,9 +49,9 @@ public class LocalizationManager : MonoBehaviour
             _languageIndex = value;
             _languageString = languages[(int)_languageIndex];
             StartCoroutine("loadStreamingAsset", _languageString + ".json");
-//#if DEVMODE
-//            Debug.Log("language set");
-//#endif
+            //#if DEVMODE
+            //            Debug.Log("language set");
+            //#endif
         }
     }
 
@@ -79,9 +96,9 @@ public class LocalizationManager : MonoBehaviour
     {
         localizedText = new Dictionary<string, string>();
         string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
-//#if DEVMODE
-//        Debug.Log(filePath);
-//#endif
+        //#if DEVMODE
+        //        Debug.Log(filePath);
+        //#endif
 
         string dataAsJson;
         if (filePath.Contains("://") || filePath.Contains(":///"))
@@ -101,9 +118,9 @@ public class LocalizationManager : MonoBehaviour
         {
             localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
         }
-//#if DEVMODE
-//        Debug.Log("Data loaded, dictionary contains: " + localizedText.Count + " entries");
-//#endif
+        //#if DEVMODE
+        //        Debug.Log("Data loaded, dictionary contains: " + localizedText.Count + " entries");
+        //#endif
 
         isReady = true;
         languageChanged.Invoke();

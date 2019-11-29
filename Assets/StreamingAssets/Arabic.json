@@ -1,0 +1,42 @@
+{"items":
+	[
+	{"key":"META.MAIN.LANGUAGE","value":"Arabic"}
+	,{"key":"META.MAIN.LOCAL","value":"عربى"}
+	,{"key":"META.MAIN.VERSION","value":"0.1"}
+	,{"key":"GAME.MENU.PAUSE","value":"وقفة"}
+	,{"key":"GAME.MENU.MENU","value":"قائمة طعام"}
+	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"الأرواح"}
+	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"جاهز!"}
+	,{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"انتهت اللعبة"}
+	,{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"الباقين على قيد الحياة"}
+	,{"key":"GAME.GAMEOVERSCREEN.RETRY","value":"إعادة المحاولة"}
+	,{"key":"GAME.GAMEOVERSCREEN.MENU","value":"قائمة طعام"}
+	,{"key":"GAME.PAUSESCREEN.TITLE","value":"متوقف مؤقتا"}
+	,{"key":"GAME.PAUSESCREEN.CONTINUE","value":"استمر"}
+	,{"key":"GAME.PAUSESCREEN.RETRY","value":"إعادة المحاولة"}
+	,{"key":"GAME.PAUSESCREEN.MENU","value":"قائمة طعام"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.TITLE","value":"المستوى الرابح!"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"الباقين على قيد الحياة"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"استمر"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"قائمة طعام"}
+	,{"key":"GAME.NODEUI.UPKEEP","value":"صيانة:"}
+	,{"key":"GAME.NODEUI.UPGRADE","value":"تطوير"}
+	,{"key":"GAME.NODEUI.STOP","value":"توقف"}
+	,{"key":"GAME.NODEUI.SELL","value":"يبيع"}
+	,{"key":"GAME.NODEUI.RENEW","value":"جدد"}
+	,{"key":"MAINMENU.PLAY.LABEL","value":"لعب"}
+	,{"key":"MAINMENU.QUIT.LABEL","value":"استقال"}
+	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"اختار مستوى"}
+	,{"key":"LEVELSELECTMENU.BACK.LABEL","value":"الى الخلف"}
+	,{"key":"LEVELSELECTMENU.LEVEL01.TITLE","value":"الجلد 1"}
+	,{"key":"LEVELSELECTMENU.LEVEL02.TITLE","value":"جلد 2"}
+	,{"key":"LEVELSELECTMENU.LEVEL03.TITLE","value":"جلد 3"}
+	,{"key":"LEVELSELECTMENU.LEVEL04.TITLE","value":"جلد 4"}
+	,{"key":"LEVELSELECTMENU.LEVEL05.TITLE","value":"الجلد 5"}
+	,{"key":"LEVELSELECTMENU.LEVEL06.TITLE","value":"بداية"}
+	,{"key":"LEVELSELECTMENU.LEVEL07.TITLE","value":"قطاع"}
+	,{"key":"LEVELSELECTMENU.LEVEL08.TITLE","value":"حبوب الدواء"}
+	,{"key":"LEVELSELECTMENU.LEVEL09.TITLE","value":"محقنة"}
+	,{"key":"LEVELSELECTMENU.LEVEL10.TITLE","value":"مقاومة"}
+	]
+}
