@@ -136,7 +136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -80.02352}
+  m_AnchoredPosition: {x: 0, y: -80.00058}
   m_SizeDelta: {x: 50, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2957237161189928476
@@ -214,7 +214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 238, y: 36}
+  m_AnchoredPosition: {x: 181, y: 36}
   m_SizeDelta: {x: 50, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2957237161374512672
@@ -286,6 +286,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2957237161189928478}
     m_Modifications:
+    - target: {fileID: 3900791701968374876, guid: a47e86b33c84caa42b2f27b3ae636795,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: selectABPillsBottleTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374876, guid: a47e86b33c84caa42b2f27b3ae636795,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: a47e86b33c84caa42b2f27b3ae636795,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -422,6 +432,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 515b99eb151d02e4180b13fa32dd9344,
         type: 3}
+    - target: {fileID: 3900791701968374876, guid: a47e86b33c84caa42b2f27b3ae636795,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: selectABTabletTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374876, guid: a47e86b33c84caa42b2f27b3ae636795,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: a47e86b33c84caa42b2f27b3ae636795,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -558,6 +578,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
         type: 3}
+    - target: {fileID: 3900791701968374876, guid: a47e86b33c84caa42b2f27b3ae636795,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: selectABSyringeTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900791701968374876, guid: a47e86b33c84caa42b2f27b3ae636795,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: a47e86b33c84caa42b2f27b3ae636795,
         type: 3}
       propertyPath: m_LocalPosition.x
