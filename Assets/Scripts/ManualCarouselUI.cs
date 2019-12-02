@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ManualCarouselUI : MonoBehaviour
 {
@@ -35,6 +36,53 @@ public class ManualCarouselUI : MonoBehaviour
         ratioPerElement = 1f / elements.Length;
 
         previousScroll = scrollRect.verticalNormalizedPosition;
+    }
+
+
+    void OnBeginDrag(PointerEventData data)
+    {
+        Debug.Log("OnBeginDrag");
+    }
+    void OnDrag(PointerEventData data)
+    {
+        Debug.Log("OnDrag");
+    }
+    void OnEndDrag(PointerEventData data)
+    {
+        Debug.Log("OnEndDrag");
+    }
+    void OnScroll(PointerEventData data)
+    {
+        Debug.Log("OnScroll");
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log("OnMouseDown");
+    }
+    void OnMouseDrag()
+    {
+        Debug.Log("OnMouseDrag");
+    }
+    void OnMouseEnter()
+    {
+        Debug.Log("OnMouseEnter");
+    }
+    void OnMouseExit()
+    {
+        Debug.Log("OnMouseExit");
+    }
+    void OnMouseOver()
+    {
+        Debug.Log("OnMouseOver");
+    }
+    void OnMouseUp()
+    {
+        Debug.Log("OnMouseUp");
+    }
+    void OnMouseUpAsButton()
+    {
+        Debug.Log("OnMouseUpAsButton");
     }
 
     void onScrolled(Vector2 value)
