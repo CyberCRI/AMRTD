@@ -159,6 +159,10 @@ public class EnemyMovement : MonoBehaviour
 
     void getNextWaypoint()
     {
+        if (null != ObjectiveDefenseMode.instance)
+        {
+            waypointIndex = ObjectiveDefenseMode.instance.getFreeObjectiveToDefend();
+        }
         target = Waypoints.instance.getWaypoint(waypointIndex++, waypointsMode);
         if (Mathf.Infinity == target.x)
         {

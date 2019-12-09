@@ -43,7 +43,7 @@ public class Waypoints : MonoBehaviour
         switch (waypointsMode)
         {
             case WaypointsMode.CONTINUOUS:
-                if (depth >= waypointsContinuousList.Length)
+                if (depth <= -1 || depth >= waypointsContinuousList.Length)
                 {
                     waypoint = Vector3.positiveInfinity;
                 }
@@ -56,7 +56,7 @@ public class Waypoints : MonoBehaviour
                 break;
             case WaypointsMode.DISCRETE:
             default:
-                if (depth >= waypointsDiscreteList.Length)
+                if (depth <= -1 || depth >= waypointsDiscreteList.Length)
                 {
                     waypoint = Vector3.positiveInfinity;
                 }
