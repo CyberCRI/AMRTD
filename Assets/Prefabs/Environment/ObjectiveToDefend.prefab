@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2531710065184447262}
   - component: {fileID: 6733544262239517245}
+  - component: {fileID: 2501360269376326124}
   m_Layer: 0
   m_Name: ObjectiveToDefend
   m_TagString: Untagged
@@ -46,7 +47,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCaptured: 0
   slotsRoot: {fileID: 2531710065184447262}
-  collider: {fileID: 0}
+  collider: {fileID: 2501360269376326124}
+--- !u!65 &2501360269376326124
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2531710065184447261}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.736956, y: 11.499414, z: 8.656742}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6689467583458716628
 GameObject:
   m_ObjectHideFlags: 0
