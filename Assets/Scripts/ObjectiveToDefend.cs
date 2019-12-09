@@ -7,8 +7,6 @@ public class ObjectiveToDefend : MonoBehaviour
     public bool isCaptured = false;
     [SerializeField]
     private Transform slotsRoot = null;
-    [SerializeField]
-    private Collider collider = null;
     private ObjectiveSlot[] slots;
 
     // Start is called before the first frame update
@@ -21,41 +19,20 @@ public class ObjectiveToDefend : MonoBehaviour
     void Update()
     {
         isCaptured = (null == getFreeSlot());
-
-        if (!isCaptured && !collider.enabled)
-        {
-            collider.enabled = true;
-        }
-        else if (isCaptured && collider.enabled)
-        {
-            collider.enabled = false;
-        }
     }
 
-    private ObjectiveSlot getFreeSlot()
+    public ObjectiveSlot getFreeSlot()
     {
+        ObjectiveSlot result = null;
         for (int i = 0; i < slots.Length; i++)
         {
             if (null == slots[i].occupant)
             {
-                return slots[i];
+                result = slots[i];
+                break;
             }
         }
 
-        return null;
-    }
-
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.tag == Enemy.enemyTag)
-        {
-            Enemy enemy = collider.gameObject.GetComponent<Enemy>();
-            ObjectiveSlot freeSlot = getFreeSlot();
-            if (null != freeSlot)
-            {
-                freeSlot.occupant = enemy;
-                enemy.holdPosition();
-            }
-        }
+        return result;
     }
 }

@@ -53,14 +53,31 @@ public class ObjectiveDefenseMode : MonoBehaviour
     
     public int getFreeObjectiveToDefend()
     {
+        int result = -1;
         for (int i = 0; i < objectives.Length; i++)
         {
             if (!objectives[i].isCaptured)
             {
-                return i;
+                result = i;
+                break;
             }
         }
 
-        return -1;
+        return result;
+    }
+    
+    public Vector3 getFreeSlotPosition()
+    {
+        Vector3 position = Vector3.positiveInfinity;
+        for (int i = 0; i < objectives.Length; i++)
+        {
+            if (!objectives[i].isCaptured)
+            {
+                position = objectives[i].getFreeSlot().transform.position;
+                break;
+            }
+        }
+
+        return position;
     }
 }

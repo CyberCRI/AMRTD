@@ -162,8 +162,12 @@ public class EnemyMovement : MonoBehaviour
         if (null != ObjectiveDefenseMode.instance)
         {
             waypointIndex = ObjectiveDefenseMode.instance.getFreeObjectiveToDefend();
+            target = ObjectiveDefenseMode.instance.getFreeSlotPosition();
         }
-        target = Waypoints.instance.getWaypoint(waypointIndex++, waypointsMode);
+        else
+        {
+            target = Waypoints.instance.getWaypoint(waypointIndex++, waypointsMode);
+        }
         if (Mathf.Infinity == target.x)
         {
 #if ENEMIES_NEVER_LEAVE
