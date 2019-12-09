@@ -9,6 +9,14 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     private EnemyMovement enemyMovement = null;
+    
+    // TODO fix issue #36 on wrong enemy collider scale
+    /*
+    [SerializeField]
+    private Transform innerTransform = null;
+    [SerializeField]
+    private SphereCollider sphereCollider = null;
+    */
 
     [Header("Mutation")]
     [SerializeField]
@@ -140,6 +148,14 @@ public class Enemy : MonoBehaviour
     /// </summary>
     void Awake()
     {
+        // TODO fix issue #36 on wrong enemy collider scale
+        /*
+        if (null != innerTransform && null != sphereCollider)
+        {
+            sphereCollider.radius = innerTransform.localScale.x;
+        }
+        */
+
         if (doInitializeHealth)
         {
             health = startHealth;

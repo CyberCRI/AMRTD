@@ -20232,7 +20232,7 @@ MonoBehaviour:
   spawnMode: 1
   gameManager: {fileID: 1726487685}
   waves:
-  - enemyPrefab: {fileID: 6471766054217879161, guid: d8523941a33d2b848bb1caf9d030d272,
+  - enemyPrefab: {fileID: 6471766054217879161, guid: db3969191c6e86444ace482e2a3ad2b7,
       type: 3}
     count: 1
     maxEnemyCount: 32

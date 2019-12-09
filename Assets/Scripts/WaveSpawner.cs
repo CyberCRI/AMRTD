@@ -56,7 +56,15 @@ public class WaveSpawner : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (isDoneSpawning && enemiesAlive <= 0)
+        if (
+            isDoneSpawning
+            &&
+            (
+                (null != ObjectiveDefenseMode.instance)
+                ||
+                (enemiesAlive <= 0)
+            )
+        )
         {
             if (countdown <= 0f)
             {
@@ -69,7 +77,7 @@ public class WaveSpawner : MonoBehaviour
                         countdown = timeBetweenWaves;
                     }
                 }
-                else
+                else if (enemiesAlive <= 0)
                 {
                     gameManager.winLevel();
                     this.enabled = false;
