@@ -52,22 +52,22 @@ public class Enemy : MonoBehaviour
 
     [Header("Indicators")]
     [SerializeField]
-    private GameObject[] antibioticAttackIndicators = new GameObject[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+    private GameObject[] antibioticAttackIndicators = new GameObject[(int)Attack.SUBSTANCE.COUNT];
     [SerializeField]
-    private Image[] antibioticResistanceIndicators = new Image[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+    private Image[] antibioticResistanceIndicators = new Image[(int)Attack.SUBSTANCE.COUNT];
     [SerializeField]
-    private GameObject[] antibioticResistanceIndicatorBackgrounds = new GameObject[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+    private GameObject[] antibioticResistanceIndicatorBackgrounds = new GameObject[(int)Attack.SUBSTANCE.COUNT];
 
     [Header("Resistance")]
     // complete immunities
     // Attack.SUBSTANCE-indexed array is faster than Dictionary
     [SerializeField]
-    private bool[] immunities = new bool[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+    private bool[] immunities = new bool[(int)Attack.SUBSTANCE.COUNT];
     // [0,1] factors applied to antibiotics effects
     // by default, enemies are susceptible, which means the factor applied to the effect is 1f
     public float[] resistances = Enumerable.Repeat(
         1f,
-        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        (int)Attack.SUBSTANCE.COUNT
         ).ToArray();
 
     public enum DIVISION_STRATEGY
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public bool[] isDivisionAllowed = Enumerable.Repeat(
         true,
-        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        (int)Attack.SUBSTANCE.COUNT
         ).ToArray();
 
     // current factors applied by antibiotics to the cell repair:
@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public bool[] isHealingAllowed = Enumerable.Repeat(
         true,
-        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        (int)Attack.SUBSTANCE.COUNT
         ).ToArray();
 
     // current factors applied by antibiotics to the movement:
@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public bool[] isMovementAllowed = Enumerable.Repeat(
         true,
-        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        (int)Attack.SUBSTANCE.COUNT
         ).ToArray();
 
     // current factors applied by antibiotics to the division safety:
@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public bool[] isDivisionSafe = Enumerable.Repeat(
         true,
-        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        (int)Attack.SUBSTANCE.COUNT
         ).ToArray();
 
 
@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public float[] divisionFactor = Enumerable.Repeat(
         1f,
-        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        (int)Attack.SUBSTANCE.COUNT
         ).ToArray();
 
     // current factors applied by antibiotics to the healing speed (health points per second):
@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public float[] healingFactor = Enumerable.Repeat(
         1f,
-        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        (int)Attack.SUBSTANCE.COUNT
         ).ToArray();
 
     // current factors applied by antibiotics to the movement speed:
@@ -131,7 +131,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public float[] movementFactor = Enumerable.Repeat(
         1f,
-        (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT
+        (int)Attack.SUBSTANCE.COUNT
         ).ToArray();
 
 
@@ -149,7 +149,7 @@ public class Enemy : MonoBehaviour
 
         Attack.SUBSTANCE substance;
         float scale;
-        for (int antibioticIndex = 0; antibioticIndex < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; antibioticIndex++)
+        for (int antibioticIndex = 0; antibioticIndex < (int)Attack.SUBSTANCE.COUNT; antibioticIndex++)
         {
             substance = (Attack.SUBSTANCE)antibioticIndex;
             if (immunities[antibioticIndex])
@@ -209,7 +209,7 @@ public class Enemy : MonoBehaviour
     // TODO Optimization
     private bool isMechanismSafeTotal(bool[] _array)
     {
-        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+        for (int i = 0; i < (int)Attack.SUBSTANCE.COUNT; i++)
         {
             if (!_array[i])
             {
@@ -243,7 +243,7 @@ public class Enemy : MonoBehaviour
     private float getMechanismFactorTotal(float[] _array)
     {
         float result = 1f;
-        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+        for (int i = 0; i < (int)Attack.SUBSTANCE.COUNT; i++)
         {
             result *= _array[i];
         }
@@ -359,6 +359,7 @@ public class Enemy : MonoBehaviour
             if (null != enemy)
             {
                 enemy.innerMutate(defaultMutationRange);
+                enemy.enemyMovement.enabled = true;
             }
         }
         else
@@ -401,7 +402,7 @@ public class Enemy : MonoBehaviour
         injuryFactor = Mathf.Min(1.0f, _injuryRatio);
         divisionPeriod = _divisionPeriod;
         canDivideWhileWounded = _canDivideWhileWounded;
-        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+        for (int i = 0; i < (int)Attack.SUBSTANCE.COUNT; i++)
         {
             immunities[i] = _immunities[i];
             resistances[i] = Mathf.Min(1.0f, _resistances[i]);
@@ -418,14 +419,14 @@ public class Enemy : MonoBehaviour
                 case MUTATION_VARIABLES.DIFFERENT_RANDS:
 
                     float minSeed = 0f;
-                    bool[] _immunities = new bool[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
-                    float[] _resistances = new float[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+                    bool[] _immunities = new bool[(int)Attack.SUBSTANCE.COUNT];
+                    float[] _resistances = new float[(int)Attack.SUBSTANCE.COUNT];
                     bool _canDivideWhileWounded = (Random.Range(0, 1) < defaultMutationRange);
 
                     if (MUTATION_DIRECTION.RANDOM == mutationDirection)
                     {
                         minSeed = -1f;
-                        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+                        for (int i = 0; i < (int)Attack.SUBSTANCE.COUNT; i++)
                         {
                             _immunities[i] = (Random.Range(0, 1) < defaultMutationRange);
                             _resistances[i] = resistances[i] * (1 - defaultMutationRange * Random.Range(minSeed, 1));
@@ -434,7 +435,7 @@ public class Enemy : MonoBehaviour
                     else // assumes (MUTATION_DIRECTION.MORE_RESISTANCE == directionMode)
                     {
                         minSeed = 0f;
-                        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+                        for (int i = 0; i < (int)Attack.SUBSTANCE.COUNT; i++)
                         {
                             _immunities[i] = immunities[i] || (Random.Range(0, 1) < defaultMutationRange);
                             _resistances[i] = resistances[i] * (1 - defaultMutationRange * Random.Range(minSeed, 1));
@@ -470,8 +471,8 @@ public class Enemy : MonoBehaviour
 
     private void innerMutate(float mutationFactor)
     {
-        bool[] _immunities = new bool[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
-        float[] _resistances = new float[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
+        bool[] _immunities = new bool[(int)Attack.SUBSTANCE.COUNT];
+        float[] _resistances = new float[(int)Attack.SUBSTANCE.COUNT];
         bool _canDivideWhileWounded;
 
         if (MUTATION_DIRECTION.RANDOM == mutationDirection)
@@ -484,9 +485,9 @@ public class Enemy : MonoBehaviour
         float mutationIncreaseFactor = (1 + mutationFactor);
         bool mutationBool = (Mathf.Abs(mutationFactor) <= 0.5);
 
-        _immunities = new bool[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
-        _resistances = new float[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT];
-        for (int i = 0; i < (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT; i++)
+        _immunities = new bool[(int)Attack.SUBSTANCE.COUNT];
+        _resistances = new float[(int)Attack.SUBSTANCE.COUNT];
+        for (int i = 0; i < (int)Attack.SUBSTANCE.COUNT; i++)
         {
             _resistances[i] = resistances[i] * mutationDecreaseFactor;
             _immunities[i] = immunities[i] || (_resistances[i] < .5f);
@@ -513,6 +514,11 @@ public class Enemy : MonoBehaviour
             divide(waypointIndex - 1);
             divisionCountdown = divisionPeriod;
         }
+    }
+
+    public void holdPosition()
+    {
+        enemyMovement.enabled = false;
     }
 
     void OnDestroy()

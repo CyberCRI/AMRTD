@@ -25,10 +25,7 @@ public class LevelSelector : MonoBehaviour
             instance = this;
 
             levelButtons = new Button[levelButtonsRoot.childCount];
-            for (int i = 0; i < levelButtons.Length; i++)
-            {
-                levelButtons[i] = levelButtonsRoot.GetChild(i).GetComponent<Button>();
-            }
+            CommonUtilities.fillArrayFromRoot<Button>(levelButtonsRoot, ref levelButtons);
 
             updateInteractables();
         }

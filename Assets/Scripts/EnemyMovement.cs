@@ -86,46 +86,63 @@ public class EnemyMovement : MonoBehaviour
     {
         if (0 != Time.deltaTime)
         {
-            Vector3 dir = target - this.transform.position;
+            /*
+            switch(GameManager.instance.gameMode)
+            {
+                case GameManager.GAMEMODE.PATHS:
+            */
+            wobble();
 
-            Vector3 displacement = dir.normalized * speed * Time.deltaTime;
-            Vector3 sinusoidalShiftVector = horizontalShift * new Vector3(
-                    Mathf.Cos(
-                        phaseShiftX +
-                        wobbleShiftSpeedX * speed * Time.timeSinceLevelLoad),
-                    0,
-                    Mathf.Cos(
-                        phaseShiftZ +
-                        wobbleShiftSpeedZ * speed * Time.timeSinceLevelLoad)
-                        );
-            this.transform.Translate(displacement + sinusoidalShiftVector, Space.World);
-
-            wobbledTransform.localRotation = Quaternion.Euler(new Vector3(
-                initialRotation.x,
-                initialRotation.y + angularWobble * Mathf.Cos(
-                    phaseRotatY +
-                    wobbleRotateSpeed * speed * Time.timeSinceLevelLoad),
-                initialRotation.z));
-
-            wobbledTransform.localScale = new Vector3(
-                ratioFactor * initialScale.x * (scaleFactor + Mathf.Cos(
-                    phaseScaleX +
-                    wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
-                //initialScale.y,
-                ratioFactor * initialScale.y * (scaleFactor + Mathf.Cos(
-                    phaseScaleX +
-                    wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
-                ratioFactor * initialScale.z * (scaleFactor + Mathf.Cos(
-                    Mathf.PI + phaseScaleX +
-                    wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)));
-
-            if (dir.magnitude <= minimumDistance)
+            if ((target - this.transform.position).magnitude <= minimumDistance)
             {
                 getNextWaypoint();
             }
+            /*
+
+                    break;
+
+                case GameManager.GAMEMODE.DEFEND_CAPTURABLE_OBJECTIVES:
+
+                    break;
+            }
+            */
 
             speed = startSpeed;
         }
+    }
+
+    private void wobble()
+    {
+        Vector3 displacement = (target - this.transform.position).normalized * speed * Time.deltaTime;
+        Vector3 sinusoidalShiftVector = horizontalShift * new Vector3(
+                Mathf.Cos(
+                    phaseShiftX +
+                    wobbleShiftSpeedX * speed * Time.timeSinceLevelLoad),
+                0,
+                Mathf.Cos(
+                    phaseShiftZ +
+                    wobbleShiftSpeedZ * speed * Time.timeSinceLevelLoad)
+                    );
+        this.transform.Translate(displacement + sinusoidalShiftVector, Space.World);
+
+        wobbledTransform.localRotation = Quaternion.Euler(new Vector3(
+            initialRotation.x,
+            initialRotation.y + angularWobble * Mathf.Cos(
+                phaseRotatY +
+                wobbleRotateSpeed * speed * Time.timeSinceLevelLoad),
+            initialRotation.z));
+
+        wobbledTransform.localScale = new Vector3(
+            ratioFactor * initialScale.x * (scaleFactor + Mathf.Cos(
+                phaseScaleX +
+                wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
+            //initialScale.y,
+            ratioFactor * initialScale.y * (scaleFactor + Mathf.Cos(
+                phaseScaleX +
+                wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
+            ratioFactor * initialScale.z * (scaleFactor + Mathf.Cos(
+                Mathf.PI + phaseScaleX +
+                wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)));
     }
 
     public void slow(float slowRatioFactor)

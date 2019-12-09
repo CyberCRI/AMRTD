@@ -71,7 +71,7 @@ public class WaveSpawner : MonoBehaviour
                 }
                 else
                 {
-                    gameManager.completeLevel();
+                    gameManager.winLevel();
                     this.enabled = false;
                 }
             }

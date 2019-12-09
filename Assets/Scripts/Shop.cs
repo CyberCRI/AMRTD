@@ -5,17 +5,17 @@ public class Shop : MonoBehaviour
     [Header("TabletTurrets")]
     [SerializeField]
     private TurretBlueprint[] tabletTurrets =
-     new TurretBlueprint[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT+1];
+     new TurretBlueprint[(int)Attack.SUBSTANCE.COUNT+1];
 
     [Header("PillsBottleTurrets")]
     [SerializeField]
     private TurretBlueprint[] pillsBottleTurrets =
-     new TurretBlueprint[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT+1];
+     new TurretBlueprint[(int)Attack.SUBSTANCE.COUNT+1];
 
     [Header("SyringeTurrets")]
     [SerializeField]
     private TurretBlueprint[] syringeTurrets =
-     new TurretBlueprint[(int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT+1];
+     new TurretBlueprint[(int)Attack.SUBSTANCE.COUNT+1];
 
     [Header("Active")]
     [SerializeField]
@@ -72,15 +72,15 @@ public class Shop : MonoBehaviour
 
     public void selectStandardTurret()
     {
-        selectABTabletTurret((int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT);
+        selectABTabletTurret((int)Attack.SUBSTANCE.COUNT);
     }
     public void selectMissileLauncher()
     {
-        selectABPillsBottleTurret((int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT);
+        selectABPillsBottleTurret((int)Attack.SUBSTANCE.COUNT);
     }
     public void selectLaserBeamer()
     {
-        selectABSyringeTurret((int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT);
+        selectABSyringeTurret((int)Attack.SUBSTANCE.COUNT);
     }
 
     // active
@@ -159,17 +159,17 @@ public class Shop : MonoBehaviour
         buildManager.selectTurretToBuild(laserBeamer_killAtDivisionPassive);
     }
 
-    public void selectABTabletTurret(int substance = (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT)
+    public void selectABTabletTurret(int substance = (int)Attack.SUBSTANCE.COUNT)
     {
         buildManager.selectTurretToBuild(tabletTurrets[substance]);
     }
 
-    public void selectABPillsBottleTurret(int substance = (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT)
+    public void selectABPillsBottleTurret(int substance = (int)Attack.SUBSTANCE.COUNT)
     {
         buildManager.selectTurretToBuild(pillsBottleTurrets[substance]);
     }
 
-    public void selectABSyringeTurret(int substance = (int)Attack.SUBSTANCE.ANTIBIOTICS_COUNT)
+    public void selectABSyringeTurret(int substance = (int)Attack.SUBSTANCE.COUNT)
     {
         buildManager.selectTurretToBuild(syringeTurrets[substance]);
     }

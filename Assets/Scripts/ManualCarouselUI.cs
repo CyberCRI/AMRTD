@@ -28,10 +28,7 @@ public class ManualCarouselUI : MonoBehaviour
         scrollRect.onValueChanged.AddListener((Vector2 val) => onScrolled(val));
 
         elements = new Transform[elementsRoot.childCount];
-        for (int i = 0; i < elementsRoot.childCount; i++)
-        {
-            elements[i] = elementsRoot.GetChild(i);
-        }
+        CommonUtilities.fillArrayFromRoot(elementsRoot, ref elements);
 
         ratioPerElement = 1f / elements.Length;
 

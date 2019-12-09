@@ -32,8 +32,8 @@ public class Waypoints : MonoBehaviour
         {
             instance = this;
 
-            fillArrayFromRoot(waypointsDiscreteRoot, ref waypointsDiscreteList);
-            fillArrayFromRoot(waypointsContinuousRoot, ref waypointsContinuousList);
+            CommonUtilities.fillArrayFromRoot(waypointsDiscreteRoot, ref waypointsDiscreteList);
+            CommonUtilities.fillArrayFromRoot(waypointsContinuousRoot, ref waypointsContinuousList);
         }
     }
 
@@ -67,14 +67,5 @@ public class Waypoints : MonoBehaviour
                 break;
         }
         return waypoint;
-    }
-
-    private void fillArrayFromRoot(Transform root, ref Transform[] array)
-    {
-        array = new Transform[root.childCount];
-        for (int i = 0; i < array.Length; i++)
-        {
-            array[i] = root.GetChild(i);
-        }
     }
 }

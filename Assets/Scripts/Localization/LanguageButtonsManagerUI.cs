@@ -13,10 +13,7 @@ public class LanguageButtonsManagerUI : MonoBehaviour
     void Start()
     {
         languageButtons = new LanguageButtonUI[languageButtonsRoot.childCount];
-        for (int i = 0; i < languageButtons.Length; i++)
-        {
-            languageButtons[i] = languageButtonsRoot.GetChild(i).GetComponent<LanguageButtonUI>();
-        }
+        CommonUtilities.fillArrayFromRoot<LanguageButtonUI>(languageButtonsRoot, ref languageButtons);
 
         updateSelected();
     }

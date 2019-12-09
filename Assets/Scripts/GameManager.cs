@@ -3,21 +3,39 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public static bool isGameOver = false;
     public static bool isLevelCompleted = false;
+
+    public enum GAMEMODE
+    {
+        PATHS,
+        DEFEND_CAPTURABLE_OBJECTIVES,
+        COUNT
+    }
 
     [SerializeField]
     private GameObject gameOverUI = null;
     [SerializeField]
     private GameObject completeLevelUI = null;
+    
+    public GAMEMODE gameMode = GAMEMODE.PATHS;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake()
     {
-        isGameOver = false;
-        isLevelCompleted = false;
+        if (null != instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+            isGameOver = false;
+            isLevelCompleted = false;
+        }
     }
 
     // Update is called once per frame
@@ -27,17 +45,17 @@ public class GameManager : MonoBehaviour
         {
             if (PlayerStatistics.lives <= 0)
             {
-                endGame();
+                loseLevel();
             }
 #if DEVMODE
             if (Input.GetKeyDown(KeyCode.End))
             {
-                endGame();
+                loseLevel();
             }
 
             if (Input.GetKeyDown(KeyCode.Home))
             {
-                completeLevel();
+                winLevel();
             }
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -53,13 +71,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void endGame()
+    public void loseLevel()
     {
         isGameOver = true;
         gameOverUI.SetActive(true);
     }
 
-    public void completeLevel()
+    public void winLevel()
     {
         if (!isGameOver)
         {

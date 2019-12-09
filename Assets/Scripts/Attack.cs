@@ -12,7 +12,7 @@ public class Attack : MonoBehaviour
 
         // add new antibiotics in-between
 
-        ANTIBIOTICS_COUNT
+        COUNT
     }
     ///TODO link SUBSTANCEs to their effects: table, dict, ...
     public SUBSTANCE substance;
