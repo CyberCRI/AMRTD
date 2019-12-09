@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     private Enemy enemy;
 
     [Header("Movement")]
+    private bool isHoldingPosition = false;
     public float startSpeed = 0f;
     private float speed = 0f;
     [SerializeField]
@@ -91,6 +92,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 case GameManager.GAMEMODE.PATHS:
             */
+
             wobble();
 
             if ((target - this.transform.position).magnitude <= minimumDistance)
@@ -106,14 +108,19 @@ public class EnemyMovement : MonoBehaviour
                     break;
             }
             */
-
+            
             speed = startSpeed;
         }
     }
 
+    public void setHoldingPosition(bool value)
+    {
+        isHoldingPosition = value;
+    }
+
     private void wobble()
     {
-        Vector3 displacement = (target - this.transform.position).normalized * speed * Time.deltaTime;
+        Vector3 displacement = isHoldingPosition ? Vector3.zero : (target - this.transform.position).normalized * speed * Time.deltaTime;
         Vector3 sinusoidalShiftVector = horizontalShift * new Vector3(
                 Mathf.Cos(
                     phaseShiftX +

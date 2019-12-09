@@ -518,7 +518,7 @@ public class Enemy : MonoBehaviour
 
     public void holdPosition()
     {
-        enemyMovement.enabled = false;
+        enemyMovement.setHoldingPosition(true);
     }
 
     void OnDestroy()

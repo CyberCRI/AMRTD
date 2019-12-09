@@ -11,6 +11,12 @@ public class ObjectiveDefenseMode : MonoBehaviour
     private Transform objectivesRoot;
     private ObjectiveToDefend[] objectives;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        CommonUtilities.fillArrayFromRoot<ObjectiveToDefend>(objectivesRoot, ref objectives);
+    }
+
     // Update is called once per frame
     void Update()
     {

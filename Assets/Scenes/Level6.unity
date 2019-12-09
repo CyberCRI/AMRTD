@@ -287,7 +287,7 @@ PrefabInstance:
     - target: {fileID: 2501360269376326124, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
       propertyPath: m_Size.x
-      value: 13.679205
+      value: 12.189253
       objectReference: {fileID: 0}
     - target: {fileID: 2531710065184447261, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
@@ -2160,7 +2160,7 @@ PrefabInstance:
     - target: {fileID: 2501360269376326124, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
       propertyPath: m_Size.y
-      value: 20.765068
+      value: 17.140902
       objectReference: {fileID: 0}
     - target: {fileID: 2501360269376326124, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
@@ -2330,7 +2330,7 @@ PrefabInstance:
     - target: {fileID: 2138711896307831200, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.5
+      value: -13.7
       objectReference: {fileID: 0}
     - target: {fileID: 2138711896307831200, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
@@ -4168,7 +4168,7 @@ PrefabInstance:
     - target: {fileID: 2138711896307831200, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -54
+      value: -23.7
       objectReference: {fileID: 0}
     - target: {fileID: 2138711896307831200, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
@@ -8359,7 +8359,7 @@ PrefabInstance:
     - target: {fileID: 2501360269376326124, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
       propertyPath: m_Size.y
-      value: 12.367511
+      value: 10.114169
       objectReference: {fileID: 0}
     - target: {fileID: 2501360269376326124, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
@@ -9797,7 +9797,7 @@ PrefabInstance:
     - target: {fileID: 2501360269376326124, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
       propertyPath: m_Size.y
-      value: 13.741352
+      value: 9.41489
       objectReference: {fileID: 0}
     - target: {fileID: 2501360269376326124, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
@@ -13932,12 +13932,12 @@ PrefabInstance:
     - target: {fileID: 2501360269376326124, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
       propertyPath: m_Size.y
-      value: 13.741352
+      value: 13.741357
       objectReference: {fileID: 0}
     - target: {fileID: 2501360269376326124, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
       propertyPath: m_Size.x
-      value: 13.679235
+      value: 11.249952
       objectReference: {fileID: 0}
     - target: {fileID: 2531710065184447261, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
@@ -18309,7 +18309,7 @@ PrefabInstance:
     - target: {fileID: 2501360269376326124, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
       propertyPath: m_Size.y
-      value: 20.765068
+      value: 17.547638
       objectReference: {fileID: 0}
     - target: {fileID: 2501360269376326124, guid: 6feaad09626230b44af53a4df2ef2a82,
         type: 3}
@@ -19771,7 +19771,7 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 6471766054217879161, guid: d8523941a33d2b848bb1caf9d030d272,
       type: 3}
     count: 1
-    maxEnemyCount: 1
+    maxEnemyCount: 32
     timeBetweenSpawns: 0.5
 --- !u!4 &1726487682
 Transform:

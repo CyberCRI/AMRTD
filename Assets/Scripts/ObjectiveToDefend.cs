@@ -45,11 +45,11 @@ public class ObjectiveToDefend : MonoBehaviour
         return null;
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        if (collision.collider.tag == Enemy.enemyTag)
+        if (collider.tag == Enemy.enemyTag)
         {
-            Enemy enemy = collision.transform.GetComponent<Enemy>();
+            Enemy enemy = collider.gameObject.GetComponent<Enemy>();
             ObjectiveSlot freeSlot = getFreeSlot();
             if (null != freeSlot)
             {
