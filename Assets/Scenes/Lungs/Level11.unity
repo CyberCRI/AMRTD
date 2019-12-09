@@ -20225,13 +20225,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveCountdownText: {fileID: 755939185}
   timeBeforeWave1: 1
-  timeBetweenWaves: 2
+  timeBetweenWaves: 10
   spawnPoints:
   - {fileID: 251317112}
   - {fileID: 104299605}
-  spawnMode: 1
+  spawnMode: 0
   gameManager: {fileID: 1726487685}
   waves:
+  - enemyPrefab: {fileID: 6471766054217879161, guid: db3969191c6e86444ace482e2a3ad2b7,
+      type: 3}
+    count: 1
+    maxEnemyCount: 32
+    timeBetweenSpawns: 0.5
+  - enemyPrefab: {fileID: 6471766054217879161, guid: db3969191c6e86444ace482e2a3ad2b7,
+      type: 3}
+    count: 1
+    maxEnemyCount: 32
+    timeBetweenSpawns: 0.5
+  - enemyPrefab: {fileID: 6471766054217879161, guid: db3969191c6e86444ace482e2a3ad2b7,
+      type: 3}
+    count: 1
+    maxEnemyCount: 32
+    timeBetweenSpawns: 0.5
+  - enemyPrefab: {fileID: 6471766054217879161, guid: db3969191c6e86444ace482e2a3ad2b7,
+      type: 3}
+    count: 1
+    maxEnemyCount: 32
+    timeBetweenSpawns: 0.5
+  - enemyPrefab: {fileID: 6471766054217879161, guid: db3969191c6e86444ace482e2a3ad2b7,
+      type: 3}
+    count: 1
+    maxEnemyCount: 32
+    timeBetweenSpawns: 0.5
+  - enemyPrefab: {fileID: 6471766054217879161, guid: db3969191c6e86444ace482e2a3ad2b7,
+      type: 3}
+    count: 1
+    maxEnemyCount: 32
+    timeBetweenSpawns: 0.5
+  - enemyPrefab: {fileID: 6471766054217879161, guid: db3969191c6e86444ace482e2a3ad2b7,
+      type: 3}
+    count: 1
+    maxEnemyCount: 32
+    timeBetweenSpawns: 0.5
+  - enemyPrefab: {fileID: 6471766054217879161, guid: db3969191c6e86444ace482e2a3ad2b7,
+      type: 3}
+    count: 1
+    maxEnemyCount: 32
+    timeBetweenSpawns: 0.5
+  - enemyPrefab: {fileID: 6471766054217879161, guid: db3969191c6e86444ace482e2a3ad2b7,
+      type: 3}
+    count: 1
+    maxEnemyCount: 32
+    timeBetweenSpawns: 0.5
   - enemyPrefab: {fileID: 6471766054217879161, guid: db3969191c6e86444ace482e2a3ad2b7,
       type: 3}
     count: 1
@@ -24571,7 +24616,7 @@ PrefabInstance:
     - target: {fileID: 1283043319146324916, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
       propertyPath: overrideNextLevelName
-      value: Level1
+      value: Level6_nodivision
       objectReference: {fileID: 0}
     - target: {fileID: 1283043319146324916, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
