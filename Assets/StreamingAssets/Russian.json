@@ -1,11 +1,13 @@
 {"items":
 	[
 	{"key":"META.MAIN.LANGUAGE","value":"Russian"}
+	,{"key":"META.MAIN.LANGUAGECODE","value":"ru"}
 	,{"key":"META.MAIN.LOCAL","value":"Русский"}
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"ПАУЗА"}
 	,{"key":"GAME.MENU.MENU","value":"МЕНЮ"}
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"ЖИЗНИ"}
+	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"ЗДОРОВЫЕ"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"ГОТОВ!"}
 	,{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"ПОРАЖЕНИЕ"}
 	,{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"ВОЛНЫ ВЫЖИЛИ"}

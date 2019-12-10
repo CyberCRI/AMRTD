@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectiveDefenseMode : MonoBehaviour
 {
     public static ObjectiveDefenseMode instance;
-    private bool isLost = false;
+    private int capturedObjectivesCount = 0;
     [SerializeField]
     private GameManager gameManager;
     [SerializeField]
@@ -36,21 +36,20 @@ public class ObjectiveDefenseMode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isLost = true;
+        capturedObjectivesCount = 0;
         for (int i = 0; i < objectives.Length; i++)
         {
-            if (!objectives[i].isCaptured)
+            if (objectives[i].isCaptured)
             {
-                isLost = false;
-                break;
+                capturedObjectivesCount++;
             }
         }
-        if (isLost)
+        if (capturedObjectivesCount == objectives.Length)
         {
             gameManager.loseLevel();
         }
     }
-    
+
     public int getFreeObjectiveToDefend()
     {
         int result = -1;
@@ -65,7 +64,7 @@ public class ObjectiveDefenseMode : MonoBehaviour
 
         return result;
     }
-    
+
     public Vector3 getFreeSlotPosition()
     {
         Vector3 position = Vector3.positiveInfinity;
@@ -79,5 +78,10 @@ public class ObjectiveDefenseMode : MonoBehaviour
         }
 
         return position;
+    }
+
+    public string getCapturedObjectivesStats()
+    {
+        return (objectives.Length - capturedObjectivesCount).ToString("00") + "/" + objectives.Length.ToString("00");
     }
 }

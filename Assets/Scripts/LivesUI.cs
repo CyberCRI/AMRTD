@@ -10,8 +10,15 @@ public class LivesUI : MonoBehaviour
 
     void Start()
     {
-        onLanguageChanged();
-        LocalizationManager.languageChanged.AddListener(onLanguageChanged);
+        if (null != ObjectiveDefenseMode.instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            onLanguageChanged();
+            LocalizationManager.languageChanged.AddListener(onLanguageChanged);
+        }
     }
 
     // Update is called once per frame

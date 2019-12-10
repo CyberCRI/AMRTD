@@ -1,11 +1,13 @@
 {"items":
 	[
 	{"key":"META.MAIN.LANGUAGE","value":"Spanish"}
+	,{"key":"META.MAIN.LANGUAGECODE","value":"es"}
 	,{"key":"META.MAIN.LOCAL","value":"Español"}
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"PAUSA"}
 	,{"key":"GAME.MENU.MENU","value":"MENÚ"}
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"VIVE"}
+	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"SALUDABLE"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"¡LISTO!"}
 	,{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"JUEGO TERMINADO"}
 	,{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"ONDAS SOBREVIVIDAS"}

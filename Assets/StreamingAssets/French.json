@@ -1,11 +1,13 @@
 {"items":
 	[
 	{"key":"META.MAIN.LANGUAGE","value":"French"}
+	,{"key":"META.MAIN.LANGUAGECODE","value":"fr"}
 	,{"key":"META.MAIN.LOCAL","value":"Français"}
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"PAUSE"}
 	,{"key":"GAME.MENU.MENU","value":"MENU"}
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"VIES"}
+	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"SAINS"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"PRÊT !"}
 	,{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"DÉFAITE"}
 	,{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"VAGUES VAINCUES"}

@@ -1,11 +1,13 @@
 {"items":
 	[
     {"key":"META.MAIN.LANGUAGE","value":"Chinese"}
+	,{"key":"META.MAIN.LANGUAGECODE","value":"zh"}
     ,{"key":"META.MAIN.LOCAL","value":"中文"}
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"暂停"}
 	,{"key":"GAME.MENU.MENU","value":"菜单"}
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"生活"}
+	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"健康"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"准备！"}
 	,{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"游戏结束"}
 	,{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"幸存"}

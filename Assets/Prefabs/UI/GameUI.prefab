@@ -3380,7 +3380,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1283043318913205444}
-  - component: {fileID: 6534767452122746824}
   m_Layer: 0
   m_Name: GameUI
   m_TagString: Untagged
@@ -3404,19 +3403,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6534767452122746824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283043318913205445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39f06dc9863234b43a0ba049695dfafd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  calls: 0
 --- !u!1 &1283043318958960587
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,7 +3896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneFader: {fileID: 0}
-  overrideNextLevelName: Level1
+  overrideNextLevelName: Level6_nodivision
   overrideNextLevelIndex: 0
 --- !u!1 &1283043319157564165
 GameObject:
@@ -4596,6 +4582,7 @@ GameObject:
   - component: {fileID: 1283043319595864795}
   - component: {fileID: 1283043319595864792}
   - component: {fileID: 1283043319595864789}
+  - component: {fileID: 751993850005533736}
   m_Layer: 5
   m_Name: LivesText
   m_TagString: Untagged
@@ -4692,6 +4679,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   livesText: {fileID: 1283043319595864795}
+--- !u!114 &751993850005533736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283043319595864798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c66e4295596a047b0e3e7aa80f9f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectivesText: {fileID: 1283043319595864795}
 --- !u!1 &1283043319634983200
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,11 +1,13 @@
 {"items":
 	[
     {"key":"META.MAIN.LANGUAGE","value":"Hindi"}
+	,{"key":"META.MAIN.LANGUAGECODE","value":"hi"}
     ,{"key":"META.MAIN.LOCAL","value":"हिन्दी"}
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"रोकें"}
 	,{"key":"GAME.MENU.MENU","value":"मेन्यू"}
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"रहता है"}
+	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"स्वस्थ"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"तैयार!"}
 	,{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"खेल खत्म"}
 	,{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"लहराया जाता है"}
