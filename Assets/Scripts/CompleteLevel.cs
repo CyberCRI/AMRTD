@@ -3,8 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class CompleteLevel : MonoBehaviour
 {
-    [SerializeField]
-    private SceneFader sceneFader = null;
     private string nextLevelName = "";
     private int nextLevelIndex = 0;
     [SerializeField]
@@ -41,11 +39,16 @@ public class CompleteLevel : MonoBehaviour
         int previous = PlayerPrefs.GetInt(LevelSelector.levelReachedKey);
         int newLevelReached = Mathf.Max(previous, nextLevelIndex);
         PlayerPrefs.SetInt(LevelSelector.levelReachedKey, newLevelReached);
-        sceneFader.fadeTo(nextLevelName);
+        SceneFader.instance.fadeTo(nextLevelName);
     }
 
     public void pressMenu()
     {
-        sceneFader.menu();
+        SceneFader.instance.menu();
+    }
+
+    public void pressPlayAgain()
+    {
+        SceneFader.instance.retry();
     }
 }

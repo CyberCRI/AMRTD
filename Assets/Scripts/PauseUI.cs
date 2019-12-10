@@ -3,10 +3,23 @@ using UnityEngine.SceneManagement;
 
 public class PauseUI : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject ui = null;
-    [SerializeField]
-    private SceneFader sceneFader = null;
+    public static PauseUI instance = null;
+    private GameObject pauseUI = null;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        if (null != instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -17,11 +30,16 @@ public class PauseUI : MonoBehaviour
         }
     }
 
+    public void link(GameObject _pauseUI)
+    {
+        pauseUI = _pauseUI;
+    }
+
     public void toggle()
     {
-        ui.SetActive(!ui.activeSelf);
+        pauseUI.SetActive(!pauseUI.activeSelf);
 
-        if (ui.activeSelf)
+        if (pauseUI.activeSelf)
         {
             Time.timeScale = 0f;
         }
@@ -35,13 +53,13 @@ public class PauseUI : MonoBehaviour
     {
         //toggle();
         Time.timeScale = 1f;
-        sceneFader.fadeTo(SceneManager.GetActiveScene().name);
+        SceneFader.instance.fadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void menu()
     {
         //toggle();
         Time.timeScale = 1f;
-        sceneFader.menu();
+        SceneFader.instance.menu();
     }
 }

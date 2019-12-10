@@ -6,6 +6,7 @@
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"ПАУЗА"}
 	,{"key":"GAME.MENU.MENU","value":"МЕНЮ"}
+	,{"key":"GAME.MENU.RETRY","value":"RETRY"}
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"ЖИЗНИ"}
 	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"ЗДОРОВЫЕ"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"ГОТОВ!"}
@@ -21,6 +22,7 @@
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"ВОЛНЫ ВЫЖИЛИ"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"ПРОДОЛЖАТЬ"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"МЕНЮ"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.PLAYAGAIN","value":"PLAY AGAIN"}
 	,{"key":"GAME.NODEUI.UPKEEP","value":"ПОДДЕРЖАНИЕ:"}
 	,{"key":"GAME.NODEUI.UPGRADE","value":"ОБНОВИТЬ"}
 	,{"key":"GAME.NODEUI.STOP","value":"СТОП"}

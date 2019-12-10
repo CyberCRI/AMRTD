@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -543180986272429153}
   - component: {fileID: -3129122596569909260}
   m_Layer: 0
-  m_Name: Slot0
+  m_Name: Slot
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252654f3dbf32864ea97faffb1dceef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: -543180986272429153}
-  occupant: {fileID: 0}
+  slotCollider: {fileID: -543180986272429153}
 --- !u!65 &-543180986272429153
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -60,7 +60,7 @@ public class WaveSpawner : MonoBehaviour
             isDoneSpawning
             &&
             (
-                (null != ObjectiveDefenseMode.instance)
+                (GameManager.instance.isObjectiveDefenseMode())
                 ||
                 (enemiesAlive <= 0)
             )
@@ -86,7 +86,7 @@ public class WaveSpawner : MonoBehaviour
             else
             {
                 countdown -= Time.deltaTime;
-                countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+                countdown = Mathf.Max(countdown, 0f);
                 waveCountdownText.text = string.Format("{0:00.00}", countdown);
             }
         }

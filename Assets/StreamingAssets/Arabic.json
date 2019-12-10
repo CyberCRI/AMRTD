@@ -6,6 +6,7 @@
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"وقفة"}
 	,{"key":"GAME.MENU.MENU","value":"قائمة طعام"}
+	,{"key":"GAME.MENU.RETRY","value":"RETRY"}
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"الأرواح"}
 	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"صحي"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"جاهز!"}
@@ -21,6 +22,7 @@
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"الباقين على قيد الحياة"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"استمر"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"قائمة طعام"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.PLAYAGAIN","value":"PLAY AGAIN"}
 	,{"key":"GAME.NODEUI.UPKEEP","value":"صيانة:"}
 	,{"key":"GAME.NODEUI.UPGRADE","value":"تطوير"}
 	,{"key":"GAME.NODEUI.STOP","value":"توقف"}

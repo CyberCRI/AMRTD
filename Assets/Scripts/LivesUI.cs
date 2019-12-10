@@ -10,7 +10,7 @@ public class LivesUI : MonoBehaviour
 
     void Start()
     {
-        if (null != ObjectiveDefenseMode.instance)
+        if (GameManager.instance.isObjectiveDefenseMode())
         {
             Destroy(this);
         }

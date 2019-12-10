@@ -6,6 +6,7 @@
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"暂停"}
 	,{"key":"GAME.MENU.MENU","value":"菜单"}
+	,{"key":"GAME.MENU.RETRY","value":"RETRY"}
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"生活"}
 	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"健康"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"准备！"}
@@ -21,6 +22,7 @@
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"幸存"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"继续"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"菜单"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.PLAYAGAIN","value":"PLAY AGAIN"}
 	,{"key":"GAME.NODEUI.UPKEEP","value":"保养:"}
 	,{"key":"GAME.NODEUI.UPGRADE","value":"升级"}
 	,{"key":"GAME.NODEUI.STOP","value":"停"}

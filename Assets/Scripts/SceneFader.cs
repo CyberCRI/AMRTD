@@ -5,11 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class SceneFader : MonoBehaviour
 {
+    public static SceneFader instance;
     [SerializeField]
     private Image image = null;
     [SerializeField]
     private AnimationCurve fadeCurve = null;
     public const float duration = 1f;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        if (null != instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
@@ -50,5 +66,10 @@ public class SceneFader : MonoBehaviour
     public void menu()
     {
         fadeTo(MainMenu.sceneName);
+    }
+
+    public void retry()
+    {
+        fadeTo(SceneManager.GetActiveScene().name);
     }
 }

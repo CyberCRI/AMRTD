@@ -12,7 +12,7 @@ public class ObjectivesUI : MonoBehaviour
 
     void Start()
     {
-        if (null == ObjectiveDefenseMode.instance)
+        if (!GameManager.instance.isObjectiveDefenseMode())
         {
             Destroy(this);
         }

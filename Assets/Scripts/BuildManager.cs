@@ -6,7 +6,6 @@ public class BuildManager : MonoBehaviour
 
     private TurretBlueprint turretToBuild = null;
     private Node selectedNode = null;
-    [SerializeField]
     private NodeUI nodeUI = null;
 
     /// <summary>
@@ -26,6 +25,11 @@ public class BuildManager : MonoBehaviour
 
     public bool canBuild { get { return (null != turretToBuild); } }
     public bool canBuy { get { return canBuild && (PlayerStatistics.money >= turretToBuild.cost); } }
+
+    public void link(NodeUI _nodeUI)
+    {
+        nodeUI = _nodeUI;
+    }
 
     public void selectNode(Node node)
     {

@@ -1,5 +1,6 @@
 ﻿//#define DEVMODE
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,10 +15,15 @@ public class GameManager : MonoBehaviour
         COUNT
     }
 
-    [SerializeField]
     private GameObject gameOverUI = null;
-    [SerializeField]
     private GameObject completeLevelUI = null;
+
+    [SerializeField]
+    private Text levelDurationCountdownText = null;
+    [SerializeField]
+    private float levelDuration = 0f;
+    private bool levelDurationCountdownMode = false;
+    private float levelDurationCountdown = 0f;
     
     public GAMEMODE gameMode = GAMEMODE.PATHS;
 
@@ -35,6 +41,19 @@ public class GameManager : MonoBehaviour
             instance = this;
             isGameOver = false;
             isLevelCompleted = false;
+
+            levelDurationCountdownMode = (levelDuration != 0f);
+            if (levelDurationCountdownMode)
+            {
+                levelDurationCountdown = levelDuration;
+            }
+            else
+            {
+                if (null != levelDurationCountdownText)
+                {
+                    Destroy(levelDurationCountdownText.gameObject);
+                }
+            }
         }
     }
 
@@ -46,6 +65,23 @@ public class GameManager : MonoBehaviour
             if (PlayerStatistics.lives <= 0)
             {
                 loseLevel();
+            }
+            else if (levelDurationCountdownMode)
+            {
+                if (levelDurationCountdown <= 0f)
+                {
+                    loseLevel();
+                }
+                else
+                {
+                    levelDurationCountdown -= Time.deltaTime;
+                    levelDurationCountdown = Mathf.Max(levelDurationCountdown, 0f);
+
+                    if (null != levelDurationCountdownText)
+                    {
+                        levelDurationCountdownText.text = string.Format("{0:00.00}", levelDurationCountdown);   
+                    }
+                }
             }
 #if DEVMODE
             if (Input.GetKeyDown(KeyCode.End))
@@ -69,6 +105,30 @@ public class GameManager : MonoBehaviour
             }
 #endif
         }
+    }
+
+    public bool isObjectiveDefenseMode()
+    {
+        return gameMode == GAMEMODE.DEFEND_CAPTURABLE_OBJECTIVES;
+    }
+
+    public void link(
+        Text _levelDurationCountdownMode
+        ,GameObject _gameOverUI
+        ,GameObject _completeLevelUI
+        )
+    {
+        if (levelDurationCountdownMode)
+        {
+            levelDurationCountdownText = _levelDurationCountdownMode;
+        }
+        else
+        {
+            Destroy(_levelDurationCountdownMode.gameObject);
+        }
+
+        gameOverUI = _gameOverUI;
+        completeLevelUI = _completeLevelUI;
     }
 
     public void loseLevel()

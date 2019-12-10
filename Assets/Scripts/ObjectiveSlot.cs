@@ -5,19 +5,24 @@ using UnityEngine;
 public class ObjectiveSlot : MonoBehaviour
 {
     [SerializeField]
-    private Collider collider = null;
-    public Enemy occupant = null;
+    private Collider slotCollider = null;
+    private Enemy occupant = null;
+    public bool available {
+        get {
+            return null == occupant;
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if ((null == occupant) && !collider.enabled)
+        if ((null == occupant) && !slotCollider.enabled)
         {
-            collider.enabled = true;
+            slotCollider.enabled = true;
         }
-        else if ((occupant != null) && collider.enabled)
+        else if ((occupant != null) && slotCollider.enabled)
         {
-            collider.enabled = false;
+            slotCollider.enabled = false;
         }
     }
 

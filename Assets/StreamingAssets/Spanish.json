@@ -6,6 +6,7 @@
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"PAUSA"}
 	,{"key":"GAME.MENU.MENU","value":"MENÚ"}
+	,{"key":"GAME.MENU.RETRY","value":"RETRY"}
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"VIVE"}
 	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"SALUDABLE"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"¡LISTO!"}
@@ -21,6 +22,7 @@
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"ONDAS SOBREVIVIDAS"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"CONTINUAR"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"MENÚ"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.PLAYAGAIN","value":"PLAY AGAIN"}
 	,{"key":"GAME.NODEUI.UPKEEP","value":"MANTENIMIENTO:"}
 	,{"key":"GAME.NODEUI.UPGRADE","value":"MEJORAR"}
 	,{"key":"GAME.NODEUI.STOP","value":"DETENER"}

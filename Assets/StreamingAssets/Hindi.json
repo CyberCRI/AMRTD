@@ -6,6 +6,7 @@
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"रोकें"}
 	,{"key":"GAME.MENU.MENU","value":"मेन्यू"}
+	,{"key":"GAME.MENU.RETRY","value":"RETRY"}
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"रहता है"}
 	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"स्वस्थ"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"तैयार!"}
@@ -21,6 +22,7 @@
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"लहराया जाता है"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"जारी रहना"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"मेन्यू"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.PLAYAGAIN","value":"PLAY AGAIN"}
 	,{"key":"GAME.NODEUI.UPKEEP","value":"रखरखाव:"}
 	,{"key":"GAME.NODEUI.UPGRADE","value":"अपग्रेड"}
 	,{"key":"GAME.NODEUI.STOP","value":"रुकें"}

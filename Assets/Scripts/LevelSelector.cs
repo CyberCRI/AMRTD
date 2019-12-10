@@ -7,8 +7,6 @@ public class LevelSelector : MonoBehaviour
     public static LevelSelector instance = null;
 
     [SerializeField]
-    private SceneFader sceneFader = null;
-    [SerializeField]
     private Transform levelButtonsRoot = null;
     private Button[] levelButtons = null;
     public const string levelReachedKey = "levelReached";
@@ -47,7 +45,7 @@ public class LevelSelector : MonoBehaviour
 
     public void select(string levelName)
     {
-        sceneFader.fadeTo(levelName);
+        SceneFader.instance.fadeTo(levelName);
     }
 
     public static void deleteAllPlayerPrefs()

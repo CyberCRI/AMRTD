@@ -7,9 +7,7 @@ public class ObjectiveDefenseMode : MonoBehaviour
     public static ObjectiveDefenseMode instance;
     private int capturedObjectivesCount = 0;
     [SerializeField]
-    private GameManager gameManager;
-    [SerializeField]
-    private Transform objectivesRoot;
+    private Transform objectivesRoot = null;
     private ObjectiveToDefend[] objectives;
 
     /// <summary>
@@ -17,7 +15,7 @@ public class ObjectiveDefenseMode : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        if (null != instance)
+        if ((null != instance) || !GameManager.instance.isObjectiveDefenseMode())
         {
             Destroy(this);
         }
@@ -46,7 +44,7 @@ public class ObjectiveDefenseMode : MonoBehaviour
         }
         if (capturedObjectivesCount == objectives.Length)
         {
-            gameManager.loseLevel();
+            GameManager.instance.loseLevel();
         }
     }
 

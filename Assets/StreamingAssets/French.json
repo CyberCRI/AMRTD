@@ -6,6 +6,7 @@
 	,{"key":"META.MAIN.VERSION","value":"0.1"}
 	,{"key":"GAME.MENU.PAUSE","value":"PAUSE"}
 	,{"key":"GAME.MENU.MENU","value":"MENU"}
+	,{"key":"GAME.MENU.RETRY","value":"RÉESSAYER"}
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"VIES"}
 	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"SAINS"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"PRÊT !"}
@@ -21,6 +22,7 @@
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED","value":"VAGUES VAINCUES"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.CONTINUE","value":"CONTINUER"}
 	,{"key":"GAME.LEVELCOMPLETEDSCREEN.MENU","value":"MENU"}
+	,{"key":"GAME.LEVELCOMPLETEDSCREEN.PLAYAGAIN","value":"REJOUER"}
 	,{"key":"GAME.NODEUI.UPKEEP","value":"COÛT:"}
 	,{"key":"GAME.NODEUI.UPGRADE","value":"AMÉLIORER"}
 	,{"key":"GAME.NODEUI.STOP","value":"STOP"}
