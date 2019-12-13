@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GameUILinkerUI : MonoBehaviour
 {
     [SerializeField]
+    private Text waveCountdownText = null;
+    [SerializeField]
     private Text levelDurationCountdownText = null;
     [SerializeField]
     private NodeUI nodeUI = null;
@@ -19,12 +21,13 @@ public class GameUILinkerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.instance.link(
+        GameManager.instance.linkUI(
             levelDurationCountdownText
             ,gameOverUI
             ,completeLevelUI
             );
-        BuildManager.instance.link(nodeUI);
-        PauseUI.instance.link(pauseUI);
+        BuildManager.instance.linkUI(nodeUI);
+        PauseUI.instance.linkUI(pauseUI);
+        WaveSpawner.instance.linkUI(waveCountdownText);
     }
 }

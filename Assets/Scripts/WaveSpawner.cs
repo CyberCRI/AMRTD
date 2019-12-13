@@ -11,7 +11,6 @@ public class WaveSpawner : MonoBehaviour
     private float countdown = 0f;
     private bool isDoneSpawning = true;
 
-    [SerializeField]
     private Text waveCountdownText = null;
     [SerializeField]
     private float timeBeforeWave1 = 0f;
@@ -90,6 +89,13 @@ public class WaveSpawner : MonoBehaviour
                 waveCountdownText.text = string.Format("{0:00.00}", countdown);
             }
         }
+    }
+
+    public void linkUI(
+        Text _waveCountdownText
+    )
+    {
+        waveCountdownText = _waveCountdownText;
     }
 
     public void setCountdownToZero()

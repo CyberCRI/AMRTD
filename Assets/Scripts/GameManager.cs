@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         return gameMode == GAMEMODE.DEFEND_CAPTURABLE_OBJECTIVES;
     }
 
-    public void link(
+    public void linkUI(
         Text _levelDurationCountdownMode
         ,GameObject _gameOverUI
         ,GameObject _completeLevelUI

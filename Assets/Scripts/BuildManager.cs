@@ -26,7 +26,7 @@ public class BuildManager : MonoBehaviour
     public bool canBuild { get { return (null != turretToBuild); } }
     public bool canBuy { get { return canBuild && (PlayerStatistics.money >= turretToBuild.cost); } }
 
-    public void link(NodeUI _nodeUI)
+    public void linkUI(NodeUI _nodeUI)
     {
         nodeUI = _nodeUI;
     }

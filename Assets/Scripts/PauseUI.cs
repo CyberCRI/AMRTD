@@ -29,7 +29,7 @@ public class PauseUI : MonoBehaviour
         }
     }
 
-    public void link(GameObject _pauseUI)
+    public void linkUI(GameObject _pauseUI)
     {
         pauseUI = _pauseUI;
     }
