@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseUI : MonoBehaviour
 {
@@ -47,19 +46,5 @@ public class PauseUI : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
-    }
-
-    public void retry()
-    {
-        //toggle();
-        Time.timeScale = 1f;
-        SceneFader.instance.fadeTo(SceneManager.GetActiveScene().name);
-    }
-
-    public void menu()
-    {
-        //toggle();
-        Time.timeScale = 1f;
-        SceneFader.instance.menu();
     }
 }

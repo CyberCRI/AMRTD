@@ -22259,7 +22259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bebcc5c12871e744b94a5a2356bd683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeUI: {fileID: 2106467876}
 --- !u!114 &1726487684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22286,8 +22285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a647893da91c443b7246f3620ee834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverUI: {fileID: 1463159311}
-  completeLevelUI: {fileID: 1812805687}
+  levelDurationCountdownText: {fileID: 0}
+  levelDuration: 0
   gameMode: 0
 --- !u!114 &1726487686
 MonoBehaviour:
@@ -22301,8 +22300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6fdb393d942e64d867b7be2cf55c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 1452720545}
-  sceneFader: {fileID: 5591449203680623081}
 --- !u!1001 &1737484657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23770,7 +23767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def8a6441513b3347b68850656be3253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneFader: {fileID: 5591449203680623081}
   overrideNextLevelName: 
   overrideNextLevelIndex: -1
 --- !u!95 &1812805690

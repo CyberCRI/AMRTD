@@ -3,12 +3,28 @@ using UnityEngine.SceneManagement;
 
 public class CompleteLevel : MonoBehaviour
 {
+    public static CompleteLevel instance;
     private string nextLevelName = "";
     private int nextLevelIndex = 0;
     [SerializeField]
     private string overrideNextLevelName = "";
     [SerializeField]
     private int overrideNextLevelIndex = -1;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        if (null != instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -40,15 +56,5 @@ public class CompleteLevel : MonoBehaviour
         int newLevelReached = Mathf.Max(previous, nextLevelIndex);
         PlayerPrefs.SetInt(LevelSelector.levelReachedKey, newLevelReached);
         SceneFader.instance.fadeTo(nextLevelName);
-    }
-
-    public void pressMenu()
-    {
-        SceneFader.instance.menu();
-    }
-
-    public void pressPlayAgain()
-    {
-        SceneFader.instance.retry();
     }
 }
