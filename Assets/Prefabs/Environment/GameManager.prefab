@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6342658062583492235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6342658062583492233}
+  - component: {fileID: 6342658062583492232}
+  - component: {fileID: 6342658062583492239}
+  - component: {fileID: 6342658062583492238}
+  - component: {fileID: 6342658062583492237}
+  - component: {fileID: 6342658062583492234}
+  - component: {fileID: 6342658062583492236}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6342658062583492233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342658062583492235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6342658062583492232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342658062583492235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bebcc5c12871e744b94a5a2356bd683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6342658062583492239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342658062583492235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e01e8c9ee94fb42932322c0a2b1c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoney: 150
+  startLives: 5
+--- !u!114 &6342658062583492238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342658062583492235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a647893da91c443b7246f3620ee834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelDuration: 0
+  gameMode: 0
+--- !u!114 &6342658062583492237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342658062583492235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6fdb393d942e64d867b7be2cf55c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6342658062583492234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342658062583492235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6171a914dd484646aa9dc1b6f0fa644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBeforeWave1: 10
+  timeBetweenWaves: 10
+  spawnMode: 1
+  gameManager: {fileID: 6342658062583492238}
+  waves:
+  - enemyPrefab: {fileID: 7667180733465665960, guid: b6f4181090b76564db250158a6bd01f6,
+      type: 3}
+    count: 1
+    maxEnemyCount: 1
+    timeBetweenSpawns: 1
+  - enemyPrefab: {fileID: 7667180733465665960, guid: b6f4181090b76564db250158a6bd01f6,
+      type: 3}
+    count: 2
+    maxEnemyCount: 4
+    timeBetweenSpawns: 2
+  - enemyPrefab: {fileID: 7667180733465665960, guid: b6f4181090b76564db250158a6bd01f6,
+      type: 3}
+    count: 4
+    maxEnemyCount: 8
+    timeBetweenSpawns: 1.5
+  - enemyPrefab: {fileID: 7667180733465665960, guid: b6f4181090b76564db250158a6bd01f6,
+      type: 3}
+    count: 8
+    maxEnemyCount: 4
+    timeBetweenSpawns: 1
+  - enemyPrefab: {fileID: 7667180733465665960, guid: b6f4181090b76564db250158a6bd01f6,
+      type: 3}
+    count: 16
+    maxEnemyCount: 8
+    timeBetweenSpawns: 1
+--- !u!114 &6342658062583492236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342658062583492235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def8a6441513b3347b68850656be3253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideNextLevelName: Level7_division
+  overrideNextLevelIndex: 1

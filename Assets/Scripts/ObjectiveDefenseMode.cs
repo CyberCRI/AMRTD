@@ -8,6 +8,7 @@ public class ObjectiveDefenseMode : MonoBehaviour
     private int capturedObjectivesCount = 0;
     [SerializeField]
     private Transform objectivesRoot = null;
+    [SerializeField]
     private ObjectiveToDefend[] objectives;
 
     /// <summary>
@@ -15,7 +16,7 @@ public class ObjectiveDefenseMode : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        if ((null != instance) || !GameManager.instance.isObjectiveDefenseMode())
+        if (null != instance)
         {
             Destroy(this);
         }
@@ -28,7 +29,14 @@ public class ObjectiveDefenseMode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CommonUtilities.fillArrayFromRoot<ObjectiveToDefend>(objectivesRoot, ref objectives);
+        if (GameManager.instance.isObjectiveDefenseMode())
+        {
+            CommonUtilities.fillArrayFromRoot<ObjectiveToDefend>(objectivesRoot, ref objectives);
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     // Update is called once per frame

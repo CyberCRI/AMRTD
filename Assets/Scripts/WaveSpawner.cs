@@ -10,14 +10,13 @@ public class WaveSpawner : MonoBehaviour
     private int waveIndex = 0;
     private float countdown = 0f;
     private bool isDoneSpawning = true;
+    private Transform[] spawnPoints = null;
 
     private Text waveCountdownText = null;
     [SerializeField]
     private float timeBeforeWave1 = 0f;
     [SerializeField]
     private float timeBetweenWaves = 0f;
-    [SerializeField]
-    private Transform[] spawnPoints = null;
     [SerializeField]
     private SpawnMode spawnMode = SpawnMode.RANDOMDISCRETE;
     [SerializeField]
@@ -98,10 +97,18 @@ public class WaveSpawner : MonoBehaviour
         waveCountdownText = _waveCountdownText;
     }
 
+    public void linkMap(
+        Transform[] _spawnPoints
+        )
+    {
+        spawnPoints = new Transform[_spawnPoints.Length];
+        _spawnPoints.CopyTo(spawnPoints, 0);
+    }
+
     public void setCountdownToZero()
     {
         Debug.Log("setCountdownToZero");
-        countdown = 0f; 
+        countdown = 0f;
     }
 
     IEnumerator spawnWave()
@@ -176,7 +183,7 @@ public class WaveSpawner : MonoBehaviour
                 enemyMotherCell = wave.enemyPrefab;
             }
             GameObject instantiatedEnemy = (GameObject)Instantiate(enemyMotherCell, spawnPointPosition, spawnPointRotation);
-            
+
             enemy = instantiatedEnemy.GetComponent<Enemy>();
             enemy.initialize(wave, reward, health, startHealth, waypointIndex);
 
@@ -188,9 +195,9 @@ public class WaveSpawner : MonoBehaviour
 
                 foreach (Attack iAttack in originalAttacks)
                 {
-                    foreach(Attack oAttack in instantiatedAttacks)
+                    foreach (Attack oAttack in instantiatedAttacks)
                     {
-                        if(iAttack.substance == oAttack.substance)
+                        if (iAttack.substance == oAttack.substance)
                         {
                             iAttack.initialize(true, oAttack, enemy);
                             continue;

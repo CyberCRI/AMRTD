@@ -17,15 +17,14 @@ public class GameManager : MonoBehaviour
 
     private GameObject gameOverUI = null;
     private GameObject completeLevelUI = null;
-
-    [SerializeField]
     private Text levelDurationCountdownText = null;
     [SerializeField]
     private float levelDuration = 0f;
     private bool levelDurationCountdownMode = false;
     private float levelDurationCountdown = 0f;
     
-    public GAMEMODE gameMode = GAMEMODE.PATHS;
+    [SerializeField]
+    private GAMEMODE gameMode = GAMEMODE.PATHS;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
