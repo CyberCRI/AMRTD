@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelSelectionMenu.unity
     guid: 4851e3536d5ccc649bc2a00b8e7988db
   - enabled: 1
-    path: Assets/Scenes/Resistance/Level1.unity
-    guid: ed9c691a1a9e0294f9b13fb7754f9dde
-  - enabled: 1
     path: Assets/Scenes/Resistance/Level2.unity
     guid: 3bdc78ff0e7f1924ca895302aa566bb2
   - enabled: 1

@@ -1,9 +1,11 @@
-﻿//#define DEVMODE
+﻿#define DEVMODE
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.IO;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LocalizationManager : MonoBehaviour
 {
@@ -12,11 +14,13 @@ public class LocalizationManager : MonoBehaviour
 
     public static UnityEvent languageChanged = new UnityEvent();
 
+    public RectTransform uiRoot;
     private Dictionary<string, string> localizedText;
     private bool isReady = false;
     private string missingTextString = "Localized text not found";
 
-    public enum LANGUAGES {
+    public enum LANGUAGES
+    {
         ENGLISH
         , FRENCH
         , RUSSIAN
@@ -25,7 +29,7 @@ public class LocalizationManager : MonoBehaviour
         , SPANISH
         , ARABIC
         , COUNT
-        }
+    }
     private string[] languages = {
         "English"
         ,"French"
@@ -52,6 +56,8 @@ public class LocalizationManager : MonoBehaviour
             //#if DEVMODE
             //            Debug.Log("language set");
             //#endif
+            
+            refreshUIElements("language.set");
         }
     }
 
@@ -69,6 +75,70 @@ public class LocalizationManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += onSceneLoaded;
+    }
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        refreshUIElements("Start()");
+    }
+
+    private void refreshUIElements(string debug = "")
+    {
+#if DEVMODE
+        Debug.Log("refreshUIElements(" + debug + ")");
+#endif
+
+        Canvas.ForceUpdateCanvases();
+        if (null != uiRoot)
+        {
+#if DEVMODE
+            Debug.Log("ForceRebuildLayoutImmediate");
+#endif
+            LayoutRebuilder.ForceRebuildLayoutImmediate(uiRoot);
+        }
+
+        HorizontalLayoutGroup[] hlg = GameObject.FindObjectsOfType<HorizontalLayoutGroup>();
+        for (int i = 0; i < hlg.Length; i++)
+        {
+            hlg[i].enabled = false;
+        }
+#if DEVMODE
+        Debug.Log(" hlg.Length=" + hlg.Length);
+#endif
+
+        VerticalLayoutGroup[] vlg = GameObject.FindObjectsOfType<VerticalLayoutGroup>();
+        for (int i = 0; i < vlg.Length; i++)
+        {
+            vlg[i].enabled = false;
+        }
+#if DEVMODE
+        Debug.Log(" vlg.Length=" + vlg.Length);
+#endif
+
+        hlg = GameObject.FindObjectsOfType<HorizontalLayoutGroup>();
+        for (int i = 0; i < hlg.Length; i++)
+        {
+            hlg[i].enabled = true;
+        }
+
+        vlg = GameObject.FindObjectsOfType<VerticalLayoutGroup>();
+        for (int i = 0; i < vlg.Length; i++)
+        {
+            vlg[i].enabled = true;
+        }
+    }
+
+    void onSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+#if DEVMODE
+            Debug.Log("onSceneLoaded: " + scene.name + " with mode " + mode);
+#endif        
+        refreshUIElements("onSceneLoaded");
     }
 
     public LANGUAGES getNextLanguage()
@@ -124,6 +194,8 @@ public class LocalizationManager : MonoBehaviour
 
         isReady = true;
         languageChanged.Invoke();
+
+        refreshUIElements("loadStreamingAsset");
     }
 
 }
