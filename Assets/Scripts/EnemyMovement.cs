@@ -32,8 +32,8 @@ public class EnemyMovement : MonoBehaviour
     private float wobbleShiftSpeedX = 0f;
     [SerializeField]
     private float wobbleShiftSpeedZ = 0f;
-    private Vector3 initialScale;
-    private Vector3 initialRotation;
+    private Vector3 initialScale = Vector3.zero;
+    private Vector3 initialRotation = Vector3.zero;
     // ratioFactor = 1/(scaleFactor +1)
     // scaleFactor = -1 + 1/ratioFactor
     [SerializeField]
@@ -59,14 +59,19 @@ public class EnemyMovement : MonoBehaviour
         {
             wobbledTransform = this.transform;
         }
-        initialScale = wobbledTransform.localScale;
-        initialRotation = wobbledTransform.localRotation.eulerAngles;
         enemy = this.GetComponent<Enemy>();
         speed = startSpeed;
+
         phaseShiftX = Random.Range(0, 2 * Mathf.PI);
         phaseShiftZ = Random.Range(0, 2 * Mathf.PI);
         phaseRotatY = Random.Range(0, 2 * Mathf.PI);
         phaseScaleX = Random.Range(0, 2 * Mathf.PI);
+
+        if (Vector3.zero == initialScale)
+        {
+            initialScale = wobbledTransform.localScale;
+            initialRotation = wobbledTransform.localRotation.eulerAngles;
+        }
 
         minimumDistance = Mathf.Max(distanceSecurityRatio * horizontalShift, minimumDistance);
     }
@@ -108,9 +113,23 @@ public class EnemyMovement : MonoBehaviour
                     break;
             }
             */
-            
+
             speed = startSpeed;
         }
+    }
+
+    public void setWobbleParameters(
+        Vector3 _initialScale
+        , Vector3 _initialRotation
+        )
+    {
+        initialScale = _initialScale;
+        initialRotation = _initialRotation;
+    }
+
+    public void transferWobblingParametersTo(EnemyMovement otherEM)
+    {
+        otherEM.setWobbleParameters(initialScale, initialRotation);
     }
 
     public void setHoldingPosition(bool value)
@@ -188,5 +207,28 @@ public class EnemyMovement : MonoBehaviour
     {
         PlayerStatistics.lives--;
         Destroy(this.gameObject);
+    }
+
+    public void debugFields()
+    {
+        Debug.Log(
+            "debugFields on GO " + this.gameObject.name
+            + "\nstartSpeed=" + startSpeed
+            + "\nspeed=" + speed
+            + "\nwobbleScaleSpeed=" + wobbleScaleSpeed
+            + "\nwobbleRotateSpeed=" + wobbleRotateSpeed
+            + "\nwobbleShiftSpeedX=" + wobbleShiftSpeedX
+            + "\nwobbleShiftSpeedZ=" + wobbleShiftSpeedZ
+            + "\ninitialScale=" + initialScale
+            + "\ninitialRotation=" + initialRotation
+            + "\nscaleFactor=" + scaleFactor
+            + "\nratioFactor=" + ratioFactor
+            + "\nangularWobble=" + angularWobble
+            + "\nhorizontalShift=" + horizontalShift
+            + "\nphaseShiftX=" + phaseShiftX
+            + "\nphaseShiftZ=" + phaseShiftZ
+            + "\nphaseRotatY=" + phaseRotatY
+            + "\nphaseScaleX=" + phaseScaleX
+            );
     }
 }

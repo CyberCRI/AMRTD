@@ -187,25 +187,6 @@ public class WaveSpawner : MonoBehaviour
             enemy = instantiatedEnemy.GetComponent<Enemy>();
             enemy.initialize(wave, reward, health, startHealth, waypointIndex);
 
-            if (divisionMode)
-            {
-                // initialize Attacks
-                Attack[] originalAttacks = instantiatedEnemy.GetComponents<Attack>();
-                Attack[] instantiatedAttacks = instantiatedEnemy.GetComponents<Attack>();
-
-                foreach (Attack iAttack in originalAttacks)
-                {
-                    foreach (Attack oAttack in instantiatedAttacks)
-                    {
-                        if (iAttack.substance == oAttack.substance)
-                        {
-                            iAttack.initialize(true, oAttack, enemy);
-                            continue;
-                        }
-                    }
-                }
-            }
-
             enemiesAlive++;
         }
         return enemy;

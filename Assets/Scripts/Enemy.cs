@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     private EnemyMovement enemyMovement = null;
-    
+
     // TODO fix issue #36 on wrong enemy collider scale
     /*
     [SerializeField]
@@ -374,8 +374,26 @@ public class Enemy : MonoBehaviour
                 );
             if (null != enemy)
             {
+
+                // initialize Attacks
+                Attack[] originalAttacks = this.gameObject.GetComponents<Attack>();
+                Attack[] instantiatedAttacks = enemy.gameObject.GetComponents<Attack>();
+
+                foreach (Attack iAttack in instantiatedAttacks)
+                {
+                    foreach (Attack oAttack in originalAttacks)
+                    {
+                        if (iAttack.substance == oAttack.substance)
+                        {
+                            iAttack.initialize(true, oAttack, enemy);
+                            continue;
+                        }
+                    }
+                }
+
                 enemy.innerMutate(defaultMutationRange);
                 enemy.enemyMovement.enabled = true;
+                enemyMovement.transferWobblingParametersTo(enemy.enemyMovement);
             }
         }
         else
