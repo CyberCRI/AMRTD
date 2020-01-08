@@ -83,6 +83,11 @@ public class Turret : Attacker
         lifetimeStart = Mathf.Max(lifetimeStart, lifetimeRemaining);
     }
 
+    private void applyResistanceCost(float deltaTime)
+    {
+        PlayerStatistics.takeResistance(deltaTime * PlayerStatistics.costABPerSec);
+    }
+
     private void updateLifetimeBar()
     {
         lifetimeBar.fillAmount = lifetimeRemaining / lifetimeStart;
@@ -144,8 +149,9 @@ public class Turret : Attacker
         }
         else
         {
-            
+
             updateLifetimeBar();
+            applyResistanceCost(Time.deltaTime);
             lifetimeRemaining -= Time.deltaTime;
 
             if (upkeepCountdown <= 0)

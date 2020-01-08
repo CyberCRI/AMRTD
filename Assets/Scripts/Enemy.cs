@@ -507,7 +507,7 @@ public class Enemy : MonoBehaviour
     {
         bool[] _immunities = new bool[(int)Attack.SUBSTANCE.COUNT];
         float[] _resistances = new float[(int)Attack.SUBSTANCE.COUNT];
-        bool _canDivideWhileWounded;
+        //bool _canDivideWhileWounded;
 
         if (MUTATION_DIRECTION.RANDOM == mutationDirection)
         {

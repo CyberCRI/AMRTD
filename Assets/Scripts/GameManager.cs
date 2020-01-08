@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private float levelDuration = 0f;
     private bool levelDurationCountdownMode = false;
     private float levelDurationCountdown = 0f;
-    
+
     [SerializeField]
     private GAMEMODE gameMode = GAMEMODE.PATHS;
 
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            if (PlayerStatistics.lives <= 0)
+            if (PlayerStatistics.lives <= 0 || PlayerStatistics.lifePoints <= 0)
             {
                 loseLevel();
             }
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
 
                     if (null != levelDurationCountdownText)
                     {
-                        levelDurationCountdownText.text = string.Format("{0:00.00}", levelDurationCountdown);   
+                        levelDurationCountdownText.text = string.Format("{0:00.00}", levelDurationCountdown);
                     }
                 }
             }
@@ -113,8 +113,8 @@ public class GameManager : MonoBehaviour
 
     public void linkUI(
         Text _levelDurationCountdownMode
-        ,GameObject _gameOverUI
-        ,GameObject _completeLevelUI
+        , GameObject _gameOverUI
+        , GameObject _completeLevelUI
         )
     {
         if (levelDurationCountdownMode)
@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
     private void killAllButOneEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(Enemy.enemyTag);
-        for (int i = 0; i < enemies.Length-1; i++)
+        for (int i = 0; i < enemies.Length - 1; i++)
         {
             GameObject enemyGO = enemies[i];
             Enemy enemy = enemyGO.GetComponent<Enemy>();

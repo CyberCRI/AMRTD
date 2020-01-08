@@ -6,39 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 421004eab96214340b6ba5ac63fa3e9a
+    path: Assets/Scenes/20200127India/Level1_nodivision.unity
+    guid: 00f15da8d501eb7498caf6726a7acfb2
   - enabled: 1
-    path: Assets/Scenes/LevelSelectionMenu.unity
-    guid: 4851e3536d5ccc649bc2a00b8e7988db
+    path: Assets/Scenes/20200127India/Level2_division.unity
+    guid: 42d41ed0eecdaf841993cb72e52e3841
   - enabled: 1
-    path: Assets/Scenes/Resistance/Level2.unity
-    guid: 3bdc78ff0e7f1924ca895302aa566bb2
+    path: Assets/Scenes/20200127India/Level3_optimality.unity
+    guid: 215613959dccbaa4090ba57cf1ae1d9c
   - enabled: 1
-    path: Assets/Scenes/Resistance/Level3.unity
-    guid: 0b4ff6d38fbb1ce49aee48634e6444fd
+    path: Assets/Scenes/20200127India/Level4_resistance.unity
+    guid: 0f2ce7002a5ed5142bcb917c1a3f72d9
   - enabled: 1
-    path: Assets/Scenes/Resistance/Level4.unity
-    guid: 0d82c0bb3a85297479b427101fa45b74
+    path: Assets/Scenes/20200127India/Level5_PillsBottle.unity
+    guid: 059147ba1949e99479e5092f0c21d748
   - enabled: 1
-    path: Assets/Scenes/Resistance/Level5.unity
-    guid: 4d5749be664a69a48a792f7ab38f3721
+    path: Assets/Scenes/20200127India/Level6_Syringe.unity
+    guid: 906e8ca86cf165043b893464af6dd3c7
   - enabled: 1
-    path: Assets/Scenes/Tutorial/Level6_nodivision.unity
-    guid: f3614b5e6565c944192487634188a350
+    path: Assets/Scenes/20200127India/Level7_specificity.unity
+    guid: e8444114b10545247bb80e3a09fc4170
   - enabled: 1
-    path: Assets/Scenes/Tutorial/Level7_division.unity
-    guid: ad97c650b375f894289e139e4055b09d
+    path: Assets/Scenes/20200127India/Level8_Lungs.unity
+    guid: 85724574c8fc4b844a49dc8b2e366d88
   - enabled: 1
-    path: Assets/Scenes/Tutorial/Level8_PillsBottle.unity
-    guid: ca58c21f55ced8a47b7bd30cc4f4cd1a
+    path: Assets/Scenes/20200127India/LevelSelectionMenu.unity
+    guid: 3cf7b37608f96cd44b9d87ab32d55b7f
   - enabled: 1
-    path: Assets/Scenes/Tutorial/Level9_Syringe.unity
-    guid: 41ad63827888f014f9223bacf56bca8f
-  - enabled: 1
-    path: Assets/Scenes/Tutorial/Level10_specificity.unity
-    guid: c067ff7682142e64c828d1a19d99b08a
-  - enabled: 1
-    path: Assets/Scenes/Lungs/Level11.unity
-    guid: a396c3bd0c1c6514dad00564ea2a9f74
+    path: Assets/Scenes/20200127India/MainMenu.unity
+    guid: 1ef7a0d34d7af7e48925a60e57ccccb0
   m_configObjects: {}

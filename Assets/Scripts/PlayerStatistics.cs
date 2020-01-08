@@ -6,9 +6,26 @@ using UnityEngine;
 public class PlayerStatistics : MonoBehaviour
 {
     public static int money;
+
     public static int lives;
+    public static float lifePoints;
+    public static float startLifePoints = defaultLifePoints;
+    public static float livesToLifePointsFactor;
+
+    public static float resistancePoints;
+    public static float resistanceToLifeFactor;
+    public static float offsetRatio = .5f;
+
     public static int waves;
-    
+
+    public const float defaultLifePoints = 100f;
+    public const float defaultMaxResistancePoints = 100f;
+    public const float costABPerSec = 1f;
+
+    [SerializeField]
+    private float startResistancePoints = 0f;
+
+
     [SerializeField]
     private int startMoney = 0;
     [SerializeField]
@@ -21,7 +38,12 @@ public class PlayerStatistics : MonoBehaviour
     {
         money = startMoney;
         lives = startLives;
+        lifePoints = startLifePoints;
+        resistancePoints = startResistancePoints;
         waves = 0;
+
+        resistanceToLifeFactor = (1f - offsetRatio) * startLifePoints / defaultMaxResistancePoints;
+        livesToLifePointsFactor = startLifePoints / lives;
     }
 
 #if DEVMODE
@@ -34,6 +56,14 @@ public class PlayerStatistics : MonoBehaviour
         {
             money += startMoney;
         }
+
+        lifePoints = lives * livesToLifePointsFactor - resistancePoints * resistanceToLifeFactor;
+        lifePoints = Mathf.Clamp(lifePoints, 0f, startLifePoints);
     }
 #endif
+
+    public static void takeResistance(float amount)
+    {
+        resistancePoints = Mathf.Min(resistancePoints + amount, defaultMaxResistancePoints);
+    }
 }
