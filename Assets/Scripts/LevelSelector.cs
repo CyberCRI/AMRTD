@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class LevelSelector : MonoBehaviour
 {
     public static LevelSelector instance = null;
+    
+    public const string sceneName = "LevelSelectionMenu";
 
     [SerializeField]
     private Transform levelButtonsRoot = null;

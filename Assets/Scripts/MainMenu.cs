@@ -2,14 +2,11 @@
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField]
-    private string levelToLoad = "";
-
     public const string sceneName = "MainMenu";
 
     public void play()
     {
-        SceneFader.instance.fadeTo(levelToLoad);
+        SceneFader.instance.fadeTo(LevelSelector.sceneName);
     }
 
     public void quit()
