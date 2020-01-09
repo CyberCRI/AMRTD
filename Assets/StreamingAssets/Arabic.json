@@ -43,5 +43,8 @@
 	,{"key":"LEVELSELECTMENU.LEVEL09.TITLE","value":"محقنة"}
 	,{"key":"LEVELSELECTMENU.LEVEL10.TITLE","value":"مقاومة"}
 	,{"key":"LEVELSELECTMENU.LEVEL11.TITLE","value":"0\nLungs"}
+	,{"key":"TUTORIAL.TEST.0","value":"This is the WaveTimerText."}
+	,{"key":"TUTORIAL.TEST.1","value":"This is the ResistanceBar."}
+	,{"key":"TUTORIAL.TEST.2","value":"This is the LifeBar."}
 	]
 }
