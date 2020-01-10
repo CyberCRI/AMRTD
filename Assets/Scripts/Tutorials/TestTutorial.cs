@@ -9,9 +9,9 @@ public class TestTutorial : FakeStepByStepTutorial { }
 public class TestTutorial : StepByStepTutorial
 {
 
-    private const string _timer = "WaveTimerText";
-    private const string _resistanceBar = "ResistanceBar";
-    private const string _lifeBar = "LifeBar";
+    private const string _timer = FocusMaskManager.waveTimerTextGOName;
+    private const string _resistanceBar = FocusMaskManager.resistanceBarGOName;
+    private const string _lifeBar = FocusMaskManager.lifeBarGOName;
 
     private const string _textKeyPrefix = _genericTextKeyPrefix + "TEST.";
     protected override string textKeyPrefix

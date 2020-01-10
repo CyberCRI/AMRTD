@@ -3,6 +3,9 @@ using UnityEngine;
 
 public abstract class StepByStepTutorial : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject foundObject = null;
+
     private int _step = 0;
     private bool prepared = false;
     private float waited = 0;
@@ -93,6 +96,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
                     {
                         Debug.Log(this.GetType() + " preparing step " + _step + " searching for " + focusObjects[_step]);
                         GameObject go = GameObject.Find(focusObjects[_step]);
+                        foundObject = go;
                         if (go == null)
                         {
                             Debug.LogError(this.GetType() + " GameObject not found at step " + _step + ": " + focusObjects[_step]);

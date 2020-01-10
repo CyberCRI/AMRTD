@@ -1,4 +1,4 @@
-﻿// #define DEVMODE
+﻿#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,9 +6,15 @@ public class FocusMaskManager : MonoBehaviour
 {
     public static FocusMaskManager instance = null;
 
+    public const string waveTimerTextGOName = "WaveTimerText";
+    public const string resistanceBarGOName = "ResistanceBar";
+    public const string lifeBarGOName = "LifeBar";
+
     public delegate void FocusEvent();
     //public static event FocusEvent onFocusOn;
     
+    [SerializeField]
+    private RectTransform focusSystem = null;
     [SerializeField]
     private GameObject focusMask = null;
     [SerializeField]
@@ -90,7 +96,7 @@ public class FocusMaskManager : MonoBehaviour
 
     public void focusOn(GameObject go, Vector3 manualScale, Callback callback = null, string advisorTextKey = null, bool scaleToComponent = false)
     {
-        // Debug.Log(this.GetType() + " focusOn(GameObject go, Vector3 manualScale,...)");
+        Debug.Log(this.GetType() + " focusOn(GameObject go, Vector3 manualScale,...) - will compute GO position");
 
         if (null != go)
         {
@@ -105,12 +111,13 @@ public class FocusMaskManager : MonoBehaviour
                 // Debug.Log(this.GetType() + " !isInterfaceObject");
                 _worldCamera = null == _worldCamera ? GameObject.FindWithTag("MainCamera").GetComponentInChildren<Camera>() : _worldCamera;
                 camera = _worldCamera;
+                focusOn(getScreenPosition(camera, go.transform.position), callback, scaleFactor, !isInterfaceObject, advisorTextKey, true);
             }
             else
             {
                 // Debug.Log(this.GetType() + " isInterfaceObject");
+                focusOn(getScreenPosition(camera, go.transform.localPosition), callback, scaleFactor, !isInterfaceObject, advisorTextKey, true);
             }
-            focusOn(getScreenPosition(camera, go.transform.position), callback, scaleFactor, !isInterfaceObject, advisorTextKey, true);
         }
         else
         {
@@ -145,7 +152,7 @@ public class FocusMaskManager : MonoBehaviour
 
     private static Vector2 getScreenPosition(Camera camera, Vector3 gameObjectPosition)
     {
-        // Debug.Log("FocusMaskManager getScreenPosition");
+        Debug.Log("getScreenPosition of " + gameObjectPosition);
         if (null != camera && null != gameObjectPosition)
         {
             // Debug.Log("FocusMaskManager getScreenPosition(" + camera.name + "," + gameObjectPosition + ")");
@@ -156,7 +163,7 @@ public class FocusMaskManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("FocusMaskManager getScreenPosition: null parameter");
+            Debug.LogWarning("getScreenPosition: null parameter");
             return Vector2.zero;
         }
     }
@@ -166,7 +173,7 @@ public class FocusMaskManager : MonoBehaviour
     // position.x and position.y are in [0,1]
     public void focusOn(Vector2 position, Callback callback = null, float scaleFactor = 1f, bool local = true, string advisorTextKey = null, bool showButton = false)
     {
-        // Debug.Log(this.GetType() + " focusOn(" + position + ")");
+        Debug.Log(this.GetType() + " focusOn(" + position + ")");
         if (null != position
             && position.x >= -1
             && position.x <= 1
@@ -174,11 +181,15 @@ public class FocusMaskManager : MonoBehaviour
             && position.y <= 1
             )
         {
+            Debug.Log("focusOn position ok with position = " + position);
+
             reset(true);
 
             _target = null;
 
-            //TODO move the Tutorial UI to position
+            Debug.Log("BEFORE focusSystem.anchoredPosition = " + focusSystem.anchoredPosition);
+            Debug.Log("AFTER  focusSystem.anchoredPosition = " + position);
+            focusSystem.anchoredPosition = position;
 
             if (1f != scaleFactor)
             {
@@ -224,9 +235,7 @@ public class FocusMaskManager : MonoBehaviour
 
     private void show(bool show)
     {
-        focusMask.SetActive(show);
-        hole.SetActive(show);
-        arrowGO.SetActive(show);
+        focusSystem.gameObject.SetActive(show);
         _advisor.gameObject.SetActive(show);
     }
 
@@ -259,6 +268,17 @@ public class FocusMaskManager : MonoBehaviour
 
     // test code
 #if DEVMODE
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Home))
+        {
+            testClickable = GameObject.Find("CraftButton").GetComponent<ExternalOnPressButton>();
+            focusOn(testClickable);
+        }
+        /*
         if (Input.GetKeyDown(KeyCode.KeypadDivide))
         {
             testClickable = GameObject.Find("CraftButton").GetComponent<ExternalOnPressButton>();
@@ -286,6 +306,8 @@ public class FocusMaskManager : MonoBehaviour
             GameObject testObject = GameObject.Find("TestRock12");
             focusOn(testObject, null, null, false);
         }
+        */
+    }
 #endif
 
     public enum Quadrant
