@@ -227,6 +227,7 @@ public class FocusMaskManager : MonoBehaviour
         focusMask.SetActive(show);
         hole.SetActive(show);
         arrowGO.SetActive(show);
+        _advisor.gameObject.SetActive(show);
     }
 
     public void reset(bool keepDisplayed)
@@ -341,11 +342,12 @@ public class FocusMaskManager : MonoBehaviour
                 break;
         }
         rotZ = 45f + quarterTurns * 90f;
-        arrowGO.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+        arrowGO.transform.localRotation = Quaternion.Euler(0f, 0f, rotZ);
     }
 
     public void stopFocusOn()
     {
+        Debug.Log("stopFocusOn");
         reset(false);
     }
 }
