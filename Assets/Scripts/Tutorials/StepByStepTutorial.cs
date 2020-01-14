@@ -34,7 +34,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
     public void next()
     {
 #if DEVMODE
-        Debug.Log(this.GetType() + " next");
+        // Debug.Log(this.GetType() + " next");
 #endif
         prepared = false;
         waited = 0f;
@@ -47,14 +47,14 @@ public abstract class StepByStepTutorial : MonoBehaviour
         //Debug.Log(this.GetType() + "Awake");
 
         Debug.Log(this.GetType() + " Awake "
-        + " step=" + _step
-        + " prepared=" + prepared
-        + " waited=" + waited
-        + " textHints=" + textHints
-        + " textKeyPrefix=" + textKeyPrefix
-        + " stepCount=" + stepCount
-        + " focusObjects=" + focusObjects
-        );
+       + " step=" + _step
+       + " prepared=" + prepared
+       + " waited=" + waited
+       + " textHints=" + textHints
+       + " textKeyPrefix=" + textKeyPrefix
+       + " stepCount=" + stepCount
+       + " focusObjects=" + focusObjects
+       );
 #endif
         StepByStepTutorial._isPlaying = true;
         textHints = new string[stepCount];
@@ -75,7 +75,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
         return false;
     }
 
-    protected virtual void prepareStep(int step) {}
+    protected virtual void prepareStep(int step) { }
 
     // Update is called once per frame
     void Update()
@@ -94,7 +94,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log(this.GetType() + " preparing step " + _step + " searching for " + focusObjects[_step]);
+                        // Debug.Log(this.GetType() + " preparing step " + _step + " searching for " + focusObjects[_step]);
                         GameObject go = GameObject.Find(focusObjects[_step]);
                         foundObject = go;
                         if (go == null)
@@ -108,12 +108,16 @@ public abstract class StepByStepTutorial : MonoBehaviour
                             ExternalOnPressButton target = go.GetComponent<ExternalOnPressButton>();
                             if (null != target)
                             {
-                                // Debug.Log(this.GetType() + " target != null at step=" + _step);
+                                // Debug.Log(this.GetType() + " target != null at step=" + _step
+                                //+ " with text=" + textHints[_step]
+                                //);
                                 focusMaskManager.focusOn(target, next, textHints[_step], true);
                             }
                             else
                             {
-                                // Debug.Log(this.GetType() + " target == null at step=" + _step);
+                                // Debug.Log(this.GetType() + " target == null at step=" + _step
+                                //+ " with text=" + textHints[_step]
+                                //);
                                 focusMaskManager.focusOn(go, next, textHints[_step], true);
                             }
                             // Debug.Log(this.GetType() + " prepared step=" + _step);
@@ -124,7 +128,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
 #if DEVMODE
                 else
                 {
-                    if(Input.GetKeyUp(KeyCode.RightArrow))
+                    if (Input.GetKeyUp(KeyCode.RightArrow))
                     {
                         next();
                     }
@@ -135,7 +139,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
         }
         else
         {
-            Debug.Log(this.GetType() + " end");
+            // Debug.Log(this.GetType() + " end");
             end();
         }
     }

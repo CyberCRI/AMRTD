@@ -20,7 +20,7 @@ public class FocusMaskManager : MonoBehaviour
     [SerializeField]
     private GameObject hole = null;
     [SerializeField]
-    private GameObject arrowGO = null;
+    private GameObject arrowSystem = null;
 
     private ExternalOnPressButton _target = null;
 
@@ -28,16 +28,23 @@ public class FocusMaskManager : MonoBehaviour
     private Vector3 _baseFocusMaskScale, _baseHoleScale;
     [SerializeField]
     private Advisor _advisor;
-    [SerializeField]
-    private Camera _interfaceCamera;
-    [SerializeField]
-    private Camera _worldCamera;
+
+    private Camera _camera;
+
+    public enum Quadrant
+    {
+        TOP_LEFT,
+        TOP_RIGHT,
+        BOTTOM_LEFT,
+        BOTTOM_RIGHT
+    }
 
     // test code
 #if DEVMODE
     public ExternalOnPressButton testClickable;
     public GameObject testObject;
     public Vector3 testPosition;
+    public string testAdvisorTextKey = null;
 #endif
 
     /// <summary>
@@ -79,8 +86,8 @@ public class FocusMaskManager : MonoBehaviour
             // Debug.Log(this.GetType() + " focusOn ExternalOnPressButton " + target.name);
             float scaleFactor = computeScaleFactor(scaleToComponent, target.transform.localScale, manualScale);
 
-            //focusOn(getScreenPosition(_interfaceCamera, target.transform.position), callback, scaleFactor, false, advisorTextKey);
-            focusOn(getScreenPosition(_interfaceCamera, target.transform.position), callback, scaleFactor, false, advisorTextKey);
+            //focusOn(getScreenPosition(_camera, target.transform.position), callback, scaleFactor, false, advisorTextKey);
+            focusOn(getScreenPosition(_camera, target.transform.position), callback, scaleFactor, false, advisorTextKey);
             _target = target;
         }
         else
@@ -97,7 +104,7 @@ public class FocusMaskManager : MonoBehaviour
 
     public void focusOn(GameObject go, Vector3 manualScale, Callback callback = null, string advisorTextKey = null, bool scaleToComponent = false)
     {
-        Debug.Log(this.GetType() + " focusOn(GameObject go, Vector3 manualScale,...) - will compute GO position");
+        // Debug.Log(this.GetType() + " focusOn(GameObject go, Vector3 manualScale,...) - will compute GO position");
 
         if (null != go)
         {
@@ -106,30 +113,31 @@ public class FocusMaskManager : MonoBehaviour
 
             bool isInterfaceObject = (this.gameObject.layer == go.layer);
             // Debug.Log(this.GetType() + " isInterfaceObject=" + isInterfaceObject + " because layer=" + go.layer);
-            Camera camera = _interfaceCamera;
+
             if (!isInterfaceObject)
             {
-                Debug.Log(this.GetType() + " !isInterfaceObject");
-                _worldCamera = null == _worldCamera ? GameObject.FindWithTag("MainCamera").GetComponentInChildren<Camera>() : _worldCamera;
-                camera = _worldCamera;
-                focusOn(getScreenPosition(camera, go.transform.position), callback, scaleFactor, !isInterfaceObject, advisorTextKey, true);
+                // Debug.Log(this.GetType() + " !isInterfaceObject");
+                focusOn(getScreenPosition(_camera, go.transform.position), callback, scaleFactor, !isInterfaceObject, advisorTextKey, true);
             }
             else
             {
-                Debug.Log(this.GetType() + " isInterfaceObject");
-                Debug.Log(this.GetType() + " GO " + go.name + " position " + go.transform.position);
-                Debug.Log(this.GetType() + " GO " + go.name + " localPosition " + go.transform.localPosition);
+                // Debug.Log(this.GetType() + " isInterfaceObject");
+                // Debug.Log(this.GetType() + " GO " + go.name + " position " + go.transform.position);
+                // Debug.Log(this.GetType() + " GO " + go.name + " localPosition " + go.transform.localPosition);
                 //focusOn(getScreenPosition(camera, go.transform.position), callback, scaleFactor, !isInterfaceObject, advisorTextKey, true);
                 //this.gameObject.SetActive(true);
                 focusSystem.transform.SetParent(go.transform);
                 focusSystem.anchoredPosition = Vector2.zero;
                 reset(true);
-                rotateArrowAt(go.transform.position);
+                Quadrant quadrant = getQuadrant(go.transform.position);
+                rotateArrowAt(quadrant);
                 _callback = callback;
                 // activate and position the advisor
                 if (!string.IsNullOrEmpty(advisorTextKey))
                 {
                     //_advisor.setUpAdvisor(position, advisorTextKey, scaleFactor, showButton);
+                    //_advisor.setUpAdvisor(Vector3.zero, advisorTextKey, scaleFactor, true);
+                    _advisor.setSpeechBubble(quadrant, advisorTextKey);
                     _advisor.gameObject.SetActive(true);
                 }
                 else
@@ -172,7 +180,7 @@ public class FocusMaskManager : MonoBehaviour
 
     private static Vector2 getScreenPosition(Camera camera, Vector3 gameObjectPosition)
     {
-        Debug.Log("getScreenPosition of " + gameObjectPosition);
+        // Debug.Log("getScreenPosition of " + gameObjectPosition);
         if (null != camera && null != gameObjectPosition)
         {
             // Debug.Log("FocusMaskManager getScreenPosition(" + camera.name + "," + gameObjectPosition + ")");
@@ -194,7 +202,7 @@ public class FocusMaskManager : MonoBehaviour
     // position.x and position.y are in [0,1]
     public void focusOn(Vector2 position, Callback callback = null, float scaleFactor = 1f, bool local = true, string advisorTextKey = null, bool showButton = false)
     {
-        Debug.Log(this.GetType() + " focusOn(" + position + ")");
+        // Debug.Log(this.GetType() + " focusOn(" + position + ")");
         if (null != position
         /*
             && position.x >= -1
@@ -204,14 +212,14 @@ public class FocusMaskManager : MonoBehaviour
         */
             )
         {
-            Debug.Log("focusOn position ok with position = " + position);
+            // Debug.Log("focusOn position ok with position = " + position);
 
             reset(true);
 
             _target = null;
 
-            Debug.Log("BEFORE focusSystem.anchoredPosition = " + focusSystem.anchoredPosition);
-            Debug.Log("AFTER  focusSystem.anchoredPosition = " + position);
+            // Debug.Log("BEFORE focusSystem.anchoredPosition = " + focusSystem.anchoredPosition);
+            // Debug.Log("AFTER  focusSystem.anchoredPosition = " + position);
             //focusSystem.anchoredPosition = position;
             focusSystem.position = new Vector3(position.x, position.y, focusSystem.position.z);
 
@@ -232,7 +240,8 @@ public class FocusMaskManager : MonoBehaviour
             }
 */
 
-            rotateArrowAt(position);
+            Quadrant quadrant = Quadrant.BOTTOM_LEFT;
+            rotateArrowAt(quadrant);
 
             _callback = callback;
 
@@ -252,7 +261,7 @@ public class FocusMaskManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Incorrect position");
+            // Debug.Log("Incorrect position");
         }
 
     }
@@ -260,7 +269,7 @@ public class FocusMaskManager : MonoBehaviour
     public void blockClicks(bool block)
     {
         _isClicksBlocked = block;
-        Debug.Log("NOT IMPLEMENTED - blockClicks");
+        // Debug.Log("NOT IMPLEMENTED - blockClicks");
     }
 
     private void show(bool show)
@@ -303,56 +312,48 @@ public class FocusMaskManager : MonoBehaviour
     /// </summary>
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Home))
         {
             testClickable = GameObject.Find("CraftButton").GetComponent<ExternalOnPressButton>();
             focusOn(testClickable);
         }
-        /*
         if (Input.GetKeyDown(KeyCode.KeypadDivide))
         {
             testClickable = GameObject.Find("CraftButton").GetComponent<ExternalOnPressButton>();
             focusOn(testClickable);
         }
-        else if (Input.GetKeyDown(KeyCode.KeypadMultiply))
+        if (Input.GetKeyDown(KeyCode.KeypadMultiply))
         {
             testClickable = GameObject.Find("AvailableDisplayedDTER").GetComponent<ExternalOnPressButton>();
             focusOn(testClickable);
         }
-        else if (Input.GetKeyDown(KeyCode.KeypadMinus))
+        if (Input.GetKeyDown(KeyCode.KeypadMinus))
         {
             focusOn(testPosition);
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             focusOn(GameObject.Find("CraftButton"), null, null, true);
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.Keypad2))
         {
             focusOn(Character.get().gameObject, null, null, false);
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            GameObject testObject = GameObject.Find("TestRock12");
-            focusOn(testObject, null, null, false);
-        }
         */
+        if (Input.GetKeyDown(KeyCode.Home))
+        {
+            //GameObject testObject = GameObject.Find("TestRock12");
+            focusOn(testObject, null, testAdvisorTextKey, false);
+        }
     }
 #endif
 
-    public enum Quadrant
-    {
-        TOP_LEFT,
-        TOP_RIGHT,
-        BOTTOM_LEFT,
-        BOTTOM_RIGHT
-    }
-
     public Quadrant getQuadrant(Vector3 pos)
     {
-        Vector3 screenPos = _interfaceCamera.WorldToScreenPoint(pos);
-        bool top = screenPos.y > _interfaceCamera.pixelHeight / 2;
-        bool left = screenPos.x < _interfaceCamera.pixelWidth / 2;
+        Vector3 screenPos = _camera.WorldToScreenPoint(pos);
+        bool top = screenPos.y > _camera.pixelHeight / 2;
+        bool left = screenPos.x < _camera.pixelWidth / 2;
 
         if (top)
         {
@@ -370,11 +371,10 @@ public class FocusMaskManager : MonoBehaviour
         }
     }
 
-    private void rotateArrowAt(Vector3 position)
+    private void rotateArrowAt(Quadrant quadrant)
     {
         float rotZ = 0f;
 
-        Quadrant quadrant = getQuadrant(position);
         float quarterTurns = 0f;
         switch (quadrant)
         {
@@ -394,13 +394,18 @@ public class FocusMaskManager : MonoBehaviour
                 break;
         }
         rotZ = 45f + quarterTurns * 90f;
-        Debug.Log("rotateArrowAt(" + position + ") = " + rotZ);
-        arrowGO.transform.localRotation = Quaternion.Euler(0f, 0f, rotZ);
+        // Debug.Log("rotateArrowAt(" + position + ") = " + rotZ);
+        arrowSystem.transform.localRotation = Quaternion.Euler(0f, 0f, rotZ);
     }
 
     public void stopFocusOn()
     {
-        Debug.Log("stopFocusOn");
+        // Debug.Log("stopFocusOn");
         reset(false);
+    }
+
+    public void linkCommon(Camera camera)
+    {
+        _camera = camera;
     }
 }
