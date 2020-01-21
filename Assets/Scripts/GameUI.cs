@@ -38,13 +38,13 @@ public class GameUI : MonoBehaviour
 
     public void pressRetryButton()
     {
-        Time.timeScale = 1f;
+        GameManager.instance.setPause(false);
         SceneFader.instance.retry();
     }
 
     public void pressMenuButton()
     {
-        Time.timeScale = 1f;
+        GameManager.instance.setPause(false);
         SceneFader.instance.menu();
     }
 

@@ -165,4 +165,19 @@ public class GameManager : MonoBehaviour
             enemy.takeDamage(enemy.health);
         }
     }
+
+    public void setPause(bool setToPause)
+    {
+        Time.timeScale = setToPause ? 0f : 1f;
+    }
+
+    public void togglePause()
+    {
+        Time.timeScale = 1f - Time.timeScale;
+    }
+
+    public bool isPaused()
+    {
+        return Time.timeScale == 0f;
+    }
 }

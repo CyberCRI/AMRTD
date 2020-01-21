@@ -111,14 +111,14 @@ public abstract class StepByStepTutorial : MonoBehaviour
                                 // Debug.Log(this.GetType() + " target != null at step=" + _step
                                 //+ " with text=" + textHints[_step]
                                 //);
-                                focusMaskManager.focusOn(target, next, textHints[_step], true);
+                                focusMaskManager.focusOn(target, next, textHints[_step], true, true);
                             }
                             else
                             {
                                 // Debug.Log(this.GetType() + " target == null at step=" + _step
                                 //+ " with text=" + textHints[_step]
                                 //);
-                                focusMaskManager.focusOn(go, next, textHints[_step], true);
+                                focusMaskManager.focusOn(go, next, textHints[_step], true, true);
                             }
                             // Debug.Log(this.GetType() + " prepared step=" + _step);
                             prepared = true;

@@ -46,19 +46,6 @@ public class Advisor : MonoBehaviour
         currentAnchoredPosition = this.GetComponent<RectTransform>().anchoredPosition;
     }
 
-    public void setUpAdvisor(Vector2 position, string text, float scaleFactor, bool showButton = false)
-    {
-        /*
-        float offset = scaleFactor * _highlightedAreaRatio + _advisorAreaRatio;
-        _advisorAnchor.relativeOffset.x = position.x - Mathf.Sign(position.x) * offset;
-        _advisorAnchor.relativeOffset.x = _advisorAnchor.relativeOffset.x > 0 ? Mathf.Min(_advisorAnchor.relativeOffset.x, maxX) : Mathf.Max(_advisorAnchor.relativeOffset.x, minX);
-        _advisorAnchor.relativeOffset.y = position.y - Mathf.Sign(position.y) * offset;
-        _advisorAnchor.relativeOffset.y = _advisorAnchor.relativeOffset.y > 0 ? Mathf.Min(_advisorAnchor.relativeOffset.y, maxY) : Mathf.Max(_advisorAnchor.relativeOffset.y, minY);
-*/
-        _localize.setKey(text);
-        _nextButton.SetActive(showButton);
-    }
-
     public void setSpeechBubble(FocusMaskManager.Quadrant quadrant, string text, bool showButton = false)
     {
         Debug.Log("setSpeechBubble(" + quadrant + ", " + text + ", " + showButton + ")");

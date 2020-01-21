@@ -36,15 +36,7 @@ public class PauseUI : MonoBehaviour
 
     public void toggle()
     {
-        pauseUI.SetActive(!pauseUI.activeSelf);
-
-        if (pauseUI.activeSelf)
-        {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
-        }
+        GameManager.instance.togglePause();
+        pauseUI.SetActive(GameManager.instance.isPaused());
     }
 }
