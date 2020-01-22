@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#define DEVMODE
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,9 @@ public class WaveSpawner : MonoBehaviour
     public static WaveSpawner instance;
     public static int enemiesAlive = 0;
 
+#if DEVMODE
+    [SerializeField]
+#endif
     private int waveIndex = 0;
     private float countdown = 0f;
     private bool isDoneSpawning = true;
@@ -30,6 +34,11 @@ public class WaveSpawner : MonoBehaviour
         RANDOMDISCRETE,
         RANDOMCONTINUOUS
     };
+
+    public float getWaveProgression()
+    {
+        return ((float)waveIndex) / ((float)waves.Length);
+    }
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
