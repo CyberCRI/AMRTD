@@ -46,5 +46,10 @@
 	,{"key":"TUTORIAL.TEST.0","value":"This is the WaveTimerText."}
 	,{"key":"TUTORIAL.TEST.1","value":"This is the ResistanceBar."}
 	,{"key":"TUTORIAL.TEST.2","value":"This is the LifeBar."}
+	,{"key":"GAME.LEVEL.1","value":"I"}
+	,{"key":"GAME.LEVEL.2","value":"II"}
+	,{"key":"GAME.LEVEL.3","value":"III"}
+	,{"key":"GAME.LEVEL.4","value":"IV"}
+	,{"key":"GAME.LEVEL.5","value":"V"}
     ]
 }
