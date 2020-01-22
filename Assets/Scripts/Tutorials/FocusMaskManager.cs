@@ -180,6 +180,7 @@ public class FocusMaskManager : MonoBehaviour
 #endif
                 focusSystem.transform.SetParent(go.transform);
                 focusSystem.anchoredPosition = Vector2.zero;
+                focusSystem.transform.SetParent(this.transform);
 
                 complete(callback, advisorTextKey, showButton);
             }
