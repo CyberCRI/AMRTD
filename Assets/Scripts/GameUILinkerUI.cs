@@ -17,6 +17,8 @@ public class GameUILinkerUI : MonoBehaviour
     private GameObject completeLevelUI = null;
     [SerializeField]
     private GameObject pauseUI = null;
+    [SerializeField]
+    private GameObject menuUI = null;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,7 @@ public class GameUILinkerUI : MonoBehaviour
             );
         BuildManager.instance.linkUI(nodeUI);
         PauseUI.instance.linkUI(pauseUI);
+        MenuUI.instance.linkUI(menuUI);
         WaveSpawner.instance.linkUI(waveCountdownText);
     }
 }

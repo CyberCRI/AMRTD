@@ -48,6 +48,11 @@ public class GameUI : MonoBehaviour
         SceneFader.instance.menu();
     }
 
+    public void pressGameMenuButton()
+    {
+        MenuUI.instance.toggle();
+    }
+
     public void pressCompleteLevelButton()
     {
         CompleteLevel.instance.pressContinue();

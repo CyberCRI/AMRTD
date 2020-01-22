@@ -1,10 +1,10 @@
-﻿//#define DEVMODE
+//#define DEVMODE
 using UnityEngine;
 
-public class PauseUI : MonoBehaviour
+public class MenuUI : MonoBehaviour
 {
-    public static PauseUI instance = null;
-    private GameObject pauseUI = null;
+    public static MenuUI instance = null;
+    private GameObject menuUI = null;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -25,21 +25,21 @@ public class PauseUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             toggle();
         }
     }
 #endif
 
-    public void linkUI(GameObject _pauseUI)
+    public void linkUI(GameObject _menuUI)
     {
-        pauseUI = _pauseUI;
+        menuUI = _menuUI;
     }
 
     public void toggle()
     {
         GameManager.instance.togglePause();
-        pauseUI.SetActive(GameManager.instance.isPaused());
+        menuUI.SetActive(GameManager.instance.isPaused());
     }
 }
