@@ -16,13 +16,7 @@ public class WaveBarUI : MonoBehaviour
 
     private float previousValue = 0f;
     private float newValue = 0f;
-
-    private float startValue = 0f;
-    private float endValue = 0f;
-
-    private float timeParameter = 0f;
     private float animationDuration = 1f;
-
     private bool isLerpInProgress = false;
 
     // for auto-animation of the bar, to test independently from waves
@@ -39,7 +33,7 @@ public class WaveBarUI : MonoBehaviour
     /// </summary>
     void Start()
     {
-        waveBar.fillAmount = 0f;
+        setFillAmount(0f);
     }
 
     /// <summary>
@@ -49,13 +43,9 @@ public class WaveBarUI : MonoBehaviour
     {
 
 #if DEVMODE
-         currentValue += Time.deltaTime;
-         waveBar.fillAmount = currentValue/maxValue;
+        currentValue += Time.deltaTime;
+        setFillAmount(currentValue/maxValue);
 #else
-
-        // is a Lerp in progress?
-        isLerpInProgress = (startValue != endValue);
-
         if (!isLerpInProgress)
         {
             previousValue = waveBar.fillAmount;
@@ -64,28 +54,30 @@ public class WaveBarUI : MonoBehaviour
             // is a Lerp needed?
             if (previousValue != newValue)
             {
-                // set up the Lerp
-                startValue = previousValue;
-                endValue = newValue;
-                timeParameter = 0f;
+                StartCoroutine(smoothAnimate(previousValue, newValue));
             }
         }
-        else
+#endif
+    }
+
+
+    private IEnumerator smoothAnimate(float startValue, float endValue)
+    {
+        isLerpInProgress = true;
+        float timeParameter = 0f;
+        while (timeParameter <= animationDuration)
         {
             timeParameter += (Time.deltaTime / animationDuration);
-            waveBar.fillAmount = Mathf.Lerp(startValue, endValue, timeParameter);
-
-            if (timeParameter >= animationDuration)
-            {
-                startValue = 0f;
-                endValue = 0f;
-                timeParameter = 0f;
-            }
-
-#endif
-            indicator.anchorMin = new Vector2(waveBar.fillAmount, indicator.anchorMin.y);
-            indicator.anchorMax = new Vector2(waveBar.fillAmount, indicator.anchorMax.y);
+            setFillAmount(Mathf.Lerp(startValue, endValue, timeParameter));
+            yield return null;
         }
+        isLerpInProgress = false;
+    }
 
+    private void setFillAmount(float fillValue)
+    {
+        waveBar.fillAmount = fillValue;
+        indicator.anchorMin = new Vector2(fillValue, indicator.anchorMin.y);
+        indicator.anchorMax = new Vector2(fillValue, indicator.anchorMax.y);
     }
 }
