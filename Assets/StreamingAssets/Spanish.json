@@ -51,9 +51,13 @@
 	,{"key":"GAME.LEVEL.3","value":"III"}
 	,{"key":"GAME.LEVEL.4","value":"IV"}
 	,{"key":"GAME.LEVEL.5","value":"V"}
-	,{"key":"GAME.MENUSCREEN.CONFIRM","value":"RESUME"}
-	,{"key":"GAME.MENUSCREEN.CANCEL","value":"MENU"}
+	,{"key":"GAME.MENUSCREEN.CONFIRM","value":"MENU"}
+	,{"key":"GAME.MENUSCREEN.CANCEL","value":"RESUME"}
 	,{"key":"GAME.MENUSCREEN.TITLE","value":"QUIT GAME?"}
 	,{"key":"GAME.MENUSCREEN.TEXT","value":"YOUR PROGRESS WILL BE LOST! ARE YOU SURE YOU WANT TO QUIT?"}
+	,{"key":"GAME.RETRYSCREEN.CONFIRM","value":"RETRY"}
+	,{"key":"GAME.RETRYSCREEN.CANCEL","value":"RESUME"}
+	,{"key":"GAME.RETRYSCREEN.TITLE","value":"START OVER?"}
+	,{"key":"GAME.RETRYSCREEN.TEXT","value":"YOUR PROGRESS WILL BE LOST! ARE YOU SURE YOU WANT TO START OVER?"}
 	]
 }

@@ -42,6 +42,11 @@ public class GameUI : MonoBehaviour
         SceneFader.instance.retry();
     }
 
+    public void pressGameRetryButton()
+    {
+        RetryUI.instance.toggle();
+    }
+
     public void pressMenuButton()
     {
         GameManager.instance.setPause(false);
