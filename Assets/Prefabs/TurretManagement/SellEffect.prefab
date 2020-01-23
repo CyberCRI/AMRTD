@@ -4944,7 +4944,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 279
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -5042,6 +5042,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6480776216057286550, guid: f65026d4220064743b216639c2b26332,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8f361a129bf042d4c8a0547105bef11a, type: 2}
     - target: {fileID: 6480776216057286551, guid: f65026d4220064743b216639c2b26332,
         type: 3}
       propertyPath: looping
@@ -5112,11 +5117,11 @@ PrefabInstance:
       propertyPath: CollisionModule.collidesWith.m_Bits
       value: 256
       objectReference: {fileID: 0}
-    - target: {fileID: 6480776216057286550, guid: f65026d4220064743b216639c2b26332,
+    - target: {fileID: 6480776216057286551, guid: f65026d4220064743b216639c2b26332,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f361a129bf042d4c8a0547105bef11a, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f65026d4220064743b216639c2b26332, type: 3}
 --- !u!4 &1609967786617530518 stripped
