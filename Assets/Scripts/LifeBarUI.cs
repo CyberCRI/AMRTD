@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//#define LIFEPOINTSMODE
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +10,7 @@ using UnityEngine.UI;
 // but also decreases when too many towers are used
 public class LifeBarUI : MonoBehaviour
 {
+#if LIFEPOINTSMODE
     [SerializeField]
     private Image lifeBar = null;
 
@@ -19,4 +22,5 @@ public class LifeBarUI : MonoBehaviour
         // update GUI element
         lifeBar.fillAmount = PlayerStatistics.lifePoints / PlayerStatistics.startLifePoints;
     }
+#endif
 }

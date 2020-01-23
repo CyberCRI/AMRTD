@@ -1,4 +1,5 @@
 ﻿#define DEVMODE
+//#define LIFEPOINTSMODE
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,7 +62,11 @@ public class GameManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            if (PlayerStatistics.lives <= 0 || PlayerStatistics.lifePoints <= 0)
+            if ((PlayerStatistics.lives <= 0)
+#if LIFEPOINTSMODE
+             || (PlayerStatistics.lifePoints <= 0)
+#endif
+            )
             {
                 loseLevel();
             }
