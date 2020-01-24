@@ -24,13 +24,13 @@ public class PlayerStatistics : MonoBehaviour
     [SerializeField]
     private int startLives = 0;
 
-//#if LIFEPOINTSMODE
+    //#if LIFEPOINTSMODE
     [Header("Life points: integrates resistance")]
     public static float lifePoints = 0f;
     public static float startLifePoints = defaultLifePoints;
     public static float livesToLifePointsFactor;
     public const float defaultLifePoints = 100f;
-//#endif
+    //#endif
 
     [Header("Resistance")]
     public static float resistancePoints = 0f;
@@ -41,18 +41,30 @@ public class PlayerStatistics : MonoBehaviour
     private float startResistancePoints = 0f;
     public static float offsetRatio = .5f;
 
+    [Header("Resistance decay")]
+    private float animationDuration = .1f;
+    private bool isLerpInProgress = false;
+    private IEnumerator coroutine = null;
+    private float negativePointsPool = 0f;
+    private float negativePointsStep = 1f;
+    private float step = 0f;
+    private float lerp = 0f;
+    private float startValue = 0f;
+    private float endValue = 0f;
+    private float timeParameter = 0f;
+
     #region turret points
-//#if STATICTURRETCOUNTMODE || STATICTURRETRESISTANCEPOINTSMODE
+    //#if STATICTURRETCOUNTMODE || STATICTURRETRESISTANCEPOINTSMODE
     [SerializeField]
     private float turretCountToResistanceFactor = 15f;
     [SerializeField]
     private float turretResistancePointsToResistanceFactor = 1f;
 
-    public static int _turretCount = 0;
-    public static float _turretResistancePoints = 0f;
+    private int _turretCount = 0;
+    private float _turretResistancePoints = 0f;
 
 #if STATICTURRETCOUNTMODE
-    public static int turretCount
+    public int turretCount
     {
         get { return _turretCount; }
         set
@@ -63,19 +75,67 @@ public class PlayerStatistics : MonoBehaviour
     }
 #endif
 #if STATICTURRETRESISTANCEPOINTSMODE
-    public static float turretResistancePoints
+    public float turretResistancePoints
     {
         get { return _turretResistancePoints; }
         set
         {
-            _turretResistancePoints = value;
-            resistancePoints = PlayerStatistics.instance.turretResistancePointsToResistanceFactor * _turretResistancePoints;
+            if (value < _turretResistancePoints)
+            {
+                negativePointsPool += (_turretResistancePoints - value);
+            }
+            else
+            {
+                if (null != coroutine)
+                {
+                    StopCoroutine(coroutine);
+                    isLerpInProgress = false;
+                    updateResistancePoints(value - lerp + endValue);
+                }
+                else
+                {
+                    updateResistancePoints(value);
+                }
+            }
+
+            if ((!isLerpInProgress) && (negativePointsPool > 0))
+            {
+                coroutine = smoothReduce();
+                StartCoroutine(coroutine);
+            }
         }
     }
 #endif
 
-//#endif
+    private void updateResistancePoints(float value)
+    {
+        _turretResistancePoints = value;
+        resistancePoints = PlayerStatistics.instance.turretResistancePointsToResistanceFactor * _turretResistancePoints;
+    }
+
+    //#endif
     #endregion
+
+    private IEnumerator smoothReduce()
+    {
+        isLerpInProgress = true;
+        while (negativePointsPool > 0f)
+        {
+            timeParameter = 0f;
+            step = Mathf.Min(negativePointsStep, negativePointsPool);
+            negativePointsPool -= step;
+            startValue = _turretResistancePoints;
+            endValue = _turretResistancePoints - step;
+            while (timeParameter <= 1)
+            {
+                timeParameter += Time.deltaTime/animationDuration;
+                lerp = Mathf.Lerp(startValue, endValue, timeParameter);
+                updateResistancePoints(lerp);
+                yield return null;
+            }
+        }
+        isLerpInProgress = false;
+    }
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.

@@ -63,7 +63,7 @@ public abstract class IndicatedProgressBarUI : MonoBehaviour
     {
         isLerpInProgress = true;
         float timeParameter = 0f;
-        while (timeParameter <= animationDuration)
+        while (timeParameter <= 1f)
         {
             timeParameter += (Time.deltaTime / animationDuration);
             setFillAmount(Mathf.Lerp(startValue, endValue, timeParameter));

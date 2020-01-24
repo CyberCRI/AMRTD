@@ -101,10 +101,10 @@ public class Turret : Attacker
         upkeepCountdown = upkeepPeriod;
 #endif
 #if STATICTURRETCOUNTMODE
-        PlayerStatistics.turretCount += 1;
+        PlayerStatistics.instance.turretCount += 1;
 #endif
 #if STATICTURRETRESISTANCEPOINTSMODE
-        PlayerStatistics.turretResistancePoints += resistancePoints;
+        PlayerStatistics.instance.turretResistancePoints += resistancePoints;
 #endif
         InvokeRepeating("updateTarget", timeStartTurret, updatePeriod);
     }
@@ -116,11 +116,11 @@ public class Turret : Attacker
     void OnDestroy()
     {
 #if STATICTURRETCOUNTMODE
-        PlayerStatistics.turretCount -= 1;
+        PlayerStatistics.instance.turretCount -= 1;
 #endif
 #if STATICTURRETRESISTANCEPOINTSMODE
-        Debug.Log(this.gameObject.name + ": -" + (int)resistancePoints);
-        PlayerStatistics.turretResistancePoints -= resistancePoints;
+//        Debug.Log(this.gameObject.name + ": -" + (int)resistancePoints);
+        PlayerStatistics.instance.turretResistancePoints -= resistancePoints;
 #endif        
     }
 #endif
