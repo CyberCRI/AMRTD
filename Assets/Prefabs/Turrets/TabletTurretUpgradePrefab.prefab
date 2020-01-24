@@ -7,6 +7,62 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1637343329675826390, guid: 1177b12b32699ab489d014232fd82079,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637343329675826390, guid: 1177b12b32699ab489d014232fd82079,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637343329675826390, guid: 1177b12b32699ab489d014232fd82079,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637343329675826390, guid: 1177b12b32699ab489d014232fd82079,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978102170770004979, guid: 1177b12b32699ab489d014232fd82079,
+        type: 3}
+      propertyPath: attackDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978102170770004979, guid: 1177b12b32699ab489d014232fd82079,
+        type: 3}
+      propertyPath: damageWhenHit
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097867471756333593, guid: 1177b12b32699ab489d014232fd82079,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 89c07cb8e51936a46843da63ea081d28, type: 2}
+    - target: {fileID: 4443380677013918193, guid: 1177b12b32699ab489d014232fd82079,
+        type: 3}
+      propertyPath: range
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443380677013918193, guid: 1177b12b32699ab489d014232fd82079,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7715285218150925893, guid: 87d0d0d44d3e0c24c8dcd1bd7894d56a,
+        type: 3}
+    - target: {fileID: 4443380677013918193, guid: 1177b12b32699ab489d014232fd82079,
+        type: 3}
+      propertyPath: upkeepCost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443380677013918193, guid: 1177b12b32699ab489d014232fd82079,
+        type: 3}
+      propertyPath: resistancePoints
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8210510526417678209, guid: 1177b12b32699ab489d014232fd82079,
         type: 3}
       propertyPath: m_Name
@@ -67,56 +123,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4443380677013918193, guid: 1177b12b32699ab489d014232fd82079,
-        type: 3}
-      propertyPath: range
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 4443380677013918193, guid: 1177b12b32699ab489d014232fd82079,
-        type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 7715285218150925893, guid: 87d0d0d44d3e0c24c8dcd1bd7894d56a,
-        type: 3}
-    - target: {fileID: 4443380677013918193, guid: 1177b12b32699ab489d014232fd82079,
-        type: 3}
-      propertyPath: upkeepCost
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1978102170770004979, guid: 1177b12b32699ab489d014232fd82079,
-        type: 3}
-      propertyPath: attackDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1978102170770004979, guid: 1177b12b32699ab489d014232fd82079,
-        type: 3}
-      propertyPath: damageWhenHit
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637343329675826390, guid: 1177b12b32699ab489d014232fd82079,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637343329675826390, guid: 1177b12b32699ab489d014232fd82079,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637343329675826390, guid: 1177b12b32699ab489d014232fd82079,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637343329675826390, guid: 1177b12b32699ab489d014232fd82079,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4097867471756333593, guid: 1177b12b32699ab489d014232fd82079,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 89c07cb8e51936a46843da63ea081d28, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1177b12b32699ab489d014232fd82079, type: 3}

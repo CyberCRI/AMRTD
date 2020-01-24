@@ -107,6 +107,11 @@ public class GameManager : MonoBehaviour
             {
                 killAllButOneEnemy();
             }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                destroyAllTurrets();
+            }
 #endif
         }
     }
@@ -168,6 +173,17 @@ public class GameManager : MonoBehaviour
             GameObject enemyGO = enemies[i];
             Enemy enemy = enemyGO.GetComponent<Enemy>();
             enemy.takeDamage(enemy.health);
+        }
+    }
+
+    private void destroyAllTurrets()
+    {
+        GameObject[] turrets = GameObject.FindGameObjectsWithTag(Turret.turretTag);
+        for (int i = 0; i < turrets.Length; i++)
+        {
+            GameObject turretGO = turrets[i];
+            Turret turret = turretGO.GetComponent<Turret>();
+            turret.selfDestruct(Node.REMOVETOWER.DAMAGED);
         }
     }
 

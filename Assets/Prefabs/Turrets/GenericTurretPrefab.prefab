@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 3241761046887564199}
   m_Layer: 0
   m_Name: GenericTurretPrefab
-  m_TagString: Untagged
+  m_TagString: TurretTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,9 +289,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelAttack: {fileID: 3241761046887564199}
   range: 0
+  route: 0
+  resistancePoints: 15
   upkeepCost: 0
   upkeepPeriod: 1
-  route: 0
   lifetimeStart: Infinity
   lifetimeRemaining: 0
   node: {fileID: 0}

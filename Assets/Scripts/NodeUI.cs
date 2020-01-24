@@ -1,4 +1,6 @@
 ﻿//#define SELLTURRETS
+//#define TURRETUPKEEP
+//#define TURRETLIFETIME
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,9 +56,14 @@ public class NodeUI : MonoBehaviour
 #if SELLTURRETS
         sellCost.text = target.turretBlueprint.getSellCost().ToString() + "€";
 #endif
+#if TURRETUPKEEP
         upkeepCost.text = target.turret.upkeepCost.ToString() + "€/s";
-
+#endif
+#if TURRETLIFETIME
         renewButton.SetActive(target.turret.lifetimeStart != Mathf.Infinity);
+#else
+        renewButton.SetActive(false);
+#endif
 
         ui.SetActive(true);
     }
@@ -80,6 +87,8 @@ public class NodeUI : MonoBehaviour
 
     public void renew()
     {
+#if TURRETLIFETIME
         targetNode.renewTurret();
+#endif
     }
 }

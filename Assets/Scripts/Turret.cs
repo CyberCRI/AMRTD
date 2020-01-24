@@ -1,9 +1,16 @@
-﻿//#define DEVMODE
+﻿#define DEVMODE
+//#define STATICTURRETCOUNTMODE
+#define STATICTURRETRESISTANCEPOINTSMODE
+//#define DYNAMICTURRETRESISTANCEPOINTSMODE
+//#define TURRETUPKEEP
+//#define TURRETLIFETIME
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Turret : Attacker
 {
+    public const string turretTag = "TurretTag";
+
     public enum ROUTE_OF_ADMINISTRATION
     {
         TOPICAL_SKIN,
@@ -14,14 +21,26 @@ public class Turret : Attacker
 
     [Header("General")]
     public float range = 0f;
+    public ROUTE_OF_ADMINISTRATION route = ROUTE_OF_ADMINISTRATION.TOPICAL_SKIN;
+
+    //#if STATICTURRETRESISTANCEPOINTSMODE
+    [Header("Resistance")]
+    [Tooltip("Points added to a pool taken into account for the computation of the resistance gauge.")]
+    [SerializeField]
+    private float resistancePoints = 15f;
+    //#endif
+
+    //#if TURRETUPKEEP
+    [Header("Upkeep")]
     // amount of money paid every upkeepPeriod seconds
     [SerializeField]
     public int upkeepCost = 0;
     [SerializeField]
     private float upkeepPeriod = 0f;
     private float upkeepCountdown = 0f;
-    public ROUTE_OF_ADMINISTRATION route;
+    //#endif
 
+    //#if TURRETLIFETIME
     [Header("Lifetime")]
     public float lifetimeStart = 0;
     [SerializeField]
@@ -29,6 +48,7 @@ public class Turret : Attacker
     public Node node;
     [SerializeField]
     private Image lifetimeBar = null;
+    //#endif
 
     [Header("Bullets mode (default)")]
     [SerializeField]
@@ -72,26 +92,60 @@ public class Turret : Attacker
     /// </summary>
     void Start()
     {
+#if TURRETLIFETIME
         lifetimeRemaining = lifetimeStart;
+#else
+        lifetimeBar.fillAmount = 0f;
+#endif
+#if TURRETUPKEEP
         upkeepCountdown = upkeepPeriod;
+#endif
+#if STATICTURRETCOUNTMODE
+        PlayerStatistics.turretCount += 1;
+#endif
+#if STATICTURRETRESISTANCEPOINTSMODE
+        PlayerStatistics.turretResistancePoints += resistancePoints;
+#endif
         InvokeRepeating("updateTarget", timeStartTurret, updatePeriod);
     }
 
+#if STATICTURRETCOUNTMODE || STATICTURRETRESISTANCEPOINTSMODE
+    /// <summary>
+    /// This function is called when the MonoBehaviour will be destroyed.
+    /// </summary>
+    void OnDestroy()
+    {
+#if STATICTURRETCOUNTMODE
+        PlayerStatistics.turretCount -= 1;
+#endif
+#if STATICTURRETRESISTANCEPOINTSMODE
+        Debug.Log(this.gameObject.name + ": -" + (int)resistancePoints);
+        PlayerStatistics.turretResistancePoints -= resistancePoints;
+#endif        
+    }
+#endif
+
     public void renew(float duration = 10f)
     {
+#if TURRETLIFETIME
         lifetimeRemaining += duration;
         lifetimeStart = Mathf.Max(lifetimeStart, lifetimeRemaining);
+#endif
     }
 
+#if DYNAMICTURRETRESISTANCEPOINTSMODE
     private void applyResistanceCost(float deltaTime)
     {
         PlayerStatistics.takeResistance(deltaTime * PlayerStatistics.costABPerSec);
     }
+#endif
 
+#if TURRETLIFETIME
     private void updateLifetimeBar()
     {
         lifetimeBar.fillAmount = lifetimeRemaining / lifetimeStart;
     }
+#endif
 
     void updateTarget()
     {
@@ -126,7 +180,11 @@ public class Turret : Attacker
         }
     }
 
+#if DEVMODE
+    public void selfDestruct(Node.REMOVETOWER reason)
+#else
     private void selfDestruct(Node.REMOVETOWER reason)
+#endif
     {
         node.removeTurret(reason, this.gameObject);
     }
@@ -136,24 +194,27 @@ public class Turret : Attacker
     /// </summary>
     void Update()
     {
-#if DEVMODE
+#if DEVMODE && TURRETLIFETIME
         if (Input.GetKeyDown(KeyCode.Space))
         {
             renew(10f);
         }
 #endif
 
+#if TURRETLIFETIME
         if (lifetimeRemaining <= 0)
         {
             selfDestruct(Node.REMOVETOWER.EXPIRED);
         }
-        else
-        {
+        updateLifetimeBar();
+        lifetimeRemaining -= Time.deltaTime;
+#endif
 
-            updateLifetimeBar();
-            applyResistanceCost(Time.deltaTime);
-            lifetimeRemaining -= Time.deltaTime;
+#if DYNAMICTURRETRESISTANCEPOINTSMODE
+        applyResistanceCost(Time.deltaTime);
+#endif
 
+#if TURRETUPKEEP
             if (upkeepCountdown <= 0)
             {
                 if (PlayerStatistics.money < upkeepCost)
@@ -172,35 +233,35 @@ public class Turret : Attacker
             {
                 upkeepCountdown -= Time.deltaTime;
             }
+#endif
 
-            if (target != null)
+        if (target != null)
+        {
+            lockOnTarget();
+
+            if (useLaser)
             {
-                lockOnTarget();
-
-                if (useLaser)
-                {
-                    doAttack(target, enemy);
-                    laser();
-                }
-                else
-                {
-                    if (fireCountdown <= 0)
-                    {
-                        shoot();
-                        fireCountdown = fireCooldown;
-                    }
-
-                    fireCountdown -= Time.deltaTime;
-                }
+                doAttack(target, enemy);
+                laser();
             }
             else
             {
-                if (useLaser && lineRenderer.enabled)
+                if (fireCountdown <= 0)
                 {
-                    lineRenderer.enabled = false;
-                    laserImpactPS.Stop();
-                    laserImpactLight.enabled = false;
+                    shoot();
+                    fireCountdown = fireCooldown;
                 }
+
+                fireCountdown -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            if (useLaser && lineRenderer.enabled)
+            {
+                lineRenderer.enabled = false;
+                laserImpactPS.Stop();
+                laserImpactLight.enabled = false;
             }
         }
     }

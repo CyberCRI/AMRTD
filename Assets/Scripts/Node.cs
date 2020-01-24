@@ -1,5 +1,6 @@
 ﻿//#define DEVMODE
 //#define SELLTURRETS
+//#define TURRETLIFETIME
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -231,7 +232,7 @@ public class Node : MonoBehaviour
         }
         else
         {
-            // not enough money to upgrade"
+            // not enough money to upgrade
         }
     }
 
@@ -250,11 +251,13 @@ public class Node : MonoBehaviour
 
     public void renewTurret()
     {
+#if TURRETLIFETIME
 #if DEVMODE
         Debug.Log("renewTurret");
 #endif
 
         turret.renew();
+#endif
     }
 
     void unhover()
