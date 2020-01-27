@@ -107,15 +107,21 @@ public class PlayerStatistics : MonoBehaviour
     }
 #endif
 
+    // contains the function that computes the resistance points from the number of turrets
     private void updateResistancePoints(float value)
     {
         _turretResistancePoints = value;
-        resistancePoints = PlayerStatistics.instance.turretResistancePointsToResistanceFactor * _turretResistancePoints;
+        resistancePoints =
+            PlayerStatistics.instance.turretResistancePointsToResistanceFactor
+            * _turretResistancePoints;
     }
 
     //#endif
     #endregion
 
+    // allows for a smooth transition from resistance(turrets_count(t+1))
+    // to resistance(turrets_count(t+1))
+    // through the use of the variable negativePointsPool
     private IEnumerator smoothReduce()
     {
         isLerpInProgress = true;
@@ -128,7 +134,7 @@ public class PlayerStatistics : MonoBehaviour
             endValue = _turretResistancePoints - step;
             while (timeParameter <= 1)
             {
-                timeParameter += Time.deltaTime/animationDuration;
+                timeParameter += Time.deltaTime / animationDuration;
                 lerp = Mathf.Lerp(startValue, endValue, timeParameter);
                 updateResistancePoints(lerp);
                 yield return null;

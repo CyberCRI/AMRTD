@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -120,6 +121,15 @@ public class WaveSpawner : MonoBehaviour
         countdown = 0f;
     }
 
+    private float[] getCurrentResistances()
+    {
+        return Enumerable.Repeat(
+            // current resistance ratio
+            1f - (((float)PlayerStatistics.resistancePoints) / ((float)PlayerStatistics.defaultMaxResistancePoints)),
+            (int)Attack.SUBSTANCE.COUNT
+            ).ToArray();
+    }
+
     IEnumerator spawnWave()
     {
         isDoneSpawning = false;
@@ -129,7 +139,7 @@ public class WaveSpawner : MonoBehaviour
 
         for (int i = 0; i < currentWave.count; i++)
         {
-            spawnEnemy(currentWave);
+            spawnEnemy(currentWave, getCurrentResistances());
             yield return new WaitForSeconds(currentWave.timeBetweenSpawns);
         }
 
@@ -139,6 +149,8 @@ public class WaveSpawner : MonoBehaviour
 
     public Enemy spawnEnemy(
         Wave wave,
+        // overrides (TODO: increases) the resistance of the instantiated enemy
+        float[] resistances = null,
         GameObject enemyMotherCell = null,
         int reward = 0,
         float health = 0f,
@@ -194,7 +206,7 @@ public class WaveSpawner : MonoBehaviour
             GameObject instantiatedEnemy = (GameObject)Instantiate(enemyMotherCell, spawnPointPosition, spawnPointRotation);
 
             enemy = instantiatedEnemy.GetComponent<Enemy>();
-            enemy.initialize(wave, reward, health, startHealth, waypointIndex);
+            enemy.initialize(wave, reward, health, startHealth, waypointIndex, resistances);
 
             enemiesAlive++;
         }

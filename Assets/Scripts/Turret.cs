@@ -27,7 +27,7 @@ public class Turret : Attacker
     [Header("Resistance")]
     [Tooltip("Points added to a pool taken into account for the computation of the resistance gauge.")]
     [SerializeField]
-    private float resistancePoints = 15f;
+    private float _resistancePoints = 15f;
     //#endif
 
     //#if TURRETUPKEEP
@@ -104,7 +104,7 @@ public class Turret : Attacker
         PlayerStatistics.instance.turretCount += 1;
 #endif
 #if STATICTURRETRESISTANCEPOINTSMODE
-        PlayerStatistics.instance.turretResistancePoints += resistancePoints;
+        PlayerStatistics.instance.turretResistancePoints += _resistancePoints;
 #endif
         InvokeRepeating("updateTarget", timeStartTurret, updatePeriod);
     }
@@ -119,8 +119,8 @@ public class Turret : Attacker
         PlayerStatistics.instance.turretCount -= 1;
 #endif
 #if STATICTURRETRESISTANCEPOINTSMODE
-//        Debug.Log(this.gameObject.name + ": -" + (int)resistancePoints);
-        PlayerStatistics.instance.turretResistancePoints -= resistancePoints;
+//        Debug.Log(this.gameObject.name + ": -" + (int)_resistancePoints);
+        PlayerStatistics.instance.turretResistancePoints -= _resistancePoints;
 #endif        
     }
 #endif

@@ -72,6 +72,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private bool[] immunities = new bool[(int)Attack.SUBSTANCE.COUNT];
     // [0,1] factors applied to antibiotics effects
+    // 1f = susceptible
+    // 0f = resistant
     // by default, enemies are susceptible, which means the factor applied to the effect is 1f
     public float[] resistances = Enumerable.Repeat(
         1f,
@@ -163,6 +165,12 @@ public class Enemy : MonoBehaviour
         isAlive = true;
         divisionCountdown = divisionPeriod;
 
+        updateAntibioticResistanceIndicators();
+    }
+
+    public void updateAntibioticResistanceIndicators()
+    {
+#if DEVMODE
         Attack.SUBSTANCE substance;
         float scale;
         for (int antibioticIndex = 0; antibioticIndex < (int)Attack.SUBSTANCE.COUNT; antibioticIndex++)
@@ -176,7 +184,12 @@ public class Enemy : MonoBehaviour
             {
                 scale = 1f - resistances[antibioticIndex];
             }
-#if DEVMODE
+            /*
+            Debug.Log("Enemy: " + this.gameObject.name 
+                + " ABi: " + antibioticIndex 
+                + " scale: " + scale
+                );
+            */
             showAntibioticResistanceIndicator(substance, 0f != scale, scale);
 #endif
         }
@@ -187,7 +200,6 @@ public class Enemy : MonoBehaviour
     /// </summary>
     void Update()
     {
-
         divisionCountdown -= Time.deltaTime * getDivisionFactorTotal();
 
         if (canDivide(DIVISION_STRATEGY.TIME_BASED))
@@ -296,7 +308,8 @@ public class Enemy : MonoBehaviour
         int _reward,
         float _health,
         float _startHealth,
-        int _waypointIndex
+        int _waypointIndex,
+        float[] _resistances = null
         )
     {
         //Debug.Log(string.Format("Enemy::initialize({0}, {1}, {2}, {3})",
@@ -326,7 +339,16 @@ public class Enemy : MonoBehaviour
             startHealth = _startHealth;
         }
 
+        if (null != _resistances)
+        {
+            for (int i = 0; i < (int)Attack.SUBSTANCE.COUNT; i++)
+            {
+                resistances[i] = Mathf.Clamp(_resistances[i], 0f, 1f);
+            }
+        }
+
         updateHealthBar();
+        updateAntibioticResistanceIndicators();
     }
 
     private void updateHealthBar()
@@ -366,6 +388,7 @@ public class Enemy : MonoBehaviour
             reward /= 2;
             Enemy enemy = WaveSpawner.instance.spawnEnemy(
                 wave,
+                null,
                 this.gameObject,
                 reward,
                 health,
@@ -439,7 +462,7 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < (int)Attack.SUBSTANCE.COUNT; i++)
         {
             immunities[i] = _immunities[i];
-            resistances[i] = Mathf.Min(1.0f, _resistances[i]);
+            resistances[i] = Mathf.Clamp(_resistances[i], 0f, 1f);
         }
     }
 
