@@ -1,4 +1,4 @@
-﻿#define DEVMODE
+﻿//#define DEVMODE
 using UnityEngine;
 
 // temporary class, will be turned into a ScriptableObject
@@ -199,7 +199,7 @@ public class Attack : MonoBehaviour
             if (0f != damageWhenFirstHit)
             {
                 // resistance is taken into account at creation of Attack
-                enemy.takeDamage(damageWhenFirstHit);
+                enemy.takeDamage(damageWhenFirstHit, substance);
                 damageWhenFirstHit = 0f;
             }
 
@@ -243,7 +243,7 @@ public class Attack : MonoBehaviour
 
             if (0f != damagePerSecondPassive)
             {
-                enemy.takeDamage(damagePerSecondPassive * Time.deltaTime);
+                enemy.takeDamage(damagePerSecondPassive * Time.deltaTime, substance);
             }
 
             // TODO make sure this does not happen too soon for Enemy to take it into account
@@ -292,12 +292,12 @@ public class Attack : MonoBehaviour
     {
         if (0f != damagePerSecondActive)
         {
-            enemy.takeDamage(damagePerSecondActive * Time.deltaTime);
+            enemy.takeDamage(damagePerSecondActive * Time.deltaTime, substance);
         }
 
         if (0f != damageWhenHit)
         {
-            enemy.takeDamage(damageWhenHit);
+            enemy.takeDamage(damageWhenHit, substance);
         }
 
         // apply active abilities

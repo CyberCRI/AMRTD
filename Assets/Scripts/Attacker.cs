@@ -35,6 +35,10 @@ public class Attacker : MonoBehaviour
                     _enemyAttack.apply();
                 }
             }
+            else
+            {
+                _enemy.doResistanceEffectBurst();
+            }
         }
     }
 

@@ -59,12 +59,12 @@ public class Node : MonoBehaviour
     {
         startColor = renderor.material.color;
 
-        buildEffectPS =     (ParticleSystem)buildEffect.GetComponentsInChildren<ParticleSystem>()[0];
-        cantPayEffectPS =   (ParticleSystem)cantPayEffect.GetComponentsInChildren<ParticleSystem>()[0];
-        damagedEffectPS =   (ParticleSystem)damagedEffect.GetComponentsInChildren<ParticleSystem>()[0];
-        expiredEffectPS =   (ParticleSystem)expiredEffect.GetComponentsInChildren<ParticleSystem>()[0];
-        sellEffectPS =      (ParticleSystem)sellEffect.GetComponentsInChildren<ParticleSystem>()[0];
-        upgradeEffectPS =   (ParticleSystem)upgradeEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        buildEffectPS = (ParticleSystem)buildEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        cantPayEffectPS = (ParticleSystem)cantPayEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        damagedEffectPS = (ParticleSystem)damagedEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        expiredEffectPS = (ParticleSystem)expiredEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        sellEffectPS = (ParticleSystem)sellEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        upgradeEffectPS = (ParticleSystem)upgradeEffect.GetComponentsInChildren<ParticleSystem>()[0];
     }
 
     /// <summary>
@@ -169,7 +169,7 @@ public class Node : MonoBehaviour
             effectPrefab,
             this.transform.position,
             Quaternion.identity);
-        Destroy(effect, effectPS.main.duration + effectPS.main.startLifetime.constant);
+        Destroy(effect, CommonUtilities.getEffectMaxDuration(effectPS));
 
         Destroy(turretToDestroy);
 
@@ -191,14 +191,14 @@ public class Node : MonoBehaviour
 
             turret = turretGO.GetComponent<Turret>();
             turret.node = this;
-//            turret.range = turret.range * Mathf.Max(
-//                this.transform.parent.localScale.x,
-//                this.transform.parent.localScale.z
-//                );
+            //            turret.range = turret.range * Mathf.Max(
+            //                this.transform.parent.localScale.x,
+            //                this.transform.parent.localScale.z
+            //                );
             turretBlueprint = blueprint;
 
             GameObject effect = (GameObject)Instantiate(buildEffect, this.transform.position, Quaternion.identity);
-            Destroy(effect, buildEffectPS.main.duration + buildEffectPS.main.startLifetime.constant);
+            Destroy(effect, CommonUtilities.getEffectMaxDuration(buildEffectPS));
         }
         else
         {
@@ -221,10 +221,10 @@ public class Node : MonoBehaviour
             turret = turretGO.GetComponent<Turret>();
             turret.rotatePartToRotate(previousRotation);
             turret.node = this;
-//            turret.range = turret.range * Mathf.Max(
-//                this.transform.parent.localScale.x,
-//                this.transform.parent.localScale.z
-//                );
+            //            turret.range = turret.range * Mathf.Max(
+            //                this.transform.parent.localScale.x,
+            //                this.transform.parent.localScale.z
+            //                );
 
             removeTurret(REMOVETOWER.UPGRADED, oldTurret);
 
@@ -241,8 +241,8 @@ public class Node : MonoBehaviour
 #if DEVMODE
 //        Debug.Log("sellTurret");
 #endif
-        
-#if SELLTURRETS       
+
+#if SELLTURRETS
 //        PlayerStatistics.money += turretBlueprint.getSellCost();
 #endif
 

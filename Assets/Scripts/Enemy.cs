@@ -1,4 +1,4 @@
-﻿#define DEVMODE
+﻿//#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
@@ -67,6 +67,11 @@ public class Enemy : MonoBehaviour
     private GameObject[] antibioticResistanceIndicatorBackgrounds = new GameObject[(int)Attack.SUBSTANCE.COUNT];
 
     [Header("Resistance")]
+    [SerializeField]
+    private ParticleSystem resistanceEffect = null;
+    private ParticleSystem _resistanceEffectInstance = null;
+    public const int maxBurstCount = 50;
+    public const int maxEmissionRate = 30;
     // complete immunities
     // Attack.SUBSTANCE-indexed array is faster than Dictionary
     [SerializeField]
@@ -165,12 +170,91 @@ public class Enemy : MonoBehaviour
         isAlive = true;
         divisionCountdown = divisionPeriod;
 
-        updateAntibioticResistanceIndicators();
+        showResistance();
     }
 
-    public void updateAntibioticResistanceIndicators()
+    private void setUpResistanceEffect()
+    {
+        if (null == _resistanceEffectInstance)
+        {
+            _resistanceEffectInstance =
+                ((GameObject)Instantiate(
+                    resistanceEffect.gameObject
+                    , this.transform.position
+                    , Quaternion.identity
+                    , this.transform
+                    )).GetComponent<ParticleSystem>();
+
+            setResistanceEffectEmissionRate(getMaxResistance() * maxEmissionRate);
+        }
+    }
+
+    private float getMaxResistance()
+    {
+        float maxResistance = 0f;
+        for (int i = 0; i < resistances.Length; i++)
+        {
+            if (immunities[i])
+            {
+                maxResistance = 1;
+            }
+            else if (maxResistance < resistances[i])
+            {
+                maxResistance = resistances[i];
+            }
+        }
+        return maxResistance;
+    }
+
+    private void setResistanceEffectEmissionRate(float emissionRate)
+    {
+        if (null != _resistanceEffectInstance)
+        {
+            emissionRate = 20;
+            //_resistanceEffectInstance.emission.rateOverTime = emissionRate;
+            ParticleSystem.EmissionModule em = _resistanceEffectInstance.emission;
+            em.rateOverTime = emissionRate;
+#if DEVMODE
+            Debug.Log("setResistanceEffectEmissionRate " + emissionRate);
+#endif
+        }
+    }
+
+    public void doResistanceEffectBurst(int particleCount = maxBurstCount)
+    {
+        if (null != _resistanceEffectInstance)
+        {
+            _resistanceEffectInstance.emission.SetBursts(
+                new ParticleSystem.Burst[] {
+                    new ParticleSystem.Burst(0.0f, particleCount)
+                }
+            );
+            Invoke("cancelBursts", CommonUtilities.getEffectMaxDuration(_resistanceEffectInstance));
+#if DEVMODE
+            Debug.Log("doResistanceEffectBurst " + particleCount);
+#endif
+        }
+    }
+
+    private void cancelBursts()
     {
 #if DEVMODE
+        Debug.Log("cancelBursts");
+#endif
+        if (null != _resistanceEffectInstance)
+        {
+            _resistanceEffectInstance.emission.SetBursts(
+                new ParticleSystem.Burst[] { }
+            );
+        }
+    }
+
+    public void showResistance()
+    {
+#if DEVMODE
+        Debug.Log("showResistance");
+#endif
+        bool instantiateResistanceEffect = false;
         Attack.SUBSTANCE substance;
         float scale;
         for (int antibioticIndex = 0; antibioticIndex < (int)Attack.SUBSTANCE.COUNT; antibioticIndex++)
@@ -184,14 +268,21 @@ public class Enemy : MonoBehaviour
             {
                 scale = 1f - resistances[antibioticIndex];
             }
-            /*
+#if DEVMODE
             Debug.Log("Enemy: " + this.gameObject.name 
                 + " ABi: " + antibioticIndex 
                 + " scale: " + scale
                 );
-            */
+#endif
+            instantiateResistanceEffect = instantiateResistanceEffect || (0f != scale);
+#if DEVMODE
             showAntibioticResistanceIndicator(substance, 0f != scale, scale);
 #endif
+        }
+
+        if (instantiateResistanceEffect)
+        {
+            setUpResistanceEffect();
         }
     }
 
@@ -312,13 +403,15 @@ public class Enemy : MonoBehaviour
         float[] _resistances = null
         )
     {
-        //Debug.Log(string.Format("Enemy::initialize({0}, {1}, {2}, {3})",
-        //    //_wave,
-        //    _reward,
-        //    _health,
-        //    _startHealth,
-        //    _waypointIndex
-        //));
+#if DEVMODE
+        Debug.Log(string.Format("Enemy::initialize({0}, {1}, {2}, {3})",
+            //_wave,
+            _reward,
+            _health,
+            _startHealth,
+            _waypointIndex
+        ));
+#endif
 
         wave = _wave;
         enemyMovement.waypointIndex = _waypointIndex;
@@ -348,7 +441,7 @@ public class Enemy : MonoBehaviour
         }
 
         updateHealthBar();
-        updateAntibioticResistanceIndicators();
+        showResistance();
     }
 
     private void updateHealthBar()
@@ -356,10 +449,19 @@ public class Enemy : MonoBehaviour
         healthBar.fillAmount = health / startHealth;
     }
 
-    public void takeDamage(float damage)
+    public void takeDamage(float damage, Attack.SUBSTANCE substance = Attack.SUBSTANCE.COUNT)
     {
         health -= injuryFactor * damage;
         updateHealthBar();
+
+        if (Attack.SUBSTANCE.COUNT != substance)
+        {
+            int particleCount = immunities[(int)substance] ? maxBurstCount : (int)Mathf.Floor(resistances[(int)substance] * maxBurstCount);
+            if (0 != particleCount)
+            {
+                doResistanceEffectBurst(particleCount);
+            }
+        }
 
         if (isAlive && health <= 0f)
         {
@@ -371,7 +473,7 @@ public class Enemy : MonoBehaviour
     {
         isAlive = false;
         GameObject effect = (GameObject)Instantiate(deathEffect.gameObject, this.transform.position, Quaternion.identity);
-        Destroy(effect.gameObject, deathEffect.main.duration + deathEffect.main.startLifetime.constant);
+        Destroy(effect.gameObject, CommonUtilities.getEffectMaxDuration(deathEffect));
         PlayerStatistics.money += reward;
         Destroy(this.gameObject);
     }

@@ -354,13 +354,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMovement: {fileID: 76248867092480059}
+  defaultMutationRange: 0.2
   reward: 150
+  health: 0
   deathEffect: {fileID: 4562425432993480917, guid: f2773845f5971f848901425ae4563d1d,
     type: 3}
-  health: 0
   startHealth: 300
   healingRatioSpeed: 0.2
-  injuryRatio: 0
   healthBar: {fileID: 6513905922545200639}
   divisionPeriod: 8
   divisionStrategy: 0
@@ -377,6 +377,8 @@ MonoBehaviour:
   - {fileID: 752201964454105157}
   - {fileID: 3719802510603439701}
   - {fileID: 5218048004403132239}
+  resistanceEffect: {fileID: 7490702276742363600, guid: 2f20d4e4b2125e549bad18c88b8af56d,
+    type: 3}
   immunities: 000000
   resistances:
   - 1

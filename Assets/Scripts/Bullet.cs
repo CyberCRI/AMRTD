@@ -49,7 +49,7 @@ public class Bullet : Attacker
     void blowUp()
     {
         GameObject effect = Instantiate(bulletImpactEffect.gameObject, this.transform.position, this.transform.rotation);
-        Destroy(effect, bulletImpactEffect.main.duration + bulletImpactEffect.main.startLifetime.constant);
+        Destroy(effect, CommonUtilities.getEffectMaxDuration(bulletImpactEffect));
 
         if (explosionRadius > 0f)
         {

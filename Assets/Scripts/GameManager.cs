@@ -1,4 +1,4 @@
-﻿#define DEVMODE
+﻿//#define DEVMODE
 //#define LIFEPOINTSMODE
 using UnityEngine;
 using UnityEngine.UI;
@@ -155,6 +155,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void setPause(bool setToPause)
+    {
+        Time.timeScale = setToPause ? 0f : 1f;
+    }
+
+    public void togglePause()
+    {
+        Time.timeScale = 1f - Time.timeScale;
+    }
+
+    public bool isPaused()
+    {
+        return Time.timeScale == 0f;
+    }
+
+#if DEVMODE
     private void injureAllEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(Enemy.enemyTag);
@@ -186,19 +202,5 @@ public class GameManager : MonoBehaviour
             turret.selfDestruct(Node.REMOVETOWER.DAMAGED);
         }
     }
-
-    public void setPause(bool setToPause)
-    {
-        Time.timeScale = setToPause ? 0f : 1f;
-    }
-
-    public void togglePause()
-    {
-        Time.timeScale = 1f - Time.timeScale;
-    }
-
-    public bool isPaused()
-    {
-        return Time.timeScale == 0f;
-    }
+#endif
 }

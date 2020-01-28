@@ -21,4 +21,9 @@ public class CommonUtilities
             array[i] = root.GetChild(i).GetComponent<T>();
         }
     }
+
+    public static float getEffectMaxDuration(ParticleSystem ps)
+    {
+        return ps.main.duration + ps.main.startLifetime.constant;
+    }
 }
