@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿#define DEVMODE
 //#define LIFEPOINTSMODE
 using UnityEngine;
 using UnityEngine.UI;

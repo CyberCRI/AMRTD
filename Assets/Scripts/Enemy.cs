@@ -1,4 +1,5 @@
-﻿//#define DEVMODE
+﻿#define DEVMODE
+//#define MUTATIONONDIVISION
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
@@ -269,8 +270,8 @@ public class Enemy : MonoBehaviour
                 scale = 1f - resistances[antibioticIndex];
             }
 #if DEVMODE
-            Debug.Log("Enemy: " + this.gameObject.name 
-                + " ABi: " + antibioticIndex 
+            Debug.Log("Enemy: " + this.gameObject.name
+                + " ABi: " + antibioticIndex
                 + " scale: " + scale
                 );
 #endif
@@ -280,7 +281,7 @@ public class Enemy : MonoBehaviour
 #endif
         }
 
-        if (instantiateResistanceEffect)
+        if (instantiateResistanceEffect && (null == _resistanceEffectInstance))
         {
             setUpResistanceEffect();
         }
@@ -395,12 +396,12 @@ public class Enemy : MonoBehaviour
 
     // intialization after procedural instantiation
     public void initialize(
-        Wave _wave,
-        int _reward,
-        float _health,
-        float _startHealth,
-        int _waypointIndex,
-        float[] _resistances = null
+        Wave _wave
+        , int _reward
+        , float _health
+        , float _startHealth
+        , int _waypointIndex
+        , float[] _resistances
         )
     {
 #if DEVMODE
@@ -441,6 +442,7 @@ public class Enemy : MonoBehaviour
         }
 
         updateHealthBar();
+        cancelBursts();
         showResistance();
     }
 
@@ -488,6 +490,12 @@ public class Enemy : MonoBehaviour
         else if (null != wave)
         {
             reward /= 2;
+
+            // delete resistance effect before division
+            _resistanceEffectInstance.transform.parent = null;
+            Destroy(_resistanceEffectInstance);
+            _resistanceEffectInstance = null;
+
             Enemy enemy = WaveSpawner.instance.spawnEnemy(
                 wave,
                 null,
@@ -497,6 +505,10 @@ public class Enemy : MonoBehaviour
                 startHealth,
                 waypointIndex
                 );
+
+            // put back the resistance effect
+            showResistance();
+
             if (null != enemy)
             {
 
@@ -515,8 +527,9 @@ public class Enemy : MonoBehaviour
                         }
                     }
                 }
-
+#if MUTATIONONDIVISION
                 enemy.innerMutate(defaultMutationRange);
+#endif
                 enemy.enemyMovement.enabled = true;
                 enemyMovement.transferWobblingParametersTo(enemy.enemyMovement);
             }

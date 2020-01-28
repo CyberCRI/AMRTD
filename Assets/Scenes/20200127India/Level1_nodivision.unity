@@ -737,6 +737,11 @@ PrefabInstance:
       propertyPath: waves.Array.data[4].maxEnemyCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
+        type: 3}
+      propertyPath: waves.Array.data[0].maxEnemyCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492235, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
       propertyPath: m_Name
