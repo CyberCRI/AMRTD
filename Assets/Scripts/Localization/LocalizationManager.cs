@@ -39,7 +39,7 @@ public class LocalizationManager : MonoBehaviour
         ,"Spanish"
         ,"Arabic"
     };
-    public const LANGUAGES defaultLanguage = LANGUAGES.FRENCH;
+    public const LANGUAGES defaultLanguage = LANGUAGES.ENGLISH;
     private LANGUAGES _languageIndex;
     private string _languageString;
     public LANGUAGES language

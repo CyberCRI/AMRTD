@@ -269,12 +269,14 @@ public class Enemy : MonoBehaviour
             {
                 scale = 1f - resistances[antibioticIndex];
             }
+/*
 #if DEVMODE
             Debug.Log("Enemy: " + this.gameObject.name
                 + " ABi: " + antibioticIndex
                 + " scale: " + scale
                 );
 #endif
+*/
             instantiateResistanceEffect = instantiateResistanceEffect || (0f != scale);
 #if DEVMODE
             showAntibioticResistanceIndicator(substance, 0f != scale, scale);
@@ -492,7 +494,10 @@ public class Enemy : MonoBehaviour
             reward /= 2;
 
             // delete resistance effect before division
-            _resistanceEffectInstance.transform.parent = null;
+            if (null != _resistanceEffectInstance)
+            {
+                _resistanceEffectInstance.transform.parent = null;
+            }
             Destroy(_resistanceEffectInstance);
             _resistanceEffectInstance = null;
 

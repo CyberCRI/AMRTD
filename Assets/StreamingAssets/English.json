@@ -59,5 +59,24 @@
 	,{"key":"GAME.RETRYSCREEN.CANCEL","value":"RESUME"}
 	,{"key":"GAME.RETRYSCREEN.TITLE","value":"START OVER?"}
 	,{"key":"GAME.RETRYSCREEN.TEXT","value":"YOUR PROGRESS WILL BE LOST! ARE YOU SURE YOU WANT TO START OVER?"}
+	,{"key": 	                   "max help text length __________________________________________________________________________________________"}
+	,{"key":"GAME.LIVESTEXT.HELP","value":              "You lose lives when pathogens reach the blood vessels on the far left of the screen."}
+	,{"key":"GAME.RESISTANCEBARBACKGROUND.HELP","value":"The Resistance bar: using antibiotics fills it up and makes enemies more resistant."}
+	,{"key":"GAME.RESISTANCEBAR.HELP","value":          "The Resistance bar: using antibiotics fills it up and makes enemies more resistant."}
+	,{"key":"GAME.WAVEBARBACKGROUND.HELP","value":      "The Wave bar fills up after each wave of pathogens."}
+	,{"key":"GAME.WAVEBAR.HELP","value":                "The Wave bar fills up after each wave of pathogens."}
+	,{"key":"GAME.MONEYTEXT.HELP","value":              "This is the money you can spend on antibiotics."}
+	,{"key":"GAME.WAVETIMERTEXT.HELP","value":          "This is the remaining time before the next wave, if the current wave is dead."}
+	,{"key":"GAME.GLOBALTIMERTEXT.HELP","value":        "You must kill all the pathogens before this timer reaches zero."}
+	,{"key":"GAME.LEVELINDICATOR.HELP","value":         "This is the current level."}
+	,{"key":"GAME.MENU.HELP","value":                   "This is the menu button."}
+	,{"key":"GAME.PAUSE.HELP","value":                  "Use this button to pause the game."}
+	,{"key":"GAME.RETRY.HELP","value":                  "Use this button to start over this level."}
+	,{"key":"GAME.UPGRADEBUTTON.HELP","value":          "Upgrade your antibiotics to kill more pathogens!"}
+	,{"key":"GAME.SELLBUTTON.HELP","value":             "Sell your antibiotics to get money and reduce the resistance."}
+	,{"key":"GAME.RENEWBUTTON.HELP","value":            "Pay to make the antibiotics last longer."}
+	,{"key":"GAME.PATHOGEN.HELP","value":               "This is a pathogen! Use antibiotics to kill it as soon as possible!"}
+	,{"key":"GAME.TURRET.HELP","value":                 "This is an antibiotics dispenser. It attacks pathogens using antibiotics."}
+	,{"key":"GAME.TURRETBUTTON.HELP","value":           "Click this button to place antibiotics dispensers on the tiles!"}
 	]
 }

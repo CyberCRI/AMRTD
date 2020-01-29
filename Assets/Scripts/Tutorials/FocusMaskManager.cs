@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,9 +6,26 @@ public class FocusMaskManager : MonoBehaviour
 {
     public static FocusMaskManager instance = null;
 
-    public const string waveTimerTextGOName = "WaveTimerText";
-    public const string resistanceBarGOName = "ResistanceBar";
+#region Interface game object names
+    public const string livesCounterGOName = "LivesText";
     public const string lifeBarGOName = "LifeBar";
+    public const string resistanceBarGOName = "ResistanceBar";
+    public const string waveBarGOName = "WaveBar";
+
+    public const string moneyTextGOName = "MoneyText";
+
+    public const string waveTimerTextGOName = "WaveTimerText";
+    public const string globalTimerTextGOName = "GlobalTimerText";
+
+    public const string levelIndicatorGOName = "LevelIndicator";
+    public const string menuGOName = "Menu";
+    public const string pauseGOName = "Pause";
+    public const string retryGOName = "Retry";
+
+    public const string standardTurretItemGOName = "StandardTurretItem";
+
+    public const string nodeUIGOName = "NodeUI";
+#endregion
 
     public delegate void FocusEvent();
     //public static event FocusEvent onFocusOn;

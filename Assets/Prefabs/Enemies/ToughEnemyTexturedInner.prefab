@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4205985860210128135}
   - component: {fileID: 8572730269580307796}
   - component: {fileID: 1772608160825948012}
+  - component: {fileID: 4498573238751080026}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ToughEnemyTexturedInner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &4498573238751080026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042479981288830234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  codeStem: PATHOGEN

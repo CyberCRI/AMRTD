@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 5079843622002194386}
   - component: {fileID: 730887305304050085}
   - component: {fileID: 3241761046887564199}
+  - component: {fileID: 6754526612550393362}
   m_Layer: 0
   m_Name: GenericTurretPrefab
   m_TagString: TurretTag
@@ -290,7 +291,7 @@ MonoBehaviour:
   modelAttack: {fileID: 3241761046887564199}
   range: 0
   route: 0
-  resistancePoints: 15
+  _resistancePoints: 15
   upkeepCost: 0
   upkeepPeriod: 1
   lifetimeStart: Infinity
@@ -342,6 +343,19 @@ MonoBehaviour:
   blockHealingPassive: 0
   blockMovementPassive: 0
   killAtDivisionPassive: 0
+--- !u!114 &6754526612550393362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5079843622002194389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  codeStem: TURRET
 --- !u!1 &5079843622877079218
 GameObject:
   m_ObjectHideFlags: 0

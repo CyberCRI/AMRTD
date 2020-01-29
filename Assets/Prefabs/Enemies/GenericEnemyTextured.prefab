@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 4500849788320993364}
   - component: {fileID: 2686818901224010539}
   - component: {fileID: 76248867092480059}
+  - component: {fileID: -2617001233672091963}
   m_Layer: 0
   m_Name: GenericEnemyTextured
   m_TagString: EnemyTag
@@ -425,6 +426,19 @@ MonoBehaviour:
   ratioFactor: 0.2
   angularWobble: 30
   horizontalShift: 0.05
+--- !u!114 &-2617001233672091963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500849788320993365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  codeStem: PATHOGEN
 --- !u!1 &5218048004403132239
 GameObject:
   m_ObjectHideFlags: 0
