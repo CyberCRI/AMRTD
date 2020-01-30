@@ -4,6 +4,11 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance = null;
 
+    [SerializeField]
+    private Texture2D buildCursorTexture;
+    private CursorMode cursorMode = CursorMode.Auto;
+    private Vector2 hotSpot = Vector2.zero;
+
     private TurretBlueprint turretToBuild = null;
     private Node selectedNode = null;
     private NodeUI nodeUI = null;
@@ -34,6 +39,7 @@ public class BuildManager : MonoBehaviour
     public void selectNode(Node node)
     {
         turretToBuild = null;
+        setBuildCursor(null != turretToBuild);
 
         if (selectedNode == node)
         {
@@ -55,11 +61,24 @@ public class BuildManager : MonoBehaviour
     public void selectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
+        setBuildCursor(null != turretToBuild);
         deselectNode();
     }
 
     public TurretBlueprint getTurretToBuild()
     {
         return turretToBuild;
+    }
+
+    private void setBuildCursor(bool buildOn)
+    {
+        if (buildOn)
+        {
+            Cursor.SetCursor(buildCursorTexture, hotSpot, cursorMode);
+        }
+        else
+        {
+            Cursor.SetCursor(null, Vector2.zero, cursorMode);
+        }
     }
 }

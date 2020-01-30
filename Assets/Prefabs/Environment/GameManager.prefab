@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bebcc5c12871e744b94a5a2356bd683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildCursorTexture: {fileID: 2800000, guid: 04f1820faddbdbf4eb29b7f8f24b99ad, type: 3}
 --- !u!114 &6342658062583492239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,9 +63,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e01e8c9ee94fb42932322c0a2b1c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startResistancePoints: 0
   startMoney: 150
   startLives: 5
+  startResistancePoints: 0
+  turretCountToResistanceFactor: 15
+  turretResistancePointsToResistanceFactor: 1
 --- !u!114 &6342658062583492238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6171a914dd484646aa9dc1b6f0fa644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveIndex: 0
   timeBeforeWave1: 10
   timeBetweenWaves: 10
   spawnMode: 1

@@ -18,7 +18,8 @@ public class HelpableElementUI : MonoBehaviour, IPointerDownHandler
             code = "GAME." + code + ".HELP";
             Debug.Log("HelpableElementUI: code: " + code);
 
-            HelpButtonUI.instance.toggleHelpMode();
+            //HelpButtonUI.instance.toggleHelpMode();
+            HelpButtonUI.instance.hasClickedOnHelpable();
 
             FocusMaskManager.instance.focusOn(this.gameObject, callback, code, true, true);
         }

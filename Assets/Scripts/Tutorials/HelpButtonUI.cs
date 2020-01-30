@@ -50,14 +50,18 @@ public class HelpButtonUI : MonoBehaviour
 
     public void toggleHelpMode()
     {
+#if DEVMODE
         Debug.Log("toggleHelpMode");
+#endif
         selected = !selected;
         setHelpCursor(selected);
     }
 
     public void hasClickedOnHelpable()
     {
+#if DEVMODE
         Debug.Log("hasClickedOnHelpable");
+#endif
         toggle.isOn = false;
     }
 
