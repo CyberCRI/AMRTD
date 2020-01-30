@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class FocusMaskClickInterceptor : MonoBehaviour
+public class FocusMaskClickInterceptor : MonoBehaviour, IPointerDownHandler
 {
-    void OnMouseDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
         FocusMaskManager.instance.click();
     }

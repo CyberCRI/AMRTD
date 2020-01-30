@@ -12,6 +12,13 @@ public class SceneFader : MonoBehaviour
     private AnimationCurve fadeCurve = null;
     public const float duration = 1f;
 
+    public delegate void FadeInEndCallback();
+    private FadeInEndCallback fadeInEndCallback;
+    public void setFadeInEndCallback(FadeInEndCallback _fadeInEndCallback)
+    {
+        fadeInEndCallback = _fadeInEndCallback;
+    }
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
@@ -46,6 +53,12 @@ public class SceneFader : MonoBehaviour
             float a = fadeCurve.Evaluate(t);
             image.color = new Color(0f, 0f, 0f, a);
             yield return 0;
+        }
+
+        if (null != fadeInEndCallback)
+        {
+            fadeInEndCallback();
+            fadeInEndCallback = null;
         }
     }
 

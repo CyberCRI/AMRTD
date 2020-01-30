@@ -59,7 +59,7 @@
 	,{"key":"GAME.RETRYSCREEN.CANCEL","value":"RESUME"}
 	,{"key":"GAME.RETRYSCREEN.TITLE","value":"START OVER?"}
 	,{"key":"GAME.RETRYSCREEN.TEXT","value":"YOUR PROGRESS WILL BE LOST! ARE YOU SURE YOU WANT TO START OVER?"}
-	,{"key": 	                   "max help text length __________________________________________________________________________________________"}
+	,{"key":"max help text length                        __________________________________________________________________________________________","value":""}
 	,{"key":"GAME.LIVESTEXT.HELP","value":              "You lose lives when pathogens reach the blood vessels on the far left of the screen."}
 	,{"key":"GAME.RESISTANCEBARBACKGROUND.HELP","value":"The Resistance bar: using antibiotics fills it up and makes enemies more resistant."}
 	,{"key":"GAME.RESISTANCEBAR.HELP","value":          "The Resistance bar: using antibiotics fills it up and makes enemies more resistant."}
@@ -78,5 +78,9 @@
 	,{"key":"GAME.PATHOGEN.HELP","value":               "This is a pathogen! Use antibiotics to kill it as soon as possible!"}
 	,{"key":"GAME.TURRET.HELP","value":                 "This is an antibiotics dispenser. It attacks pathogens using antibiotics."}
 	,{"key":"GAME.TURRETBUTTON.HELP","value":           "Click this button to place antibiotics dispensers on the tiles!"}
+
+	,{"key":"max help text length        __________________________________________________________________________________________","value":""}
+	,{"key":"TUTORIAL.LEVEL1.0","value":"Quick! You must set up antibiotics dispensers to destroy incoming pathogens!"}
+	,{"key":"TUTORIAL.LEVEL1.1","value":"Click on the antibiotic dispenser button to start setting them up."}
 	]
 }
