@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &412793003
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &1512313191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,6 +2411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &1283043318060693968
 GameObject:
   m_ObjectHideFlags: 0
@@ -5151,6 +5154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &1283043319363471140
 GameObject:
   m_ObjectHideFlags: 0
@@ -5632,6 +5636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &1283043319634983200
 GameObject:
   m_ObjectHideFlags: 0
@@ -5904,6 +5909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &1283043319651775452
 GameObject:
   m_ObjectHideFlags: 0
@@ -6047,6 +6053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &1283043319687602293
 GameObject:
   m_ObjectHideFlags: 0
@@ -6871,6 +6878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &2925641416046438286
 GameObject:
   m_ObjectHideFlags: 0
@@ -7299,6 +7307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &3861942761284126326
 GameObject:
   m_ObjectHideFlags: 0
@@ -7723,6 +7732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &4531679653484158849
 GameObject:
   m_ObjectHideFlags: 0
@@ -8648,6 +8658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &5676073686831477257
 GameObject:
   m_ObjectHideFlags: 0
@@ -8935,6 +8946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &5912979950916812743
 GameObject:
   m_ObjectHideFlags: 0
@@ -9498,6 +9510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &6617560939527070318
 GameObject:
   m_ObjectHideFlags: 0
@@ -9704,6 +9717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &7215420020276736173
 GameObject:
   m_ObjectHideFlags: 0
@@ -10898,6 +10912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1001 &29555875502666952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10919,22 +10934,6 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_damageWhenFirstHit
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -11086,22 +11085,6 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_slowDownMovementActive
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11252,22 +11235,6 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_slowDownDivisionPassive
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11413,11 +11380,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11562,22 +11524,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -11729,22 +11675,6 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_blockDivisionPassive
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11894,22 +11824,6 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_slowDownHealingPassive
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -12061,22 +11975,6 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_blockDivisionActive
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12226,22 +12124,6 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 515b99eb151d02e4180b13fa32dd9344,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_damageWhenHit
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -12393,22 +12275,6 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_slowDownDivisionActive
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12554,22 +12420,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 515b99eb151d02e4180b13fa32dd9344,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectStandardTurret
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12685,6 +12535,41 @@ PrefabInstance:
       propertyPath: m_Text
       value: "100\u20AC"
       objectReference: {fileID: 0}
+    - target: {fileID: 8814013329792529574, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814013329792529574, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1283043317992997073}
+    - target: {fileID: 8814013329792529574, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: selectStandardTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814013329792529574, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814013329792529574, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 6754702453262525396}
+    - target: {fileID: 8814013329792529574, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.UI.Toggle, UnityEngine.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814013329792529574, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf, type: 3}
 --- !u!224 &1283043319452441391 stripped
@@ -12693,6 +12578,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2876723170352256882}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6754702453262525396 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8814013329792529574, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2876723170352256882}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2958463449816999237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12714,22 +12611,6 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_damagePerSecondPassive
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -12881,22 +12762,6 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_blockHealingPassive
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13046,22 +12911,6 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_slowDownHealingActive
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -13213,22 +13062,6 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_blockHealingActive
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13378,22 +13211,6 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_slowDownMovementPassive
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -13545,22 +13362,6 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_blockMovementPassive
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13710,22 +13511,6 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_killAtDivisionPassive
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -13877,22 +13662,6 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_damagePerSecondActive
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14043,22 +13812,6 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_killAtDivisionActive
-      objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14208,22 +13961,6 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900791701968374875, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
-        type: 3}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1283043317992997073}
-    - target: {fileID: 3900791701968374876, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectLaserBeamer_blockMovementActive
       objectReference: {fileID: 0}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}

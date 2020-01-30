@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class BuildManager : MonoBehaviour
     private TurretBlueprint turretToBuild = null;
     private Node selectedNode = null;
     private NodeUI nodeUI = null;
+    private Toggle selectedTurretButton = null;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -58,9 +60,56 @@ public class BuildManager : MonoBehaviour
         nodeUI.hide();
     }
 
-    public void selectTurretToBuild(TurretBlueprint turret)
+    // assumes button != null and button.isOn
+    public void selectTurretButton(Toggle button)
     {
-        turretToBuild = turret;
+        if (null == button || !button.isOn)
+        {
+            Debug.Log("selectTurretButton: incorrect parameter button=" + button);
+        }
+
+        if (null != selectedTurretButton)
+        {
+            if (selectedTurretButton.isOn)
+            {
+                selectedTurretButton.isOn = false;
+            }
+        }
+        else if (selectedTurretButton == null)
+        {
+            selectedTurretButton = button;
+        }
+        selectedTurretButton = button;
+    }
+
+    public void deselectTurretButton(Toggle button)
+    {
+        if (null != selectedTurretButton && (selectedTurretButton == button))
+        {
+            if (selectedTurretButton.isOn)
+            {
+                selectedTurretButton.isOn = false;
+            }
+            selectedTurretButton = null;
+        }
+    }
+
+    // null == button means old turret button is used
+    // null != button means new turret toggle button is used, in which case:
+    //    button.isOn: select new turret button
+    //    !button.isOn: deselect current turret button
+    public void selectTurretToBuild(TurretBlueprint turret, Toggle button = null)
+    {
+        if (null == button || !button.isOn)
+        {
+            deselectTurretButton(button);
+        }
+        else
+        {
+            selectTurretButton(button);
+        }
+
+        turretToBuild = (null == button) || button.isOn ? turret : null;
         setBuildCursor(null != turretToBuild);
         deselectNode();
     }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
@@ -70,9 +71,9 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    public void selectStandardTurret()
+    public void selectStandardTurret(Toggle button)
     {
-        selectABTabletTurret((int)Attack.SUBSTANCE.COUNT);
+        selectABTabletTurret((int)Attack.SUBSTANCE.COUNT, button);
     }
     public void selectMissileLauncher()
     {
@@ -159,9 +160,9 @@ public class Shop : MonoBehaviour
         buildManager.selectTurretToBuild(laserBeamer_killAtDivisionPassive);
     }
 
-    public void selectABTabletTurret(int substance = (int)Attack.SUBSTANCE.COUNT)
+    public void selectABTabletTurret(int substance = (int)Attack.SUBSTANCE.COUNT, Toggle button = null)
     {
-        buildManager.selectTurretToBuild(tabletTurrets[substance]);
+        buildManager.selectTurretToBuild(tabletTurrets[substance], button);
     }
 
     public void selectABPillsBottleTurret(int substance = (int)Attack.SUBSTANCE.COUNT)
