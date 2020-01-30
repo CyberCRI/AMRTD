@@ -1,4 +1,4 @@
-#define DEVMODE
+//#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +10,8 @@ public class HelpButtonUI : MonoBehaviour
     private Toggle toggle;
     [SerializeField]
     private Texture2D helpCursorTexture;
+    [SerializeField]
+    private GameObject helpText = null;
 
     private bool selected = false;
     private CursorMode cursorMode = CursorMode.Auto;
@@ -55,6 +57,10 @@ public class HelpButtonUI : MonoBehaviour
 #endif
         selected = !selected;
         setHelpCursor(selected);
+        if (null != helpText)
+        {
+            helpText.SetActive(selected);
+        }
     }
 
     public void hasClickedOnHelpable()

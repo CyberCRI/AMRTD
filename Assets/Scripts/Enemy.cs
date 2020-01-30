@@ -1,4 +1,4 @@
-﻿#define DEVMODE
+﻿//#define DEVMODE
 //#define MUTATIONONDIVISION
 using UnityEngine;
 using UnityEngine.UI;
@@ -211,7 +211,7 @@ public class Enemy : MonoBehaviour
     {
         if (null != _resistanceEffectInstance)
         {
-            emissionRate = 20;
+            //emissionRate = 20;
             //_resistanceEffectInstance.emission.rateOverTime = emissionRate;
             ParticleSystem.EmissionModule em = _resistanceEffectInstance.emission;
             em.rateOverTime = emissionRate;

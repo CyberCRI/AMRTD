@@ -1,4 +1,4 @@
-﻿#define DEVMODE
+﻿//#define DEVMODE
 using UnityEngine;
 
 // temporary class, will be turned into a ScriptableObject

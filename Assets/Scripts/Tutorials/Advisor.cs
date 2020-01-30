@@ -1,3 +1,4 @@
+//#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,7 +49,9 @@ public class Advisor : MonoBehaviour
 
     public void setSpeechBubble(FocusMaskManager.Quadrant quadrant, string text, bool showButton = false)
     {
+#if DEVMODE
         Debug.Log("setSpeechBubble(" + quadrant + ", " + text + ", " + showButton + ")");
+#endif
         float horizontal = 0f, vertical = 0f;
         switch (quadrant)
         {

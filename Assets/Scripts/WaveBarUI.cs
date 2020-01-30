@@ -2,7 +2,7 @@
 // Fills up wave after wave
 public class WaveBarUI : IndicatedProgressBarUI
 {
-    protected override float getLatestValue()
+    public override float getLatestValue()
     {
         return WaveSpawner.instance.getWaveProgression();
     }

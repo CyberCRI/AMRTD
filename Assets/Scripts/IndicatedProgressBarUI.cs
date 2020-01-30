@@ -57,7 +57,7 @@ public abstract class IndicatedProgressBarUI : MonoBehaviour
 #endif
     }
 
-    protected abstract float getLatestValue();
+    public abstract float getLatestValue();
 
     private IEnumerator smoothAnimate(float startValue, float endValue)
     {

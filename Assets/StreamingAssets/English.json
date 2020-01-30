@@ -10,6 +10,7 @@
 	,{"key":"GAME.LIVESCOUNTER.LIVES","value":"LIVES"}
 	,{"key":"GAME.OBJECTIVESCOUNTER.LIVES","value":"HEALTHY"}
 	,{"key":"GAME.TIMECOUNTDOWN.READY","value":"READY!"}
+	,{"key":"GAME.HELP.EXPLANATION","value":"Click on the game elements to get information about them!"}
 	,{"key":"GAME.GAMEOVERSCREEN.TITLE","value":"GAME OVER"}
 	,{"key":"GAME.GAMEOVERSCREEN.WAVESSURVIVED","value":"WAVES SURVIVED"}
 	,{"key":"GAME.GAMEOVERSCREEN.RETRY","value":"RETRY"}
@@ -79,8 +80,9 @@
 	,{"key":"GAME.TURRET.HELP","value":                 "This is an antibiotics dispenser. It attacks pathogens using antibiotics."}
 	,{"key":"GAME.TURRETBUTTON.HELP","value":           "Click this button to place antibiotics dispensers on the tiles!"}
 
-	,{"key":"max help text length        __________________________________________________________________________________________","value":""}
-	,{"key":"TUTORIAL.LEVEL1.0","value":"Quick! You must set up antibiotics dispensers to destroy incoming pathogens!"}
-	,{"key":"TUTORIAL.LEVEL1.1","value":"Click on the antibiotic dispenser button to start setting them up."}
+	,{"key":"max help text length               __________________________________________________________________________________________","value":""}
+	,{"key":"TUTORIAL.LEVEL1.0","value":       "Quick! You must set up antibiotics dispensers to destroy incoming pathogens!"}
+	,{"key":"TUTORIAL.LEVEL1.1","value":       "Click on the antibiotic dispenser button to start setting them up."}
+	,{"key":"TUTORIAL.RESISTANCEBAR.0","value":"Beware! The more antibiotics you use, the more the pathogens will be resistant to them!"}
 	]
 }
