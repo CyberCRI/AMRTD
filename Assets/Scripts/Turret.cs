@@ -136,7 +136,7 @@ public class Turret : Attacker
 #if DYNAMICTURRETRESISTANCEPOINTSMODE
     private void applyResistanceCost(float deltaTime)
     {
-        PlayerStatistics.takeResistance(deltaTime * PlayerStatistics.costABPerSec);
+        PlayerStatistics.instance.takeResistance(deltaTime * PlayerStatistics.instance.costABPerSec);
     }
 #endif
 
@@ -217,7 +217,7 @@ public class Turret : Attacker
 #if TURRETUPKEEP
             if (upkeepCountdown <= 0)
             {
-                if (PlayerStatistics.money < upkeepCost)
+                if (PlayerStatistics.instance.money < upkeepCost)
                 {
                     selfDestruct(Node.REMOVETOWER.CANTPAY);
                     //TODO fix this
@@ -225,7 +225,7 @@ public class Turret : Attacker
                 }
                 else
                 {
-                    PlayerStatistics.money -= upkeepCost;
+                    PlayerStatistics.instance.money -= upkeepCost;
                     upkeepCountdown = upkeepPeriod;
                 }
             }

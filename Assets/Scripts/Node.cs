@@ -1,5 +1,5 @@
 ﻿//#define DEVMODE
-//#define SELLTURRETS
+#define SELLTURRETS
 //#define TURRETLIFETIME
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -182,9 +182,9 @@ public class Node : MonoBehaviour
 
     void buildTurret(TurretBlueprint blueprint)
     {
-        if (PlayerStatistics.money >= blueprint.cost)
+        if (PlayerStatistics.instance.money >= blueprint.cost)
         {
-            PlayerStatistics.money -= blueprint.cost;
+            PlayerStatistics.instance.money -= blueprint.cost;
 
             turretGO = (GameObject)Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
             turretGO.transform.localScale = Vector3.Scale(this.transform.parent.localScale, turretGO.transform.localScale);
@@ -208,9 +208,9 @@ public class Node : MonoBehaviour
 
     public void upgradeTurret()
     {
-        if (PlayerStatistics.money >= turretBlueprint.upgradeCost)
+        if (PlayerStatistics.instance.money >= turretBlueprint.upgradeCost)
         {
-            PlayerStatistics.money -= turretBlueprint.upgradeCost;
+            PlayerStatistics.instance.money -= turretBlueprint.upgradeCost;
 
             GameObject newTurretGO = (GameObject)Instantiate(turretBlueprint.upgradePrefab, this.transform.position, Quaternion.identity);
             newTurretGO.transform.localScale = Vector3.Scale(this.transform.parent.localScale, newTurretGO.transform.localScale);
@@ -243,7 +243,7 @@ public class Node : MonoBehaviour
 #endif
 
 #if SELLTURRETS
-//        PlayerStatistics.money += turretBlueprint.getSellCost();
+        PlayerStatistics.instance.money += turretBlueprint.getSellCost();
 #endif
 
         removeTurret(REMOVETOWER.SOLD, turretGO);

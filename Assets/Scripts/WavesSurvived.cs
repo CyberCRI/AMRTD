@@ -24,7 +24,7 @@ public class WavesSurvived : MonoBehaviour
 
         yield return new WaitForSeconds(SceneFader.duration);
 
-        while (waveCount < PlayerStatistics.waves)
+        while (waveCount < PlayerStatistics.instance.waves)
         {
             waveCount++;
             wavesText.text = waveCount.ToString();

@@ -1312,32 +1312,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
-      propertyPath: tRPThreshold1
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
-        type: 3}
       propertyPath: tRPMarkerValue1
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
-      propertyPath: tRPThreshold2
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
-        type: 3}
       propertyPath: tRPMarkerValue2
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
-        type: 3}
-      propertyPath: tRPMarkerRatio1
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
-        type: 3}
-      propertyPath: tRPMarkerRatio2
       value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []

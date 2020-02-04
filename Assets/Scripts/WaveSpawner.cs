@@ -80,7 +80,7 @@ public class WaveSpawner : MonoBehaviour
                 {
                     waveCountdownText.text = string.Format("{0:00.00}", 0f);
                     StartCoroutine(spawnWave());
-                    if (PlayerStatistics.waves < waves.Length - 1)
+                    if (PlayerStatistics.instance.waves < waves.Length - 1)
                     {
                         countdown = timeBetweenWaves;
                     }
@@ -125,7 +125,7 @@ public class WaveSpawner : MonoBehaviour
     {
         return Enumerable.Repeat(
             // current resistance ratio
-            1f - (((float)PlayerStatistics.resistancePoints) / ((float)PlayerStatistics.defaultMaxResistancePoints)),
+            1f - (((float)PlayerStatistics.instance.resistancePoints) / ((float)PlayerStatistics.defaultMaxResistancePoints)),
             (int)Attack.SUBSTANCE.COUNT
             ).ToArray();
     }
@@ -134,7 +134,7 @@ public class WaveSpawner : MonoBehaviour
     {
         isDoneSpawning = false;
         yield return new WaitForSeconds(1f);
-        PlayerStatistics.waves++;
+        PlayerStatistics.instance.waves++;
         currentWave = waves[waveIndex];
 
         for (int i = 0; i < currentWave.count; i++)

@@ -24,7 +24,7 @@ public class LivesUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        livesText.text = PlayerStatistics.lives.ToString() + " " + translatedValue;
+        livesText.text = PlayerStatistics.instance.lives.ToString() + " " + translatedValue;
     }
 
     private void onLanguageChanged()

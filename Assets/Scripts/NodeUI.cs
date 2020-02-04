@@ -1,4 +1,4 @@
-﻿//#define SELLTURRETS
+﻿#define SELLTURRETS
 //#define TURRETUPKEEP
 //#define TURRETLIFETIME
 using UnityEngine;

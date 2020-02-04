@@ -20,7 +20,7 @@ public class LifeBarUI : MonoBehaviour
     void Update()
     {
         // update GUI element
-        lifeBar.fillAmount = PlayerStatistics.lifePoints / PlayerStatistics.startLifePoints;
+        lifeBar.fillAmount = PlayerStatistics.instance.lifePoints / PlayerStatistics.instance.startLifePoints;
     }
 #endif
 }

@@ -50,6 +50,12 @@ public class EnemyMovement : MonoBehaviour
     private float phaseScaleX = 0f;
     private const float distanceSecurityRatio = 1.1f;
 
+    private Vector3 displacement = Vector3.zero;
+    private Vector3 sinusoidalShiftVector = Vector3.zero;
+    private Vector3 temporaryDisplacementVector3 = Vector3.zero;
+    private Vector3 temporaryVector3 = Vector3.zero;
+    private Vector3 temporaryLocalScaleVector3 = Vector3.zero;
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
@@ -139,8 +145,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void wobble()
     {
-        Vector3 displacement = isHoldingPosition ? Vector3.zero : (target - this.transform.position).normalized * speed * Time.deltaTime;
-        Vector3 sinusoidalShiftVector = horizontalShift * new Vector3(
+        displacement = isHoldingPosition ? Vector3.zero : (target - this.transform.position).normalized * speed * Time.deltaTime;
+        sinusoidalShiftVector = horizontalShift * new Vector3(
                 Mathf.Cos(
                     phaseShiftX +
                     wobbleShiftSpeedX * speed * Time.timeSinceLevelLoad),
@@ -149,16 +155,20 @@ public class EnemyMovement : MonoBehaviour
                     phaseShiftZ +
                     wobbleShiftSpeedZ * speed * Time.timeSinceLevelLoad)
                     );
-        this.transform.Translate(displacement + sinusoidalShiftVector, Space.World);
 
-        wobbledTransform.localRotation = Quaternion.Euler(new Vector3(
+        temporaryDisplacementVector3 = displacement + sinusoidalShiftVector;
+        this.transform.Translate(temporaryDisplacementVector3, Space.World);
+
+        temporaryVector3 = new Vector3(
             initialRotation.x,
             initialRotation.y + angularWobble * Mathf.Cos(
                 phaseRotatY +
                 wobbleRotateSpeed * speed * Time.timeSinceLevelLoad),
-            initialRotation.z));
+            initialRotation.z);
 
-        wobbledTransform.localScale = new Vector3(
+        wobbledTransform.localRotation = Quaternion.Euler(temporaryVector3);
+
+        temporaryLocalScaleVector3 = new Vector3(
             ratioFactor * initialScale.x * (scaleFactor + Mathf.Cos(
                 phaseScaleX +
                 wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
@@ -169,6 +179,8 @@ public class EnemyMovement : MonoBehaviour
             ratioFactor * initialScale.z * (scaleFactor + Mathf.Cos(
                 Mathf.PI + phaseScaleX +
                 wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)));
+
+        wobbledTransform.localScale = temporaryLocalScaleVector3;
     }
 
     public void slow(float slowRatioFactor)
@@ -205,7 +217,7 @@ public class EnemyMovement : MonoBehaviour
 
     void endPath()
     {
-        PlayerStatistics.lives--;
+        PlayerStatistics.instance.lives--;
         Destroy(this.gameObject);
     }
 

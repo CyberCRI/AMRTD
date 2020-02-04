@@ -4,6 +4,6 @@ public class ResistanceBarUI : IndicatedProgressBarUI
 {
     public override float getLatestValue()
     {
-        return PlayerStatistics.resistancePoints / PlayerStatistics.defaultMaxResistancePoints;
+        return PlayerStatistics.instance.resistancePoints / PlayerStatistics.defaultMaxResistancePoints;
     }
 }

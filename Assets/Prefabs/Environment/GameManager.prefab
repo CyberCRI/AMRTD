@@ -63,11 +63,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e01e8c9ee94fb42932322c0a2b1c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waves: 0
   startMoney: 150
+  money: 0
+  lives: 0
   startLives: 5
+  lifePoints: 0
+  startLifePoints: 100
+  livesToLifePointsFactor: 0
+  resistancePoints: 0
+  resistanceToLifeFactor: 0
   startResistancePoints: 0
+  offsetRatio: 0.5
   turretCountToResistanceFactor: 15
   turretResistancePointsToResistanceFactor: 1
+  tRPThreshold1: 30
+  tRPMarkerRatio1: 0.1
+  tRPThreshold2: 60
+  tRPMarkerRatio2: 0.9
+  computedRP: 0
 --- !u!114 &6342658062583492238
 MonoBehaviour:
   m_ObjectHideFlags: 0

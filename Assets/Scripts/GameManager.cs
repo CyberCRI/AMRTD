@@ -71,9 +71,9 @@ public class GameManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            if ((PlayerStatistics.lives <= 0)
+            if ((PlayerStatistics.instance.lives <= 0)
 #if LIFEPOINTSMODE
-             || (PlayerStatistics.lifePoints <= 0)
+             || (PlayerStatistics.instance.lifePoints <= 0)
 #endif
             )
             {

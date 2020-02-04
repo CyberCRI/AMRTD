@@ -1,4 +1,4 @@
-﻿//#define SELLTURRETS
+﻿#define SELLTURRETS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

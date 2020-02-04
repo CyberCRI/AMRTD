@@ -12,34 +12,34 @@ public class PlayerStatistics : MonoBehaviour
 {
     public static PlayerStatistics instance = null;
 
-    public static int waves;
+    public int waves = 0;
 
     [Header("Money")]
     [SerializeField]
     private int startMoney = 0;
-    public static int money;
+    public int money = 0;
 
     [Header("Lives: #pathogens that may escape")]
-    public static int lives;
+    public int lives = 0;
     [SerializeField]
     private int startLives = 0;
 
     //#if LIFEPOINTSMODE
     [Header("Life points: integrates resistance")]
-    public static float lifePoints = 0f;
-    public static float startLifePoints = defaultLifePoints;
-    public static float livesToLifePointsFactor;
+    public float lifePoints = 0f;
+    public float startLifePoints = defaultLifePoints;
+    public float livesToLifePointsFactor;
     public const float defaultLifePoints = 100f;
     //#endif
 
     [Header("Resistance")]
-    public static float resistancePoints = 0f;
-    public static float resistanceToLifeFactor = 0f;
+    public float resistancePoints = 0f;
+    public float resistanceToLifeFactor = 0f;
     public const float defaultMaxResistancePoints = 100f;
     public const float costABPerSec = 1f;
     [SerializeField]
     private float startResistancePoints = 0f;
-    public static float offsetRatio = .5f;
+    public float offsetRatio = .5f;
 
     [Header("Resistance decay")]
     private float animationDuration = .1f;
@@ -112,7 +112,14 @@ public class PlayerStatistics : MonoBehaviour
             if ((!isLerpInProgress) && (negativePointsPool > 0))
             {
                 coroutine = smoothReduce();
-                StartCoroutine(coroutine);
+                if (null != coroutine)
+                {
+                    StartCoroutine(coroutine);
+                }
+                else
+                {
+                    Debug.LogError("unexpected null coroutine");
+                }
             }
         }
     }
@@ -237,7 +244,7 @@ public class PlayerStatistics : MonoBehaviour
     }
 
 #if DYNAMICTURRETRESISTANCEPOINTSMODE
-    public static void takeResistance(float amount)
+    public void takeResistance(float amount)
     {
         resistancePoints = Mathf.Min(resistancePoints + amount, defaultMaxResistancePoints);
     }
