@@ -280,9 +280,10 @@ public class Turret : Attacker
     {
         // Target lock on
         Vector3 dir = target.position - this.partToRotate.position;
+        dir = new Vector3(dir.x, 0f, dir.z);
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
-        partToRotate.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
+        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
     void laser()

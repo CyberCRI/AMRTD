@@ -1310,6 +1310,36 @@ PrefabInstance:
       propertyPath: overrideNextLevelName
       value: Level2_division
       objectReference: {fileID: 0}
+    - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
+        type: 3}
+      propertyPath: tRPThreshold1
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
+        type: 3}
+      propertyPath: tRPMarkerValue1
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
+        type: 3}
+      propertyPath: tRPThreshold2
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
+        type: 3}
+      propertyPath: tRPMarkerValue2
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
+        type: 3}
+      propertyPath: tRPMarkerRatio1
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
+        type: 3}
+      propertyPath: tRPMarkerRatio2
+      value: 0.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0009a301641a59488c66db7eca6f476, type: 3}
 --- !u!1001 &6558825998874572627
@@ -1438,6 +1468,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7401088013911856786, guid: c8224aa1881c0f540be9c0e22aa9149a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 73
+      objectReference: {fileID: 0}
     - target: {fileID: 7401088014292545900, guid: c8224aa1881c0f540be9c0e22aa9149a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1497,6 +1532,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 8870905396648252288, guid: c8224aa1881c0f540be9c0e22aa9149a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8870905396788501602, guid: c8224aa1881c0f540be9c0e22aa9149a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8224aa1881c0f540be9c0e22aa9149a, type: 3}

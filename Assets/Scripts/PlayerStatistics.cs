@@ -54,12 +54,23 @@ public class PlayerStatistics : MonoBehaviour
     private float timeParameter = 0f;
 
     #region turret points
-    //#if STATICTURRETCOUNTMODE || STATICTURRETRESISTANCEPOINTSMODE
     [SerializeField]
     private float turretCountToResistanceFactor = 15f;
     [SerializeField]
     private float turretResistancePointsToResistanceFactor = 1f;
+    [SerializeField]
+    private float tRPThreshold1 = 0f;
+    [SerializeField]
+    private float tRPMarkerRatio1 = 0f;
+    [SerializeField]
+    private float tRPThreshold2 = 0f;
+    [SerializeField]
+    private float tRPMarkerRatio2 = 0f;
+    [SerializeField]
+    private float computedRP = 0f;
 
+    private float tRPSmallSlope = 0f;
+    private float tRPBigSlope = 0f;
     private int _turretCount = 0;
     private float _turretResistancePoints = 0f;
 
@@ -107,13 +118,95 @@ public class PlayerStatistics : MonoBehaviour
     }
 #endif
 
-    // contains the function that computes the resistance points from the number of turrets
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
+        money = startMoney;
+        lives = startLives;
+        resistancePoints = startResistancePoints;
+        waves = 0;
+
+#if LIFEPOINTSMODE
+        lifePoints = startLifePoints;
+        resistanceToLifeFactor = (1f - offsetRatio) * startLifePoints / defaultMaxResistancePoints;
+        livesToLifePointsFactor = startLifePoints / lives;
+#endif
+
+#if STATICTURRETRESISTANCEPOINTSMODE 
+        tRPSmallSlope = tRPMarkerRatio1 / tRPThreshold1;
+        tRPBigSlope = (tRPMarkerRatio2 - tRPMarkerRatio1) / (tRPThreshold2 - tRPThreshold1);
+#endif
+    }
+
+#if DEVMODE || LIFEPOINTSMODE
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+
+#if DEVMODE
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            money += startMoney;
+        }
+#endif
+
+#if LIFEPOINTSMODE
+        lifePoints = startLifePoints;
+        lifePoints = lives * livesToLifePointsFactor - resistancePoints * resistanceToLifeFactor;
+        lifePoints = Mathf.Clamp(lifePoints, 0f, startLifePoints);
+#endif
+    }
+#endif
+
+    // updates the turret resistance points using the given value
+    //   also updates the resistance points displayed in the resistance bar by using a custom function
+    //   (the function that computes the resistance points from the turret resistance points)
     private void updateResistancePoints(float value)
     {
         _turretResistancePoints = value;
         resistancePoints =
-            PlayerStatistics.instance.turretResistancePointsToResistanceFactor
-            * _turretResistancePoints;
+            getResistancePointsFromTurretResistancePoints(_turretResistancePoints);
+        //PlayerStatistics.instance.turretResistancePointsToResistanceFactor
+        //* _turretResistancePoints;
+    }
+
+    // tRP: turret Resistance Points
+    // piecewise linear function - linearized sigmoid
+    //
+    //                    t2 _________
+    //                  /
+    //    _________ t1 /
+    //
+    // the slopes before t1 and after t2 are the same (arbitrary)
+    // the slope is computed from the slope before t1: tRPMarkerValue1/tRPThreshold1
+    private float getResistancePointsFromTurretResistancePoints(float tRP)
+    {
+        if (tRP <= tRPThreshold1)
+        {
+            computedRP = tRPSmallSlope * tRP;
+        }
+        else if (tRP >= tRPThreshold2)
+        {
+            computedRP = tRPMarkerRatio2 + tRPSmallSlope * (tRP - tRPThreshold2);
+        }
+        else
+        {
+            computedRP = tRPMarkerRatio1 + tRPBigSlope * (tRP - tRPThreshold1);
+        }
+        return computedRP * defaultMaxResistancePoints;
     }
 
     //#endif
@@ -142,54 +235,6 @@ public class PlayerStatistics : MonoBehaviour
         }
         isLerpInProgress = false;
     }
-
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-
-        money = startMoney;
-        lives = startLives;
-        resistancePoints = startResistancePoints;
-        waves = 0;
-
-#if LIFEPOINTSMODE
-        lifePoints = startLifePoints;
-        resistanceToLifeFactor = (1f - offsetRatio) * startLifePoints / defaultMaxResistancePoints;
-        livesToLifePointsFactor = startLifePoints / lives;
-#endif
-    }
-
-#if DEVMODE || LIFEPOINTSMODE
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-
-#if DEVMODE
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            money += startMoney;
-        }
-#endif
-
-#if LIFEPOINTSMODE
-        lifePoints = startLifePoints;
-        lifePoints = lives * livesToLifePointsFactor - resistancePoints * resistanceToLifeFactor;
-        lifePoints = Mathf.Clamp(lifePoints, 0f, startLifePoints);
-#endif
-    }
-#endif
 
 #if DYNAMICTURRETRESISTANCEPOINTSMODE
     public static void takeResistance(float amount)
