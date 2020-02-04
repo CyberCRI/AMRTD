@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/20200127India/MainMenu.unity
+    guid: 1ef7a0d34d7af7e48925a60e57ccccb0
+  - enabled: 1
+    path: Assets/Scenes/20200127India/LevelSelectionMenu.unity
+    guid: 3cf7b37608f96cd44b9d87ab32d55b7f
+  - enabled: 1
     path: Assets/Scenes/20200127India/Level1_nodivision.unity
     guid: 00f15da8d501eb7498caf6726a7acfb2
   - enabled: 1
@@ -29,10 +35,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/20200127India/Level8_Lungs.unity
     guid: 85724574c8fc4b844a49dc8b2e366d88
-  - enabled: 1
-    path: Assets/Scenes/20200127India/LevelSelectionMenu.unity
-    guid: 3cf7b37608f96cd44b9d87ab32d55b7f
-  - enabled: 1
-    path: Assets/Scenes/20200127India/MainMenu.unity
-    guid: 1ef7a0d34d7af7e48925a60e57ccccb0
   m_configObjects: {}
