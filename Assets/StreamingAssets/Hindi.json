@@ -43,6 +43,7 @@
 	,{"key":"LEVELSELECTMENU.LEVEL09.TITLE","value":"4\nसिरिंज"}
 	,{"key":"LEVELSELECTMENU.LEVEL10.TITLE","value":"5\nप्रतिरोध"}
 	,{"key":"LEVELSELECTMENU.LEVEL11.TITLE","value":"0\nLungs"}
+	,{"key":"TUTORIAL.UI.NEXT","value":"NEXT"}
 	,{"key":"TUTORIAL.TEST.0","value":"This is the WaveTimerText."}
 	,{"key":"TUTORIAL.TEST.1","value":"This is the ResistanceBar."}
 	,{"key":"TUTORIAL.TEST.2","value":"This is the LifeBar."}

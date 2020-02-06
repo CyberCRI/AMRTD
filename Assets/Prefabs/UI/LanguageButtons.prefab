@@ -194,6 +194,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ddfe131dbc6456f43b15fb5d89a69e2f,
         type: 3}
+    - target: {fileID: 3098782729185124052, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u0639\u0631\u0628\u0649"
+      objectReference: {fileID: 0}
     - target: {fileID: 6343339364674632474, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
         type: 3}
       propertyPath: manager
@@ -370,6 +375,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 143558b2f9f4167498153ca510655be4,
         type: 3}
+    - target: {fileID: 3098782729185124052, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
+        type: 3}
+      propertyPath: m_Text
+      value: "Fran\xE7ais"
+      objectReference: {fileID: 0}
     - target: {fileID: 6343339364674632474, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
         type: 3}
       propertyPath: manager
@@ -511,6 +521,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 53e64b0f3ca73f245a7474d90c8cba51,
         type: 3}
+    - target: {fileID: 3098782729185124052, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u4E2D\u6587"
+      objectReference: {fileID: 0}
     - target: {fileID: 6343339364674632474, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
         type: 3}
       propertyPath: manager
@@ -652,6 +667,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: c2af7d34edc57b24d9ae567552bb53a3,
         type: 3}
+    - target: {fileID: 3098782729185124052, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u0939\u093F\u0928\u094D\u0926\u0940"
+      objectReference: {fileID: 0}
     - target: {fileID: 6343339364674632474, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
         type: 3}
       propertyPath: manager
@@ -787,6 +807,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3380343245360406576}
     m_Modifications:
+    - target: {fileID: 3098782729185124052, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
+        type: 3}
+      propertyPath: m_Text
+      value: English
+      objectReference: {fileID: 0}
     - target: {fileID: 6343339364674632474, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
         type: 3}
       propertyPath: manager
@@ -923,6 +948,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f595410e882e3a746992f5b12e38eff7,
         type: 3}
+    - target: {fileID: 3098782729185124052, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439"
+      objectReference: {fileID: 0}
     - target: {fileID: 6343339364674632474, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
         type: 3}
       propertyPath: manager
@@ -1064,6 +1094,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: a033313742202b345b8b0b4db57fb64e,
         type: 3}
+    - target: {fileID: 3098782729185124052, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
+        type: 3}
+      propertyPath: m_Text
+      value: "Espa\xF1ol"
+      objectReference: {fileID: 0}
     - target: {fileID: 6343339364674632474, guid: 5e686dc34c0f37d45917d2c5a07d61e7,
         type: 3}
       propertyPath: manager

@@ -7156,6 +7156,7 @@ GameObject:
   - component: {fileID: 4457843597034305828}
   - component: {fileID: 1881271838525267918}
   - component: {fileID: 6610346550216071904}
+  - component: {fileID: 1334866612190545005}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -7222,6 +7223,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: NEXT
+--- !u!114 &1334866612190545005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267015817416536184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406f2b8e4588f4045abc09e73465d906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: TUTORIAL.UI.NEXT
 --- !u!1 &3267861188343734469
 GameObject:
   m_ObjectHideFlags: 0

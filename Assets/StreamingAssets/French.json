@@ -43,9 +43,10 @@
 	,{"key":"LEVELSELECTMENU.LEVEL09.TITLE","value":"4\nSeringue"}
 	,{"key":"LEVELSELECTMENU.LEVEL10.TITLE","value":"5\nRésistance"}
 	,{"key":"LEVELSELECTMENU.LEVEL11.TITLE","value":"0\nPoumons"}
-	,{"key":"TUTORIAL.TEST.0","value":"This is the WaveTimerText."}
-	,{"key":"TUTORIAL.TEST.1","value":"This is the ResistanceBar."}
-	,{"key":"TUTORIAL.TEST.2","value":"This is the LifeBar."}
+	,{"key":"TUTORIAL.UI.NEXT","value":"SUIVANT"}
+	,{"key":"TUTORIAL.TEST.0","value":"Voici le WaveTimerText."}
+	,{"key":"TUTORIAL.TEST.1","value":"Voici la ResistanceBar."}
+	,{"key":"TUTORIAL.TEST.2","value":"Voici la LifeBar."}
 	,{"key":"GAME.LEVEL.1","value":"I"}
 	,{"key":"GAME.LEVEL.2","value":"II"}
 	,{"key":"GAME.LEVEL.3","value":"III"}
