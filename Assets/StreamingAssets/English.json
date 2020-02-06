@@ -82,9 +82,11 @@
 	,{"key":"GAME.TURRET.HELP","value":                 "This is an antibiotics dispenser. It attacks pathogens using antibiotics."}
 	,{"key":"GAME.TURRETBUTTON.HELP","value":           "Click this button to place antibiotics dispensers on the tiles!"}
 
-	,{"key":"max help text length               __________________________________________________________________________________________","value":""}
-	,{"key":"TUTORIAL.LEVEL1.0","value":       "Quick! You must set up antibiotics dispensers to destroy incoming pathogens!"}
-	,{"key":"TUTORIAL.LEVEL1.1","value":       "Click on the antibiotic dispenser button to start setting them up."}
-	,{"key":"TUTORIAL.RESISTANCEBAR.0","value":"Beware! The more antibiotics you use, the more the pathogens will be resistant to them!"}
+	,{"key":"max help text length                __________________________________________________________________________________________","value":""}
+	,{"key":"TUTORIAL.LEVEL1.0","value":        "Quick! You must set up antibiotics dispensers to destroy incoming pathogens!"}
+	,{"key":"TUTORIAL.LEVEL1.1","value":        "Click on the antibiotic dispenser button to start setting them up."}
+	,{"key":"TUTORIAL.RESISTANCEBAR0.0","value":"Beware! The more antibiotics you use, the more the pathogens will be resistant to them!"}
+	,{"key":"TUTORIAL.RESISTANCEBAR1.0","value":"Beware! The resistance level is so high that antibiotics will barely hurt the pathogens!"}
+	,{"key":"TUTORIAL.LEVELCOMPLETE.0","value": "This is the last wave. Kill all the pathogens to unlock the next level!"}
 	]
 }

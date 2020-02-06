@@ -3,19 +3,19 @@ using UnityEngine;
 
 #if QUICKTEST
 
-public class ResistanceBarTutorial : FakeStepByStepTutorial { }
+public class LevelCompleteTutorial : FakeStepByStepTutorial { }
 
 #else
 
-public class ResistanceBarTutorial : StepByStepTutorial
+public class LevelCompleteTutorial : StepByStepTutorial
 {
     [SerializeField]
-    private int resistanceBarTutorialIndex = 0;
+    private const string _textKeyPrefix = _genericTextKeyPrefix + "LEVELCOMPLETE.";
     protected override string textKeyPrefix
     {
         get
         {
-            return _genericTextKeyPrefix + "RESISTANCEBAR" + resistanceBarTutorialIndex + ".";
+            return _textKeyPrefix;
         }
     }
     
@@ -27,7 +27,7 @@ public class ResistanceBarTutorial : StepByStepTutorial
         }
     }
     private string[] _focusObjects = new string[1] {
-        FocusMaskManager.resistanceBarGOName
+        FocusMaskManager.waveBarGOName
         };
 
     protected override string[] focusObjects
