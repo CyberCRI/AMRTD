@@ -71,17 +71,17 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    public void selectStandardTurret(Toggle button)
+    public void selectStandardTurret(Toggle button = null)
     {
         selectABTabletTurret((int)Attack.SUBSTANCE.COUNT, button);
     }
-    public void selectMissileLauncher()
+    public void selectMissileLauncher(Toggle button = null)
     {
-        selectABPillsBottleTurret((int)Attack.SUBSTANCE.COUNT);
+        selectABPillsBottleTurret((int)Attack.SUBSTANCE.COUNT, button);
     }
-    public void selectLaserBeamer()
+    public void selectLaserBeamer(Toggle button = null)
     {
-        selectABSyringeTurret((int)Attack.SUBSTANCE.COUNT);
+        selectABSyringeTurret((int)Attack.SUBSTANCE.COUNT, button);
     }
 
     // active
@@ -165,13 +165,13 @@ public class Shop : MonoBehaviour
         buildManager.selectTurretToBuild(tabletTurrets[substance], button);
     }
 
-    public void selectABPillsBottleTurret(int substance = (int)Attack.SUBSTANCE.COUNT)
+    public void selectABPillsBottleTurret(int substance = (int)Attack.SUBSTANCE.COUNT, Toggle button = null)
     {
-        buildManager.selectTurretToBuild(pillsBottleTurrets[substance]);
+        buildManager.selectTurretToBuild(pillsBottleTurrets[substance], button);
     }
 
-    public void selectABSyringeTurret(int substance = (int)Attack.SUBSTANCE.COUNT)
+    public void selectABSyringeTurret(int substance = (int)Attack.SUBSTANCE.COUNT, Toggle button = null)
     {
-        buildManager.selectTurretToBuild(syringeTurrets[substance]);
+        buildManager.selectTurretToBuild(syringeTurrets[substance], button);
     }
 }

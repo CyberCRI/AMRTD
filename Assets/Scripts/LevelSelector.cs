@@ -12,7 +12,7 @@ public class LevelSelector : MonoBehaviour
     private Transform levelButtonsRoot = null;
     private Button[] levelButtons = null;
     public const string levelReachedKey = "levelReached";
-    public const int maxLevelIndex = 4;
+    public const int maxLevelIndex = 6;
 
     void Awake()
     {

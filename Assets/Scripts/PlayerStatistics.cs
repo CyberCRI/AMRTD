@@ -21,8 +21,7 @@ public class PlayerStatistics : MonoBehaviour
 
     [Header("Lives: #pathogens that may escape")]
     public int lives = 0;
-    [SerializeField]
-    private int startLives = 0;
+    public int startLives = 5;
 
     //#if LIFEPOINTSMODE
     [Header("Life points: integrates resistance")]

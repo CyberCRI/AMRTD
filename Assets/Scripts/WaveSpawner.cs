@@ -16,8 +16,10 @@ public class WaveSpawner : MonoBehaviour
     private float countdown = 0f;
     private bool isDoneSpawning = true;
     private Transform[] spawnPoints = null;
-
     private Text waveCountdownText = null;
+
+    [SerializeField]
+    private bool isResistanceModeOn = true;
     [SerializeField]
     private float timeBeforeWave1 = 0f;
     [SerializeField]
@@ -39,6 +41,11 @@ public class WaveSpawner : MonoBehaviour
     public float getWaveProgression()
     {
         return ((float)waveIndex) / ((float)waves.Length);
+    }
+
+    public bool isLastWave()
+    {
+        return (waveIndex == (waves.Length - 1)) && (0f == countdown);
     }
 
     /// <summary>
@@ -139,7 +146,8 @@ public class WaveSpawner : MonoBehaviour
 
         for (int i = 0; i < currentWave.count; i++)
         {
-            spawnEnemy(currentWave, getCurrentResistances());
+            float[] resistances = isResistanceModeOn ? getCurrentResistances() : null;
+            spawnEnemy(currentWave, resistances);
             yield return new WaitForSeconds(currentWave.timeBetweenSpawns);
         }
 

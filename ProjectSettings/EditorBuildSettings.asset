@@ -13,13 +13,13 @@ EditorBuildSettings:
     guid: 3cf7b37608f96cd44b9d87ab32d55b7f
   - enabled: 1
     path: Assets/Scenes/20200127India/Level1_nodivision.unity
-    guid: 00f15da8d501eb7498caf6726a7acfb2
+    guid: 215613959dccbaa4090ba57cf1ae1d9c
   - enabled: 1
     path: Assets/Scenes/20200127India/Level2_division.unity
     guid: 42d41ed0eecdaf841993cb72e52e3841
   - enabled: 1
     path: Assets/Scenes/20200127India/Level3_optimality.unity
-    guid: 215613959dccbaa4090ba57cf1ae1d9c
+    guid: 03ec4ebc022845a4689b61576e74faa7
   - enabled: 1
     path: Assets/Scenes/20200127India/Level4_resistance.unity
     guid: 0f2ce7002a5ed5142bcb917c1a3f72d9
@@ -29,9 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/20200127India/Level6_Syringe.unity
     guid: 906e8ca86cf165043b893464af6dd3c7
-  - enabled: 1
-    path: Assets/Scenes/20200127India/Level7_specificity.unity
-    guid: e8444114b10545247bb80e3a09fc4170
   - enabled: 1
     path: Assets/Scenes/20200127India/Level8_Lungs.unity
     guid: 85724574c8fc4b844a49dc8b2e366d88

@@ -186,23 +186,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
-      propertyPath: timeBeforeWave1
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
-        type: 3}
-      propertyPath: timeBetweenWaves
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
-        type: 3}
       propertyPath: waves.Array.data[0].maxEnemyCount
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
-        type: 3}
-      propertyPath: waves.Array.data[1].timeBetweenSpawns
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}

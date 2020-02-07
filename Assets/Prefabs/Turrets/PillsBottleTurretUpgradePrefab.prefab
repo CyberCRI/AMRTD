@@ -7,6 +7,52 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 226770437567635241, guid: 689444336b2a39f46a6f28ae03ea7987,
+        type: 3}
+      propertyPath: range
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 226770437567635241, guid: 689444336b2a39f46a6f28ae03ea7987,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 2713133126219711678, guid: 4bad0cd1a8c5e114399dc5c59dcc80e4,
+        type: 3}
+    - target: {fileID: 226770437567635241, guid: 689444336b2a39f46a6f28ae03ea7987,
+        type: 3}
+      propertyPath: fireCooldown
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 226770437567635241, guid: 689444336b2a39f46a6f28ae03ea7987,
+        type: 3}
+      propertyPath: upkeepCost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 226770437567635241, guid: 689444336b2a39f46a6f28ae03ea7987,
+        type: 3}
+      propertyPath: _resistancePoints
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858578954915848842, guid: 689444336b2a39f46a6f28ae03ea7987,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f17d2e1f6e99274089138ce7819f8ec, type: 2}
+    - target: {fileID: 2737072415960225067, guid: 689444336b2a39f46a6f28ae03ea7987,
+        type: 3}
+      propertyPath: substance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737072415960225067, guid: 689444336b2a39f46a6f28ae03ea7987,
+        type: 3}
+      propertyPath: attackDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737072415960225067, guid: 689444336b2a39f46a6f28ae03ea7987,
+        type: 3}
+      propertyPath: damageWhenHit
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5728084492858663257, guid: 689444336b2a39f46a6f28ae03ea7987,
         type: 3}
       propertyPath: m_Name
@@ -67,42 +113,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 226770437567635241, guid: 689444336b2a39f46a6f28ae03ea7987,
-        type: 3}
-      propertyPath: range
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 226770437567635241, guid: 689444336b2a39f46a6f28ae03ea7987,
-        type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 2713133126219711678, guid: 4bad0cd1a8c5e114399dc5c59dcc80e4,
-        type: 3}
-    - target: {fileID: 226770437567635241, guid: 689444336b2a39f46a6f28ae03ea7987,
-        type: 3}
-      propertyPath: fireCooldown
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 226770437567635241, guid: 689444336b2a39f46a6f28ae03ea7987,
-        type: 3}
-      propertyPath: upkeepCost
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2737072415960225067, guid: 689444336b2a39f46a6f28ae03ea7987,
-        type: 3}
-      propertyPath: substance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2737072415960225067, guid: 689444336b2a39f46a6f28ae03ea7987,
-        type: 3}
-      propertyPath: attackDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2737072415960225067, guid: 689444336b2a39f46a6f28ae03ea7987,
-        type: 3}
-      propertyPath: damageWhenHit
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 8450573116119425412, guid: 689444336b2a39f46a6f28ae03ea7987,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -123,10 +133,5 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1858578954915848842, guid: 689444336b2a39f46a6f28ae03ea7987,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2f17d2e1f6e99274089138ce7819f8ec, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 689444336b2a39f46a6f28ae03ea7987, type: 3}

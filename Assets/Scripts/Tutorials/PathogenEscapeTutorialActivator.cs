@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class LevelCompleteTutorialActivator : TutorialActivator
+public class PathogenEscapeTutorialActivator : TutorialActivator
 {
-    private WaveSpawner waveSpawner;
-
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
     /// </summary>
     void Start()
     {
-        waveSpawner = WaveSpawner.instance;
     }
 
     /// <summary>
@@ -18,7 +15,7 @@ public class LevelCompleteTutorialActivator : TutorialActivator
     /// </summary>
     void Update()
     {
-        if (waveSpawner.isLastWave())
+        if (PlayerStatistics.instance.lives < PlayerStatistics.instance.startLives)
         {
             activateTutorial();
         }

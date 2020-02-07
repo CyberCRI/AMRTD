@@ -34,17 +34,13 @@
 	,{"key":"MAINMENU.QUIT.LABEL","value":"QUIT"}
 	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"SELECT LEVEL"}
 	,{"key":"LEVELSELECTMENU.BACK.LABEL","value":"BACK"}
-	,{"key":"LEVELSELECTMENU.LEVEL01.TITLE","value":"SKIN 1"}
-	,{"key":"LEVELSELECTMENU.LEVEL02.TITLE","value":"SKIN 2"}
-	,{"key":"LEVELSELECTMENU.LEVEL03.TITLE","value":"SKIN 3"}
-	,{"key":"LEVELSELECTMENU.LEVEL04.TITLE","value":"SKIN 4"}
-	,{"key":"LEVELSELECTMENU.LEVEL05.TITLE","value":"SKIN 5"}
-	,{"key":"LEVELSELECTMENU.LEVEL06.TITLE","value":"1\nStart"}
-	,{"key":"LEVELSELECTMENU.LEVEL07.TITLE","value":"2\nDivision"}
-	,{"key":"LEVELSELECTMENU.LEVEL08.TITLE","value":"3\nPills"}
-	,{"key":"LEVELSELECTMENU.LEVEL09.TITLE","value":"4\nSyringe"}
-	,{"key":"LEVELSELECTMENU.LEVEL10.TITLE","value":"5\nResistance"}
-	,{"key":"LEVELSELECTMENU.LEVEL11.TITLE","value":"0\nLungs"}
+	,{"key":"LEVELSELECTMENU.LEVEL01.TITLE","value":"1\nStart"}
+	,{"key":"LEVELSELECTMENU.LEVEL02.TITLE","value":"2\nDivision"}
+	,{"key":"LEVELSELECTMENU.LEVEL03.TITLE","value":"3\nResistance"}
+	,{"key":"LEVELSELECTMENU.LEVEL04.TITLE","value":"4\nResistance"}
+	,{"key":"LEVELSELECTMENU.LEVEL05.TITLE","value":"5\nPills"}
+	,{"key":"LEVELSELECTMENU.LEVEL06.TITLE","value":"6\nSyringe"}
+	,{"key":"LEVELSELECTMENU.LEVEL07.TITLE","value":"7\nLungs"}
 	,{"key":"TUTORIAL.UI.NEXT","value":"NEXT"}
 	,{"key":"TUTORIAL.TEST.0","value":"This is the WaveTimerText."}
 	,{"key":"TUTORIAL.TEST.1","value":"This is the ResistanceBar."}
@@ -88,5 +84,6 @@
 	,{"key":"TUTORIAL.RESISTANCEBAR0.0","value":"Beware! The more antibiotics you use, the more the pathogens will be resistant to them!"}
 	,{"key":"TUTORIAL.RESISTANCEBAR1.0","value":"Beware! The resistance level is so high that antibiotics will barely hurt the pathogens!"}
 	,{"key":"TUTORIAL.LEVELCOMPLETE.0","value": "This is the last wave. Kill all the pathogens to unlock the next level!"}
+	,{"key":"TUTORIAL.PATHOGENESCAPE.0","value": "Watch out! A pathogen has escaped. When this counter reaches zero, you'll lose!"}
 	]
 }

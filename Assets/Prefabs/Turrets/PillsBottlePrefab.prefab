@@ -81,6 +81,13 @@ MonoBehaviour:
   modelAttack: {fileID: 7235472888803864142}
   range: 30
   route: 0
+  _resistancePoints: 15
+  upkeepCost: 0
+  upkeepPeriod: 0
+  lifetimeStart: 0
+  lifetimeRemaining: 0
+  node: {fileID: 0}
+  lifetimeBar: {fileID: 0}
   bulletPrefab: {fileID: 2713133126219711678, guid: 677eebd3a70be104687595f7a3450a39,
     type: 3}
   fireCooldown: 1.3
@@ -89,8 +96,6 @@ MonoBehaviour:
   laserImpactPS: {fileID: 0}
   laserImpactLight: {fileID: 0}
   laserImpactOffsetFactor: 0
-  laserDamageOverTime: 0
-  slowRatioFactor: 0
   timeStartTurret: 0
   updatePeriod: 0.3
   partToRotate: {fileID: 3350538081113541128}
@@ -109,19 +114,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   substance: 1
-  abilities: 00000000
   remainingDurationCountdown: 0
   attackDuration: 1.5
   damageWhenFirstHit: 0
   damageWhenHit: 30
-  blockDivisionActive: 0
   damagePerSecondActive: 0
+  slowDownDivisionFactorActive: 1
+  slowDownHealingFactorActive: 1
+  slowDownMovementFactorActive: 1
+  blockDivisionActive: 0
+  blockHealingActive: 0
+  blockMovementActive: 0
   killAtDivisionActive: 0
-  slowDownFactorActive: 0
-  blockDivisionPassive: 0
   damagePerSecondPassive: 10
+  slowDownDivisionFactorPassive: 1
+  slowDownHealingFactorPassive: 1
+  slowDownMovementFactorPassive: 1
+  blockDivisionPassive: 0
+  blockHealingPassive: 0
+  blockMovementPassive: 0
   killAtDivisionPassive: 0
-  slowDownFactorPassive: 0
 --- !u!1 &3350538081697809361
 GameObject:
   m_ObjectHideFlags: 0
