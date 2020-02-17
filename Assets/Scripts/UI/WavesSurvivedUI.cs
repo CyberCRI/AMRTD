@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class WavesSurvived : MonoBehaviour
+public class WavesSurvivedUI : MonoBehaviour
 {
     [SerializeField]
     private Text wavesText = null;
