@@ -24,8 +24,17 @@ public class PresentationManager : MonoBehaviour
         {
             if (null != sprites)
             {
-                _currentImageIndex = Mathf.Clamp(value, 0, sprites.Length-1);
-                slide.sprite = (Sprite)sprites[_currentImageIndex];
+                if (value >= sprites.Length)
+                {
+                    _currentImageIndex = sprites.Length;
+                    slide.enabled = false;
+                }
+                else
+                {
+                    _currentImageIndex = Mathf.Clamp(value, 0, sprites.Length-1);
+                    slide.sprite = (Sprite)sprites[_currentImageIndex];
+                    slide.enabled = true;
+                }
             }
         }
     }
@@ -42,11 +51,19 @@ public class PresentationManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            currentImageIndex = Mathf.Clamp(currentImageIndex + 1, 0, sprites.Length-1);
+            currentImageIndex = currentImageIndex + 1;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            currentImageIndex = Mathf.Clamp(currentImageIndex - 1, 0, sprites.Length-1);
+            currentImageIndex = currentImageIndex - 1;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            currentImageIndex = Mathf.Clamp(currentImageIndex, 0, sprites.Length-1);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            slide.enabled = false;
         }
     }
 #endif
