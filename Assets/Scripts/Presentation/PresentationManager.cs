@@ -11,8 +11,8 @@ public class PresentationManager : MonoBehaviour
     private Image slide = null;
 
 #if PRESENTATIONMODE
-    private const string fileNamePattern = "Presentation/slides/slide-{0:00}";
-    private const int fileCount = 8;
+    private const string folderPath = "Presentation/slides/";
+    private Object[] sprites = null;
     private int _currentImageIndex = 0;
     private int currentImageIndex
     {
@@ -22,21 +22,19 @@ public class PresentationManager : MonoBehaviour
         }
         set
         {
-            _currentImageIndex = value;
-            string imageName = string.Format(fileNamePattern, _currentImageIndex);
-            Debug.Log("loading " + imageName);
-            slide.sprite = (Sprite)Resources.Load<Sprite>(imageName);
+            if (null != sprites)
+            {
+                _currentImageIndex = Mathf.Clamp(value, 0, sprites.Length-1);
+                slide.sprite = (Sprite)sprites[_currentImageIndex];
+            }
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 1; i <= fileCount; i++)
-        {
-            Debug.Log(string.Format(fileNamePattern, i));
-        }
-        currentImageIndex = 1;
+        sprites = Resources.LoadAll(folderPath, typeof(Sprite));
+        currentImageIndex = 0;
     }
 
     // Update is called once per frame
@@ -44,11 +42,11 @@ public class PresentationManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            currentImageIndex = Mathf.Clamp(currentImageIndex + 1, 1, fileCount);
+            currentImageIndex = Mathf.Clamp(currentImageIndex + 1, 0, sprites.Length-1);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            currentImageIndex = Mathf.Clamp(currentImageIndex - 1, 1, fileCount);
+            currentImageIndex = Mathf.Clamp(currentImageIndex - 1, 0, sprites.Length-1);
         }
     }
 #endif
