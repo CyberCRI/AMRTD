@@ -5,10 +5,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class PresentationManager : MonoBehaviour
 {
+    private static PresentationManager instance = null;
+
+    [Header("Slide")]
     [SerializeField]
-    private Image slide = null;
+    private Image slideImage = null;
+    [SerializeField]
+    private RectTransform slideTransform = null;
+    private Vector3 slideStartLocalPosition = Vector3.zero;
+    [SerializeField]
+    private BoxCollider2D slideCollider = null;
+    [SerializeField]
+    private Rigidbody2D slideRigidbody = null;
+
+    [Header("Cube Collider")]
+    [SerializeField]
+    private RectTransform cubeTransform = null;
+    [SerializeField]
+    private RectTransform cubeStartTransform = null;
+    [SerializeField]
+    private RectTransform cubeEndTransform = null;
+    [SerializeField]
+    private BoxCollider2D cubeCollider = null;
+    [SerializeField]
+    private Rigidbody2D cubeRigidbody = null;
 
 #if PRESENTATIONMODE
     private const string folderPath = "Presentation/slides/";
@@ -27,15 +50,34 @@ public class PresentationManager : MonoBehaviour
                 if (value >= sprites.Length)
                 {
                     _currentImageIndex = sprites.Length;
-                    slide.enabled = false;
+                    slideImage.enabled = false;
                 }
                 else
                 {
-                    _currentImageIndex = Mathf.Clamp(value, 0, sprites.Length-1);
-                    slide.sprite = (Sprite)sprites[_currentImageIndex];
-                    slide.enabled = true;
+                    _currentImageIndex = Mathf.Clamp(value, 0, sprites.Length - 1);
+                    slideImage.sprite = (Sprite)sprites[_currentImageIndex];
+                    slideImage.enabled = true;
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+
+            slideStartLocalPosition = slideTransform.localPosition;
+            slideCollider.size = new Vector2(slideTransform.rect.width, slideTransform.rect.height);
+        }
+        else if (instance != this)
+        {
+            Destroy(this.gameObject);
         }
     }
 
@@ -59,12 +101,30 @@ public class PresentationManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            currentImageIndex = Mathf.Clamp(currentImageIndex, 0, sprites.Length-1);
+            currentImageIndex = Mathf.Clamp(currentImageIndex, 0, sprites.Length - 1);
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            slide.enabled = false;
+            slideImage.enabled = false;
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            moveCube();
+            slideRigidbody.simulated = true;
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            slideRigidbody.simulated = false;
+            slideTransform.localPosition = slideStartLocalPosition;
+            slideTransform.rotation = Quaternion.identity;
         }
     }
+
+    private void moveCube()
+    {
+        float t = Random.Range(0f, 1f);
+        cubeTransform.localPosition = t * cubeStartTransform.localPosition + (1 - t) * cubeEndTransform.localPosition;
+    }
+
 #endif
 }

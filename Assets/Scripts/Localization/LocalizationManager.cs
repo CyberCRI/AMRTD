@@ -56,7 +56,7 @@ public class LocalizationManager : MonoBehaviour
             //#if DEVMODE
             //            Debug.Log("language set");
             //#endif
-            
+
             refreshUIElements("language.set");
         }
     }
@@ -68,13 +68,13 @@ public class LocalizationManager : MonoBehaviour
         {
             instance = this;
             language = defaultLanguage;
+            DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += onSceneLoaded;
     }
 
