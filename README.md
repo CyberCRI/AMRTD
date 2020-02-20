@@ -20,7 +20,7 @@ Currently Unity 2019.3.0b8. The Unity version changed along the commits.
 C#
 
 ### Graphical Assets
-The current graphical assets are used as placeholders and tests and are therefore free sprites and 3d models from the internet. They were downloaded from free png websites - [pngimg](http://pngimg.com/), [imgpng](https://imgpng.ru), [hiclipart](https://www.hiclipart.com/) - and [Turbosquid](https://www.turbosquid.com/) and [Clara.io](https://clara.io/), which provide free and paid 3d models. These models were then edited through Clara.io.
+The current graphical assets are used as placeholders and tests and are therefore free sprites and 3d models from the internet. They were downloaded from free png websites - [pngimg](http://pngimg.com/), [imgpng](https://imgpng.ru), [hiclipart](https://www.hiclipart.com/), [pixabay](https://pixabay.com/), - and [Turbosquid](https://www.turbosquid.com/) and [Clara.io](https://clara.io/), which provide free and paid 3d models. These models were then edited through Clara.io.
 
 | Asset | Source |
 | ------------- | ------------- |
@@ -33,6 +33,13 @@ The current graphical assets are used as placeholders and tests and are therefor
 | [Pill](Assets/Imports/Pill/Pill.fbx) | [Turbosquid pill](https://www.turbosquid.com/FullPreview/Index.cfm/ID/586682) by [Redfox1980](https://www.turbosquid.com/Search/Artists/Redfox1980) |
 | [Pills bottle](Assets/Imports/MissileLauncher/PillsBottle.fbx) | [Turbosquid Pills bottle](https://www.turbosquid.com/FullPreview/Index.cfm/ID/938419) by [romanlebedeff](https://www.turbosquid.com/Search/Artists/romanlebedeff) |
 | [Syringe](Assets/Imports/Syringe/syringe.fbx) | [Clara.io Syringe](https://clara.io/view/244b0aa1-2921-4ff5-8fdf-b40072284669) by [MarianaNT](https://clara.io/user/MarianaNT) derived from [Clara.io Syringe](https://clara.io/view/5bc2ead7-b90e-4175-b9d1-788c9b3d5dc1) by [Democore](https://clara.io/user/Democore) |
+| [Red Blood Cell 1](Assets/Textures/BloodCells/red-blood-cells-a1.png) | [Flaticon.com Blood Cell](https://www.flaticon.com/free-icon/blood-cell_2492741?term=red%20blood%20cells&page=1&position=4) by [Freepik](https://www.flaticon.com/authors/freepik) |
+| [Red Blood Cell 2](Assets/Textures/BloodCells/red-blood-cells-b1.png) | [Pixabay.com Red Blood Cell](https://pixabay.com/illustrations/red-blood-cell-rbc-erythrocyte-1861640/) by [sbtlneet](https://pixabay.com/users/sbtlneet-3591002/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1861640) |
+| [Red Blood Cell 3](Assets/Textures/BloodCells/red-blood-cells-c1.png) | [Flaticon.com Erythrocytes](https://www.flaticon.com/free-icon/blood-cells_1141004?term=erythrocytes&page=1&position=18) by [Freepik](https://www.flaticon.com/authors/freepik) |
+
+
+
+
 
 ## Game Design
 [Game Design document](https://docs.google.com/document/d/1TgTEb7lYKtsqwoqLYiH7x7pFtKUBVrobGOHopfreoxo/edit?usp=sharing) accessible only to members of the [Center for Research and Interdisciplinarity (CRI)](https://cri-paris.org/), located in Paris, France.
