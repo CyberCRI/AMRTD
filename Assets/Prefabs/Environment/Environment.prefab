@@ -53,6 +53,11 @@ MonoBehaviour:
   - {fileID: 8592599319917520235}
   - {fileID: 8241497938497464817}
   - {fileID: 1293562035458278275}
+  wbcPrefabs:
+  - {fileID: 4864043371421780663, guid: 27ee49e19d2dd3c4387e9a4f02f464a5, type: 3}
+  - {fileID: 6025728932809937726, guid: 052c0b3bcf2db434e8ae3d2976ed5e65, type: 3}
+  - {fileID: 2086289902734030028, guid: 86b7fd960f0abb14ca59825b200f062a, type: 3}
+  - {fileID: 4130973926454078730, guid: 7bed91d19b1131b42b6f898222881aad, type: 3}
 --- !u!114 &8640235584741704728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +76,7 @@ MonoBehaviour:
   bloodEnd2: {fileID: 3410298798920408521}
   rbcPrefabs:
   - {fileID: 9212015041760241849, guid: 5d53caeceef20db4094908a69ef039c3, type: 3}
-  - {fileID: 5218715524285710458, guid: e1dc742e7c8be8d46bedd5d3b8625494, type: 3}
+  - {fileID: 9195764295545372291, guid: 5b3b4c0039692a5479e191fa68e228ce, type: 3}
   - {fileID: 2638239541248816435, guid: f50c2b3815fe11a4ba2df057e5c1793e, type: 3}
   rbcSpawnCount: 5
   rbcSpawnPeriodVariationRatio: 0.2

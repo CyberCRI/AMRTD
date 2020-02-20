@@ -7,7 +7,8 @@ using System.Linq;
 public class WaveSpawner : MonoBehaviour
 {
     public static WaveSpawner instance;
-    public static int enemiesAlive = 0;
+    public static int enemiesAliveCount = 0;
+    public static Enemy[] enemiesAlive = new Enemy[0];
 
 #if DEVMODE
     [SerializeField]
@@ -62,7 +63,7 @@ public class WaveSpawner : MonoBehaviour
             instance = this;
 
             countdown = timeBeforeWave1;
-            enemiesAlive = 0;
+            enemiesAliveCount = 0;
         }
     }
 
@@ -77,7 +78,7 @@ public class WaveSpawner : MonoBehaviour
             (
                 (GameManager.instance.isObjectiveDefenseMode())
                 ||
-                (enemiesAlive <= 0)
+                (enemiesAliveCount <= 0)
             )
         )
         {
@@ -92,7 +93,7 @@ public class WaveSpawner : MonoBehaviour
                         countdown = timeBetweenWaves;
                     }
                 }
-                else if (enemiesAlive <= 0)
+                else if (enemiesAliveCount <= 0)
                 {
                     gameManager.winLevel();
                     this.enabled = false;
@@ -143,6 +144,7 @@ public class WaveSpawner : MonoBehaviour
         yield return new WaitForSeconds(1f);
         PlayerStatistics.instance.waves++;
         currentWave = waves[waveIndex];
+        enemiesAlive = new Enemy[currentWave.maxEnemyCount];
 
         for (int i = 0; i < currentWave.count; i++)
         {
@@ -178,7 +180,7 @@ public class WaveSpawner : MonoBehaviour
         bool divisionMode = (null != enemyMotherCell);
         Enemy enemy = null;
 
-        if (enemiesAlive < wave.maxEnemyCount)
+        if (enemiesAliveCount < wave.maxEnemyCount)
         {
             Vector3 spawnPointPosition = spawnPoints[0].position;
             Quaternion spawnPointRotation = spawnPoints[0].rotation;
@@ -216,7 +218,15 @@ public class WaveSpawner : MonoBehaviour
             enemy = instantiatedEnemy.GetComponent<Enemy>();
             enemy.initialize(wave, reward, health, startHealth, waypointIndex, resistances);
 
-            enemiesAlive++;
+            enemiesAliveCount++;
+            for (int i = 0; i < enemiesAlive.Length; i++)
+            {
+                if (null == enemiesAlive[i])
+                {
+                    enemiesAlive[i] = enemy;
+                    break;
+                }
+            }
         }
         return enemy;
     }

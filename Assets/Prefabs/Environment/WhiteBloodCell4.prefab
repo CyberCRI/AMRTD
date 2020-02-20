@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1129794415441087183}
   - component: {fileID: 661669837714443501}
   - component: {fileID: 779286721984945287}
+  - component: {fileID: 6899787286875131317}
   m_Layer: 8
   m_Name: WhiteBloodCell4
   m_TagString: Untagged
@@ -93,3 +94,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6899787286875131317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130973926454078730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb476f848c36b84da52c93a527b96e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumDistance: 1
+  baseSpeed: 10
+  speedVariation: 1
