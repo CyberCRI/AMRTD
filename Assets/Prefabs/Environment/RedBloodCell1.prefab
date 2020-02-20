@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d02632b8669bddd4faa98091795b0e0a, type: 2}
+  - {fileID: 2100000, guid: 491ff900892d3ad4c8a72eff630b985f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,10 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e26023e5df0b0d4c875360e289ce4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodOrigin1: {fileID: 0}
-  bloodOrigin2: {fileID: 0}
-  bloodEnd1: {fileID: 0}
-  bloodEnd2: {fileID: 0}
   minimumDistance: 1.1
   baseSpeed: 10
   speedVariation: 2
