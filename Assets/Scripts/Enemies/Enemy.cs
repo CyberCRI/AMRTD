@@ -598,15 +598,15 @@ public class Enemy : MonoBehaviour
                     float minSeed = 0f;
                     bool[] _immunities = new bool[(int)Attack.SUBSTANCE.COUNT];
                     float[] _resistances = new float[(int)Attack.SUBSTANCE.COUNT];
-                    bool _canDivideWhileWounded = (Random.Range(0, 1) < defaultMutationRange);
+                    bool _canDivideWhileWounded = (Random.Range(0f, 1f) < defaultMutationRange);
 
                     if (MUTATION_DIRECTION.RANDOM == mutationDirection)
                     {
                         minSeed = -1f;
                         for (int i = 0; i < (int)Attack.SUBSTANCE.COUNT; i++)
                         {
-                            _immunities[i] = (Random.Range(0, 1) < defaultMutationRange);
-                            _resistances[i] = resistances[i] * (1 - defaultMutationRange * Random.Range(minSeed, 1));
+                            _immunities[i] = (Random.Range(0f, 1f) < defaultMutationRange);
+                            _resistances[i] = resistances[i] * (1 - defaultMutationRange * Random.Range(minSeed, 1f));
                         }
                     }
                     else // assumes (MUTATION_DIRECTION.MORE_RESISTANCE == directionMode)
@@ -614,19 +614,19 @@ public class Enemy : MonoBehaviour
                         minSeed = 0f;
                         for (int i = 0; i < (int)Attack.SUBSTANCE.COUNT; i++)
                         {
-                            _immunities[i] = immunities[i] || (Random.Range(0, 1) < defaultMutationRange);
-                            _resistances[i] = resistances[i] * (1 - defaultMutationRange * Random.Range(minSeed, 1));
+                            _immunities[i] = immunities[i] || (Random.Range(0f, 1f) < defaultMutationRange);
+                            _resistances[i] = resistances[i] * (1 - defaultMutationRange * Random.Range(minSeed, 1f));
                         }
                         _canDivideWhileWounded = _canDivideWhileWounded || canDivideWhileWounded;
                     }
 
                     setAllMutable(
                         // if reward is increased, letting pathogens mutate is incentivized
-                        startHealth * (1 + defaultMutationRange * Random.Range(minSeed, 1))
-                        , health * (1 + defaultMutationRange * Random.Range(minSeed, 1))
-                        , healingRatioSpeed * (1 + defaultMutationRange * Random.Range(minSeed, 1))
-                        , 1f //, injuryFactor * (1 - defaultMutationRange * Random.Range(minSeed, 1))
-                        , divisionPeriod * (1 - defaultMutationRange * Random.Range(minSeed, 1))
+                        startHealth * (1 + defaultMutationRange * Random.Range(minSeed, 1f))
+                        , health * (1 + defaultMutationRange * Random.Range(minSeed, 1f))
+                        , healingRatioSpeed * (1 + defaultMutationRange * Random.Range(minSeed, 1f))
+                        , 1f //, injuryFactor * (1 - defaultMutationRange * Random.Range(minSeed, 1f))
+                        , divisionPeriod * (1 - defaultMutationRange * Random.Range(minSeed, 1f))
                         , _canDivideWhileWounded
                         , _immunities
                         , _resistances
@@ -696,6 +696,11 @@ public class Enemy : MonoBehaviour
     public void holdPosition()
     {
         enemyMovement.setHoldingPosition(true);
+    }
+
+    public void blockDivision()
+    {
+        divisionStrategy = DIVISION_STRATEGY.NO_DIVISION;
     }
 
     void OnDestroy()

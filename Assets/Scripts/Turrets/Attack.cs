@@ -75,7 +75,7 @@ public class Attack : MonoBehaviour
     private bool killAtDivisionPassive = false;
 
     // TODO
-    // condition for booleans similar to (Random.Range(0, .5) < resistanceFactor)?
+    // condition for booleans similar to (Random.Range(0f, .5f) < resistanceFactor)?
 
     private void initialize(
          //        EnemyMovement _enemyMovement

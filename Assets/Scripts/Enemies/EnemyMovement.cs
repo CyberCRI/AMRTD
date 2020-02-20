@@ -68,10 +68,10 @@ public class EnemyMovement : MonoBehaviour
         enemy = this.GetComponent<Enemy>();
         speed = startSpeed;
 
-        phaseShiftX = Random.Range(0, 2 * Mathf.PI);
-        phaseShiftZ = Random.Range(0, 2 * Mathf.PI);
-        phaseRotatY = Random.Range(0, 2 * Mathf.PI);
-        phaseScaleX = Random.Range(0, 2 * Mathf.PI);
+        phaseShiftX = Random.Range(0f, 2f * Mathf.PI);
+        phaseShiftZ = Random.Range(0f, 2f * Mathf.PI);
+        phaseRotatY = Random.Range(0f, 2f * Mathf.PI);
+        phaseScaleX = Random.Range(0f, 2f * Mathf.PI);
 
         if (Vector3.zero == initialScale)
         {
