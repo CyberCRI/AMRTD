@@ -22,9 +22,9 @@ public class RedBloodCellManager : MonoBehaviour
 
     [SerializeField]
     private int rbcSpawnCount = 0;
-    private float rbcSpawnPeriod = 0f;
+    private float rbcSpawnTimePeriod = 0f;
     [SerializeField]
-    private float rbcSpawnPeriodVariationRatio = 0f;
+    private float rbcSpawnTimePeriodVariationRatio = 0f;
     private float timer = 0f;
     private int rbcYetToSpawnCount = 0;
     private float topToBottom = 0f;
@@ -48,14 +48,13 @@ public class RedBloodCellManager : MonoBehaviour
 
             topToBottom = (bloodEnd1.position - bloodOrigin1.position).z;
 
-            rbcSpawnPeriod = topToBottom / (rbcSpawnCount * rbcPrefabs[0].GetComponent<RedBloodCellMovement>().baseSpeed);
+            rbcSpawnTimePeriod = Mathf.Abs(topToBottom / (rbcSpawnCount * rbcPrefabs[0].GetComponent<RedBloodCellMovement>().baseSpeed));
 
             // spatial spawn
-            Vector3 spatialPeriod = topToBottom / (rbcSpawnCount + 1) * Vector3.forward;
+            Vector3 rbcSpawnSpatialPeriod = topToBottom / (rbcSpawnCount + 1) * Vector3.forward;
             for (int i = 0; i < rbcSpawnCount; i++)
             {
-                Debug.Log("spatial spawn: " + i);
-                innerSpawnRBC((i + 1) * spatialPeriod);
+                innerSpawnRBC((i + 1) * rbcSpawnSpatialPeriod);
             }
 
 #if !DETRIMENTALOPTIMIZATION
@@ -65,7 +64,7 @@ public class RedBloodCellManager : MonoBehaviour
                 // temporal spawn for DETRIMENTALOPTIMIZATION mode if no spatial spawn
                 //Invoke("spawnRBC", (i + rbcSpawnPeriodVariationRatio * Random.Range(-1f, 1f)) * rbcSpawnPeriod);
 
-                InvokeRepeating("randomSpawnRBC", i * rbcSpawnPeriod, rbcSpawnCount * rbcSpawnPeriod);
+                InvokeRepeating("randomSpawnRBC", i * rbcSpawnTimePeriod, rbcSpawnCount * rbcSpawnTimePeriod);
 #endif
             }
         }
@@ -73,7 +72,7 @@ public class RedBloodCellManager : MonoBehaviour
 
     private void randomSpawnRBC()
     {
-        Invoke("spawnRBC", rbcSpawnPeriodVariationRatio * Random.Range(0f, 1f) * rbcSpawnPeriod);
+        Invoke("spawnRBC", rbcSpawnTimePeriodVariationRatio * Random.Range(0f, 1f) * rbcSpawnTimePeriod);
     }
 
     private void spawnRBC()

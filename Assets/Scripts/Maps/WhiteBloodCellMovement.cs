@@ -24,7 +24,7 @@ public class WhiteBloodCellMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setTarget();
+        //setTarget();
         setSpeed();
 
         if (null == bloodOrigin2)
@@ -36,10 +36,6 @@ public class WhiteBloodCellMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((null == target) && (0 < WaveSpawner.enemiesAliveCount))
-        {
-            setTarget();
-        }
 
         if (null != target)
         {
@@ -72,16 +68,9 @@ public class WhiteBloodCellMovement : MonoBehaviour
         }
     }
 
-    private void setTarget()
+    public void setTarget(Transform _target)
     {
-        for (int i = 0; i < WaveSpawner.enemiesAlive.Length; i++)
-        {
-            if (null != WaveSpawner.enemiesAlive[i])
-            {
-                target = WaveSpawner.enemiesAlive[i].transform;
-                break;
-            }
-        }
+        target = _target;
     }
 
     private void setSpeed()

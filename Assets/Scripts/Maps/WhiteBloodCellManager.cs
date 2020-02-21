@@ -7,10 +7,12 @@ public class WhiteBloodCellManager : MonoBehaviour
 {
     public static WhiteBloodCellManager instance = null;
 
-    private GameObject[] whiteBloodCells = new GameObject[wbcSpawnCount];
+    [SerializeField] // for debug
+    private WhiteBloodCellMovement[] whiteBloodCells = null;
     [SerializeField] // for debug
     private Enemy[] whiteBloodCellsTarget = null;
-    
+    private WhiteBloodCellMovement[] availableWBCs = null;
+
     [SerializeField]
     private GameObject[] wbcPrefabs;
 
@@ -18,11 +20,11 @@ public class WhiteBloodCellManager : MonoBehaviour
     private Transform bloodOrigin2 = null;
     private Transform bloodEnd1 = null;
     private Transform bloodEnd2 = null;
-    
-    public const int wbcSpawnCount = 4;
-    private float wbcSpawnPeriod = 1f;
 
-    private Vector3 spatialPeriod = Vector3.zero;
+    public const int wbcSpawnCount = 4;
+    private float wbcSpawnTimePeriod = 1f;
+
+    private Vector3 wbcSpawnSpatialPeriod = Vector3.zero;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -36,12 +38,14 @@ public class WhiteBloodCellManager : MonoBehaviour
         else
         {
             instance = this;
+            whiteBloodCells = new WhiteBloodCellMovement[wbcSpawnCount];
             whiteBloodCellsTarget = new Enemy[whiteBloodCells.Length];
+            availableWBCs = new WhiteBloodCellMovement[wbcSpawnCount];
 
             for (int i = 0; i < wbcSpawnCount; i++)
             {
                 // +1 otherwise Start is called too late to initialize blood points
-                Invoke("spawnWBC", (i + 1) * wbcSpawnPeriod);
+                Invoke("spawnWBC", (i + 1) * wbcSpawnTimePeriod);
             }
         }
     }
@@ -57,61 +61,62 @@ public class WhiteBloodCellManager : MonoBehaviour
         bloodOrigin2 = positions[1];
         bloodEnd1 = positions[2];
         bloodEnd2 = positions[3];
-        
+
         Vector3 diff = (bloodEnd1.position - bloodOrigin1.position);
         Vector3 verticalSpatialPeriod = diff.z / (wbcSpawnCount + 1) * Vector3.forward;
         Vector3 horizontalSpatialPeriod = diff.x / (wbcSpawnCount + 1) * Vector3.right;
-        spatialPeriod = verticalSpatialPeriod + horizontalSpatialPeriod;
+        wbcSpawnSpatialPeriod = verticalSpatialPeriod + horizontalSpatialPeriod;
     }
 
-    /*
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
-        // manage count of white blood cells
-        if (
-            (whiteBloodCells.Length > 0)
-            && (whiteBloodCells.Length + 1 > PlayerStatistics.instance.lives)
-        )
-        {
-            Destroy(whiteBloodCells[whiteBloodCells.Length - 1]);
-            Array.Resize(ref whiteBloodCells, whiteBloodCells.Length - 1);
-            Array.Resize(ref whiteBloodCellsTarget, whiteBloodCellsTarget.Length - 1);
-        }
-
         // manage movement of white cells
         int busyWBCs = 0;
         for (int i = 0; i < whiteBloodCellsTarget.Length; i++)
         {
-            if (null != whiteBloodCellsTarget[i])
+            if ((null != whiteBloodCells[i]) && (null == whiteBloodCellsTarget[i]))
             {
-                busyWBCs++;
-            }
-        }
-
-        while (busyWBCs < WaveSpawner.enemiesAliveCount)
-        {
-            for (int i = 0; i < whiteBloodCellsTarget.Length; i++)
-            {
-                if (null != whiteBloodCellsTarget[i])
+                for (int j = 0; j < WaveSpawner.enemiesAlive.Length; j++)
                 {
-                    busyWBCs++;
+                    bool isEnemyTargetable = true;
+                    if (null != WaveSpawner.enemiesAlive[j])
+                    {
+                        // control that no other WBC is targeting it
+                        for (int k = 0; k < whiteBloodCellsTarget.Length; k++)
+                        {
+                            if (whiteBloodCellsTarget[k] == WaveSpawner.enemiesAlive[j])
+                            {
+                                isEnemyTargetable = false;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // enemy is null
+                        isEnemyTargetable = false;
+                    }
+                    if (isEnemyTargetable)
+                    {
+                        whiteBloodCellsTarget[i] = WaveSpawner.enemiesAlive[j];
+                        whiteBloodCells[i].setTarget(WaveSpawner.enemiesAlive[j].transform);
+                    }
                 }
             }
         }
     }
-    */
 
-    private int getNonNullWBCCount()
+    private int getFirstNullWBCIndex()
     {
         int result = 0;
-        for (int i = 0; i < wbcSpawnCount; i++)
+        for (result = 0; result < wbcSpawnCount; result++)
         {
-            if (null != whiteBloodCells[i])
+            if (null == whiteBloodCells[result])
             {
-                result++;
+                break;
             }
         }
         return result;
@@ -124,10 +129,10 @@ public class WhiteBloodCellManager : MonoBehaviour
         Vector3 spawnPointPosition = t * bloodOrigin1.position + (1 - t) * bloodOrigin2.position;
         GameObject newWBC = (GameObject)Instantiate(wbcPrefab, spawnPointPosition, wbcPrefab.transform.rotation);
 
-        int index = getNonNullWBCCount();
-        whiteBloodCells[index] = newWBC;
+        int index = getFirstNullWBCIndex();
         WhiteBloodCellMovement wbcm = newWBC.GetComponent<WhiteBloodCellMovement>();
-        Vector3 idlePosition = bloodOrigin1.position + (index + 1) * spatialPeriod;
+        whiteBloodCells[index] = wbcm;
+        Vector3 idlePosition = bloodOrigin1.position + (index + 1) * wbcSpawnSpatialPeriod;
         wbcm.initialize(idlePosition);
     }
 }
