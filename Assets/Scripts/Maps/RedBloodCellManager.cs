@@ -11,15 +11,15 @@ public class RedBloodCellManager : MonoBehaviour
     [SerializeField]
     private Transform bloodOrigin1 = null;
     [SerializeField]
-    private Transform bloodOrigin2 = null;
+    public Transform bloodOrigin2 = null;
     [SerializeField]
     private Transform bloodEnd1 = null;
     [SerializeField]
     private Transform bloodEnd2 = null;
-    
+
     [SerializeField]
     private GameObject[] rbcPrefabs;
-    
+
     [SerializeField]
     private int rbcSpawnCount = 0;
     private float rbcSpawnPeriod = 0f;
@@ -27,6 +27,7 @@ public class RedBloodCellManager : MonoBehaviour
     private float rbcSpawnPeriodVariationRatio = 0f;
     private float timer = 0f;
     private int rbcYetToSpawnCount = 0;
+    private float topToBottom = 0f;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -45,14 +46,25 @@ public class RedBloodCellManager : MonoBehaviour
             rbcYetToSpawnCount = rbcSpawnCount;
 #endif
 
-            rbcSpawnPeriod = (bloodEnd1.position - bloodOrigin1.position).magnitude / 
-                (rbcSpawnCount * rbcPrefabs[0].GetComponent<RedBloodCellMovement>().baseSpeed);
+            topToBottom = (bloodEnd1.position - bloodOrigin1.position).z;
 
+            rbcSpawnPeriod = topToBottom / (rbcSpawnCount * rbcPrefabs[0].GetComponent<RedBloodCellMovement>().baseSpeed);
+
+            // spatial spawn
+            Vector3 spatialPeriod = topToBottom / (rbcSpawnCount + 1) * Vector3.forward;
             for (int i = 0; i < rbcSpawnCount; i++)
             {
-#if DETRIMENTALOPTIMIZATION
-                Invoke("spawnRBC", (i + rbcSpawnPeriodVariationRatio * Random.Range(-1f, 1f)) * rbcSpawnPeriod);
-#else
+                Debug.Log("spatial spawn: " + i);
+                innerSpawnRBC((i + 1) * spatialPeriod);
+            }
+
+#if !DETRIMENTALOPTIMIZATION
+            // temporal spawn
+            for (int i = 0; i < rbcSpawnCount; i++)
+            {
+                // temporal spawn for DETRIMENTALOPTIMIZATION mode if no spatial spawn
+                //Invoke("spawnRBC", (i + rbcSpawnPeriodVariationRatio * Random.Range(-1f, 1f)) * rbcSpawnPeriod);
+
                 InvokeRepeating("randomSpawnRBC", i * rbcSpawnPeriod, rbcSpawnCount * rbcSpawnPeriod);
 #endif
             }
@@ -66,18 +78,23 @@ public class RedBloodCellManager : MonoBehaviour
 
     private void spawnRBC()
     {
+        innerSpawnRBC(Vector3.zero);
+    }
+
+    private void innerSpawnRBC(Vector3 zOffset)
+    {
 #if DETRIMENTALOPTIMIZATION
         rbcYetToSpawnCount--;
-        Debug.Log("spawnRBC remaining: " + rbcYetToSpawnCount);
+        Debug.Log("innerSpawnRBC remaining: " + rbcYetToSpawnCount);
 #endif
         GameObject rbcPrefab = rbcPrefabs[Random.Range(0, rbcPrefabs.Length)];
         float t = Random.Range(0f, 1f);
-        Vector3 spawnPointPosition = t * bloodOrigin1.position + (1 - t) * bloodOrigin2.position;
+        Vector3 spawnPointPosition = t * bloodOrigin1.position + (1 - t) * bloodOrigin2.position + zOffset;
         Instantiate(rbcPrefab, spawnPointPosition, rbcPrefab.transform.rotation);
     }
 
     public Transform[] getBloodPositions()
     {
-        return new Transform[4]{bloodOrigin1, bloodOrigin2, bloodEnd1, bloodEnd2};
+        return new Transform[4] { bloodOrigin1, bloodOrigin2, bloodEnd1, bloodEnd2 };
     }
 }

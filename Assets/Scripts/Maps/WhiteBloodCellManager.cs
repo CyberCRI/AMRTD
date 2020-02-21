@@ -7,8 +7,8 @@ public class WhiteBloodCellManager : MonoBehaviour
 {
     public static WhiteBloodCellManager instance = null;
 
-    [SerializeField]
-    private GameObject[] whiteBloodCells = null;
+    private GameObject[] whiteBloodCells = new GameObject[wbcSpawnCount];
+    [SerializeField] // for debug
     private Enemy[] whiteBloodCellsTarget = null;
     
     [SerializeField]
@@ -19,8 +19,10 @@ public class WhiteBloodCellManager : MonoBehaviour
     private Transform bloodEnd1 = null;
     private Transform bloodEnd2 = null;
     
-    private int wbcSpawnCount = 4;
+    public const int wbcSpawnCount = 4;
     private float wbcSpawnPeriod = 1f;
+
+    private Vector3 spatialPeriod = Vector3.zero;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -55,6 +57,11 @@ public class WhiteBloodCellManager : MonoBehaviour
         bloodOrigin2 = positions[1];
         bloodEnd1 = positions[2];
         bloodEnd2 = positions[3];
+        
+        Vector3 diff = (bloodEnd1.position - bloodOrigin1.position);
+        Vector3 verticalSpatialPeriod = diff.z / (wbcSpawnCount + 1) * Vector3.forward;
+        Vector3 horizontalSpatialPeriod = diff.x / (wbcSpawnCount + 1) * Vector3.right;
+        spatialPeriod = verticalSpatialPeriod + horizontalSpatialPeriod;
     }
 
     /*
@@ -97,11 +104,30 @@ public class WhiteBloodCellManager : MonoBehaviour
     }
     */
 
+    private int getNonNullWBCCount()
+    {
+        int result = 0;
+        for (int i = 0; i < wbcSpawnCount; i++)
+        {
+            if (null != whiteBloodCells[i])
+            {
+                result++;
+            }
+        }
+        return result;
+    }
+
     private void spawnWBC()
     {
         GameObject wbcPrefab = wbcPrefabs[UnityEngine.Random.Range(0, wbcPrefabs.Length)];
         float t = UnityEngine.Random.Range(0f, 1f);
         Vector3 spawnPointPosition = t * bloodOrigin1.position + (1 - t) * bloodOrigin2.position;
-        Instantiate(wbcPrefab, spawnPointPosition, wbcPrefab.transform.rotation);
+        GameObject newWBC = (GameObject)Instantiate(wbcPrefab, spawnPointPosition, wbcPrefab.transform.rotation);
+
+        int index = getNonNullWBCCount();
+        whiteBloodCells[index] = newWBC;
+        WhiteBloodCellMovement wbcm = newWBC.GetComponent<WhiteBloodCellMovement>();
+        Vector3 idlePosition = bloodOrigin1.position + (index + 1) * spatialPeriod;
+        wbcm.initialize(idlePosition);
     }
 }
