@@ -23,6 +23,8 @@ public class Turret : Attacker
     [Header("General")]
     public float range = 0f;
     public ROUTE_OF_ADMINISTRATION route = ROUTE_OF_ADMINISTRATION.TOPICAL_SKIN;
+    private bool isBeingUpgraded = false;
+    private bool isUpgraded = false;
 
     //#if STATICTURRETRESISTANCEPOINTSMODE
     [Header("Resistance")]
@@ -102,29 +104,19 @@ public class Turret : Attacker
         upkeepCountdown = upkeepPeriod;
 #endif
 #if STATICTURRETCOUNTMODE
-        PlayerStatistics.instance.turretCount += 1;
+        if (!isUpgraded)
+        {
+            PlayerStatistics.instance.turretCount += 1;
+        }
 #endif
 #if STATICTURRETRESISTANCEPOINTSMODE
-        PlayerStatistics.instance.turretResistancePoints += _resistancePoints;
+        if (!isUpgraded)
+        {
+            PlayerStatistics.instance.turretResistancePoints += _resistancePoints;
+        }
 #endif
         InvokeRepeating("updateTarget", timeStartTurret, updatePeriod);
     }
-
-#if STATICTURRETCOUNTMODE || STATICTURRETRESISTANCEPOINTSMODE
-    /// <summary>
-    /// This function is called when the MonoBehaviour will be destroyed.
-    /// </summary>
-    void OnDestroy()
-    {
-#if STATICTURRETCOUNTMODE
-        PlayerStatistics.instance.turretCount -= 1;
-#endif
-#if STATICTURRETRESISTANCEPOINTSMODE
-//        Debug.Log(this.gameObject.name + ": -" + (int)_resistancePoints);
-        PlayerStatistics.instance.turretResistancePoints -= _resistancePoints;
-#endif        
-    }
-#endif
 
     public void renew(float duration = 10f)
     {
@@ -327,6 +319,15 @@ public class Turret : Attacker
         }
     }
 
+    public void setBeingUpgraded(bool value)
+    {
+        isBeingUpgraded = value;
+    }
+    public void setUpgraded(bool value)
+    {
+        isUpgraded = value;
+    }
+
     /// <summary>
     /// Callback to draw gizmos only if the object is selected.
     /// </summary>
@@ -335,4 +336,30 @@ public class Turret : Attacker
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(this.transform.position, range);
     }
+
+    public float getResistancePoints()
+    {
+        return _resistancePoints;
+    }
+
+#if STATICTURRETCOUNTMODE || STATICTURRETRESISTANCEPOINTSMODE
+    /// <summary>
+    /// This function is called when the MonoBehaviour will be destroyed.
+    /// </summary>
+    void OnDestroy()
+    {
+#if STATICTURRETCOUNTMODE
+        if (!isBeingUpgraded)
+        {
+            PlayerStatistics.instance.turretCount -= 1;
+        }
+#endif
+#if STATICTURRETRESISTANCEPOINTSMODE
+        if (!isBeingUpgraded)
+        {
+            PlayerStatistics.instance.turretResistancePoints -= _resistancePoints;
+        }
+#endif
+    }
+#endif
 }

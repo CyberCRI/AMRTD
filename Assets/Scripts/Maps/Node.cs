@@ -1,6 +1,7 @@
 ﻿//#define DEVMODE
 #define SELLTURRETS
 //#define TURRETLIFETIME
+#define STATICTURRETRESISTANCEPOINTSMODE
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -218,7 +219,16 @@ public class Node : MonoBehaviour
             Quaternion previousRotation = turret.getPartToRotateRotation();
             GameObject oldTurret = turretGO;
             turretGO = newTurretGO;
+#if STATICTURRETRESISTANCEPOINTSMODE
+            float oldResistanceCost = turret.getResistancePoints();
+            turret.setBeingUpgraded(true);
+#endif
             turret = turretGO.GetComponent<Turret>();
+#if STATICTURRETRESISTANCEPOINTSMODE
+            float newResistanceCost = turret.getResistancePoints();
+            turret.setUpgraded(true);
+            PlayerStatistics.instance.turretResistancePoints += (newResistanceCost - oldResistanceCost);
+#endif
             turret.rotatePartToRotate(previousRotation);
             turret.node = this;
             //            turret.range = turret.range * Mathf.Max(
@@ -238,10 +248,6 @@ public class Node : MonoBehaviour
 
     public void sellTurret()
     {
-#if DEVMODE
-//        Debug.Log("sellTurret");
-#endif
-
 #if SELLTURRETS
         PlayerStatistics.instance.money += getSellCost();
 #endif
@@ -252,11 +258,11 @@ public class Node : MonoBehaviour
     public int getSellCost()
     {
         int result = turretBlueprint.cost;
-        if(isUpgraded)
+        if (isUpgraded)
         {
             result += turretBlueprint.upgradeCost;
         }
-        return result/2;
+        return result / 2;
     }
 
     public void renewTurret()
@@ -265,7 +271,6 @@ public class Node : MonoBehaviour
 #if DEVMODE
         Debug.Log("renewTurret");
 #endif
-
         turret.renew();
 #endif
     }
