@@ -109,6 +109,7 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 0.98475426, b: 0, a: 0.8156863}
   cantBuyColor: {r: 0.8679245, g: 0.24154504, b: 0.24154504, a: 1}
   renderor: {fileID: 3883162805753781618}
+  turret: {fileID: 0}
   turretBlueprint:
     prefab: {fileID: 0}
     cost: 0
@@ -118,6 +119,8 @@ MonoBehaviour:
   buildEffect: {fileID: 7690425728553248048, guid: 92362bcef8559d24db00f74f1d82c358,
     type: 3}
   cantPayEffect: {fileID: 6202577009173219736, guid: a8fe87a70f8f8d44d992d477c3e8db96,
+    type: 3}
+  cantPayBuildEffect: {fileID: 6202577009173219736, guid: e15ef79feec55764780cdfc7aaaf0e6b,
     type: 3}
   damagedEffect: {fileID: 6202577009173219736, guid: a8fe87a70f8f8d44d992d477c3e8db96,
     type: 3}

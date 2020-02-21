@@ -29,6 +29,9 @@ public class Node : MonoBehaviour
     private GameObject cantPayEffect = null;
     private ParticleSystem cantPayEffectPS = null;
     [SerializeField]
+    private GameObject cantPayBuildEffect = null;
+    private ParticleSystem cantPayBuildEffectPS = null;
+    [SerializeField]
     private GameObject damagedEffect = null;
     private ParticleSystem damagedEffectPS = null;
     [SerializeField]
@@ -62,6 +65,7 @@ public class Node : MonoBehaviour
 
         buildEffectPS = (ParticleSystem)buildEffect.GetComponentsInChildren<ParticleSystem>()[0];
         cantPayEffectPS = (ParticleSystem)cantPayEffect.GetComponentsInChildren<ParticleSystem>()[0];
+        cantPayBuildEffectPS = (ParticleSystem)cantPayBuildEffect.GetComponentsInChildren<ParticleSystem>()[0];
         damagedEffectPS = (ParticleSystem)damagedEffect.GetComponentsInChildren<ParticleSystem>()[0];
         expiredEffectPS = (ParticleSystem)expiredEffect.GetComponentsInChildren<ParticleSystem>()[0];
         sellEffectPS = (ParticleSystem)sellEffect.GetComponentsInChildren<ParticleSystem>()[0];
@@ -83,6 +87,11 @@ public class Node : MonoBehaviour
     /// </summary>
     void OnMouseDown()
     {
+        manageClick();
+    }
+
+    public void manageClick()
+    {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             if (turretGO != null)
@@ -92,13 +101,24 @@ public class Node : MonoBehaviour
             }
             else
             {
-                if (!buildManager.canBuild)
+                if (buildManager.canBuild)
                 {
-                    // no tower selected
+                    if (buildManager.canBuy)
+                    {
+                        buildTurret(buildManager.getTurretToBuild());
+                    }
+                    else
+                    {
+                        GameObject effect = (GameObject)Instantiate(
+                            cantPayBuildEffect,
+                            this.transform.position,
+                            Quaternion.identity);
+                        Destroy(effect, CommonUtilities.getEffectMaxDuration(cantPayBuildEffectPS));
+                    }
                 }
                 else
                 {
-                    buildTurret(buildManager.getTurretToBuild());
+                    // no tower selected
                 }
             }
         }

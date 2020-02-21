@@ -118,6 +118,15 @@ public class Turret : Attacker
         InvokeRepeating("updateTarget", timeStartTurret, updatePeriod);
     }
 
+    /// <summary>
+    /// OnMouseDown is called when the user has pressed the mouse button while
+    /// over the GUIElement or Collider.
+    /// </summary>
+    void OnMouseDown()
+    {
+        node.manageClick();
+    }
+
     public void renew(float duration = 10f)
     {
 #if TURRETLIFETIME
