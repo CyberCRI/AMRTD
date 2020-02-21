@@ -77,6 +77,9 @@
 	,{"key":"GAME.PATHOGEN.HELP","value":               "This is a pathogen! Use antibiotics to kill it as soon as possible!"}
 	,{"key":"GAME.TURRET.HELP","value":                 "This is an antibiotics dispenser. It attacks pathogens using antibiotics."}
 	,{"key":"GAME.TURRETBUTTON.HELP","value":           "Click this button to place antibiotics dispensers on the tiles!"}
+	,{"key":"GAME.REDBLOODCELL.HELP","value":           "This is a red blood cell, minding its own business of oxygen transport."}
+	,{"key":"GAME.WHITEBLOODCELL.HELP","value":         "This is a white blood cell, ready to defend the blood vessel from intruders!"}
+	,{"key":"GAME.BULLET.HELP","value":                 "This is an antibiotics bullet. You're a very quick clicker!"}
 
 	,{"key":"max help text length                __________________________________________________________________________________________","value":""}
 	,{"key":"TUTORIAL.LEVEL1.0","value":        "Quick! You must set up antibiotics dispensers to destroy incoming pathogens!"}

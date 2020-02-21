@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3430969998141215203}
   - component: {fileID: 2047299845123050209}
   - component: {fileID: 8617641132585246993}
-  - component: {fileID: -1923693271330836320}
   m_Layer: 0
   m_Name: NormalEnemyTexturedInnerImmune1
   m_TagString: Untagged
@@ -80,16 +79,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &-1923693271330836320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704204758309981477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  codeStem: PATHOGEN

@@ -174,6 +174,19 @@ public class Enemy : MonoBehaviour
         showResistance();
     }
 
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        if (null != RedBloodCellManager.instance)
+        {
+            EnemyDivisionBlocker blocker = this.gameObject.AddComponent<EnemyDivisionBlocker>();
+            blocker.initialize(this);
+        }
+    }
+
     private void setUpResistanceEffect()
     {
         if (null == _resistanceEffectInstance)
