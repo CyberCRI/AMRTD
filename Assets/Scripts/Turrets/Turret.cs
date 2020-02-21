@@ -4,6 +4,7 @@
 //#define DYNAMICTURRETRESISTANCEPOINTSMODE
 //#define TURRETUPKEEP
 //#define TURRETLIFETIME
+//#define SHOOTCLOSEST
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -149,35 +150,42 @@ public class Turret : Attacker
 
     void updateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(Enemy.enemyTag);
-
-        // find closest enemy
-        float shortestDistanceToEnemy = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-
-        foreach (GameObject enemyGO in enemies)
+#if !SHOOTCLOSEST
+        if (null == target)
         {
-            float distanceToEnemy = Vector3.Distance(this.transform.position, enemyGO.transform.position);
-            if (distanceToEnemy < shortestDistanceToEnemy)
+#endif
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag(Enemy.enemyTag);
+
+            // find closest enemy
+            float shortestDistanceToEnemy = Mathf.Infinity;
+            GameObject nearestEnemy = null;
+
+            foreach (GameObject enemyGO in enemies)
             {
-                shortestDistanceToEnemy = distanceToEnemy;
-                nearestEnemy = enemyGO;
+                float distanceToEnemy = Vector3.Distance(this.transform.position, enemyGO.transform.position);
+                if (distanceToEnemy < shortestDistanceToEnemy)
+                {
+                    shortestDistanceToEnemy = distanceToEnemy;
+                    nearestEnemy = enemyGO;
+                }
             }
-        }
 
-        if (nearestEnemy != null && shortestDistanceToEnemy <= range)
-        {
-            if (nearestEnemy.transform != target)
+            if (nearestEnemy != null && shortestDistanceToEnemy <= range)
             {
-                firstAttack = true;
-                target = nearestEnemy.transform;
-                enemy = nearestEnemy.GetComponent<Enemy>();
+                if (nearestEnemy.transform != target)
+                {
+                    firstAttack = true;
+                    target = nearestEnemy.transform;
+                    enemy = nearestEnemy.GetComponent<Enemy>();
+                }
             }
+            else
+            {
+                target = null;
+            }
+#if !SHOOTCLOSEST
         }
-        else
-        {
-            target = null;
-        }
+#endif
     }
 
 #if DEVMODE

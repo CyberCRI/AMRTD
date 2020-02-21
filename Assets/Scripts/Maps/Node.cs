@@ -243,10 +243,20 @@ public class Node : MonoBehaviour
 #endif
 
 #if SELLTURRETS
-        PlayerStatistics.instance.money += turretBlueprint.getSellCost();
+        PlayerStatistics.instance.money += getSellCost();
 #endif
 
         removeTurret(REMOVETOWER.SOLD, turretGO);
+    }
+
+    public int getSellCost()
+    {
+        int result = turretBlueprint.cost;
+        if(isUpgraded)
+        {
+            result += turretBlueprint.upgradeCost;
+        }
+        return result/2;
     }
 
     public void renewTurret()

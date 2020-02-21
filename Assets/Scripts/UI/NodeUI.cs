@@ -54,7 +54,7 @@ public class NodeUI : MonoBehaviour
         }
 
 #if SELLTURRETS
-        sellCost.text = target.turretBlueprint.getSellCost().ToString() + "€";
+        sellCost.text = target.getSellCost().ToString() + "€";
 #endif
 #if TURRETUPKEEP
         upkeepCost.text = target.turret.upkeepCost.ToString() + "€/s";
