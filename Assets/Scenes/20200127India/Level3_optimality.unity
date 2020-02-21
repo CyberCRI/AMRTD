@@ -828,6 +828,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2910746348628729558, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_Text
+      value: III
+      objectReference: {fileID: 0}
     - target: {fileID: 3172878818535053777, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -957,6 +962,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713231551975978138, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: key
+      value: GAME.LEVEL.3
       objectReference: {fileID: 0}
     - target: {fileID: 6723325586250128162, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
