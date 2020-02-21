@@ -55,6 +55,8 @@ public class HelpButtonUI : MonoBehaviour
 #if DEVMODE
         Debug.Log("toggleHelpMode");
 #endif
+        // must be called before cursor setting, otherwise cancels it
+        BuildManager.instance.deselectTurretButton();
         selected = !selected;
         setHelpCursor(selected);
         if (null != helpText)

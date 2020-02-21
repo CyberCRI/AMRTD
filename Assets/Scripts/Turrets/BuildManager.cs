@@ -93,6 +93,15 @@ public class BuildManager : MonoBehaviour
             selectedTurretButton = null;
         }
     }
+    
+    public void deselectTurretButton()
+    {
+        if (null != selectedTurretButton)
+        {
+            selectedTurretButton.isOn = false;
+            selectedTurretButton = null;
+        }
+    }
 
     // null == button means old turret button is used
     // null != button means new turret toggle button is used, in which case:

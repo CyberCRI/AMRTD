@@ -77,6 +77,7 @@ public class NodeUI : MonoBehaviour
     {
         targetNode.upgradeTurret();
         BuildManager.instance.deselectNode();
+        BuildManager.instance.deselectTurretButton();
     }
 
     public void sell()

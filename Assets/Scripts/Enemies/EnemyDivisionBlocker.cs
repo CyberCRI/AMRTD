@@ -20,6 +20,7 @@ public class EnemyDivisionBlocker : MonoBehaviour
                 enemy = this.GetComponent<Enemy>();
             }
             enemy.blockDivision();
+            this.enabled = false;
             Destroy(this);
         }
     }
