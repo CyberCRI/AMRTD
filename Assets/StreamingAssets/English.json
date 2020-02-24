@@ -59,34 +59,34 @@
 	,{"key":"GAME.RETRYSCREEN.TITLE","value":"START OVER?"}
 	,{"key":"GAME.RETRYSCREEN.TEXT","value":"YOUR PROGRESS WILL BE LOST! ARE YOU SURE YOU WANT TO START OVER?"}
 	,{"key":"max help text length                        __________________________________________________________________________________________","value":""}
-	,{"key":"GAME.LIVESTEXT.HELP","value":              "You lose lives when pathogens reach the blood vessels on the far left of the screen."}
-	,{"key":"GAME.RESISTANCEBARBACKGROUND.HELP","value":"The Resistance bar: using antibiotics fills it up and makes enemies more resistant."}
-	,{"key":"GAME.RESISTANCEBAR.HELP","value":          "The Resistance bar: using antibiotics fills it up and makes enemies more resistant."}
-	,{"key":"GAME.WAVEBARBACKGROUND.HELP","value":      "The Wave bar fills up after each wave of pathogens."}
-	,{"key":"GAME.WAVEBAR.HELP","value":                "The Wave bar fills up after each wave of pathogens."}
+	,{"key":"GAME.LIVESTEXT.HELP","value":              "You lose lives when pathogenic bacteria reach the blood vessels on the left of the screen."}
+	,{"key":"GAME.RESISTANCEBARBACKGROUND.HELP","value":"As you use antibiotics the resistance bar fills up and pathogenic bacteria become resistant."}
+	,{"key":"GAME.RESISTANCEBAR.HELP","value":          "As you use antibiotics the resistance bar fills up and pathogenic bacteria become resistant."}
+	,{"key":"GAME.WAVEBARBACKGROUND.HELP","value":      "The Wave bar fills up after each wave of pathogenic bacteria."}
+	,{"key":"GAME.WAVEBAR.HELP","value":                "The Wave bar fills up after each wave of pathogenic bacteria."}
 	,{"key":"GAME.MONEYTEXT.HELP","value":              "This is the money you can spend on antibiotics."}
 	,{"key":"GAME.WAVETIMERTEXT.HELP","value":          "This is the remaining time before the next wave, if the current wave is dead."}
-	,{"key":"GAME.GLOBALTIMERTEXT.HELP","value":        "You must kill all the pathogens before this timer reaches zero."}
+	,{"key":"GAME.GLOBALTIMERTEXT.HELP","value":        "You must kill all the pathogenic bacteria before this timer reaches zero."}
 	,{"key":"GAME.LEVELINDICATOR.HELP","value":         "This is the current level."}
 	,{"key":"GAME.MENU.HELP","value":                   "This is the menu button."}
 	,{"key":"GAME.PAUSE.HELP","value":                  "Use this button to pause the game."}
 	,{"key":"GAME.RETRY.HELP","value":                  "Use this button to start over this level."}
-	,{"key":"GAME.UPGRADEBUTTON.HELP","value":          "Upgrade your antibiotics to kill more pathogens!"}
+	,{"key":"GAME.UPGRADEBUTTON.HELP","value":          "Upgrade your antibiotics to kill more pathogenic bacteria!"}
 	,{"key":"GAME.SELLBUTTON.HELP","value":             "Sell your antibiotics to get money and reduce the resistance."}
 	,{"key":"GAME.RENEWBUTTON.HELP","value":            "Pay to make the antibiotics last longer."}
-	,{"key":"GAME.PATHOGEN.HELP","value":               "This is a pathogen! Use antibiotics to kill it as soon as possible!"}
-	,{"key":"GAME.TURRET.HELP","value":                 "This is an antibiotics dispenser. It attacks pathogens using antibiotics."}
+	,{"key":"GAME.PATHOGEN.HELP","value":               "This is a pathogenic bacterium! Use antibiotics to kill it as soon as possible!"}
+	,{"key":"GAME.TURRET.HELP","value":                 "This is an antibiotics dispenser. It attacks pathogenic bacteria using antibiotics."}
 	,{"key":"GAME.TURRETBUTTON.HELP","value":           "Click this button to place antibiotics dispensers on the tiles!"}
 	,{"key":"GAME.REDBLOODCELL.HELP","value":           "This is a red blood cell, minding its own business of oxygen transport."}
 	,{"key":"GAME.WHITEBLOODCELL.HELP","value":         "This is a white blood cell, ready to defend the blood vessel from intruders!"}
 	,{"key":"GAME.BULLET.HELP","value":                 "This is an antibiotics bullet. You're a very quick clicker!"}
 
 	,{"key":"max help text length                __________________________________________________________________________________________","value":""}
-	,{"key":"TUTORIAL.LEVEL1.0","value":        "Quick! You must set up antibiotics dispensers to destroy incoming pathogens!"}
+	,{"key":"TUTORIAL.LEVEL1.0","value":        "Quick! You must set up antibiotics dispensers to destroy incoming pathogenic bacteria!"}
 	,{"key":"TUTORIAL.LEVEL1.1","value":        "Click on the antibiotic dispenser button to start setting them up."}
-	,{"key":"TUTORIAL.RESISTANCEBAR0.0","value":"Beware! The more antibiotics you use, the more the pathogens will be resistant to them!"}
-	,{"key":"TUTORIAL.RESISTANCEBAR1.0","value":"Beware! The resistance level is so high that antibiotics will barely hurt the pathogens!"}
-	,{"key":"TUTORIAL.LEVELCOMPLETE.0","value": "This is the last wave. Kill all the pathogens to unlock the next level!"}
-	,{"key":"TUTORIAL.PATHOGENESCAPE.0","value": "Watch out! A pathogen has escaped. When this counter reaches zero, you'll lose!"}
+	,{"key":"TUTORIAL.RESISTANCEBAR0.0","value":"Beware! The more you use antibiotics, the more pathogenic bacteria get resistant to them!"}
+	,{"key":"TUTORIAL.RESISTANCEBAR1.0","value":"Beware! The resistance level is so high that antibiotics have barely any effect anymore!"}
+	,{"key":"TUTORIAL.LEVELCOMPLETE.0","value": "This is the last wave. Kill all the pathogenic bacteria to unlock the next level!"}
+	,{"key":"TUTORIAL.PATHOGENESCAPE.0","value":"Watch out! A pathogenic bacterium has escaped. When this counter reaches zero, you'll lose!"}
 	]
 }
