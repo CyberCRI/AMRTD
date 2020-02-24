@@ -36,20 +36,31 @@ public class NodeUI : MonoBehaviour
 #endif
     }
 
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        setUpgradeButton();
+    }
+
+    private void setUpgradeButton()
+    {
+        upgradeButton.interactable = (!targetNode.isUpgraded) && (targetNode.canUpgradeTurret());
+    }
 
     public void setTarget(Node target)
     {
         targetNode = target;
         this.transform.position = targetNode.transform.position;
 
-        if (target.isUpgraded)
+        setUpgradeButton();
+        if (targetNode.isUpgraded)
         {
-            upgradeButton.interactable = false;
             upgradeCost.text = "";
         }
         else
         {
-            upgradeButton.interactable = true;
             upgradeCost.text = target.turretBlueprint.upgradeCost.ToString() + "€";
         }
 

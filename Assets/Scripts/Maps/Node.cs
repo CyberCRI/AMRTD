@@ -227,9 +227,14 @@ public class Node : MonoBehaviour
         }
     }
 
+    public bool canUpgradeTurret()
+    {
+        return (PlayerStatistics.instance.money >= turretBlueprint.upgradeCost);
+    }
+
     public void upgradeTurret()
     {
-        if (PlayerStatistics.instance.money >= turretBlueprint.upgradeCost)
+        if (canUpgradeTurret())
         {
             PlayerStatistics.instance.money -= turretBlueprint.upgradeCost;
 
