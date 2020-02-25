@@ -46,7 +46,7 @@ public class NodeUI : MonoBehaviour
 
     private void setUpgradeButton()
     {
-        upgradeButton.interactable = (!targetNode.isUpgraded) && (targetNode.canUpgradeTurret());
+        upgradeButton.interactable = (null != targetNode) && (!targetNode.isUpgraded) && (targetNode.canUpgradeTurret());
     }
 
     public void setTarget(Node target)
