@@ -50,6 +50,8 @@
 	,{"key":"GAME.LEVEL.3","value":"III"}
 	,{"key":"GAME.LEVEL.4","value":"IV"}
 	,{"key":"GAME.LEVEL.5","value":"V"}
+	,{"key":"GAME.LEVEL.6","value":"VI"}
+	,{"key":"GAME.LEVEL.7","value":"VII"}
 	,{"key":"GAME.MENUSCREEN.CONFIRM","value":"MENU"}
 	,{"key":"GAME.MENUSCREEN.CANCEL","value":"RESUME"}
 	,{"key":"GAME.MENUSCREEN.TITLE","value":"QUIT GAME?"}
@@ -86,6 +88,7 @@
 	,{"key":"TUTORIAL.LEVEL1.1","value":        "Click on the antibiotic dispenser button to start setting them up."}
 	,{"key":"TUTORIAL.RESISTANCEBAR0.0","value":"Beware! The more you use antibiotics, the more pathogenic bacteria get resistant to them!"}
 	,{"key":"TUTORIAL.RESISTANCEBAR1.0","value":"Beware! The resistance level is so high that antibiotics have barely any effect anymore!"}
+	,{"key":"TUTORIAL.RESISTANCEBAR2.0","value":"Beware! You'll lose if you finish the level with more than 50% resistance!"}
 	,{"key":"TUTORIAL.LEVELCOMPLETE.0","value": "This is the last wave. Kill all the pathogenic bacteria to unlock the next level!"}
 	,{"key":"TUTORIAL.PATHOGENESCAPE.0","value":"Watch out! A pathogenic bacterium has escaped. When this counter reaches zero, you'll lose!"}
 	]

@@ -75,10 +75,6 @@ public class BuildManager : MonoBehaviour
                 selectedTurretButton.isOn = false;
             }
         }
-        else if (selectedTurretButton == null)
-        {
-            selectedTurretButton = button;
-        }
         selectedTurretButton = button;
     }
 
