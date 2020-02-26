@@ -4,45 +4,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedBloodCellMovement : MonoBehaviour
+public class RedBloodCellMovement : WobblyMovement
 {
-    private Transform bloodOrigin1 = null;
-    private Transform bloodOrigin2 = null;
-    private Transform bloodEnd1 = null;
-    private Transform bloodEnd2 = null;
-
-    [SerializeField]
-    private float minimumDistance = 0f;
+    private static Transform bloodOrigin1 = null;
+    private static Transform bloodOrigin2 = null;
+    private static Transform bloodEnd1 = null;
+    private static Transform bloodEnd2 = null;
     public float baseSpeed = 0f;
     [SerializeField]
     private float speedVariation = 0f;
-    private float speed = 0f;
-
-    private Vector3 target = Vector3.zero;
-    private Vector3 displacement = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
-        Transform[] positions = RedBloodCellManager.instance.getBloodPositions();
-        bloodOrigin1 = positions[0];
-        bloodOrigin2 = positions[1];
-        bloodEnd1 = positions[2];
-        bloodEnd2 = positions[3];
-        
+        if (null == bloodOrigin1)
+        {
+            Transform[] positions = RedBloodCellManager.instance.getBloodPositions();
+            bloodOrigin1 = positions[0];
+            bloodOrigin2 = positions[1];
+            bloodEnd1 = positions[2];
+            bloodEnd2 = positions[3];
+        }
+
         setTarget();
         setSpeed();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void onWobbleDone()
     {
-        if ((target - this.transform.position).magnitude > minimumDistance)
-        {
-            displacement = (target - this.transform.position).normalized * speed * Time.deltaTime;
-            this.transform.Translate(displacement, Space.World);
-        }
-        else
+        if ((target - this.transform.position).magnitude <= minimumDistance)
         {
 #if DETRIMENTALOPTIMIZATION
             resetPosition();
@@ -68,6 +58,6 @@ public class RedBloodCellMovement : MonoBehaviour
 
     private void setSpeed()
     {
-        speed = baseSpeed + Random.Range(-speedVariation, speedVariation);
+        startSpeed = baseSpeed + Random.Range(-speedVariation, speedVariation);
     }
 }

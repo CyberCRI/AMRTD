@@ -1,25 +1,30 @@
-﻿using System.Collections;
+﻿//#define DEVMODE
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WhiteBloodCellMovement : MonoBehaviour
+public class WhiteBloodCellMovement : WobblyMovement
 {
-
-    [SerializeField]
-    private float minimumDistance = 0f;
+    private Transform targetTransform = null;
     public float baseSpeed = 0f;
     [SerializeField]
     private float speedVariation = 0f;
-    private float speed = 0f;
-
-    private Transform target = null;
-    private Vector3 displacement = Vector3.zero;
-    private float maxDisplacement = 0f;
-    private float zDisplacement = 0f;
-    private float xDisplacement = 0f;
+    private Vector3 idlePosition = Vector3.zero;
     private static Transform bloodOrigin2 = null;
 
-    private Vector3 idlePosition = Vector3.zero;
+#if DEVMODE
+    public WBCACTION action = WBCACTION.NONE;
+
+    public enum WBCACTION
+    {
+        NONE,
+        GOTOIDLE,
+        IDLE,
+        GOTOENEMYLIMITED,
+        GOTOENEMYFREE,
+        REACHEDENEMY
+    }
+#endif
 
     // Start is called before the first frame update
     void Start()
@@ -33,28 +38,33 @@ public class WhiteBloodCellMovement : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void setDisplacement()
     {
-
-        if (null != target)
+        if (null != targetTransform)
         {
-            if ((target.position - this.transform.position).magnitude > minimumDistance)
+            if ((targetTransform.position - this.transform.position).magnitude > minimumDistance)
             {
-                if (target.position.x > bloodOrigin2.position.x)
+                if (targetTransform.position.x > bloodOrigin2.position.x)
                 {
-                    displacement = (new Vector3(bloodOrigin2.position.x, target.position.y, target.position.z) - this.transform.position).normalized * speed * Time.deltaTime;
+                    displacement = (new Vector3(bloodOrigin2.position.x, targetTransform.position.y, targetTransform.position.z) - this.transform.position).normalized * speed * Time.deltaTime;
+#if DEVMODE
+                    action = WBCACTION.GOTOENEMYLIMITED;
+#endif
                 }
                 else
                 {
-                    displacement = (target.position - this.transform.position).normalized * speed * Time.deltaTime;
+                    displacement = (targetTransform.position - this.transform.position).normalized * speed * Time.deltaTime;
+#if DEVMODE
+                    action = WBCACTION.GOTOENEMYFREE;
+#endif
                 }
-                this.transform.Translate(displacement, Space.World);
             }
             else
             {
-                Destroy(this.gameObject);
-                Destroy(target.gameObject);
+                displacement = Vector3.zero;
+#if DEVMODE
+                action = WBCACTION.REACHEDENEMY;
+#endif
             }
         }
         else
@@ -63,24 +73,45 @@ public class WhiteBloodCellMovement : MonoBehaviour
             if ((idlePosition - this.transform.position).magnitude > minimumDistance)
             {
                 displacement = (idlePosition - this.transform.position).normalized * speed * Time.deltaTime;
-                this.transform.Translate(displacement, Space.World);
+#if DEVMODE
+                action = WBCACTION.GOTOIDLE;
             }
+            else
+            {
+                action = WBCACTION.IDLE;
+#endif
+            }
+        }
+    }
+
+    protected override void onWobbleDone()
+    {
+        if ((null != targetTransform) && (targetTransform.position - this.transform.position).magnitude < minimumDistance)
+        {
+            absorb();
         }
     }
 
     public void setTarget(Transform _target)
     {
-        target = _target;
+        targetTransform = _target;
     }
 
     private void setSpeed()
     {
-        speed = baseSpeed + Random.Range(-speedVariation, speedVariation);
+        startSpeed = baseSpeed + Random.Range(-speedVariation, speedVariation);
     }
 
     public void initialize(Vector3 _idlePosition)
     {
         idlePosition = _idlePosition;
+    }
+
+    private void absorb()
+    {
+        Destroy(targetTransform.gameObject);
+
+        Destroy(this.gameObject);
     }
 
     void OnDestroy()

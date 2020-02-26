@@ -282,14 +282,14 @@ public class Enemy : MonoBehaviour
             {
                 scale = 1f - resistances[antibioticIndex];
             }
-/*
-#if DEVMODE
-            Debug.Log("Enemy: " + this.gameObject.name
-                + " ABi: " + antibioticIndex
-                + " scale: " + scale
-                );
-#endif
-*/
+            /*
+            #if DEVMODE
+                        Debug.Log("Enemy: " + this.gameObject.name
+                            + " ABi: " + antibioticIndex
+                            + " scale: " + scale
+                            );
+            #endif
+            */
             instantiateResistanceEffect = instantiateResistanceEffect || (0f != scale);
 #if DEVMODE
             showAntibioticResistanceIndicator(substance, 0f != scale, scale);
@@ -549,7 +549,7 @@ public class Enemy : MonoBehaviour
                 enemy.innerMutate(defaultMutationRange);
 #endif
                 enemy.enemyMovement.enabled = true;
-                enemyMovement.transferWobblingParametersTo(enemy.enemyMovement);
+                enemyMovement.transferWobbleParametersTo(enemy.enemyMovement);
             }
         }
         else

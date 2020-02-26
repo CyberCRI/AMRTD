@@ -152,7 +152,11 @@ public class Turret : Attacker
     void updateTarget()
     {
 #if !SHOOTCLOSEST
-        if (null == target)
+        if (
+            (null == target)
+            ||
+            (Vector3.Distance(this.transform.position, target.position) > range)
+            )
         {
 #endif
             GameObject[] enemies = GameObject.FindGameObjectsWithTag(Enemy.enemyTag);

@@ -94,9 +94,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e26023e5df0b0d4c875360e289ce4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startSpeed: 10
   minimumDistance: 1.1
-  baseSpeed: 10
+  wobbledTransform: {fileID: 6911985252784984587}
+  wobbleScaleSpeed: 0.5
+  wobbleRotateSpeed: 0.9
+  wobbleShiftSpeedX: 1
+  wobbleShiftSpeedZ: 0.5
+  scaleFactor: 5
+  ratioFactor: 0.2
+  angularWobble: 45
+  horizontalShift: 0.05
   speedVariation: 2
+  baseSpeed: 10
 --- !u!135 &1731354350277328250
 SphereCollider:
   m_ObjectHideFlags: 0

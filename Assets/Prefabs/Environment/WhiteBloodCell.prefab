@@ -108,7 +108,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb476f848c36b84da52c93a527b96e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startSpeed: 10
   minimumDistance: 1
+  wobbledTransform: {fileID: 7689037423146455039}
+  wobbleScaleSpeed: 0.5
+  wobbleRotateSpeed: 0.9
+  wobbleShiftSpeedX: 1
+  wobbleShiftSpeedZ: 0.5
+  scaleFactor: 5
+  ratioFactor: 0.2
+  angularWobble: 45
+  horizontalShift: 0.05
   baseSpeed: 10
   speedVariation: 1
 --- !u!135 &7674244967914177618
