@@ -32,6 +32,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField]
     private Wave[] waves = null;
     private Wave currentWave = null;
+    private float resistancePointsRatioVictoryThreshold = 0.5f;
 
     private enum SpawnMode
     {
@@ -95,7 +96,15 @@ public class WaveSpawner : MonoBehaviour
                 }
                 else if (enemiesAliveCount <= 0)
                 {
-                    gameManager.winLevel();
+                    if (GameManager.instance.isObjectiveDefenseMode()
+                    || (PlayerStatistics.instance.resistancePointsRatio <= resistancePointsRatioVictoryThreshold))
+                    {
+                        gameManager.winLevel();
+                    }
+                    else
+                    {
+                        gameManager.loseLevel();
+                    }
                     this.enabled = false;
                 }
             }
@@ -132,8 +141,7 @@ public class WaveSpawner : MonoBehaviour
     private float[] getCurrentResistances()
     {
         return Enumerable.Repeat(
-            // current resistance ratio
-            1f - (((float)PlayerStatistics.instance.resistancePoints) / ((float)PlayerStatistics.defaultMaxResistancePoints)),
+            1f - PlayerStatistics.instance.resistancePointsRatio,
             (int)Attack.SUBSTANCE.COUNT
             ).ToArray();
     }

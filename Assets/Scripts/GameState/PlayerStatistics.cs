@@ -32,7 +32,28 @@ public class PlayerStatistics : MonoBehaviour
     //#endif
 
     [Header("Resistance")]
-    public float resistancePoints = 0f;
+    private float _resistancePoints = 0f;
+    public float resistancePoints
+    {
+        get
+        {
+            return _resistancePoints;
+        }
+        set
+        {
+            _resistancePoints = value;
+            // update Resistance Ratio
+            _resistancePointsRatio = resistancePoints / defaultMaxResistancePoints;
+        }
+    }
+    private float _resistancePointsRatio = 0f; // in [0f, 1f]
+    public float resistancePointsRatio
+    {
+        get
+        {
+            return _resistancePointsRatio;
+        }
+    }
     public float resistanceToLifeFactor = 0f;
     public const float defaultMaxResistancePoints = 100f;
     public const float costABPerSec = 1f;

@@ -74,8 +74,12 @@ public abstract class IndicatedProgressBarUI : MonoBehaviour
 
     private void setFillAmount(float fillValue)
     {
-        progressBar.fillAmount = Mathf.Clamp(fillValue, 0, 1f);
-        indicator.anchorMin = new Vector2(progressBar.fillAmount, indicator.anchorMin.y);
-        indicator.anchorMax = new Vector2(progressBar.fillAmount, indicator.anchorMax.y);
+        float fillAmount = Mathf.Clamp(fillValue, 0, 1f);
+        progressBar.fillAmount = fillAmount;
+        indicator.anchorMin = new Vector2(fillAmount, indicator.anchorMin.y);
+        indicator.anchorMax = new Vector2(fillAmount, indicator.anchorMax.y);
+        onSetFillAmount(fillAmount);
     }
+
+    protected virtual void onSetFillAmount(float _newValue) {}
 }
