@@ -70,9 +70,15 @@ public class Enemy : MonoBehaviour
     [Header("Resistance")]
     [SerializeField]
     private ParticleSystem resistanceEffect = null;
+    [SerializeField]
+    private Image resistanceHalo = null;
+    private Color resistanceHaloBaseColor = Color.black;
+    private float haloBlinkPhase = 0f;
+    [SerializeField]
+    private float haloBlinkSpeed = 0f;
     private ParticleSystem _resistanceEffectInstance = null;
-    public const int maxBurstCount = 50;
-    public const int maxEmissionRate = 30;
+    public const int maxBurstCount = 30;
+    public const int maxEmissionRate = 10;
     // complete immunities
     // Attack.SUBSTANCE-indexed array is faster than Dictionary
     [SerializeField]
@@ -187,7 +193,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void setUpResistanceEffect()
+    private void setUpResistanceEffects()
     {
         if (null == _resistanceEffectInstance)
         {
@@ -199,20 +205,20 @@ public class Enemy : MonoBehaviour
                     , this.transform
                     )).GetComponent<ParticleSystem>();
 
-            setResistanceEffectEmissionRate(getMaxResistance() * maxEmissionRate);
+            setResistanceEffectEmissionRate();
         }
     }
 
     private float getMaxResistance()
     {
-        float maxResistance = 0f;
+        float maxResistance = 1f;
         for (int i = 0; i < resistances.Length; i++)
         {
             if (immunities[i])
             {
-                maxResistance = 1;
+                maxResistance = 0f;
             }
-            else if (maxResistance < resistances[i])
+            else if (maxResistance > resistances[i])
             {
                 maxResistance = resistances[i];
             }
@@ -220,17 +226,27 @@ public class Enemy : MonoBehaviour
         return maxResistance;
     }
 
-    private void setResistanceEffectEmissionRate(float emissionRate)
+    private void setResistanceEffectEmissionRate()
     {
         if (null != _resistanceEffectInstance)
         {
+            float factor = (1f - getMaxResistance());
             //emissionRate = 20;
             //_resistanceEffectInstance.emission.rateOverTime = emissionRate;
             ParticleSystem.EmissionModule em = _resistanceEffectInstance.emission;
-            em.rateOverTime = emissionRate;
+            em.rateOverTime = factor * maxEmissionRate;
 #if DEVMODE
-            Debug.Log("setResistanceEffectEmissionRate " + emissionRate);
+            Debug.Log("setResistanceEffectEmissionRate " + em.rateOverTime);
 #endif
+
+            resistanceHaloBaseColor = new Color(
+                resistanceHalo.color.r,
+                resistanceHalo.color.g,
+                resistanceHalo.color.b,
+                factor
+            );
+            resistanceHalo.color = resistanceHaloBaseColor;
+            haloBlinkPhase = Random.Range(0f, 2f * Mathf.PI);
         }
     }
 
@@ -298,7 +314,7 @@ public class Enemy : MonoBehaviour
 
         if (instantiateResistanceEffect && (null == _resistanceEffectInstance))
         {
-            setUpResistanceEffect();
+            setUpResistanceEffects();
         }
     }
 
@@ -323,6 +339,13 @@ public class Enemy : MonoBehaviour
 
         // slow downs are stacked
         enemyMovement.slow(getMovementFactorTotal());
+
+        resistanceHalo.color = new Color(
+                                        resistanceHaloBaseColor.r,
+                                        resistanceHaloBaseColor.g,
+                                        resistanceHaloBaseColor.b,
+                                        (2f + Mathf.Cos(haloBlinkPhase + haloBlinkSpeed * Time.timeSinceLevelLoad)) / 3f
+                                        );
     }
 
     public bool isImmuneTo(Attack.SUBSTANCE antibiotic)
