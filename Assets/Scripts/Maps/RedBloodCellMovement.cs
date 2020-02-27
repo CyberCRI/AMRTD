@@ -32,7 +32,7 @@ public class RedBloodCellMovement : WobblyMovement
 
     protected override void onWobbleDone()
     {
-        if ((target - this.transform.position).magnitude <= minimumDistance)
+        if (hasReachedTarget)
         {
 #if DETRIMENTALOPTIMIZATION
             resetPosition();

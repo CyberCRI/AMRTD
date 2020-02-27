@@ -97,16 +97,16 @@ MonoBehaviour:
   startSpeed: 10
   minimumDistance: 1.1
   wobbledTransform: {fileID: 6911985252784984587}
-  wobbleScaleSpeed: 0.5
-  wobbleRotateSpeed: 0.9
-  wobbleShiftSpeedX: 1
-  wobbleShiftSpeedZ: 0.5
+  wobbleScaleSpeed: 0.1
+  wobbleRotateSpeed: 0.1
+  wobbleShiftSpeedX: 0.1
+  wobbleShiftSpeedZ: 0.1
   scaleFactor: 5
   ratioFactor: 0.2
-  angularWobble: 45
-  horizontalShift: 0.05
-  speedVariation: 2
+  angularWobble: 12
+  horizontalShift: 0.01
   baseSpeed: 10
+  speedVariation: 2
 --- !u!135 &1731354350277328250
 SphereCollider:
   m_ObjectHideFlags: 0

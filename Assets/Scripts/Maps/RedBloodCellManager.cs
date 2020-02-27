@@ -16,6 +16,8 @@ public class RedBloodCellManager : MonoBehaviour
     private Transform bloodEnd1 = null;
     [SerializeField]
     private Transform bloodEnd2 = null;
+    [SerializeField]
+    public Transform bloodUnder = null;
 
     [SerializeField]
     private GameObject[] rbcPrefabs;

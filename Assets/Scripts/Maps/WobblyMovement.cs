@@ -47,6 +47,10 @@ public class WobblyMovement : MonoBehaviour
     private Vector3 temporaryVector3 = Vector3.zero;
     private Vector3 temporaryLocalScaleVector3 = Vector3.zero;
 
+    protected Vector3 vectorToTarget = Vector3.zero;
+    protected float distanceTravelled = 0f;
+    protected bool hasReachedTarget = false;
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
@@ -83,6 +87,8 @@ public class WobblyMovement : MonoBehaviour
     {
         if (0 != Time.deltaTime)
         {
+            onUpdateBegins();
+
             wobble();
 
             onWobbleDone();
@@ -91,41 +97,28 @@ public class WobblyMovement : MonoBehaviour
         }
     }
 
-    protected virtual void onWobbleDone() { }
-
-    private void resetSpeed()
-    {
-        speed = startSpeed;
-        slowDownRatioFactor = 1f;
-    }
-
-    public void setWobbleParameters(
-        Vector3 _initialScale
-        , Vector3 _initialRotation
-        )
-    {
-        initialScale = _initialScale;
-        initialRotation = _initialRotation;
-    }
-
-    public void transferWobbleParametersTo(WobblyMovement otherWM)
-    {
-        otherWM.setWobbleParameters(initialScale, initialRotation);
-    }
-
-    public void setHoldingPosition(bool value)
-    {
-        isHoldingPosition = value;
+    protected virtual void onUpdateBegins() {
+        setDisplacement();
     }
 
     protected virtual void setDisplacement()
     {
-        displacement = isHoldingPosition ? Vector3.zero : (target - this.transform.position).normalized * speed * Time.deltaTime;
+        vectorToTarget = (target - this.transform.position);
+        distanceTravelled = Mathf.Min(vectorToTarget.magnitude, speed * Time.deltaTime);
+        hasReachedTarget = (vectorToTarget.magnitude < minimumDistance);
+
+        if (isHoldingPosition || hasReachedTarget)
+        {
+            displacement = Vector3.zero;
+        }
+        else
+        {
+            displacement = vectorToTarget.normalized * distanceTravelled;
+        }
     }
 
     private void wobble()
     {
-        setDisplacement();
         sinusoidalShiftVector = horizontalShift * new Vector3(
                 Mathf.Cos(
                     phaseShiftX +
@@ -161,6 +154,33 @@ public class WobblyMovement : MonoBehaviour
                 wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)));
 
         wobbledTransform.localScale = temporaryLocalScaleVector3;
+    }
+
+    protected virtual void onWobbleDone() { }
+
+    private void resetSpeed()
+    {
+        speed = startSpeed;
+        slowDownRatioFactor = 1f;
+    }
+
+    public void transferWobbleParametersTo(WobblyMovement otherWM)
+    {
+        otherWM.setWobbleParameters(initialScale, initialRotation);
+    }
+
+    public void setWobbleParameters(
+        Vector3 _initialScale
+        , Vector3 _initialRotation
+        )
+    {
+        initialScale = _initialScale;
+        initialRotation = _initialRotation;
+    }
+
+    public void setHoldingPosition(bool value)
+    {
+        isHoldingPosition = value;
     }
 
     public void slow(float _slowDownRatioFactor)

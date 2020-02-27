@@ -133,6 +133,12 @@ public class WhiteBloodCellManager : MonoBehaviour
         WhiteBloodCellMovement wbcm = newWBC.GetComponent<WhiteBloodCellMovement>();
         whiteBloodCells[index] = wbcm;
         Vector3 idlePosition = bloodOrigin1.position + (index + 1) * wbcSpawnSpatialPeriod;
-        wbcm.initialize(idlePosition);
+        wbcm.initialize(index, idlePosition);
+    }
+
+    public void reportDeath(int wbcIndex)
+    {
+        whiteBloodCells[wbcIndex] = null;
+        whiteBloodCellsTarget[wbcIndex] = null;
     }
 }

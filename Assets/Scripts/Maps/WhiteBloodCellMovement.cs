@@ -1,16 +1,19 @@
-﻿//#define DEVMODE
+﻿#define DEVMODE
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WhiteBloodCellMovement : WobblyMovement
 {
+    private int index = 0;
     private Transform targetTransform = null;
     public float baseSpeed = 0f;
     [SerializeField]
     private float speedVariation = 0f;
-    private Vector3 idlePosition = Vector3.zero;
+    public Vector3 idlePosition = Vector3.zero;
     private static Transform bloodOrigin2 = null;
+    private static Transform bloodUnder = null;
+    private bool disappearing = false;
 
 #if DEVMODE
     public WBCACTION action = WBCACTION.NONE;
@@ -18,11 +21,9 @@ public class WhiteBloodCellMovement : WobblyMovement
     public enum WBCACTION
     {
         NONE,
-        GOTOIDLE,
         IDLE,
-        GOTOENEMYLIMITED,
-        GOTOENEMYFREE,
-        REACHEDENEMY
+        CHASING,
+        DISAPPEARING,
     }
 #endif
 
@@ -35,60 +36,48 @@ public class WhiteBloodCellMovement : WobblyMovement
         if (null == bloodOrigin2)
         {
             bloodOrigin2 = RedBloodCellManager.instance.bloodOrigin2;
+            bloodUnder = RedBloodCellManager.instance.bloodUnder;
         }
     }
 
     protected override void setDisplacement()
     {
-        if (null != targetTransform)
+        // set target if needed
+        if (null != targetTransform) // chasing
         {
-            if ((targetTransform.position - this.transform.position).magnitude > minimumDistance)
-            {
-                if (targetTransform.position.x > bloodOrigin2.position.x)
-                {
-                    displacement = (new Vector3(bloodOrigin2.position.x, targetTransform.position.y, targetTransform.position.z) - this.transform.position).normalized * speed * Time.deltaTime;
 #if DEVMODE
-                    action = WBCACTION.GOTOENEMYLIMITED;
+            action = WBCACTION.CHASING;
 #endif
-                }
-                else
-                {
-                    displacement = (targetTransform.position - this.transform.position).normalized * speed * Time.deltaTime;
-#if DEVMODE
-                    action = WBCACTION.GOTOENEMYFREE;
-#endif
-                }
-            }
-            else
-            {
-                displacement = Vector3.zero;
-#if DEVMODE
-                action = WBCACTION.REACHEDENEMY;
-#endif
-            }
+            hasReachedTarget = false;
+            target = targetTransform.position;
+            target = new Vector3(Mathf.Min(target.x, bloodOrigin2.position.x), target.y, target.z);
         }
-        else
+        else if ((!disappearing) && (Vector3.zero == target)) // idle
         {
-            // go to idle position
-            if ((idlePosition - this.transform.position).magnitude > minimumDistance)
-            {
-                displacement = (idlePosition - this.transform.position).normalized * speed * Time.deltaTime;
 #if DEVMODE
-                action = WBCACTION.GOTOIDLE;
-            }
-            else
-            {
-                action = WBCACTION.IDLE;
+            action = WBCACTION.IDLE;
 #endif
-            }
+            hasReachedTarget = false;
+            target = idlePosition;
         }
+
+        base.setDisplacement();
     }
 
     protected override void onWobbleDone()
     {
-        if ((null != targetTransform) && (targetTransform.position - this.transform.position).magnitude < minimumDistance)
+        if (hasReachedTarget)
         {
-            absorb();
+            if ((null != targetTransform) && (target.x < bloodOrigin2.position.x)) // chasing
+            {
+                // chasing
+                absorb();
+            }
+            else if (disappearing)
+            {
+                // disappearing
+                Destroy(this.gameObject);
+            }
         }
     }
 
@@ -102,16 +91,37 @@ public class WhiteBloodCellMovement : WobblyMovement
         startSpeed = baseSpeed + Random.Range(-speedVariation, speedVariation);
     }
 
-    public void initialize(Vector3 _idlePosition)
+    public void initialize(int _index, Vector3 _idlePosition)
     {
+        index = _index;
         idlePosition = _idlePosition;
     }
 
     private void absorb()
     {
-        Destroy(targetTransform.gameObject);
+        WhiteBloodCellManager.instance.reportDeath(index);
 
-        Destroy(this.gameObject);
+#if DEVMODE
+            action = WBCACTION.DISAPPEARING;
+#endif
+
+        disappearing = true;
+        /*
+        // disappear through the ground
+        target = new Vector3(
+            this.transform.position.x,
+            bloodUnder.position.y,
+            this.transform.position.z
+        );
+        */
+        target = new Vector3(
+            this.transform.position.x,
+            this.transform.position.y,
+            bloodOrigin2.position.z
+        );
+        hasReachedTarget = false;
+
+        Destroy(targetTransform.gameObject);
     }
 
     void OnDestroy()

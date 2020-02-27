@@ -29,7 +29,7 @@ public class EnemyMovement : WobblyMovement
 
     protected override void onWobbleDone()
     {
-        if ((target - this.transform.position).magnitude <= minimumDistance)
+        if (hasReachedTarget)
         {
             getNextWaypoint();
         }

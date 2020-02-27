@@ -117,10 +117,12 @@ MonoBehaviour:
   wobbleShiftSpeedZ: 0.5
   scaleFactor: 5
   ratioFactor: 0.2
-  angularWobble: 45
+  angularWobble: 12
   horizontalShift: 0.05
   baseSpeed: 10
   speedVariation: 1
+  idlePosition: {x: 0, y: 0, z: 0}
+  action: 0
 --- !u!135 &7674244967914177618
 SphereCollider:
   m_ObjectHideFlags: 0
