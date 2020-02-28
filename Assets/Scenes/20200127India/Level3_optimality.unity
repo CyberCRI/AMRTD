@@ -1443,7 +1443,7 @@ PrefabInstance:
     - target: {fileID: 6558825997990477837, guid: 6eca4c3ad85c03149b97698ce2bad505,
         type: 3}
       propertyPath: m_Name
-      value: DebugCanvas
+      value: CommonOverlayInterface
       objectReference: {fileID: 0}
     - target: {fileID: 6558825997990477873, guid: 6eca4c3ad85c03149b97698ce2bad505,
         type: 3}

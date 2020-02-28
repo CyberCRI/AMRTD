@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DebugUI : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject debugCanvasRoot = null;
+
 #if DEVMODE || EXPERIMENTAL
     // Update is called once per frame
     void Update()
@@ -39,7 +42,7 @@ public class DebugUI : MonoBehaviour
 #else
     void Start()
     {
-        this.gameObject.SetActive(false);
+        debugCanvasRoot.SetActive(false);
     }
 #endif
 }

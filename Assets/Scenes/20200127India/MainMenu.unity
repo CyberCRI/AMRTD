@@ -308,7 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &452146717
 GameObject:
@@ -351,7 +351,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -5703,6 +5703,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneFader
       objectReference: {fileID: 0}
+    - target: {fileID: 5591449205548796364, guid: cd7b0e7cedfa2d941bae59df03ccce41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5591449205548796366, guid: cd7b0e7cedfa2d941bae59df03ccce41,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5888,7 +5893,7 @@ PrefabInstance:
     - target: {fileID: 6558825997990477837, guid: 6eca4c3ad85c03149b97698ce2bad505,
         type: 3}
       propertyPath: m_Name
-      value: DebugCanvas
+      value: CommonOverlayInterface
       objectReference: {fileID: 0}
     - target: {fileID: 6558825997990477873, guid: 6eca4c3ad85c03149b97698ce2bad505,
         type: 3}
@@ -5928,7 +5933,7 @@ PrefabInstance:
     - target: {fileID: 6558825997990477873, guid: 6eca4c3ad85c03149b97698ce2bad505,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6558825997990477873, guid: 6eca4c3ad85c03149b97698ce2bad505,
         type: 3}
@@ -6408,7 +6413,7 @@ PrefabInstance:
     - target: {fileID: 1320981057031792245, guid: f99c42ccf7f95cf4e8dd38979859a21f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1320981057031792245, guid: f99c42ccf7f95cf4e8dd38979859a21f,
         type: 3}
