@@ -20,6 +20,8 @@ public class WaveSpawner : MonoBehaviour
     private Text waveCountdownText = null;
 
     [SerializeField]
+    private float resistancePointsRatioVictoryThreshold = 0f;
+    [SerializeField]
     private bool isResistanceModeOn = true;
     [SerializeField]
     private float timeBeforeWave1 = 0f;
@@ -32,7 +34,6 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField]
     private Wave[] waves = null;
     private Wave currentWave = null;
-    private float resistancePointsRatioVictoryThreshold = 0.5f;
 
     private enum SpawnMode
     {
