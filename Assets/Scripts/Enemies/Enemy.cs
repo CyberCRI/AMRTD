@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float haloBlinkSpeed = 0f;
     private ParticleSystem _resistanceEffectInstance = null;
-    public const int maxBurstCount = 30;
+    public const int maxBurstCount = 15;
     public const int maxEmissionRate = 10;
     // complete immunities
     // Attack.SUBSTANCE-indexed array is faster than Dictionary
@@ -211,6 +211,9 @@ public class Enemy : MonoBehaviour
 
     private float getMaxResistance()
     {
+        // the biggest resistance is linked to the smallest resistance factor
+        // since 1f => susceptible
+        // 0f => resistant
         float maxResistance = 1f;
         for (int i = 0; i < resistances.Length; i++)
         {
@@ -243,7 +246,7 @@ public class Enemy : MonoBehaviour
                 resistanceHalo.color.r,
                 resistanceHalo.color.g,
                 resistanceHalo.color.b,
-                factor
+                factor //1 opaque, 0 transparent
             );
             resistanceHalo.color = resistanceHaloBaseColor;
             haloBlinkPhase = Random.Range(0f, 2f * Mathf.PI);
@@ -344,7 +347,7 @@ public class Enemy : MonoBehaviour
                                         resistanceHaloBaseColor.r,
                                         resistanceHaloBaseColor.g,
                                         resistanceHaloBaseColor.b,
-                                        (2f + Mathf.Cos(haloBlinkPhase + haloBlinkSpeed * Time.timeSinceLevelLoad)) / 3f
+                                        resistanceHaloBaseColor.a * (2f + Mathf.Cos(haloBlinkPhase + haloBlinkSpeed * Time.timeSinceLevelLoad)) / 3f
                                         );
     }
 
@@ -496,7 +499,7 @@ public class Enemy : MonoBehaviour
 
         if (Attack.SUBSTANCE.COUNT != substance)
         {
-            int particleCount = immunities[(int)substance] ? maxBurstCount : (int)Mathf.Floor(resistances[(int)substance] * maxBurstCount);
+            int particleCount = immunities[(int)substance] ? maxBurstCount : (int)Mathf.Floor((1f - resistances[(int)substance]) * maxBurstCount);
             if (0 != particleCount)
             {
                 doResistanceEffectBurst(particleCount);
