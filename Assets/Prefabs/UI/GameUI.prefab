@@ -7327,8 +7327,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressBar: {fileID: 6956481327084369810}
   indicator: {fileID: 8534514446815377998}
-  threshold1: 0.5
-  threshold2: 0.8
   alarmer: {fileID: 8642434559116058116}
   highlighter: {fileID: 3194324657570412650}
 --- !u!114 &518869875233503758
@@ -11833,7 +11831,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 87cd6b0883949db46a06d83af1e28bfc,
+      objectReference: {fileID: 21300000, guid: c0efeafd06ed4ed4e9ec18dd78193864,
         type: 3}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -11954,7 +11952,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 87cd6b0883949db46a06d83af1e28bfc,
+      objectReference: {fileID: 21300000, guid: c0efeafd06ed4ed4e9ec18dd78193864,
         type: 3}
     - target: {fileID: 4951273174583441198, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -12037,7 +12035,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
+      objectReference: {fileID: 21300000, guid: ccf1912d55ade62459787cc9b6748f06,
         type: 3}
     - target: {fileID: 3900791701968374877, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
@@ -12158,7 +12156,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b0dc2321ea69c5149ab456fa8af4739c,
+      objectReference: {fileID: 21300000, guid: ccf1912d55ade62459787cc9b6748f06,
         type: 3}
     - target: {fileID: 4951273174583441198, guid: 09d9978c1f0bd4e42a58b5088b8a2ebf,
         type: 3}
