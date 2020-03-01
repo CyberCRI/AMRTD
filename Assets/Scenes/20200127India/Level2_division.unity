@@ -264,6 +264,11 @@ PrefabInstance:
       propertyPath: isResistanceModeOn
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
+        type: 3}
+      propertyPath: resistancePointsRatioVictoryThreshold
+      value: Infinity
+      objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492235, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
       propertyPath: m_Name
