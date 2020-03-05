@@ -44,7 +44,7 @@ public class FocusMaskManager : MonoBehaviour
     private bool _isClicksBlocked = false;
     private Vector3 _baseFocusMaskScale, _baseHoleScale;
     [SerializeField]
-    private Advisor _advisor;
+    private Advisor _advisorAndBubbleSystem;
 
     private Camera _camera;
 
@@ -101,10 +101,22 @@ public class FocusMaskManager : MonoBehaviour
         , string advisorTextKey = null
         , bool scaleToComponent = false
         , bool showButton = false
+        , StepByStepTutorial.TUTORIALACTION action = StepByStepTutorial.TUTORIALACTION.FOCUSON
         )
     {
+#if DEVMODE
+        Debug.Log("focusOn1");
+#endif
         // Debug.Log(this.GetType() + " focusOn0 ExternalOnPressButton " + target.name);
-        focusOn(target, Vector3.zero, callback, advisorTextKey, scaleToComponent, showButton);
+        focusOn(
+            target
+            , Vector3.zero
+            , callback
+            , advisorTextKey
+            , scaleToComponent
+            , showButton
+            , action
+            );
     }
 
     public void focusOn(
@@ -114,8 +126,12 @@ public class FocusMaskManager : MonoBehaviour
         , string advisorTextKey = null
         , bool scaleToComponent = false
         , bool showButton = false
+        , StepByStepTutorial.TUTORIALACTION action = StepByStepTutorial.TUTORIALACTION.FOCUSON
         )
     {
+#if DEVMODE
+        Debug.Log("focusOn2");
+#endif
         if (null != target)
         {
             // Debug.Log(this.GetType() + " focusOn ExternalOnPressButton " + target.name);
@@ -128,6 +144,7 @@ public class FocusMaskManager : MonoBehaviour
                 , scaleFactor
                 , advisorTextKey
                 , showButton
+                , action
                 );
             _target = target;
         }
@@ -143,8 +160,12 @@ public class FocusMaskManager : MonoBehaviour
         , string advisorTextKey = null
         , bool scaleToComponent = false
         , bool showButton = false
+        , StepByStepTutorial.TUTORIALACTION action = StepByStepTutorial.TUTORIALACTION.FOCUSON
         )
     {
+#if DEVMODE
+        Debug.Log("focusOn3");
+#endif
         // Debug.Log(this.GetType() + " focusOn(GameObject go, Callback callback,...)");
         focusOn(
             go
@@ -153,6 +174,7 @@ public class FocusMaskManager : MonoBehaviour
             , advisorTextKey
             , scaleToComponent
             , showButton
+            , action
             );
     }
 
@@ -163,11 +185,15 @@ public class FocusMaskManager : MonoBehaviour
         , string advisorTextKey = null
         , bool scaleToComponent = false
         , bool showButton = false
+        , StepByStepTutorial.TUTORIALACTION action = StepByStepTutorial.TUTORIALACTION.FOCUSON
         )
     {
+#if DEVMODE
+        Debug.Log("focusOn4");
         // Debug.Log(this.GetType() + " focusOn(GameObject go, Vector3 manualScale,...) - will compute GO position");
         // Debug.Log(this.GetType() + " GO " + go.name + " position " + go.transform.position);
         // Debug.Log(this.GetType() + " GO " + go.name + " localPosition " + go.transform.localPosition);
+#endif
 
         if (null != go)
         {
@@ -188,6 +214,7 @@ public class FocusMaskManager : MonoBehaviour
                     , scaleFactor
                     , advisorTextKey
                     , showButton
+                    , action
                     );
             }
             else
@@ -199,7 +226,7 @@ public class FocusMaskManager : MonoBehaviour
                 focusSystem.anchoredPosition = Vector2.zero;
                 focusSystem.transform.SetParent(this.transform);
 
-                complete(callback, advisorTextKey, showButton);
+                complete(callback, advisorTextKey, showButton, action);
             }
         }
         else
@@ -263,17 +290,30 @@ public class FocusMaskManager : MonoBehaviour
         , float scaleFactor = 1f
         , string advisorTextKey = null
         , bool showButton = false
+        , StepByStepTutorial.TUTORIALACTION action = StepByStepTutorial.TUTORIALACTION.FOCUSON
         )
     {
+#if DEVMODE
+        Debug.Log("focusOn5");
         // Debug.Log(this.GetType() + " final stack focusOn(" + position + ")");
+#endif
         _target = null;
         focusSystem.position = new Vector3(position.x, position.y, focusSystem.position.z);
         
-        
-        complete(callback, advisorTextKey, showButton);
+        complete(
+            callback
+            , advisorTextKey
+            , showButton
+            , action
+            );
     }
 
-    private void complete(Callback callback, string advisorTextKey, bool showButton)
+    private void complete(
+        Callback callback
+        , string advisorTextKey
+        , bool showButton
+        , StepByStepTutorial.TUTORIALACTION action
+        )
     {        
         reset(true);
 
@@ -282,28 +322,21 @@ public class FocusMaskManager : MonoBehaviour
 
         rotateArrowAt(quadrant);
         _callback = callback;
-        if (!string.IsNullOrEmpty(advisorTextKey))
-        {
-            _advisor.setSpeechBubble(quadrant, advisorTextKey, showButton);
-            _advisor.gameObject.SetActive(true);
-        }
-        else
-        {
-            _advisor.gameObject.SetActive(false);
-        }
-        show(true);
+        _advisorAndBubbleSystem.setSpeechBubble(quadrant, advisorTextKey, showButton);
+        show(true, action == StepByStepTutorial.TUTORIALACTION.FOCUSON);
     }
 
-    public void blockClicks(bool block)
-    {
-        _isClicksBlocked = block;
-        // Debug.Log("NOT IMPLEMENTED - blockClicks");
-    }
-
-    private void show(bool show)
+    private void show(
+        bool show
+        , bool showFocusMaskAndArrow = true
+        )
     {
         focusSystem.gameObject.SetActive(show);
-        _advisor.gameObject.SetActive(show);
+
+        _advisorAndBubbleSystem.setActive();
+
+        focusMask.SetActive(showFocusMaskAndArrow);
+        arrowSystem.SetActive(showFocusMaskAndArrow);
     }
 
     public void reset(bool keepDisplayed)
@@ -316,23 +349,34 @@ public class FocusMaskManager : MonoBehaviour
         focusMask.transform.localScale = _baseFocusMaskScale;
         hole.transform.localScale = _baseHoleScale;
         _callback = null;
+        _advisorAndBubbleSystem.reset();
 
         GameManager.instance.setPause(keepDisplayed);
     }
 
     public void click()
     {
+#if DEVMODE
+        Debug.Log(this.GetType() + " click");
+#endif
         if (!_isClicksBlocked)
         {
             if (_target)
             {
                 _target.OnPress(true);
             }
+
             if (null != _callback)
             {
                 _callback();
             }
         }
+    }
+
+    public void blockClicks(bool block)
+    {
+        _isClicksBlocked = block;
+        // Debug.Log("NOT IMPLEMENTED - blockClicks");
     }
 
     // test code

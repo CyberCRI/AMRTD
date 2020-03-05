@@ -8,19 +8,19 @@
             return _textKeyPrefix;
         }
     }
-    private const int _stepCount = 0;
+    
     protected override int stepCount {
         get
         {
-            return _stepCount;
+            return _steps.Length;
         }
     }
-    private string[] _focusObjects = new string[_stepCount] {};
-    protected override string[] focusObjects 
+    private TutorialStep[] _steps = new TutorialStep[0] {};
+    protected override TutorialStep[] steps 
     {
         get
         {
-            return _focusObjects;
+            return _steps;
         }
     }
 }

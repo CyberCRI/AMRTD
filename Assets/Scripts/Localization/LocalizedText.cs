@@ -30,4 +30,8 @@ public class LocalizedText : MonoBehaviour
         onLanguageChanged();
     }
 
+    public bool hasKey()
+    {
+        return !string.IsNullOrEmpty(key);
+    }
 }

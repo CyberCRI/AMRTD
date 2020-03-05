@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406f2b8e4588f4045abc09e73465d906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: TUTORIAL.TEST.0
+  key: 
 --- !u!1 &719950413966820722
 GameObject:
   m_ObjectHideFlags: 0
@@ -7487,7 +7487,7 @@ MonoBehaviour:
   focusMask: {fileID: 5676073686831477257}
   hole: {fileID: 4973128961648522581}
   arrowSystem: {fileID: 7229901682920626720}
-  _advisor: {fileID: 2313121887746192284}
+  _advisorAndBubbleSystem: {fileID: 2313121887746192284}
   topRight: {fileID: 8404156687855940000}
 --- !u!1 &3940882315812490779
 GameObject:

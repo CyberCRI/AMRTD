@@ -1,4 +1,6 @@
 //#define QUICKTEST
+//#define DEVMODE
+using UnityEngine;
 
 #if QUICKTEST
 
@@ -11,6 +13,9 @@ public class Level1Tutorial : StepByStepTutorial
     private const string _level1Tutorial = "Level1Tutorial";
     private const string _turretButton = FocusMaskManager.standardTurretItemGOName;
 
+    [SerializeField]
+    private GameObject toHide = null;
+
     private const string _textKeyPrefix = _genericTextKeyPrefix + "LEVEL1.";
     protected override string textKeyPrefix
     {
@@ -19,29 +24,40 @@ public class Level1Tutorial : StepByStepTutorial
             return _textKeyPrefix;
         }
     }
-    
+
     protected override int stepCount
     {
         get
         {
-            return _focusObjects.Length;
+            return _steps.Length;
         }
     }
-    private string[] _focusObjects = new string[2] {
-        _level1Tutorial
-        , _turretButton
+    private TutorialStep[] _steps = new TutorialStep[2] {
+        new TutorialStep(_level1Tutorial, TUTORIALACTION.SETGREYBACKGROUND)
+        , new TutorialStep(_turretButton)
         };
 
-    protected override string[] focusObjects
+    protected override TutorialStep[] steps
     {
         get
         {
-            return _focusObjects;
+            return _steps;
+        }
+    }
+
+    protected override void prepareStep(int step)
+    {
+        if (step == 1)
+        {
+            toHide.SetActive(false);
         }
     }
 
     protected override void end()
     {
+#if DEVMODE
+        Debug.Log(this.GetType() + " override end");
+#endif
         base.end();
         Destroy(this.transform.parent.gameObject);
     }

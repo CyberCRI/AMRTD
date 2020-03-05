@@ -6,17 +6,46 @@ public abstract class StepByStepTutorial : MonoBehaviour
     [SerializeField]
     private GameObject foundObject = null;
 
+    public enum TUTORIALACTION
+    {
+        NONE,
+        FOCUSON,
+        SETGREYBACKGROUND
+    }
+
+    public struct TutorialStep
+    {
+        public string gameObjectName;
+        public TUTORIALACTION action;
+        public string textHint;
+
+        public TutorialStep(
+            string _gameObjectName
+            , TUTORIALACTION _action = TUTORIALACTION.FOCUSON
+            , string _textHint = "_"
+            )
+        {
+            gameObjectName = _gameObjectName;
+            action = _action;
+            textHint = _textHint;
+        }
+
+        public string getDebugString()
+        {
+            return string.Format("[goName: {0}; action:{1}; textHint:{2}]", gameObjectName, action, textHint);
+        }
+    }
+
     private int _step = 0;
     private bool prepared = false;
-    private float waited = 0;
+    public float waited = 0;
     private const float waitedThreshold = 0f;
 
     protected const string _genericTextKeyPrefix = "TUTORIAL.";
-    private string[] textHints;
 
     protected abstract string textKeyPrefix { get; }
     protected abstract int stepCount { get; }
-    protected abstract string[] focusObjects { get; }
+    protected abstract TutorialStep[] steps { get; }
 
     private Vector3 manualScale = new Vector3(440, 77, 1);
     private static FocusMaskManager focusMaskManager;
@@ -34,33 +63,44 @@ public abstract class StepByStepTutorial : MonoBehaviour
     public void next()
     {
 #if DEVMODE
-        // Debug.Log(this.GetType() + " next");
+        Debug.Log(this.GetType() + " next");
+        printDebug("next1");
 #endif
+
         prepared = false;
         waited = 0f;
         _step++;
+
+#if DEVMODE
+        printDebug("next2");
+#endif
+    }
+
+    public string getStepsDebugString()
+    {
+        string result = "steps[";
+        for (int i = 0; i < steps.Length; i++)
+        {
+            result += steps[i].getDebugString();
+            if (i != steps.Length - 1)
+            {
+                result += "; ";
+            }
+        }
+        result += "]";
+        return result;
     }
 
     void Awake()
     {
 #if DEVMODE
         //Debug.Log(this.GetType() + "Awake");
-
-        Debug.Log(this.GetType() + " Awake "
-       + " step=" + _step
-       + " prepared=" + prepared
-       + " waited=" + waited
-       + " textHints=" + textHints
-       + " textKeyPrefix=" + textKeyPrefix
-       + " stepCount=" + stepCount
-       + " focusObjects=" + focusObjects
-       );
+        printDebug("Awake");
 #endif
         StepByStepTutorial._isPlaying = true;
-        textHints = new string[stepCount];
-        for (int index = 0; index < textHints.Length; index++)
+        for (int index = 0; index < steps.Length; index++)
         {
-            textHints[index] = textKeyPrefix + index;
+            steps[index].textHint = textKeyPrefix + index;
         }
     }
 
@@ -68,6 +108,18 @@ public abstract class StepByStepTutorial : MonoBehaviour
     {
         // Debug.Log(this.GetType() + "Start");
         focusMaskManager = FocusMaskManager.instance;
+    }
+
+    protected virtual void printDebug(string callOrigin = "")
+    {
+        Debug.Log(this.GetType() + " " + callOrigin + " printDebug "
+       + " step=" + _step
+       + " prepared=" + prepared
+       + " waited=" + waited
+       + " textKeyPrefix=" + textKeyPrefix
+       + " stepCount=" + stepCount
+       + " steps=" + getStepsDebugString()
+       );
     }
 
     protected virtual bool skipStep(int step)
@@ -80,7 +132,14 @@ public abstract class StepByStepTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_step < focusObjects.Length)
+#if DEVMODE
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            printDebug("Update");
+        }
+#endif
+
+        if (_step < steps.Length)
         {
             if (waited >= waitedThreshold)
             {
@@ -94,12 +153,12 @@ public abstract class StepByStepTutorial : MonoBehaviour
                     }
                     else
                     {
-                        // Debug.Log(this.GetType() + " preparing step " + _step + " searching for " + focusObjects[_step]);
-                        GameObject go = GameObject.Find(focusObjects[_step]);
+                        // Debug.Log(this.GetType() + " preparing step " + _step + " searching for " + steps[_step].gameObjectName);
+                        GameObject go = GameObject.Find(steps[_step].gameObjectName);
                         foundObject = go;
                         if (go == null)
                         {
-                            Debug.LogError(this.GetType() + " GameObject not found at step " + _step + ": " + focusObjects[_step]);
+                            Debug.LogError(this.GetType() + " GameObject not found at step " + _step + ": " + steps[_step].gameObjectName);
                             next();
                         }
                         else
@@ -109,16 +168,16 @@ public abstract class StepByStepTutorial : MonoBehaviour
                             if (null != target)
                             {
                                 // Debug.Log(this.GetType() + " target != null at step=" + _step
-                                //+ " with text=" + textHints[_step]
+                                //+ " with text=" + steps[_step].textHint
                                 //);
-                                focusMaskManager.focusOn(target, next, textHints[_step], true, true);
+                                focusMaskManager.focusOn(target, next, steps[_step].textHint, true, true, steps[_step].action);
                             }
                             else
                             {
                                 // Debug.Log(this.GetType() + " target == null at step=" + _step
-                                //+ " with text=" + textHints[_step]
+                                //+ " with text=" + steps[_step].textHint
                                 //);
-                                focusMaskManager.focusOn(go, next, textHints[_step], true, true);
+                                focusMaskManager.focusOn(go, next, steps[_step].textHint, true, true, steps[_step].action);
                             }
                             // Debug.Log(this.GetType() + " prepared step=" + _step);
                             prepared = true;
@@ -135,17 +194,19 @@ public abstract class StepByStepTutorial : MonoBehaviour
                 }
 #endif
             }
-            waited += Time.fixedDeltaTime;
+            waited += Time.unscaledDeltaTime;
         }
         else
         {
-            // Debug.Log(this.GetType() + " end");
             end();
         }
     }
 
     protected virtual void end()
     {
+#if DEVMODE
+        Debug.Log(this.GetType() + " virtual end");
+#endif
         focusMaskManager.stopFocusOn();
         StepByStepTutorial._isPlaying = false;
         Destroy(this);

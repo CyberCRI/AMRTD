@@ -21,24 +21,24 @@ public class TestTutorial : StepByStepTutorial
             return _textKeyPrefix;
         }
     }
-    private const int _stepCount = 3;
+    
     protected override int stepCount
     {
         get
         {
-            return _stepCount;
+            return _steps.Length;
         }
     }
-    private string[] _focusObjects = new string[_stepCount] {
-        _timer
-        , _resistanceBar
-        , _lifeBar
+    private TutorialStep[] _steps = new TutorialStep[3] {
+        new TutorialStep(_timer)
+        , new TutorialStep(_resistanceBar)
+        , new TutorialStep(_lifeBar)
         };
-    protected override string[] focusObjects
+    protected override TutorialStep[] steps
     {
         get
         {
-            return _focusObjects;
+            return _steps;
         }
     }
 }

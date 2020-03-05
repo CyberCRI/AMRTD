@@ -23,18 +23,18 @@ public class ResistanceBarTutorial : StepByStepTutorial
     {
         get
         {
-            return _focusObjects.Length;
+            return _steps.Length;
         }
     }
-    private string[] _focusObjects = new string[1] {
-        FocusMaskManager.resistanceBarGOName
+    private TutorialStep[] _steps = new TutorialStep[1] {
+        new TutorialStep(FocusMaskManager.resistanceBarGOName)
         };
 
-    protected override string[] focusObjects
+    protected override TutorialStep[] steps
     {
         get
         {
-            return _focusObjects;
+            return _steps;
         }
     }
 

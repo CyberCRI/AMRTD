@@ -79,4 +79,14 @@ public class Advisor : MonoBehaviour
         _localize.setKey(text);
         _nextButton.SetActive(showButton);
     }
+
+    public void setActive()
+    {
+        this.gameObject.SetActive(_localize.hasKey());
+    }
+
+    public void reset()
+    {
+        _localize.setKey("");
+    }
 }
