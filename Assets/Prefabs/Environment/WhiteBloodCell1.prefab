@@ -7,25 +7,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1731162760430843317, guid: 224f698c15ca52c4f9d445c276c8f629,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c113995ada6d4b4aa03fc618aa41724, type: 2}
+    - target: {fileID: 3727237908718425685, guid: 224f698c15ca52c4f9d445c276c8f629,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4864043371421780663, guid: 224f698c15ca52c4f9d445c276c8f629,
         type: 3}
       propertyPath: m_Name
-      value: WhiteBloodCell
+      value: WhiteBloodCell4
       objectReference: {fileID: 0}
     - target: {fileID: 7689037423146455039, guid: 224f698c15ca52c4f9d445c276c8f629,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.269999
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 7689037423146455039, guid: 224f698c15ca52c4f9d445c276c8f629,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.30999994
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 7689037423146455039, guid: 224f698c15ca52c4f9d445c276c8f629,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.66
+      value: -44.9
       objectReference: {fileID: 0}
     - target: {fileID: 7689037423146455039, guid: 224f698c15ca52c4f9d445c276c8f629,
         type: 3}

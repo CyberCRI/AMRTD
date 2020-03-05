@@ -52,9 +52,6 @@ MonoBehaviour:
   whiteBloodCells: []
   whiteBloodCellsTarget: []
   wbcPrefabs:
-  - {fileID: 8931599380331178507, guid: 53fedcf93dadaa9459d41331628c9e26, type: 3}
-  - {fileID: 8931599380331178507, guid: a29efd50a19e843428de7e26bd115026, type: 3}
-  - {fileID: 8931599380331178507, guid: ffc98c5dd7312de4d815fdc3e9a77e40, type: 3}
   - {fileID: 8931599380331178507, guid: 896b7e651c892b6449c80f37478b036f, type: 3}
 --- !u!114 &8640235584741704728
 MonoBehaviour:
