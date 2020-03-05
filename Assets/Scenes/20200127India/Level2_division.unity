@@ -213,13 +213,13 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[0].enemyPrefab
       value: 
-      objectReference: {fileID: 7667180733465665960, guid: 10991548d3e2f4f41b59297d49a3daf1,
+      objectReference: {fileID: 7667180733465665960, guid: 429f97d4d229f34418e1b071e58d1b91,
         type: 3}
     - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
       propertyPath: waves.Array.data[1].enemyPrefab
       value: 
-      objectReference: {fileID: 7667180733465665960, guid: 10991548d3e2f4f41b59297d49a3daf1,
+      objectReference: {fileID: 7667180733465665960, guid: 429f97d4d229f34418e1b071e58d1b91,
         type: 3}
     - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foundObject: {fileID: 0}
+  waited: 0
 --- !u!1001 &1342037492
 PrefabInstance:
   m_ObjectHideFlags: 0

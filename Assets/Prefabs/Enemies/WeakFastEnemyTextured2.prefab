@@ -87,11 +87,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4500849788320993365, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: m_Name
-      value: WeakFastEnemyTextured2
-      objectReference: {fileID: 0}
     - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: startSpeed
@@ -116,6 +111,26 @@ PrefabInstance:
         type: 3}
       propertyPath: angularWobble
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: reward
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: startHealth
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: injuryRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: divisionPeriod
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4500849788320993361, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
@@ -172,25 +187,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 4500849788320993365, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: reward
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: startHealth
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: injuryRatio
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: divisionPeriod
-      value: 3
+      propertyPath: m_Name
+      value: WeakFastEnemyTextured2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0702d38ed6887458d2928b3b9c093c, type: 3}
