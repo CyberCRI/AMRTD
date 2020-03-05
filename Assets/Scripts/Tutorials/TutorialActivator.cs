@@ -26,5 +26,6 @@ public class TutorialActivator : MonoBehaviour
     public void activateTutorial()
     {
         tutorial.gameObject.SetActive(true);
+        this.enabled = false;
     }
 }

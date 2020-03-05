@@ -91,7 +91,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
         return result;
     }
 
-    void Awake()
+    protected void Awake()
     {
 #if DEVMODE
         //Debug.Log(this.GetType() + "Awake");
