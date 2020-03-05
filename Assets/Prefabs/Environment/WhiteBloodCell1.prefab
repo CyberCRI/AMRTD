@@ -11,7 +11,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6c113995ada6d4b4aa03fc618aa41724, type: 2}
+      objectReference: {fileID: 2100000, guid: cafc4645da0a28f4d98acde5c385a3e2, type: 2}
     - target: {fileID: 3727237908718425685, guid: 224f698c15ca52c4f9d445c276c8f629,
         type: 3}
       propertyPath: m_Enabled
@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 4864043371421780663, guid: 224f698c15ca52c4f9d445c276c8f629,
         type: 3}
       propertyPath: m_Name
-      value: WhiteBloodCell4
+      value: WhiteBloodCell1
       objectReference: {fileID: 0}
     - target: {fileID: 7689037423146455039, guid: 224f698c15ca52c4f9d445c276c8f629,
         type: 3}
