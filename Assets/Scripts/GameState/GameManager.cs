@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 
                     if (null != levelDurationCountdownText)
                     {
-                        levelDurationCountdownText.text = string.Format("{0:00.00}", levelDurationCountdown);
+                        levelDurationCountdownText.text = string.Format("{0:0}", levelDurationCountdown);
                     }
                 }
             }

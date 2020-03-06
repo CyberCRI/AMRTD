@@ -18,6 +18,8 @@ public class WaveSpawner : MonoBehaviour
     private bool isDoneSpawning = true;
     private Transform[] spawnPoints = null;
     private Text waveCountdownText = null;
+    private LocalizedText waveCountdownLocalizedText = null;
+    private const string waveCountdownSpawningString = "GAME.WAVECOUNTDOWN.NOCOUNTDOWN";
 
     [SerializeField]
     private float resistancePointsRatioVictoryThreshold = 0f;
@@ -34,6 +36,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField]
     private Wave[] waves = null;
     private Wave currentWave = null;
+    private bool prepared = false;
 
     private enum SpawnMode
     {
@@ -53,7 +56,7 @@ public class WaveSpawner : MonoBehaviour
 
     public bool isNthWave(int n)
     {
-        return (waveIndex == n-1) && (0f == countdown);
+        return (waveIndex == n - 1) && (0f == countdown);
     }
 
     /// <summary>
@@ -93,11 +96,13 @@ public class WaveSpawner : MonoBehaviour
             {
                 if (waveIndex < waves.Length)
                 {
-                    waveCountdownText.text = string.Format("{0:00.00}", 0f);
+                    waveCountdownLocalizedText.enabled = true;
+                    waveCountdownLocalizedText.setKey(waveCountdownSpawningString);
                     StartCoroutine(spawnWave());
                     if (PlayerStatistics.instance.waves < waves.Length - 1)
                     {
                         countdown = timeBetweenWaves;
+                        prepared = false;
                     }
                 }
                 else if (enemiesAliveCount <= 0)
@@ -116,9 +121,15 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
+                if (!prepared)
+                {
+                    waveCountdownLocalizedText.enabled = false;
+                    waveCountdownLocalizedText.setKey("");
+                    prepared = true;
+                }
                 countdown -= Time.deltaTime;
                 countdown = Mathf.Max(countdown, 0f);
-                waveCountdownText.text = string.Format("{0:00.00}", countdown);
+                waveCountdownText.text = string.Format("{0:0}", countdown);
             }
         }
     }
@@ -128,6 +139,7 @@ public class WaveSpawner : MonoBehaviour
     )
     {
         waveCountdownText = _waveCountdownText;
+        waveCountdownLocalizedText = waveCountdownText.gameObject.GetComponent<LocalizedText>();
     }
 
     public void linkMap(

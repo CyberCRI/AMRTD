@@ -82,6 +82,7 @@
 	,{"key":"GAME.REDBLOODCELL.HELP","value":           "This is a red blood cell, minding its own business of oxygen transport."}
 	,{"key":"GAME.WHITEBLOODCELL.HELP","value":         "This is a white blood cell, ready to defend the blood vessel from intruders!"}
 	,{"key":"GAME.BULLET.HELP","value":                 "This is an antibiotics bullet. You're a very quick clicker!"}
+	,{"key":"GAME.WAVECOUNTDOWN.NOCOUNTDOWN","value":   ""}
 
 	,{"key":"max help text length                __________________________________________________________________________________________","value":""}
 	,{"key":"TUTORIAL.LEVEL1.0","value":        "Quick! You must set up antibiotics dispensers to destroy incoming pathogenic bacteria!"}
