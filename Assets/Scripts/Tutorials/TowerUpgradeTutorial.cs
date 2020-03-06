@@ -3,17 +3,17 @@ using UnityEngine;
 
 #if QUICKTEST
 
-public class DivisionTutorial : FakeStepByStepTutorial { }
+public class TowerUpgradeTutorial : FakeStepByStepTutorial { }
 
 #else
 
-public class DivisionTutorial : StepByStepTutorial
+public class TowerUpgradeTutorial : StepByStepTutorial
 {
     [SerializeField]
-    private GameObject enemy = null;
+    private GameObject tower = null;
 
     [SerializeField]
-    private const string _textKeyPrefix = genericTextKeyPrefix + "DIVISION.";
+    private const string _textKeyPrefix = genericTextKeyPrefix + "TOWERUPGRADE.";
     protected override string textKeyPrefix
     {
         get
@@ -45,7 +45,7 @@ public class DivisionTutorial : StepByStepTutorial
     void Awake()
     {
         _steps = new TutorialStep[1] {
-                    new TutorialStep(enemy.name + cloneSuffix)
+                    new TutorialStep(tower.name + cloneSuffix)
                 };
         base.Awake();
     }

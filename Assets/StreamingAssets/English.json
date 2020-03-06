@@ -90,7 +90,8 @@
 	,{"key":"TUTORIAL.RESISTANCEBAR1.0","value":"Beware! The resistance level is so high that antibiotics have barely any effect anymore!"}
 	,{"key":"TUTORIAL.RESISTANCEBAR2.0","value":"Beware! You'll lose if you finish the level with more than 50% resistance!"}
 	,{"key":"TUTORIAL.LEVELCOMPLETE.0","value": "This is the last wave. Kill all the pathogenic bacteria to unlock the next level!"}
-	,{"key":"TUTORIAL.PATHOGENESCAPE.0","value":"Watch out! A pathogenic bacterium has escaped. When this counter reaches zero, you'll lose!"}
-	,{"key":"TUTORIAL.DIVISION.0","value":"Watch out! A pathogenic bacterium just divided! Kill it or it'll go on dividing!"}
+	,{"key":"TUTORIAL.PATHOGENESCAPE.0","value":"Watch out! A pathogenic bacterium has escaped. You'll lose if this counter reaches zero!"}
+	,{"key":"TUTORIAL.DIVISION.0","value":      "Watch out! A pathogenic bacterium just divided! Kill it or it'll go on dividing!"}
+	,{"key":"TUTORIAL.TOWERUPGRADE.0","value":  "You can upgrade your antibiotics dispensers if you have enough funds. Click on them!"}
 	]
 }

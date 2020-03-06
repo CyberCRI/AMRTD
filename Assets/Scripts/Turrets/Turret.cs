@@ -103,12 +103,12 @@ public class Turret : Attacker
 #if TURRETUPKEEP
         upkeepCountdown = upkeepPeriod;
 #endif
-#if STATICTURRETCOUNTMODE
+
         if (!isUpgraded)
         {
             PlayerStatistics.instance.turretCount += 1;
         }
-#endif
+
 #if STATICTURRETRESISTANCEPOINTSMODE
         if (!isUpgraded)
         {
@@ -361,12 +361,12 @@ public class Turret : Attacker
     /// </summary>
     void OnDestroy()
     {
-#if STATICTURRETCOUNTMODE
+
         if (!isBeingUpgraded)
         {
             PlayerStatistics.instance.turretCount -= 1;
         }
-#endif
+
 #if STATICTURRETRESISTANCEPOINTSMODE
         if (!isBeingUpgraded)
         {

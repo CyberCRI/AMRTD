@@ -15,10 +15,10 @@ public class ResistanceBarTutorial : StepByStepTutorial
     {
         get
         {
-            return _genericTextKeyPrefix + "RESISTANCEBAR" + resistanceBarTutorialIndex + ".";
+            return genericTextKeyPrefix + "RESISTANCEBAR" + resistanceBarTutorialIndex + ".";
         }
     }
-    
+
     protected override int stepCount
     {
         get
@@ -26,10 +26,10 @@ public class ResistanceBarTutorial : StepByStepTutorial
             return _steps.Length;
         }
     }
+
     private TutorialStep[] _steps = new TutorialStep[1] {
         new TutorialStep(FocusMaskManager.resistanceBarGOName)
         };
-
     protected override TutorialStep[] steps
     {
         get

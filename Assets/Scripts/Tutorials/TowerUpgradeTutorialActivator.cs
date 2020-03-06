@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DivisionTutorialActivator : TutorialActivator
+public class TowerUpgradeTutorialActivator : TutorialActivator
 {
     [SerializeField]
     private float additionalDelay = 0f;
@@ -18,7 +18,7 @@ public class DivisionTutorialActivator : TutorialActivator
     /// </summary>
     void Update()
     {
-        if (WaveSpawner.enemiesAliveCount == 2)
+        if (PlayerStatistics.instance.turretCount == 2)
         {
             Invoke("activateTutorial", additionalDelay);
             this.enabled = false;

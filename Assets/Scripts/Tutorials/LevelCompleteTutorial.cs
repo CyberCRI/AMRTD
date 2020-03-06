@@ -10,7 +10,7 @@ public class LevelCompleteTutorial : FakeStepByStepTutorial { }
 public class LevelCompleteTutorial : StepByStepTutorial
 {
     [SerializeField]
-    private const string _textKeyPrefix = _genericTextKeyPrefix + "LEVELCOMPLETE.";
+    private const string _textKeyPrefix = genericTextKeyPrefix + "LEVELCOMPLETE.";
     protected override string textKeyPrefix
     {
         get
@@ -18,7 +18,7 @@ public class LevelCompleteTutorial : StepByStepTutorial
             return _textKeyPrefix;
         }
     }
-    
+
     protected override int stepCount
     {
         get
@@ -26,10 +26,10 @@ public class LevelCompleteTutorial : StepByStepTutorial
             return _steps.Length;
         }
     }
+
     private TutorialStep[] _steps = new TutorialStep[1] {
         new TutorialStep(FocusMaskManager.waveBarGOName)
         };
-
     protected override TutorialStep[] steps
     {
         get

@@ -94,17 +94,19 @@ public class PlayerStatistics : MonoBehaviour
     private int _turretCount = 0;
     private float _turretResistancePoints = 0f;
 
-#if STATICTURRETCOUNTMODE
+
     public int turretCount
     {
         get { return _turretCount; }
         set
         {
             _turretCount = value;
+#if STATICTURRETCOUNTMODE
             resistancePoints = PlayerStatistics.instance.turretCountToResistanceFactor * _turretCount;
+#endif
         }
     }
-#endif
+
 #if STATICTURRETRESISTANCEPOINTSMODE
     public float turretResistancePoints
     {

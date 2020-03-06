@@ -13,7 +13,7 @@ public class TestTutorial : StepByStepTutorial
     private const string _resistanceBar = FocusMaskManager.resistanceBarGOName;
     private const string _lifeBar = FocusMaskManager.lifeBarGOName;
 
-    private const string _textKeyPrefix = _genericTextKeyPrefix + "TEST.";
+    private const string _textKeyPrefix = genericTextKeyPrefix + "TEST.";
     protected override string textKeyPrefix
     {
         get
@@ -21,7 +21,7 @@ public class TestTutorial : StepByStepTutorial
             return _textKeyPrefix;
         }
     }
-    
+
     protected override int stepCount
     {
         get
@@ -29,6 +29,7 @@ public class TestTutorial : StepByStepTutorial
             return _steps.Length;
         }
     }
+    
     private TutorialStep[] _steps = new TutorialStep[3] {
         new TutorialStep(_timer)
         , new TutorialStep(_resistanceBar)

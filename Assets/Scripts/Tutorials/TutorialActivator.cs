@@ -21,6 +21,7 @@ public class TutorialActivator : MonoBehaviour
         {
             SceneFader.instance.setFadeInEndCallback(activateTutorial);
         }
+        this.enabled = false;
     }
 
     public void activateTutorial()

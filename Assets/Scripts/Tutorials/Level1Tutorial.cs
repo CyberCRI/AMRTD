@@ -16,7 +16,7 @@ public class Level1Tutorial : StepByStepTutorial
     [SerializeField]
     private GameObject toHide = null;
 
-    private const string _textKeyPrefix = _genericTextKeyPrefix + "LEVEL1.";
+    private const string _textKeyPrefix = genericTextKeyPrefix + "LEVEL1.";
     protected override string textKeyPrefix
     {
         get
@@ -32,11 +32,11 @@ public class Level1Tutorial : StepByStepTutorial
             return _steps.Length;
         }
     }
+
     private TutorialStep[] _steps = new TutorialStep[2] {
         new TutorialStep(_level1Tutorial, TUTORIALACTION.SETGREYBACKGROUND)
         , new TutorialStep(_turretButton)
         };
-
     protected override TutorialStep[] steps
     {
         get

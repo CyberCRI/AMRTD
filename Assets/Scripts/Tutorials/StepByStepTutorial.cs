@@ -3,7 +3,6 @@ using UnityEngine;
 
 public abstract class StepByStepTutorial : MonoBehaviour
 {
-    [SerializeField]
     private GameObject foundObject = null;
 
     public enum TUTORIALACTION
@@ -36,12 +35,13 @@ public abstract class StepByStepTutorial : MonoBehaviour
         }
     }
 
-    private int _step = 0;
+    private int stepIndex = 0;
     private bool prepared = false;
-    public float waited = 0;
+    private float waited = 0;
     private const float waitedThreshold = 0f;
 
-    protected const string _genericTextKeyPrefix = "TUTORIAL.";
+    protected const string genericTextKeyPrefix = "TUTORIAL.";
+    protected const string cloneSuffix = "(Clone)";
 
     protected abstract string textKeyPrefix { get; }
     protected abstract int stepCount { get; }
@@ -69,7 +69,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
 
         prepared = false;
         waited = 0f;
-        _step++;
+        stepIndex++;
 
 #if DEVMODE
         printDebug("next2");
@@ -113,7 +113,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
     protected virtual void printDebug(string callOrigin = "")
     {
         Debug.Log(this.GetType() + " " + callOrigin + " printDebug "
-       + " step=" + _step
+       + " step=" + stepIndex
        + " prepared=" + prepared
        + " waited=" + waited
        + " textKeyPrefix=" + textKeyPrefix
@@ -139,26 +139,26 @@ public abstract class StepByStepTutorial : MonoBehaviour
         }
 #endif
 
-        if (_step < steps.Length)
+        if (stepIndex < steps.Length)
         {
             if (waited >= waitedThreshold)
             {
                 if (!prepared)
                 {
-                    prepareStep(_step);
+                    prepareStep(stepIndex);
 
-                    if (skipStep(_step))
+                    if (skipStep(stepIndex))
                     {
                         next();
                     }
                     else
                     {
                         // Debug.Log(this.GetType() + " preparing step " + _step + " searching for " + steps[_step].gameObjectName);
-                        GameObject go = GameObject.Find(steps[_step].gameObjectName);
+                        GameObject go = GameObject.Find(steps[stepIndex].gameObjectName);
                         foundObject = go;
                         if (go == null)
                         {
-                            Debug.LogError(this.GetType() + " GameObject not found at step " + _step + ": " + steps[_step].gameObjectName);
+                            Debug.LogError(this.GetType() + " GameObject not found at step " + stepIndex + ": " + steps[stepIndex].gameObjectName);
                             next();
                         }
                         else
@@ -170,14 +170,14 @@ public abstract class StepByStepTutorial : MonoBehaviour
                                 // Debug.Log(this.GetType() + " target != null at step=" + _step
                                 //+ " with text=" + steps[_step].textHint
                                 //);
-                                focusMaskManager.focusOn(target, next, steps[_step].textHint, true, true, steps[_step].action);
+                                focusMaskManager.focusOn(target, next, steps[stepIndex].textHint, true, true, steps[stepIndex].action);
                             }
                             else
                             {
                                 // Debug.Log(this.GetType() + " target == null at step=" + _step
                                 //+ " with text=" + steps[_step].textHint
                                 //);
-                                focusMaskManager.focusOn(go, next, steps[_step].textHint, true, true, steps[_step].action);
+                                focusMaskManager.focusOn(go, next, steps[stepIndex].textHint, true, true, steps[stepIndex].action);
                             }
                             // Debug.Log(this.GetType() + " prepared step=" + _step);
                             prepared = true;

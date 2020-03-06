@@ -9,7 +9,7 @@ public class PathogenEscapeTutorial : FakeStepByStepTutorial { }
 
 public class PathogenEscapeTutorial : StepByStepTutorial
 {
-    private const string _textKeyPrefix = _genericTextKeyPrefix + "PATHOGENESCAPE.";
+    private const string _textKeyPrefix = genericTextKeyPrefix + "PATHOGENESCAPE.";
     protected override string textKeyPrefix
     {
         get
@@ -17,7 +17,7 @@ public class PathogenEscapeTutorial : StepByStepTutorial
             return _textKeyPrefix;
         }
     }
-    
+
     protected override int stepCount
     {
         get
@@ -25,10 +25,10 @@ public class PathogenEscapeTutorial : StepByStepTutorial
             return _steps.Length;
         }
     }
+
     private TutorialStep[] _steps = new TutorialStep[1] {
         new TutorialStep(FocusMaskManager.livesCounterGOName)
         };
-
     protected override TutorialStep[] steps
     {
         get
