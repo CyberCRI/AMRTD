@@ -51,6 +51,11 @@ public class WaveSpawner : MonoBehaviour
         return (waveIndex == (waves.Length - 1)) && (0f == countdown);
     }
 
+    public bool isNthWave(int n)
+    {
+        return (waveIndex == n-1) && (0f == countdown);
+    }
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
