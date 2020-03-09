@@ -90,10 +90,7 @@ public class GameManager : MonoBehaviour
                     levelDurationCountdown -= Time.deltaTime;
                     levelDurationCountdown = Mathf.Max(levelDurationCountdown, 0f);
 
-                    if (null != levelDurationCountdownText)
-                    {
-                        levelDurationCountdownText.text = string.Format("{0:0}", levelDurationCountdown);
-                    }
+                    levelDurationCountdownText.text = Mathf.FloorToInt(levelDurationCountdown).ToString("D");
                 }
             }
 #if DEVMODE

@@ -129,7 +129,7 @@ public class WaveSpawner : MonoBehaviour
                 }
                 countdown -= Time.deltaTime;
                 countdown = Mathf.Max(countdown, 0f);
-                waveCountdownText.text = string.Format("{0:0}", countdown);
+                waveCountdownText.text = Mathf.FloorToInt(countdown).ToString("D");
             }
         }
     }
