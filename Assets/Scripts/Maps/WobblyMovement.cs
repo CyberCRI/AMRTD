@@ -15,36 +15,42 @@ public class WobblyMovement : MonoBehaviour
     [Header("Wobble")]
     [SerializeField]
     private Transform wobbledTransform = null;
-    [SerializeField]
-    private float wobbleScaleSpeed = 0f;
-    [SerializeField]
-    private float wobbleRotateSpeed = 0f;
+
+    [Header("Wobble position")]
+    [Tooltip("Position over time is δt + δ * cos(ωt + ф)")]
     [SerializeField]
     private float wobbleShiftSpeedX = 0f;
     [SerializeField]
     private float wobbleShiftSpeedZ = 0f;
-    private Vector3 initialScale = Vector3.zero;
-    private Vector3 initialRotation = Vector3.zero;
-    // ratioFactor = 1/(scaleFactor +1)
-    // scaleFactor = -1 + 1/ratioFactor
-    [SerializeField]
-    private float scaleFactor = 0f;
-    [SerializeField]
-    private float ratioFactor = 0f;
-    [SerializeField]
-    private float angularWobble = 0f;
     [SerializeField]
     private float horizontalShift = 0f;
     private float phaseShiftX = 0f;
     private float phaseShiftZ = 0f;
-    private float phaseRotatY = 0f;
+
+    [Header("Wobble scale")]
+    [Tooltip("Scale over time is Si * (1 + Rf * cos(ωt + ф)")]
+    [SerializeField]
+    private float ratioFactor = 0f;
+    [SerializeField]
+    private float wobbleScaleSpeed = 0f;
     private float phaseScaleX = 0f;
+    private Vector3 initialScale = Vector3.zero;
+
+    [Header("Wobble rotation")]
+    [Tooltip("Rotation over time is αi + α * cos(ωt + ф)")]
+    [SerializeField]
+    private float angularWobble = 0f;
+    [SerializeField]
+    private float wobbleRotateSpeed = 0f;
+    private float phaseRotatY = 0f;
+    private Vector3 initialRotation = Vector3.zero;
+
     private const float distanceSecurityRatio = 1.1f;
 
     protected Vector3 displacement = Vector3.zero;
     private Vector3 sinusoidalShiftVector = Vector3.zero;
     private Vector3 wobbledDisplacement = Vector3.zero;
-    private Vector3 temporaryVector3 = Vector3.zero;
+    private Vector3 temporaryRotationVector3 = Vector3.zero;
     private Vector3 temporaryLocalScaleVector3 = Vector3.zero;
 
     protected Vector3 vectorToTarget = Vector3.zero;
@@ -97,7 +103,8 @@ public class WobblyMovement : MonoBehaviour
         }
     }
 
-    protected virtual void onUpdateBegins() {
+    protected virtual void onUpdateBegins()
+    {
         setDisplacement();
     }
 
@@ -120,38 +127,27 @@ public class WobblyMovement : MonoBehaviour
     private void wobble()
     {
         sinusoidalShiftVector = horizontalShift * new Vector3(
-                Mathf.Cos(
-                    phaseShiftX +
-                    wobbleShiftSpeedX * speed * Time.timeSinceLevelLoad),
+                Mathf.Cos(phaseShiftX + wobbleShiftSpeedX * speed * Time.timeSinceLevelLoad),
                 0,
-                Mathf.Cos(
-                    phaseShiftZ +
-                    wobbleShiftSpeedZ * speed * Time.timeSinceLevelLoad)
-                    );
+                Mathf.Cos(phaseShiftZ + wobbleShiftSpeedZ * speed * Time.timeSinceLevelLoad)
+            );
 
         wobbledDisplacement = displacement + sinusoidalShiftVector;
         this.transform.Translate(wobbledDisplacement, Space.World);
 
-        temporaryVector3 = new Vector3(
+        temporaryRotationVector3 = new Vector3(
             initialRotation.x,
-            initialRotation.y + angularWobble * Mathf.Cos(
-                phaseRotatY +
-                wobbleRotateSpeed * speed * Time.timeSinceLevelLoad),
+            initialRotation.y + angularWobble * Mathf.Cos(phaseRotatY + wobbleRotateSpeed * speed * Time.timeSinceLevelLoad),
             initialRotation.z);
 
-        wobbledTransform.localRotation = Quaternion.Euler(temporaryVector3);
+        wobbledTransform.localRotation = Quaternion.Euler(temporaryRotationVector3);
 
         temporaryLocalScaleVector3 = new Vector3(
-            ratioFactor * initialScale.x * (scaleFactor + Mathf.Cos(
-                phaseScaleX +
-                wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
-            //initialScale.y,
-            ratioFactor * initialScale.y * (scaleFactor + Mathf.Cos(
-                phaseScaleX +
-                wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
-            ratioFactor * initialScale.z * (scaleFactor + Mathf.Cos(
-                Mathf.PI + phaseScaleX +
-                wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)));
+                initialScale.x * (1 + ratioFactor * Mathf.Cos(phaseScaleX + wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
+                //initialScale.y,
+                initialScale.y * (1 + ratioFactor * Mathf.Cos(phaseScaleX + wobbleScaleSpeed * speed * Time.timeSinceLevelLoad)),
+                initialScale.z * (1 + ratioFactor * Mathf.Cos(Mathf.PI + phaseScaleX + wobbleScaleSpeed * speed * Time.timeSinceLevelLoad))
+            );
 
         wobbledTransform.localScale = temporaryLocalScaleVector3;
     }
@@ -204,7 +200,6 @@ public class WobblyMovement : MonoBehaviour
             + "\nwobbleShiftSpeedZ=" + wobbleShiftSpeedZ
             + "\ninitialScale=" + initialScale
             + "\ninitialRotation=" + initialRotation
-            + "\nscaleFactor=" + scaleFactor
             + "\nratioFactor=" + ratioFactor
             + "\nangularWobble=" + angularWobble
             + "\nhorizontalShift=" + horizontalShift
