@@ -71,7 +71,6 @@ MonoBehaviour:
   lifePoints: 0
   startLifePoints: 100
   livesToLifePointsFactor: 0
-  resistancePoints: 0
   resistanceToLifeFactor: 0
   startResistancePoints: 0
   offsetRatio: 0.5
@@ -108,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6171a914dd484646aa9dc1b6f0fa644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resistancePointsRatioVictoryThreshold: 0.8
   isResistanceModeOn: 1
   timeBeforeWave1: 4
   timeBetweenWaves: 2

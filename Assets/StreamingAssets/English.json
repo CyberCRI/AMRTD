@@ -94,7 +94,7 @@
 	,{"key":"TUTORIAL.PATHOGENESCAPE.0","value":"Watch out! A pathogenic bacterium has escaped. You'll lose if this counter reaches zero!"}
 	,{"key":"TUTORIAL.DIVISION.0","value":      "Watch out! A pathogenic bacterium just divided! Kill it or it'll go on dividing!"}
 	,{"key":"TUTORIAL.TOWERUPGRADE.0","value":  "You can upgrade your antibiotics dispensers if you have enough funds. Click on them!"}
-	,{"key":"TUTORIAL.HELPBUTTON.0","value":    "Use this button to discover how the game works: click it then click on the interface!"}
+	,{"key":"TUTORIAL.HELPBUTTON.0","value":    "Use this button to discover how the game works: click it then click on game elements!"}
 	,{"key":"TUTORIAL.TOWERSALE.0","value":     "You can sell your dispenser if you wish. But you won't recover all the cash!"}
 	]
 }
