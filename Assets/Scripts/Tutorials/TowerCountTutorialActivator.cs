@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class TowerUpgradeTutorialActivator : TutorialActivator
+public class TowerCountTutorialActivator : TutorialActivator
 {
     [SerializeField]
     private float additionalDelay = 0f;
+    [SerializeField]
+    private int turretCountTrigger = 0;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -18,7 +20,7 @@ public class TowerUpgradeTutorialActivator : TutorialActivator
     /// </summary>
     void Update()
     {
-        if (PlayerStatistics.instance.turretCount == 2)
+        if (PlayerStatistics.instance.turretCount == turretCountTrigger)
         {
             Invoke("activateTutorial", additionalDelay);
             this.enabled = false;

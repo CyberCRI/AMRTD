@@ -4,6 +4,7 @@ public class TutorialActivator : MonoBehaviour
 {
     [SerializeField]
     private StepByStepTutorial tutorial = null;
+    [Tooltip("If the delay d is not zero and the Start method is not overridden, the tutorial will be activated after d seconds.")]
     [SerializeField]
     private float delay = 0f;
 
