@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#define LIVESICON
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +18,7 @@ public class ObjectivesUI : MonoBehaviour
         {
             Destroy(this);
         }
+#if !LIVESICON
         else
         {
             onLanguageChanged();
@@ -33,4 +36,14 @@ public class ObjectivesUI : MonoBehaviour
     {
         translatedValue = LocalizationManager.instance.GetLocalizedValue(objectivesKey);
     }
+#else
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        objectivesText.text = ObjectiveDefenseMode.instance.getCapturedObjectivesStats();
+    }
+
+#endif
 }

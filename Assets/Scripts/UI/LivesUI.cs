@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#define LIVESICON
+
+using UnityEngine;
 using UnityEngine.UI;
 
 public class LivesUI : MonoBehaviour
@@ -14,6 +16,7 @@ public class LivesUI : MonoBehaviour
         {
             Destroy(this);
         }
+#if !LIVESICON
         else
         {
             onLanguageChanged();
@@ -31,4 +34,14 @@ public class LivesUI : MonoBehaviour
     {
         translatedValue = LocalizationManager.instance.GetLocalizedValue(livesKey);
     }
+#else
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        livesText.text = PlayerStatistics.instance.lives.ToString();
+    }
+
+#endif
 }
