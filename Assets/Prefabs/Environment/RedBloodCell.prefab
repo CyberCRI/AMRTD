@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 491ff900892d3ad4c8a72eff630b985f, type: 2}
+  - {fileID: 2100000, guid: 55a6878fb8b7b024585bc21826f91ddd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,14 +97,13 @@ MonoBehaviour:
   startSpeed: 10
   minimumDistance: 1.1
   wobbledTransform: {fileID: 6911985252784984587}
-  wobbleScaleSpeed: 0.1
-  wobbleRotateSpeed: 0.1
   wobbleShiftSpeedX: 0.1
   wobbleShiftSpeedZ: 0.1
-  scaleFactor: 5
-  ratioFactor: 0.2
-  angularWobble: 12
   horizontalShift: 0.01
+  ratioFactor: 0.2
+  wobbleScaleSpeed: 0.1
+  angularWobble: 12
+  wobbleRotateSpeed: 0.1
   baseSpeed: 10
   speedVariation: 2
 --- !u!135 &1731354350277328250

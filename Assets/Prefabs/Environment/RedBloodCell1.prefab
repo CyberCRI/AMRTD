@@ -7,11 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6847483093550004215, guid: afb51b131eb381f4ca2601d2fae50681,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 6911985252784984587, guid: afb51b131eb381f4ca2601d2fae50681,
         type: 3}
       propertyPath: m_RootOrder
@@ -36,6 +31,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984029595317463843, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782414127119020662, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: ratioFactor
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782414127119020662, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: wobbleScaleSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9212015041760241849, guid: afb51b131eb381f4ca2601d2fae50681,
         type: 3}
