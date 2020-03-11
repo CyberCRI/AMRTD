@@ -39,8 +39,7 @@ The current graphical assets are used as placeholders and tests and are therefor
 | [Help cursor](Assets/Textures/Cursors/helpCursor.png) | [Flaticon.com Help](https://www.flaticon.com/free-icon/help_1527630) by [Freepik](https://www.flaticon.com/authors/freepik) |
 | [Build cursor](Assets/Textures/Cursors/buildCursor.png) | [Flaticon.com Pills](https://www.flaticon.com/free-icon/pills_1087063) by [Good Ware](https://www.flaticon.com/authors/good-ware) |
 | [Heart icon](Assets/Textures/UI/Misc/heartIcon.png) | [Flaticon.com Heart](https://www.flaticon.com/free-icon/heart_599404) by [Freepik](https://www.flaticon.com/authors/freepik) |
-
-
+| [Feedback button](Assets/Textures/UI/Misc/feedback_hover.png) | [Kissclipart.com Information icon](https://www.kissclipart.com/feedback-icon-clipart-computer-icons-pyy1j7/) |
 
 
 ## Game Design
