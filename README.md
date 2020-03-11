@@ -33,13 +33,12 @@ The current graphical assets are used as placeholders and tests and are therefor
 | [Pill](Assets/Imports/Pill/Pill.fbx) | [Turbosquid pill](https://www.turbosquid.com/FullPreview/Index.cfm/ID/586682) by [Redfox1980](https://www.turbosquid.com/Search/Artists/Redfox1980) |
 | [Pills bottle](Assets/Imports/MissileLauncher/PillsBottle.fbx) | [Turbosquid Pills bottle](https://www.turbosquid.com/FullPreview/Index.cfm/ID/938419) by [romanlebedeff](https://www.turbosquid.com/Search/Artists/romanlebedeff) |
 | [Syringe](Assets/Imports/Syringe/syringe.fbx) | [Clara.io Syringe](https://clara.io/view/244b0aa1-2921-4ff5-8fdf-b40072284669) by [MarianaNT](https://clara.io/user/MarianaNT) derived from [Clara.io Syringe](https://clara.io/view/5bc2ead7-b90e-4175-b9d1-788c9b3d5dc1) by [Democore](https://clara.io/user/Democore) |
-| [Red Blood Cell 1](Assets/Textures/BloodCells/red-blood-cells-a1.png) | [Flaticon.com Blood Cell](https://www.flaticon.com/free-icon/blood-cell_2492741?term=red%20blood%20cells&page=1&position=4) by [Freepik](https://www.flaticon.com/authors/freepik) |
-| [Red Blood Cell 2](Assets/Textures/BloodCells/red-blood-cells-b1.png) | [Pixabay.com Red Blood Cell](https://pixabay.com/illustrations/red-blood-cell-rbc-erythrocyte-1861640/) by [sbtlneet](https://pixabay.com/users/sbtlneet-3591002/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1861640) |
-| [Red Blood Cell 3](Assets/Textures/BloodCells/red-blood-cells-c1.png) | [Flaticon.com Erythrocytes](https://www.flaticon.com/free-icon/blood-cells_1141004?term=erythrocytes&page=1&position=18) by [Freepik](https://www.flaticon.com/authors/freepik) |
+| [Red Blood Cell 1](Assets/Textures/BloodCells/red-blood-cells-b1.png) | [Pixabay.com Red Blood Cell](https://pixabay.com/illustrations/red-blood-cell-rbc-erythrocyte-1861640/) by [sbtlneet](https://pixabay.com/users/sbtlneet-3591002/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1861640) |
 | [White Blood Cells](Assets/Textures/BloodCells/white-blood-cell-1.png) | [flickr.com Human B Lymphocyte](https://www.flickr.com/photos/niaid/29122039942/in/photolist-rx2LVN-su1wdR-rx2WTU-LtZ1RC-ni2rkv-L6xiiJ-DHjR9E-a4RLoY-Lnq4SW-NM7i5Y) by [NIAID](https://www.flickr.com/photos/niaid), edited by background removal |
-| [Help icon](Assets/Textures/UI/In-GameMenu/help.png) | [Flaticon.com Information](https://www.flaticon.com/free-icon/information_906794?term=help&page=1&position=2) by [Freepik](https://www.flaticon.com/authors/freepik) |
-| [Help cursor](Assets/Textures/Cursors/helpCursor.png) | [Flaticon.com Help](https://www.flaticon.com/free-icon/help_1527630?term=help%20cursor&page=1&position=4) by [Freepik](https://www.flaticon.com/authors/freepik) |
-| [Build cursor](Assets/Textures/Cursors/buildCursor.png) | [Flaticon.com Pills](https://www.flaticon.com/free-icon/pills_1087063?term=antibiotics&page=1&position=6) by [Good Ware](https://www.flaticon.com/authors/good-ware) |
+| [Help icon](Assets/Textures/UI/In-GameMenu/help.png) | [Flaticon.com Information](https://www.flaticon.com/free-icon/information_906794) by [Freepik](https://www.flaticon.com/authors/freepik) |
+| [Help cursor](Assets/Textures/Cursors/helpCursor.png) | [Flaticon.com Help](https://www.flaticon.com/free-icon/help_1527630) by [Freepik](https://www.flaticon.com/authors/freepik) |
+| [Build cursor](Assets/Textures/Cursors/buildCursor.png) | [Flaticon.com Pills](https://www.flaticon.com/free-icon/pills_1087063) by [Good Ware](https://www.flaticon.com/authors/good-ware) |
+| [Heart icon](Assets/Textures/UI/Misc/heartIcon.png) | [Flaticon.com Heart](https://www.flaticon.com/free-icon/heart_599404) by [Freepik](https://www.flaticon.com/authors/freepik) |
 
 
 
