@@ -22,21 +22,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhiteBloodCell1
       objectReference: {fileID: 0}
-    - target: {fileID: 7689037423146455039, guid: 224f698c15ca52c4f9d445c276c8f629,
+    - target: {fileID: 7203844366430045227, guid: 224f698c15ca52c4f9d445c276c8f629,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 7689037423146455039, guid: 224f698c15ca52c4f9d445c276c8f629,
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e6578e69081beab4cb1020d117bf5b39,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7689037423146455039, guid: 224f698c15ca52c4f9d445c276c8f629,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -44.9
-      objectReference: {fileID: 0}
     - target: {fileID: 7689037423146455039, guid: 224f698c15ca52c4f9d445c276c8f629,
         type: 3}
       propertyPath: m_LocalRotation.x

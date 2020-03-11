@@ -21,6 +21,7 @@ public class WaveSpawner : MonoBehaviour
     private LocalizedText waveCountdownLocalizedText = null;
     private const string waveCountdownSpawningString = "GAME.WAVECOUNTDOWN.NOCOUNTDOWN";
 
+    private float divisionDistance = 1f;
     [SerializeField]
     private float resistancePointsRatioVictoryThreshold = 0f;
     [SerializeField]
@@ -232,7 +233,15 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
-                spawnPointPosition = enemyMotherCell.transform.position;
+                float angle = Random.Range(0, Mathf.PI);
+                //divisionDistance
+                Vector3 divisionDisplacement = new Vector3(
+                    divisionDistance * Mathf.Cos(angle),
+                    0f,
+                    divisionDistance * Mathf.Sin(angle)
+                );
+                spawnPointPosition = enemyMotherCell.transform.position + divisionDisplacement;
+                enemyMotherCell.transform.position = enemyMotherCell.transform.position - divisionDisplacement;
             }
 
             if (!divisionMode)
