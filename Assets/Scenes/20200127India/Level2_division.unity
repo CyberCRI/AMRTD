@@ -470,8 +470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d119a6448a9a8c8419ca4591dd57feeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foundObject: {fileID: 0}
-  waited: 0
 --- !u!1001 &1342037492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -548,11 +546,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3062928417955663161, guid: c8224aa1881c0f540be9c0e22aa9149a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7401088014292545900, guid: c8224aa1881c0f540be9c0e22aa9149a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -614,31 +607,6 @@ PrefabInstance:
       value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 7401088014292545901, guid: c8224aa1881c0f540be9c0e22aa9149a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7401088014359578826, guid: c8224aa1881c0f540be9c0e22aa9149a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7401088014439640695, guid: c8224aa1881c0f540be9c0e22aa9149a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7401088014559899046, guid: c8224aa1881c0f540be9c0e22aa9149a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7401088015386970992, guid: c8224aa1881c0f540be9c0e22aa9149a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7401088015843859933, guid: c8224aa1881c0f540be9c0e22aa9149a,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -940,8 +908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e580c74edf75a247a3a1f26f3959bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foundObject: {fileID: 0}
-  waited: 0
   enemy: {fileID: 7667180733465665960, guid: 429f97d4d229f34418e1b071e58d1b91, type: 3}
 --- !u!1001 &1283043318676757389
 PrefabInstance:
@@ -1206,11 +1172,6 @@ PrefabInstance:
     - target: {fileID: 1283043319595864793, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1283043319595864793, guid: c5d44d76f273f4440974ed576ea33450,
-        type: 3}
-      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876723168779258929, guid: c5d44d76f273f4440974ed576ea33450,
