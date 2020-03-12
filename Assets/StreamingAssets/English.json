@@ -98,5 +98,7 @@
 	,{"key":"TUTORIAL.HELPBUTTON.0","value":            "Use this button to discover how the game works: click it then click on game elements!"}
 	,{"key":"TUTORIAL.TOWERSALE.0","value":             "You can sell your dispenser if you wish. But you won't recover all the cash!"}
 	,{"key":"TUTORIAL.WAVECOUNTDOWN.0","value":         "This is the countdown to the next wave of pathogenic bacteria. Brace yourself!"}
+	,{"key":"TUTORIAL.LUNGSLEVEL.0","value":            "Tuberculosis bacteria are trying to colonize the lungs!"}
+	,{"key":"TUTORIAL.LUNGSLEVEL.1","value":            "You have a limited time to rid the lungs of these pathogenic bacteria. Act now!"}
 	]
 }
