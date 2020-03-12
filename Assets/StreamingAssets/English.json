@@ -60,7 +60,7 @@
 	,{"key":"GAME.RETRYSCREEN.CANCEL","value":"RESUME"}
 	,{"key":"GAME.RETRYSCREEN.TITLE","value":"START OVER?"}
 	,{"key":"GAME.RETRYSCREEN.TEXT","value":"YOUR PROGRESS WILL BE LOST! ARE YOU SURE YOU WANT TO START OVER?"}
-	,{"key":"max help text length                        __________________________________________________________________________________________","value":""}
+	,{"key":"max help text length 1","value":           "__________________________________________________________________________________________"}
 	,{"key":"GAME.LIVESTEXT.HELP","value":              "You lose lives when pathogenic bacteria reach the blood vessels on the left of the screen."}
 	,{"key":"GAME.RESISTANCEBARBACKGROUND.HELP","value":"As you use antibiotics the resistance bar fills up and pathogenic bacteria become resistant."}
 	,{"key":"GAME.RESISTANCEBAR.HELP","value":          "As you use antibiotics the resistance bar fills up and pathogenic bacteria become resistant."}
@@ -85,17 +85,18 @@
 	,{"key":"GAME.BULLET.HELP","value":                 "This is an antibiotics bullet. You're a very quick clicker!"}
 	,{"key":"GAME.WAVECOUNTDOWN.NOCOUNTDOWN","value":   ""}
 
-	,{"key":"max help text length                __________________________________________________________________________________________","value":""}
-	,{"key":"TUTORIAL.LEVEL1.0","value":        "Quick! You must set up antibiotics dispensers to destroy incoming pathogenic bacteria!"}
-	,{"key":"TUTORIAL.LEVEL1.1","value":        "Click on the antibiotic dispenser button to start setting them up."}
-	,{"key":"TUTORIAL.RESISTANCEBAR0.0","value":"Beware! The more you use antibiotics, the more pathogenic bacteria get resistant to them!"}
-	,{"key":"TUTORIAL.RESISTANCEBAR1.0","value":"Beware! The resistance level is so high that antibiotics have barely any effect anymore!"}
-	,{"key":"TUTORIAL.RESISTANCEBAR2.0","value":"Beware! You'll lose if you finish the level with more than 50% resistance!"}
-	,{"key":"TUTORIAL.LEVELCOMPLETE.0","value": "This is the last wave. Kill all the pathogenic bacteria to unlock the next level!"}
-	,{"key":"TUTORIAL.PATHOGENESCAPE.0","value":"Watch out! A pathogenic bacterium has escaped. You'll lose if this counter reaches zero!"}
-	,{"key":"TUTORIAL.DIVISION.0","value":      "Watch out! A pathogenic bacterium just divided! Kill it or it'll go on dividing!"}
-	,{"key":"TUTORIAL.TOWERUPGRADE.0","value":  "You can upgrade your antibiotics dispensers if you have enough funds. Click on them!"}
-	,{"key":"TUTORIAL.HELPBUTTON.0","value":    "Use this button to discover how the game works: click it then click on game elements!"}
-	,{"key":"TUTORIAL.TOWERSALE.0","value":     "You can sell your dispenser if you wish. But you won't recover all the cash!"}
+	,{"key":"max help text length 2","value":           "__________________________________________________________________________________________"}
+	,{"key":"TUTORIAL.LEVEL1.0","value":                "Quick! You must set up antibiotics dispensers to destroy incoming pathogenic bacteria!"}
+	,{"key":"TUTORIAL.LEVEL1.1","value":                "Click on the antibiotic dispenser button to start setting them up."}
+	,{"key":"TUTORIAL.RESISTANCEBAR0.0","value":        "Beware! The more you use antibiotics, the more pathogenic bacteria get resistant to them!"}
+	,{"key":"TUTORIAL.RESISTANCEBAR1.0","value":        "Beware! The resistance level is so high that antibiotics have barely any effect anymore!"}
+	,{"key":"TUTORIAL.RESISTANCEBAR2.0","value":        "Beware! You'll lose if you finish the level with more than 50% resistance!"}
+	,{"key":"TUTORIAL.LEVELCOMPLETE.0","value":         "This is the last wave. Kill all the pathogenic bacteria to unlock the next level!"}
+	,{"key":"TUTORIAL.PATHOGENESCAPE.0","value":        "Watch out! A pathogenic bacterium has escaped. You'll lose if this counter reaches zero!"}
+	,{"key":"TUTORIAL.DIVISION.0","value":              "Watch out! A pathogenic bacterium just divided! Kill it or it'll go on dividing!"}
+	,{"key":"TUTORIAL.TOWERUPGRADE.0","value":          "You can upgrade your antibiotics dispensers if you have enough funds. Click on them!"}
+	,{"key":"TUTORIAL.HELPBUTTON.0","value":            "Use this button to discover how the game works: click it then click on game elements!"}
+	,{"key":"TUTORIAL.TOWERSALE.0","value":             "You can sell your dispenser if you wish. But you won't recover all the cash!"}
+	,{"key":"TUTORIAL.WAVECOUNTDOWN.0","value":         "This is the countdown to the next wave of pathogenic bacteria. Brace yourself!"}
 	]
 }

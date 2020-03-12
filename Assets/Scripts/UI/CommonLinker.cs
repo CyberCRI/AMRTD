@@ -4,17 +4,17 @@ using UnityEngine.UI;
 public class CommonLinker : MonoBehaviour
 {
     [SerializeField]
-    private Camera camera = null;
+    private Camera _camera = null;
 
 
     // Start is called before the first frame update
     void Start()
     {
         GameUI.instance.linkCommon(
-            camera
+            _camera
             );
         FocusMaskManager.instance.linkCommon(
-            camera
+            _camera
             );
     }
 }

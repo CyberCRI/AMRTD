@@ -42,7 +42,7 @@ public class TowerSaleTutorial : StepByStepTutorial
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
-    void Awake()
+    new void Awake()
     {
         _steps = new TutorialStep[1] {
                     new TutorialStep(tower.name + cloneSuffix)

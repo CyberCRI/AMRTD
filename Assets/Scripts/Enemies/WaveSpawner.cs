@@ -55,9 +55,14 @@ public class WaveSpawner : MonoBehaviour
         return (waveIndex == (waves.Length - 1)) && (0f == countdown);
     }
 
-    public bool isNthWave(int n)
+    public bool isNthWaveStarting(int n)
     {
         return (waveIndex == n - 1) && (0f == countdown);
+    }
+
+    public bool isNthWaveDone(int n)
+    {
+        return (waveIndex == n) && (0f != countdown) && prepared;
     }
 
     /// <summary>

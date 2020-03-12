@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class HelpButtonTutorialActivator : TutorialActivator
+public class WaveCountdownTutorialActivator : TutorialActivator
 {
-    private const int activationWaveIndex = 2;
+    [SerializeField]
+    private int activationWaveIndex = 0;
     private WaveSpawner waveSpawner;
 
     /// <summary>
@@ -19,7 +20,7 @@ public class HelpButtonTutorialActivator : TutorialActivator
     /// </summary>
     void Update()
     {
-        if (waveSpawner.isNthWave(activationWaveIndex))
+        if (waveSpawner.isNthWaveDone(activationWaveIndex))
         {
             activateTutorial();
         }

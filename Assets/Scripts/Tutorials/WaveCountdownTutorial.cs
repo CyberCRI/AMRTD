@@ -3,17 +3,16 @@ using UnityEngine;
 
 #if QUICKTEST
 
-public class TowerUpgradeTutorial : FakeStepByStepTutorial { }
+public class WaveCountdownTutorial : FakeStepByStepTutorial { }
 
 #else
 
-public class TowerUpgradeTutorial : StepByStepTutorial
+public class WaveCountdownTutorial : StepByStepTutorial
 {
     [SerializeField]
-    private GameObject tower = null;
+    private GameObject target = null;
 
-    [SerializeField]
-    private const string _textKeyPrefix = genericTextKeyPrefix + "TOWERUPGRADE.";
+    private const string _textKeyPrefix = genericTextKeyPrefix + "WAVECOUNTDOWN.";
     protected override string textKeyPrefix
     {
         get
@@ -30,7 +29,7 @@ public class TowerUpgradeTutorial : StepByStepTutorial
         }
     }
 
-    private TutorialStep[] _steps = new TutorialStep[0];
+    private TutorialStep[] _steps = new TutorialStep[1];
     protected override TutorialStep[] steps
     {
         get
@@ -45,7 +44,7 @@ public class TowerUpgradeTutorial : StepByStepTutorial
     new void Awake()
     {
         _steps = new TutorialStep[1] {
-                    new TutorialStep(tower.name + cloneSuffix)
+                    new TutorialStep(target.name)
                 };
         base.Awake();
     }
