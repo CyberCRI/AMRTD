@@ -73,6 +73,7 @@
 	,{"key":"GAME.MENU.HELP","value":                   "This is the menu button."}
 	,{"key":"GAME.PAUSE.HELP","value":                  "Use this button to pause the game."}
 	,{"key":"GAME.RETRY.HELP","value":                  "Use this button to start over this level."}
+	,{"key":"GAME.USERFEEDBACKBUTTON.HELP","value":     "Click here to give us some feedback on the game."}
 	,{"key":"GAME.UPGRADEBUTTON.HELP","value":          "Upgrade your antibiotics to kill more pathogenic bacteria!"}
 	,{"key":"GAME.SELLBUTTON.HELP","value":             "Sell your antibiotics to get money and reduce the resistance."}
 	,{"key":"GAME.RENEWBUTTON.HELP","value":            "Pay to make the antibiotics last longer."}

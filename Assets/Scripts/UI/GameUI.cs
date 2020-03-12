@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//#define DEVMODE
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,6 +30,9 @@ public class GameUI : MonoBehaviour
 
     public void pressPauseButton()
     {
+#if DEVMODE
+        Debug.Log("GameUI pressPauseButton");
+#endif
         PauseUI.instance.toggle();
     }
 

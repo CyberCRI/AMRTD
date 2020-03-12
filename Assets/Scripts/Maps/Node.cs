@@ -87,11 +87,20 @@ public class Node : MonoBehaviour
     /// </summary>
     void OnMouseDown()
     {
-        manageClick();
+#if DEVMODE
+        Debug.Log("Node OnMouseDown");
+#endif
+        if (!HelpButtonUI.instance.isHelpModeOn())
+        {
+            manageClick();
+        }
     }
 
     public void manageClick()
     {
+#if DEVMODE
+        Debug.Log("Node manageClick");
+#endif
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             if (turretGO != null)

@@ -1,10 +1,11 @@
 //#define DEVMODE
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class HelpableElementUI : HelpableElementParent, IPointerDownHandler
+public class HelpableElementUI : HelpableElementGeneric, IPointerDownHandler
 {
     public void OnPointerDown(PointerEventData eventData)
     {

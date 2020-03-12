@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 609855142}
   - component: {fileID: 609855138}
   - component: {fileID: 5533149760709963952}
+  - component: {fileID: 2699393661651819873}
   m_Layer: 5
   m_Name: UserFeedbackButton
   m_TagString: Untagged
@@ -179,6 +180,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2699393661651819873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609855136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58fbead8266e0d4288404ac5f904e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  codeStem: 
 --- !u!1 &236108226493368462
 GameObject:
   m_ObjectHideFlags: 0

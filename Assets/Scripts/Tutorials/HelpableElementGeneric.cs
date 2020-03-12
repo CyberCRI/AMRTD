@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HelpableElementParent : MonoBehaviour
+public class HelpableElementGeneric : MonoBehaviour
 {
     [SerializeField]
     private string codeStem = "";
@@ -10,7 +10,7 @@ public class HelpableElementParent : MonoBehaviour
     protected void click()
     {
 #if DEVMODE
-        Debug.Log("HelpableElementParent: click " + this.gameObject.name);
+        Debug.Log("HelpableElementGeneric: click " + this.gameObject.name);
 #endif
 
         if (HelpButtonUI.instance.isHelpModeOn())
@@ -18,7 +18,7 @@ public class HelpableElementParent : MonoBehaviour
             string code = string.IsNullOrEmpty(codeStem)? this.gameObject.name.ToUpper() : codeStem;
             code = "GAME." + code + ".HELP";
 #if DEVMODE
-            Debug.Log("HelpableElementParent: code: " + code);
+            Debug.Log("HelpableElementGeneric: code: " + code);
 #endif
 
             //HelpButtonUI.instance.toggleHelpMode();

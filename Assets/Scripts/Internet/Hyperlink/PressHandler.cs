@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//#define DEVMODE
+
+using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.Events;
@@ -12,6 +14,12 @@ public class PressHandler : MonoBehaviour, IPointerDownHandler
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		OnPress.Invoke();
+#if DEVMODE
+        Debug.Log(this.gameObject.name + " " + this.GetType() + " OnPointerDown");
+#endif
+        if (!HelpButtonUI.instance.isHelpModeOn())
+        {
+			OnPress.Invoke();
+        }
 	}
 }

@@ -124,7 +124,13 @@ public class Turret : Attacker
     /// </summary>
     void OnMouseDown()
     {
-        node.manageClick();
+#if DEVMODE
+        Debug.Log("Turret OnMouseDown");
+#endif
+        if (!HelpButtonUI.instance.isHelpModeOn())
+        {
+            node.manageClick();
+        }
     }
 
     public void renew(float duration = 10f)
