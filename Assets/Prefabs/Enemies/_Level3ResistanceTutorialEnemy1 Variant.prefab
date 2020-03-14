@@ -95,17 +95,17 @@ PrefabInstance:
     - target: {fileID: 8167287571772097238, guid: cd26582fbb457d146a7eb7b81eb99e73,
         type: 3}
       propertyPath: healingRatioSpeed
-      value: 0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8167287571772097238, guid: cd26582fbb457d146a7eb7b81eb99e73,
         type: 3}
       propertyPath: startHealth
-      value: 80
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8167287571772097238, guid: cd26582fbb457d146a7eb7b81eb99e73,
         type: 3}
       propertyPath: divisionPeriod
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd26582fbb457d146a7eb7b81eb99e73, type: 3}

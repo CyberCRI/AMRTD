@@ -16,7 +16,7 @@ PrefabInstance:
         type: 3}
       propertyPath: wobbledTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5257325638488934281}
     - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: minimumDistance
@@ -37,15 +37,30 @@ PrefabInstance:
       propertyPath: scaleFactor
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: horizontalShift
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 589631539129822010, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 589631539129822010, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: reward
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: startHealth
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
@@ -60,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: healingRatioSpeed
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
@@ -224,3 +239,9 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6336938c557a96948bddbc9fd6f82c7c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04ba9c270ae894447a1791a88c8abaca, type: 3}
+--- !u!4 &5257325638488934281 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3430969998141215203, guid: 04ba9c270ae894447a1791a88c8abaca,
+    type: 3}
+  m_PrefabInstance: {fileID: 7451351652244985450}
+  m_PrefabAsset: {fileID: 0}
