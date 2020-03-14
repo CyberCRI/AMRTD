@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2047299845123050209}
   - component: {fileID: 8617641132585246993}
   m_Layer: 0
-  m_Name: NormalEnemyTexturedInner
+  m_Name: _Level8LungsEnemy1Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704204758309981477}
-  m_LocalRotation: {x: 0.64085644, y: 0.29883623, z: -0.64085644, w: -0.29883623}
+  m_LocalRotation: {x: 0.66446304, y: -0.24184473, z: 0.66446304, w: -0.24184473}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 4, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 180, y: 90, z: -50}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 220}
 --- !u!33 &2047299845123050209
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704204758309981477}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &8617641132585246993
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 67dc98627793a5048887b11371467059, type: 2}
+  - {fileID: 2100000, guid: 48c9c3d968f1b2c45b90c81509e6bf7e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

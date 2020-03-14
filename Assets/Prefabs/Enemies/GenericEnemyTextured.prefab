@@ -491,14 +491,13 @@ MonoBehaviour:
   startSpeed: 5
   minimumDistance: 0.5
   wobbledTransform: {fileID: 0}
-  wobbleScaleSpeed: 0.5
-  wobbleRotateSpeed: 0.9
   wobbleShiftSpeedX: 1
   wobbleShiftSpeedZ: 0.5
-  scaleFactor: 4
-  ratioFactor: 0.2
-  angularWobble: 30
   horizontalShift: 0.05
+  ratioFactor: 0.2
+  wobbleScaleSpeed: 0.5
+  angularWobble: 30
+  wobbleRotateSpeed: 0.9
   waypointIndex: 2
   waypointsMode: 0
 --- !u!114 &2619940236836669980
@@ -875,7 +874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 12.03}
+  m_AnchoredPosition: {x: 0, y: 97}
   m_SizeDelta: {x: 0, y: 24.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6513905923242067307

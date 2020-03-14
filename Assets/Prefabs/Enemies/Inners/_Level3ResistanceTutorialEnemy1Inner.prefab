@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2047299845123050209}
   - component: {fileID: 8617641132585246993}
   m_Layer: 0
-  m_Name: NormalEnemyTexturedInnerImmune2
+  m_Name: _Level3ResistanceTutorialEnemy1Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704204758309981477}
-  m_LocalRotation: {x: 0.64085644, y: 0.29883623, z: -0.64085644, w: -0.29883623}
+  m_LocalRotation: {x: 0.29883623, y: 0.64085644, z: 0.29883623, w: 0.64085644}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 180, y: 90, z: -50}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 50}
 --- !u!33 &2047299845123050209
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 67dc98627793a5048887b11371467059, type: 2}
+  - {fileID: 2100000, guid: c9746076d6b3b0445adf751ddb887ec6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

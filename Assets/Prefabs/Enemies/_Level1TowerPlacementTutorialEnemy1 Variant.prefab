@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8188035161374025543
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2151688177819239314, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151688177819239314, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151688177819239314, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033079372192543584, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 83ad5ed4a08b672409ff3f5016a74a2f, type: 2}
+    - target: {fileID: 6133784739106107846, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: startSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667180733465665960, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_Name
+      value: _Level1TowerPlacementTutorialEnemy1 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667180733465665964, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667180733465665964, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667180733465665964, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -43.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667180733465665964, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667180733465665964, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667180733465665964, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667180733465665964, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167287571772097238, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: startHealth
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167287571772097238, guid: 161ba5842418e984e86241ecf4a3a133,
+        type: 3}
+      propertyPath: reward
+      value: 45
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 161ba5842418e984e86241ecf4a3a133, type: 3}
