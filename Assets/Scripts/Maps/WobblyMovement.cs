@@ -14,7 +14,7 @@ public class WobblyMovement : MonoBehaviour
 
     [Header("Wobble")]
     [SerializeField]
-    private Transform wobbledTransform = null;
+    protected Transform wobbledTransform = null;
 
     [Header("Wobble position")]
     [Tooltip("Position over time is δt + δ * cos(ωt + ф)")]

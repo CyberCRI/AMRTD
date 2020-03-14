@@ -10,12 +10,22 @@ public class EnemyMovement : WobblyMovement
     // waypoints
     [HideInInspector]
     public int waypointIndex = 0;
+    [Header("Exclusives")]
     [SerializeField]
     private Waypoints.WaypointsMode waypointsMode = Waypoints.WaypointsMode.CONTINUOUS;
+    [SerializeField]
+    private SphereCollider sphereCollider = null;
+    [SerializeField]
+    private Rigidbody _rigidbody = null;
+    private float repulsionForce = 5f;
 
     protected override void onAwakeDone()
     {
         enemy = this.GetComponent<Enemy>();
+        if (null != wobbledTransform && null != sphereCollider)
+        {
+            sphereCollider.radius = wobbledTransform.localScale.x / 2f;
+        }
     }
 
     /// <summary>
@@ -25,6 +35,15 @@ public class EnemyMovement : WobblyMovement
     void Start()
     {
         getNextWaypoint();
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == Enemy.enemyTag)
+        {
+            Vector3 direction = (this.transform.position - collider.transform.position).normalized;
+            _rigidbody.AddForce(direction * repulsionForce, ForceMode.Impulse);
+        }
     }
 
     protected override void onWobbleDone()

@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 2686818901224010539}
   - component: {fileID: 76248867092480059}
   - component: {fileID: 2619940236836669980}
+  - component: {fileID: 4734184661367311785}
   m_Layer: 0
   m_Name: GenericEnemyTextured
   m_TagString: EnemyTag
@@ -500,6 +501,8 @@ MonoBehaviour:
   wobbleRotateSpeed: 0.9
   waypointIndex: 2
   waypointsMode: 0
+  sphereCollider: {fileID: 4500849788320993364}
+  _rigidbody: {fileID: 4734184661367311785}
 --- !u!114 &2619940236836669980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,6 +516,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   codeStem: PATHOGEN
+--- !u!54 &4734184661367311785
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500849788320993365}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 5
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5218048004403132239
 GameObject:
   m_ObjectHideFlags: 0
