@@ -44,6 +44,15 @@ public class WobblyMovement : MonoBehaviour
     private float wobbleRotateSpeed = 0f;
     private float phaseRotatY = 0f;
     private Vector3 initialRotation = Vector3.zero;
+    
+    [Header("Repulsion")]
+    [SerializeField]
+    protected SphereCollider sphereCollider = null;
+    [SerializeField]
+    protected Rigidbody _rigidbody = null;
+    protected float repulsionForce = 5f;
+    [SerializeField]
+    protected string[] repulsers;
 
     private const float distanceSecurityRatio = 1.1f;
 
@@ -100,6 +109,24 @@ public class WobblyMovement : MonoBehaviour
             onWobbleDone();
 
             resetSpeed();
+        }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        bool collides = false;
+        for (int i = 0; i < repulsers.Length; i++)
+        {
+            if (collider.tag == repulsers[i])
+            {
+                collides = true;
+                break;
+            }
+        }
+        if (collides)
+        {
+            Vector3 direction = (this.transform.position - collider.transform.position).normalized;
+            _rigidbody.AddForce(direction * repulsionForce, ForceMode.Impulse);
         }
     }
 

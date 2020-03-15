@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class RedBloodCellMovement : WobblyMovement
 {
+    public const string rbcTag = "RBCTag";
     private static Transform bloodOrigin1 = null;
     private static Transform bloodOrigin2 = null;
     private static Transform bloodEnd1 = null;
@@ -28,6 +29,8 @@ public class RedBloodCellMovement : WobblyMovement
 
         setTarget();
         setSpeed();
+
+        repulsers = new string[3] {WhiteBloodCellMovement.wbcTag, RedBloodCellMovement.rbcTag, Enemy.enemyTag};
     }
 
     protected override void onWobbleDone()

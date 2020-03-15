@@ -13,11 +13,6 @@ public class EnemyMovement : WobblyMovement
     [Header("Exclusives")]
     [SerializeField]
     private Waypoints.WaypointsMode waypointsMode = Waypoints.WaypointsMode.CONTINUOUS;
-    [SerializeField]
-    private SphereCollider sphereCollider = null;
-    [SerializeField]
-    private Rigidbody _rigidbody = null;
-    private float repulsionForce = 5f;
 
     protected override void onAwakeDone()
     {
@@ -26,6 +21,8 @@ public class EnemyMovement : WobblyMovement
         {
             sphereCollider.radius = wobbledTransform.localScale.x / 2f;
         }
+
+        repulsers = new string[2] {RedBloodCellMovement.rbcTag, Enemy.enemyTag};
     }
 
     /// <summary>
@@ -35,15 +32,6 @@ public class EnemyMovement : WobblyMovement
     void Start()
     {
         getNextWaypoint();
-    }
-
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.tag == Enemy.enemyTag)
-        {
-            Vector3 direction = (this.transform.position - collider.transform.position).normalized;
-            _rigidbody.AddForce(direction * repulsionForce, ForceMode.Impulse);
-        }
     }
 
     protected override void onWobbleDone()

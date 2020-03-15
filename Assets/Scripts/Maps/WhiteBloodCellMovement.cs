@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WhiteBloodCellMovement : WobblyMovement
 {
+    public const string wbcTag = "WBCTag";
     private int index = 0;
     private Transform targetTransform = null;
     public float baseSpeed = 0f;
@@ -38,6 +39,8 @@ public class WhiteBloodCellMovement : WobblyMovement
             bloodOrigin2 = RedBloodCellManager.instance.bloodOrigin2;
             bloodUnder = RedBloodCellManager.instance.bloodUnder;
         }
+
+        repulsers = new string[2] {WhiteBloodCellMovement.wbcTag, RedBloodCellMovement.rbcTag};
     }
 
     protected override void setDisplacement()
