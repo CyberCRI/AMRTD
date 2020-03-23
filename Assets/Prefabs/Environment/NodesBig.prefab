@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7937448335301652985}
   m_Layer: 8
-  m_Name: BigNodes
+  m_Name: NodesBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,7 @@ PrefabInstance:
     - target: {fileID: 5491092449973785308, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37318700b0a61de4ebc865bc1ebeca1d, type: 3}
@@ -324,7 +324,7 @@ PrefabInstance:
     - target: {fileID: 5491092449973785308, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37318700b0a61de4ebc865bc1ebeca1d, type: 3}
@@ -2164,7 +2164,7 @@ PrefabInstance:
     - target: {fileID: 5491092449973785308, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37318700b0a61de4ebc865bc1ebeca1d, type: 3}
@@ -2324,7 +2324,7 @@ PrefabInstance:
     - target: {fileID: 5491092449973785308, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37318700b0a61de4ebc865bc1ebeca1d, type: 3}
@@ -3604,7 +3604,7 @@ PrefabInstance:
     - target: {fileID: 5491092449973785308, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37318700b0a61de4ebc865bc1ebeca1d, type: 3}
@@ -3764,7 +3764,7 @@ PrefabInstance:
     - target: {fileID: 5491092449973785308, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37318700b0a61de4ebc865bc1ebeca1d, type: 3}
@@ -5044,7 +5044,7 @@ PrefabInstance:
     - target: {fileID: 5491092449973785308, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37318700b0a61de4ebc865bc1ebeca1d, type: 3}
@@ -5204,7 +5204,7 @@ PrefabInstance:
     - target: {fileID: 5491092449973785308, guid: 37318700b0a61de4ebc865bc1ebeca1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37318700b0a61de4ebc865bc1ebeca1d, type: 3}
