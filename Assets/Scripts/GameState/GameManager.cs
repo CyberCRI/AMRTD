@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public static bool isGameOver = false;
-    public static bool isLevelCompleted = false;
+    public static bool isLevelLost = false;
+    public static bool isLevelWon = false;
 
     public enum GAMEMODE
     {
@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
-            isGameOver = false;
-            isLevelCompleted = false;
+            isLevelLost = false;
+            isLevelWon = false;
 
             levelDurationCountdownMode = (levelDuration != 0f);
             if (levelDurationCountdownMode)
@@ -69,7 +69,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isGameOver)
+        if (isLevelLost || isLevelWon)
+        {
+            this.enabled = false;
+        }
+        else
         {
             if ((PlayerStatistics.instance.lives <= 0)
 #if LIFEPOINTSMODE
@@ -148,15 +152,18 @@ public class GameManager : MonoBehaviour
 
     public void loseLevel()
     {
-        isGameOver = true;
-        gameOverUI.SetActive(true);
+        if (!isLevelWon)
+        {
+            isLevelLost = true;
+            gameOverUI.SetActive(true);
+        }
     }
 
     public void winLevel()
     {
-        if (!isGameOver)
+        if (!isLevelLost)
         {
-            isLevelCompleted = true;
+            isLevelWon = true;
             completeLevelUI.SetActive(true);
         }
     }

@@ -100,12 +100,22 @@ PrefabInstance:
     - target: {fileID: 8167287571772097238, guid: 53bef8b074cf5b04ca30a9ac05debe1c,
         type: 3}
       propertyPath: startHealth
-      value: 40
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8167287571772097238, guid: 53bef8b074cf5b04ca30a9ac05debe1c,
         type: 3}
       propertyPath: reward
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167287571772097238, guid: 53bef8b074cf5b04ca30a9ac05debe1c,
+        type: 3}
+      propertyPath: divisionPeriod
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167287571772097238, guid: 53bef8b074cf5b04ca30a9ac05debe1c,
+        type: 3}
+      propertyPath: healingRatioSpeed
+      value: 0.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53bef8b074cf5b04ca30a9ac05debe1c, type: 3}

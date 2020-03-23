@@ -12,6 +12,46 @@ PrefabInstance:
       propertyPath: wobbledTransform
       value: 
       objectReference: {fileID: 5346079934036935117}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: startSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: wobbleShiftSpeedX
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: wobbleShiftSpeedZ
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: horizontalShift
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: wobbleScaleSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: angularWobble
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: wobbleRotateSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: ratioFactor
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 589631539129822010, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -25,12 +65,12 @@ PrefabInstance:
     - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: startHealth
-      value: 150
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: healingRatioSpeed
-      value: 0.1
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 4500849788320993361, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}

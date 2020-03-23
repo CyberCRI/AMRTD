@@ -6,6 +6,8 @@ TagManager:
   tags:
   - EnemyTag
   - TurretTag
+  - RBCTag
+  - WBCTag
   layers:
   - Default
   - TransparentFX

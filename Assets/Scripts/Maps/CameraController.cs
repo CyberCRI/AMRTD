@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (GameManager.isGameOver)
+        if (GameManager.isLevelLost)
         {
             this.enabled = false;
         }
