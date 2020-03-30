@@ -60,6 +60,10 @@ public class LocalizationManager : MonoBehaviour
             refreshUIElements("language.set");
         }
     }
+    public string getLanguageString()
+    {
+        return _languageString;
+    }
 
     // Use this for initialization
     void Awake()

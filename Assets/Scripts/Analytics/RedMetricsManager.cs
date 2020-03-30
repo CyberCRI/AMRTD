@@ -1,0 +1,491 @@
+#define DEVMODE
+
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+//using LitJson;
+using System;
+using UnityEngine.SceneManagement;
+
+// author 
+//    Raphael Goujet
+//    Center for Research and Interdisciplinarity
+//    raphael.goujet@cri-paris.org
+public class RedMetricsManager : MonoBehaviour
+{
+
+    //////////////////////////////// singleton fields & methods ////////////////////////////////
+    private const string gameObjectName = "RedMetricsManager";
+    public static RedMetricsManager instance;
+
+    void Awake()
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " Awake with gameVersionGuid=" + gameVersionGuid);
+#endif
+        if (null == instance)
+        {
+            instance = this;
+            initializeIfNecessary();
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void OnDestroy()
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " OnDestroy " + (instance == this));
+#endif
+        if (this == instance)
+        {
+            instance = null;
+        }
+    }
+
+    // does not work on iOS, Windows Store Apps and Windows Phone 8.1
+    // see details on https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnApplicationQuit.html
+    void OnApplicationQuit()
+    {
+        CustomData guidCD = generateCustomDataForGuidInit();
+        sendEvent(TrackingEvent.END, guidCD);
+    }
+
+    private bool initialized = false;
+    private void initializeIfNecessary()
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " initializeIfNecessary initialized=" + initialized);
+#endif
+        if (!initialized)
+        {
+            DontDestroyOnLoad(instance.gameObject);
+            initialized = true;
+        }
+    }
+
+#if DEVMODE
+    void Start()
+    {
+        Debug.Log(this.GetType() + " Start with gameVersionGuid=" + gameVersionGuid);
+
+        sendStartEvent();
+    }
+#endif
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    //TODO interface to automatize data extraction for data gathering through sendEvent
+
+    // redmetrics.io
+    // private const string redMetricsURL = "https://api.redmetrics.io/v1/";
+    // formerly http://redmetrics.crigamelab.org/ and http://api.redmetrics.crigamelab.org/v1/
+    private const string redMetricsURL = "http://api.redmetrics.io/v1/";
+    private const string redMetricsPlayer = "player";
+    private const string redMetricsEvent = "event";
+
+    // AMRTD test game version
+    private const string defaultGameVersion = "b5ba9b46-9c6d-43d6-8611-3b2af6afff48";
+    private static System.Guid defaultGameVersionGuid = new System.Guid(defaultGameVersion);
+    private System.Guid gameVersionGuid = new System.Guid(defaultGameVersionGuid.ToByteArray());
+
+    private const string defaultGameSession = "b5ba9b46-9c6d-43d6-8611-3b2af6afff47";
+    private static System.Guid defaultGameSessionGUID = new System.Guid(defaultGameSession);
+    private System.Guid gameSessionGUID = new System.Guid(defaultGameSessionGUID.ToByteArray());
+
+    private string _localPlayerGUID; //player guid stored on local computer, in PlayerPrefs
+    public string localPlayerGUID
+    {
+        set
+        {
+#if DEVMODE
+            Debug.Log(this.GetType() + " localPlayerGUID_set " + value);
+#endif
+            _localPlayerGUID = value;
+        }
+    }
+    private string globalPlayerGUID; //TODO login system
+
+    private bool isGameSessionGUIDCreated = false;
+    private bool _isStartEventSent = false;
+    public bool isStartEventSent
+    {
+        get
+        {
+            return _isStartEventSent;
+        }
+    }
+
+    // list of events to be stacked while the player guid is not created yet, ie rmConnect's callback has not been called yet and isGameSessionGUIDCreated is still false
+    private LinkedList<TrackingEventDataWithoutIDs> waitingList = new LinkedList<TrackingEventDataWithoutIDs>();
+
+    public void setGameSessionGUID(string _gameSessionGUID)
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " setGameSessionGUID " + _gameSessionGUID);
+#endif
+        gameSessionGUID = new System.Guid(_gameSessionGUID);
+    }
+
+    public void setGlobalPlayerGUID(string _globalPlayerGUID)
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " setGlobalPlayerGUID " + globalPlayerGUID);
+#endif
+        globalPlayerGUID = _globalPlayerGUID;
+    }
+
+    public void setGameVersion(System.Guid _gameVersionGuid)
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " setGameVersion Guid " + gameVersionGuid + " to " + _gameVersionGuid);
+#endif
+        gameVersionGuid = _gameVersionGuid;
+    }
+
+    public Guid getGameVersion()
+    {
+        return gameVersionGuid;
+    }
+
+    public bool isGameVersionInitialized()
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " isGameVersionInitialized");
+#endif
+        return defaultGameVersionGuid != gameVersionGuid;
+    }
+
+    public static IEnumerator GET(string url, System.Action<WWW> callback)
+    {
+#if DEVMODE
+        Debug.Log("RedMetricsManager GET");
+#endif
+        WWW www = new WWW(url);
+        return waitForWWW(www, callback);
+    }
+
+    // unused
+    public static IEnumerator POST(string url, Dictionary<string, string> post, System.Action<WWW> callback)
+    {
+#if DEVMODE
+        Debug.Log("RedMetricsManager POST");
+#endif
+        WWWForm form = new WWWForm();
+        foreach (KeyValuePair<string, string> post_arg in post)
+        {
+            form.AddField(post_arg.Key, post_arg.Value);
+        }
+
+        WWW www = new WWW(url, form);
+        return waitForWWW(www, callback);
+    }
+
+    public static IEnumerator POST(string url, byte[] post, Dictionary<string, string> headers, System.Action<WWW> callback)
+    {
+#if DEVMODE
+        Debug.Log("RedMetricsManager POST url: " + url);
+#endif
+        WWW www = new WWW(url, post, headers);
+        return waitForWWW(www, callback);
+    }
+
+    private static IEnumerator waitForWWW(WWW www, System.Action<WWW> callback)
+    {
+#if DEVMODE
+        Debug.Log("RedMetricsManager waitForWWW");
+#endif
+        float elapsedTime = 0.0f;
+
+        if (null == www)
+        {
+            Debug.LogError("RedMetricsManager waitForWWW: null www");
+            yield return null;
+        }
+
+        while (!www.isDone)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            if (elapsedTime >= 30.0f)
+            {
+                Debug.LogError("RedMetricsManager waitForWWW: TimeOut!");
+                break;
+            }
+            yield return null;
+        }
+
+        if (!www.isDone || !string.IsNullOrEmpty(www.error))
+        {
+            string errmsg = string.IsNullOrEmpty(www.error) ? "timeout" : www.error;
+            Debug.LogError(string.Format("RedMetricsManager waitForWWW Error: Load Failed: {0}", errmsg));
+            callback(null);    // Pass null result.
+            yield break;
+        }
+
+#if DEVMODE
+        Debug.Log("RedMetricsManager waitForWWW: message successfully transmitted");
+#endif
+        callback(www); // Pass retrieved result.
+    }
+
+    private void sendData(string urlSuffix, string pDataString, System.Action<WWW> callback)
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " sendData urlSuffix=" + urlSuffix + " pDataString=" + pDataString);
+#endif
+        string url = redMetricsURL + urlSuffix;
+        Dictionary<string, string> headers = new Dictionary<string, string>();
+        headers.Add("Content-Type", "application/json");
+        byte[] pData = System.Text.Encoding.ASCII.GetBytes(pDataString.ToCharArray());
+#if DEVMODE
+        Debug.Log(this.GetType() + " sendData StartCoroutine POST with data=" + pDataString);
+#endif
+        StartCoroutine(RedMetricsManager.POST(url, pData, headers, callback));
+    }
+
+    private void createPlayer(System.Action<WWW> callback)
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " createPlayer");
+#endif
+        CreatePlayerData data = new CreatePlayerData();
+        string json = getJsonString(data);
+        sendData(redMetricsPlayer, json, callback);
+    }
+
+    private void testGet(System.Action<WWW> callback)
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " testGet");
+#endif
+        string url = redMetricsURL + redMetricsPlayer;
+        StartCoroutine(RedMetricsManager.GET(url, callback));
+    }
+
+    private void wwwLogger(WWW www, string origin = "default")
+    {
+        if (null == www)
+        {
+            Debug.LogError(string.Format("{0} wwwLogger Error: {1}: {2}", this.GetType(), origin, "Null == www"));
+        }
+        else
+        {
+            if (www.error == null)
+            {
+#if DEVMODE
+                Debug.Log(string.Format("{0} wwwLogger Success: {1}: {2}", this.GetType(), origin, www.text));
+#endif
+            }
+            else
+            {
+                Debug.LogError(string.Format("{0} wwwLogger Error: {1}: {2}", this.GetType(), origin, www.error));
+            }
+        }
+    }
+
+    private string extractPID(WWW www)
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " extractPID");
+#endif
+        string result = null;
+        wwwLogger(www, "extractPID");
+        if (www != null && www.text != null)
+        {
+            string trimmed = www.text.Trim();
+            string[] split1 = trimmed.Split('\n');
+            foreach (string s1 in split1)
+            {
+#if DEVMODE
+                Debug.Log(this.GetType() + " extractPID: '" + s1 + "'");
+#endif
+                if (s1.Length > 5)
+                {
+                    string[] split2 = s1.Trim().Split(':');
+                    foreach (string s2 in split2)
+                    {
+                        if (!s2.Equals("\"id\"") && !string.IsNullOrEmpty(s2))
+                        {
+                            string[] split3 = s2.Trim().Split('"');
+                            foreach (string s3 in split3)
+                            {
+
+                                if (!s3.Equals("\"") && !string.IsNullOrEmpty(s3))
+                                {
+                                    result = s3;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    private void trackStart(WWW www)
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " trackStart: www =? null:" + (null == www));
+#endif
+        string pID = extractPID(www);
+        if (null != pID)
+        {
+            setGameSessionGUID(pID);
+            sendStartEventWithPlayerGUID();
+        }
+    }
+
+    private void sendStartEventWithPlayerGUID()
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " sendStartEventWithPlayerGUID with string.IsNullOrEmpty(_localPlayerGUID)="+string.IsNullOrEmpty(_localPlayerGUID));
+#endif
+        if (string.IsNullOrEmpty(_localPlayerGUID))
+        {
+            sendEvent(TrackingEvent.START);
+        }
+        else
+        {
+            CustomData guidCD = generateCustomDataForGuidInit();
+            sendEvent(TrackingEvent.START, guidCD);
+        }
+    }
+
+    public CustomData generateCustomDataForGuidInit()
+    {
+        //TODO manage GLOBALPLAYERGUID
+        CustomData guidCD = new CustomData(CustomDataTag.LOCALPLAYERGUID, _localPlayerGUID);
+        guidCD.Add(CustomDataTag.PLATFORM, Application.platform.ToString().ToLowerInvariant());
+#if DEVMODE
+        Debug.Log(this.GetType() + " generated guidCD=" + guidCD);
+#endif
+        return guidCD;
+    }
+
+    //////////////////////////////////////////////////
+    // Should be called only after localPlayerGUID is set
+    public void sendStartEvent(bool force = false)
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " sendStartEvent");
+#endif
+        if (!_isStartEventSent || force)
+        {
+#if DEVMODE
+            Debug.Log(this.GetType() + " sendStartEvent !isStartEventSent");
+#endif
+            // gameSessionGUID hasn't been initialized
+            createPlayer(www => trackStart(www));
+            _isStartEventSent = true;
+        }
+    }
+
+    // TODO: store events that can't be sent, during internet outage for instance
+    private void addEventToSendLater(TrackingEventDataWithoutIDs data)
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " addEventToSendLater " + data);
+#endif
+        waitingList.AddLast(data);
+    }
+
+    private void executeAndClearAllWaitingEvents()
+    {
+#if DEVMODE
+        Debug.Log(this.GetType() + " executeAndClearAllWaitingEvents");
+#endif
+        foreach (TrackingEventDataWithoutIDs data in waitingList)
+        {
+            sendEvent(data);
+        }
+        waitingList.Clear();
+    }
+
+    private void resetConnectionVariables()
+    {
+        isGameSessionGUIDCreated = false;
+    }
+
+    public string getJsonString(object obj)
+    {
+        string dataAsJson = JsonUtility.ToJson(obj);
+#if DEVMODE
+        Debug.Log(this.GetType() + " getJsonString(" + obj + ")=" + dataAsJson);
+#endif
+        return dataAsJson;
+    }
+
+    public void sendEvent(TrackingEventDataWithoutIDs data)
+    {
+#if DEVMODE
+            Debug.Log(string.Format ("{0} sendEvent({1})", this.GetType(), data));
+#endif
+        sendEvent(data.getEventType(), data.customData, data.userTime);
+    }
+
+    public void sendRichEvent(TrackingEvent trackingEvent, CustomData customData = null, string userTime = null)
+    {
+        string customDataString = null == customData ? "" : ", " + customData;
+#if DEVMODE
+        Debug.Log(this.GetType() + " sendRichEvent(" + trackingEvent + customDataString);
+#endif
+
+        CustomData context = getEventContext();
+        if (customData != null)
+        {
+#if DEVMODE
+            Debug.Log(this.GetType() + " merging from trackingEvent " + trackingEvent);
+#endif
+            context.merge(customData);
+        }
+        sendEvent(trackingEvent, context, userTime);
+    }
+
+    public CustomData getEventContext()
+    {
+        CustomData context = new CustomData(CustomDataTag.GAMELEVEL, SceneManager.GetActiveScene().name);
+        context.Add(CustomDataTag.LANGUAGE, LocalizationManager.instance.getLanguageString());
+        if (null != PlayerStatistics.instance)
+        {
+            context.Add(CustomDataTag.LIVES, PlayerStatistics.instance.lives.ToString());
+            context.Add(CustomDataTag.FUNDS, PlayerStatistics.instance.money.ToString());
+            context.Add(CustomDataTag.RESISTANCE, PlayerStatistics.instance.resistancePoints.ToString());
+            context.Add(CustomDataTag.WAVES, PlayerStatistics.instance.waves.ToString());
+        }
+        return context;
+    }
+
+    public void sendEvent(TrackingEvent trackingEvent, CustomData customData = null, string userTime = null)
+    {
+#if DEVMODE
+            Debug.Log(string.Format ("{0} sendEvent({1}, {2}, {3})", this.GetType(), trackingEvent, customData, userTime));
+#endif
+        // test Application.internetReachability
+
+        // // TODO: queue events that can't be sent during internet outage
+        // TrackingEventDataWithoutIDs data = new TrackingEventDataWithoutIDs(trackingEvent, customData, userTime);
+        // addEventToSendLater(data);
+
+        TrackingEventDataWithIDs data = new TrackingEventDataWithIDs(gameSessionGUID, gameVersionGuid, trackingEvent, customData);
+        string json = getJsonString(data);
+#if DEVMODE
+        Debug.Log(
+            string.Format (
+                this.GetType() + " sendEvent - _localPlayerGUID={0}, gameSessionGUID={1}, gameVersionGuid={2}, json={3}", 
+                _localPlayerGUID, gameSessionGUID, gameVersionGuid, json
+                )
+            );
+#endif
+        sendData(redMetricsEvent, json, value => wwwLogger(value, "sendEvent(" + trackingEvent + ")"));
+        //TODO pass data as parameter to sendDataStandalone so that it's serialized inside
+    }
+
+    public override string ToString()
+    {
+        return string.Format("[RedMetricsManager gameSessionGUID:{0}, gameVersionGuid:{1}, redMetricsURL:{2}]",
+                          gameSessionGUID, gameVersionGuid, redMetricsURL);
+    }
+
+}
