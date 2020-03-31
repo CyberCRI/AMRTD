@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿#define DEVMODE
+using System;
+using System.Text.RegularExpressions;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CompleteLevel : MonoBehaviour
@@ -44,17 +47,33 @@ public class CompleteLevel : MonoBehaviour
             // after scene1 = Level2, scene2 = Level3 (index 1, number 2)
             // after scene4 = Level5, scene0 = Level1 (index 4, number 5)
             string currentScene = SceneManager.GetActiveScene().name;
-            int currentLevelNumber = int.Parse(currentScene.Substring(currentScene.Length - 1));
-            nextLevelIndex = currentLevelNumber % (LevelSelector.maxLevelIndex + 1);
-            nextLevelName = "Level" + (nextLevelIndex + 1).ToString();
+            //int currentLevelNumber = int.Parse(currentScene.Substring(currentScene.Length - 1));
+            string pattern = "%d+(?!.+)"; // searches for a final number
+            Match m = Regex.Match(currentScene, pattern);
+            if (m.Success)
+            {
+                int currentLevelNumber = int.Parse(m.Value);
+                nextLevelIndex = currentLevelNumber % (LevelSelector.gameLevelCount);
+                nextLevelName = "Level" + (nextLevelIndex + 1).ToString();
+                m = m.NextMatch();
+#if DEVMODE
+                Debug.Log(this.GetType() + " Start nextLevelName=" + nextLevelName);
+#endif
+            }
+            else
+            {
+                Debug.LogError("could not get level index from current scene name " + currentScene);
+            }
+            if (m.Success)
+            {
+                Debug.LogError("error while processing level index from current scene name " + currentScene);
+            }
         }
     }
 
     public void pressContinue()
     {
-        int previous = PlayerPrefs.GetInt(LevelSelector.levelReachedKey);
-        int newLevelReached = Mathf.Max(previous, nextLevelIndex);
-        PlayerPrefs.SetInt(LevelSelector.levelReachedKey, newLevelReached);
+        GameConfiguration.instance.reachedLevel(nextLevelIndex);
         SceneFader.instance.fadeTo(nextLevelName);
     }
 }

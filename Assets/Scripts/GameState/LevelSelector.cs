@@ -5,14 +5,13 @@ using UnityEngine.UI;
 public class LevelSelector : MonoBehaviour
 {
     public static LevelSelector instance = null;
-    
+
     public const string sceneName = "LevelSelectionMenu";
 
     [SerializeField]
     private Transform levelButtonsRoot = null;
     private Button[] levelButtons = null;
-    public const string levelReachedKey = "levelReached";
-    public const int maxLevelIndex = 6;
+    public const int gameLevelCount = 7;
 
     void Awake()
     {
@@ -33,7 +32,7 @@ public class LevelSelector : MonoBehaviour
 
     private void updateInteractables()
     {
-        int levelReached = PlayerPrefs.GetInt(levelReachedKey, 0);
+        int levelReached = GameConfiguration.instance.furthestLevel;
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
@@ -50,9 +49,9 @@ public class LevelSelector : MonoBehaviour
         SceneFader.instance.fadeTo(levelName);
     }
 
-    public static void deleteAllPlayerPrefs()
+    public static void lockAllLevels()
     {
-        PlayerPrefs.DeleteAll();
+        GameConfiguration.instance.furthestLevel = 0;
         if (null != instance)
         {
             instance.updateInteractables();
@@ -61,7 +60,7 @@ public class LevelSelector : MonoBehaviour
 
     public static void unlockAllLevels()
     {
-        PlayerPrefs.SetInt(LevelSelector.levelReachedKey, maxLevelIndex);
+        GameConfiguration.instance.furthestLevel = gameLevelCount - 1;
         if (null != instance)
         {
             instance.updateInteractables();

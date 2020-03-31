@@ -27,7 +27,13 @@ public class DebugUI : MonoBehaviour
 
     public void deleteAllPlayerPrefs()
     {
-        LevelSelector.deleteAllPlayerPrefs();
+        Debug.LogWarning("Deleting all PlayerPrefs!");
+        PlayerPrefs.DeleteAll();
+    }
+
+    public void lockAllLevels()
+    {
+        LevelSelector.lockAllLevels();
     }
 
     public void unlockAllLevels()

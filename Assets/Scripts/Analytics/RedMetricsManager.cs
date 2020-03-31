@@ -445,8 +445,8 @@ public class RedMetricsManager : MonoBehaviour
 
     public CustomData getEventContext()
     {
-        CustomData context = new CustomData(CustomDataTag.GAMELEVEL, SceneManager.GetActiveScene().name);
-        context.Add(CustomDataTag.LANGUAGE, LocalizationManager.instance.getLanguageString());
+        CustomData context = new CustomData(CustomDataTag.GAMELEVEL, SceneManager.GetActiveScene().name.ToLowerInvariant());
+        context.Add(CustomDataTag.LANGUAGE, LocalizationManager.instance.getLanguageString().ToLowerInvariant());
         if (null != PlayerStatistics.instance)
         {
             context.Add(CustomDataTag.LIVES, PlayerStatistics.instance.lives.ToString());
