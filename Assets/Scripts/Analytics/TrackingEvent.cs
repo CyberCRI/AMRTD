@@ -1,4 +1,4 @@
-#define DEVMODE
+#define VERBOSEDEBUG
 
 using UnityEngine;
 using System.Collections.Generic;
@@ -102,13 +102,15 @@ public abstract class TrackingEventData
     //optional
     //date in ISO 8601 format
     public string userTime;
-
     //managed by RedMetrics server
     //Time serverTime;
-
-    private TrackingEvent innerEventType = TrackingEvent.DEFAULT;
-
+    protected TrackingEvent innerEventType = TrackingEvent.DEFAULT;
+    // set to public for json
     public string type = TrackingEvent.DEFAULT.ToString();
+    //optional
+    protected CustomData innerCustomData;
+    // set to public for json
+    public string customData;
 
     public void setEventType(string _eventType)
     {
@@ -136,29 +138,38 @@ public abstract class TrackingEventData
         type = innerEventType.ToString();
     }
 
+    public void setCustomData(CustomData _customData)
+    {
+        innerCustomData = _customData;
+        customData = (null == _customData || 0 == _customData.Count) ? "" : _customData.ToJSONString();
+    }
+
     public TrackingEvent getEventType()
     {
         return innerEventType;
     }
-
-    //optional
-    public CustomData customData;
 
     public TrackingEventData()
     {
     }
 
     public TrackingEventData(
-    TrackingEvent _trackingEvent,
-    CustomData _customData = null,
-    string _userTime = null
+        TrackingEvent _trackingEvent,
+        CustomData _customData = null,
+        string _userTime = null
     )
     {
         //cf http://stackoverflow.com/questions/114983/given-a-datetime-object-how-do-i-get-a-iso-8601-date-in-string-format/115002#115002
         userTime = string.IsNullOrEmpty(_userTime) ? System.DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", System.Globalization.CultureInfo.InvariantCulture) : _userTime;
 
         setEventType(_trackingEvent);
-        customData = _customData;
+        setCustomData(_customData);
+    }
+
+    public TrackingEventData(
+        TrackingEventData data
+    ) : this(data.innerEventType, data.innerCustomData, data.userTime)
+    {
     }
 
     public override string ToString()
@@ -284,6 +295,20 @@ public class CustomData : Dictionary<string, string>
         }
     }
 
+    public string ToJSONString()
+    {
+        string content = "";
+        foreach (KeyValuePair<string, string> entry in this)
+        {
+            if (!string.IsNullOrEmpty(content))
+            {
+                content += ",";
+            }
+            content += "\"" + entry.Key + "\":\"" + entry.Value + "\"";
+        }
+        return "{" + content + "}";
+    }
+
     public override string ToString()
     {
         string content = "";
@@ -302,17 +327,17 @@ public class CustomData : Dictionary<string, string>
 public class TrackingEventDataWithoutIDs : TrackingEventData
 {
     public TrackingEventDataWithoutIDs(
-    TrackingEvent _trackingEvent,
-    CustomData _customData = null,
-    string userTime = null
-    ) : base(_trackingEvent, _customData, userTime)
+        TrackingEvent _trackingEvent,
+        CustomData _customData = null,
+        string userTime = null
+        ) : base(_trackingEvent, _customData, userTime)
     {
     }
 
     public override string ToString()
     {
         return string.Format("[TrackingEventDataWithoutIDs type:{0} customData:{1}]",
-                              type, customData);
+                              type, innerCustomData);
     }
 }
 
@@ -331,6 +356,10 @@ public class TrackingEventDataWithIDs : TrackingEventData
     {
         player = _playerGuid;
         gameVersion = _gameVersionGuid;
+
+#if VERBOSEDEBUG
+    Debug.Log(this.GetType() + " Ctor from strings " + ToString());
+#endif
     }
 
     public TrackingEventDataWithIDs(
@@ -343,15 +372,29 @@ public class TrackingEventDataWithIDs : TrackingEventData
         player = _playerGuid.ToString();
         gameVersion = _gameVersionGuid.ToString();
 
-#if DEVMODE
-    Debug.Log(this.GetType() + " Ctor " + ToString());
+#if VERBOSEDEBUG
+    Debug.Log(this.GetType() + " Ctor from System.Guids " + ToString());
+#endif
+    }
+
+    public TrackingEventDataWithIDs(
+        System.Guid _playerGuid,
+        System.Guid _gameVersionGuid,
+        TrackingEventDataWithoutIDs data
+    ) : base(data)
+    {
+        player = _playerGuid.ToString();
+        gameVersion = _gameVersionGuid.ToString();
+
+#if VERBOSEDEBUG
+    Debug.Log(this.GetType() + " Ctor from TrackingEventDataWithoutIDs " + ToString());
 #endif
     }
 
     public override string ToString()
     {
-        return string.Format("[TrackingEventDataWithIDs player[game session ID]:{0} gameVersion[game version guid]:{1} type[tracking event]:{2} customData:{3}]",
-                              player, gameVersion, type, customData);
+        return string.Format("[TrackingEventDataWithIDs player[game session ID]:{0}, gameVersion[game version guid]:{1}, type[tracking event]:{2}, customData:{3}]",
+                              player, gameVersion, type, innerCustomData);
     }
 }
 

@@ -1,4 +1,4 @@
-#define DEVMODE
+#define VERBOSEDEBUG
 
 using UnityEngine;
 using System;
@@ -12,6 +12,9 @@ public class GameConfiguration : MonoBehaviour
     /// </summary>
     void Awake()
     {
+#if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " Awake");
+#endif
         if (null != instance)
         {
             Destroy(this);
@@ -20,6 +23,21 @@ public class GameConfiguration : MonoBehaviour
         {
             instance = this;
         }
+#if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " Awake done");
+#endif
+    }
+
+    void Start()
+    {
+#if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " Start");
+#endif
+        load();
+        RedMetricsManager.instance.sendStartEvent();
+#if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " Start done");
+#endif
     }
 
     private const string _localPlayerGUIDPlayerPrefsKey = "localPlayerGUID";
@@ -38,7 +56,7 @@ public class GameConfiguration : MonoBehaviour
 
     private void initializeBestTimesIfNecessary()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " initializeBestTimesIfNecessary");
 #endif
         if (null == _bestTimes)
@@ -46,7 +64,7 @@ public class GameConfiguration : MonoBehaviour
             _bestTimes = new FloatConfigurationParameter[LevelSelector.gameLevelCount];
             for (int index = 0; index < _bestTimes.Length; index++)
             {
-#if DEVMODE
+#if VERBOSEDEBUG
                 Debug.Log(this.GetType() + " initializeBestTimes index = " + index);
 #endif
                 _bestTimes[index] = new FloatConfigurationParameter(Mathf.Infinity, Mathf.Infinity, _bestCompletionTimeLevelStem + index);
@@ -72,14 +90,14 @@ public class GameConfiguration : MonoBehaviour
     {
         get
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " getting sound = " + _isSoundOn.val);
 #endif
             return _isSoundOn.val;
         }
         set
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " setting sound to " + value);
 #endif
             _isSoundOn.val = value;
@@ -88,7 +106,7 @@ public class GameConfiguration : MonoBehaviour
 
     private static void onSoundChanged(bool newSoundValue)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("GameConfiguration onSoundChanged");
 #endif
         if (_baseVolume < 0)
@@ -109,14 +127,14 @@ public class GameConfiguration : MonoBehaviour
     {
         get
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " get furthestLevel = " + _furthestLevelReached.val);
 #endif
             return _furthestLevelReached.val;
         }
         set
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " set furthestLevel to " + value);
 #endif
             // if (value > _furthestLevelReached.val)
@@ -166,7 +184,7 @@ public class GameConfiguration : MonoBehaviour
     {
         get
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " get _bestTimes");
 #endif
             initializeBestTimesIfNecessary();
@@ -179,7 +197,7 @@ public class GameConfiguration : MonoBehaviour
         }
         set
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " set _bestTimes");
 #endif
             initializeBestTimesIfNecessary();
@@ -187,7 +205,7 @@ public class GameConfiguration : MonoBehaviour
             {
                 if (value[index] < _bestTimes[index].val)
                 {
-#if DEVMODE
+#if VERBOSEDEBUG
                     Debug.Log(this.GetType() + " set _bestTimes[" + index + "] to " + value[index] + "(previously " + _bestTimes[index].val + ")");
 #endif
                     _bestTimes[index].val = value[index];
@@ -198,12 +216,12 @@ public class GameConfiguration : MonoBehaviour
 
     public void setBestTime(int index, float time, bool force = false)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setBestTime(" + index + ", " + time + ", " + force + ")");
 #endif
         if (force || time < _bestTimes[index].val)
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " setBestTime updates " + index + " to " + time);
 #endif
             _bestTimes[index].val = time;
@@ -221,18 +239,17 @@ public class GameConfiguration : MonoBehaviour
 
     public void load()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " load");
 #endif
-
         RedMetricsManager.instance.localPlayerGUID = playerGUID;
 
         _isAdmin.initialize();
         initializeGameVersionGUID();
         _isSoundOn.initialize();
         _furthestLevelReached.initialize();
-
-#if DEVMODE
+  
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " load done");
 #endif
     }
@@ -266,7 +283,7 @@ public class GameConfiguration : MonoBehaviour
     private string _webGUID;
     public void setWebGUID(string webGUID)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setWebGUID(" + webGUID + ")");
 #endif
         _webGUID = webGUID;
@@ -277,12 +294,12 @@ public class GameConfiguration : MonoBehaviour
     {
         get
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " playerGUID get");
 #endif
             if (string.IsNullOrEmpty(_playerGUID))
             {
-#if DEVMODE
+#if VERBOSEDEBUG
                 Debug.Log(this.GetType() + " playerGUID get string.IsNullOrEmpty(_playerGUID)");
 #endif
                 //TODO make it work through different versions of the game,
@@ -293,7 +310,7 @@ public class GameConfiguration : MonoBehaviour
 #if UNITY_WEBGL
 				    if(!string.IsNullOrEmpty(_webGUID))
                     {
-#if DEVMODE
+#if VERBOSEDEBUG
                         Debug.Log(this.GetType() + " playerGUID get !string.IsNullOrEmpty(_webGUID)");
 #endif
                         _playerGUID = _webGUID;
@@ -302,27 +319,26 @@ public class GameConfiguration : MonoBehaviour
                     else
                     {
 #endif
-#if DEVMODE
-                    Debug.Log(this.GetType() + " playerGUID get string.IsNullOrEmpty(storedGUID)");
+#if VERBOSEDEBUG
+                        Debug.Log(this.GetType() + " playerGUID get string.IsNullOrEmpty(storedGUID)");
 #endif
-                    _playerGUID = Guid.NewGuid().ToString();
-                    PlayerPrefs.SetString(_localPlayerGUIDPlayerPrefsKey, _playerGUID);
+                        _playerGUID = Guid.NewGuid().ToString();
+                        PlayerPrefs.SetString(_localPlayerGUIDPlayerPrefsKey, _playerGUID);
 #if UNITY_WEBGL
                         Debug.Log(this.GetType() + " playerGUID get Application.ExternalCall(initializeGUIDState);");
                         Application.ExternalCall("initializeGUIDState");
                     }
 #endif
-
                 }
                 else
                 {
-#if DEVMODE
+#if VERBOSEDEBUG
                     Debug.Log(this.GetType() + " playerGUID get _playerGUID = storedGUID");
 #endif
                     _playerGUID = storedGUID;
                 }
             }
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " playerGUID get returns " + _playerGUID);
 #endif
             return _playerGUID;
@@ -331,7 +347,7 @@ public class GameConfiguration : MonoBehaviour
 
     public void initializeGameVersionGUID()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " initializeGameVersionGUID with RedMetricsManager.gameVersion=" + RedMetricsManager.instance.getGameVersion());
 #endif
         if (!RedMetricsManager.instance.isGameVersionInitialized())
@@ -342,7 +358,7 @@ public class GameConfiguration : MonoBehaviour
         {
             Debug.LogWarning(this.GetType() + " initializeGameVersionGUID RedMetricsManager GameVersion already initialized");
         }
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " initializeGameVersionGUID done with"
         + " guid=" + RedMetricsManager.instance.getGameVersion()
         + ", isAdmin=" + isAdmin
@@ -361,7 +377,7 @@ public class GameConfiguration : MonoBehaviour
     //sets the destination to which logs will be sent
     public void setMetricsDestination(bool wantToBecomeLabelledGameVersion)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setMetricsDestination(" + wantToBecomeLabelledGameVersion + ")");
 #endif
         System.Guid guid = wantToBecomeLabelledGameVersion ? labelledGameVersionGUID : testVersionGUID;
@@ -370,14 +386,14 @@ public class GameConfiguration : MonoBehaviour
         {
             setGameVersion(guid);
         }
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setMetricsDestination(" + wantToBecomeLabelledGameVersion + ") done");
 #endif
     }
 
     private void setGameVersion(System.Guid guid)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setGameVersion " + guid);
 #endif
         RedMetricsManager.instance.setGameVersion(guid);
@@ -389,7 +405,7 @@ public class GameConfiguration : MonoBehaviour
 
     public bool isTestGUID()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " isTestGUID");
 #endif
         return testVersionGUID == RedMetricsManager.instance.getGameVersion();

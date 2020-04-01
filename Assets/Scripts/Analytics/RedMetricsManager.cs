@@ -1,4 +1,4 @@
-#define DEVMODE
+#define VERBOSEDEBUG
 
 using UnityEngine;
 using System.Collections;
@@ -20,7 +20,7 @@ public class RedMetricsManager : MonoBehaviour
 
     void Awake()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " Awake with gameVersionGuid=" + gameVersionGuid);
 #endif
         if (null == instance)
@@ -36,7 +36,7 @@ public class RedMetricsManager : MonoBehaviour
 
     void OnDestroy()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " OnDestroy " + (instance == this));
 #endif
         if (this == instance)
@@ -56,7 +56,7 @@ public class RedMetricsManager : MonoBehaviour
     private bool initialized = false;
     private void initializeIfNecessary()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " initializeIfNecessary initialized=" + initialized);
 #endif
         if (!initialized)
@@ -66,12 +66,10 @@ public class RedMetricsManager : MonoBehaviour
         }
     }
 
-#if DEVMODE
+#if VERBOSEDEBUG
     void Start()
     {
         Debug.Log(this.GetType() + " Start with gameVersionGuid=" + gameVersionGuid);
-
-        sendStartEvent();
     }
 #endif
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -99,7 +97,7 @@ public class RedMetricsManager : MonoBehaviour
     {
         set
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " localPlayerGUID_set " + value);
 #endif
             _localPlayerGUID = value;
@@ -122,7 +120,7 @@ public class RedMetricsManager : MonoBehaviour
 
     public void setGameSessionGUID(string _gameSessionGUID)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setGameSessionGUID " + _gameSessionGUID);
 #endif
         gameSessionGUID = new System.Guid(_gameSessionGUID);
@@ -130,7 +128,7 @@ public class RedMetricsManager : MonoBehaviour
 
     public void setGlobalPlayerGUID(string _globalPlayerGUID)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setGlobalPlayerGUID " + globalPlayerGUID);
 #endif
         globalPlayerGUID = _globalPlayerGUID;
@@ -138,7 +136,7 @@ public class RedMetricsManager : MonoBehaviour
 
     public void setGameVersion(System.Guid _gameVersionGuid)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setGameVersion Guid " + gameVersionGuid + " to " + _gameVersionGuid);
 #endif
         gameVersionGuid = _gameVersionGuid;
@@ -151,7 +149,7 @@ public class RedMetricsManager : MonoBehaviour
 
     public bool isGameVersionInitialized()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " isGameVersionInitialized");
 #endif
         return defaultGameVersionGuid != gameVersionGuid;
@@ -159,7 +157,7 @@ public class RedMetricsManager : MonoBehaviour
 
     public static IEnumerator GET(string url, System.Action<WWW> callback)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("RedMetricsManager GET");
 #endif
         WWW www = new WWW(url);
@@ -169,7 +167,7 @@ public class RedMetricsManager : MonoBehaviour
     // unused
     public static IEnumerator POST(string url, Dictionary<string, string> post, System.Action<WWW> callback)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("RedMetricsManager POST");
 #endif
         WWWForm form = new WWWForm();
@@ -184,7 +182,7 @@ public class RedMetricsManager : MonoBehaviour
 
     public static IEnumerator POST(string url, byte[] post, Dictionary<string, string> headers, System.Action<WWW> callback)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("RedMetricsManager POST url: " + url);
 #endif
         WWW www = new WWW(url, post, headers);
@@ -193,7 +191,7 @@ public class RedMetricsManager : MonoBehaviour
 
     private static IEnumerator waitForWWW(WWW www, System.Action<WWW> callback)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("RedMetricsManager waitForWWW");
 #endif
         float elapsedTime = 0.0f;
@@ -223,7 +221,7 @@ public class RedMetricsManager : MonoBehaviour
             yield break;
         }
 
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("RedMetricsManager waitForWWW: message successfully transmitted");
 #endif
         callback(www); // Pass retrieved result.
@@ -231,14 +229,14 @@ public class RedMetricsManager : MonoBehaviour
 
     private void sendData(string urlSuffix, string pDataString, System.Action<WWW> callback)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " sendData urlSuffix=" + urlSuffix + " pDataString=" + pDataString);
 #endif
         string url = redMetricsURL + urlSuffix;
         Dictionary<string, string> headers = new Dictionary<string, string>();
         headers.Add("Content-Type", "application/json");
         byte[] pData = System.Text.Encoding.ASCII.GetBytes(pDataString.ToCharArray());
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " sendData StartCoroutine POST with data=" + pDataString);
 #endif
         StartCoroutine(RedMetricsManager.POST(url, pData, headers, callback));
@@ -246,7 +244,7 @@ public class RedMetricsManager : MonoBehaviour
 
     private void createPlayer(System.Action<WWW> callback)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " createPlayer");
 #endif
         CreatePlayerData data = new CreatePlayerData();
@@ -256,7 +254,7 @@ public class RedMetricsManager : MonoBehaviour
 
     private void testGet(System.Action<WWW> callback)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " testGet");
 #endif
         string url = redMetricsURL + redMetricsPlayer;
@@ -273,7 +271,7 @@ public class RedMetricsManager : MonoBehaviour
         {
             if (www.error == null)
             {
-#if DEVMODE
+#if VERBOSEDEBUG
                 Debug.Log(string.Format("{0} wwwLogger Success: {1}: {2}", this.GetType(), origin, www.text));
 #endif
             }
@@ -286,7 +284,7 @@ public class RedMetricsManager : MonoBehaviour
 
     private string extractPID(WWW www)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " extractPID");
 #endif
         string result = null;
@@ -297,7 +295,7 @@ public class RedMetricsManager : MonoBehaviour
             string[] split1 = trimmed.Split('\n');
             foreach (string s1 in split1)
             {
-#if DEVMODE
+#if VERBOSEDEBUG
                 Debug.Log(this.GetType() + " extractPID: '" + s1 + "'");
 #endif
                 if (s1.Length > 5)
@@ -326,7 +324,7 @@ public class RedMetricsManager : MonoBehaviour
 
     private void trackStart(WWW www)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " trackStart: www =? null:" + (null == www));
 #endif
         string pID = extractPID(www);
@@ -339,7 +337,7 @@ public class RedMetricsManager : MonoBehaviour
 
     private void sendStartEventWithPlayerGUID()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " sendStartEventWithPlayerGUID with string.IsNullOrEmpty(_localPlayerGUID)="+string.IsNullOrEmpty(_localPlayerGUID));
 #endif
         if (string.IsNullOrEmpty(_localPlayerGUID))
@@ -358,7 +356,7 @@ public class RedMetricsManager : MonoBehaviour
         //TODO manage GLOBALPLAYERGUID
         CustomData guidCD = new CustomData(CustomDataTag.LOCALPLAYERGUID, _localPlayerGUID);
         guidCD.Add(CustomDataTag.PLATFORM, Application.platform.ToString().ToLowerInvariant());
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " generated guidCD=" + guidCD);
 #endif
         return guidCD;
@@ -368,24 +366,27 @@ public class RedMetricsManager : MonoBehaviour
     // Should be called only after localPlayerGUID is set
     public void sendStartEvent(bool force = false)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " sendStartEvent");
 #endif
         if (!_isStartEventSent || force)
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " sendStartEvent !isStartEventSent");
 #endif
             // gameSessionGUID hasn't been initialized
             createPlayer(www => trackStart(www));
             _isStartEventSent = true;
         }
+#if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " sendStartEvent done");
+#endif
     }
 
     // TODO: store events that can't be sent, during internet outage for instance
     private void addEventToSendLater(TrackingEventDataWithoutIDs data)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " addEventToSendLater " + data);
 #endif
         waitingList.AddLast(data);
@@ -393,7 +394,7 @@ public class RedMetricsManager : MonoBehaviour
 
     private void executeAndClearAllWaitingEvents()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " executeAndClearAllWaitingEvents");
 #endif
         foreach (TrackingEventDataWithoutIDs data in waitingList)
@@ -411,7 +412,7 @@ public class RedMetricsManager : MonoBehaviour
     public string getJsonString(object obj)
     {
         string dataAsJson = JsonUtility.ToJson(obj);
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " getJsonString(" + obj + ")=" + dataAsJson);
 #endif
         return dataAsJson;
@@ -419,23 +420,23 @@ public class RedMetricsManager : MonoBehaviour
 
     public void sendEvent(TrackingEventDataWithoutIDs data)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(string.Format ("{0} sendEvent({1})", this.GetType(), data));
 #endif
-        sendEvent(data.getEventType(), data.customData, data.userTime);
+        sendEvent(new TrackingEventDataWithIDs(gameSessionGUID, gameVersionGuid, data));
     }
 
     public void sendRichEvent(TrackingEvent trackingEvent, CustomData customData = null, string userTime = null)
     {
         string customDataString = null == customData ? "" : ", " + customData;
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " sendRichEvent(" + trackingEvent + customDataString);
 #endif
 
         CustomData context = getEventContext();
         if (customData != null)
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " merging from trackingEvent " + trackingEvent);
 #endif
             context.merge(customData);
@@ -459,18 +460,26 @@ public class RedMetricsManager : MonoBehaviour
 
     public void sendEvent(TrackingEvent trackingEvent, CustomData customData = null, string userTime = null)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log(string.Format ("{0} sendEvent({1}, {2}, {3})", this.GetType(), trackingEvent, customData, userTime));
+#endif
+        TrackingEventDataWithIDs data = new TrackingEventDataWithIDs(gameSessionGUID, gameVersionGuid, trackingEvent, customData);
+        sendEvent(data);
+    }
+
+    public void sendEvent(TrackingEventDataWithIDs data)
+    {
+#if VERBOSEDEBUG
+            Debug.Log(string.Format ("{0} sendEvent({1})", this.GetType(), data));
 #endif
         // test Application.internetReachability
 
         // // TODO: queue events that can't be sent during internet outage
         // TrackingEventDataWithoutIDs data = new TrackingEventDataWithoutIDs(trackingEvent, customData, userTime);
         // addEventToSendLater(data);
-
-        TrackingEventDataWithIDs data = new TrackingEventDataWithIDs(gameSessionGUID, gameVersionGuid, trackingEvent, customData);
+        
         string json = getJsonString(data);
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(
             string.Format (
                 this.GetType() + " sendEvent - _localPlayerGUID={0}, gameSessionGUID={1}, gameVersionGuid={2}, json={3}", 
@@ -478,7 +487,7 @@ public class RedMetricsManager : MonoBehaviour
                 )
             );
 #endif
-        sendData(redMetricsEvent, json, value => wwwLogger(value, "sendEvent(" + trackingEvent + ")"));
+        sendData(redMetricsEvent, json, value => wwwLogger(value, "sendEvent(" + data.type + ")"));
         //TODO pass data as parameter to sendDataStandalone so that it's serialized inside
     }
 
