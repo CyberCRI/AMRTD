@@ -1,5 +1,5 @@
 //#define QUICKTEST
-//#define DEVMODE
+//#define VERBOSEDEBUG
 using UnityEngine;
 
 #if QUICKTEST
@@ -65,7 +65,7 @@ public class LungsLevelTutorial : StepByStepTutorial
 
     protected override void end()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " override end");
 #endif
         base.end();

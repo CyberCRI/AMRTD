@@ -1,4 +1,5 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
+//#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -104,7 +105,7 @@ public class FocusMaskManager : MonoBehaviour
         , StepByStepTutorial.TUTORIALACTION action = StepByStepTutorial.TUTORIALACTION.FOCUSON
         )
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("focusOn1");
 #endif
         // Debug.Log(this.GetType() + " focusOn0 ExternalOnPressButton " + target.name);
@@ -129,7 +130,7 @@ public class FocusMaskManager : MonoBehaviour
         , StepByStepTutorial.TUTORIALACTION action = StepByStepTutorial.TUTORIALACTION.FOCUSON
         )
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("focusOn2");
 #endif
         if (null != target)
@@ -163,7 +164,7 @@ public class FocusMaskManager : MonoBehaviour
         , StepByStepTutorial.TUTORIALACTION action = StepByStepTutorial.TUTORIALACTION.FOCUSON
         )
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("focusOn3");
 #endif
         // Debug.Log(this.GetType() + " focusOn(GameObject go, Callback callback,...)");
@@ -188,7 +189,7 @@ public class FocusMaskManager : MonoBehaviour
         , StepByStepTutorial.TUTORIALACTION action = StepByStepTutorial.TUTORIALACTION.FOCUSON
         )
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("focusOn4");
         // Debug.Log(this.GetType() + " focusOn(GameObject go, Vector3 manualScale,...) - will compute GO position");
         // Debug.Log(this.GetType() + " GO " + go.name + " position " + go.transform.position);
@@ -205,7 +206,7 @@ public class FocusMaskManager : MonoBehaviour
 
             if (!isInterfaceObject)
             {
-#if DEVMODE
+#if VERBOSEDEBUG
                 Debug.Log(this.GetType() + " !isInterfaceObject");
 #endif
                 focusOn(
@@ -219,7 +220,7 @@ public class FocusMaskManager : MonoBehaviour
             }
             else
             {
-#if DEVMODE
+#if VERBOSEDEBUG
                 Debug.Log(this.GetType() + " isInterfaceObject");
 #endif
                 focusSystem.transform.SetParent(go.transform);
@@ -237,7 +238,7 @@ public class FocusMaskManager : MonoBehaviour
 
     private Vector2 getScreenPosition(Vector3 gameObjectPosition)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("getScreenPosition of " + gameObjectPosition);
 #endif
         Vector2 screenPosition = Vector2.zero;
@@ -253,7 +254,7 @@ public class FocusMaskManager : MonoBehaviour
             Debug.LogWarning("getScreenPosition: null gameObjectPosition");
         }
 
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("FocusMaskManager getScreenPosition(" + gameObjectPosition + ")\nresult=" + screenPosition);
 #endif
         return screenPosition;
@@ -293,7 +294,7 @@ public class FocusMaskManager : MonoBehaviour
         , StepByStepTutorial.TUTORIALACTION action = StepByStepTutorial.TUTORIALACTION.FOCUSON
         )
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("focusOn5");
         // Debug.Log(this.GetType() + " final stack focusOn(" + position + ")");
 #endif
@@ -356,7 +357,7 @@ public class FocusMaskManager : MonoBehaviour
 
     public void click()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " click");
 #endif
         if (!_isClicksBlocked)
@@ -443,7 +444,7 @@ public class FocusMaskManager : MonoBehaviour
         bool top = screenPos.y > maxScreenPos.y / 2;
         bool left = screenPos.x < maxScreenPos.x / 2;
 
-#if DEVMODE
+#if VERBOSEDEBUG
          Debug.Log("FocusMaskManager getQuadrant(" + screenPos + ") "
          + "\nscreenpos=" + screenPos + ", left=" + left + ", top=" + top
          + "\nscreenPos.x=" + screenPos.x + ", screenPos.y=" + screenPos.y

@@ -1,4 +1,5 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
+//#define DEVMODE
 //#define STATICTURRETCOUNTMODE
 #define STATICTURRETRESISTANCEPOINTSMODE
 //#define DYNAMICTURRETRESISTANCEPOINTSMODE
@@ -124,7 +125,7 @@ public class Turret : Attacker
     /// </summary>
     void OnMouseDown()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("Turret OnMouseDown");
 #endif
         if (!HelpButtonUI.instance.isHelpModeOn())

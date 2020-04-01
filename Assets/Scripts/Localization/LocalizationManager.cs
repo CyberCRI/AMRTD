@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -53,7 +53,7 @@ public class LocalizationManager : MonoBehaviour
             _languageIndex = value;
             _languageString = languages[(int)_languageIndex];
             StartCoroutine("loadStreamingAsset", _languageString + ".json");
-            //#if DEVMODE
+            //#if VERBOSEDEBUG
             //            Debug.Log("language set");
             //#endif
 
@@ -93,14 +93,14 @@ public class LocalizationManager : MonoBehaviour
 
     private void refreshUIElements(string debug = "")
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("refreshUIElements(" + debug + ")");
 #endif
 
         Canvas.ForceUpdateCanvases();
         if (null != uiRoot)
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log("ForceRebuildLayoutImmediate");
 #endif
             LayoutRebuilder.ForceRebuildLayoutImmediate(uiRoot);
@@ -111,7 +111,7 @@ public class LocalizationManager : MonoBehaviour
         {
             hlg[i].enabled = false;
         }
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(" hlg.Length=" + hlg.Length);
 #endif
 
@@ -120,7 +120,7 @@ public class LocalizationManager : MonoBehaviour
         {
             vlg[i].enabled = false;
         }
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(" vlg.Length=" + vlg.Length);
 #endif
 
@@ -139,7 +139,7 @@ public class LocalizationManager : MonoBehaviour
 
     void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log("onSceneLoaded: " + scene.name + " with mode " + mode);
 #endif        
         refreshUIElements("onSceneLoaded");
@@ -170,7 +170,7 @@ public class LocalizationManager : MonoBehaviour
     {
         localizedText = new Dictionary<string, string>();
         string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
-        //#if DEVMODE
+        //#if VERBOSEDEBUG
         //        Debug.Log(filePath);
         //#endif
 
@@ -192,7 +192,7 @@ public class LocalizationManager : MonoBehaviour
         {
             localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
         }
-        //#if DEVMODE
+        //#if VERBOSEDEBUG
         //        Debug.Log("Data loaded, dictionary contains: " + localizedText.Count + " entries");
         //#endif
 

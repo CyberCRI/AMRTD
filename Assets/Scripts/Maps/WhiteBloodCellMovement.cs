@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +16,7 @@ public class WhiteBloodCellMovement : WobblyMovement
     private static Transform bloodUnder = null;
     private bool disappearing = false;
 
-#if DEVMODE
+#if VERBOSEDEBUG
     public WBCACTION action = WBCACTION.NONE;
 
     public enum WBCACTION
@@ -48,7 +48,7 @@ public class WhiteBloodCellMovement : WobblyMovement
         // set target if needed
         if (null != targetTransform) // chasing
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             action = WBCACTION.CHASING;
 #endif
             hasReachedTarget = false;
@@ -57,7 +57,7 @@ public class WhiteBloodCellMovement : WobblyMovement
         }
         else if ((!disappearing) && (Vector3.zero == target)) // idle
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             action = WBCACTION.IDLE;
 #endif
             hasReachedTarget = false;
@@ -104,7 +104,7 @@ public class WhiteBloodCellMovement : WobblyMovement
     {
         WhiteBloodCellManager.instance.reportDeath(index);
 
-#if DEVMODE
+#if VERBOSEDEBUG
             action = WBCACTION.DISAPPEARING;
 #endif
 

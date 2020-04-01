@@ -1,4 +1,4 @@
-//#define DEVMODE
+//#define VERBOSEDEBUG
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +17,7 @@ public abstract class IndicatedProgressBarUI : MonoBehaviour
     private bool isLerpInProgress = false;
 
     // for auto-animation of the bar, to test independently from real game mechanics
-#if DEVMODE
+#if VERBOSEDEBUG
     [SerializeField]
     private float maxValue = 120f;
     [SerializeField]
@@ -39,7 +39,7 @@ public abstract class IndicatedProgressBarUI : MonoBehaviour
     void Update()
     {
 
-#if DEVMODE
+#if VERBOSEDEBUG
         currentValue += Time.deltaTime;
         setFillAmount(currentValue/maxValue);
 #else

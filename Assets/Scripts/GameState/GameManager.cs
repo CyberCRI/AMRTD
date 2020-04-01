@@ -1,4 +1,5 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
+//#define DEVMODE
 //#define LIFEPOINTSMODE
 using UnityEngine;
 using UnityEngine.UI;
@@ -183,7 +184,7 @@ public class GameManager : MonoBehaviour
         return Time.timeScale == 0f;
     }
 
-#if DEVMODE
+#if VERBOSEDEBUG
     private void injureAllEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(Enemy.enemyTag);

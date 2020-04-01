@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
 //#define MUTATIONONDIVISION
 using UnityEngine;
 using UnityEngine.UI;
@@ -222,7 +222,7 @@ public class Enemy : MonoBehaviour
             //_resistanceEffectInstance.emission.rateOverTime = emissionRate;
             ParticleSystem.EmissionModule em = _resistanceEffectInstance.emission;
             em.rateOverTime = factor * maxEmissionRate;
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log("setResistanceEffectEmissionRate " + em.rateOverTime);
 #endif
 
@@ -247,7 +247,7 @@ public class Enemy : MonoBehaviour
                 }
             );
             Invoke("cancelBursts", CommonUtilities.getEffectMaxDuration(_resistanceEffectInstance));
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log("doResistanceEffectBurst " + particleCount);
 #endif
         }
@@ -255,7 +255,7 @@ public class Enemy : MonoBehaviour
 
     private void cancelBursts()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("cancelBursts");
 #endif
         if (null != _resistanceEffectInstance)
@@ -268,7 +268,7 @@ public class Enemy : MonoBehaviour
 
     public void showResistance()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("showResistance");
 #endif
         bool instantiateResistanceEffect = false;
@@ -286,7 +286,7 @@ public class Enemy : MonoBehaviour
                 scale = 1f - resistances[antibioticIndex];
             }
             /*
-            #if DEVMODE
+            #if VERBOSEDEBUG
                         Debug.Log("Enemy: " + this.gameObject.name
                             + " ABi: " + antibioticIndex
                             + " scale: " + scale
@@ -294,7 +294,7 @@ public class Enemy : MonoBehaviour
             #endif
             */
             instantiateResistanceEffect = instantiateResistanceEffect || (0f != scale);
-#if DEVMODE
+#if VERBOSEDEBUG
             showAntibioticResistanceIndicator(substance, 0f != scale, scale);
 #endif
         }
@@ -429,7 +429,7 @@ public class Enemy : MonoBehaviour
         , float[] _resistances
         )
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(string.Format("Enemy::initialize({0}, {1}, {2}, {3})",
             //_wave,
             _reward,

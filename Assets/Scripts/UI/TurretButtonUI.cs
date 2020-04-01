@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +11,7 @@ public class TurretButtonUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         string[] split = this.gameObject.name.Split('_');
         description.text = split[split.Length-1];
         

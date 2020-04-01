@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +10,7 @@ public class WaveSpawner : MonoBehaviour
     public static int enemiesAliveCount = 0;
     public static Enemy[] enemiesAlive = new Enemy[0];
 
-#if DEVMODE
+#if VERBOSEDEBUG
     [SerializeField]
 #endif
     private int waveIndex = 0;

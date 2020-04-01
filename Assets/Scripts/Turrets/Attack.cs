@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
 using UnityEngine;
 
 // temporary class, will be turned into a ScriptableObject
@@ -192,7 +192,7 @@ public class Attack : MonoBehaviour
     {
         if (onEnemy)
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             enemy.showAntibioticAttackIndicator(substance, true);
 #endif
 
@@ -224,7 +224,7 @@ public class Attack : MonoBehaviour
             remainingDurationCountdown -= Time.deltaTime;
             if (remainingDurationCountdown <= 0)
             {
-#if DEVMODE
+#if VERBOSEDEBUG
 //                Debug.Log("Attack is over:" + substance);
                 enemy.showAntibioticAttackIndicator(substance, false);
 #endif

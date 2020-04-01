@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,7 +51,7 @@ public class Attacker : MonoBehaviour
 
         if (_target == null)
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log("Target was apparently shot down recently");
 #endif
             firstAttack = true;
@@ -60,7 +60,7 @@ public class Attacker : MonoBehaviour
         {
             if (firstAttack || !doesKnowTarget || (null == enemyAttack))
             {
-#if DEVMODE
+#if VERBOSEDEBUG
 //                Debug.Log("strikeAttack first attack");
 #endif
                 Attack[] enemyAttacks = _target.GetComponents<Attack>();
@@ -69,7 +69,7 @@ public class Attacker : MonoBehaviour
                     if (eAttack.substance == modelAttack.substance)
                     {
                         _enemyAttack = eAttack;
-#if DEVMODE
+#if VERBOSEDEBUG
 //                        Debug.Log("Found matching attack " + eAttack.substance);
 #endif
                         break;

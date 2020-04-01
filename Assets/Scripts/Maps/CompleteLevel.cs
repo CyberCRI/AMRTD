@@ -1,4 +1,4 @@
-﻿#define DEVMODE
+﻿#define VERBOSEDEBUG
 using System;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -39,6 +39,9 @@ public class CompleteLevel : MonoBehaviour
         {
             nextLevelName = overrideNextLevelName;
             nextLevelIndex = overrideNextLevelIndex;
+#if VERBOSEDEBUG
+            Debug.Log(string.Format(this.GetType() + " Start read nextLevelName={0}, nextLevelIndex={1}", nextLevelName, nextLevelIndex));
+#endif
         }
         else
         {
@@ -56,8 +59,8 @@ public class CompleteLevel : MonoBehaviour
                 nextLevelIndex = currentLevelNumber % (LevelSelector.gameLevelCount);
                 nextLevelName = "Level" + (nextLevelIndex + 1).ToString();
                 m = m.NextMatch();
-#if DEVMODE
-                Debug.Log(this.GetType() + " Start nextLevelName=" + nextLevelName);
+#if VERBOSEDEBUG
+            Debug.Log(string.Format(this.GetType() + " Start computed nextLevelName={0}, nextLevelIndex={1}", nextLevelName, nextLevelIndex));
 #endif
             }
             else

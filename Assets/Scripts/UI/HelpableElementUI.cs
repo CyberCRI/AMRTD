@@ -1,4 +1,4 @@
-//#define DEVMODE
+//#define VERBOSEDEBUG
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +9,7 @@ public class HelpableElementUI : HelpableElementGeneric, IPointerDownHandler
 {
     public void OnPointerDown(PointerEventData eventData)
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("HelpableElementUI: OnPointerDown: " + eventData.pointerCurrentRaycast.gameObject.name);
 #endif
         click();

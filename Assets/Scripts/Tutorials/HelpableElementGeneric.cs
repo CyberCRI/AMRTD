@@ -9,7 +9,7 @@ public class HelpableElementGeneric : MonoBehaviour
 
     protected void click()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("HelpableElementGeneric: click " + this.gameObject.name);
 #endif
 
@@ -17,7 +17,7 @@ public class HelpableElementGeneric : MonoBehaviour
         {
             string code = string.IsNullOrEmpty(codeStem)? this.gameObject.name.ToUpper() : codeStem;
             code = "GAME." + code + ".HELP";
-#if DEVMODE
+#if VERBOSEDEBUG
             Debug.Log("HelpableElementGeneric: code: " + code);
 #endif
 

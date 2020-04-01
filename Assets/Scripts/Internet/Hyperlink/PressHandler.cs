@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
 
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,7 +14,7 @@ public class PressHandler : MonoBehaviour, IPointerDownHandler
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.gameObject.name + " " + this.GetType() + " OnPointerDown");
 #endif
         if (!HelpButtonUI.instance.isHelpModeOn())

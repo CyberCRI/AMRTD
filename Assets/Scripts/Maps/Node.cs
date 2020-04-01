@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
 #define SELLTURRETS
 //#define TURRETLIFETIME
 #define STATICTURRETRESISTANCEPOINTSMODE
@@ -87,7 +87,7 @@ public class Node : MonoBehaviour
     /// </summary>
     void OnMouseDown()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("Node OnMouseDown");
 #endif
         if (!HelpButtonUI.instance.isHelpModeOn())
@@ -98,7 +98,7 @@ public class Node : MonoBehaviour
 
     public void manageClick()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("Node manageClick");
 #endif
         if (!EventSystem.current.IsPointerOverGameObject())
@@ -302,7 +302,7 @@ public class Node : MonoBehaviour
     public void renewTurret()
     {
 #if TURRETLIFETIME
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("renewTurret");
 #endif
         turret.renew();

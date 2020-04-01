@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
 
 using System.Collections;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ public class GameUI : MonoBehaviour
 
     public void pressPauseButton()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("GameUI pressPauseButton");
 #endif
         PauseUI.instance.toggle();

@@ -1,3 +1,4 @@
+//#define VERBOSEDEBUG
 //#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
@@ -52,7 +53,7 @@ public class HelpButtonUI : MonoBehaviour
 
     public void toggleHelpMode()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("toggleHelpMode");
 #endif
         // must be called before cursor setting, otherwise cancels it
@@ -67,7 +68,7 @@ public class HelpButtonUI : MonoBehaviour
 
     public void hasClickedOnHelpable()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log("hasClickedOnHelpable");
 #endif
         toggle.isOn = false;

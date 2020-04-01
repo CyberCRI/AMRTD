@@ -1,4 +1,5 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
+//#define DEVMODE
 using UnityEngine;
 
 public abstract class StepByStepTutorial : MonoBehaviour
@@ -62,7 +63,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
 
     public void next()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " next");
         printDebug("next1");
 #endif
@@ -71,7 +72,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
         waited = 0f;
         stepIndex++;
 
-#if DEVMODE
+#if VERBOSEDEBUG
         printDebug("next2");
 #endif
     }
@@ -93,7 +94,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
 
     protected void Awake()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         //Debug.Log(this.GetType() + "Awake");
         printDebug("Awake");
 #endif
@@ -132,7 +133,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         if (Input.GetKeyDown(KeyCode.D))
         {
             printDebug("Update");
@@ -204,7 +205,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
 
     protected virtual void end()
     {
-#if DEVMODE
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " virtual end");
 #endif
         focusMaskManager.stopFocusOn();

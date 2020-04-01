@@ -1,4 +1,4 @@
-﻿//#define DEVMODE
+﻿//#define VERBOSEDEBUG
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,7 +36,7 @@ public class LevelSelector : MonoBehaviour
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
-#if DEVMODE
+#if VERBOSEDEBUG
             levelButtons[i].interactable = true;
 #else
             levelButtons[i].interactable = (i <= levelReached);
