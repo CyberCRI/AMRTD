@@ -46,6 +46,7 @@ public class LevelSelector : MonoBehaviour
 
     public void select(string levelName)
     {
+        RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKLEVEL, new CustomData (CustomDataTag.GAMELEVEL, levelName));
         SceneFader.instance.fadeTo(levelName);
     }
 

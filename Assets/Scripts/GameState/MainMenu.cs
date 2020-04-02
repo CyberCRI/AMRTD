@@ -15,11 +15,13 @@ public class MainMenu : MonoBehaviour
 
     public void play()
     {
+        RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKPLAY);
         SceneFader.instance.fadeTo(LevelSelector.sceneName);
     }
 
     public void quit()
     {
+        RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKQUIT);
         Application.Quit();
     }
 }
