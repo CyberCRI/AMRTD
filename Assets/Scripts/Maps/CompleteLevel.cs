@@ -72,12 +72,19 @@ public class CompleteLevel : MonoBehaviour
                 Debug.LogError("error while processing level index from current scene name " + currentScene);
             }
         }
-        GameConfiguration.instance.reachedLevel(nextLevelIndex);
+        GameConfiguration.instance.reachedLevel(nextLevelIndex, nextLevelName);
     }
 
     public void completeLevel()
     {
-        RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, new CustomData(CustomDataTag.GAMELEVEL, SceneManager.GetActiveScene().name.ToLowerInvariant()));
+        string sceneName = SceneManager.GetActiveScene().name.ToLowerInvariant();
+        RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, new CustomData(CustomDataTag.GAMELEVEL, sceneName));
+        // TODO assumes linear unlocking of levels
+        if (LevelSelectionUI.lastScene.ToLowerInvariant() == sceneName)
+        {
+            RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETEGAME);
+        }
+
         this.gameObject.SetActive(true);
     }
 

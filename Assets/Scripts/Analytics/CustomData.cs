@@ -30,9 +30,16 @@ public class CustomData : Dictionary<string, string>
     {
     }
 
-    public void Add(CustomDataTag tag, string value)
+    public CustomData add(CustomDataTag tag, string value)
     {
-        Add(tag.ToString().ToLowerInvariant(), value);
+        this.Add(tag.ToString().ToLowerInvariant(), value);
+        return this;
+    }
+
+    public CustomData add(CustomDataTag tag, CustomDataValue value)
+    {
+        add(tag, value.ToString().ToLowerInvariant());
+        return this;
     }
 
     public static CustomData merge(CustomData data1, CustomData data2)

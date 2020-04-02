@@ -1,8 +1,10 @@
 public enum CustomDataValue
 {
-    // sound states
+    // generic states
     ON,
     OFF,
+    SUCCESS,
+    FAILURE,
 
     // main menu entries
     START,

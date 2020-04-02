@@ -9,6 +9,7 @@ public class FocusMaskClickInterceptor : MonoBehaviour, IPointerDownHandler
 #if VERBOSEDEBUG
         Debug.Log("FocusMaskClickInterceptor OnPointerDown");
 #endif
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKFOCUSHOLE);
         FocusMaskManager.instance.click();
     }
 }

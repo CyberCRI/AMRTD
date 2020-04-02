@@ -90,6 +90,7 @@ public class Node : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log("Node OnMouseDown");
 #endif
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTILE, new CustomData(CustomDataTag.ELEMENT, this.gameObject.name));
         if (!HelpButtonUI.instance.isHelpModeOn())
         {
             manageClick();
@@ -105,6 +106,7 @@ public class Node : MonoBehaviour
         {
             if (turretGO != null)
             {
+                RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWER, new CustomData(CustomDataTag.ELEMENT, turretGO.name));
                 buildManager.selectNode(this);
                 unhover();
             }
@@ -112,12 +114,17 @@ public class Node : MonoBehaviour
             {
                 if (buildManager.canBuild)
                 {
+                    TurretBlueprint blueprint = buildManager.getTurretToBuild();
                     if (buildManager.canBuy)
                     {
-                        buildTurret(buildManager.getTurretToBuild());
+                        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD, 
+                            new CustomData(CustomDataTag.ELEMENT, blueprint.prefab.name).add(CustomDataTag.OUTCOME, CustomDataValue.SUCCESS));
+                        buildTurret(blueprint);
                     }
                     else
                     {
+                        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD, 
+                            new CustomData(CustomDataTag.ELEMENT, blueprint.prefab.name).add(CustomDataTag.OUTCOME, CustomDataValue.FAILURE));
                         GameObject effect = (GameObject)Instantiate(
                             cantPayBuildEffect,
                             this.transform.position,

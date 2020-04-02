@@ -355,6 +355,15 @@ public class FocusMaskManager : MonoBehaviour
         GameManager.instance.setPause(keepDisplayed);
     }
 
+    public void clickNext()
+    {
+#if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " clickNext");
+#endif
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKNEXT);
+        click();
+    }
+
     public void click()
     {
 #if VERBOSEDEBUG

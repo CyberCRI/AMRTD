@@ -5269,10 +5269,10 @@ RectTransform:
   m_Father: {fileID: 1283043318359841386}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 45, y: -30.936499}
+  m_SizeDelta: {x: 90, y: 61.872997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1283043319637428873
 CanvasRenderer:
@@ -5413,10 +5413,10 @@ RectTransform:
   m_Father: {fileID: 1283043318359841386}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 135, y: -30.936499}
+  m_SizeDelta: {x: 90, y: 61.872997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1283043319651775448
 CanvasRenderer:
@@ -7826,7 +7826,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4667713602696362400}
-        m_MethodName: click
+        m_MethodName: clickNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9573,10 +9573,10 @@ RectTransform:
   m_Father: {fileID: 1283043318359841386}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 225, y: -30.936499}
+  m_SizeDelta: {x: 90, y: 61.872997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &874685193301462318
 CanvasRenderer:

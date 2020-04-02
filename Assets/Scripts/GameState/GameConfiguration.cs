@@ -148,17 +148,24 @@ public class GameConfiguration : MonoBehaviour
             // }
         }
     }
-    public void reachedLevel(int value)
+
+    // call only when a level is completed, not to set _furthestLevelReached
+    public void reachedLevel(int value, string levelName)
     {
         if (value > _furthestLevelReached.val)
         {
+#if VERBOSEDEBUG
             Debug.Log(this.GetType() + " reachedLevel setting furthestLevel to " + value);
+#endif
+            RedMetricsManager.instance.sendEvent(TrackingEvent.NEWFURTHEST, new CustomData(CustomDataTag.GAMELEVEL, levelName).add(CustomDataTag.ELEMENT, value.ToString()));
             _furthestLevelReached.val = value;
         }
+#if VERBOSEDEBUG
         else
         {
-            Debug.LogWarning(this.GetType() + " reachedLevel tried to update furthestLevel to " + value + " <= " + _furthestLevelReached.val);
+            Debug.Log(this.GetType() + " reachedLevel already reached level " + value + " <= " + _furthestLevelReached.val);
         }
+#endif
     }
 
     private BoolConfigurationParameter _isAdmin = new BoolConfigurationParameter(_adminStartValue, _adminDefaultValue, _isAdminKey);

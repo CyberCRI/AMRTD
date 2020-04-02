@@ -86,6 +86,8 @@ public class NodeUI : MonoBehaviour
 
     public void upgrade()
     {
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERUPGRADE, 
+            new CustomData(CustomDataTag.ELEMENT, targetNode.turret.gameObject.name).add(CustomDataTag.COST, targetNode.turretBlueprint.upgradeCost.ToString()));
         targetNode.upgradeTurret();
         BuildManager.instance.deselectNode();
         BuildManager.instance.deselectTurretButton();
@@ -93,6 +95,8 @@ public class NodeUI : MonoBehaviour
 
     public void sell()
     {
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERSELL, 
+            new CustomData(CustomDataTag.ELEMENT, targetNode.turret.gameObject.name).add(CustomDataTag.COST, targetNode.getSellCost().ToString()));
         targetNode.sellTurret();
         BuildManager.instance.deselectNode();
         BuildManager.instance.deselectTurretButton();

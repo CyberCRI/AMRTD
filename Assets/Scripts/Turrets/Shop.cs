@@ -71,17 +71,27 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
+    private void innerClickTurret(TurretBlueprint[] array, Attack.SUBSTANCE substance, Toggle button = null)
+    {
+        TurretBlueprint blueprint = array[(int)substance];
+
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUTTON, 
+            new CustomData(CustomDataTag.ELEMENT, blueprint.prefab.name).add(CustomDataTag.COST, blueprint.cost.ToString()));
+        
+        buildManager.selectTurretToBuild(blueprint, button);
+    }
+
     public void selectStandardTurret(Toggle button = null)
     {
-        selectABTabletTurret((int)Attack.SUBSTANCE.COUNT, button);
+        innerClickTurret(tabletTurrets, Attack.SUBSTANCE.COUNT, button);
     }
     public void selectMissileLauncher(Toggle button = null)
     {
-        selectABPillsBottleTurret((int)Attack.SUBSTANCE.COUNT, button);
+        innerClickTurret(pillsBottleTurrets, Attack.SUBSTANCE.COUNT, button);
     }
     public void selectLaserBeamer(Toggle button = null)
     {
-        selectABSyringeTurret((int)Attack.SUBSTANCE.COUNT, button);
+        innerClickTurret(syringeTurrets, Attack.SUBSTANCE.COUNT, button);
     }
 
     // active

@@ -1,4 +1,5 @@
 ﻿//#define VERBOSEDEBUG
+//#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,10 @@ public class LevelSelectionUI : MonoBehaviour
     [SerializeField]
     private Transform levelButtonsRoot = null;
     private Button[] levelButtons = null;
+
+    // TODO un-hardcode these
     public const int gameLevelCount = 7;
+    public const string lastScene = "Level8_Lungs";
 
     void Awake()
     {
@@ -36,7 +40,7 @@ public class LevelSelectionUI : MonoBehaviour
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
-#if VERBOSEDEBUG
+#if DEVMODE
             levelButtons[i].interactable = true;
 #else
             levelButtons[i].interactable = (i <= levelReached);

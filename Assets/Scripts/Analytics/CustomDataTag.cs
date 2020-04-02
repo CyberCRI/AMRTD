@@ -17,6 +17,9 @@ public enum CustomDataTag
     OPTION,             // generic tag
     STATE,              // generic tag
     ELEMENT,            // generic tag
+    OUTCOME,            // generic tag
+
+    COST,
 
     CONTROLS,
     LANGUAGE,

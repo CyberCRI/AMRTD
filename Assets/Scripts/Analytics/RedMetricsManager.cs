@@ -356,7 +356,7 @@ public class RedMetricsManager : MonoBehaviour
     {
         //TODO manage GLOBALPLAYERGUID
         CustomData guidCD = new CustomData(CustomDataTag.LOCALPLAYERGUID, _localPlayerGUID);
-        guidCD.Add(CustomDataTag.PLATFORM, Application.platform.ToString().ToLowerInvariant());
+        guidCD.add(CustomDataTag.PLATFORM, Application.platform.ToString().ToLowerInvariant());
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " generated guidCD=" + guidCD);
 #endif
@@ -440,13 +440,13 @@ public class RedMetricsManager : MonoBehaviour
     public CustomData getEventContext()
     {
         CustomData context = new CustomData(CustomDataTag.GAMELEVEL, SceneManager.GetActiveScene().name.ToLowerInvariant());
-        context.Add(CustomDataTag.LANGUAGE, LocalizationManager.instance.getLanguageString().ToLowerInvariant());
+        context.add(CustomDataTag.LANGUAGE, LocalizationManager.instance.getLanguageString().ToLowerInvariant());
         if (null != PlayerStatistics.instance)
         {
-            context.Add(CustomDataTag.LIVES, PlayerStatistics.instance.lives.ToString());
-            context.Add(CustomDataTag.FUNDS, PlayerStatistics.instance.money.ToString());
-            context.Add(CustomDataTag.RESISTANCE, PlayerStatistics.instance.resistancePoints.ToString());
-            context.Add(CustomDataTag.WAVES, PlayerStatistics.instance.waves.ToString());
+            context.add(CustomDataTag.LIVES, PlayerStatistics.instance.lives.ToString());
+            context.add(CustomDataTag.FUNDS, PlayerStatistics.instance.money.ToString());
+            context.add(CustomDataTag.RESISTANCE, PlayerStatistics.instance.resistancePoints.ToString());
+            context.add(CustomDataTag.WAVES, PlayerStatistics.instance.waves.ToString());
         }
         return context;
     }
