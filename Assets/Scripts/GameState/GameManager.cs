@@ -135,7 +135,6 @@ public class GameManager : MonoBehaviour
     public void linkUI(
         Text _levelDurationCountdownMode
         , GameObject _gameOverUI
-        , GameObject _completeLevelUI
         )
     {
         if (levelDurationCountdownMode)
@@ -148,7 +147,6 @@ public class GameManager : MonoBehaviour
         }
 
         gameOverUI = _gameOverUI;
-        completeLevelUI = _completeLevelUI;
     }
 
     public void loseLevel()
@@ -165,7 +163,7 @@ public class GameManager : MonoBehaviour
         if (!isLevelLost)
         {
             isLevelWon = true;
-            completeLevelUI.SetActive(true);
+            CompleteLevel.instance.completeLevel();
         }
     }
 

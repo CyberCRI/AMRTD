@@ -14,8 +14,6 @@ public class GameUILinkerUI : MonoBehaviour
     [SerializeField]
     private GameObject gameOverUI = null;
     [SerializeField]
-    private GameObject completeLevelUI = null;
-    [SerializeField]
     private GameObject menuUI = null;
     [SerializeField]
     private GameObject pauseUI = null;
@@ -28,7 +26,6 @@ public class GameUILinkerUI : MonoBehaviour
         GameManager.instance.linkUI(
             levelDurationCountdownText
             ,gameOverUI
-            ,completeLevelUI
             );
         BuildManager.instance.linkUI(nodeUI);
         MenuUI.instance.linkUI(menuUI);

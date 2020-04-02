@@ -56,6 +56,10 @@ public class HelpButtonUI : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log("toggleHelpMode");
 #endif
+        // indicates what the state of the game was when clicked on
+        CustomDataValue customDataValue = selected ? CustomDataValue.ON : CustomDataValue.OFF;
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKHELP, new CustomData(CustomDataTag.STATE, customDataValue));
+
         // must be called before cursor setting, otherwise cancels it
         BuildManager.instance.deselectTurretButton();
         selected = !selected;

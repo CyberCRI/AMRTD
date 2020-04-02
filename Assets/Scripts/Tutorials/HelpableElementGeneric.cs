@@ -15,8 +15,11 @@ public class HelpableElementGeneric : MonoBehaviour
 
         if (HelpButtonUI.instance.isHelpModeOn())
         {
-            string code = string.IsNullOrEmpty(codeStem)? this.gameObject.name.ToUpper() : codeStem;
-            code = "GAME." + code + ".HELP";
+            string objectCode = string.IsNullOrEmpty(codeStem)? this.gameObject.name.ToUpper() : codeStem;
+
+            RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKHELPON, new CustomData(CustomDataTag.ELEMENT, objectCode));
+
+            string code = "GAME." + objectCode + ".HELP";
 #if VERBOSEDEBUG
             Debug.Log("HelpableElementGeneric: code: " + code);
 #endif

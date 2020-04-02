@@ -42,4 +42,10 @@ public class PauseUI : MonoBehaviour
         GameManager.instance.togglePause();
         pauseUI.SetActive(GameManager.instance.isPaused());
     }
+
+    public void setActive(bool active)
+    {
+        GameManager.instance.setPause(active);
+        pauseUI.SetActive(active);
+    }
 }

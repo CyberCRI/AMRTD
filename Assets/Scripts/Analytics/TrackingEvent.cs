@@ -1,3 +1,5 @@
+using UnityEngine;
+
 //TODO: set version number
 public enum TrackingEvent
 {
@@ -17,6 +19,7 @@ public enum TrackingEvent
     PRESSLOSECHEAT, //[ ]         // using the keyboard shortcut
     CLICKRESET, //[ ]
     CLICKUNLOCK, //[ ]
+    CUSTOMDEBUG, //[ ]            // to send manual custom messages
 
     // main screen
     CLICKPLAY, //[x]
@@ -24,22 +27,27 @@ public enum TrackingEvent
 
     // level selection screen
     CLICKLEVEL, //[x]
-    CLICKBACK, //[ ]
+    CLICKBACK, //[x]
 
     // any level
-    CLICKMENU, //[ ]
-    CLICKMENURESUME, //[ ]
-    CLICKMENUMENU, //[ ]
+    CLICKMENU, //[x]
+    CLICKMENURESUME, //[x]
+    CLICKMENUMENU, //[x]
 
-    CLICKPAUSE, //[ ]
-    CLICKPAUSERESUME, //[ ]
+    CLICKPAUSE, //[x]
+    CLICKPAUSERESUME, //[x]
 
-    CLICKRETRY, //[ ]
-    CLICKRETRYRESUME, //[ ]
-    CLICKRETRYRETRY, //[ ]
+    CLICKRETRY, //[x]
+    CLICKRETRYRESUME, //[x]
+    CLICKRETRYRETRY, //[x]
 
-    CLICKHELP, //[ ]
-    CLICKHELPON, //[ ]
+    COMPLETELEVEL, //[x]             // event auto-sent when completing
+    CLICKCOMPLETECOMPLETE, //[x]
+    CLICKCOMPLETERETRY, //[x]
+    CLICKCOMPLETEMENU, //[x]
+
+    CLICKHELP, //[x]                 // parameter ON or OFF depending on state of game _when called_
+    CLICKHELPON, //[x]
 
     CLICKNEXT, //[ ]
     CLICKFOCUSHOLE, //[ ]
@@ -52,8 +60,7 @@ public enum TrackingEvent
     CLICKTOWERBUTTON, //[ ]
     CLICKTOWERBUILD, //[ ]
 
-    COMPLETELEVEL, //[ ]
-    COMPLETE, //[ ]           // successfully finished the game
+    COMPLETEGAME, //[ ]       // successfully finished the game
     REACH, //[ ]              // reached a new level
     NEWFURTHEST, //[ ]        // reached a new furthest level
     NEWOWNRECORD, //[ ]       // beat own best completion time on a level

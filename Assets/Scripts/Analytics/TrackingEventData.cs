@@ -61,6 +61,11 @@ public abstract class TrackingEventData
         customData = (null == _customData || 0 == _customData.Count) ? "" : _customData.ToJSONString();
     }
 
+    public void mergeCustomData(CustomData _customData)
+    {
+        setCustomData(CustomData.merge(innerCustomData, _customData));
+    }
+
     public TrackingEvent getEventType()
     {
         return innerEventType;

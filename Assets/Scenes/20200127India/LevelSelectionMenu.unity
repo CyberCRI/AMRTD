@@ -131,7 +131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ade2a51b2d8494eb9cd3f4f988a850, type: 3}
+  m_Script: {fileID: 11500000, guid: 5898d8e53074f8e4cb15a670110339ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &325288036
@@ -475,6 +475,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 987480175208448890, guid: ef70364507601c44b80a4b1f9cd28d16,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957179004735846384, guid: ef70364507601c44b80a4b1f9cd28d16,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3882832720350532127, guid: ef70364507601c44b80a4b1f9cd28d16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -537,6 +547,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef70364507601c44b80a4b1f9cd28d16, type: 3}
+--- !u!114 &2450617168609298451 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1957179003613735754, guid: ef70364507601c44b80a4b1f9cd28d16,
+    type: 3}
+  m_PrefabInstance: {fileID: 2450617168609298450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef41452d8925d3448bc3c56a9c457bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3523915887676753920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -723,7 +745,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2450617168609298451}
+    - target: {fileID: 3523915888460960681, guid: 6aff46ed78f44cd4aa99bc1583c3ec5b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: menu
       objectReference: {fileID: 0}
+    - target: {fileID: 3523915888460960681, guid: 6aff46ed78f44cd4aa99bc1583c3ec5b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523915888460960681, guid: 6aff46ed78f44cd4aa99bc1583c3ec5b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CommonCallerScreenUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523915888460960681, guid: 6aff46ed78f44cd4aa99bc1583c3ec5b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 293904346}
     - target: {fileID: 4757169467409938983, guid: 6aff46ed78f44cd4aa99bc1583c3ec5b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -14,7 +14,9 @@ public enum CustomDataTag
     WAVES,              // waves of pathogens that already happened
     GAMELEVEL,          // game level ie scenario, map being played
 
-    OPTION,
+    OPTION,             // generic tag
+    STATE,              // generic tag
+    ELEMENT,            // generic tag
 
     CONTROLS,
     LANGUAGE,

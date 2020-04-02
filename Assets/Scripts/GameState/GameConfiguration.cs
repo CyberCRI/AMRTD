@@ -61,7 +61,7 @@ public class GameConfiguration : MonoBehaviour
 #endif
         if (null == _bestTimes)
         {
-            _bestTimes = new FloatConfigurationParameter[LevelSelector.gameLevelCount];
+            _bestTimes = new FloatConfigurationParameter[LevelSelectionUI.gameLevelCount];
             for (int index = 0; index < _bestTimes.Length; index++)
             {
 #if VERBOSEDEBUG

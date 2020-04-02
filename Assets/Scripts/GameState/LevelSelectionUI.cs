@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelector : MonoBehaviour
+public class LevelSelectionUI : MonoBehaviour
 {
-    public static LevelSelector instance = null;
+    public static LevelSelectionUI instance = null;
 
     public const string sceneName = "LevelSelectionMenu";
 
@@ -48,6 +48,12 @@ public class LevelSelector : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKLEVEL, new CustomData (CustomDataTag.GAMELEVEL, levelName));
         SceneFader.instance.fadeTo(levelName);
+    }
+    // called from level selection screen, to go back to main menu screen
+    public void pressBackButton()
+    {
+        RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKBACK);
+        SceneFader.instance.goToMainMenu();
     }
 
     public static void lockAllLevels()

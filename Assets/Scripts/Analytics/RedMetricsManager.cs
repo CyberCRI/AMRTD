@@ -1,4 +1,5 @@
 #define VERBOSEDEBUG
+#define VERBOSEMETRICS
 
 using UnityEngine;
 using System.Collections;
@@ -338,7 +339,7 @@ public class RedMetricsManager : MonoBehaviour
     private void sendStartEventWithPlayerGUID()
     {
 #if VERBOSEDEBUG
-        Debug.Log(this.GetType() + " sendStartEventWithPlayerGUID with string.IsNullOrEmpty(_localPlayerGUID)="+string.IsNullOrEmpty(_localPlayerGUID));
+        Debug.Log(this.GetType() + " sendStartEventWithPlayerGUID with string.IsNullOrEmpty(_localPlayerGUID)=" + string.IsNullOrEmpty(_localPlayerGUID));
 #endif
         if (string.IsNullOrEmpty(_localPlayerGUID))
         {
@@ -418,18 +419,10 @@ public class RedMetricsManager : MonoBehaviour
         return dataAsJson;
     }
 
-    public void sendEvent(TrackingEventDataWithoutIDs data)
-    {
-#if VERBOSEDEBUG
-            Debug.Log(string.Format ("{0} sendEvent({1})", this.GetType(), data));
-#endif
-        sendEvent(new TrackingEventDataWithIDs(gameSessionGUID, gameVersionGuid, data));
-    }
-
     public void sendRichEvent(TrackingEvent trackingEvent, CustomData customData = null, string userTime = null)
     {
-        string customDataString = null == customData ? "" : ", " + customData;
 #if VERBOSEDEBUG
+        string customDataString = null == customData ? "" : ", " + customData;
         Debug.Log(this.GetType() + " sendRichEvent(" + trackingEvent + customDataString);
 #endif
 
@@ -461,28 +454,50 @@ public class RedMetricsManager : MonoBehaviour
     public void sendEvent(TrackingEvent trackingEvent, CustomData customData = null, string userTime = null)
     {
 #if VERBOSEDEBUG
-            Debug.Log(string.Format ("{0} sendEvent({1}, {2}, {3})", this.GetType(), trackingEvent, customData, userTime));
+        Debug.Log(string.Format("{0} sendEvent({1}, {2}, {3})", this.GetType(), trackingEvent, customData, userTime));
 #endif
         TrackingEventDataWithIDs data = new TrackingEventDataWithIDs(gameSessionGUID, gameVersionGuid, trackingEvent, customData);
         sendEvent(data);
     }
 
+    public void sendEvent(TrackingEventDataWithoutIDs data)
+    {
+#if VERBOSEDEBUG
+        Debug.Log(string.Format("{0} sendEvent({1})", this.GetType(), data));
+#endif
+        sendEvent(new TrackingEventDataWithIDs(gameSessionGUID, gameVersionGuid, data));
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // paradigm: sends action performed or state of game when function is called, not desired state of game or planned action
+
     public void sendEvent(TrackingEventDataWithIDs data)
     {
 #if VERBOSEDEBUG
-            Debug.Log(string.Format ("{0} sendEvent({1})", this.GetType(), data));
+        Debug.Log(string.Format("{0} sendEvent({1})", this.GetType(), data));
 #endif
         // test Application.internetReachability
 
         // // TODO: queue events that can't be sent during internet outage
         // TrackingEventDataWithoutIDs data = new TrackingEventDataWithoutIDs(trackingEvent, customData, userTime);
         // addEventToSendLater(data);
-        
+#if VERBOSEMETRICS
+        CustomData context = getEventContext();
+#if VERBOSEDEBUG
+        Debug.Log(string.Format("{0} sendEvent merging context {1} into trackingEvent {2}", this.GetType(), context, data));
+#endif
+        data.mergeCustomData(context);
+#endif
+
         string json = getJsonString(data);
 #if VERBOSEDEBUG
         Debug.Log(
-            string.Format (
-                this.GetType() + " sendEvent - _localPlayerGUID={0}, gameSessionGUID={1}, gameVersionGuid={2}, json={3}", 
+            string.Format(
+                this.GetType() + " sendEvent - _localPlayerGUID={0}, gameSessionGUID={1}, gameVersionGuid={2}, json={3}",
                 _localPlayerGUID, gameSessionGUID, gameVersionGuid, json
                 )
             );

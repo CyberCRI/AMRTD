@@ -567,9 +567,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3523915887842863843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ade2a51b2d8494eb9cd3f4f988a850, type: 3}
+  m_Script: {fileID: 11500000, guid: 5898d8e53074f8e4cb15a670110339ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origin: 1
   levelButtonsRoot: {fileID: 3523915887465144225}
 --- !u!1 &3523915888078728293
 GameObject:

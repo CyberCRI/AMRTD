@@ -42,4 +42,10 @@ public class RetryUI : MonoBehaviour
         GameManager.instance.togglePause();
         retryUI.SetActive(GameManager.instance.isPaused());
     }
+
+    public void setActive(bool active)
+    {
+        GameManager.instance.setPause(active);
+        retryUI.SetActive(active);
+    }
 }

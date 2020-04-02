@@ -33,12 +33,12 @@ public class DebugUI : MonoBehaviour
 
     public void lockAllLevels()
     {
-        LevelSelector.lockAllLevels();
+        LevelSelectionUI.lockAllLevels();
     }
 
     public void unlockAllLevels()
     {
-        LevelSelector.unlockAllLevels();
+        LevelSelectionUI.unlockAllLevels();
     }
 
     public void switchLanguage()

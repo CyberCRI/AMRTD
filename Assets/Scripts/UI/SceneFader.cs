@@ -76,7 +76,7 @@ public class SceneFader : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    public void menu()
+    public void goToMainMenu()
     {
         fadeTo(MainMenu.sceneName);
     }

@@ -9,6 +9,14 @@ public class CustomData : Dictionary<string, string>
     {
     }
 
+    public CustomData(CustomData data) : base()
+    {
+        foreach (KeyValuePair<string, string> pair in data)
+        {
+            this.Add(pair.Key, pair.Value);
+        }
+    }
+
     private CustomData(string key, string value) : base()
     {
         this.Add(key, value);
@@ -16,12 +24,34 @@ public class CustomData : Dictionary<string, string>
 
     public CustomData(CustomDataTag tag, string value) : this(tag.ToString().ToLowerInvariant(), value)
     {
+    }
 
+    public CustomData(CustomDataTag tag, CustomDataValue value) : this(tag, value.ToString().ToLowerInvariant())
+    {
     }
 
     public void Add(CustomDataTag tag, string value)
     {
         Add(tag.ToString().ToLowerInvariant(), value);
+    }
+
+    public static CustomData merge(CustomData data1, CustomData data2)
+    {
+        CustomData result;
+        if (null == data1)
+        {
+            result = data2;
+        }
+        else if (null == data2)
+        {
+            result = data1;
+        }
+        else
+        {
+            result = new CustomData(data1);
+            result.merge(data2);
+        }
+        return result;
     }
 
     /// <summary>

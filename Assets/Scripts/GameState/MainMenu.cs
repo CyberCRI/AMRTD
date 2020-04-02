@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     public void play()
     {
         RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKPLAY);
-        SceneFader.instance.fadeTo(LevelSelector.sceneName);
+        SceneFader.instance.fadeTo(LevelSelectionUI.sceneName);
     }
 
     public void quit()
