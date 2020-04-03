@@ -22,23 +22,43 @@ public class CustomData : Dictionary<string, string>
         this.Add(key, value);
     }
 
-    public CustomData(CustomDataTag tag, string value) : this(tag.ToString().ToLowerInvariant(), value)
+    public CustomData(CustomDataTag tag, int value) : this(tag.ToString().ToLowerInvariant(), value.ToString())
     {
     }
 
-    public CustomData(CustomDataTag tag, CustomDataValue value) : this(tag, value.ToString().ToLowerInvariant())
+    public CustomData(CustomDataTag tag, string value) : this(tag.ToString().ToLowerInvariant(), value.ToLowerInvariant())
     {
+    }
+
+    public CustomData(CustomDataTag tag, CustomDataValue value) : this(tag.ToString().ToLowerInvariant(), value.ToString().ToLowerInvariant())
+    {
+    }
+
+    public CustomData(CustomDataTag tag, GameObject value) : this(tag.ToString().ToLowerInvariant(), value.name.ToLowerInvariant())
+    {
+    }
+
+    public CustomData add(CustomDataTag tag, int value)
+    {
+        this.Add(tag.ToString().ToLowerInvariant(), value.ToString());
+        return this;
     }
 
     public CustomData add(CustomDataTag tag, string value)
     {
-        this.Add(tag.ToString().ToLowerInvariant(), value);
+        this.Add(tag.ToString().ToLowerInvariant(), value.ToLowerInvariant());
         return this;
     }
 
     public CustomData add(CustomDataTag tag, CustomDataValue value)
     {
-        add(tag, value.ToString().ToLowerInvariant());
+        this.Add(tag.ToString().ToLowerInvariant(), value.ToString().ToLowerInvariant());
+        return this;
+    }
+
+    public CustomData add(CustomDataTag tag, GameObject value)
+    {
+        this.Add(tag.ToString().ToLowerInvariant(), value.name.ToLowerInvariant());
         return this;
     }
 

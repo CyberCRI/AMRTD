@@ -8,4 +8,10 @@ public class PlayerFeedbackFormOpener : LinkOpener
 	{
         return "https://docs.google.com/forms/d/e/1FAIpQLScD1Y9VCrYYdOfJS07f0e-eKYA8ej4TkZDH-SR3OpQF3jRsaA/viewform?usp=sf_link";
 	}
+
+    public void clickButton()
+    {
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKFEEDBACKFORM, RedMetricsManager.instance.getGameLevelContext());
+        openLink();
+    }
 }

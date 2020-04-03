@@ -324,7 +324,7 @@ public class FocusMaskManager : MonoBehaviour
         rotateArrowAt(quadrant);
         _callback = callback;
         _advisorAndBubbleSystem.setSpeechBubble(quadrant, advisorTextKey, showButton);
-        show(true, action == StepByStepTutorial.TUTORIALACTION.FOCUSON);
+        show(true, (action == StepByStepTutorial.TUTORIALACTION.FOCUSON));
     }
 
     private void show(

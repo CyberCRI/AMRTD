@@ -50,7 +50,7 @@ public class LevelSelectionUI : MonoBehaviour
 
     public void select(string levelName)
     {
-        RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKLEVEL, new CustomData (CustomDataTag.GAMELEVEL, levelName));
+        RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKLEVEL, new CustomData (CustomDataTag.OPTION, levelName));
         SceneFader.instance.fadeTo(levelName);
     }
     // called from level selection screen, to go back to main menu screen

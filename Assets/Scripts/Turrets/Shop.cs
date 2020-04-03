@@ -76,7 +76,7 @@ public class Shop : MonoBehaviour
         TurretBlueprint blueprint = array[(int)substance];
 
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUTTON, 
-            new CustomData(CustomDataTag.ELEMENT, blueprint.prefab.name).add(CustomDataTag.COST, blueprint.cost.ToString()));
+            new CustomData(CustomDataTag.ELEMENT, blueprint.prefab).add(CustomDataTag.COST, blueprint.cost));
         
         buildManager.selectTurretToBuild(blueprint, button);
     }

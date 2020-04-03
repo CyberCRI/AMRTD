@@ -29,7 +29,7 @@ public enum CustomDataTag
     NEWTAB,
     SAMETAB,
 
-    MESSAGE,            // hint message that was displayed
+    MESSAGE,            // tutorial message that was displayed
 
     DURATION
 }

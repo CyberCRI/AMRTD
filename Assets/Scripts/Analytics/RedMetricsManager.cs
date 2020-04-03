@@ -156,7 +156,7 @@ public class RedMetricsManager : MonoBehaviour
         return defaultGameVersionGuid != gameVersionGuid;
     }
 
-    public static IEnumerator GET(string url, System.Action<WWW> callback)
+    public IEnumerator GET(string url, System.Action<WWW> callback)
     {
 #if VERBOSEDEBUG
         Debug.Log("RedMetricsManager GET");
@@ -166,7 +166,7 @@ public class RedMetricsManager : MonoBehaviour
     }
 
     // unused
-    public static IEnumerator POST(string url, Dictionary<string, string> post, System.Action<WWW> callback)
+    public IEnumerator POST(string url, Dictionary<string, string> post, System.Action<WWW> callback)
     {
 #if VERBOSEDEBUG
         Debug.Log("RedMetricsManager POST");
@@ -181,7 +181,7 @@ public class RedMetricsManager : MonoBehaviour
         return waitForWWW(www, callback);
     }
 
-    public static IEnumerator POST(string url, byte[] post, Dictionary<string, string> headers, System.Action<WWW> callback)
+    public IEnumerator POST(string url, byte[] post, Dictionary<string, string> headers, System.Action<WWW> callback)
     {
 #if VERBOSEDEBUG
         Debug.Log("RedMetricsManager POST url: " + url);
@@ -190,7 +190,7 @@ public class RedMetricsManager : MonoBehaviour
         return waitForWWW(www, callback);
     }
 
-    private static IEnumerator waitForWWW(WWW www, System.Action<WWW> callback)
+    private IEnumerator waitForWWW(WWW www, System.Action<WWW> callback)
     {
 #if VERBOSEDEBUG
         Debug.Log("RedMetricsManager waitForWWW");
@@ -240,7 +240,7 @@ public class RedMetricsManager : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " sendData StartCoroutine POST with data=" + pDataString);
 #endif
-        StartCoroutine(RedMetricsManager.POST(url, pData, headers, callback));
+        StartCoroutine(POST(url, pData, headers, callback));
     }
 
     private void createPlayer(System.Action<WWW> callback)
@@ -259,7 +259,7 @@ public class RedMetricsManager : MonoBehaviour
         Debug.Log(this.GetType() + " testGet");
 #endif
         string url = redMetricsURL + redMetricsPlayer;
-        StartCoroutine(RedMetricsManager.GET(url, callback));
+        StartCoroutine(GET(url, callback));
     }
 
     private void wwwLogger(WWW www, string origin = "default")
@@ -356,7 +356,7 @@ public class RedMetricsManager : MonoBehaviour
     {
         //TODO manage GLOBALPLAYERGUID
         CustomData guidCD = new CustomData(CustomDataTag.LOCALPLAYERGUID, _localPlayerGUID);
-        guidCD.add(CustomDataTag.PLATFORM, Application.platform.ToString().ToLowerInvariant());
+        guidCD.add(CustomDataTag.PLATFORM, Application.platform.ToString());
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " generated guidCD=" + guidCD);
 #endif
@@ -437,16 +437,21 @@ public class RedMetricsManager : MonoBehaviour
         sendEvent(trackingEvent, context, userTime);
     }
 
+    public CustomData getGameLevelContext()
+    {
+        return new CustomData(CustomDataTag.GAMELEVEL, SceneManager.GetActiveScene().name);
+    }
+
     public CustomData getEventContext()
     {
-        CustomData context = new CustomData(CustomDataTag.GAMELEVEL, SceneManager.GetActiveScene().name.ToLowerInvariant());
-        context.add(CustomDataTag.LANGUAGE, LocalizationManager.instance.getLanguageString().ToLowerInvariant());
+        CustomData context = getGameLevelContext();
+        context.add(CustomDataTag.LANGUAGE, LocalizationManager.instance.getLanguageString());
         if (null != PlayerStatistics.instance)
         {
-            context.add(CustomDataTag.LIVES, PlayerStatistics.instance.lives.ToString());
-            context.add(CustomDataTag.FUNDS, PlayerStatistics.instance.money.ToString());
-            context.add(CustomDataTag.RESISTANCE, PlayerStatistics.instance.resistancePoints.ToString());
-            context.add(CustomDataTag.WAVES, PlayerStatistics.instance.waves.ToString());
+            context.add(CustomDataTag.LIVES, PlayerStatistics.instance.lives);
+            context.add(CustomDataTag.FUNDS, PlayerStatistics.instance.money);
+            context.add(CustomDataTag.RESISTANCE, PlayerStatistics.instance.resistancePoints.ToString("000.0"));
+            context.add(CustomDataTag.WAVES, PlayerStatistics.instance.waves);
         }
         return context;
     }
@@ -473,7 +478,7 @@ public class RedMetricsManager : MonoBehaviour
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // paradigm: sends action performed or state of game when function is called, not desired state of game or planned action
+    // paradigm: pragmatically, case-by-case sends action performed, action planned, state of game, or desired state of game
 
     public void sendEvent(TrackingEventDataWithIDs data)
     {

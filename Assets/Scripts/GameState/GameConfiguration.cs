@@ -157,7 +157,7 @@ public class GameConfiguration : MonoBehaviour
 #if VERBOSEDEBUG
             Debug.Log(this.GetType() + " reachedLevel setting furthestLevel to " + value);
 #endif
-            RedMetricsManager.instance.sendEvent(TrackingEvent.NEWFURTHEST, new CustomData(CustomDataTag.GAMELEVEL, levelName).add(CustomDataTag.ELEMENT, value.ToString()));
+            RedMetricsManager.instance.sendEvent(TrackingEvent.NEWFURTHEST, new CustomData(CustomDataTag.GAMELEVEL, levelName).add(CustomDataTag.ELEMENT, value));
             _furthestLevelReached.val = value;
         }
 #if VERBOSEDEBUG

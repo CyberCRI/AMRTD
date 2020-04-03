@@ -969,7 +969,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6246944042744161769}
-        m_MethodName: openLink
+        m_MethodName: clickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

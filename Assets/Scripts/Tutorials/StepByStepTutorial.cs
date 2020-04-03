@@ -50,6 +50,15 @@ public abstract class StepByStepTutorial : MonoBehaviour
 
     private Vector3 manualScale = new Vector3(440, 77, 1);
     private static FocusMaskManager focusMaskManager;
+    
+    // internal temporary variables
+    private string goName;
+    private GameObject go;
+    private TUTORIALACTION action;
+    private string textHint;
+    private ExternalOnPressButton target;
+    private bool showFocusMaskAndArrow;
+    private TrackingEvent trackingEvent;
 
     private static bool _isPlaying = false;
     public static bool isPlaying()
@@ -155,31 +164,40 @@ public abstract class StepByStepTutorial : MonoBehaviour
                     else
                     {
                         // Debug.Log(this.GetType() + " preparing step " + _step + " searching for " + steps[_step].gameObjectName);
-                        GameObject go = GameObject.Find(steps[stepIndex].gameObjectName);
+                        goName = steps[stepIndex].gameObjectName;
+                        go = GameObject.Find(goName);
                         foundObject = go;
                         if (go == null)
                         {
-                            Debug.LogError(this.GetType() + " GameObject not found at step " + stepIndex + ": " + steps[stepIndex].gameObjectName);
+                            Debug.LogError(this.GetType() + " GameObject not found at step " + stepIndex + ": " + goName);
                             next();
                         }
                         else
                         {
+                            action = steps[stepIndex].action;
+                            textHint = steps[stepIndex].textHint;
+
                             // Debug.Log(this.GetType() + " go != null at step=" + _step + ", go.transform.position=" + go.transform.position + " & go.transform.localPosition=" + go.transform.localPosition);
-                            ExternalOnPressButton target = go.GetComponent<ExternalOnPressButton>();
+                            target = go.GetComponent<ExternalOnPressButton>();
                             if (null != target)
                             {
                                 // Debug.Log(this.GetType() + " target != null at step=" + _step
                                 //+ " with text=" + steps[_step].textHint
                                 //);
-                                focusMaskManager.focusOn(target, next, steps[stepIndex].textHint, true, true, steps[stepIndex].action);
+                                focusMaskManager.focusOn(target, next, textHint, true, true, action);
                             }
                             else
                             {
                                 // Debug.Log(this.GetType() + " target == null at step=" + _step
                                 //+ " with text=" + steps[_step].textHint
                                 //);
-                                focusMaskManager.focusOn(go, next, steps[stepIndex].textHint, true, true, steps[stepIndex].action);
+                                focusMaskManager.focusOn(go, next, textHint, true, true, action);
                             }
+                            
+                            showFocusMaskAndArrow = (steps[stepIndex].action == action);
+                            trackingEvent = showFocusMaskAndArrow ? TrackingEvent.TUTORIALFOCUSON : TrackingEvent.TUTORIALIMAGE;
+                            RedMetricsManager.instance.sendEvent(trackingEvent, new CustomData(CustomDataTag.MESSAGE, textHint).add(CustomDataTag.ELEMENT, go));
+
                             // Debug.Log(this.GetType() + " prepared step=" + _step);
                             prepared = true;
                         }

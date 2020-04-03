@@ -10,7 +10,7 @@ public class LinkOpener : MonoBehaviour
 		return "";
 	}
 
-	public void openLink()
+	protected void openLink()
 	{
 #if UNITY_WEBGL && !UNITY_EDITOR
 	openWindow(getURL());

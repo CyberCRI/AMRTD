@@ -7,8 +7,8 @@ public enum TrackingEvent
     // standard events
     DEFAULT, //[ ]
     CREATEPLAYER, //[x]
-    START, //[x]              // launched the game
-    END, //[x]                // quit the game
+    START, //[x]              // launched the game; parameters: LOCALPLAYERGUID and PLATFORM: webgl, windowseditor, ...
+    END, //[x]                // quit the game; parameters: LOCALPLAYERGUID and PLATFORM: webgl, windowseditor, ...
 
     /////////////////////////////////////////////////////////
     // specific events
@@ -16,8 +16,8 @@ public enum TrackingEvent
     
     /////////////////////////////////////////////////////////
     // all screens
-    CLICKLANGUAGE, //[ ]          // using the UI button
-    // debug
+    CLICKFEEDBACKFORM, //[x]      // parameter: GAMELEVEL
+    // all screens - debug
     PRESSLANGUAGE, //[ ]          // using the keyboard shortcut
     PRESSCURRENCYCHEAT, //[ ]     // using the keyboard shortcut
     PRESSWINCHEAT, //[ ]          // using the keyboard shortcut
@@ -25,6 +25,12 @@ public enum TrackingEvent
     CLICKRESET, //[ ]
     CLICKUNLOCK, //[ ]
     CUSTOMDEBUG, //[ ]            // to send manual custom messages
+    SWITCHFROMGAMEVERSION, //[x]  // parameters: LOCALPLAYERGUID and PLATFORM: webgl, windowseditor, ...
+    SWITCHTOGAMEVERSION, //[x]    // parameters: LOCALPLAYERGUID and PLATFORM: webgl, windowseditor, ...
+
+    /////////////////////////////////////////////////////////
+    // non-playing screens
+    CLICKLANGUAGE, //[ ]          // using the UI button
 
     /////////////////////////////////////////////////////////
     // main screen
@@ -33,7 +39,7 @@ public enum TrackingEvent
 
     /////////////////////////////////////////////////////////
     // level selection screen
-    CLICKLEVEL, //[x]
+    CLICKLEVEL, //[x]             // parameter: OPTION = level clicked on
     CLICKBACK, //[x]
 
     /////////////////////////////////////////////////////////
@@ -55,28 +61,28 @@ public enum TrackingEvent
     CLICKRETRYRETRY, //[x]
 
     // complete screen
-    COMPLETELEVEL, //[x]             // event auto-sent when completing
+    COMPLETELEVEL, //[x]             // event auto-sent when completing; parameter: GAMELEVEL completed
     CLICKCOMPLETECOMPLETE, //[x]
     CLICKCOMPLETERETRY, //[x]
     CLICKCOMPLETEMENU, //[x]
 
     // help functionality
-    CLICKHELP, //[x]                 // parameter ON or OFF depending on state of game _when called_
-    CLICKHELPON, //[x]
+    CLICKHELP, //[x]                 // parameter: OUTCOME: ON or OFF depending on desired state of button
+    CLICKHELPON, //[x]               // parameter: ELEMENT ie GameObject clicked on
 
     // tutorial functionality
     CLICKNEXT, //[x]
     CLICKFOCUSHOLE, //[x]
     
     // tiles
-    CLICKTILE, //[x]          // parameter element that specifies GameObject name
+    CLICKTILE, //[x]          // parameter: ELEMENT that specifies tile's GameObject name
 
     // towers
-    CLICKTOWER, //[x]         
-    CLICKTOWERSELL, //[x]     // parameters: element: tower's GameObject name; cost: funds earned back from selling
-    CLICKTOWERUPGRADE, //[x]  // parameters: element: tower's GameObject name; cost: cost of upgrade
-    CLICKTOWERBUTTON, //[x]   // parameters: element: tower's Blueprint name; cost: cost of construction
-    CLICKTOWERBUILD, //[x]    // parameters: element: tower built; outcome: success/failure (if not enough funds)
+    CLICKTOWER, //[x]         // parameters: ELEMENT: tower's GameObject name
+    CLICKTOWERSELL, //[x]     // parameters: ELEMENT: tower's GameObject name; COST: funds earned back from selling
+    CLICKTOWERUPGRADE, //[x]  // parameters: ELEMENT: tower's GameObject name; COST: cost of upgrade
+    CLICKTOWERBUTTON, //[x]   // parameters: ELEMENT: tower's Blueprint name; COST: cost of construction
+    CLICKTOWERBUILD, //[x]    // parameters: ELEMENT: tower built; OUTCOME: SUCCESS/FAILURE (if not enough funds)
 
     // pathogens - pathogen context: life points, resistance level, pathogen name, position on map
     PATHOGENESCAPES, //[ ]
@@ -86,11 +92,11 @@ public enum TrackingEvent
     PATHOGENSPAWNED, //[ ]
 
     COMPLETEGAME, //[x]       // successfully finished the game
-    NEWFURTHEST, //[x]        // reached a new furthest level
+    NEWFURTHEST, //[x]        // reached a new furthest level; parameter: GAMELEVEL completed
     NEWOWNRECORD, //[ ]       // beat own best completion time on a level
 
-    HINT, //[ ]               // a hint message was displayed
-    TUTORIAL, //[ ]           // a tutorial message was displayed
+    TUTORIALIMAGE, //[x]      // a hint message was displayed in front of a grey background; parameters: MESSAGE the text and ELEMENT the image
+    TUTORIALFOCUSON, //[x]    // a tutorial message was displayed with focus arrow and mask; parameters: MESSAGE the text and ELEMENT the system focuses on
 
     // main menu
     SELECTMENU, //[ ]
@@ -102,8 +108,4 @@ public enum TrackingEvent
     // alternative configuration routes
     WEBCONFIGURE, //[ ]
     ADMINCONFIGURE, //[ ]
-
-    // backend events
-    SWITCHFROMGAMEVERSION, //[ ]
-    SWITCHTOGAMEVERSION  //[ ]
 }

@@ -570,7 +570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5898d8e53074f8e4cb15a670110339ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  origin: 1
   levelButtonsRoot: {fileID: 3523915887465144225}
 --- !u!1 &3523915888078728293
 GameObject:
@@ -930,7 +929,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: menu
+        m_MethodName: goToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
