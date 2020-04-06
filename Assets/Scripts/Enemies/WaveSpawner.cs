@@ -254,6 +254,10 @@ public class WaveSpawner : MonoBehaviour
                 enemyMotherCell = wave.enemyPrefab;
             }
             GameObject instantiatedEnemy = (GameObject)Instantiate(enemyMotherCell, spawnPointPosition, spawnPointRotation);
+            if (!divisionMode)
+            {
+                RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENSPAWNED, CustomData.getGameObjectContext(instantiatedEnemy));
+            }
 
             enemy = instantiatedEnemy.GetComponent<Enemy>();
             enemy.initialize(wave, reward, health, startHealth, waypointIndex, resistances);

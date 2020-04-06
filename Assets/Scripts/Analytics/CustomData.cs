@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class CustomData : Dictionary<string, string>
 {
@@ -38,6 +39,12 @@ public class CustomData : Dictionary<string, string>
     {
     }
 
+    public CustomData add(CustomDataTag tag, Vector3 value)
+    {
+        this.Add(tag.ToString().ToLowerInvariant(), value.ToString());
+        return this;
+    }
+
     public CustomData add(CustomDataTag tag, int value)
     {
         this.Add(tag.ToString().ToLowerInvariant(), value.ToString());
@@ -60,6 +67,118 @@ public class CustomData : Dictionary<string, string>
     {
         this.Add(tag.ToString().ToLowerInvariant(), value.name.ToLowerInvariant());
         return this;
+    }
+
+    public static CustomData getContext(CustomDataTag tag)
+    {
+        CustomData data = new CustomData();
+        data.addContext(tag);
+        return data;
+    }
+
+    public CustomData addContext(CustomDataTag cdTag)
+    {
+        switch (cdTag)
+        {
+            case CustomDataTag.LOCALPLAYERGUID:
+                add(CustomDataTag.LOCALPLAYERGUID, GameConfiguration.instance.playerGUID);
+                break;
+            case CustomDataTag.PLATFORM:
+                add(CustomDataTag.PLATFORM, Application.platform.ToString());
+                break;
+            case CustomDataTag.LIVES:
+                if (null != PlayerStatistics.instance)
+                {
+                    add(CustomDataTag.LIVES, PlayerStatistics.instance.lives);
+                }
+                break;
+            case CustomDataTag.FUNDS:
+                if (null != PlayerStatistics.instance)
+                {
+                    add(CustomDataTag.FUNDS, PlayerStatistics.instance.money);
+                }
+                break;
+            case CustomDataTag.RESISTANCE:
+                if (null != PlayerStatistics.instance)
+                {
+                    add(CustomDataTag.RESISTANCE, PlayerStatistics.instance.resistancePoints.ToString("000.0"));
+                }
+                break;
+            case CustomDataTag.WAVES:
+                if (null != PlayerStatistics.instance)
+                {
+                    add(CustomDataTag.WAVES, PlayerStatistics.instance.waves);
+                }
+                break;
+            case CustomDataTag.GAMELEVEL:
+                add(CustomDataTag.GAMELEVEL, SceneManager.GetActiveScene().name);
+                break;
+            case CustomDataTag.LANGUAGE:
+                add(CustomDataTag.LANGUAGE, LocalizationManager.instance.getLanguageString());
+                break;
+            case CustomDataTag.TIMESINCEGAMELOADED:
+                add(CustomDataTag.TIMESINCEGAMELOADED, Time.realtimeSinceStartup.ToString());
+                // add(CustomDataTag.TIMESINCEGAMELOADED, Time.unscaledTime.ToString());
+                break;
+            case CustomDataTag.TIMEGAMEPLAYEDNOPAUSE:
+                add(CustomDataTag.TIMEGAMEPLAYEDNOPAUSE, Time.time.ToString());
+                break;
+            case CustomDataTag.TIMESINCELEVELLOADED:
+                add(CustomDataTag.TIMESINCELEVELLOADED, Time.timeSinceLevelLoad.ToString());
+                break;
+            /*
+            case CustomDataTag.TIMELEVELPLAYEDNOPAUSE:
+                add(CustomDataTag.TIMELEVELPLAYEDNOPAUSE, Time.?????.ToString());   
+                break;    
+            */
+            default:
+                Debug.LogError(this.GetType() + " addContext unexpected CustomDataTag " + cdTag);
+                break;
+        }
+        return this;
+    }
+
+    public static CustomData getContext(CustomDataTag[] tags)
+    {
+        CustomData result = new CustomData();
+        if (null != tags)
+        {
+            for (int i = 0; i < tags.Length; i++)
+            {
+                result.addContext(tags[i]);
+            }
+        }
+        return result;
+    }
+
+    public static CustomData getEventContext()
+    {
+        return getContext(
+                new CustomDataTag[7]{
+                    CustomDataTag.GAMELEVEL,
+                    CustomDataTag.LANGUAGE,
+                    CustomDataTag.LIVES,
+                    CustomDataTag.FUNDS,
+                    CustomDataTag.RESISTANCE,
+                    CustomDataTag.WAVES,
+                    CustomDataTag.TIMESINCELEVELLOADED
+                    }
+            );
+    }
+
+    public static CustomData getGameLevelContext()
+    {
+        return getContext(CustomDataTag.GAMELEVEL);
+    }
+
+    public static CustomData getGameObjectContext(MonoBehaviour behaviour, CustomDataTag _tag = CustomDataTag.GAMEOBJECT)
+    {
+        return getGameObjectContext(behaviour.gameObject, _tag);
+    }
+
+    public static CustomData getGameObjectContext(GameObject go, CustomDataTag _tag = CustomDataTag.GAMEOBJECT)
+    {
+        return new CustomData(_tag, go.name).add(CustomDataTag.POSITION, go.transform.position);
     }
 
     public static CustomData merge(CustomData data1, CustomData data2)

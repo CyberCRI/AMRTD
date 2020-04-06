@@ -11,7 +11,7 @@ public class PlayerFeedbackFormOpener : LinkOpener
 
     public void clickButton()
     {
-        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKFEEDBACKFORM, RedMetricsManager.instance.getGameLevelContext());
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKFEEDBACKFORM, CustomData.getGameLevelContext());
         openLink();
     }
 }

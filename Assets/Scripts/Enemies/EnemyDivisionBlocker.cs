@@ -14,7 +14,8 @@ public class EnemyDivisionBlocker : MonoBehaviour
     void Update()
     {
         if (this.transform.position.x < xLimit)
-        {
+        {   
+            RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENINBLOOD, CustomData.getGameObjectContext(this));
             if (null == enemy)
             {
                 enemy = this.GetComponent<Enemy>();

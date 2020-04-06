@@ -14,6 +14,16 @@ public class Attack : MonoBehaviour
 
         COUNT
     }
+    public enum SOURCE
+    {
+        HITFIRST,
+        HIT,
+        DPSPASSIVE,
+        DPSACTIVE,
+        FATALDIVISION,
+        DEVDMGHALF,
+        DEVDMGALL,
+    }
     ///TODO link SUBSTANCEs to their effects: table, dict, ...
     public SUBSTANCE substance;
 
@@ -199,7 +209,7 @@ public class Attack : MonoBehaviour
             if (0f != damageWhenFirstHit)
             {
                 // resistance is taken into account at creation of Attack
-                enemy.takeDamage(damageWhenFirstHit, substance);
+                enemy.takeDamage(damageWhenFirstHit, Attack.SOURCE.HITFIRST, substance);
                 damageWhenFirstHit = 0f;
             }
 
@@ -243,7 +253,7 @@ public class Attack : MonoBehaviour
 
             if (0f != damagePerSecondPassive)
             {
-                enemy.takeDamage(damagePerSecondPassive * Time.deltaTime, substance);
+                enemy.takeDamage(damagePerSecondPassive * Time.deltaTime, Attack.SOURCE.DPSPASSIVE, substance);
             }
 
             // TODO make sure this does not happen too soon for Enemy to take it into account
@@ -292,12 +302,12 @@ public class Attack : MonoBehaviour
     {
         if (0f != damagePerSecondActive)
         {
-            enemy.takeDamage(damagePerSecondActive * Time.deltaTime, substance);
+            enemy.takeDamage(damagePerSecondActive * Time.deltaTime, Attack.SOURCE.DPSACTIVE, substance);
         }
 
         if (0f != damageWhenHit)
         {
-            enemy.takeDamage(damageWhenHit, substance);
+            enemy.takeDamage(damageWhenHit, Attack.SOURCE.HIT, substance);
         }
 
         // apply active abilities

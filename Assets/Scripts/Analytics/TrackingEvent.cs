@@ -93,11 +93,12 @@ public enum TrackingEvent
     CLICKTOWERBUILD, //[x]    // parameters: ELEMENT: tower built; OUTCOME: SUCCESS/FAILURE (if not enough funds)
 
     // pathogens - pathogen context: life points, resistance level, pathogen name, position on map
-    PATHOGENESCAPES, //[ ]
-    PATHOGENSWALLOWED, //[ ]
-    SHOTPATHOGEN, //[ ]
-    PATHOGENDIVIDED, //[ ]
-    PATHOGENSPAWNED, //[ ]
+    PATHOGENESCAPES, //[x]    // parameter: GAMEOBJECT pathogen
+    PATHOGENSWALLOWED, //[x]  // a pathogen was swallowed by a white blood cell; parameter: GAMEOBJECT pathogen
+    KILLEDPATHOGENAB, //[x]   // killed pathogen with antibiotics; parameter: GAMEOBJECT pathogen
+    PATHOGENDIVIDED, //[x]
+    PATHOGENSPAWNED, //[x]
+    PATHOGENINBLOOD, //[x]
 
     COMPLETEGAME, //[x]       // successfully finished the game
     NEWFURTHEST, //[x]        // reached a new furthest level; parameter: GAMELEVEL completed

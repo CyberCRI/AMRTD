@@ -78,12 +78,12 @@ public class CompleteLevel : MonoBehaviour
     public void completeLevel()
     {
         string sceneName = SceneManager.GetActiveScene().name.ToLowerInvariant();
-        CustomDataTag victoryContext = RedMetricsManager.instance.getContext(
+        CustomData victoryContext = CustomData.getContext(
                     new CustomDataTag[4]{
                         CustomDataTag.GAMELEVEL,
-                        TIMESINCEGAMELOADED,
-                        TIMEGAMEPLAYEDNOPAUSE,
-                        TIMESINCELEVELLOADED,
+                        CustomDataTag.TIMESINCEGAMELOADED,
+                        CustomDataTag.TIMEGAMEPLAYEDNOPAUSE,
+                        CustomDataTag.TIMESINCELEVELLOADED,
                         }
                 );
         RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, victoryContext);

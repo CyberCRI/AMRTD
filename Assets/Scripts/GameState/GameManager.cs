@@ -155,13 +155,13 @@ public class GameManager : MonoBehaviour
         {
             RedMetricsManager.instance.sendEvent(
                 TrackingEvent.GAMEOVER,
-                RedMetricsManager.instance.getContext(
+                CustomData.getContext(
                         new CustomDataTag[5]{
                             CustomDataTag.GAMELEVEL,
                             CustomDataTag.WAVES,
-                            TIMESINCEGAMELOADED,
-                            TIMEGAMEPLAYEDNOPAUSE,
-                            TIMESINCELEVELLOADED,
+                            CustomDataTag.TIMESINCEGAMELOADED,
+                            CustomDataTag.TIMEGAMEPLAYEDNOPAUSE,
+                            CustomDataTag.TIMESINCELEVELLOADED,
                             }
                     )
                 );
@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour
         foreach (GameObject enemyGO in enemies)
         {
             Enemy enemy = enemyGO.GetComponent<Enemy>();
-            enemy.takeDamage(enemy.health / 2);
+            enemy.takeDamage(enemy.health / 2, Attack.SOURCE.DEVDMGHALF);
         }
     }
 
@@ -212,7 +212,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject enemyGO = enemies[i];
             Enemy enemy = enemyGO.GetComponent<Enemy>();
-            enemy.takeDamage(enemy.health);
+            enemy.takeDamage(enemy.health, Attack.SOURCE.DEVDMGALL);
         }
     }
 

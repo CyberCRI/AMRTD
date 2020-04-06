@@ -476,7 +476,7 @@ public class Enemy : MonoBehaviour
         healthBar.fillAmount = health / startHealth;
     }
 
-    public void takeDamage(float damage, Attack.SUBSTANCE substance = Attack.SUBSTANCE.COUNT)
+    public void takeDamage(float damage, Attack.SOURCE source, Attack.SUBSTANCE substance = Attack.SUBSTANCE.COUNT)
     {
         health -= injuryFactor * damage;
         updateHealthBar();
@@ -492,6 +492,9 @@ public class Enemy : MonoBehaviour
 
         if (isAlive && health <= 0f)
         {
+            RedMetricsManager.instance.sendEvent(
+                TrackingEvent.KILLEDPATHOGENAB,
+                CustomData.getGameObjectContext(this).add(CustomDataTag.SOURCE, source.ToString()));
             die();
         }
     }
@@ -510,10 +513,12 @@ public class Enemy : MonoBehaviour
         if (!isDivisionSafeTotal())
         {
             // insta-death
-            takeDamage(health);
+            takeDamage(health, Attack.SOURCE.FATALDIVISION);
         }
         else if (null != wave)
         {
+            RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENDIVIDED, CustomData.getGameObjectContext(this));
+
             reward /= 2;
 
             // delete resistance effect before division

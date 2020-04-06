@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 //using LitJson;
 using System;
-using UnityEngine.SceneManagement;
 
 // author 
 //    Raphael Goujet
@@ -426,7 +425,7 @@ public class RedMetricsManager : MonoBehaviour
         Debug.Log(this.GetType() + " sendRichEvent(" + trackingEvent + customDataString);
 #endif
 
-        CustomData context = getEventContext();
+        CustomData context = CustomData.getEventContext();
         if (customData != null)
         {
 #if VERBOSEDEBUG
@@ -435,107 +434,6 @@ public class RedMetricsManager : MonoBehaviour
             context.merge(customData);
         }
         sendEvent(trackingEvent, context, userTime);
-    }
-
-    public CustomData getContext(CustomDataTag tag)
-    {
-        CustomData data = new CustomData();
-        addContext(data, tag);
-        return data;
-    }
-
-    public CustomData addContext(CustomData data, CustomDataTag cdTag)
-    {
-        switch (cdTag)
-        {
-            case CustomDataTag.LOCALPLAYERGUID:
-                data.add(CustomDataTag.LOCALPLAYERGUID, _localPlayerGUID);
-                break;
-            case CustomDataTag.PLATFORM:
-                data.add(CustomDataTag.PLATFORM, Application.platform.ToString());
-                break;
-            case CustomDataTag.LIVES:
-                if (null != PlayerStatistics.instance)
-                {
-                    data.add(CustomDataTag.LIVES, PlayerStatistics.instance.lives);
-                }
-                break;
-            case CustomDataTag.FUNDS:
-                if (null != PlayerStatistics.instance)
-                {
-                    data.add(CustomDataTag.FUNDS, PlayerStatistics.instance.money);
-                }
-                break;
-            case CustomDataTag.RESISTANCE:
-                if (null != PlayerStatistics.instance)
-                {
-                    data.add(CustomDataTag.RESISTANCE, PlayerStatistics.instance.resistancePoints.ToString("000.0"));
-                }
-                break;
-            case CustomDataTag.WAVES:
-                if (null != PlayerStatistics.instance)
-                {
-                    data.add(CustomDataTag.WAVES, PlayerStatistics.instance.waves);
-                }
-                break;
-            case CustomDataTag.GAMELEVEL:
-                data.add(CustomDataTag.GAMELEVEL, SceneManager.GetActiveScene().name);
-                break;
-            case CustomDataTag.LANGUAGE:
-                data.add(CustomDataTag.LANGUAGE, LocalizationManager.instance.getLanguageString());
-                break;
-            case CustomDataTag.TIMESINCEGAMELOADED:
-                data.add(CustomDataTag.TIMESINCEGAMELOADED, Time.realtimeSinceStartup.ToString());
-                // data.add(CustomDataTag.TIMESINCEGAMELOADED, Time.unscaledTime.ToString());
-                break;
-            case CustomDataTag.TIMEGAMEPLAYEDNOPAUSE:
-                data.add(CustomDataTag.TIMEGAMEPLAYEDNOPAUSE, Time.time.ToString());
-                break;
-            case CustomDataTag.TIMESINCELEVELLOADED:
-                data.add(CustomDataTag.TIMESINCELEVELLOADED, Time.timeSinceLevelLoad.ToString());
-                break;
-            /*
-            case CustomDataTag.TIMELEVELPLAYEDNOPAUSE:
-                data.add(CustomDataTag.TIMELEVELPLAYEDNOPAUSE, Time.?????.ToString());   
-                break;    
-            */
-            default:
-                Debug.LogError(this.GetType() + " addContext unexpected CustomDataTag " + cdTag);
-                break;
-        }
-        return data;
-    }
-
-    public CustomData getContext(CustomDataTag[] tags)
-    {
-        CustomData result = new CustomData();
-        if (null != tags)
-        {
-            for (int i = 0; i < tags.Length; i++)
-            {
-                addContext(result, tags[i]);
-            }
-        }
-        return result;
-    }
-
-    public CustomData getEventContext()
-    {
-        return getContext(
-                new CustomDataTag[6]{
-                    CustomDataTag.GAMELEVEL,
-                    CustomDataTag.LANGUAGE,
-                    CustomDataTag.LIVES,
-                    CustomDataTag.FUNDS,
-                    CustomDataTag.RESISTANCE,
-                    CustomDataTag.WAVES
-                    }
-            );
-    }
-
-    public CustomData getGameLevelContext()
-    {
-        return getContext(CustomDataTag.GAMELEVEL);
     }
 
     public void sendEvent(TrackingEvent trackingEvent, CustomData customData = null, string userTime = null)
@@ -573,7 +471,7 @@ public class RedMetricsManager : MonoBehaviour
         // TrackingEventDataWithoutIDs data = new TrackingEventDataWithoutIDs(trackingEvent, customData, userTime);
         // addEventToSendLater(data);
 #if VERBOSEMETRICS
-        CustomData context = getEventContext();
+        CustomData context = CustomData.getEventContext();
 #if VERBOSEDEBUG
         Debug.Log(string.Format("{0} sendEvent merging context {1} into trackingEvent {2}", this.GetType(), context, data));
 #endif

@@ -124,6 +124,7 @@ public class WhiteBloodCellMovement : WobblyMovement
         );
         hasReachedTarget = false;
 
+        RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENSWALLOWED, CustomData.getGameObjectContext(targetTransform.gameObject));
         Destroy(targetTransform.gameObject);
     }
 

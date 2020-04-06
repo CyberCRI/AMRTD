@@ -21,6 +21,8 @@ public enum CustomDataTag
     OUTCOME,
     DURATION,
     COST,
+    GAMEOBJECT,
+    POSITION,
 
     CONTROLS,
     LANGUAGE,
