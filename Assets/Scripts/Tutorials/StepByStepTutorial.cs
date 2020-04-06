@@ -50,7 +50,7 @@ public abstract class StepByStepTutorial : MonoBehaviour
 
     private Vector3 manualScale = new Vector3(440, 77, 1);
     private static FocusMaskManager focusMaskManager;
-    
+
     // internal temporary variables
     private string goName;
     private GameObject go;
@@ -193,10 +193,19 @@ public abstract class StepByStepTutorial : MonoBehaviour
                                 //);
                                 focusMaskManager.focusOn(go, next, textHint, true, true, action);
                             }
-                            
+
                             showFocusMaskAndArrow = (steps[stepIndex].action == action);
-                            trackingEvent = showFocusMaskAndArrow ? TrackingEvent.TUTORIALFOCUSON : TrackingEvent.TUTORIALIMAGE;
-                            RedMetricsManager.instance.sendEvent(trackingEvent, new CustomData(CustomDataTag.MESSAGE, textHint).add(CustomDataTag.ELEMENT, go));
+
+                            if (showFocusMaskAndArrow)
+                            {
+                                RedMetricsManager.instance.sendEvent(TrackingEvent.TUTORIALFOCUSON,
+                                    CustomData.getGameObjectContext(go).add(CustomDataTag.MESSAGE, textHint));
+                            }
+                            else
+                            {
+                                RedMetricsManager.instance.sendEvent(TrackingEvent.TUTORIALIMAGE,
+                                    new CustomData(CustomDataTag.ELEMENT, go).add(CustomDataTag.MESSAGE, textHint));
+                            }
 
                             // Debug.Log(this.GetType() + " prepared step=" + _step);
                             prepared = true;

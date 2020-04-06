@@ -353,9 +353,13 @@ public class RedMetricsManager : MonoBehaviour
 
     public CustomData generateCustomDataForGuidInit()
     {
-        //TODO manage GLOBALPLAYERGUID
-        CustomData guidCD = new CustomData(CustomDataTag.LOCALPLAYERGUID, _localPlayerGUID);
-        guidCD.add(CustomDataTag.PLATFORM, Application.platform.ToString());
+        CustomData guidCD = CustomData.getContext(
+                        new CustomDataTag[3]{
+                            CustomDataTag.LOCALPLAYERGUID,
+                            CustomDataTag.PLATFORM,
+                            CustomDataTag.RESOLUTION // assumes it won't be changed
+                            }
+        );
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " generated guidCD=" + guidCD);
 #endif

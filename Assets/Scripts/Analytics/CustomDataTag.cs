@@ -4,6 +4,7 @@ public enum CustomDataTag
     GLOBALPLAYERGUID,   //for GUID associated to an account
 
     PLATFORM,           //the runtime platform on which the game is run
+    RESOLUTION,
 
     SOURCE,             // source of event - webpage or game
 

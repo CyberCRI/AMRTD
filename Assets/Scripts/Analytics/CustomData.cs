@@ -86,6 +86,9 @@ public class CustomData : Dictionary<string, string>
             case CustomDataTag.PLATFORM:
                 add(CustomDataTag.PLATFORM, Application.platform.ToString());
                 break;
+            case CustomDataTag.RESOLUTION:
+                add(CustomDataTag.RESOLUTION, Screen.currentResolution.ToString());
+                break;
             case CustomDataTag.LIVES:
                 if (null != PlayerStatistics.instance)
                 {

@@ -76,35 +76,35 @@ public enum TrackingEvent
 
     // help functionality
     CLICKHELP, //[x]                 // parameter: OUTCOME: ON or OFF depending on desired state of button
-    CLICKHELPON, //[x]               // parameter: ELEMENT ie GameObject clicked on
+    CLICKHELPON, //[x]               // parameters: GAMEOBJECT: GameObject clicked on, ELEMENT: code string used for translation purposes
 
     // tutorial functionality
     CLICKNEXT, //[x]
     CLICKFOCUSHOLE, //[x]
     
     // tiles
-    CLICKTILE, //[x]          // parameter: ELEMENT that specifies tile's GameObject name
+    CLICKTILE, //[x]          // parameter: GAMEOBJECT that specifies tile's GameObject name
 
     // towers
-    CLICKTOWER, //[x]         // parameters: ELEMENT: tower's GameObject name
-    CLICKTOWERSELL, //[x]     // parameters: ELEMENT: tower's GameObject name; COST: funds earned back from selling
-    CLICKTOWERUPGRADE, //[x]  // parameters: ELEMENT: tower's GameObject name; COST: cost of upgrade
-    CLICKTOWERBUTTON, //[x]   // parameters: ELEMENT: tower's Blueprint name; COST: cost of construction
-    CLICKTOWERBUILD, //[x]    // parameters: ELEMENT: tower built; OUTCOME: SUCCESS/FAILURE (if not enough funds)
+    CLICKTOWER, //[x]         // parameters: GAMEOBJECT: tower's GameObject name
+    CLICKTOWERSELL, //[x]     // parameters: GAMEOBJECT: tower's GameObject name; COST: funds earned back from selling
+    CLICKTOWERUPGRADE, //[x]  // parameters: GAMEOBJECT: tower's GameObject name; COST: cost of upgrade
+    CLICKTOWERBUTTON, //[x]   // parameters: GAMEOBJECT: tower's Blueprint name; COST: cost of construction
+    CLICKTOWERBUILD, //[x]    // parameters: GAMEOBJECT: tower built; OUTCOME: SUCCESS/FAILURE (if not enough funds)
 
     // pathogens - pathogen context: life points, resistance level, pathogen name, position on map
     PATHOGENESCAPES, //[x]    // parameter: GAMEOBJECT pathogen
-    PATHOGENSWALLOWED, //[x]  // a pathogen was swallowed by a white blood cell; parameter: GAMEOBJECT pathogen
-    KILLEDPATHOGENAB, //[x]   // killed pathogen with antibiotics; parameter: GAMEOBJECT pathogen
+    PATHOGENSWALLOWED, //[x]  // a pathogen was swallowed by a white blood cell; parameter: GAMEOBJECT: pathogen
+    KILLEDPATHOGENAB, //[x]   // killed pathogen with antibiotics; parameter: GAMEOBJECT: pathogen
     PATHOGENDIVIDED, //[x]
     PATHOGENSPAWNED, //[x]
     PATHOGENINBLOOD, //[x]
 
     COMPLETEGAME, //[x]       // successfully finished the game
-    NEWFURTHEST, //[x]        // reached a new furthest level; parameter: GAMELEVEL completed
+    NEWFURTHEST, //[x]        // reached a new furthest level; parameter: GAMELEVEL: level completed
     NEWOWNRECORD, //[ ]       // beat own best completion time on a level - Feature not developed yet
 
-    TUTORIALIMAGE, //[x]      // a hint message was displayed in front of a grey background; parameters: MESSAGE the text and ELEMENT the image
-    TUTORIALFOCUSON, //[x]    // a tutorial message was displayed with focus arrow and mask; parameters: MESSAGE the text and ELEMENT the system focuses on
+    TUTORIALIMAGE, //[x]      // a hint message was displayed in front of a grey background; parameters: MESSAGE: the text, ELEMENT: the image
+    TUTORIALFOCUSON, //[x]    // a tutorial message was displayed with focus arrow and mask; parameters: MESSAGE: the text, GAMEOBJECT: the GameObject the system focuses on
 
 }

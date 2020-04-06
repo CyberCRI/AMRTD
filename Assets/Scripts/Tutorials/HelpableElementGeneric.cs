@@ -17,7 +17,9 @@ public class HelpableElementGeneric : MonoBehaviour
         {
             string objectCode = string.IsNullOrEmpty(codeStem)? this.gameObject.name.ToUpper() : codeStem;
 
-            RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKHELPON, new CustomData(CustomDataTag.ELEMENT, objectCode));
+            RedMetricsManager.instance.sendEvent(
+                TrackingEvent.CLICKHELPON,
+                CustomData.getGameObjectContext(this).add(CustomDataTag.ELEMENT, objectCode));
 
             string code = "GAME." + objectCode + ".HELP";
 #if VERBOSEDEBUG
