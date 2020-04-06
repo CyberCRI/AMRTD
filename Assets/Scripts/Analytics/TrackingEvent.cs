@@ -27,6 +27,9 @@ public enum TrackingEvent
     CUSTOMDEBUG, //[ ]            // to send manual custom messages
     SWITCHFROMGAMEVERSION, //[x]  // parameters: LOCALPLAYERGUID and PLATFORM: webgl, windowseditor, ...
     SWITCHTOGAMEVERSION, //[x]    // parameters: LOCALPLAYERGUID and PLATFORM: webgl, windowseditor, ...
+    // alternative configuration routes
+    WEBCONFIGURE, //[ ]
+    ADMINCONFIGURE, //[ ]
 
     /////////////////////////////////////////////////////////
     // non-playing screens
@@ -66,6 +69,11 @@ public enum TrackingEvent
     CLICKCOMPLETERETRY, //[x]
     CLICKCOMPLETEMENU, //[x]
 
+    // game over screen
+    GAMEOVER, //[x]                  // event auto-sent when losing a level; parameters: GAMELEVEL failed, WAVES survived
+    CLICKGAMEOVERRETRY, //[x]
+    CLICKGAMEOVERMENU, //[x]
+
     // help functionality
     CLICKHELP, //[x]                 // parameter: OUTCOME: ON or OFF depending on desired state of button
     CLICKHELPON, //[x]               // parameter: ELEMENT ie GameObject clicked on
@@ -93,19 +101,9 @@ public enum TrackingEvent
 
     COMPLETEGAME, //[x]       // successfully finished the game
     NEWFURTHEST, //[x]        // reached a new furthest level; parameter: GAMELEVEL completed
-    NEWOWNRECORD, //[ ]       // beat own best completion time on a level
+    NEWOWNRECORD, //[ ]       // beat own best completion time on a level - Feature not developed yet
 
     TUTORIALIMAGE, //[x]      // a hint message was displayed in front of a grey background; parameters: MESSAGE the text and ELEMENT the image
     TUTORIALFOCUSON, //[x]    // a tutorial message was displayed with focus arrow and mask; parameters: MESSAGE the text and ELEMENT the system focuses on
 
-    // main menu
-    SELECTMENU, //[ ]
-    CONFIGURE, //[ ]
-    GOTOMOOC, //[ ]
-    GOTOSTUDY, //[ ]
-    GOTOURL, //[ ]
-
-    // alternative configuration routes
-    WEBCONFIGURE, //[ ]
-    ADMINCONFIGURE, //[ ]
 }

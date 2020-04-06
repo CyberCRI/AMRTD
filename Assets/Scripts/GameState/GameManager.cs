@@ -153,6 +153,18 @@ public class GameManager : MonoBehaviour
     {
         if (!isLevelWon)
         {
+            RedMetricsManager.instance.sendEvent(
+                TrackingEvent.GAMEOVER,
+                RedMetricsManager.instance.getContext(
+                        new CustomDataTag[5]{
+                            CustomDataTag.GAMELEVEL,
+                            CustomDataTag.WAVES,
+                            TIMESINCEGAMELOADED,
+                            TIMEGAMEPLAYEDNOPAUSE,
+                            TIMESINCELEVELLOADED,
+                            }
+                    )
+                );
             isLevelLost = true;
             gameOverUI.SetActive(true);
         }

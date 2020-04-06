@@ -14,11 +14,12 @@ public enum CustomDataTag
     WAVES,              // waves of pathogens that already happened
     GAMELEVEL,          // game level ie scenario, map being played
 
-    OPTION,             // generic tag
-    STATE,              // generic tag
-    ELEMENT,            // generic tag
-    OUTCOME,            // generic tag
-
+    // generic tags
+    OPTION,
+    STATE,
+    ELEMENT,
+    OUTCOME,
+    DURATION,
     COST,
 
     CONTROLS,
@@ -31,5 +32,9 @@ public enum CustomDataTag
 
     MESSAGE,            // tutorial message that was displayed
 
-    DURATION
+    // elapsed times
+    TIMESINCEGAMELOADED,           // Time.realtimeSinceStartup / Time.unscaledTime
+    TIMEGAMEPLAYEDNOPAUSE,         // Time.time
+    TIMESINCELEVELLOADED,          // Time.timeSinceLevelLoad
+    TIMELEVELPLAYEDNOPAUSE,        // ?
 }

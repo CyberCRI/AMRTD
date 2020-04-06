@@ -60,7 +60,7 @@ public class CompleteLevel : MonoBehaviour
                 nextLevelName = "Level" + (nextLevelIndex + 1).ToString();
                 m = m.NextMatch();
 #if VERBOSEDEBUG
-            Debug.Log(string.Format(this.GetType() + " Start computed nextLevelName={0}, nextLevelIndex={1}", nextLevelName, nextLevelIndex));
+                Debug.Log(string.Format(this.GetType() + " Start computed nextLevelName={0}, nextLevelIndex={1}", nextLevelName, nextLevelIndex));
 #endif
             }
             else
@@ -78,11 +78,19 @@ public class CompleteLevel : MonoBehaviour
     public void completeLevel()
     {
         string sceneName = SceneManager.GetActiveScene().name.ToLowerInvariant();
-        RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, new CustomData(CustomDataTag.GAMELEVEL, sceneName));
+        CustomDataTag victoryContext = RedMetricsManager.instance.getContext(
+                    new CustomDataTag[4]{
+                        CustomDataTag.GAMELEVEL,
+                        TIMESINCEGAMELOADED,
+                        TIMEGAMEPLAYEDNOPAUSE,
+                        TIMESINCELEVELLOADED,
+                        }
+                );
+        RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, victoryContext);
         // TODO assumes linear unlocking of levels
         if (LevelSelectionUI.lastScene.ToLowerInvariant() == sceneName)
         {
-            RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETEGAME);
+            RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETEGAME, victoryContext);
         }
 
         this.gameObject.SetActive(true);

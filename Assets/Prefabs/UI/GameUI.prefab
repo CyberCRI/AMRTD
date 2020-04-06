@@ -1622,7 +1622,7 @@ GameObject:
   - component: {fileID: 1283043317945385369}
   - component: {fileID: 1283043317945385374}
   m_Layer: 5
-  m_Name: Retry
+  m_Name: GameOverRetry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1728,7 +1728,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 999328482526776599}
-        m_MethodName: pressRetryRetryButton
+        m_MethodName: pressGameOverRetryButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4804,7 +4804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1283043319565029789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5117,7 +5117,7 @@ GameObject:
   - component: {fileID: 1283043319634983229}
   - component: {fileID: 1283043319634983202}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: GameOverMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5223,7 +5223,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 999328482526776599}
-        m_MethodName: pressMenuButton
+        m_MethodName: pressGameOverMenuButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
