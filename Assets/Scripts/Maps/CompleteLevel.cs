@@ -1,4 +1,4 @@
-﻿#define VERBOSEDEBUG
+﻿//#define VERBOSEDEBUG
 using System;
 using System.Text.RegularExpressions;
 using UnityEngine;

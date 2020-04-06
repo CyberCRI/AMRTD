@@ -1,4 +1,4 @@
-#define VERBOSEDEBUG
+//#define VERBOSEDEBUG
 
 using UnityEngine;
 using System;

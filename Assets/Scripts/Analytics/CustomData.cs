@@ -1,4 +1,4 @@
-#define VERBOSEDEBUG
+//#define VERBOSEDEBUG
 
 using UnityEngine;
 using System.Collections.Generic;
@@ -229,17 +229,19 @@ public class CustomData : Dictionary<string, string>
         {
             foreach (KeyValuePair<string, string> pair in data)
             {
-                if (this.ContainsKey(pair.Key))
+                if (!this.ContainsKey(pair.Key))
+                {
+                    // new key
+                    this.Add(pair.Key, pair.Value);
+                }
+#if VERBOSEDEBUG
+                else
                 {
                     // this key was already present
                     // each key-value pair type needs a specific treatment
                     Debug.LogWarning(this.GetType() + " key " + pair.Key + " present in both CustomData objects " + data + " and " + this);
                 }
-                else
-                {
-                    // new key
-                    this.Add(pair.Key, pair.Value);
-                }
+#endif
             }
         }
     }

@@ -1,4 +1,4 @@
-#define VERBOSEDEBUG
+//#define VERBOSEDEBUG
 #define VERBOSEMETRICS
 
 using UnityEngine;
