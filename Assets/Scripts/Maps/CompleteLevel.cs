@@ -83,22 +83,21 @@ public class CompleteLevel : MonoBehaviour
     public void completeLevel()
     {
         string sceneName = SceneManager.GetActiveScene().name.ToLowerInvariant();
-        CustomData victoryContext = CustomData.getContext(
-                    new CustomDataTag[4]{
-                        CustomDataTag.GAMELEVEL,
-                        CustomDataTag.TIMESINCEGAMELOADED,
-                        CustomDataTag.TIMEGAMEPLAYEDNOPAUSE,
-                        CustomDataTag.TIMESINCELEVELLOADED,
-                        }
-                );
-        RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, victoryContext);
+        RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, CustomData.getLevelEndContext());
         
         GameConfiguration.instance.reachedLevel(nextLevelIndex, nextLevelName);
 
         // TODO assumes linear unlocking of levels
         if (LevelSelectionUI.lastScene.ToLowerInvariant() == sceneName)
         {
-            RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETEGAME, victoryContext);
+            RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETEGAME, CustomData.getContext(
+                    new CustomDataTag[3]{
+                        CustomDataTag.TIMESINCEGAMELOADED,
+                        CustomDataTag.TIMEGAMEPLAYEDNOPAUSE,
+                        CustomDataTag.TIMESINCELEVELLOADED,
+                        }
+                )
+            );
         }
 
         if (null != completeLevelUI)

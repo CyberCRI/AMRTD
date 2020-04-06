@@ -45,8 +45,21 @@ public class SceneFader : MonoBehaviour
     {
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " onSceneLoaded: " + scene.name + " with mode " + mode);
-#endif        
+#endif  
+
+        RedMetricsManager.instance.sendEvent(
+            TrackingEvent.LEVELSTARTS,
+            CustomData.getContext(
+                new CustomDataTag[3]{
+                    CustomDataTag.GAMELEVEL,
+                    CustomDataTag.TIMESINCEGAMELOADED,
+                    CustomDataTag.RESOLUTION
+                    }
+            )
+        );
+
         StartCoroutine(fadeIn());
+
     }
 
     public void fadeTo(string scene)

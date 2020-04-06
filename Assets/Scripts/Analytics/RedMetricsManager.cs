@@ -357,7 +357,7 @@ public class RedMetricsManager : MonoBehaviour
                         new CustomDataTag[4]{
                             CustomDataTag.LOCALPLAYERGUID,
                             CustomDataTag.PLATFORM,
-                            CustomDataTag.RESOLUTION, // assumes it won't be changed
+                            CustomDataTag.RESOLUTION,
                             CustomDataTag.LANGUAGE,
                             }
         );

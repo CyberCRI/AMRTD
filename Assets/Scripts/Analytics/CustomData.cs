@@ -127,6 +127,24 @@ public class CustomData : Dictionary<string, string>
                     add(CustomDataTag.WAVES, PlayerStatistics.instance.waves);
                 }
                 break;
+            case CustomDataTag.PATHOGENSALIVE:
+                if (null != WaveSpawner.instance)
+                {
+                    add(CustomDataTag.PATHOGENSALIVE, WaveSpawner.enemiesAliveCount);
+                }
+                break;
+            case CustomDataTag.MAXPATHOGENCOUNT:
+                if (null != WaveSpawner.instance)
+                {
+                    add(CustomDataTag.MAXPATHOGENCOUNT, WaveSpawner.enemiesAlive.Length);
+                }
+                break;
+            case CustomDataTag.TURRETCOUNT:
+                if (null != PlayerStatistics.instance)
+                {
+                    add(CustomDataTag.TURRETCOUNT, PlayerStatistics.instance.turretCount);
+                }
+                break;
             case CustomDataTag.GAMELEVEL:
                 add(CustomDataTag.GAMELEVEL, SceneManager.GetActiveScene().name);
                 break;
@@ -198,6 +216,22 @@ public class CustomData : Dictionary<string, string>
     public static CustomData getGameObjectContext(GameObject go, CustomDataTag _tag = CustomDataTag.GAMEOBJECT)
     {
         return new CustomData(_tag, go.name).add(CustomDataTag.POSITION, go.transform.position);
+    }
+
+    public static CustomData getLevelEndContext()
+    {
+        return getContext(
+                        new CustomDataTag[8]{
+                            CustomDataTag.GAMELEVEL,
+                            CustomDataTag.WAVES,
+                            CustomDataTag.PATHOGENSALIVE,
+                            CustomDataTag.MAXPATHOGENCOUNT,
+                            CustomDataTag.TURRETCOUNT,
+                            CustomDataTag.TIMESINCEGAMELOADED,
+                            CustomDataTag.TIMEGAMEPLAYEDNOPAUSE,
+                            CustomDataTag.TIMESINCELEVELLOADED,
+                            }
+                    );
     }
 
     public static CustomData merge(CustomData data1, CustomData data2)

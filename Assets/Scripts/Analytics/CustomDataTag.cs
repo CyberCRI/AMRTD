@@ -13,6 +13,9 @@ public enum CustomDataTag
     FUNDS,              // money available to buy/upgrade towers
     RESISTANCE,         // resistance points accumulated when building towers
     WAVES,              // waves of pathogens that already happened
+    PATHOGENSALIVE,     // number of pathogens alive
+    MAXPATHOGENCOUNT,   // max number of pathogens in this wave
+    TURRETCOUNT,        // current number of turrets
     GAMELEVEL,          // game level ie scenario, map being played
 
     // generic tags

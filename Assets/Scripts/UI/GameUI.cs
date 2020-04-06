@@ -67,7 +67,7 @@ public class GameUI : MonoBehaviour
     // called from retry screen, to actually retry the level
     public void pressRetryRetryButton()
     {
-        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRYRETRY);
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRYRETRY, CustomData.getLevelEndContext());
         retry();
     }
 
