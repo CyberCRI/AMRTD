@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//#define VERBOSEDEBUG
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -31,11 +32,20 @@ public class SceneFader : MonoBehaviour
         else
         {
             instance = this;
+            SceneManager.sceneLoaded += onSceneLoaded;
         }
     }
 
     void Start()
     {
+        StartCoroutine(fadeIn());
+    }
+
+    void onSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+#if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " onSceneLoaded: " + scene.name + " with mode " + mode);
+#endif        
         StartCoroutine(fadeIn());
     }
 

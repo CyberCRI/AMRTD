@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     }
 
     private GameObject gameOverUI = null;
-    private GameObject completeLevelUI = null;
     private Text levelDurationCountdownText = null;
     [SerializeField]
     private float levelDuration = 0f;

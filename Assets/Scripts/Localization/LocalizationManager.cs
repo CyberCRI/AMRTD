@@ -140,7 +140,7 @@ public class LocalizationManager : MonoBehaviour
     void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
 #if VERBOSEDEBUG
-            Debug.Log("onSceneLoaded: " + scene.name + " with mode " + mode);
+        Debug.Log(this.GetType() + " onSceneLoaded: " + scene.name + " with mode " + mode);
 #endif        
         refreshUIElements("onSceneLoaded");
     }

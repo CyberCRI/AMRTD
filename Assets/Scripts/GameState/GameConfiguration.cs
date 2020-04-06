@@ -22,6 +22,7 @@ public class GameConfiguration : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " Awake done");

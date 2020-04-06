@@ -90,10 +90,13 @@ public class Node : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log("Node OnMouseDown");
 #endif
-        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTILE, CustomData.getGameObjectContext(this));
         if (!HelpButtonUI.instance.isHelpModeOn())
         {
             manageClick();
+        }
+        else
+        {
+            RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTILE, CustomData.getGameObjectContext(this).add(CustomDataTag.HELPMODE, true));
         }
     }
 
@@ -117,14 +120,12 @@ public class Node : MonoBehaviour
                     TurretBlueprint blueprint = buildManager.getTurretToBuild();
                     if (buildManager.canBuy)
                     {
-                        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD,
-                            CustomData.getGameObjectContext(blueprint.prefab).add(CustomDataTag.OUTCOME, CustomDataValue.SUCCESS));
                         buildTurret(blueprint);
                     }
                     else
                     {
                         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD,
-                            CustomData.getGameObjectContext(blueprint.prefab).add(CustomDataTag.OUTCOME, CustomDataValue.FAILURE));
+                            new CustomData(CustomDataTag.ELEMENT, blueprint.prefab).add(CustomDataTag.OUTCOME, CustomDataValue.FAILURE));
                         GameObject effect = (GameObject)Instantiate(
                             cantPayBuildEffect,
                             this.transform.position,
@@ -134,10 +135,17 @@ public class Node : MonoBehaviour
                 }
                 else
                 {
+                    RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTILE, CustomData.getGameObjectContext(this).add(CustomDataTag.HELPMODE, false));
                     // no tower selected
                 }
             }
         }
+#if VERBOSEDEBUG
+        else
+        {
+            Debug.Log("Node manageClick IsPointerOverGameObject");
+        }
+#endif
     }
 
     /// <summary>
@@ -225,6 +233,9 @@ public class Node : MonoBehaviour
 
             turretGO = (GameObject)Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
             turretGO.transform.localScale = Vector3.Scale(this.transform.parent.localScale, turretGO.transform.localScale);
+
+            RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD,
+                CustomData.getGameObjectContext(turretGO).add(CustomDataTag.OUTCOME, CustomDataValue.SUCCESS));
 
             turret = turretGO.GetComponent<Turret>();
             turret.node = this;

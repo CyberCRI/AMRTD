@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class CompleteLevel : MonoBehaviour
 {
     public static CompleteLevel instance;
+    private GameObject completeLevelUI = null;
     private string nextLevelName = "";
     private int nextLevelIndex = 0;
     [SerializeField]
@@ -72,7 +73,11 @@ public class CompleteLevel : MonoBehaviour
                 Debug.LogError("error while processing level index from current scene name " + currentScene);
             }
         }
-        GameConfiguration.instance.reachedLevel(nextLevelIndex, nextLevelName);
+    }
+    
+    public void linkUI(GameObject _completeLevelUI)
+    {
+        completeLevelUI = _completeLevelUI;
     }
 
     public void completeLevel()
@@ -87,13 +92,19 @@ public class CompleteLevel : MonoBehaviour
                         }
                 );
         RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, victoryContext);
+        
+        GameConfiguration.instance.reachedLevel(nextLevelIndex, nextLevelName);
+
         // TODO assumes linear unlocking of levels
         if (LevelSelectionUI.lastScene.ToLowerInvariant() == sceneName)
         {
             RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETEGAME, victoryContext);
         }
 
-        this.gameObject.SetActive(true);
+        if (null != completeLevelUI)
+        {
+            completeLevelUI.SetActive(true);
+        }
     }
 
     public void pressContinue()

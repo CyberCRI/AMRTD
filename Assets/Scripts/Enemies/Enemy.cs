@@ -493,7 +493,7 @@ public class Enemy : MonoBehaviour
         if (isAlive && health <= 0f)
         {
             RedMetricsManager.instance.sendEvent(
-                TrackingEvent.KILLEDPATHOGENAB,
+                TrackingEvent.PATHOGENKILLEDBYAB,
                 CustomData.getGameObjectContext(this).add(CustomDataTag.SOURCE, source.ToString()));
             die();
         }
@@ -517,7 +517,7 @@ public class Enemy : MonoBehaviour
         }
         else if (null != wave)
         {
-            RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENDIVIDED, CustomData.getGameObjectContext(this));
+            RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENDIVIDES, CustomData.getGameObjectContext(this));
 
             reward /= 2;
 

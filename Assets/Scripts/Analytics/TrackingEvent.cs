@@ -89,15 +89,15 @@ public enum TrackingEvent
     CLICKTOWER, //[x]         // parameters: GAMEOBJECT: tower's GameObject name
     CLICKTOWERSELL, //[x]     // parameters: GAMEOBJECT: tower's GameObject name; COST: funds earned back from selling
     CLICKTOWERUPGRADE, //[x]  // parameters: GAMEOBJECT: tower's GameObject name; COST: cost of upgrade
-    CLICKTOWERBUTTON, //[x]   // parameters: GAMEOBJECT: tower's Blueprint name; COST: cost of construction
-    CLICKTOWERBUILD, //[x]    // parameters: GAMEOBJECT: tower built; OUTCOME: SUCCESS/FAILURE (if not enough funds)
+    CLICKTOWERBUTTON, //[x]   // parameters: ELEMENT: tower's Blueprint name; OUTCOME: final state of button ON or OFF; COST: cost of construction
+    CLICKTOWERBUILD, //[x]    // parameters: ELEMENT/GAMEOBJECT: tower's Blueprint or tower built depending on outcome; OUTCOME: SUCCESS/FAILURE (if not enough funds)
 
     // pathogens - pathogen context: life points, resistance level, pathogen name, position on map
     PATHOGENESCAPES, //[x]    // parameter: GAMEOBJECT pathogen
-    PATHOGENSWALLOWED, //[x]  // a pathogen was swallowed by a white blood cell; parameter: GAMEOBJECT: pathogen
-    KILLEDPATHOGENAB, //[x]   // killed pathogen with antibiotics; parameter: GAMEOBJECT: pathogen
-    PATHOGENDIVIDED, //[x]
-    PATHOGENSPAWNED, //[x]
+    PATHOGENKILLEDBYWBC, //[x]  // a pathogen was swallowed by a white blood cell; parameter: GAMEOBJECT: pathogen
+    PATHOGENKILLEDBYAB, //[x]   // killed pathogen with antibiotics; parameter: GAMEOBJECT: pathogen
+    PATHOGENDIVIDES, //[x]
+    PATHOGENSPAWNS, //[x]
     PATHOGENINBLOOD, //[x]
 
     COMPLETEGAME, //[x]       // successfully finished the game

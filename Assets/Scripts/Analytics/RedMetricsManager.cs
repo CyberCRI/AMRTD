@@ -354,10 +354,11 @@ public class RedMetricsManager : MonoBehaviour
     public CustomData generateCustomDataForGuidInit()
     {
         CustomData guidCD = CustomData.getContext(
-                        new CustomDataTag[3]{
+                        new CustomDataTag[4]{
                             CustomDataTag.LOCALPLAYERGUID,
                             CustomDataTag.PLATFORM,
-                            CustomDataTag.RESOLUTION // assumes it won't be changed
+                            CustomDataTag.RESOLUTION, // assumes it won't be changed
+                            CustomDataTag.LANGUAGE,
                             }
         );
 #if VERBOSEDEBUG

@@ -30,6 +30,8 @@ public enum CustomDataTag
     GRAPHICS,
     SOUND,
 
+    HELPMODE,
+
     NEWTAB,
     SAMETAB,
 

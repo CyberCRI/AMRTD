@@ -105,14 +105,20 @@ public class BuildManager : MonoBehaviour
     //    !button.isOn: deselect current turret button
     public void selectTurretToBuild(TurretBlueprint turret, Toggle button = null)
     {
+        CustomDataValue outcome;
         if (null == button || !button.isOn)
         {
             deselectTurretButton(button);
+            outcome = CustomDataValue.OFF;
         }
         else
         {
             selectTurretButton(button);
+            outcome = CustomDataValue.ON;
         }
+
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUTTON,
+            new CustomData(CustomDataTag.ELEMENT, turret.prefab).add(CustomDataTag.OUTCOME, outcome).add(CustomDataTag.COST, turret.cost));
 
         turretToBuild = (null == button) || button.isOn ? turret : null;
         setBuildCursor(null != turretToBuild);

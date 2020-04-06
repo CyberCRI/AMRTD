@@ -23,7 +23,15 @@ public class CustomData : Dictionary<string, string>
         this.Add(key, value);
     }
 
+    public CustomData(CustomDataTag tag, Vector3 value) : this(tag.ToString().ToLowerInvariant(), value.ToString())
+    {
+    }
+
     public CustomData(CustomDataTag tag, int value) : this(tag.ToString().ToLowerInvariant(), value.ToString())
+    {
+    }
+
+    public CustomData(CustomDataTag tag, bool value) : this(tag.ToString().ToLowerInvariant(), value.ToString().ToLowerInvariant())
     {
     }
 
@@ -48,6 +56,12 @@ public class CustomData : Dictionary<string, string>
     public CustomData add(CustomDataTag tag, int value)
     {
         this.Add(tag.ToString().ToLowerInvariant(), value.ToString());
+        return this;
+    }
+
+    public CustomData add(CustomDataTag tag, bool value)
+    {
+        this.Add(tag.ToString().ToLowerInvariant(), value.ToString().ToLowerInvariant());
         return this;
     }
 
@@ -119,6 +133,9 @@ public class CustomData : Dictionary<string, string>
             case CustomDataTag.LANGUAGE:
                 add(CustomDataTag.LANGUAGE, LocalizationManager.instance.getLanguageString());
                 break;
+            case CustomDataTag.HELPMODE:
+                add(CustomDataTag.HELPMODE, HelpButtonUI.instance.isHelpModeOn());
+                break;
             case CustomDataTag.TIMESINCEGAMELOADED:
                 add(CustomDataTag.TIMESINCEGAMELOADED, Time.realtimeSinceStartup.ToString());
                 // add(CustomDataTag.TIMESINCEGAMELOADED, Time.unscaledTime.ToString());
@@ -157,9 +174,8 @@ public class CustomData : Dictionary<string, string>
     public static CustomData getEventContext()
     {
         return getContext(
-                new CustomDataTag[7]{
+                new CustomDataTag[6]{
                     CustomDataTag.GAMELEVEL,
-                    CustomDataTag.LANGUAGE,
                     CustomDataTag.LIVES,
                     CustomDataTag.FUNDS,
                     CustomDataTag.RESISTANCE,

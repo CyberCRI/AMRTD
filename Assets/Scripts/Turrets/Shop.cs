@@ -73,12 +73,7 @@ public class Shop : MonoBehaviour
 
     private void innerClickTurret(TurretBlueprint[] array, Attack.SUBSTANCE substance, Toggle button = null)
     {
-        TurretBlueprint blueprint = array[(int)substance];
-
-        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUTTON, 
-            CustomData.getGameObjectContext(blueprint.prefab).add(CustomDataTag.COST, blueprint.cost));
-        
-        buildManager.selectTurretToBuild(blueprint, button);
+        buildManager.selectTurretToBuild(array[(int)substance], button);
     }
 
     public void selectStandardTurret(Toggle button = null)
