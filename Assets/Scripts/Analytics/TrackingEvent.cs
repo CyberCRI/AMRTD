@@ -17,23 +17,35 @@ public enum TrackingEvent
     /////////////////////////////////////////////////////////
     // all screens
     CLICKFEEDBACKFORM, //[x]      // parameter: GAMELEVEL
-    // all screens - debug
-    PRESSLANGUAGE, //[ ]          // using the keyboard shortcut
-    PRESSCURRENCYCHEAT, //[ ]     // using the keyboard shortcut
-    PRESSWINCHEAT, //[ ]          // using the keyboard shortcut
-    PRESSLOSECHEAT, //[ ]         // using the keyboard shortcut
-    CLICKRESET, //[ ]
-    CLICKUNLOCK, //[ ]
-    CUSTOMDEBUG, //[ ]            // to send manual custom messages
-    SWITCHFROMGAMEVERSION, //[x]  // parameters: LOCALPLAYERGUID and PLATFORM: webgl, windowseditor, ...
-    SWITCHTOGAMEVERSION, //[x]    // parameters: LOCALPLAYERGUID and PLATFORM: webgl, windowseditor, ...
-    // alternative configuration routes
+
+    // all screens - dev
+    // DEVPRESS = using the dev keyboard shortcut
+    // DEVCLICK = using the dev UI button
+    DEVPRESSLANGUAGE, //[x]          // parameter: LANGUAGE
+    DEVPRESSCURRENCY, //[x]          // 
+    DEVPRESSLOSE, //[x]              // winLevel();
+    DEVPRESSWIN, //[x]               // loseLevel();
+    DEVPRESSINJUREALL, //[x]         // injureAllEnemies();
+    DEVPRESSKILLALLBUTONE, //[x]     // killAllButOneEnemy();
+    DEVPRESSDESTROYALLTURRETS, //[x] // destroyAllTurrets();
+    DEVPRESSDELETEPLAYERPREFS, //[x] //
+    
+    DEVCLICKLEVELSLOCK, //[x]
+    DEVPRESSLEVELSLOCK, //[x]
+    DEVCLICKLEVELSUNLOCK, //[x]
+    DEVPRESSLEVELSUNLOCK, //[x]
+    
+    DEVCUSTOMDEBUG, //[ ]            // to send manual custom messages
+    DEVSWITCHFROMGAMEVERSION, //[x]  // parameters: LOCALPLAYERGUID and PLATFORM: webgl, windowseditor, ...
+    DEVSWITCHTOGAMEVERSION, //[x]    // parameters: LOCALPLAYERGUID and PLATFORM: webgl, windowseditor, ...
+
+    // alternative configuration routes - website-side feature not developed yet
     WEBCONFIGURE, //[ ]
     ADMINCONFIGURE, //[ ]
 
     /////////////////////////////////////////////////////////
     // non-playing screens
-    CLICKLANGUAGE, //[ ]          // using the UI button
+    CLICKLANGUAGE, //[x]          // using the UI button; parameter: OPTION language clicked on
 
     /////////////////////////////////////////////////////////
     // main screen
@@ -63,16 +75,16 @@ public enum TrackingEvent
     // retry screen
     CLICKRETRY, //[x]
     CLICKRETRYRESUME, //[x]
-    CLICKRETRYRETRY, //[x]
+    CLICKRETRYRETRY, //[x]           // parameters: cf. getLevelEndContext
 
     // complete screen
-    COMPLETELEVEL, //[x]             // event auto-sent when completing; parameter: GAMELEVEL completed
+    COMPLETELEVEL, //[x]             // event auto-sent when completing; parameters: cf. getLevelEndContext
     CLICKCOMPLETECOMPLETE, //[x]
     CLICKCOMPLETERETRY, //[x]
     CLICKCOMPLETEMENU, //[x]
 
     // game over screen
-    GAMEOVER, //[x]                  // event auto-sent when losing a level; parameters: GAMELEVEL failed, WAVES survived
+    GAMEOVER, //[x]                  // event auto-sent when losing a level; parameters: cf. getLevelEndContext
     CLICKGAMEOVERRETRY, //[x]
     CLICKGAMEOVERMENU, //[x]
 
@@ -85,7 +97,7 @@ public enum TrackingEvent
     CLICKFOCUSHOLE, //[x]
     
     // tiles
-    CLICKTILE, //[x]          // parameter: GAMEOBJECT that specifies tile's GameObject name
+    CLICKTILE, //[x]          // parameter: GAMEOBJECT that specifies tile's GameObject name; parameter: HELPMODE: true if Help button was active
 
     // towers
     CLICKTOWER, //[x]         // parameters: GAMEOBJECT: tower's GameObject name
@@ -102,7 +114,7 @@ public enum TrackingEvent
     PATHOGENSPAWNS, //[x]
     PATHOGENINBLOOD, //[x]
 
-    COMPLETEGAME, //[x]       // successfully finished the game
+    COMPLETEGAME, //[x]       // successfully finished the game; parameters: TIMESINCEGAMELOADED, TIMEGAMEPLAYEDNOPAUSE, TIMESINCELEVELLOADED
     NEWFURTHEST, //[x]        // reached a new furthest level; parameter: GAMELEVEL: level completed
     NEWOWNRECORD, //[ ]       // beat own best completion time on a level - Feature not developed yet
 

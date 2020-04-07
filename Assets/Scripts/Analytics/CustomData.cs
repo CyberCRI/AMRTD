@@ -152,7 +152,10 @@ public class CustomData : Dictionary<string, string>
                 add(CustomDataTag.LANGUAGE, LocalizationManager.instance.getLanguageString());
                 break;
             case CustomDataTag.HELPMODE:
-                add(CustomDataTag.HELPMODE, HelpButtonUI.instance.isHelpModeOn());
+                if (null != HelpButtonUI.instance)
+                {
+                    add(CustomDataTag.HELPMODE, HelpButtonUI.instance.isHelpModeOn());
+                }
                 break;
             case CustomDataTag.TIMESINCEGAMELOADED:
                 add(CustomDataTag.TIMESINCEGAMELOADED, Time.realtimeSinceStartup.ToString());

@@ -1,5 +1,5 @@
 ﻿//#define VERBOSEDEBUG
-//#define DEVMODE
+#define DEVMODE
 //#define LIFEPOINTSMODE
 using UnityEngine;
 using UnityEngine.UI;
@@ -100,26 +100,31 @@ public class GameManager : MonoBehaviour
 #if DEVMODE
             if (Input.GetKeyDown(KeyCode.End))
             {
+                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSLOSE);
                 loseLevel();
             }
 
             if (Input.GetKeyDown(KeyCode.Home))
             {
+                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSWIN);
                 winLevel();
             }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSINJUREALL);
                 injureAllEnemies();
             }
 
             if (Input.GetKeyDown(KeyCode.K))
             {
+                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSKILLALLBUTONE);
                 killAllButOneEnemy();
             }
 
             if (Input.GetKeyDown(KeyCode.T))
             {
+                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSDESTROYALLTURRETS);
                 destroyAllTurrets();
             }
 #endif
@@ -182,7 +187,7 @@ public class GameManager : MonoBehaviour
         return Time.timeScale == 0f;
     }
 
-#if VERBOSEDEBUG
+#if DEVMODE
     private void injureAllEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(Enemy.enemyTag);

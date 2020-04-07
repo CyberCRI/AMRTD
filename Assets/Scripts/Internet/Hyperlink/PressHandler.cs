@@ -17,7 +17,7 @@ public class PressHandler : MonoBehaviour, IPointerDownHandler
 #if VERBOSEDEBUG
         Debug.Log(this.gameObject.name + " " + this.GetType() + " OnPointerDown");
 #endif
-        if (!HelpButtonUI.instance.isHelpModeOn())
+        if ((null == HelpButtonUI.instance) || (!HelpButtonUI.instance.isHelpModeOn()))
         {
 			OnPress.Invoke();
         }

@@ -181,9 +181,9 @@ public class GameConfiguration : MonoBehaviour
             if (value != _isAdmin.val)
             {
                 _isAdmin.val = value;
-                RedMetricsManager.instance.sendEvent(TrackingEvent.SWITCHFROMGAMEVERSION, RedMetricsManager.instance.generateCustomDataForGuidInit());
+                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVSWITCHFROMGAMEVERSION, RedMetricsManager.instance.generateCustomDataForGuidInit());
                 setMetricsDestination(!value);
-                RedMetricsManager.instance.sendEvent(TrackingEvent.SWITCHTOGAMEVERSION, RedMetricsManager.instance.generateCustomDataForGuidInit());
+                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVSWITCHTOGAMEVERSION, RedMetricsManager.instance.generateCustomDataForGuidInit());
             }
         }
     }

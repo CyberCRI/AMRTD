@@ -13,7 +13,7 @@ public class HelpableElementGeneric : MonoBehaviour
         Debug.Log("HelpableElementGeneric: click " + this.gameObject.name);
 #endif
 
-        if (HelpButtonUI.instance.isHelpModeOn())
+        if ((null != HelpButtonUI.instance) && (HelpButtonUI.instance.isHelpModeOn()))
         {
             string objectCode = string.IsNullOrEmpty(codeStem)? this.gameObject.name.ToUpper() : codeStem;
 
