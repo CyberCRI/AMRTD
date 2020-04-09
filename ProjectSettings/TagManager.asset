@@ -8,6 +8,7 @@ TagManager:
   - TurretTag
   - RBCTag
   - WBCTag
+  - VirusTag
   layers:
   - Default
   - TransparentFX

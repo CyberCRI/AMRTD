@@ -82,6 +82,7 @@
 	,{"key":"GAME.TURRETBUTTON.HELP","value":           "Click this button to place antibiotics dispensers on the tiles!"}
 	,{"key":"GAME.REDBLOODCELL.HELP","value":           "This is a red blood cell, minding its own business of oxygen transport."}
 	,{"key":"GAME.WHITEBLOODCELL.HELP","value":         "This is a white blood cell, ready to defend the blood vessel from intruders!"}
+	,{"key":"GAME.SARSCOV2.HELP","value":               "SARS-CoV-2 is unaffected by antibiotics, like all viruses. Let white blood cells kill it!"}
 	,{"key":"GAME.BULLET.HELP","value":                 "This is an antibiotics bullet. You're a very quick clicker!"}
 	,{"key":"GAME.WAVECOUNTDOWN.NOCOUNTDOWN","value":   ""}
 

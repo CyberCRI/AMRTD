@@ -17,6 +17,8 @@ public class RedBloodCellManager : MonoBehaviour
     [SerializeField]
     private Transform bloodEnd2 = null;
     [SerializeField]
+    private Transform bloodWayPointsRoot = null;
+    [SerializeField]
     public Transform bloodUnder = null;
 
     [SerializeField]
@@ -30,6 +32,7 @@ public class RedBloodCellManager : MonoBehaviour
     private float timer = 0f;
     private int rbcYetToSpawnCount = 0;
     private float topToBottom = 0f;
+    private bool isWaypointsBased = false;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -44,29 +47,39 @@ public class RedBloodCellManager : MonoBehaviour
         {
             instance = this;
 
+            isWaypointsBased = ((null != bloodWayPointsRoot) && bloodWayPointsRoot.gameObject.activeSelf);
+
 #if DETRIMENTALOPTIMIZATION
             rbcYetToSpawnCount = rbcSpawnCount;
 #endif
 
-            topToBottom = (bloodEnd1.position - bloodOrigin1.position).z;
-
-            rbcSpawnTimePeriod = Mathf.Abs(topToBottom / (rbcSpawnCount * rbcPrefabs[0].GetComponent<RedBloodCellMovement>().baseSpeed));
-
-            // spatial spawn
-            Vector3 rbcSpawnSpatialPeriod = topToBottom / (rbcSpawnCount + 1) * Vector3.forward;
-            for (int i = 0; i < rbcSpawnCount; i++)
+            if (isWaypointsBased)
             {
-                innerSpawnRBC((i + 1) * rbcSpawnSpatialPeriod);
+
+
             }
+            else
+            {
+                topToBottom = (bloodEnd1.position - bloodOrigin1.position).z;
+
+                rbcSpawnTimePeriod = Mathf.Abs(topToBottom / (rbcSpawnCount * rbcPrefabs[0].GetComponent<RedBloodCellMovement>().baseSpeed));
+
+                // spatial spawn
+                Vector3 rbcSpawnSpatialPeriod = topToBottom / (rbcSpawnCount + 1) * Vector3.forward;
+                for (int i = 0; i < rbcSpawnCount; i++)
+                {
+                    innerSpawnRBC((i + 1) * rbcSpawnSpatialPeriod);
+                }
 
 #if !DETRIMENTALOPTIMIZATION
-            // temporal spawn
-            for (int i = 0; i < rbcSpawnCount; i++)
-            {
-                // temporal spawn for DETRIMENTALOPTIMIZATION mode if no spatial spawn
-                //Invoke("spawnRBC", (i + rbcSpawnPeriodVariationRatio * Random.Range(-1f, 1f)) * rbcSpawnPeriod);
+                // temporal spawn
+                for (int i = 0; i < rbcSpawnCount; i++)
+                {
+                    // temporal spawn for DETRIMENTALOPTIMIZATION mode if no spatial spawn
+                    //Invoke("spawnRBC", (i + rbcSpawnPeriodVariationRatio * Random.Range(-1f, 1f)) * rbcSpawnPeriod);
 
-                InvokeRepeating("randomSpawnRBC", i * rbcSpawnTimePeriod, rbcSpawnCount * rbcSpawnTimePeriod);
+                    InvokeRepeating("randomSpawnRBC", i * rbcSpawnTimePeriod, rbcSpawnCount * rbcSpawnTimePeriod);
+                }
 #endif
             }
         }
@@ -96,6 +109,6 @@ public class RedBloodCellManager : MonoBehaviour
 
     public Transform[] getBloodPositions()
     {
-        return new Transform[4] { bloodOrigin1, bloodOrigin2, bloodEnd1, bloodEnd2 };
+        return new Transform[5] { bloodOrigin1, bloodOrigin2, bloodEnd1, bloodEnd2, bloodWayPointsRoot };
     }
 }

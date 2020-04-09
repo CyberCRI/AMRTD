@@ -11,7 +11,10 @@ public class RedBloodCellMovement : WobblyMovement
     private static Transform bloodOrigin2 = null;
     private static Transform bloodEnd1 = null;
     private static Transform bloodEnd2 = null;
+    private static Transform[] bloodWayPoints = null;
     public float baseSpeed = 0f;
+    private int waypointIndex = 0;
+    private static bool isWaypointsBased = false;
     [SerializeField]
     private float speedVariation = 0f;
 
@@ -25,6 +28,13 @@ public class RedBloodCellMovement : WobblyMovement
             bloodOrigin2 = positions[1];
             bloodEnd1 = positions[2];
             bloodEnd2 = positions[3];
+
+            isWaypointsBased = RedBloodCellManager.instance.isWaypointsBased;
+            if (isWaypointsBased)
+            {
+                Transform bloodWayPointsRoot = positions[4];
+                CommonUtilities.fillArrayFromRoot(bloodWayPointsRoot, ref bloodWayPoints);
+            }
         }
 
         setTarget();
@@ -42,15 +52,29 @@ public class RedBloodCellMovement : WobblyMovement
             setTarget();
             setSpeed();
 #else
-            Destroy(this.gameObject);
+            if (isWaypointsBased && (waypointIndex < bloodWayPoints.Length))
+            {
+                setTarget();
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
 #endif
         }
     }
 
     private void setTarget()
     {
-        float t = Random.Range(0f, 1f);
-        target = t * bloodEnd1.position + (1 - t) * bloodEnd2.position;
+        if (isWaypointsBased)
+        {
+            target = bloodWayPoints[waypointIndex++].position;
+        }
+        else
+        {
+            float t = Random.Range(0f, 1f);
+            target = t * bloodEnd1.position + (1 - t) * bloodEnd2.position;
+        }
     }
 
     private void resetPosition()

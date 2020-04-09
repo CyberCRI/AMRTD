@@ -170,7 +170,7 @@ public class WaveSpawner : MonoBehaviour
             ).ToArray();
     }
 
-    IEnumerator spawnWave()
+    private IEnumerator spawnWave()
     {
         isDoneSpawning = false;
         yield return new WaitForSeconds(1f);

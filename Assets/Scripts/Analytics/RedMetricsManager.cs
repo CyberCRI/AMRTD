@@ -1,5 +1,6 @@
 //#define VERBOSEDEBUG
 #define VERBOSEMETRICS
+//#define SENDMETRICS
 
 using UnityEngine;
 using System.Collections;
@@ -374,6 +375,8 @@ public class RedMetricsManager : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " sendStartEvent");
 #endif
+
+#if SENDMETRICS
         if (!_isStartEventSent || force)
         {
 #if VERBOSEDEBUG
@@ -385,6 +388,7 @@ public class RedMetricsManager : MonoBehaviour
         }
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " sendStartEvent done");
+#endif
 #endif
     }
 
@@ -470,6 +474,8 @@ public class RedMetricsManager : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log(string.Format("{0} sendEvent({1})", this.GetType(), data));
 #endif
+
+#if SENDMETRICS
         // test Application.internetReachability
 
         // // TODO: queue events that can't be sent during internet outage
@@ -494,6 +500,7 @@ public class RedMetricsManager : MonoBehaviour
 #endif
         sendData(redMetricsEvent, json, value => wwwLogger(value, "sendEvent(" + data.type + ")"));
         //TODO pass data as parameter to sendDataStandalone so that it's serialized inside
+#endif
     }
 
     public override string ToString()
