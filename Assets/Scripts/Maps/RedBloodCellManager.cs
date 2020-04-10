@@ -72,51 +72,74 @@ public class RedBloodCellManager : MonoBehaviour
                 // spatial spawn - find between which waypoints to spawn
                 float rbcSpawnSpatialPeriod = topToBottom / (rbcSpawnCount + 1);
                 float passedPath = 0f;
+                float passedPathRoundedDown = 0f;
                 int passedPathIndex = 0;
                 int rbcPositionsFound = 0;
-                bool done = false;
-#if VERBOSEDEBUG
+                float remainder = 0f;
+
+                #if VERBOSEDEBUG
                 Debug.Log(this.GetType() + " entering spatial spawn loop...");
-#endif
+                #endif
+                
                 while (rbcPositionsFound < rbcSpawnCount)
                 //for (int i = 1; i < rbcSpawnCount+1; i++)
                 {
-#if VERBOSEDEBUG
+                    #if VERBOSEDEBUG
                     Debug.Log(string.Format("{0} > spatial spawn loop: rbcPositionsFound=={1} < rbcSpawnCount=={2}", this.GetType(),rbcPositionsFound, rbcSpawnCount));
-#endif
+                    #endif
+                    
                     while (passedPath <= rbcPositionsFound * rbcSpawnSpatialPeriod)
                     {
-#if VERBOSEDEBUG
-                        Debug.Log(string.Format("{0} > > spatial spawn loop: passedPath=={1} <= rbcPositionsFound * rbcSpawnSpatialPeriod=={2}; passedPathIndex=={3}"
-                            , this.GetType(), passedPath, rbcPositionsFound * rbcSpawnSpatialPeriod, passedPathIndex));
-#endif
+                        #if VERBOSEDEBUG
+                        Debug.Log(
+                            string.Format("{0} > > spatial spawn loop: passedPath=={1} <= rbcPositionsFound * rbcSpawnSpatialPeriod=={2}; passedPathIndex=={3}; distances[passedPathIndex]={4}"
+                            , this.GetType(), passedPath, rbcPositionsFound * rbcSpawnSpatialPeriod, passedPathIndex, distances[passedPathIndex]));
+                        #endif
                         passedPath += distances[passedPathIndex++];
                     }
-#if VERBOSEDEBUG
-                        Debug.Log(string.Format("{0} > spatial spawn loop: interloop: passedPathIndex=={1}"
-                            , this.GetType(), passedPathIndex));
-#endif
-                    while (rbcPositionsFound * rbcSpawnSpatialPeriod < passedPath)
+                    
+                    #if VERBOSEDEBUG
+                    Debug.Log(string.Format("{0} > spatial spawn loop: interloop: passedPathIndex=={1}, {2}"
+                        , this.GetType(), passedPathIndex, passedPath));
+                    #endif
+                    
+                    int rbcPositionsFoundThisIteration = 0;
+                    //while (rbcPositionsFound * rbcSpawnSpatialPeriod < passedPath)
+                    float distanceThisIteration = distances[passedPathIndex-1];
+                    while (remainder + rbcPositionsFoundThisIteration*rbcSpawnSpatialPeriod < distanceThisIteration)
                     {
-#if VERBOSEDEBUG
-                        Debug.Log(string.Format("{0} > > spatial spawn loop: rbcPositionsFound * rbcSpawnSpatialPeriod=={1} < passedPath=={2}; rbcPositionsFound=={3}"
-                            , this.GetType(), rbcPositionsFound * rbcSpawnSpatialPeriod, passedPath, rbcPositionsFound));
-#endif
-                        float t = ((rbcPositionsFound+1) * rbcSpawnSpatialPeriod) / distances[passedPathIndex-1];
+                        rbcPositionsFoundThisIteration++;
+                        #if VERBOSEDEBUG
+                        //Debug.Log(string.Format("{0} > > spatial spawn loop: rbcPositionsFound * rbcSpawnSpatialPeriod=={1} < passedPath=={2}; rbcPositionsFound=={3}"
+                        //    , this.GetType(), rbcPositionsFound * rbcSpawnSpatialPeriod, passedPath, rbcPositionsFound));
+                        Debug.Log(string.Format("{0} > > spatial spawn loop: remainder + rbcPositionsFoundThisIteration * rbcSpawnSpatialPeriod=={1} "
+                            + " < distanceThisIteration=={2}"
+                            , this.GetType(), remainder * rbcPositionsFoundThisIteration, rbcSpawnSpatialPeriod, distanceThisIteration));
+                        #endif
+                        //float t = ((rbcPositionsFound+1) * rbcSpawnSpatialPeriod) / distances[passedPathIndex-1];
+                        float t = (remainder + rbcPositionsFoundThisIteration * rbcSpawnSpatialPeriod) / distanceThisIteration;
                         Vector3 spawnPosition =  t * bloodWayPoints[passedPathIndex-1].position + (1-t) * bloodWayPoints[passedPathIndex].position;
-                        innerSpawnRBCPosition(spawnPosition);
-                        rbcPositionsFound++;
+                        string rbcIndex = (rbcPositionsFound + rbcPositionsFoundThisIteration).ToString();
+                        
+                        innerSpawnRBCPosition(spawnPosition, passedPathIndex, "RBC" + rbcIndex);
+                        createDebugObject(spawnPosition, "RBC" + rbcIndex + "copy", 3f);
+
+                        createDebugObject(bloodWayPoints[passedPathIndex-1].position, string.Format("bwp[{0}][{1}]", rbcIndex, (passedPathIndex-1).ToString()));
+                        createDebugObject(bloodWayPoints[passedPathIndex].position, string.Format("bwp[{0}][{1}]",   rbcIndex, passedPathIndex.ToString()));
                     }
-#if VERBOSEDEBUG
-                        Debug.Log(string.Format("{0} > spatial spawn loop: end of loop: rbcPositionsFound=={1}"
-                            , this.GetType(), rbcPositionsFound));
-#endif
+                    rbcPositionsFound += rbcPositionsFoundThisIteration;
+                    remainder = passedPath - rbcPositionsFound * rbcSpawnSpatialPeriod;
+                    #if VERBOSEDEBUG
+                    Debug.Log(string.Format("{0} > spatial spawn loop: end of loop: rbcPositionsFound=={1}"
+                        , this.GetType(), rbcPositionsFound));
+                    #endif
                 }
-#if VERBOSEDEBUG
+                #if VERBOSEDEBUG
                 Debug.Log(this.GetType() + " ...spatial spawn loop done!");
                 Debug.Log(string.Format("{0} spatial spawn loop: rbcPositionsFound=={1}, rbcSpawnCount=={2}"
                     , this.GetType(),rbcPositionsFound, rbcSpawnCount));
-#endif
+                #endif
+                Time.timeScale = 0f;
             }
             else
             {
@@ -145,6 +168,14 @@ public class RedBloodCellManager : MonoBehaviour
         }
     }
 
+    private void createDebugObject(Vector3 position, string _name, float scale = 1f)
+    {
+        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        sphere.transform.position = position;
+        sphere.transform.localScale = scale * Vector3.one;
+        sphere.name = _name;
+    }
+
     private void randomSpawnRBC()
     {
         Invoke("spawnRBC", rbcSpawnTimePeriodVariationRatio * Random.Range(0f, 1f) * rbcSpawnTimePeriod);
@@ -166,10 +197,21 @@ public class RedBloodCellManager : MonoBehaviour
         innerSpawnRBCPosition(spawnPointPosition);
     }
 
-    private void innerSpawnRBCPosition(Vector3 spawnPointPosition)
+    private void innerSpawnRBCPosition(Vector3 spawnPointPosition, int waypointIndex = -1, string rbcName = null)
     {
         GameObject rbcPrefab = rbcPrefabs[Random.Range(0, rbcPrefabs.Length)];
-        Instantiate(rbcPrefab, spawnPointPosition, rbcPrefab.transform.rotation);
+        GameObject go = Instantiate(rbcPrefab, spawnPointPosition, rbcPrefab.transform.rotation);
+        #if VERBOSEDEBUG
+        if (!string.IsNullOrEmpty(rbcName))
+        {
+            go.name = rbcName;
+        }
+        #endif
+        if (waypointIndex > 0)
+        {
+            RedBloodCellMovement rbcm = go.GetComponent<RedBloodCellMovement>();
+            rbcm.setTarget(waypointIndex);
+        }
     }
 
     public Transform[] getBloodPositions()

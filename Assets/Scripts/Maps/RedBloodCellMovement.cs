@@ -25,6 +25,21 @@ public class RedBloodCellMovement : WobblyMovement
     // Start is called before the first frame update
     void Start()
     {
+        
+        lazyInitializeStatics();
+
+        _renderer = GetComponent<Renderer>();
+        _propBlock = new MaterialPropertyBlock();
+        _renderer.GetPropertyBlock(_propBlock);
+
+        setTarget();
+        setSpeed();
+
+        repulsers = new string[3] {WhiteBloodCellMovement.wbcTag, RedBloodCellMovement.rbcTag, Enemy.enemyTag};
+    }
+
+    private void lazyInitializeStatics()
+    {
         if (null == bloodOrigin1)
         {
             Transform[] positions = RedBloodCellManager.instance.getBloodPositions();
@@ -39,15 +54,6 @@ public class RedBloodCellMovement : WobblyMovement
                 bloodWayPoints = RedBloodCellManager.instance.bloodWayPoints;
             }
         }
-
-        _renderer = GetComponent<Renderer>();
-        _propBlock = new MaterialPropertyBlock();
-        _renderer.GetPropertyBlock(_propBlock);
-
-        setTarget();
-        setSpeed();
-
-        repulsers = new string[3] {WhiteBloodCellMovement.wbcTag, RedBloodCellMovement.rbcTag, Enemy.enemyTag};
     }
 
     protected override void onWobbleDone()
@@ -77,7 +83,7 @@ public class RedBloodCellMovement : WobblyMovement
         {
             target = bloodWayPoints[waypointIndex++].position;
             
-            _propBlock.SetColor("_Color", Color.Lerp(Color.blue, Color.red, ((float) waypointIndex) / ((float) bloodWayPoints.Length)));
+            _propBlock.SetColor("_Color", Color.Lerp(Color.grey, Color.white, ((float) waypointIndex) / ((float) bloodWayPoints.Length)));
             // Apply the edited values to the renderer.
             _renderer.SetPropertyBlock(_propBlock);
         }
@@ -86,6 +92,14 @@ public class RedBloodCellMovement : WobblyMovement
             float t = Random.Range(0f, 1f);
             target = t * bloodEnd1.position + (1 - t) * bloodEnd2.position;
         }
+    }
+
+    public void setTarget(int _waypointIndex)
+    {
+        lazyInitializeStatics();
+        
+        waypointIndex = _waypointIndex;
+        target = bloodWayPoints[waypointIndex++].position;
     }
 
     private void resetPosition()
