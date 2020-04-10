@@ -11,7 +11,7 @@ public class LungsLevelTutorial : FakeStepByStepTutorial { }
 public class LungsLevelTutorial : StepByStepTutorial
 {
     [SerializeField]
-    private GameObject target = null;
+    private GameObject globalTimerText = null;
     private const string _lungsLevelTutorial = "LungsLevelTutorial";
 
     [SerializeField]
@@ -50,7 +50,7 @@ public class LungsLevelTutorial : StepByStepTutorial
     {
         _steps = new TutorialStep[2] {
                     new TutorialStep(_lungsLevelTutorial, TUTORIALACTION.SETGREYBACKGROUND)
-                    , new TutorialStep(target.name)
+                    , new TutorialStep(globalTimerText.name)
                 };
         base.Awake();
     }

@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5042fde8e94fb459fcf9434c6c5755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2142450486}
+  globalTimerText: {fileID: 2142450486}
   toHide: {fileID: 1830110095}
 --- !u!222 &217489045
 CanvasRenderer:

@@ -17,6 +17,10 @@ public class RedBloodCellMovement : WobblyMovement
     private static bool isWaypointsBased = false;
     [SerializeField]
     private float speedVariation = 0f;
+    
+    // http://thomasmountainborn.com/2016/05/25/materialpropertyblocks/
+    private Renderer _renderer = null;
+    private MaterialPropertyBlock _propBlock = null;
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +36,13 @@ public class RedBloodCellMovement : WobblyMovement
             isWaypointsBased = RedBloodCellManager.instance.isWaypointsBased;
             if (isWaypointsBased)
             {
-                Transform bloodWayPointsRoot = positions[4];
-                CommonUtilities.fillArrayFromRoot(bloodWayPointsRoot, ref bloodWayPoints);
+                bloodWayPoints = RedBloodCellManager.instance.bloodWayPoints;
             }
         }
+
+        _renderer = GetComponent<Renderer>();
+        _propBlock = new MaterialPropertyBlock();
+        _renderer.GetPropertyBlock(_propBlock);
 
         setTarget();
         setSpeed();
@@ -69,6 +76,10 @@ public class RedBloodCellMovement : WobblyMovement
         if (isWaypointsBased)
         {
             target = bloodWayPoints[waypointIndex++].position;
+            
+            _propBlock.SetColor("_Color", Color.Lerp(Color.blue, Color.red, ((float) waypointIndex) / ((float) bloodWayPoints.Length)));
+            // Apply the edited values to the renderer.
+            _renderer.SetPropertyBlock(_propBlock);
         }
         else
         {
