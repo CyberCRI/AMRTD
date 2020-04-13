@@ -31,6 +31,8 @@ public class RedBloodCellManager : MonoBehaviour
     private float rbcSpawnTimePeriod = 0f;
     [SerializeField]
     private float rbcSpawnTimePeriodVariationRatio = 0f;
+    [SerializeField]
+    private float rbcSpawnSpatialPeriodVariation = 0f;
     private float timer = 0f;
     private int rbcYetToSpawnCount = 0;
     private float topToBottom = 0f;
@@ -71,54 +73,70 @@ public class RedBloodCellManager : MonoBehaviour
                 
                 // spatial spawn - find between which waypoints to spawn
                 float rbcSpawnSpatialPeriod = topToBottom / (rbcSpawnCount + 1);
+                #if VERBOSEDEBUG
+                Debug.Log(string.Format("{0} rbcSpawnSpatialPeriod=={1}", this.GetType(),rbcSpawnSpatialPeriod));
+                #endif
                 float passedPath = 0f;
-                float passedPathRoundedDown = 0f;
+                
                 int passedPathIndex = 0;
                 int rbcPositionsFound = 0;
-                float remainder = 0f;
+                float remainder = 0f; // positive value
 
                 #if VERBOSEDEBUG
-                Debug.Log(this.GetType() + " entering spatial spawn loop...");
+                Debug.Log(this.GetType() + " MAIN spatial spawn loop starts...");
                 #endif
+
+                int mainCrashController = 0;
+                int subCrashController = 0;
                 
-                while (rbcPositionsFound < rbcSpawnCount)
+                while ((mainCrashController++ < 100) && (rbcPositionsFound < rbcSpawnCount))
                 //for (int i = 1; i < rbcSpawnCount+1; i++)
                 {
                     #if VERBOSEDEBUG
-                    Debug.Log(string.Format("{0} > spatial spawn loop: rbcPositionsFound=={1} < rbcSpawnCount=={2}", this.GetType(),rbcPositionsFound, rbcSpawnCount));
+                    Debug.Log(string.Format("{0} > spatial spawn loop: (1/3-START) rbcPositionsFound=={1} < rbcSpawnCount=={2}", this.GetType(),rbcPositionsFound, rbcSpawnCount));
                     #endif
                     
-                    while (passedPath <= rbcPositionsFound * rbcSpawnSpatialPeriod)
+                    subCrashController = 0;
+                    while ((subCrashController++ < 100) && (remainder < rbcSpawnSpatialPeriod))
                     {
                         #if VERBOSEDEBUG
                         Debug.Log(
-                            string.Format("{0} > > spatial spawn loop: passedPath=={1} <= rbcPositionsFound * rbcSpawnSpatialPeriod=={2}; passedPathIndex=={3}; distances[passedPathIndex]={4}"
-                            , this.GetType(), passedPath, rbcPositionsFound * rbcSpawnSpatialPeriod, passedPathIndex, distances[passedPathIndex]));
+                            string.Format("{0} > > spatial spawn subloop1: remainder=={1} <= rbcSpawnSpatialPeriod=={2};"
+                                            + " passedPathIndex=={3}; distances[passedPathIndex]={4}; passedPath=={5}"
+                            , this.GetType(), remainder, rbcSpawnSpatialPeriod, passedPathIndex, distances[passedPathIndex], passedPath));
                         #endif
-                        passedPath += distances[passedPathIndex++];
+                        passedPath += distances[passedPathIndex];
+                        remainder += distances[passedPathIndex];
+                        passedPathIndex++;
                     }
-                    
-                    #if VERBOSEDEBUG
-                    Debug.Log(string.Format("{0} > spatial spawn loop: interloop: passedPathIndex=={1}, {2}"
-                        , this.GetType(), passedPathIndex, passedPath));
-                    #endif
                     
                     int rbcPositionsFoundThisIteration = 0;
                     //while (rbcPositionsFound * rbcSpawnSpatialPeriod < passedPath)
                     float distanceThisIteration = distances[passedPathIndex-1];
-                    while (remainder + rbcPositionsFoundThisIteration*rbcSpawnSpatialPeriod < distanceThisIteration)
+                    remainder -= distanceThisIteration;
+                    
+                    #if VERBOSEDEBUG
+                    Debug.Log(string.Format("{0} > spatial spawn loop: (2/3-INTERLOOP) remainder=={1}, passedPath=={2}, passedPathIndex=={3}, subCrashController=={4}"
+                        , this.GetType(), remainder, passedPath, passedPathIndex, subCrashController));
+                    #endif
+
+                    subCrashController = 0;
+                    while ((subCrashController++ < 100) && ((rbcPositionsFoundThisIteration + 1) * rbcSpawnSpatialPeriod - remainder <= distanceThisIteration))
                     {
                         rbcPositionsFoundThisIteration++;
+                        float t = ((rbcPositionsFoundThisIteration * rbcSpawnSpatialPeriod) - remainder) / distanceThisIteration;
                         #if VERBOSEDEBUG
                         //Debug.Log(string.Format("{0} > > spatial spawn loop: rbcPositionsFound * rbcSpawnSpatialPeriod=={1} < passedPath=={2}; rbcPositionsFound=={3}"
                         //    , this.GetType(), rbcPositionsFound * rbcSpawnSpatialPeriod, passedPath, rbcPositionsFound));
-                        Debug.Log(string.Format("{0} > > spatial spawn loop: remainder + rbcPositionsFoundThisIteration * rbcSpawnSpatialPeriod=={1} "
-                            + " < distanceThisIteration=={2}"
-                            , this.GetType(), remainder * rbcPositionsFoundThisIteration, rbcSpawnSpatialPeriod, distanceThisIteration));
+                        Debug.Log( string.Format( "{0} > > spatial spawn subloop2: t=={1};"
+                            + " (rbcPositionsFoundThisIteration + 1) * rbcSpawnSpatialPeriod - remainder=={2} "
+                            + " < distanceThisIteration=={3}"
+                            , this.GetType(), t, (rbcPositionsFoundThisIteration + 1) * rbcSpawnSpatialPeriod - remainder, distanceThisIteration));
                         #endif
                         //float t = ((rbcPositionsFound+1) * rbcSpawnSpatialPeriod) / distances[passedPathIndex-1];
-                        float t = (remainder + rbcPositionsFoundThisIteration * rbcSpawnSpatialPeriod) / distanceThisIteration;
-                        Vector3 spawnPosition =  t * bloodWayPoints[passedPathIndex-1].position + (1-t) * bloodWayPoints[passedPathIndex].position;
+                        float randomEpsilon = rbcSpawnSpatialPeriodVariation * Random.Range(-1f, 1f);
+                        t = Mathf.Clamp(t + randomEpsilon, 0f, 1f);
+                        Vector3 spawnPosition =  (1-t) * bloodWayPoints[passedPathIndex-1].position + t * bloodWayPoints[passedPathIndex].position;
                         string rbcIndex = (rbcPositionsFound + rbcPositionsFoundThisIteration).ToString();
                         
                         innerSpawnRBCPosition(spawnPosition, passedPathIndex, "RBC" + rbcIndex);
@@ -128,16 +146,22 @@ public class RedBloodCellManager : MonoBehaviour
                         createDebugObject(bloodWayPoints[passedPathIndex].position, string.Format("bwp[{0}][{1}]",   rbcIndex, passedPathIndex.ToString()));
                     }
                     rbcPositionsFound += rbcPositionsFoundThisIteration;
-                    remainder = passedPath - rbcPositionsFound * rbcSpawnSpatialPeriod;
+                    remainder = passedPath - (rbcPositionsFound * rbcSpawnSpatialPeriod);
+                    if (remainder >= rbcSpawnSpatialPeriod)
+                    {
+                        Debug.LogError(string.Format( "remainder=={0} >= rbcSpawnSpatialPeriod=={1}", remainder, rbcSpawnSpatialPeriod));
+                    }
                     #if VERBOSEDEBUG
-                    Debug.Log(string.Format("{0} > spatial spawn loop: end of loop: rbcPositionsFound=={1}"
-                        , this.GetType(), rbcPositionsFound));
+                    Debug.Log(string.Format("{0} > spatial spawn loop (3/3-END) rbcPositionsFound=={1},"
+                        + " rbcPositionsFoundThisIteration=={2},"
+                        + " remainder=={3}, subCrashController=={4}"
+                        , this.GetType(), rbcPositionsFound, rbcPositionsFoundThisIteration, remainder, subCrashController));
                     #endif
                 }
                 #if VERBOSEDEBUG
-                Debug.Log(this.GetType() + " ...spatial spawn loop done!");
-                Debug.Log(string.Format("{0} spatial spawn loop: rbcPositionsFound=={1}, rbcSpawnCount=={2}"
-                    , this.GetType(),rbcPositionsFound, rbcSpawnCount));
+                Debug.Log(this.GetType() + " ...MAIN spatial spawn loop done!");
+                Debug.Log(string.Format("{0} MAIN spatial spawn loop: rbcPositionsFound=={1}, rbcSpawnCount=={2}, mainCrashController=={3}"
+                    , this.GetType(),rbcPositionsFound, rbcSpawnCount, mainCrashController));
                 #endif
                 Time.timeScale = 0f;
             }
@@ -178,7 +202,7 @@ public class RedBloodCellManager : MonoBehaviour
 
     private void randomSpawnRBC()
     {
-        Invoke("spawnRBC", rbcSpawnTimePeriodVariationRatio * Random.Range(0f, 1f) * rbcSpawnTimePeriod);
+        Invoke("spawnRBC", rbcSpawnTimePeriodVariationRatio * Random.value * rbcSpawnTimePeriod);
     }
 
     private void spawnRBC()
@@ -192,7 +216,7 @@ public class RedBloodCellManager : MonoBehaviour
         rbcYetToSpawnCount--;
         Debug.Log("innerSpawnRBC remaining: " + rbcYetToSpawnCount);
 #endif
-        float t = Random.Range(0f, 1f);
+        float t = Random.value;
         Vector3 spawnPointPosition = t * bloodOrigin1.position + (1 - t) * bloodOrigin2.position + zOffset;
         innerSpawnRBCPosition(spawnPointPosition);
     }
@@ -211,6 +235,9 @@ public class RedBloodCellManager : MonoBehaviour
         {
             RedBloodCellMovement rbcm = go.GetComponent<RedBloodCellMovement>();
             rbcm.setTarget(waypointIndex);
+            #if VERBOSEDEBUG
+            Debug.Log(string.Format("{0} innerSpawnRBCPosition rbc '{1}' -> waypoint {2}", this.GetType(), rbcName, waypointIndex));
+            #endif
         }
     }
 

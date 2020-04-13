@@ -210,11 +210,13 @@ MonoBehaviour:
   bloodEnd1: {fileID: 1867272286531048488}
   bloodEnd2: {fileID: 3410298798920408521}
   bloodWayPointsRoot: {fileID: 1780283202043999617}
+  bloodWayPoints: []
   bloodUnder: {fileID: 7820379213940505954}
   rbcPrefabs:
   - {fileID: 1825950595778727558, guid: 6381f3e89d69b34459b31e4e7776ffaf, type: 3}
   rbcSpawnCount: 5
   rbcSpawnTimePeriodVariationRatio: 0
+  rbcSpawnSpatialPeriodVariation: 0.2
   isWaypointsBased: 0
 --- !u!1 &299294853965697845
 GameObject:

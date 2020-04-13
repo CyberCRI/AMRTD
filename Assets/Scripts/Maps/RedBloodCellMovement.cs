@@ -1,4 +1,5 @@
 ﻿//#define DETRIMENTALOPTIMIZATION
+//#define VERBOSEDEBUG
 
 using System.Collections;
 using System.Collections.Generic;
@@ -32,7 +33,10 @@ public class RedBloodCellMovement : WobblyMovement
         _propBlock = new MaterialPropertyBlock();
         _renderer.GetPropertyBlock(_propBlock);
 
-        setTarget();
+        if (waypointIndex == 0)
+        {
+            setTarget();
+        }
         setSpeed();
 
         repulsers = new string[3] {WhiteBloodCellMovement.wbcTag, RedBloodCellMovement.rbcTag, Enemy.enemyTag};
@@ -81,6 +85,9 @@ public class RedBloodCellMovement : WobblyMovement
     {
         if (isWaypointsBased)
         {
+            #if VERBOSEDEBUG
+            Debug.Log(string.Format("{0}: setTarget {1}->{2}", this.GetType(), this.gameObject.name, waypointIndex));
+            #endif
             target = bloodWayPoints[waypointIndex++].position;
             
             _propBlock.SetColor("_Color", Color.Lerp(Color.grey, Color.white, ((float) waypointIndex) / ((float) bloodWayPoints.Length)));
@@ -98,8 +105,8 @@ public class RedBloodCellMovement : WobblyMovement
     {
         lazyInitializeStatics();
         
-        waypointIndex = _waypointIndex;
-        target = bloodWayPoints[waypointIndex++].position;
+        target = bloodWayPoints[_waypointIndex].position;
+        waypointIndex = _waypointIndex+1;
     }
 
     private void resetPosition()
