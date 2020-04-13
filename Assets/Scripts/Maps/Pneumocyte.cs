@@ -1,11 +1,34 @@
 //#define VERBOSEDEBUG
+//#define USESPRITE
+#define USECOLOR
 using UnityEngine;
 using System.Collections;
 
-public class LungCell : MonoBehaviour
+public class Pneumocyte : MonoBehaviour
 {
+    [SerializeField]
+    private SpriteRenderer _renderer = null;
+    
+    [SerializeField]
+    private Sprite _healthySprite = null;
+    [SerializeField]
+    private Sprite _infectedSprite = null;
+    [SerializeField]
+    private Sprite _recoveringSprite = null;
+    [SerializeField]
+    private Sprite _deadSprite = null;
+    
+    [SerializeField]
+    private Color _healthyColor = Color.white;
+    [SerializeField]
+    private Color _infectedColor = Color.white;
+    [SerializeField]
+    private Color _recoveringColor = Color.white;
+    [SerializeField]
+    private Color _deadColor = Color.white;
+
     [Header("Parameters")]
-    private LungCell[] neighbours = null;
+    private Pneumocyte[] neighbours = null;
     private STATUS _status = STATUS.HEALTHY;
     private STATUS status
     {
@@ -54,6 +77,12 @@ public class LungCell : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            status = (STATUS)(((int)status + 1) % 4);
+            Debug.Log("status="+status.ToString());
+        }
+        /*
         if (STATUS.HEALTHY == status)
         {
             // is neighbour dead? is division countdown over? then divide to replace
@@ -66,6 +95,7 @@ public class LungCell : MonoBehaviour
         {
             Debug.LogError("NOT IMPLEMENTED");
         }
+        */
 
     }
 
@@ -84,6 +114,40 @@ public class LungCell : MonoBehaviour
     private void updateAppearance()
     {
         Debug.LogError("NOT IMPLEMENTED");
+        switch(status)
+        {
+            case STATUS.HEALTHY:
+#if USESPRITE            
+                _renderer.sprite = _healthySprite;
+#elif USECOLOR
+                _renderer.color = _healthyColor;
+#endif
+                break;
+            case STATUS.INFECTED_SPAWNING_VIRUSES:
+#if USESPRITE            
+                _renderer.sprite = _infectedSprite;
+#elif USECOLOR
+                _renderer.color = _infectedColor;
+#endif
+                break;
+            case STATUS.RECOVERING:
+#if USESPRITE            
+                _renderer.sprite = _recoveringSprite;
+#elif USECOLOR
+                _renderer.color = _recoveringColor;
+#endif
+                break;
+            case STATUS.DEAD:
+#if USESPRITE            
+                _renderer.sprite = _deadSprite;
+#elif USECOLOR
+                _renderer.color = _deadColor;
+#endif
+                break;
+            default:
+                Debug.LogError("unknown status " + status);
+                break;
+        }
     }
 
     // points can be negative for damage or positive for healing
