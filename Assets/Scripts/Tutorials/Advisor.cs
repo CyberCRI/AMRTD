@@ -7,9 +7,9 @@ public class Advisor : MonoBehaviour
     [SerializeField]
     private RectTransform _advisorAnchor;
     [SerializeField]
-    private GameObject _nextButton;
+    private GameObject _nextButton = null;
     [SerializeField]
-    private LocalizedText _localize;
+    private LocalizedText _localize = null;
     [SerializeField]
     private float _topAnchorValue;
     [SerializeField]
@@ -18,8 +18,6 @@ public class Advisor : MonoBehaviour
     private float _highlightedAreaRatio;
     [SerializeField]
     private float _advisorAreaRatio;
-    [SerializeField]
-    private float minX = -0.31f, minY = -0.23f, maxX = 0.37f, maxY = 0.2f;
 
     public Vector3 currentPosition;
     public Vector3 currentLocalPosition;
@@ -27,7 +25,7 @@ public class Advisor : MonoBehaviour
 
     
     [SerializeField]
-    private RectTransform rectTransform;
+    private RectTransform rectTransform = null;
     [SerializeField]
     private float left = 0f;
     [SerializeField]

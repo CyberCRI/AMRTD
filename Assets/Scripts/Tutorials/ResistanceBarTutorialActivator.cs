@@ -3,7 +3,7 @@ using UnityEngine;
 public class ResistanceBarTutorialActivator : TutorialActivator
 {
     [SerializeField]
-    private ResistanceBarUI resistanceBar;
+    private ResistanceBarUI resistanceBar = null;
     [SerializeField]
     private float threshold = .3f;
 

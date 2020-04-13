@@ -1,4 +1,5 @@
 ﻿#define PRESENTATIONMODE
+//#pragma warning disable 0219
 
 using System.Collections;
 using System.Collections.Generic;

@@ -8,9 +8,9 @@ public class HelpButtonUI : MonoBehaviour
     public static HelpButtonUI instance = null;
 
     [SerializeField]
-    private Toggle toggle;
+    private Toggle toggle = null;
     [SerializeField]
-    private Texture2D helpCursorTexture;
+    private Texture2D helpCursorTexture = null;
     [SerializeField]
     private GameObject helpText = null;
 

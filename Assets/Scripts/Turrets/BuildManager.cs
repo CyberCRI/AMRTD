@@ -6,7 +6,7 @@ public class BuildManager : MonoBehaviour
     public static BuildManager instance = null;
 
     [SerializeField]
-    private Texture2D buildCursorTexture;
+    private Texture2D buildCursorTexture = null;
     private CursorMode cursorMode = CursorMode.Auto;
     private Vector2 hotSpot = Vector2.zero;
 

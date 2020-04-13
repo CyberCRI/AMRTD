@@ -1,5 +1,5 @@
 ﻿//#define DETRIMENTALOPTIMIZATION
-#define VERBOSEDEBUG
+//#define VERBOSEDEBUG
 
 using System.Collections;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ public class RedBloodCellManager : MonoBehaviour
     public Transform bloodUnder = null;
 
     [SerializeField]
-    private GameObject[] rbcPrefabs;
+    private GameObject[] rbcPrefabs = null;
 
     [SerializeField]
     private int rbcSpawnCount = 0;
@@ -33,9 +33,9 @@ public class RedBloodCellManager : MonoBehaviour
     private float rbcSpawnTimePeriodVariationRatio = 0f;
     [SerializeField]
     private float rbcSpawnSpatialPeriodVariation = 0f;
-    private float timer = 0f;
+#if DETRIMENTALOPTIMIZATION
     private int rbcYetToSpawnCount = 0;
-    private float topToBottom = 0f;
+#endif
     public bool isWaypointsBased = false;
 
     /// <summary>
@@ -56,6 +56,9 @@ public class RedBloodCellManager : MonoBehaviour
 #if DETRIMENTALOPTIMIZATION
             rbcYetToSpawnCount = rbcSpawnCount;
 #endif
+
+            
+            float topToBottom = 0f;
 
             if (isWaypointsBased)
             {
@@ -81,6 +84,7 @@ public class RedBloodCellManager : MonoBehaviour
                 int passedPathIndex = 0;
                 int rbcPositionsFound = 0;
                 float remainder = 0f; // positive value
+                float randomEpsilon = 0f;
 
                 #if VERBOSEDEBUG
                 Debug.Log(this.GetType() + " MAIN spatial spawn loop starts...");
@@ -88,6 +92,14 @@ public class RedBloodCellManager : MonoBehaviour
 
                 int mainCrashController = 0;
                 int subCrashController = 0;
+
+                float distanceThisIteration = 0f;
+                int rbcPositionsFoundThisIteration = 0;
+
+                float t = 0f;
+
+                Vector3 spawnPosition;
+                string rbcIndex;
                 
                 while ((mainCrashController++ < 100) && (rbcPositionsFound < rbcSpawnCount))
                 //for (int i = 1; i < rbcSpawnCount+1; i++)
@@ -110,9 +122,9 @@ public class RedBloodCellManager : MonoBehaviour
                         passedPathIndex++;
                     }
                     
-                    int rbcPositionsFoundThisIteration = 0;
+                    rbcPositionsFoundThisIteration = 0;
                     //while (rbcPositionsFound * rbcSpawnSpatialPeriod < passedPath)
-                    float distanceThisIteration = distances[passedPathIndex-1];
+                    distanceThisIteration = distances[passedPathIndex-1];
                     remainder -= distanceThisIteration;
                     
                     #if VERBOSEDEBUG
@@ -124,7 +136,7 @@ public class RedBloodCellManager : MonoBehaviour
                     while ((subCrashController++ < 100) && ((rbcPositionsFoundThisIteration + 1) * rbcSpawnSpatialPeriod - remainder <= distanceThisIteration))
                     {
                         rbcPositionsFoundThisIteration++;
-                        float t = ((rbcPositionsFoundThisIteration * rbcSpawnSpatialPeriod) - remainder) / distanceThisIteration;
+                        t = ((rbcPositionsFoundThisIteration * rbcSpawnSpatialPeriod) - remainder) / distanceThisIteration;
                         #if VERBOSEDEBUG
                         //Debug.Log(string.Format("{0} > > spatial spawn loop: rbcPositionsFound * rbcSpawnSpatialPeriod=={1} < passedPath=={2}; rbcPositionsFound=={3}"
                         //    , this.GetType(), rbcPositionsFound * rbcSpawnSpatialPeriod, passedPath, rbcPositionsFound));
@@ -134,16 +146,19 @@ public class RedBloodCellManager : MonoBehaviour
                             , this.GetType(), t, (rbcPositionsFoundThisIteration + 1) * rbcSpawnSpatialPeriod - remainder, distanceThisIteration));
                         #endif
                         //float t = ((rbcPositionsFound+1) * rbcSpawnSpatialPeriod) / distances[passedPathIndex-1];
-                        float randomEpsilon = rbcSpawnSpatialPeriodVariation * Random.Range(-1f, 1f);
+                        randomEpsilon = rbcSpawnSpatialPeriodVariation * Random.Range(-1f, 1f);
                         t = Mathf.Clamp(t + randomEpsilon, 0f, 1f);
-                        Vector3 spawnPosition =  (1-t) * bloodWayPoints[passedPathIndex-1].position + t * bloodWayPoints[passedPathIndex].position;
-                        string rbcIndex = (rbcPositionsFound + rbcPositionsFoundThisIteration).ToString();
+                        spawnPosition =  (1-t) * bloodWayPoints[passedPathIndex-1].position + t * bloodWayPoints[passedPathIndex].position;
+                        rbcIndex = (rbcPositionsFound + rbcPositionsFoundThisIteration).ToString();
                         
                         innerSpawnRBCPosition(spawnPosition, passedPathIndex, "RBC" + rbcIndex);
+
+                        #if VERBOSEDEBUG
                         createDebugObject(spawnPosition, "RBC" + rbcIndex + "copy", 3f);
 
                         createDebugObject(bloodWayPoints[passedPathIndex-1].position, string.Format("bwp[{0}][{1}]", rbcIndex, (passedPathIndex-1).ToString()));
                         createDebugObject(bloodWayPoints[passedPathIndex].position, string.Format("bwp[{0}][{1}]",   rbcIndex, passedPathIndex.ToString()));
+                        #endif
                     }
                     rbcPositionsFound += rbcPositionsFoundThisIteration;
                     remainder = passedPath - (rbcPositionsFound * rbcSpawnSpatialPeriod);

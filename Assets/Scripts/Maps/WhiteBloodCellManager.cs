@@ -14,7 +14,7 @@ public class WhiteBloodCellManager : MonoBehaviour
     private WhiteBloodCellMovement[] availableWBCs = null;
 
     [SerializeField]
-    private GameObject[] wbcPrefabs;
+    private GameObject[] wbcPrefabs = null;
 
     private Transform bloodOrigin1 = null;
     private Transform bloodOrigin2 = null;
@@ -74,7 +74,6 @@ public class WhiteBloodCellManager : MonoBehaviour
     void Update()
     {
         // manage movement of white cells
-        int busyWBCs = 0;
         for (int i = 0; i < whiteBloodCellsTarget.Length; i++)
         {
             if ((null != whiteBloodCells[i]) && (null == whiteBloodCellsTarget[i]))

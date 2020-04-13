@@ -45,7 +45,7 @@ public class FocusMaskManager : MonoBehaviour
     private bool _isClicksBlocked = false;
     private Vector3 _baseFocusMaskScale, _baseHoleScale;
     [SerializeField]
-    private Advisor _advisorAndBubbleSystem;
+    private Advisor _advisorAndBubbleSystem = null;
 
     private Camera _camera;
 
