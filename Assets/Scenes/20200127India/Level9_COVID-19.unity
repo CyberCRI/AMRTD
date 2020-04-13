@@ -5251,6 +5251,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8640235584741704728, guid: c8224aa1881c0f540be9c0e22aa9149a,
+        type: 3}
+      propertyPath: rbcPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8640235584741704728, guid: c8224aa1881c0f540be9c0e22aa9149a,
+        type: 3}
+      propertyPath: rbcPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1825950595778727558, guid: b3905027a90090843af7b56ef574b814,
+        type: 3}
+    - target: {fileID: 8640235584741704728, guid: c8224aa1881c0f540be9c0e22aa9149a,
+        type: 3}
+      propertyPath: rbcPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1825950595778727558, guid: 5da100ef3846b174ab416c9e6fb601b9,
+        type: 3}
+    - target: {fileID: 8640235584741704728, guid: c8224aa1881c0f540be9c0e22aa9149a,
+        type: 3}
+      propertyPath: rbcPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1825950595778727558, guid: e0ff86cd109954f42a36474abe274c0d,
+        type: 3}
     - target: {fileID: 8870905395394348870, guid: c8224aa1881c0f540be9c0e22aa9149a,
         type: 3}
       propertyPath: m_LocalPosition.z

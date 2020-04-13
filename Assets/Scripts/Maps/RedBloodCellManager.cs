@@ -37,6 +37,11 @@ public class RedBloodCellManager : MonoBehaviour
     private int rbcYetToSpawnCount = 0;
 #endif
     public bool isWaypointsBased = false;
+    [SerializeField]
+    private Color oxygenatedBloodColor = Color.red;
+    [SerializeField]
+    private Color deoxygenatedBloodColor = Color.blue;
+    public float topToBottom = 0f;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -56,9 +61,6 @@ public class RedBloodCellManager : MonoBehaviour
 #if DETRIMENTALOPTIMIZATION
             rbcYetToSpawnCount = rbcSpawnCount;
 #endif
-
-            
-            float topToBottom = 0f;
 
             if (isWaypointsBased)
             {
@@ -259,5 +261,10 @@ public class RedBloodCellManager : MonoBehaviour
     public Transform[] getBloodPositions()
     {
         return new Transform[4] { bloodOrigin1, bloodOrigin2, bloodEnd1, bloodEnd2 };
+    }
+
+    public Color[] getBloodColors()
+    {
+        return new Color[2] { oxygenatedBloodColor, deoxygenatedBloodColor };
     }
 }

@@ -218,6 +218,9 @@ MonoBehaviour:
   rbcSpawnTimePeriodVariationRatio: 0
   rbcSpawnSpatialPeriodVariation: 0.2
   isWaypointsBased: 0
+  oxygenatedBloodColor: {r: 1, g: 0, b: 0, a: 1}
+  deoxygenatedBloodColor: {r: 0, g: 0.0575552, b: 1, a: 1}
+  topToBottom: 0
 --- !u!1 &299294853965697845
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7386099909333706303
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6911985252784984587, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911985252784984587, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911985252784984587, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911985252784984587, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911985252784984587, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984029595317463843, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984029595317463843, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a8cf570b4124e041bfa91ffd842c392, type: 2}
+    - target: {fileID: 6984029595317463843, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782414127119020662, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: ratioFactor
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782414127119020662, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: wobbleScaleSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782414127119020662, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: horizontalShift
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782414127119020662, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: wobbleShiftSpeedX
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782414127119020662, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: wobbleShiftSpeedZ
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212015041760241849, guid: afb51b131eb381f4ca2601d2fae50681,
+        type: 3}
+      propertyPath: m_Name
+      value: RedBloodCell2_wobbling_oxygenating
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: afb51b131eb381f4ca2601d2fae50681, type: 3}

@@ -1,5 +1,6 @@
 ﻿//#define DETRIMENTALOPTIMIZATION
 //#define VERBOSEDEBUG
+//#define ALWAYSUPDATEBLOODCOLOR
 
 using System.Collections;
 using System.Collections.Generic;
@@ -13,11 +14,17 @@ public class RedBloodCellMovement : WobblyMovement
     private static Transform bloodEnd1 = null;
     private static Transform bloodEnd2 = null;
     private static Transform[] bloodWayPoints = null;
+    private static Color oxygenatedBloodColor = Color.red;
+    private static Color deoxygenatedBloodColor = Color.blue; // deoxygenated blood is deep red-purple #8E005F
+    private static float topToBottom = 0f;
     public float baseSpeed = 0f;
     private int waypointIndex = 0;
     private static bool isWaypointsBased = false;
     [SerializeField]
     private float speedVariation = 0f;
+
+//    float creationTime = 0f;
+//    float timeToComplete = 0f;
     
     // http://thomasmountainborn.com/2016/05/25/materialpropertyblocks/
     private Renderer _renderer = null;
@@ -26,7 +33,6 @@ public class RedBloodCellMovement : WobblyMovement
     // Start is called before the first frame update
     void Start()
     {
-        
         lazyInitializeStatics();
 
         _renderer = GetComponent<Renderer>();
@@ -38,6 +44,9 @@ public class RedBloodCellMovement : WobblyMovement
             setTarget();
         }
         setSpeed();
+
+//        creationTime = Time.time;
+//        timeToComplete = topToBottom / startSpeed;
 
         repulsers = new string[3] {WhiteBloodCellMovement.wbcTag, RedBloodCellMovement.rbcTag, Enemy.enemyTag};
     }
@@ -51,6 +60,10 @@ public class RedBloodCellMovement : WobblyMovement
             bloodOrigin2 = positions[1];
             bloodEnd1 = positions[2];
             bloodEnd2 = positions[3];
+            Color[] colors = RedBloodCellManager.instance.getBloodColors();
+            oxygenatedBloodColor = colors[0];
+            deoxygenatedBloodColor = colors[1];
+            topToBottom = RedBloodCellManager.instance.topToBottom;
 
             isWaypointsBased = RedBloodCellManager.instance.isWaypointsBased;
             if (isWaypointsBased)
@@ -62,6 +75,11 @@ public class RedBloodCellMovement : WobblyMovement
 
     protected override void onWobbleDone()
     {
+//#if ALWAYSUPDATEBLOODCOLOR
+//        float t = Mathf.Clamp((Time.time - creationTime) / timeToComplete, 0f, 1f);
+//        _propBlock.SetColor("_Color", Color.Lerp(deoxygenatedBloodColor, oxygenatedBloodColor, t));
+//#endif
+
         if (hasReachedTarget)
         {
 #if DETRIMENTALOPTIMIZATION
@@ -90,7 +108,11 @@ public class RedBloodCellMovement : WobblyMovement
             #endif
             target = bloodWayPoints[waypointIndex++].position;
             
-            _propBlock.SetColor("_Color", Color.Lerp(Color.grey, Color.white, ((float) waypointIndex) / ((float) bloodWayPoints.Length)));
+#if !ALWAYSUPDATEBLOODCOLOR
+            //float t = (Time.time - creationTime) / timeToComplete;
+            _propBlock.SetColor("_Color", Color.Lerp(deoxygenatedBloodColor, oxygenatedBloodColor, ((float) waypointIndex) / ((float) bloodWayPoints.Length)));
+#endif
+
             // Apply the edited values to the renderer.
             _renderer.SetPropertyBlock(_propBlock);
         }
