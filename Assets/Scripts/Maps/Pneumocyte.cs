@@ -38,6 +38,7 @@ public class Pneumocyte : MonoBehaviour
     [Header("Parameters")]
     [SerializeField]
     private Pneumocyte[] neighbours = null;
+    System.Collections.Generic.List<Pneumocyte> tempNeighbours = new System.Collections.Generic.List<Pneumocyte>();
     [SerializeField]
     private float neighboursRange = 0f;
     [SerializeField]
@@ -55,7 +56,14 @@ public class Pneumocyte : MonoBehaviour
             }
         }
     }
-    private bool isAlive = true;
+    private bool _isAlive = true;
+    public bool isAlive
+    {
+        get
+        {
+            return _isAlive;
+        }
+    }
     private float maxHealth = 100f;
     private float _currentHealth = 0f;
     private float currentHealth
@@ -70,7 +78,8 @@ public class Pneumocyte : MonoBehaviour
             updateHealthBar();
         }
     }
-    private float divisionPeriod = 10f;
+    private float divisionPeriod = 2f;
+    private float divisionCountdown = 0f;
     private float healingRatioRate = .05f; // regains maxHealth * x per second
     private float healingRate = 0f; // regains maxHealth * x per second
 
@@ -83,6 +92,7 @@ public class Pneumocyte : MonoBehaviour
     private GameObject virusPrefab = null;
     private string m_Index = null;
     private static int pneumocyteCount = 0;
+    int neighboursIndex = 0;
 
     private bool isDoneSpawning = false;
 
@@ -108,18 +118,20 @@ public class Pneumocyte : MonoBehaviour
 
         // compute neighbours
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, neighboursRange);
-        neighbours = new Pneumocyte[colliders.Length];
-        int j = 0;
+        tempNeighbours.Clear();
+#if VERBOSEDEBUG
         Debug.Log(this.gameObject.name + " Start neighbours");
+#endif
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider collider = colliders[i];
-            if (collider.tag == pcTag)
+            if ((collider.tag == pcTag) && (this.gameObject != collider.gameObject))
             {
-                Debug.Log("PC found!");
-                neighbours[j++] = (Pneumocyte)collider.GetComponent<Pneumocyte>();
+                tempNeighbours.Add(collider.GetComponent<Pneumocyte>());
             }
         }
+        neighbours = tempNeighbours.ToArray();
+        tempNeighbours.Clear();
     }
 
     void Update()
@@ -132,13 +144,17 @@ public class Pneumocyte : MonoBehaviour
             if (Random.value > 0.7f)
             {
                 status = (STATUS)(((int)status + 1) % 4);
+                #if VERBOSEDEBUG
                 Debug.Log("status="+status.ToString());   
+                #endif
             }
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             status = (STATUS)(((int)status + 1) % 4);
+            #if VERBOSEDEBUG
             Debug.Log("status="+status.ToString());
+            #endif
         }
 
         // hurt
@@ -148,13 +164,17 @@ public class Pneumocyte : MonoBehaviour
             if (Random.value > 0.7f)
             {
                 addLifePoints(-50f);
+                #if VERBOSEDEBUG
                 Debug.Log("addLifePoints(-50f)");
+                #endif
             }
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             addLifePoints(-50f);
+            #if VERBOSEDEBUG
             Debug.Log("addLifePoints(-50f)");
+            #endif
         }
 
         // heal
@@ -163,18 +183,39 @@ public class Pneumocyte : MonoBehaviour
             if (Random.value > 0.7f)
             {
                 addLifePoints(50f);
+                #if VERBOSEDEBUG
                 Debug.Log("addLifePoints(50f)");
+                #endif
             }
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             addLifePoints(50f);
+            #if VERBOSEDEBUG
             Debug.Log("addLifePoints(50f)");
+            #endif
         }
 #endif
         if (STATUS.HEALTHY == status)
         {
             // is neighbour dead? is division countdown over? then divide to replace
+            divisionCountdown += Time.deltaTime;
+            if (divisionCountdown >= divisionPeriod)
+            {
+                for (int i = neighboursIndex; i < neighboursIndex + neighbours.Length; i++)
+                {
+                    if (neighbours[neighboursIndex % neighbours.Length].status == STATUS.DEAD)
+                    {
+                        #if VERBOSEDEBUG
+                        Debug.Log("FOUND DEAD PC!");
+                        #endif
+                        divisionCountdown = 0;
+                        neighbours[neighboursIndex % neighbours.Length].setHealthy();
+                        break;
+                    }
+                }
+                neighboursIndex = (neighboursIndex + 1) % neighbours.Length;
+            }
         }
         else if (STATUS.RECOVERING == status)
         {
@@ -257,8 +298,9 @@ public class Pneumocyte : MonoBehaviour
         }
     }
 
-    private void setHealthy()
+    public void setHealthy()
     {
+        _isAlive = true;
         currentHealth = maxHealth;
         status = STATUS.HEALTHY;
     }
@@ -326,7 +368,7 @@ public class Pneumocyte : MonoBehaviour
 
     private void die()
     {
-        isAlive = false;
+        _isAlive = false;
         currentHealth = 0f;
         status = STATUS.DEAD;
     }

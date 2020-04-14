@@ -108,7 +108,7 @@ MonoBehaviour:
   healthBar: {fileID: 1551943782795043559}
   healthBarCanvas: {fileID: 5057649160232556503}
   neighbours: []
-  neighboursRange: 8.8
+  neighboursRange: 7
   _status: 0
 --- !u!65 &6194447609651783941
 BoxCollider:

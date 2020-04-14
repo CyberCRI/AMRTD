@@ -34,10 +34,7 @@ public class RedBloodCellMovement : WobblyMovement
     void Start()
     {
         lazyInitializeStatics();
-
-        _renderer = GetComponent<Renderer>();
-        _propBlock = new MaterialPropertyBlock();
-        _renderer.GetPropertyBlock(_propBlock);
+        lazyInitialize();
 
         if (waypointIndex == 0)
         {
@@ -49,6 +46,16 @@ public class RedBloodCellMovement : WobblyMovement
 //        timeToComplete = topToBottom / startSpeed;
 
         repulsers = new string[3] {WhiteBloodCellMovement.wbcTag, RedBloodCellMovement.rbcTag, Enemy.enemyTag};
+    }
+
+    private void lazyInitialize()
+    {
+        if (null == _propBlock)
+        {
+            _renderer = GetComponent<Renderer>();
+            _propBlock = new MaterialPropertyBlock();
+            _renderer.GetPropertyBlock(_propBlock);
+        }
     }
 
     private void lazyInitializeStatics()
@@ -108,13 +115,7 @@ public class RedBloodCellMovement : WobblyMovement
             #endif
             target = bloodWayPoints[waypointIndex++].position;
             
-#if !ALWAYSUPDATEBLOODCOLOR
-            //float t = (Time.time - creationTime) / timeToComplete;
-            _propBlock.SetColor("_Color", Color.Lerp(deoxygenatedBloodColor, oxygenatedBloodColor, ((float) waypointIndex) / ((float) bloodWayPoints.Length)));
-#endif
-
-            // Apply the edited values to the renderer.
-            _renderer.SetPropertyBlock(_propBlock);
+            setColor();
         }
         else
         {
@@ -129,6 +130,21 @@ public class RedBloodCellMovement : WobblyMovement
         
         target = bloodWayPoints[_waypointIndex].position;
         waypointIndex = _waypointIndex+1;
+            
+        setColor();
+    }
+
+    private void setColor()
+    {
+#if !ALWAYSUPDATEBLOODCOLOR
+        lazyInitialize();
+
+        //float t = (Time.time - creationTime) / timeToComplete;
+        _propBlock.SetColor("_Color", Color.Lerp(deoxygenatedBloodColor, oxygenatedBloodColor, ((float) waypointIndex) / ((float) bloodWayPoints.Length)));
+
+            // Apply the edited values to the renderer.
+        _renderer.SetPropertyBlock(_propBlock);
+#endif
     }
 
     private void resetPosition()
