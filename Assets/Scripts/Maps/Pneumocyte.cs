@@ -10,6 +10,23 @@ public class Pneumocyte : MonoBehaviour
 {
     public const string pcTag = "PCTag";
 
+    private static Pneumocyte[] _pneumocytes;
+    public static Pneumocyte[] pneumocytes
+    {
+        get
+        {
+            if (null == _pneumocytes)
+            {
+                _pneumocytes = tempPneumocytes.ToArray();
+                //#if VERBOSEDEBUG
+                Debug.Log(" tempPneumocytes.ToArray() with _pneumocytes.Length=" + _pneumocytes.Length);
+                //#endif
+            }
+            return _pneumocytes;
+        }
+    }
+    private static System.Collections.Generic.List<Pneumocyte> tempPneumocytes = new System.Collections.Generic.List<Pneumocyte>();
+
     [SerializeField]
     private SpriteRenderer _renderer = null;
     
@@ -43,10 +60,10 @@ public class Pneumocyte : MonoBehaviour
     private float neighboursRange = 0f;
     [SerializeField]
     private STATUS _status = STATUS.HEALTHY;
-    private STATUS status
+    public STATUS status
     {
         get { return _status;}
-        set
+        private set
         {
             if (value != _status)
             {
@@ -97,12 +114,17 @@ public class Pneumocyte : MonoBehaviour
     private bool isDoneSpawning = false;
 
     // update appearance accordingly
-    private enum STATUS
+    public enum STATUS
     {
         HEALTHY,
         INFECTED_SPAWNING_VIRUSES,
         RECOVERING,
         DEAD,
+    }
+
+    void Awake()
+    {
+        tempPneumocytes.Add(this);
     }
 
     void Start()

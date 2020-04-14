@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 392451229414189597}
   - component: {fileID: 1731162760430843317}
   - component: {fileID: 6707825628479614661}
-  - component: {fileID: 3727237908718425685}
-  - component: {fileID: 7674244967914177618}
   - component: {fileID: -3695565156655158682}
   - component: {fileID: -5177389566463946072}
+  - component: {fileID: 1935312187735749670}
   m_Layer: 8
   m_Name: SARS-CoV-2
   m_TagString: VirusTag
@@ -98,47 +97,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3727237908718425685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4864043371421780663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbb476f848c36b84da52c93a527b96e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startSpeed: 10
-  minimumDistance: 1
-  wobbledTransform: {fileID: 7689037423146455039}
-  wobbleShiftSpeedX: 1
-  wobbleShiftSpeedZ: 0.5
-  horizontalShift: 0.05
-  ratioFactor: 0.2
-  wobbleScaleSpeed: 0.5
-  angularWobble: 12
-  wobbleRotateSpeed: 0.9
-  sphereCollider: {fileID: 6707825628479614661}
-  _rigidbody: {fileID: -5177389566463946072}
-  repulsers: []
-  baseSpeed: 10
-  speedVariation: 1
-  idlePosition: {x: 0, y: 0, z: 0}
---- !u!135 &7674244967914177618
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4864043371421780663}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.50000036
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-3695565156655158682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +126,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &1935312187735749670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864043371421780663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89b92cc598aa09468172dfdaed3cabc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startSpeed: 10
+  minimumDistance: 1
+  wobbledTransform: {fileID: 7689037423146455039}
+  wobbleShiftSpeedX: 0.5
+  wobbleShiftSpeedZ: 0.5
+  horizontalShift: 0.05
+  ratioFactor: 0.02
+  wobbleScaleSpeed: 0.5
+  angularWobble: 12
+  wobbleRotateSpeed: 0.9
+  sphereCollider: {fileID: 6707825628479614661}
+  _rigidbody: {fileID: -5177389566463946072}
+  repulsers: []
+  virusPrefab: {fileID: 4864043371421780663}
+  virionsSpawnCountPerLungCell: 2
+  lungCellRecoveryProbability: 0.6
+  damageRatioPerInfection: 0.4
+  damageRatioPerSpawn: 0.1
+  timeBeforeSpawnStarts: 1
+  timeBeforeRecoveryStarts: 0.5
+  timeBetweenSpawns: 1
+  targetPneumocyte: {fileID: 0}
 --- !u!1 &7836518058736514401
 GameObject:
   m_ObjectHideFlags: 0
