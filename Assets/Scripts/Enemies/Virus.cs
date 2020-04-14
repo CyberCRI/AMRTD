@@ -4,7 +4,10 @@ using UnityEngine;
 public class Virus : WobblyMovement
 {
     [Header("Parameters")]
-    public GameObject virusPrefab = null;
+    public const string virusTag = "VirusTag";
+    private static GameObject _virusPrefab = null;
+    [SerializeField]
+    private string prefabURI = null;
     private STATUS status = STATUS.SEARCHING_CELL;
     public int virionsSpawnCountPerLungCell = 2;
 
@@ -18,6 +21,8 @@ public class Virus : WobblyMovement
     public float timeBeforeRecoveryStarts = .5f;
     public float timeBetweenSpawns = 1f;
 
+    public float startImpulse = 20f;
+
     [SerializeField]
     private Pneumocyte targetPneumocyte = null;
 
@@ -26,57 +31,77 @@ public class Virus : WobblyMovement
         SEARCHING_CELL,
         GOING_TO_CELL,
     }
+    
+    // temp variables
+    Pneumocyte closestPC = null;
+    float sqrMagnitudeToClosestPC = Mathf.Infinity;
+    int pcIndex = 0;
+    int j = 0;
+    float _sqrMagnitude = 0f;
 
     void Start()
     {
+        if (null == _virusPrefab)
+        {
+            _virusPrefab = Resources.Load<GameObject>(prefabURI);
+        }
         setTarget();
+        repulsers = new string[4] {Enemy.enemyTag, RedBloodCellMovement.rbcTag, Virus.virusTag, WhiteBloodCellMovement.wbcTag};
+        _rigidbody.AddForce(Vector3.up * startImpulse, ForceMode.Impulse);
+    }
+
+    public GameObject getPrefab()
+    {
+        return _virusPrefab;
+    }
+
+    public void setTarget(Pneumocyte pneumocyte)
+    {
+        targetPneumocyte = pneumocyte;
+        target = pneumocyte.transform.position;
     }
 
     private void setTarget()
     {
-        targetPneumocyte = (null == targetPneumocyte) || (targetPneumocyte.status != Pneumocyte.STATUS.HEALTHY) ? null : targetPneumocyte;
-        if (null == targetPneumocyte)
+        if ((null == targetPneumocyte) || (targetPneumocyte.status != Pneumocyte.STATUS.HEALTHY))
         {
-            #if VERBOSEDEBUG
-            Debug.Log(this.gameObject.name + " setTarget start (null == targetPneumocyte)==true");
-            #endif
             // find closest healthy pneumocyte
-            Pneumocyte closestPC = null;
-            float sqrMagnitudeToClosestPC = Mathf.Infinity;
-            for (int i = 0; i < Pneumocyte.pneumocytes.Length; i++)
+            sqrMagnitudeToClosestPC = Mathf.Infinity;
+
+            for (int i = pcIndex; i < pcIndex + Pneumocyte.pneumocytes.Length; i++)
             {
-                if (Pneumocyte.pneumocytes[i].status == Pneumocyte.STATUS.HEALTHY)
+                int j = i % Pneumocyte.pneumocytes.Length;
+                if (Pneumocyte.pneumocytes[j].status == Pneumocyte.STATUS.HEALTHY)
                 {
-                    float _sqrMagnitude =  (Pneumocyte.pneumocytes[i].transform.position - this.transform.position).sqrMagnitude;
+                    _sqrMagnitude =  (Pneumocyte.pneumocytes[j].transform.position - this.transform.position).sqrMagnitude;
                     if ((null == closestPC) || (_sqrMagnitude < sqrMagnitudeToClosestPC))
                     {
-                        closestPC = Pneumocyte.pneumocytes[i];
+                        closestPC = Pneumocyte.pneumocytes[j];
                         sqrMagnitudeToClosestPC = _sqrMagnitude;
                     }
                 }
             }
+            pcIndex++;
+
             if (null != closestPC)
             {
-                targetPneumocyte = closestPC;
-                target = closestPC.transform.position;
+                setTarget(closestPC);
             }
-            #if VERBOSEDEBUG
-            Debug.Log(this.gameObject.name + " setTarget end (null == targetPneumocyte)=="+(null == targetPneumocyte));
-            #endif
+            else if ((null == targetPneumocyte) || hasReachedTarget)
+            {
+                setTarget(Pneumocyte.pneumocytes[Random.Range(0, Pneumocyte.pneumocytes.Length)]);
+            }
         }
     }
 
     protected override void onWobbleDone()
     {
         setTarget();
-        if (hasReachedTarget)
+        if (hasReachedTarget && (null != targetPneumocyte) && (targetPneumocyte.status == Pneumocyte.STATUS.HEALTHY))
         {
-            if (null != targetPneumocyte)
-            {
-                targetPneumocyte.infect(this);
-                //Destroy(this.gameObject);
-                this.setHoldingPosition(true);
-            }
+            targetPneumocyte.infect(this);
+            //Destroy(this.gameObject);
+            this.setHoldingPosition(true);
         }
     }
 }

@@ -1,5 +1,5 @@
 //#define VERBOSEDEBUG
-#define DEVMODE
+//#define DEVMODE
 //#define USESPRITE
 #define USECOLOR
 using UnityEngine;
@@ -54,7 +54,11 @@ public class Pneumocyte : MonoBehaviour
 
     [Header("Parameters")]
     [SerializeField]
+    private Transform spawnPosition = null;
+    [SerializeField]
     private Pneumocyte[] neighbours = null;
+    [SerializeField]
+    private BoxCollider m_boxCollider = null;
     System.Collections.Generic.List<Pneumocyte> tempNeighbours = new System.Collections.Generic.List<Pneumocyte>();
     [SerializeField]
     private float neighboursRange = 0f;
@@ -125,18 +129,6 @@ public class Pneumocyte : MonoBehaviour
     void Awake()
     {
         tempPneumocytes.Add(this);
-    }
-
-    void Start()
-    {
-        m_Index = (pneumocyteCount++).ToString("00");
-        currentHealth = maxHealth;
-        healingRate = healingRatioRate * maxHealth; // regains maxHealth * x per second
-#if DEVMODE
-        healthBarCanvas.rotation = Camera.main.transform.rotation;
-#else
-        healthBarCanvas.gameObject.SetActive(false);
-#endif
 
         // compute neighbours
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, neighboursRange);
@@ -154,6 +146,20 @@ public class Pneumocyte : MonoBehaviour
         }
         neighbours = tempNeighbours.ToArray();
         tempNeighbours.Clear();
+    }
+
+    void Start()
+    {
+        Destroy(m_boxCollider);
+        m_Index = (pneumocyteCount++).ToString("00");
+        currentHealth = maxHealth;
+        healingRate = healingRatioRate * maxHealth; // regains maxHealth * x per second
+#if DEVMODE
+        healthBarCanvas.rotation = Camera.main.transform.rotation;
+#else
+        healthBarCanvas.gameObject.SetActive(false);
+#endif
+
     }
 
     void Update()
@@ -341,7 +347,9 @@ public class Pneumocyte : MonoBehaviour
             timeBeforeSpawnStarts = infecter.timeBeforeSpawnStarts;
             timeBeforeRecoveryStarts = infecter.timeBeforeRecoveryStarts;
             timeBetweenSpawns = infecter.timeBetweenSpawns;
-            virusPrefab = infecter.virusPrefab;
+            virusPrefab = infecter.getPrefab();
+
+            Destroy(infecter.gameObject);
 
             // launch periodic spawn
             StartCoroutine(spawnVirions());
@@ -362,6 +370,7 @@ public class Pneumocyte : MonoBehaviour
             spawnVirion();
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
+
         isDoneSpawning = true;
 
         // cell survives
@@ -397,7 +406,10 @@ public class Pneumocyte : MonoBehaviour
 
     private void spawnVirion()
     {
-        Instantiate(virusPrefab, this.transform.position, this.transform.rotation);
+        GameObject virion = Instantiate(virusPrefab, spawnPosition.position, virusPrefab.transform.rotation);
+        Virus virus = virion.GetComponent<Virus>();
+        virus.setTarget(this);
+        
         addLifePoints(-damageRatioPerSpawn * maxHealth);
     }
 

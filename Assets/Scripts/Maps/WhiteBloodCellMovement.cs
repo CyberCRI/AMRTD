@@ -40,7 +40,7 @@ public class WhiteBloodCellMovement : WobblyMovement
             bloodUnder = RedBloodCellManager.instance.bloodUnder;
         }
 
-        repulsers = new string[2] {WhiteBloodCellMovement.wbcTag, RedBloodCellMovement.rbcTag};
+        repulsers = new string[4] {Enemy.enemyTag, RedBloodCellMovement.rbcTag, Virus.virusTag, WhiteBloodCellMovement.wbcTag};
     }
 
     protected override void setDisplacement()

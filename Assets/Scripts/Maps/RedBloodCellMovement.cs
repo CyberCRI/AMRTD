@@ -45,7 +45,7 @@ public class RedBloodCellMovement : WobblyMovement
 //        creationTime = Time.time;
 //        timeToComplete = topToBottom / startSpeed;
 
-        repulsers = new string[3] {WhiteBloodCellMovement.wbcTag, RedBloodCellMovement.rbcTag, Enemy.enemyTag};
+        repulsers = new string[4] {Enemy.enemyTag, RedBloodCellMovement.rbcTag, Virus.virusTag, WhiteBloodCellMovement.wbcTag};
     }
 
     private void lazyInitialize()

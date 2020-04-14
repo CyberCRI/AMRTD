@@ -22,7 +22,7 @@ public class EnemyMovement : WobblyMovement
             sphereCollider.radius = wobbledTransform.localScale.x / 2f;
         }
 
-        repulsers = new string[2] { RedBloodCellMovement.rbcTag, Enemy.enemyTag };
+        repulsers = new string[4] {Enemy.enemyTag, RedBloodCellMovement.rbcTag, Virus.virusTag, WhiteBloodCellMovement.wbcTag};
     }
 
     /// <summary>

@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4864043371421780663}
   m_LocalRotation: {x: 0.64085644, y: 0.29883623, z: -0.64085644, w: -0.29883623}
-  m_LocalPosition: {x: 4.269999, y: 0.30999994, z: 1.66}
+  m_LocalPosition: {x: 82.7, y: -0.8, z: -17.49}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5429589353849360701}
@@ -124,7 +124,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1935312187735749670
 MonoBehaviour:
@@ -138,12 +138,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89b92cc598aa09468172dfdaed3cabc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 10
-  minimumDistance: 1
+  startSpeed: 3
+  minimumDistance: 1.5
   wobbledTransform: {fileID: 7689037423146455039}
-  wobbleShiftSpeedX: 0.5
-  wobbleShiftSpeedZ: 0.5
-  horizontalShift: 0.05
+  wobbleShiftSpeedX: 0.1
+  wobbleShiftSpeedZ: 0.1
+  horizontalShift: 0.01
   ratioFactor: 0.02
   wobbleScaleSpeed: 0.5
   angularWobble: 12
@@ -151,14 +151,14 @@ MonoBehaviour:
   sphereCollider: {fileID: 6707825628479614661}
   _rigidbody: {fileID: -5177389566463946072}
   repulsers: []
-  virusPrefab: {fileID: 4864043371421780663}
+  prefabURI: SARS-CoV-2
   virionsSpawnCountPerLungCell: 2
   lungCellRecoveryProbability: 0.6
   damageRatioPerInfection: 0.4
   damageRatioPerSpawn: 0.1
-  timeBeforeSpawnStarts: 1
+  timeBeforeSpawnStarts: 2
   timeBeforeRecoveryStarts: 0.5
-  timeBetweenSpawns: 1
+  timeBetweenSpawns: 4
   targetPneumocyte: {fileID: 0}
 --- !u!1 &7836518058736514401
 GameObject:
