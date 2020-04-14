@@ -1,11 +1,15 @@
 //#define VERBOSEDEBUG
+#define DEVMODE
 //#define USESPRITE
 #define USECOLOR
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Pneumocyte : MonoBehaviour
 {
+    public const string pcTag = "PCTag";
+
     [SerializeField]
     private SpriteRenderer _renderer = null;
     
@@ -26,9 +30,17 @@ public class Pneumocyte : MonoBehaviour
     private Color _recoveringColor = Color.white;
     [SerializeField]
     private Color _deadColor = Color.white;
+    [SerializeField]
+    private Image healthBar = null;
+    [SerializeField]
+    private Transform healthBarCanvas = null;
 
     [Header("Parameters")]
+    [SerializeField]
     private Pneumocyte[] neighbours = null;
+    [SerializeField]
+    private float neighboursRange = 0f;
+    [SerializeField]
     private STATUS _status = STATUS.HEALTHY;
     private STATUS status
     {
@@ -39,12 +51,25 @@ public class Pneumocyte : MonoBehaviour
             {
                 _status = value;
                 updateAppearance();
+                this.gameObject.name = "Pneumocyte" + m_Index + "_" + _status.ToString();
             }
         }
     }
     private bool isAlive = true;
     private float maxHealth = 100f;
-    private float currentHealth = 0f;
+    private float _currentHealth = 0f;
+    private float currentHealth
+    {
+        get
+        {
+            return _currentHealth;
+        }
+        set
+        {
+            _currentHealth = value;
+            updateHealthBar();
+        }
+    }
     private float divisionPeriod = 10f;
     private float healingRatioRate = .05f; // regains maxHealth * x per second
     private float healingRate = 0f; // regains maxHealth * x per second
@@ -56,6 +81,8 @@ public class Pneumocyte : MonoBehaviour
     private float timeBeforeRecoveryStarts = 0f;
     private float timeBetweenSpawns = 0f;
     private GameObject virusPrefab = null;
+    private string m_Index = null;
+    private static int pneumocyteCount = 0;
 
     private bool isDoneSpawning = false;
 
@@ -70,19 +97,81 @@ public class Pneumocyte : MonoBehaviour
 
     void Start()
     {
+        m_Index = (pneumocyteCount++).ToString("00");
         currentHealth = maxHealth;
         healingRate = healingRatioRate * maxHealth; // regains maxHealth * x per second
+#if DEVMODE
+        healthBarCanvas.rotation = Camera.main.transform.rotation;
+#else
+        healthBarCanvas.gameObject.SetActive(false);
+#endif
+
         // compute neighbours
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, neighboursRange);
+        neighbours = new Pneumocyte[colliders.Length];
+        int j = 0;
+        Debug.Log(this.gameObject.name + " Start neighbours");
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            Collider collider = colliders[i];
+            if (collider.tag == pcTag)
+            {
+                Debug.Log("PC found!");
+                neighbours[j++] = (Pneumocyte)collider.GetComponent<Pneumocyte>();
+            }
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+#if DEVMODE
+
+        // status
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (Random.value > 0.7f)
+            {
+                status = (STATUS)(((int)status + 1) % 4);
+                Debug.Log("status="+status.ToString());   
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.A))
         {
             status = (STATUS)(((int)status + 1) % 4);
             Debug.Log("status="+status.ToString());
         }
-        /*
+
+        // hurt
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            
+            if (Random.value > 0.7f)
+            {
+                addLifePoints(-50f);
+                Debug.Log("addLifePoints(-50f)");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            addLifePoints(-50f);
+            Debug.Log("addLifePoints(-50f)");
+        }
+
+        // heal
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (Random.value > 0.7f)
+            {
+                addLifePoints(50f);
+                Debug.Log("addLifePoints(50f)");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            addLifePoints(50f);
+            Debug.Log("addLifePoints(50f)");
+        }
+#endif
         if (STATUS.HEALTHY == status)
         {
             // is neighbour dead? is division countdown over? then divide to replace
@@ -90,13 +179,14 @@ public class Pneumocyte : MonoBehaviour
         else if (STATUS.RECOVERING == status)
         {
             addLifePoints(healingRate * Time.deltaTime);
+            _renderer.color = Color.Lerp(_recoveringColor, _healthyColor, healthBar.fillAmount);
         }
-        else if (STATUS.RECOVERING == status)
-        {
-            Debug.LogError("NOT IMPLEMENTED");
-        }
-        */
 
+    }
+
+    private void updateHealthBar()
+    {
+        healthBar.fillAmount = currentHealth/maxHealth;
     }
 
     private void resetVariablesAtRecovery()
@@ -113,7 +203,6 @@ public class Pneumocyte : MonoBehaviour
 
     private void updateAppearance()
     {
-        Debug.LogError("NOT IMPLEMENTED");
         switch(status)
         {
             case STATUS.HEALTHY:
@@ -134,7 +223,7 @@ public class Pneumocyte : MonoBehaviour
 #if USESPRITE            
                 _renderer.sprite = _recoveringSprite;
 #elif USECOLOR
-                _renderer.color = _recoveringColor;
+                _renderer.color = Color.Lerp(_recoveringColor, _healthyColor, healthBar.fillAmount);
 #endif
                 break;
             case STATUS.DEAD:
@@ -145,7 +234,7 @@ public class Pneumocyte : MonoBehaviour
 #endif
                 break;
             default:
-                Debug.LogError("unknown status " + status);
+                Debug.LogError(this.gameObject.name + " unknown status " + status);
                 break;
         }
     }
@@ -161,6 +250,10 @@ public class Pneumocyte : MonoBehaviour
         else if (currentHealth >= maxHealth)
         {
             setHealthy();
+        }
+        else if (status != STATUS.INFECTED_SPAWNING_VIRUSES)
+        {
+            status = STATUS.RECOVERING;
         }
     }
 
@@ -201,6 +294,7 @@ public class Pneumocyte : MonoBehaviour
         
         for (int i = 0; i < virionsSpawnCountPerLungCell; i++)
         {
+            Debug.Log(this.gameObject.name + " spawns a virion!");
             spawnVirion();
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
@@ -209,11 +303,13 @@ public class Pneumocyte : MonoBehaviour
         // cell survives
         if (Random.value <= lungCellRecoveryProbability)
         {
+            Debug.Log(this.gameObject.name + " recovers!");
             status = STATUS.RECOVERING;
         }
         //cell dies
         else
         {
+            Debug.Log(this.gameObject.name + " doesn't make it :'(");
             die();
         }
     }
@@ -230,9 +326,9 @@ public class Pneumocyte : MonoBehaviour
 
     private void die()
     {
-        status = STATUS.DEAD;
         isAlive = false;
         currentHealth = 0f;
+        status = STATUS.DEAD;
     }
 
     private void spawnVirion()
@@ -247,4 +343,14 @@ public class Pneumocyte : MonoBehaviour
     }
 
     // when get infected:
+
+
+    /// <summary>
+    /// Callback to draw gizmos only if the object is selected.
+    /// </summary>
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position, neighboursRange);
+    }
 }

@@ -9,6 +9,7 @@ TagManager:
   - RBCTag
   - WBCTag
   - VirusTag
+  - PCTag
   layers:
   - Default
   - TransparentFX
