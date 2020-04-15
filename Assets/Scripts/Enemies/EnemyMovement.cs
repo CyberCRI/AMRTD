@@ -13,6 +13,8 @@ public class EnemyMovement : WobblyMovement
     [Header("Exclusives")]
     [SerializeField]
     private Waypoints.WaypointsMode waypointsMode = Waypoints.WaypointsMode.CONTINUOUS;
+    [SerializeField]
+    protected SphereCollider sphereCollider = null;
 
     protected override void onAwakeDone()
     {

@@ -47,8 +47,6 @@ public class WobblyMovement : MonoBehaviour
     
     [Header("Repulsion")]
     [SerializeField]
-    protected SphereCollider sphereCollider = null;
-    [SerializeField]
     protected Rigidbody _rigidbody = null;
     protected float repulsionForce = 5f;
     [SerializeField]

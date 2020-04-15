@@ -14,6 +14,7 @@ public class WhiteBloodCellMovement : WobblyMovement
     public Vector3 idlePosition = Vector3.zero;
     private static Transform bloodOrigin2 = null;
     private static Transform bloodUnder = null;
+    private static Transform bloodEnd2 = null;
     private bool disappearing = false;
 
 #if VERBOSEDEBUG
@@ -38,6 +39,7 @@ public class WhiteBloodCellMovement : WobblyMovement
         {
             bloodOrigin2 = RedBloodCellManager.instance.bloodOrigin2;
             bloodUnder = RedBloodCellManager.instance.bloodUnder;
+            bloodEnd2 = RedBloodCellManager.instance.bloodEnd2;
         }
 
         repulsers = new string[4] {Enemy.enemyTag, RedBloodCellMovement.rbcTag, Virus.virusTag, WhiteBloodCellMovement.wbcTag};
@@ -100,8 +102,9 @@ public class WhiteBloodCellMovement : WobblyMovement
         idlePosition = _idlePosition;
     }
 
-    private void absorb()
+    public void absorb(Virus virus = null)
     {
+
         WhiteBloodCellManager.instance.reportDeath(index);
 
 #if VERBOSEDEBUG
@@ -109,23 +112,20 @@ public class WhiteBloodCellMovement : WobblyMovement
 #endif
 
         disappearing = true;
-        /*
-        // disappear through the ground
-        target = new Vector3(
-            this.transform.position.x,
-            bloodUnder.position.y,
-            this.transform.position.z
-        );
-        */
-        target = new Vector3(
-            this.transform.position.x,
-            this.transform.position.y,
-            bloodOrigin2.position.z
-        );
+        target = bloodEnd2.position;
         hasReachedTarget = false;
 
-        RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getGameObjectContext(targetTransform.gameObject));
-        Destroy(targetTransform.gameObject);
+        if (null != virus)
+        {
+            RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getGameObjectContext(virus.gameObject));
+            virus.getAbsorbed(this.transform);
+        }
+        else
+        {
+            RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getGameObjectContext(targetTransform.gameObject));
+            Destroy(targetTransform.gameObject);
+        }
+        
     }
 
     void OnDestroy()

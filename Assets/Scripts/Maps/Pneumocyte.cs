@@ -111,6 +111,7 @@ public class Pneumocyte : MonoBehaviour
     private Vector3 temporaryLocalScaleVector3 = Vector3.zero;
     [SerializeField]
     private float piDivisor = 8f;
+    public Transform infectionTransform = null;
     
     void Awake()
     {
@@ -307,7 +308,7 @@ public class Pneumocyte : MonoBehaviour
         status = STATUS.HEALTHY;
     }
 
-    public bool infect(Virus infecter)
+    public bool getInfected(Virus infecter)
     {
         bool result = false;
         if (STATUS.HEALTHY == status)
@@ -338,7 +339,9 @@ public class Pneumocyte : MonoBehaviour
         
         for (int i = 0; i < virionsSpawnCountPerLungCell; i++)
         {
+            #if VERBOSEDEBUG
             Debug.Log(this.gameObject.name + " spawns a virion!");
+            #endif
             spawnVirion();
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
@@ -348,13 +351,17 @@ public class Pneumocyte : MonoBehaviour
         // cell survives
         if (Random.value <= lungCellRecoveryProbability)
         {
+            #if VERBOSEDEBUG
             Debug.Log(this.gameObject.name + " recovers!");
+            #endif
             status = STATUS.RECOVERING;
         }
         //cell dies
         else
         {
+            #if VERBOSEDEBUG
             Debug.Log(this.gameObject.name + " doesn't make it :'(");
+            #endif
             die();
         }
     }

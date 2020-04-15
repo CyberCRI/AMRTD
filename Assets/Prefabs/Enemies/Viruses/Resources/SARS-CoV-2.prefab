@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 392451229414189597}
   - component: {fileID: 1731162760430843317}
   - component: {fileID: 6707825628479614661}
-  - component: {fileID: -3695565156655158682}
   - component: {fileID: -5177389566463946072}
   - component: {fileID: 1935312187735749670}
+  - component: {fileID: -3695565156655158682}
   m_Layer: 8
   m_Name: SARS-CoV-2
   m_TagString: VirusTag
@@ -92,24 +92,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4864043371421780663}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-3695565156655158682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4864043371421780663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b6e2018abfee741b26a4c089135f9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  codeStem: SARSCOV2
 --- !u!54 &-5177389566463946072
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -148,18 +135,34 @@ MonoBehaviour:
   wobbleScaleSpeed: 0.5
   angularWobble: 12
   wobbleRotateSpeed: 0.9
-  sphereCollider: {fileID: 6707825628479614661}
   _rigidbody: {fileID: -5177389566463946072}
   repulsers: []
   prefabURI: SARS-CoV-2
-  virionsSpawnCountPerLungCell: 2
-  lungCellRecoveryProbability: 0.6
-  damageRatioPerInfection: 0.4
-  damageRatioPerSpawn: 0.1
-  timeBeforeSpawnStarts: 2
-  timeBeforeRecoveryStarts: 0.5
-  timeBetweenSpawns: 4
+  _virionsSpawnCountPerLungCell: 2
+  _lungCellRecoveryProbability: 0.6
+  _damageRatioPerInfection: 0.4
+  _damageRatioPerSpawn: 0.1
+  _timeBeforeSpawnStarts: 1
+  _timeBeforeRecoveryStarts: 0.5
+  _timeBetweenSpawns: 1
+  jumpPeriod: 0.7
+  sqrMagnitudeProximityThreshold: 3
+  absorptionImpulse: 50
+  sphereCollider: {fileID: 6707825628479614661}
   targetPneumocyte: {fileID: 0}
+--- !u!114 &-3695565156655158682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864043371421780663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14b6e2018abfee741b26a4c089135f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  codeStem: SARSCOV2
 --- !u!1 &7836518058736514401
 GameObject:
   m_ObjectHideFlags: 0

@@ -82,10 +82,10 @@ public class RedBloodCellMovement : WobblyMovement
 
     protected override void onWobbleDone()
     {
-//#if ALWAYSUPDATEBLOODCOLOR
-//        float t = Mathf.Clamp((Time.time - creationTime) / timeToComplete, 0f, 1f);
-//        _propBlock.SetColor("_Color", Color.Lerp(deoxygenatedBloodColor, oxygenatedBloodColor, t));
-//#endif
+#if ALWAYSUPDATEBLOODCOLOR
+        float t = Mathf.Clamp((Time.time - creationTime) / timeToComplete, 0f, 1f);
+        _propBlock.SetColor("_Color", Color.Lerp(deoxygenatedBloodColor, oxygenatedBloodColor, t));
+#endif
 
         if (hasReachedTarget)
         {

@@ -2,6 +2,11 @@
 using UnityEngine;
 using System.Collections;
 
+// TODO
+// - degradation
+// - propagation to other alveoli groups
+// - leucocyte action
+
 public class Virus : WobblyMovement
 {
     [Header("Parameters")]
@@ -35,8 +40,16 @@ public class Virus : WobblyMovement
     private float _timeBetweenSpawns = 1f;
     public float timeBetweenSpawns { get { return _timeBetweenSpawns; } }
 
+    [SerializeField]
+    private float jumpPeriod = .7f;
+    private float jumpCountdown = 0f;
     private float startImpulse = 20f;
-    private float destroyY = -5f;
+    [SerializeField]
+    private float sqrMagnitudeProximityThreshold = 0f;
+    [SerializeField]
+    private float absorptionImpulse = 0f;
+    [SerializeField]
+    protected SphereCollider sphereCollider = null;
 
     [SerializeField]
     private Pneumocyte targetPneumocyte = null;
@@ -53,6 +66,8 @@ public class Virus : WobblyMovement
     int pcIndex = 0;
     int j = 0;
     float _sqrMagnitude = 0f;
+
+
 
     void Start()
     {
@@ -114,20 +129,41 @@ public class Virus : WobblyMovement
         setTarget();
         if (hasReachedTarget && (null != targetPneumocyte) && (targetPneumocyte.status == Pneumocyte.STATUS.HEALTHY))
         {
-            targetPneumocyte.infect(this);
-            StartCoroutine(infectionCoroutine());
+            targetPneumocyte.getInfected(this);
+            infectionCoroutine();
         }
     }
 
-    private IEnumerator infectionCoroutine()
+    private void kickToPosition(Vector3 targetPosition)
+    {
+        Vector3 direction = (targetPosition - this.transform.position).normalized;
+        _rigidbody.AddForce(direction * absorptionImpulse, ForceMode.Impulse);
+    }
+
+    private IEnumerator jumpToTransform(Transform targetTransform)
     {
         this.setHoldingPosition(true);
         sphereCollider.enabled = false;
-        _rigidbody.AddForce(Vector3.down * startImpulse, ForceMode.Impulse);
-        while (this.transform.position.y > destroyY)
+        while ((this.transform.position - targetTransform.position).sqrMagnitude > sqrMagnitudeProximityThreshold)
         {
+            jumpCountdown -= Time.deltaTime;
+            if (jumpCountdown <= 0)
+            {
+                kickToPosition(targetTransform.position);
+                jumpCountdown = jumpPeriod;
+            }
             yield return 0;
         }
         Destroy(this.gameObject);
+    }
+
+    private void infectionCoroutine()
+    {
+        StartCoroutine(jumpToTransform(targetPneumocyte.infectionTransform));
+    }
+
+    public void getAbsorbed(Transform absorberTransform)
+    {
+        StartCoroutine(jumpToTransform(absorberTransform));
     }
 }

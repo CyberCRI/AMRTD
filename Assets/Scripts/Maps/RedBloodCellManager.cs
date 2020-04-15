@@ -16,7 +16,7 @@ public class RedBloodCellManager : MonoBehaviour
     [SerializeField]
     private Transform bloodEnd1 = null;
     [SerializeField]
-    private Transform bloodEnd2 = null;
+    public Transform bloodEnd2 = null;
     [SerializeField]
     private Transform bloodWayPointsRoot = null;
     public Transform[] bloodWayPoints = null;
