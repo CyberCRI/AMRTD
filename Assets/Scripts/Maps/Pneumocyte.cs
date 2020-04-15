@@ -12,24 +12,10 @@ public class Pneumocyte : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer _renderer = null;
-    
     [SerializeField]
-    private Sprite _healthySprite = null;
+    private Sprite[] _sprites = new Sprite[(int)STATUS.COUNT];
     [SerializeField]
-    private Sprite _infectedSprite = null;
-    [SerializeField]
-    private Sprite _recoveringSprite = null;
-    [SerializeField]
-    private Sprite _deadSprite = null;
-    
-    [SerializeField]
-    private Color _healthyColor = Color.white;
-    [SerializeField]
-    private Color _infectedColor = Color.white;
-    [SerializeField]
-    private Color _recoveringColor = Color.white;
-    [SerializeField]
-    private Color _deadColor = Color.white;
+    private Color[] _colors = new Color[(int)STATUS.COUNT];
     [SerializeField]
     private Image healthBar = null;
     [SerializeField]
@@ -106,8 +92,26 @@ public class Pneumocyte : MonoBehaviour
         INFECTED_SPAWNING_VIRUSES,
         RECOVERING,
         DEAD,
+
+        COUNT,
     }
 
+    // pneumocyte animation parameters
+    [Header("Wobble scale")]
+    [Tooltip("Scale over time is Si * (1 + Rf * cos(ωt)")]
+    [SerializeField]
+    private Transform wobbledTransform;
+    [SerializeField]
+    private float[] ratioFactors = new float[(int)STATUS.COUNT];
+    private float ratioFactor = 0f;
+    [SerializeField]
+    private float[] wobbleScaleSpeeds = new float[(int)STATUS.COUNT];
+    private float wobbleScaleSpeed = 0f;
+    private Vector3 initialScale = Vector3.zero;
+    private Vector3 temporaryLocalScaleVector3 = Vector3.zero;
+    [SerializeField]
+    private float piDivisor = 8f;
+    
     void Awake()
     {
         PneumocyteManager.instance.register(this);
@@ -128,6 +132,12 @@ public class Pneumocyte : MonoBehaviour
         }
         neighbours = tempNeighbours.ToArray();
         tempNeighbours.Clear();
+
+        if (Vector3.zero == initialScale)
+        {
+            initialScale = wobbledTransform.localScale;
+        }
+        updateAppearance();
     }
 
     void Start()
@@ -230,9 +240,14 @@ public class Pneumocyte : MonoBehaviour
         else if (STATUS.RECOVERING == status)
         {
             addLifePoints(healingRate * Time.deltaTime);
-            _renderer.color = Color.Lerp(_recoveringColor, _healthyColor, healthBar.fillAmount);
+            _renderer.color = Color.Lerp(_colors[(int)STATUS.DEAD], _colors[(int)STATUS.RECOVERING], healthBar.fillAmount);
         }
 
+        wobbledTransform.localScale = new Vector3(
+                initialScale.x * (1 + ratioFactor * Mathf.Cos(wobbleScaleSpeed * Time.timeSinceLevelLoad)),
+                initialScale.y,
+                initialScale.z * (1 + ratioFactor * Mathf.Cos(Mathf.PI/piDivisor + wobbleScaleSpeed * Time.timeSinceLevelLoad))
+            );
     }
 
     private void updateHealthBar()
@@ -254,39 +269,16 @@ public class Pneumocyte : MonoBehaviour
 
     private void updateAppearance()
     {
-        switch(status)
+        if (status != STATUS.COUNT)
         {
-            case STATUS.HEALTHY:
+            int index = (int)status;
+            ratioFactor = ratioFactors[index];
+            wobbleScaleSpeed = wobbleScaleSpeeds[index];
 #if USESPRITE            
-                _renderer.sprite = _healthySprite;
+            _renderer.sprite = _sprites[index];
 #elif USECOLOR
-                _renderer.color = _healthyColor;
+            _renderer.color = _colors[index];
 #endif
-                break;
-            case STATUS.INFECTED_SPAWNING_VIRUSES:
-#if USESPRITE            
-                _renderer.sprite = _infectedSprite;
-#elif USECOLOR
-                _renderer.color = _infectedColor;
-#endif
-                break;
-            case STATUS.RECOVERING:
-#if USESPRITE            
-                _renderer.sprite = _recoveringSprite;
-#elif USECOLOR
-                _renderer.color = Color.Lerp(_recoveringColor, _healthyColor, healthBar.fillAmount);
-#endif
-                break;
-            case STATUS.DEAD:
-#if USESPRITE            
-                _renderer.sprite = _deadSprite;
-#elif USECOLOR
-                _renderer.color = _deadColor;
-#endif
-                break;
-            default:
-                Debug.LogError(this.gameObject.name + " unknown status " + status);
-                break;
         }
     }
 

@@ -308,6 +308,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -531,6 +561,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -606,6 +666,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -680,6 +770,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -980,6 +1100,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1139,6 +1289,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -1527,6 +1707,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1601,6 +1811,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -1756,6 +1996,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1810,6 +2080,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -1965,6 +2265,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2040,6 +2370,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2114,6 +2474,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -2269,6 +2659,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2422,6 +2842,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -3048,6 +3498,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3123,6 +3603,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3197,6 +3707,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -3358,6 +3898,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3432,6 +4002,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -3587,6 +4187,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3741,6 +4371,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3816,6 +4476,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3890,6 +4580,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -4044,6 +4764,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -4505,6 +5255,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4723,7 +5503,7 @@ PrefabInstance:
     - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
       propertyPath: timeBeforeWave1
-      value: 20
+      value: 100000000
       objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
@@ -5536,6 +6316,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5812,6 +6622,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5955,6 +6795,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -6348,6 +7218,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6502,6 +7402,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6576,6 +7506,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8081887671880612941, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -7206,6 +8166,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7359,6 +8349,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -9015,6 +10035,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pneumocyte (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9089,6 +10139,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pneumocyte (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[1]
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[0]
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: ratioFactors.Array.data[2]
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324586342979127526, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: wobbleScaleSpeeds.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
@@ -9931,26 +11011,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 83.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
-        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.52795297
       objectReference: {fileID: 0}
@@ -9968,6 +11028,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.52795297
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 83.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311000432511782726, guid: 4cc49aa05132e0d48a6502668f65c7f7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cc49aa05132e0d48a6502668f65c7f7, type: 3}

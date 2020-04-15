@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418217578314526812}
-  m_LocalRotation: {x: 0.61604124, y: -0.34712133, z: 0.34712133, w: 0.61604124}
+  m_LocalRotation: {x: 0.61604124, y: -0.34712145, z: 0.34712142, w: 0.6160412}
   m_LocalPosition: {x: 58.9, y: 1.96875, z: -19.5}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 3498383366378830416}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 83.4, z: 0}
+  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 58.800003}
 --- !u!114 &1324586342979127526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,14 +48,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 3996730445898665594}
-  _healthySprite: {fileID: 21300000, guid: 8d9689a4763b39642b0021f3a9c93028, type: 3}
-  _infectedSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  _recoveringSprite: {fileID: 21300000, guid: 9dea8a28cda7d8f40a6cddc6b8d00a0c, type: 3}
-  _deadSprite: {fileID: 21300000, guid: 798617c70e83c8742b98c03087e2ac50, type: 3}
-  _healthyColor: {r: 1, g: 1, b: 1, a: 1}
-  _infectedColor: {r: 0.77254903, g: 1, b: 0.7607843, a: 1}
-  _recoveringColor: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
-  _deadColor: {r: 0.49411765, g: 0.49411765, b: 0.49411765, a: 1}
+  _sprites:
+  - {fileID: 21300000, guid: 8d9689a4763b39642b0021f3a9c93028, type: 3}
+  - {fileID: 21300000, guid: 798617c70e83c8742b98c03087e2ac50, type: 3}
+  - {fileID: 21300000, guid: 9dea8a28cda7d8f40a6cddc6b8d00a0c, type: 3}
+  - {fileID: 21300000, guid: 0bc80cb79e0eab247b4e46a9f5604dd4, type: 3}
+  _colors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.7725491, g: 1, b: 0.7607844, a: 1}
+  - {r: 0.87843144, g: 0.87843144, b: 0.87843144, a: 1}
+  - {r: 0.49411768, g: 0.49411768, b: 0.49411768, a: 1}
   healthBar: {fileID: 1551943782795043559}
   healthBarCanvas: {fileID: 5057649160232556503}
   spawnPosition: {fileID: 3498383366378830416}
@@ -63,6 +65,18 @@ MonoBehaviour:
   m_boxCollider: {fileID: 6194447609651783941}
   neighboursRange: 7
   _status: 0
+  wobbledTransform: {fileID: 7149546687596757073}
+  ratioFactors:
+  - 0.04
+  - 0.07
+  - 0.02
+  - 0
+  wobbleScaleSpeeds:
+  - 6
+  - 50
+  - 3
+  - 0
+  piDivisor: 8
 --- !u!65 &6194447609651783941
 BoxCollider:
   m_ObjectHideFlags: 0
