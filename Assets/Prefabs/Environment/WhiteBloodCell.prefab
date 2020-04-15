@@ -161,6 +161,7 @@ MonoBehaviour:
   angularWobble: 12
   wobbleRotateSpeed: 0.9
   _rigidbody: {fileID: -5177389566463946072}
+  repulsionForce: 10
   repulsers: []
   baseSpeed: 10
   speedVariation: 1

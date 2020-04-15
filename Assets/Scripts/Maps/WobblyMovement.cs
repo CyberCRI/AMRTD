@@ -1,3 +1,4 @@
+//#define VERBOSEDEBUG
 using UnityEngine;
 
 public class WobblyMovement : MonoBehaviour
@@ -48,6 +49,7 @@ public class WobblyMovement : MonoBehaviour
     [Header("Repulsion")]
     [SerializeField]
     protected Rigidbody _rigidbody = null;
+    [SerializeField]
     protected float repulsionForce = 5f;
     [SerializeField]
     protected string[] repulsers;
@@ -117,6 +119,9 @@ public class WobblyMovement : MonoBehaviour
         {
             if (collider.tag == repulsers[i])
             {
+                #if VERBOSEDEBUG
+                Debug.Log(this.gameObject.name + ": hit " + collider.tag + " compared to " + repulsers[i]);
+                #endif
                 collides = true;
                 break;
             }

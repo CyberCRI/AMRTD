@@ -487,6 +487,7 @@ MonoBehaviour:
   angularWobble: 30
   wobbleRotateSpeed: 0.9
   _rigidbody: {fileID: 4734184661367311785}
+  repulsionForce: 20
   repulsers: []
   waypointIndex: 2
   waypointsMode: 0

@@ -50,23 +50,27 @@ public class VirusFighter : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        bool collides = false;
-        for (int i = 0; i < targetTags.Length; i++)
+        if (hitsLeft > 0)
         {
-            if (collider.tag == targetTags[i])
+            bool collides = false;
+            for (int i = 0; i < targetTags.Length; i++)
             {
-                hitsLeft--;
-                Virus virus = collider.gameObject.GetComponent<Virus>();
+                if (collider.tag == targetTags[i])
+                {
+                    hitsLeft--;
+                    Virus virus = collider.gameObject.GetComponent<Virus>();
 
-                if (0 == hitsLeft)
-                {
-                    // leave map + destroy virus
-                    m_wbcm.absorb(virus);
-                }
-                else
-                {
-                    // destroy virus manually
-                    virus.getAbsorbed(this.transform);
+                    if (0 == hitsLeft)
+                    {
+                        // leave map + destroy virus
+                        m_wbcm.absorb(virus);
+                        break;
+                    }
+                    else
+                    {
+                        // destroy virus manually
+                        virus.getAbsorbed(this.transform);
+                    }
                 }
             }
         }

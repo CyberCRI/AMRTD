@@ -8720,6 +8720,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8931599380331178507, guid: ba0b2498c6854d248b6c601255403dbc,
         type: 3}
+    - target: {fileID: 3174819326719741142, guid: c8224aa1881c0f540be9c0e22aa9149a,
+        type: 3}
+      propertyPath: respawnWBCs
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3410298798920408521, guid: c8224aa1881c0f540be9c0e22aa9149a,
         type: 3}
       propertyPath: m_LocalPosition.x

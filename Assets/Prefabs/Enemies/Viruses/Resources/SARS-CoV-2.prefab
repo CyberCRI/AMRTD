@@ -136,6 +136,7 @@ MonoBehaviour:
   angularWobble: 12
   wobbleRotateSpeed: 0.9
   _rigidbody: {fileID: -5177389566463946072}
+  repulsionForce: 10
   repulsers: []
   prefabURI: SARS-CoV-2
   _virionsSpawnCountPerLungCell: 2
