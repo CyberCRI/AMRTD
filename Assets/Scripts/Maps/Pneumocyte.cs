@@ -10,23 +10,6 @@ public class Pneumocyte : MonoBehaviour
 {
     public const string pcTag = "PCTag";
 
-    private static Pneumocyte[] _pneumocytes;
-    public static Pneumocyte[] pneumocytes
-    {
-        get
-        {
-            if (null == _pneumocytes)
-            {
-                _pneumocytes = tempPneumocytes.ToArray();
-                //#if VERBOSEDEBUG
-                Debug.Log(" tempPneumocytes.ToArray() with _pneumocytes.Length=" + _pneumocytes.Length);
-                //#endif
-            }
-            return _pneumocytes;
-        }
-    }
-    private static System.Collections.Generic.List<Pneumocyte> tempPneumocytes = new System.Collections.Generic.List<Pneumocyte>();
-
     [SerializeField]
     private SpriteRenderer _renderer = null;
     
@@ -112,7 +95,6 @@ public class Pneumocyte : MonoBehaviour
     private float timeBetweenSpawns = 0f;
     private GameObject virusPrefab = null;
     private string m_Index = null;
-    private static int pneumocyteCount = 0;
     int neighboursIndex = 0;
 
     private bool isDoneSpawning = false;
@@ -128,8 +110,8 @@ public class Pneumocyte : MonoBehaviour
 
     void Awake()
     {
-        tempPneumocytes.Add(this);
-
+        PneumocyteManager.instance.register(this);
+        
         // compute neighbours
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, neighboursRange);
         tempNeighbours.Clear();
@@ -151,7 +133,7 @@ public class Pneumocyte : MonoBehaviour
     void Start()
     {
         Destroy(m_boxCollider);
-        m_Index = (pneumocyteCount++).ToString("00");
+        m_Index = (PneumocyteManager.instance.pneumocyteIndex++).ToString("00");
         currentHealth = maxHealth;
         healingRate = healingRatioRate * maxHealth; // regains maxHealth * x per second
 #if DEVMODE
@@ -340,16 +322,14 @@ public class Pneumocyte : MonoBehaviour
         {
             status = STATUS.INFECTED_SPAWNING_VIRUSES;
 
-            addLifePoints(-infecter.damageRatioPerInfection * maxHealth);
             virionsSpawnCountPerLungCell = infecter.virionsSpawnCountPerLungCell;
             lungCellRecoveryProbability = infecter.lungCellRecoveryProbability;
+            addLifePoints(-infecter.damageRatioPerInfection * maxHealth);
             damageRatioPerSpawn = infecter.damageRatioPerSpawn;
             timeBeforeSpawnStarts = infecter.timeBeforeSpawnStarts;
             timeBeforeRecoveryStarts = infecter.timeBeforeRecoveryStarts;
             timeBetweenSpawns = infecter.timeBetweenSpawns;
             virusPrefab = infecter.getPrefab();
-
-            Destroy(infecter.gameObject);
 
             // launch periodic spawn
             StartCoroutine(spawnVirions());

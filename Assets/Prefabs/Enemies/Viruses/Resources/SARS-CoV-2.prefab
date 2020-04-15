@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 3
-  minimumDistance: 1.5
+  minimumDistance: 2
   wobbledTransform: {fileID: 7689037423146455039}
   wobbleShiftSpeedX: 0.1
   wobbleShiftSpeedZ: 0.1

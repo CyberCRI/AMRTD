@@ -1,5 +1,6 @@
 #define VERBOSEDEBUG
 using UnityEngine;
+using System.Collections;
 
 public class Virus : WobblyMovement
 {
@@ -9,19 +10,33 @@ public class Virus : WobblyMovement
     [SerializeField]
     private string prefabURI = null;
     private STATUS status = STATUS.SEARCHING_CELL;
-    public int virionsSpawnCountPerLungCell = 2;
 
+    [SerializeField]
+    private int _virionsSpawnCountPerLungCell = 2;
+    public int virionsSpawnCountPerLungCell { get { return _virionsSpawnCountPerLungCell; } }
     // lungCellRecoveryProbability * 100 % chances of not dying when spawn ends
-    public float lungCellRecoveryProbability = .6f;
-
+    [SerializeField]
+    private float _lungCellRecoveryProbability = .6f;
+    public float lungCellRecoveryProbability { get { return _lungCellRecoveryProbability; } }
     // damage ratios inflected; ratio of max health
-    public float damageRatioPerInfection = .4f;
-    public float damageRatioPerSpawn = .1f;
-    public float timeBeforeSpawnStarts = 1f;
-    public float timeBeforeRecoveryStarts = .5f;
-    public float timeBetweenSpawns = 1f;
+    [SerializeField]
+    private float _damageRatioPerInfection = .4f;
+    public float damageRatioPerInfection { get { return _damageRatioPerInfection; } }
+    [SerializeField]
+    private float _damageRatioPerSpawn = .1f;
+    public float damageRatioPerSpawn { get { return _damageRatioPerSpawn; } }
+    [SerializeField]
+    private float _timeBeforeSpawnStarts = 1f;
+    public float timeBeforeSpawnStarts { get { return _timeBeforeSpawnStarts; } }
+    [SerializeField]
+    private float _timeBeforeRecoveryStarts = .5f;
+    public float timeBeforeRecoveryStarts { get { return _timeBeforeRecoveryStarts; } }
+    [SerializeField]
+    private float _timeBetweenSpawns = 1f;
+    public float timeBetweenSpawns { get { return _timeBetweenSpawns; } }
 
-    public float startImpulse = 20f;
+    private float startImpulse = 20f;
+    private float destroyY = -5f;
 
     [SerializeField]
     private Pneumocyte targetPneumocyte = null;
@@ -68,15 +83,15 @@ public class Virus : WobblyMovement
             // find closest healthy pneumocyte
             sqrMagnitudeToClosestPC = Mathf.Infinity;
 
-            for (int i = pcIndex; i < pcIndex + Pneumocyte.pneumocytes.Length; i++)
+            for (int i = pcIndex; i < pcIndex + PneumocyteManager.instance.pneumocytes.Length; i++)
             {
-                int j = i % Pneumocyte.pneumocytes.Length;
-                if (Pneumocyte.pneumocytes[j].status == Pneumocyte.STATUS.HEALTHY)
+                int j = i % PneumocyteManager.instance.pneumocytes.Length;
+                if (PneumocyteManager.instance.pneumocytes[j].status == Pneumocyte.STATUS.HEALTHY)
                 {
-                    _sqrMagnitude =  (Pneumocyte.pneumocytes[j].transform.position - this.transform.position).sqrMagnitude;
+                    _sqrMagnitude =  (PneumocyteManager.instance.pneumocytes[j].transform.position - this.transform.position).sqrMagnitude;
                     if ((null == closestPC) || (_sqrMagnitude < sqrMagnitudeToClosestPC))
                     {
-                        closestPC = Pneumocyte.pneumocytes[j];
+                        closestPC = PneumocyteManager.instance.pneumocytes[j];
                         sqrMagnitudeToClosestPC = _sqrMagnitude;
                     }
                 }
@@ -89,7 +104,7 @@ public class Virus : WobblyMovement
             }
             else if ((null == targetPneumocyte) || hasReachedTarget)
             {
-                setTarget(Pneumocyte.pneumocytes[Random.Range(0, Pneumocyte.pneumocytes.Length)]);
+                setTarget(PneumocyteManager.instance.pneumocytes[Random.Range(0, PneumocyteManager.instance.pneumocytes.Length)]);
             }
         }
     }
@@ -100,8 +115,19 @@ public class Virus : WobblyMovement
         if (hasReachedTarget && (null != targetPneumocyte) && (targetPneumocyte.status == Pneumocyte.STATUS.HEALTHY))
         {
             targetPneumocyte.infect(this);
-            //Destroy(this.gameObject);
-            this.setHoldingPosition(true);
+            StartCoroutine(infectionCoroutine());
         }
+    }
+
+    private IEnumerator infectionCoroutine()
+    {
+        this.setHoldingPosition(true);
+        sphereCollider.enabled = false;
+        _rigidbody.AddForce(Vector3.down * startImpulse, ForceMode.Impulse);
+        while (this.transform.position.y > destroyY)
+        {
+            yield return 0;
+        }
+        Destroy(this.gameObject);
     }
 }
