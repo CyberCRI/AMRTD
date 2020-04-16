@@ -1,4 +1,4 @@
-#define VERBOSEDEBUG
+//#define VERBOSEDEBUG
 using UnityEngine;
 using System.Collections;
 
@@ -71,6 +71,11 @@ public class Virus : WobblyMovement
 
     void Start()
     {
+        VirusManager.instance.register(this);
+
+        #if VERBOSEDEBUG
+        Debug.Log(this.gameObject.name + " Start");
+        #endif
         if (null == _virusPrefab)
         {
             _virusPrefab = Resources.Load<GameObject>(prefabURI);

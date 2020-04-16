@@ -1,4 +1,4 @@
-//#define VERBOSEDEBUG
+#define VERBOSEDEBUG
 //#define DEVMODE
 
 using UnityEngine;
@@ -12,12 +12,13 @@ public class PneumocyteManager : MonoBehaviour
     {
         get
         {
-            if (null == _pneumocytes)
+            if (_hasNewRegistrations || (null == _pneumocytes))
             {
                 _pneumocytes = tempPneumocytes.ToArray();
                 //#if VERBOSEDEBUG
                 Debug.Log(" tempPneumocytes.ToArray() with _pneumocytes.Length=" + _pneumocytes.Length);
                 //#endif
+                _hasNewRegistrations = false;
             }
             return _pneumocytes;
         }
@@ -25,6 +26,7 @@ public class PneumocyteManager : MonoBehaviour
     private System.Collections.Generic.List<Pneumocyte> tempPneumocytes = new System.Collections.Generic.List<Pneumocyte>();
     [HideInInspector]
     public int pneumocyteIndex = 0;
+    private bool _hasNewRegistrations = false;
 
     void Awake()
     {
@@ -40,6 +42,7 @@ public class PneumocyteManager : MonoBehaviour
 
     public void register(Pneumocyte pneumocyte)
     {
+        _hasNewRegistrations = true;
         tempPneumocytes.Add(pneumocyte);
     }
 

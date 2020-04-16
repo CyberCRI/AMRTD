@@ -9,17 +9,8 @@ using UnityEngine;
 public class RedBloodCellMovement : WobblyMovement
 {
     public const string rbcTag = "RBCTag";
-    private static Transform bloodOrigin1 = null;
-    private static Transform bloodOrigin2 = null;
-    private static Transform bloodEnd1 = null;
-    private static Transform bloodEnd2 = null;
-    private static Transform[] bloodWayPoints = null;
-    private static Color oxygenatedBloodColor = Color.red;
-    private static Color deoxygenatedBloodColor = Color.blue; // deoxygenated blood is deep red-purple #8E005F
-    private static float topToBottom = 0f;
     public float baseSpeed = 0f;
     private int waypointIndex = 0;
-    private static bool isWaypointsBased = false;
     [SerializeField]
     private float speedVariation = 0f;
 
@@ -33,7 +24,10 @@ public class RedBloodCellMovement : WobblyMovement
     // Start is called before the first frame update
     void Start()
     {
-        lazyInitializeStatics();
+        #if VERBOSEDEBUG
+        Debug.Log(string.Format("{0}: {1}: Start ", this.GetType(), this.gameObject.name));
+        #endif
+
         lazyInitialize();
 
         if (waypointIndex == 0)
@@ -43,7 +37,7 @@ public class RedBloodCellMovement : WobblyMovement
         setSpeed();
 
 //        creationTime = Time.time;
-//        timeToComplete = topToBottom / startSpeed;
+//        timeToComplete = RedBloodCellManager.instance.topToBottom / startSpeed;
 
         repulsers = new string[4] {Enemy.enemyTag, RedBloodCellMovement.rbcTag, Virus.virusTag, WhiteBloodCellMovement.wbcTag};
     }
@@ -58,33 +52,11 @@ public class RedBloodCellMovement : WobblyMovement
         }
     }
 
-    private void lazyInitializeStatics()
-    {
-        if (null == bloodOrigin1)
-        {
-            Transform[] positions = RedBloodCellManager.instance.getBloodPositions();
-            bloodOrigin1 = positions[0];
-            bloodOrigin2 = positions[1];
-            bloodEnd1 = positions[2];
-            bloodEnd2 = positions[3];
-            Color[] colors = RedBloodCellManager.instance.getBloodColors();
-            oxygenatedBloodColor = colors[0];
-            deoxygenatedBloodColor = colors[1];
-            topToBottom = RedBloodCellManager.instance.topToBottom;
-
-            isWaypointsBased = RedBloodCellManager.instance.isWaypointsBased;
-            if (isWaypointsBased)
-            {
-                bloodWayPoints = RedBloodCellManager.instance.bloodWayPoints;
-            }
-        }
-    }
-
     protected override void onWobbleDone()
     {
 #if ALWAYSUPDATEBLOODCOLOR
         float t = Mathf.Clamp((Time.time - creationTime) / timeToComplete, 0f, 1f);
-        _propBlock.SetColor("_Color", Color.Lerp(deoxygenatedBloodColor, oxygenatedBloodColor, t));
+        _propBlock.SetColor("_Color", Color.Lerp(RedBloodCellManager.instance.deoxygenatedBloodColor, RedBloodCellManager.instance.oxygenatedBloodColor, t));
 #endif
 
         if (hasReachedTarget)
@@ -94,7 +66,7 @@ public class RedBloodCellMovement : WobblyMovement
             setTarget();
             setSpeed();
 #else
-            if (isWaypointsBased && (waypointIndex < bloodWayPoints.Length))
+            if (BloodUtilities.instance.isWaypointsBased && (waypointIndex < BloodUtilities.instance.bloodWayPoints.Length))
             {
                 setTarget();
             }
@@ -108,39 +80,42 @@ public class RedBloodCellMovement : WobblyMovement
 
     private void setTarget()
     {
-        if (isWaypointsBased)
+        if (BloodUtilities.instance.isWaypointsBased)
         {
             #if VERBOSEDEBUG
-            Debug.Log(string.Format("{0}: setTarget {1}->{2}", this.GetType(), this.gameObject.name, waypointIndex));
+            Debug.Log(string.Format("{0}: {1}: setTarget() ->{2}", this.GetType(), this.gameObject.name, waypointIndex));
             #endif
-            target = bloodWayPoints[waypointIndex++].position;
+            target = BloodUtilities.instance.bloodWayPoints[waypointIndex++].position;
             
             setColor();
         }
         else
         {
             float t = Random.Range(0f, 1f);
-            target = t * bloodEnd1.position + (1 - t) * bloodEnd2.position;
+            target = t * BloodUtilities.instance.bloodEnd1.position + (1 - t) * BloodUtilities.instance.bloodEnd2.position;
         }
     }
 
     public void setTarget(int _waypointIndex)
     {
-        lazyInitializeStatics();
-        
-        target = bloodWayPoints[_waypointIndex].position;
-        waypointIndex = _waypointIndex+1;
-            
-        setColor();
+        #if VERBOSEDEBUG
+        Debug.Log(string.Format("{0}: {1}: setTarget({2})", this.GetType(), this.gameObject.name, _waypointIndex));
+        #endif
+
+        waypointIndex = _waypointIndex;
+        setTarget();
     }
 
     private void setColor()
     {
+        #if VERBOSEDEBUG
+        Debug.Log(string.Format("{0}: {1}: setColor ", this.GetType(), this.gameObject.name));
+        #endif
 #if !ALWAYSUPDATEBLOODCOLOR
         lazyInitialize();
 
         //float t = (Time.time - creationTime) / timeToComplete;
-        _propBlock.SetColor("_Color", Color.Lerp(deoxygenatedBloodColor, oxygenatedBloodColor, ((float) waypointIndex) / ((float) bloodWayPoints.Length)));
+        _propBlock.SetColor("_Color", Color.Lerp(RedBloodCellManager.instance.deoxygenatedBloodColor, RedBloodCellManager.instance.oxygenatedBloodColor, ((float) waypointIndex) / ((float) BloodUtilities.instance.bloodWayPoints.Length)));
 
             // Apply the edited values to the renderer.
         _renderer.SetPropertyBlock(_propBlock);
@@ -150,7 +125,7 @@ public class RedBloodCellMovement : WobblyMovement
     private void resetPosition()
     {
         float t = Random.Range(0f, 1f);
-        this.transform.position = t * bloodOrigin1.position + (1 - t) * bloodOrigin2.position;
+        this.transform.position = t * BloodUtilities.instance.bloodOrigin1.position + (1 - t) * BloodUtilities.instance.bloodOrigin2.position;
     }
 
     private void setSpeed()

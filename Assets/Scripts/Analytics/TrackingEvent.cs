@@ -114,6 +114,9 @@ public enum TrackingEvent
     PATHOGENSPAWNS, //[x]
     PATHOGENINBLOOD, //[x]
 
+    // WBCs
+    WBCLEAVES, //[x]
+
     COMPLETEGAME, //[x]       // successfully finished the game; parameters: TIMESINCEGAMELOADED, TIMEGAMEPLAYEDNOPAUSE, TIMESINCELEVELLOADED
     NEWFURTHEST, //[x]        // reached a new furthest level; parameter: GAMELEVEL: level completed
     NEWOWNRECORD, //[ ]       // beat own best completion time on a level - Feature not developed yet

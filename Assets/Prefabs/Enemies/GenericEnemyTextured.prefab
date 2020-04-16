@@ -492,6 +492,9 @@ MonoBehaviour:
   waypointIndex: 2
   waypointsMode: 0
   sphereCollider: {fileID: 4500849788320993364}
+  absorptionImpulse: 100
+  sqrMagnitudeProximityThreshold: 3
+  jumpPeriod: 0.7
 --- !u!114 &2619940236836669980
 MonoBehaviour:
   m_ObjectHideFlags: 0

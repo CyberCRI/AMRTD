@@ -100,8 +100,16 @@ public class WobblyMovement : MonoBehaviour
     /// </summary>
     protected virtual void Update()
     {
+        #if VERBOSEDEBUG
+        Debug.Log(string.Format("{0}: {1}: Update ", this.GetType(), this.gameObject.name));
+        #endif
+
         if (0 != Time.deltaTime)
         {
+            #if VERBOSEDEBUG
+            Debug.Log(string.Format("{0}: {1}: Update 0 != Time.deltaTime ", this.GetType(), this.gameObject.name));
+            #endif
+
             onUpdateBegins();
 
             wobble();
@@ -112,7 +120,7 @@ public class WobblyMovement : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider collider)
+    protected virtual void OnTriggerEnter(Collider collider)
     {
         bool collides = false;
         for (int i = 0; i < repulsers.Length; i++)

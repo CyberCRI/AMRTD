@@ -31,7 +31,7 @@ public class EnemyDivisionBlocker : MonoBehaviour
         enemy = _enemy;
         if (0f == xLimit)
         {
-            xLimit = RedBloodCellManager.instance.bloodOrigin2.position.x;
+            xLimit = BloodUtilities.instance.bloodOrigin2.position.x;
         }
     }
 }

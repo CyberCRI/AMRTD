@@ -115,14 +115,13 @@ public class Pneumocyte : MonoBehaviour
     
     void Awake()
     {
-        PneumocyteManager.instance.register(this);
-        
+        #if VERBOSEDEBUG
+        Debug.Log(string.Format("{0}: {1}: Awake neighbours ", this.GetType(), this.gameObject.name));
+        #endif
+
         // compute neighbours
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, neighboursRange);
         tempNeighbours.Clear();
-#if VERBOSEDEBUG
-        Debug.Log(this.gameObject.name + " Start neighbours");
-#endif
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider collider = colliders[i];
@@ -143,6 +142,8 @@ public class Pneumocyte : MonoBehaviour
 
     void Start()
     {
+        PneumocyteManager.instance.register(this);
+
         Destroy(m_boxCollider);
         m_Index = (PneumocyteManager.instance.pneumocyteIndex++).ToString("00");
         currentHealth = maxHealth;

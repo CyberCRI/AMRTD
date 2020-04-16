@@ -22,10 +22,24 @@ public class WhiteBloodCellManager : MonoBehaviour
     private float respawnPeriod = 10f;
     private float respawnCountdown = 0f;
 
-    private Transform bloodOrigin1 = null;
-    private Transform bloodOrigin2 = null;
-    private Transform bloodEnd1 = null;
-    private Transform bloodEnd2 = null;
+    private bool _isAreaConstrained = true;
+    public bool isAreaConstrained { get { return _isAreaConstrained; } }
+    [SerializeField]
+    private Transform limitTopGO = null;
+    private float _limitTop    = Mathf.Infinity;
+    public float limitTop { get { return _limitTop; } }
+    [SerializeField]
+    private Transform limitBottomGO = null;
+    private float _limitBottom = -Mathf.Infinity;
+    public float limitBottom { get { return _limitBottom; } }
+    [SerializeField]
+    private Transform limitLeftGO = null;
+    private float _limitLeft   = -Mathf.Infinity;
+    public float limitLeft { get { return _limitLeft; } }
+    [SerializeField]
+    private Transform limitRightGO = null;
+    private float _limitRight  = Mathf.Infinity;
+    public float limitRight { get { return _limitRight; } }
 
     public const int wbcSpawnCount = 4;
     private float wbcSpawnTimePeriod = 1f;
@@ -44,8 +58,19 @@ public class WhiteBloodCellManager : MonoBehaviour
         else
         {
             instance = this;
+
+            _isAreaConstrained = (null != limitTopGO) || (null != limitBottomGO) || (null != limitLeftGO) || (null != limitRightGO);
+            _limitTop =    (null != limitTopGO)    ? limitTopGO.position.x    : _limitTop;
+            _limitBottom = (null != limitBottomGO) ? limitBottomGO.position.x : _limitBottom;
+            _limitLeft =   (null != limitLeftGO)   ? limitLeftGO.position.x   : _limitLeft;
+            _limitRight =  (null != limitRightGO)  ? limitRightGO.position.x  : _limitRight;
+
+            #if VERBOSEDEBUG
+            Debug.Log(string.Format("{0}: {1}: Awake ", this.GetType(), this.gameObject.name));
+            #endif
+
             whiteBloodCells = new WhiteBloodCellMovement[wbcSpawnCount];
-            whiteBloodCellsTarget = new Enemy[whiteBloodCells.Length];
+            whiteBloodCellsTarget = new Enemy[wbcSpawnCount];
             availableWBCs = new WhiteBloodCellMovement[wbcSpawnCount];
             respawnCountdown = respawnPeriod;
 
@@ -63,13 +88,11 @@ public class WhiteBloodCellManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        Transform[] positions = RedBloodCellManager.instance.getBloodPositions();
-        bloodOrigin1 = positions[0];
-        bloodOrigin2 = positions[1];
-        bloodEnd1 = positions[2];
-        bloodEnd2 = positions[3];
+        #if VERBOSEDEBUG
+        Debug.Log(string.Format("{0}: {1}: Start ", this.GetType(), this.gameObject.name));
+        #endif
 
-        Vector3 diff = (bloodEnd1.position - bloodOrigin1.position);
+        Vector3 diff = (BloodUtilities.instance.bloodEnd1.position - BloodUtilities.instance.bloodOrigin1.position);
         Vector3 verticalSpatialPeriod = diff.z / (wbcSpawnCount + 1) * Vector3.forward;
         Vector3 horizontalSpatialPeriod = diff.x / (wbcSpawnCount + 1) * Vector3.right;
         wbcSpawnSpatialPeriod = verticalSpatialPeriod + horizontalSpatialPeriod;
@@ -152,16 +175,20 @@ public class WhiteBloodCellManager : MonoBehaviour
 
     private void spawnWBC(int _index)
     {
+        #if VERBOSEDEBUG
+        Debug.Log(string.Format("{0}: {1}: spawnWBC({2}) ", this.GetType(), this.gameObject.name, _index));
+        #endif
+
         int index = _index == -1 ? getFirstNullWBCIndex() : _index;
 
         GameObject wbcPrefab = wbcPrefabs[UnityEngine.Random.Range(0, wbcPrefabs.Length)];
         float t = UnityEngine.Random.Range(0f, 1f);
-        Vector3 spawnPointPosition = t * bloodOrigin1.position + (1 - t) * bloodOrigin2.position;
+        Vector3 spawnPointPosition = t * BloodUtilities.instance.bloodOrigin1.position + (1 - t) * BloodUtilities.instance.bloodOrigin2.position;
         GameObject newWBC = (GameObject)Instantiate(wbcPrefab, spawnPointPosition, wbcPrefab.transform.rotation);
 
         WhiteBloodCellMovement wbcm = newWBC.GetComponent<WhiteBloodCellMovement>();
         whiteBloodCells[index] = wbcm;
-        Vector3 idlePosition = bloodOrigin1.position + (index + 1) * wbcSpawnSpatialPeriod;
+        Vector3 idlePosition = BloodUtilities.instance.bloodOrigin1.position + (index + 1) * wbcSpawnSpatialPeriod;
         wbcm.initialize(index, idlePosition);
     }
 
