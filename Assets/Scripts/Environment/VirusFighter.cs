@@ -19,12 +19,13 @@ public class VirusFighter : MonoBehaviour
             updateHealthIndicators();
         }
     }
-    [SerializeField]
-    private string[] targetTags = null;
+    
     [SerializeField]
     private WhiteBloodCellMovement m_wbcm = null;
     [SerializeField]
-    private Renderer _renderer = null;
+    private Renderer _sphericalRenderer = null;
+    [SerializeField]
+    private Renderer _silhouetteRenderer = null;
     private MaterialPropertyBlock _propBlock = null;
     [SerializeField]
     private Color colorHealthy = Color.white;
@@ -32,20 +33,26 @@ public class VirusFighter : MonoBehaviour
     private Color colorWounded = Color.grey;
     [SerializeField]
     private Image healthBar = null;
+    private Color _color;
 
     void Awake()
     {
         _propBlock = new MaterialPropertyBlock();
-        _renderer.GetPropertyBlock(_propBlock);
         hitsLeft = hitsMaxCount;
     }
 
     private void updateHealthIndicators()
     {
         healthBar.fillAmount = hitsLeft/hitsMaxCount;
-        _propBlock.SetColor("_Color", Color.Lerp(colorHealthy, colorWounded, healthBar.fillAmount));
-        // Apply the edited values to the renderer.
-        _renderer.SetPropertyBlock(_propBlock);
+        _color = Color.Lerp(colorWounded, colorHealthy, healthBar.fillAmount);
+        
+        _sphericalRenderer.GetPropertyBlock(_propBlock);
+        _propBlock.SetColor("_Color", _color);
+        _sphericalRenderer.SetPropertyBlock(_propBlock);
+        
+        _silhouetteRenderer.GetPropertyBlock(_propBlock);
+        _propBlock.SetColor("_Color", _color);
+        _silhouetteRenderer.SetPropertyBlock(_propBlock);
     }
 
     void OnTriggerEnter(Collider collider)
@@ -53,25 +60,27 @@ public class VirusFighter : MonoBehaviour
         if (hitsLeft > 0)
         {
             bool collides = false;
-            for (int i = 0; i < targetTags.Length; i++)
+            
+            if (collider.tag == Virus.virusTag)
             {
-                if (collider.tag == targetTags[i])
-                {
-                    hitsLeft--;
-                    Virus virus = collider.gameObject.GetComponent<Virus>();
+                hitsLeft--;
+                Virus virus = collider.gameObject.GetComponent<Virus>();
 
-                    if (0 == hitsLeft)
-                    {
-                        // leave map + destroy virus
-                        m_wbcm.absorb(virus);
-                        break;
-                    }
-                    else
-                    {
-                        // destroy virus manually
-                        virus.getAbsorbed(this.transform);
-                    }
+                if (0 == hitsLeft)
+                {
+                    // leave map + destroy virus
+                    m_wbcm.absorb(virus);
                 }
+                else
+                {
+                    // destroy virus manually
+                    virus.getAbsorbed(this.transform);
+                }
+            }
+            else if (collider.tag == Enemy.enemyTag)
+            {
+                hitsLeft = 0;
+                m_wbcm.absorb(collider.gameObject.GetComponent<EnemyMovement>());
             }
         }
     }

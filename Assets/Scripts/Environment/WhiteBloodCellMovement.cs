@@ -151,7 +151,7 @@ public class WhiteBloodCellMovement : WobblyMovement
         virus.getAbsorbed(this.transform);
     }
 
-    private void absorb(EnemyMovement enemy)
+    public void absorb(EnemyMovement enemy)
     {
         prepareAbsorb();
         RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getGameObjectContext(enemy.gameObject));

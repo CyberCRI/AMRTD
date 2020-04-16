@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitsMaxCount: 10
   _hitsLeft: 0
-  targetTags:
-  - VirusTag
   m_wbcm: {fileID: 849536410162919145}
-  _renderer: {fileID: 6362967727472973061}
-  colorHealthy: {r: 1, g: 1, b: 1, a: 1}
-  colorWounded: {r: 1, g: 0, b: 0, a: 1}
+  _sphericalRenderer: {fileID: 6362967727472973061}
+  _silhouetteRenderer: {fileID: 6596319577189016727}
+  colorHealthy: {r: 1, g: 1, b: 0.92941177, a: 1}
+  colorWounded: {r: 0.63529414, g: 0.5647059, b: 0.5647059, a: 1}
   healthBar: {fileID: 7542131460928017272}
 --- !u!1001 &4067849959994384572
 PrefabInstance:
@@ -42,6 +41,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WhiteBloodCell2_VirusFighter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6935027291076457913, guid: 224f698c15ca52c4f9d445c276c8f629,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7203844366430045227, guid: 224f698c15ca52c4f9d445c276c8f629,
         type: 3}
@@ -117,6 +121,12 @@ MonoBehaviour:
 --- !u!23 &6362967727472973061 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6935027291076457913, guid: 224f698c15ca52c4f9d445c276c8f629,
+    type: 3}
+  m_PrefabInstance: {fileID: 4067849959994384572}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6596319577189016727 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7203844366430045227, guid: 224f698c15ca52c4f9d445c276c8f629,
     type: 3}
   m_PrefabInstance: {fileID: 4067849959994384572}
   m_PrefabAsset: {fileID: 0}
