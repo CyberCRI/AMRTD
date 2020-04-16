@@ -54,15 +54,15 @@ public class Pneumocyte : MonoBehaviour
             return _isAlive;
         }
     }
-    private float maxHealth = 100f;
+    public const float maxHealth = 100f;
     private float _currentHealth = 0f;
-    private float currentHealth
+    public float currentHealth
     {
         get
         {
             return _currentHealth;
         }
-        set
+        private set
         {
             _currentHealth = value;
             updateHealthBar();
@@ -145,7 +145,7 @@ public class Pneumocyte : MonoBehaviour
         PneumocyteManager.instance.register(this);
 
         Destroy(m_boxCollider);
-        m_Index = (PneumocyteManager.instance.pneumocyteIndex++).ToString("00");
+        m_Index = (PneumocyteManager.instance.entityIndex++).ToString("00");
         currentHealth = maxHealth;
         healingRate = healingRatioRate * maxHealth; // regains maxHealth * x per second
 #if DEVMODE

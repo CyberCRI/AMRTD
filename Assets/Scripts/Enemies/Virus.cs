@@ -103,15 +103,15 @@ public class Virus : WobblyMovement
             // find closest healthy pneumocyte
             sqrMagnitudeToClosestPC = Mathf.Infinity;
 
-            for (int i = pcIndex; i < pcIndex + PneumocyteManager.instance.pneumocytes.Length; i++)
+            for (int i = pcIndex; i < pcIndex + PneumocyteManager.instance.entities.Length; i++)
             {
-                int j = i % PneumocyteManager.instance.pneumocytes.Length;
-                if (PneumocyteManager.instance.pneumocytes[j].status == Pneumocyte.STATUS.HEALTHY)
+                int j = i % PneumocyteManager.instance.entities.Length;
+                if (PneumocyteManager.instance.entities[j].status == Pneumocyte.STATUS.HEALTHY)
                 {
-                    _sqrMagnitude =  (PneumocyteManager.instance.pneumocytes[j].transform.position - this.transform.position).sqrMagnitude;
+                    _sqrMagnitude =  (PneumocyteManager.instance.entities[j].transform.position - this.transform.position).sqrMagnitude;
                     if ((null == closestPC) || (_sqrMagnitude < sqrMagnitudeToClosestPC))
                     {
-                        closestPC = PneumocyteManager.instance.pneumocytes[j];
+                        closestPC = PneumocyteManager.instance.entities[j];
                         sqrMagnitudeToClosestPC = _sqrMagnitude;
                     }
                 }
@@ -124,7 +124,7 @@ public class Virus : WobblyMovement
             }
             else if ((null == targetPneumocyte) || hasReachedTarget)
             {
-                setTarget(PneumocyteManager.instance.pneumocytes[Random.Range(0, PneumocyteManager.instance.pneumocytes.Length)]);
+                setTarget(PneumocyteManager.instance.entities[Random.Range(0, PneumocyteManager.instance.entities.Length)]);
             }
         }
     }

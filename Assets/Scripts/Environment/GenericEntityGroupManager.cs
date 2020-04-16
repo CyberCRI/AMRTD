@@ -26,7 +26,7 @@ public class GenericEntityGroupManager<T> : MonoBehaviour
     public int entityIndex = 0;
     private bool _hasNewRegistrations = false;
 
-    void Awake()
+    protected virtual void Awake()
     {
         if (null == instance)
         {

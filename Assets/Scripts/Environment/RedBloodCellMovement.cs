@@ -13,6 +13,10 @@ public class RedBloodCellMovement : WobblyMovement
     private int waypointIndex = 0;
     [SerializeField]
     private float speedVariation = 0f;
+    private Color _color = Color.red;
+    private float _advancement = 0f;
+    private float _alveoliHealth = 0f;
+    private float _colorLerp = 0f;
 
 //    float creationTime = 0f;
 //    float timeToComplete = 0f;
@@ -115,7 +119,17 @@ public class RedBloodCellMovement : WobblyMovement
         lazyInitialize();
 
         //float t = (Time.time - creationTime) / timeToComplete;
-        _propBlock.SetColor("_Color", Color.Lerp(RedBloodCellManager.instance.deoxygenatedBloodColor, RedBloodCellManager.instance.oxygenatedBloodColor, ((float) waypointIndex) / ((float) BloodUtilities.instance.bloodWayPoints.Length)));
+
+        _advancement = ((float) waypointIndex) / ((float) BloodUtilities.instance.bloodWayPoints.Length);
+        _alveoliHealth = PneumocyteManager.instance2.getHealthRatio();
+        _colorLerp = Mathf.Max(_colorLerp, _advancement * _alveoliHealth);
+
+        _color = Color.Lerp(
+            RedBloodCellManager.instance.deoxygenatedBloodColor,
+            RedBloodCellManager.instance.oxygenatedBloodColor,
+            _colorLerp
+            );
+        _propBlock.SetColor("_Color", _color);
 
             // Apply the edited values to the renderer.
         _renderer.SetPropertyBlock(_propBlock);

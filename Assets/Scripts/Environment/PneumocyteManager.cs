@@ -4,35 +4,16 @@
 using UnityEngine;
 using System.Collections;
 
-public class PneumocyteManager : MonoBehaviour
+public class PneumocyteManager : GenericEntityGroupManager<Pneumocyte>
 {
-    public static PneumocyteManager instance = null;
-    private Pneumocyte[] _pneumocytes;
-    public Pneumocyte[] pneumocytes
+    public static PneumocyteManager instance2 = null;
+    
+    protected override void Awake()
     {
-        get
+        base.Awake();
+        if (null == instance2)
         {
-            if (_hasNewRegistrations || (null == _pneumocytes))
-            {
-                _pneumocytes = tempPneumocytes.ToArray();
-                //#if VERBOSEDEBUG
-                Debug.Log(" tempPneumocytes.ToArray() with _pneumocytes.Length=" + _pneumocytes.Length);
-                //#endif
-                _hasNewRegistrations = false;
-            }
-            return _pneumocytes;
-        }
-    }
-    private System.Collections.Generic.List<Pneumocyte> tempPneumocytes = new System.Collections.Generic.List<Pneumocyte>();
-    [HideInInspector]
-    public int pneumocyteIndex = 0;
-    private bool _hasNewRegistrations = false;
-
-    void Awake()
-    {
-        if (null == instance)
-        {
-            instance = this;
+            instance2 = this;
         }
         else
         {
@@ -40,21 +21,18 @@ public class PneumocyteManager : MonoBehaviour
         }
     }
 
-    public void register(Pneumocyte pneumocyte)
-    {
-        _hasNewRegistrations = true;
-        tempPneumocytes.Add(pneumocyte);
-    }
+    public float currScore = 0f, maxScore = 0f;
 
-    private void resetStatics()
+    public float getHealthRatio()
     {
-        _pneumocytes = null;
-        tempPneumocytes.Clear();
-        pneumocyteIndex = 0;
-    }
+        currScore = 0f;
+        for (int i = 0; i < entities.Length; i++)
+        {
+            currScore += entities[i].currentHealth;
+        }
 
-    void OnDestroy()
-    {
-        resetStatics();
+        maxScore = Pneumocyte.maxHealth * entities.Length;
+
+        return currScore / maxScore;
     }
 }
