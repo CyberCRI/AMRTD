@@ -5,6 +5,7 @@ using UnityEngine;
 public class GenericEntityGroupManager<T> : MonoBehaviour
 {
     public static GenericEntityGroupManager<T> instance = null;
+    [SerializeField]
     private T[] _entities;
     public T[] entities
     {
@@ -21,7 +22,9 @@ public class GenericEntityGroupManager<T> : MonoBehaviour
             return _entities;
         }
     }
-    public List<T> entitiesList { get; private set; } = new List<T>();
+    [SerializeField]
+    public List<T> _entitiesList = new List<T>();
+    public List<T> entitiesList { get { return _entitiesList;} private set { _entitiesList = value; } }
     [HideInInspector]
     public int entityIndex = 0;
     private bool _hasNewRegistrations = false;

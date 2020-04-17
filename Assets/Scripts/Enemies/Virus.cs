@@ -11,7 +11,7 @@ public class Virus : WobblyMovement
 {
     [Header("Parameters")]
     public const string virusTag = "VirusTag";
-    private static GameObject _virusPrefab = null;
+
     [SerializeField]
     private string prefabURI = null;
     private STATUS status = STATUS.SEARCHING_CELL;
@@ -52,6 +52,12 @@ public class Virus : WobblyMovement
     private float gainAltitudeImpulse = 10f;
     [SerializeField]
     protected SphereCollider sphereCollider = null;
+    private bool isEscaping  = false;
+    private bool isEscaping1 = false;
+    private bool isEscaping2 = false;
+    private Vector3 _escapeTarget;
+    private Vector3 _waypoint;
+    private bool isEntering = false;
 
     [SerializeField]
     private Pneumocyte targetPneumocyte = null;
@@ -78,18 +84,26 @@ public class Virus : WobblyMovement
         #if VERBOSEDEBUG
         Debug.Log(this.gameObject.name + " Start");
         #endif
-        if (null == _virusPrefab)
+
+        _waypoint = VirusManager.derivedInstance.waypoint;
+        if (_waypoint.x < this.transform.position.x)
         {
-            _virusPrefab = Resources.Load<GameObject>(prefabURI);
+            Debug.Log("Entering!");
+            isEntering = true;
+            target = _waypoint;
         }
-        setTarget();
+        else
+        {
+            Debug.Log("Spawning!");
+        }
+        
         repulsers = new string[4] {Enemy.enemyTag, RedBloodCellMovement.rbcTag, Virus.virusTag, WhiteBloodCellMovement.wbcTag};
         _rigidbody.AddForce(Vector3.up * startImpulse, ForceMode.Impulse);
     }
 
     public GameObject getPrefab()
     {
-        return _virusPrefab;
+        return VirusManager.derivedInstance.virusPrefab;
     }
 
     public void setTarget(Pneumocyte pneumocyte)
@@ -104,7 +118,7 @@ public class Virus : WobblyMovement
 
     private void setTarget()
     {
-        if ((null == targetPneumocyte) || (targetPneumocyte.status != Pneumocyte.STATUS.HEALTHY))
+        if (!isEscaping && !isEntering &&  ((null == targetPneumocyte) || (targetPneumocyte.status != Pneumocyte.STATUS.HEALTHY)))
         {
             // find closest healthy pneumocyte
             sqrMagnitudeToClosestPC = Mathf.Infinity;
@@ -137,12 +151,34 @@ public class Virus : WobblyMovement
 
     protected override void onWobbleDone()
     {
-        setTarget();
-        if (hasReachedTarget && (null != targetPneumocyte) && (targetPneumocyte.status == Pneumocyte.STATUS.HEALTHY))
+        if (hasReachedTarget)
         {
-            targetPneumocyte.getInfected(this);
-            infectionCoroutine();
+            if ((null != targetPneumocyte) && (targetPneumocyte.status == Pneumocyte.STATUS.HEALTHY))
+            {
+                setHoldingPosition(true);
+                targetPneumocyte.getInfected(this);
+                infectionCoroutine();
+            }
+            else if (isEscaping1)
+            {
+                Debug.Log("done going to waypoint while escaping");
+                isEscaping1 = false;
+                isEscaping2 = true;
+                target = _escapeTarget;
+            }
+            else if (isEscaping2)
+            {
+                Debug.Log("done escaping");
+                Destroy(this.gameObject);
+            }
+            else if (isEntering)
+            {
+                Debug.Log("done going to waypoint while entering");
+                isEntering = false;
+                setHoldingPosition(false);
+            }
         }
+        setTarget();
     }
 
     private void kickToPosition(Vector3 targetPosition)
@@ -153,9 +189,9 @@ public class Virus : WobblyMovement
 
     private IEnumerator jumpToTransform(Transform targetTransform)
     {
-        this.setHoldingPosition(true);
+        setHoldingPosition(true);
         sphereCollider.enabled = false;
-        while ((this.transform.position - targetTransform.position).sqrMagnitude > sqrMagnitudeProximityThreshold)
+        while ((null != targetTransform) && (this.transform.position - targetTransform.position).sqrMagnitude > sqrMagnitudeProximityThreshold)
         {
             jumpCountdown -= Time.deltaTime;
             if (jumpCountdown <= 0)
@@ -170,6 +206,7 @@ public class Virus : WobblyMovement
 
     private void infectionCoroutine()
     {
+        VirusManager.instance.unregister(this);
         StartCoroutine(jumpToTransform(targetPneumocyte.infectionTransform));
     }
 
@@ -177,5 +214,15 @@ public class Virus : WobblyMovement
     {
         VirusManager.instance.unregister(this);
         StartCoroutine(jumpToTransform(absorberTransform));
+    }
+
+    public void escape(Vector3 escapeTarget)
+    {
+        isEscaping  = true;
+        isEscaping1 = true;
+        isEscaping2 = false;
+        VirusManager.instance.unregister(this);
+        target = _waypoint;
+        _escapeTarget = escapeTarget;
     }
 }

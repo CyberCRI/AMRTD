@@ -54,16 +54,16 @@ public class WhiteBloodCellManager : MonoBehaviour
     private float _limitRight  = Mathf.Infinity;
     public float limitRight { get { return _limitRight; } }
 
-    public const int wbcSpawnCount = 4;
     [SerializeField]
-    private float wbcSpawnTimePeriod = 1f;
+    private int _wbcSpawnCount = 0;
+    [SerializeField]
+    private float wbcSpawnTimePeriod = 0f;
 
     private Vector3 wbcSpawnSpatialPeriod = Vector3.zero;
-    private Vector3[] idlePositions = new Vector3[wbcSpawnCount];
 
     private bool _searching = true;
     [SerializeField]
-    private float _detectionRadius = 7f;
+    private float _detectionRadius = 0f;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -88,13 +88,13 @@ public class WhiteBloodCellManager : MonoBehaviour
             Debug.Log(string.Format("{0}: {1}: Awake ", this.GetType(), this.gameObject.name));
             #endif
 
-            whiteBloodCells = new WhiteBloodCellMovement[wbcSpawnCount];
-            whiteBloodCellsTargetViruses = new Virus[wbcSpawnCount];
-            whiteBloodCellsTargetEnemies = new Enemy[wbcSpawnCount];
-            availableWBCs = new WhiteBloodCellMovement[wbcSpawnCount];
-            respawnCountdown = respawnPeriod + wbcSpawnCount * wbcSpawnTimePeriod;
+            whiteBloodCells = new WhiteBloodCellMovement[_wbcSpawnCount];
+            whiteBloodCellsTargetViruses = new Virus[_wbcSpawnCount];
+            whiteBloodCellsTargetEnemies = new Enemy[_wbcSpawnCount];
+            availableWBCs = new WhiteBloodCellMovement[_wbcSpawnCount];
+            respawnCountdown = respawnPeriod + _wbcSpawnCount * wbcSpawnTimePeriod;
 
-            for (int i = 0; i < wbcSpawnCount; i++)
+            for (int i = 0; i < _wbcSpawnCount; i++)
             {
                 // +1 otherwise Start is called too late to initialize blood points
                 Invoke("spawnWBC", (i + 1) * wbcSpawnTimePeriod);
@@ -113,8 +113,8 @@ public class WhiteBloodCellManager : MonoBehaviour
         #endif
 
         Vector3 diff = (BloodUtilities.instance.bloodEnd1.position - BloodUtilities.instance.bloodOrigin1.position);
-        Vector3 verticalSpatialPeriod = diff.z / (wbcSpawnCount + 1) * Vector3.forward;
-        Vector3 horizontalSpatialPeriod = diff.x / (wbcSpawnCount + 1) * Vector3.right;
+        Vector3 verticalSpatialPeriod = diff.z / (_wbcSpawnCount + 1) * Vector3.forward;
+        Vector3 horizontalSpatialPeriod = diff.x / (_wbcSpawnCount + 1) * Vector3.right;
         wbcSpawnSpatialPeriod = verticalSpatialPeriod + horizontalSpatialPeriod;
     }
 
@@ -262,7 +262,7 @@ public class WhiteBloodCellManager : MonoBehaviour
     private int getFirstNullWBCIndex()
     {
         int result = 0;
-        for (result = 0; result < wbcSpawnCount; result++)
+        for (result = 0; result < _wbcSpawnCount; result++)
         {
             if (null == whiteBloodCells[result])
             {

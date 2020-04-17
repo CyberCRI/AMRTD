@@ -6,14 +6,14 @@ using System.Collections;
 
 public class PneumocyteManager : GenericEntityGroupManager<Pneumocyte>
 {
-    public static PneumocyteManager instance2 = null;
+    public static PneumocyteManager derivedInstance = null;
     
     protected override void Awake()
     {
         base.Awake();
-        if (null == instance2)
+        if (null == derivedInstance)
         {
-            instance2 = this;
+            derivedInstance = this;
         }
         else
         {

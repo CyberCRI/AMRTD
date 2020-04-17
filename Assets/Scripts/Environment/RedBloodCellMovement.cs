@@ -121,7 +121,7 @@ public class RedBloodCellMovement : WobblyMovement
         //float t = (Time.time - creationTime) / timeToComplete;
 
         _advancement = ((float) waypointIndex) / ((float) BloodUtilities.instance.bloodWayPoints.Length);
-        _alveoliHealth = PneumocyteManager.instance2.getHealthRatio();
+        _alveoliHealth = PneumocyteManager.derivedInstance.getHealthRatio();
         _colorLerp = Mathf.Max(_colorLerp, _advancement * _alveoliHealth);
 
         _color = Color.Lerp(
