@@ -88,24 +88,11 @@ public class WhiteBloodCellMovement : WobblyMovement
             
             if (collider.tag == Enemy.enemyTag)
             {
-                hitsLeft = 0;
                 absorb(collider.gameObject.GetComponent<EnemyMovement>());
             }
             else if (collider.tag == Virus.virusTag)
             {
-                hitsLeft--;
-                Virus virus = collider.gameObject.GetComponent<Virus>();
-
-                if (0 == hitsLeft)
-                {
-                    // leave map + destroy virus
-                    absorb(virus);
-                }
-                else
-                {
-                    // destroy virus manually
-                    virus.getAbsorbed(this.transform);
-                }
+                absorb(collider.gameObject.GetComponent<Virus>());
             }
         }
         base.OnTriggerEnter(collider);
@@ -272,13 +259,18 @@ public class WhiteBloodCellMovement : WobblyMovement
 
     public void absorb(Virus virus)
     {
-        prepareAbsorb();
-        RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getGameObjectContext(virus.gameObject));
+        hitsLeft--;
+        if (0 == hitsLeft)
+        {
+            prepareAbsorb();
+            RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getGameObjectContext(virus.gameObject));
+        }
         virus.getAbsorbed(this.transform);
     }
 
     public void absorb(EnemyMovement enemy)
     {
+        hitsLeft = 0;
         prepareAbsorb();
         RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getGameObjectContext(enemy.gameObject));
         enemy.getAbsorbed(this.transform);

@@ -88,14 +88,18 @@ public class Virus : WobblyMovement
         _waypoint = VirusManager.derivedInstance.waypoint;
         if (_waypoint.x < this.transform.position.x)
         {
+            #if VERBOSEDEBUG
             Debug.Log("Entering!");
+            #endif
             isEntering = true;
             target = _waypoint;
         }
+        #if VERBOSEDEBUG
         else
         {
             Debug.Log("Spawning!");
         }
+        #endif
         
         repulsers = new string[4] {Enemy.enemyTag, RedBloodCellMovement.rbcTag, Virus.virusTag, WhiteBloodCellMovement.wbcTag};
         _rigidbody.AddForce(Vector3.up * startImpulse, ForceMode.Impulse);
@@ -161,19 +165,25 @@ public class Virus : WobblyMovement
             }
             else if (isEscaping1)
             {
+                #if VERBOSEDEBUG
                 Debug.Log("done going to waypoint while escaping");
+                #endif
                 isEscaping1 = false;
                 isEscaping2 = true;
                 target = _escapeTarget;
             }
             else if (isEscaping2)
             {
+                #if VERBOSEDEBUG
                 Debug.Log("done escaping");
+                #endif
                 Destroy(this.gameObject);
             }
             else if (isEntering)
             {
+                #if VERBOSEDEBUG
                 Debug.Log("done going to waypoint while entering");
+                #endif
                 isEntering = false;
                 setHoldingPosition(false);
             }
