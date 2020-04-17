@@ -8,15 +8,20 @@ using UnityEngine.UI;
 public class WhiteBloodCellMovement : WobblyMovement
 {
     public const string wbcTag = "WBCTag";
-    private int index = 0;
+    private int wbcIndex = 0;
+
+    [Header("Movement")]
     private Transform targetTransform = null;
     public float baseSpeed = 0f;
     [SerializeField]
     private float speedVariation = 0f;
+    [SerializeField]
+    private float gainAltitudeImpulse = 10f;
     public Vector3 idlePosition = Vector3.zero;
     
     private bool disappearing = false;
     
+    [Header("Health")]
     [SerializeField]
     private float hitsMaxCount = 10f;
     public float _hitsLeft = 0f;
@@ -147,7 +152,7 @@ public class WhiteBloodCellMovement : WobblyMovement
                 x = target.x;
                 z = target.z;
             }
-            target = new Vector3(x, target.y, z);
+            target = new Vector3(x, this.transform.position.y, z);
             
             #if DEVMODE && VERBOSEDEBUG
             if (null != _targetOriginal)
@@ -172,7 +177,7 @@ public class WhiteBloodCellMovement : WobblyMovement
             }
             #endif
             hasReachedTarget = false;
-            target = idlePosition;
+            target = new Vector3(idlePosition.x, this.transform.position.y, idlePosition.z);
         }
 
         base.setDisplacement();
@@ -210,6 +215,10 @@ public class WhiteBloodCellMovement : WobblyMovement
     public void setTarget(Transform _target)
     {
         targetTransform = _target;
+        if (this.transform.position.y < _target.position.y)
+        {
+            _rigidbody.AddForce(Vector3.up * gainAltitudeImpulse, ForceMode.Impulse);
+        }
     }
 
     private void setSpeed()
@@ -219,13 +228,13 @@ public class WhiteBloodCellMovement : WobblyMovement
 
     public void initialize(int _index, Vector3 _idlePosition)
     {
-        index = _index;
+        wbcIndex = _index;
         idlePosition = _idlePosition;
     }
 
     private void prepareAbsorb()
     {
-        WhiteBloodCellManager.instance.reportDeath(index);
+        WhiteBloodCellManager.instance.reportDeath(wbcIndex);
 
 #if VERBOSEDEBUG
         action = WBCACTION.DISAPPEARING;

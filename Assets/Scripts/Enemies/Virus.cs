@@ -49,6 +49,8 @@ public class Virus : WobblyMovement
     [SerializeField]
     private float absorptionImpulse = 0f;
     [SerializeField]
+    private float gainAltitudeImpulse = 10f;
+    [SerializeField]
     protected SphereCollider sphereCollider = null;
 
     [SerializeField]
@@ -94,6 +96,10 @@ public class Virus : WobblyMovement
     {
         targetPneumocyte = pneumocyte;
         target = pneumocyte.transform.position;
+        if (this.transform.position.y < target.y)
+        {
+            _rigidbody.AddForce(Vector3.up * gainAltitudeImpulse, ForceMode.Impulse);
+        }
     }
 
     private void setTarget()

@@ -59,6 +59,7 @@ public class WhiteBloodCellManager : MonoBehaviour
     private float wbcSpawnTimePeriod = 1f;
 
     private Vector3 wbcSpawnSpatialPeriod = Vector3.zero;
+    private Vector3[] idlePositions = new Vector3[wbcSpawnCount];
 
     private bool _searching = true;
     [SerializeField]
@@ -202,17 +203,17 @@ public class WhiteBloodCellManager : MonoBehaviour
                     // second try: all viruses
                     if (_searching)
                     {
-                        for (int j = 0; j < VirusManager.instance.entities.Length; j++)
+                        for (int j = 0; j < VirusManager.instance.entitiesList.Count; j++)
                         {
                             // control that no other WBC is targeting it
-                            if ((null != VirusManager.instance.entities[j]) && (0 > getWBCTargeting(VirusManager.instance.entities[j])))
+                            if ((null != VirusManager.instance.entitiesList[j]) && (0 > getWBCTargeting(VirusManager.instance.entitiesList[j])))
                             {
                                 #if VERBOSEDEBUG
-                                Debug.Log(string.Format("Allocate WBC {0} to virus {1}", whiteBloodCells[i].name, VirusManager.instance.entities[j].name));
+                                Debug.Log(string.Format("Allocate WBC {0} to virus {1}", whiteBloodCells[i].name, VirusManager.instance.entitiesList[j].name));
                                 #endif
                                 _searching = false;
-                                whiteBloodCellsTargetViruses[i] = VirusManager.instance.entities[j];
-                                whiteBloodCells[i].setTarget(VirusManager.instance.entities[j].transform);
+                                whiteBloodCellsTargetViruses[i] = VirusManager.instance.entitiesList[j];
+                                whiteBloodCells[i].setTarget(VirusManager.instance.entitiesList[j].transform);
                                 break;
                             }
                         }
@@ -297,7 +298,16 @@ public class WhiteBloodCellManager : MonoBehaviour
 
             WhiteBloodCellMovement wbcm = newWBC.GetComponent<WhiteBloodCellMovement>();
             whiteBloodCells[index] = wbcm;
-            Vector3 idlePosition = BloodUtilities.instance.bloodOrigin1.position + (index + 1) * wbcSpawnSpatialPeriod;
+            
+            Vector3 idlePosition = Vector3.zero;
+            if (BloodUtilities.instance.isManualIdlePositions)
+            {
+                idlePosition = BloodUtilities.instance.idlePositions[index].position;
+            }
+            else
+            {
+                idlePosition = BloodUtilities.instance.bloodOrigin1.position + (index + 1) * wbcSpawnSpatialPeriod;
+            }
             wbcm.initialize(index, idlePosition);
         }
     }

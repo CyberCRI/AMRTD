@@ -23,15 +23,20 @@ public class BloodUtilities : MonoBehaviour
     [SerializeField]
     private Transform _bloodUnder = null;
     public Transform bloodUnder { get { return _bloodUnder; } }
+    
     [SerializeField]
     private Transform _bloodWayPointsRoot = null;
-    public Transform bloodWayPointsRoot { get { return _bloodWayPointsRoot; } }
-
     [SerializeField]
     private Transform[] _bloodWayPoints = null;
     public Transform[] bloodWayPoints { get { return _bloodWayPoints; } }
-
     public bool isWaypointsBased { get; private set; } = false;
+
+    [SerializeField]
+    private Transform _idlePositionsRoot = null;
+    private Transform[] _idlePositions = null;
+    public Transform[] idlePositions { get { return _idlePositions; } }
+    public bool isManualIdlePositions { get; private set; } = false;
+
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -46,10 +51,16 @@ public class BloodUtilities : MonoBehaviour
         {
             instance = this;
 
-            if ((null != bloodWayPointsRoot) && bloodWayPointsRoot.gameObject.activeSelf)
+            if ((null != _bloodWayPointsRoot) && _bloodWayPointsRoot.gameObject.activeSelf)
             {
                 isWaypointsBased = true;
-                CommonUtilities.fillArrayFromRoot(bloodWayPointsRoot, ref _bloodWayPoints);
+                CommonUtilities.fillArrayFromRoot(_bloodWayPointsRoot, ref _bloodWayPoints);
+            }
+
+            if ((null != _idlePositionsRoot) && _idlePositionsRoot.gameObject.activeSelf)
+            {
+                isManualIdlePositions = true;
+                CommonUtilities.fillArrayFromRoot(_idlePositionsRoot, ref _idlePositions);
             }
         }
     }

@@ -388,7 +388,7 @@ public class Pneumocyte : MonoBehaviour
     {
         GameObject virion = Instantiate(virusPrefab, spawnPosition.position, virusPrefab.transform.rotation);
         Virus virus = virion.GetComponent<Virus>();
-        virus.setTarget(this);
+        //virus.setTarget(this);
         
         addLifePoints(-damageRatioPerSpawn * maxHealth);
     }

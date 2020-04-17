@@ -12,16 +12,16 @@ public class GenericEntityGroupManager<T> : MonoBehaviour
         {
             if (_hasNewRegistrations || (null == _entities))
             {
-                _entities = tempEntities.ToArray();
+                _entities = entitiesList.ToArray();
                 //#if VERBOSEDEBUG
-                Debug.Log(" tempEntities.ToArray() with _entities.Length=" + _entities.Length);
+                Debug.Log(" entitiesList.ToArray() with _entities.Length=" + _entities.Length);
                 //#endif
                 _hasNewRegistrations = false;
             }
             return _entities;
         }
     }
-    private System.Collections.Generic.List<T> tempEntities = new System.Collections.Generic.List<T>();
+    public List<T> entitiesList { get; private set; } = new List<T>();
     [HideInInspector]
     public int entityIndex = 0;
     private bool _hasNewRegistrations = false;
@@ -41,19 +41,19 @@ public class GenericEntityGroupManager<T> : MonoBehaviour
     public void register(T entity)
     {
         _hasNewRegistrations = true;
-        tempEntities.Add(entity);
+        entitiesList.Add(entity);
     }
 
     public void unregister(T entity)
     {
         _hasNewRegistrations = true;
-        tempEntities.Remove(entity);
+        entitiesList.Remove(entity);
     }
 
     private void resetStatics()
     {
         _entities = null;
-        tempEntities.Clear();
+        entitiesList.Clear();
         entityIndex = 0;
     }
 
