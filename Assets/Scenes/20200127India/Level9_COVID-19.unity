@@ -5503,7 +5503,7 @@ PrefabInstance:
     - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
       propertyPath: timeBeforeWave1
-      value: 100000000
+      value: 1e+15
       objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492234, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
@@ -6502,7 +6502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8ab2c9e42387340a42655dccf34f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pneumocyteIndex: 0
+  entityIndex: 0
+  currScore: 0
+  maxScore: 0
 --- !u!1001 &1421796645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6519,6 +6521,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SARS-CoV-2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864043371421780663, guid: 90bb45672386e5d4382efc9d4aee2279,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7689037423146455039, guid: 90bb45672386e5d4382efc9d4aee2279,
         type: 3}
@@ -6749,6 +6756,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SARS-CoV-2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864043371421780663, guid: 90bb45672386e5d4382efc9d4aee2279,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7689037423146455039, guid: 90bb45672386e5d4382efc9d4aee2279,
         type: 3}
@@ -7176,6 +7188,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SARS-CoV-2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864043371421780663, guid: 90bb45672386e5d4382efc9d4aee2279,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7689037423146455039, guid: 90bb45672386e5d4382efc9d4aee2279,
         type: 3}
@@ -8548,6 +8565,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CommonCore
       objectReference: {fileID: 0}
+    - target: {fileID: 6246944042744161770, guid: ef70364507601c44b80a4b1f9cd28d16,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 35.69995
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef70364507601c44b80a4b1f9cd28d16, type: 3}
 --- !u!1001 &2005619343
@@ -8756,7 +8778,17 @@ PrefabInstance:
     - target: {fileID: 3174819326719741142, guid: c8224aa1881c0f540be9c0e22aa9149a,
         type: 3}
       propertyPath: respawnPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3174819326719741142, guid: c8224aa1881c0f540be9c0e22aa9149a,
+        type: 3}
+      propertyPath: _chaseViruses
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3174819326719741142, guid: c8224aa1881c0f540be9c0e22aa9149a,
+        type: 3}
+      propertyPath: wbcSpawnTimePeriod
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3410298798920408521, guid: c8224aa1881c0f540be9c0e22aa9149a,
         type: 3}
@@ -10619,6 +10651,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1283043318125714774, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283043318633017238, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 1283043318913205444, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10819,6 +10861,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4395501354465823179, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354996952575853934, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 6713231551975978138, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
       propertyPath: key
@@ -11000,6 +11052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SARS-CoV-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864043371421780663, guid: 90bb45672386e5d4382efc9d4aee2279,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7689037423146455039, guid: 90bb45672386e5d4382efc9d4aee2279,
         type: 3}

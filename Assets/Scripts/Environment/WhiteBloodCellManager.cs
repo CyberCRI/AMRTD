@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//#define VERBOSEDEBUG
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -7,10 +8,22 @@ public class WhiteBloodCellManager : MonoBehaviour
 {
     public static WhiteBloodCellManager instance = null;
 
+    [SerializeField]
+    private bool _chaseViruses = false;
+    public bool chaseViruses { get { return _chaseViruses; } }
+
+    #if VERBOSEDEBUG
     [SerializeField] // for debug
+    #endif
     private WhiteBloodCellMovement[] whiteBloodCells = null;
+    #if VERBOSEDEBUG
     [SerializeField] // for debug
-    private Enemy[] whiteBloodCellsTarget = null;
+    #endif
+    private Virus[] whiteBloodCellsTargetViruses = null;
+    #if VERBOSEDEBUG
+    [SerializeField] // for debug
+    #endif
+    private Enemy[] whiteBloodCellsTargetEnemies = null;
     private WhiteBloodCellMovement[] availableWBCs = null;
 
     [SerializeField]
@@ -42,9 +55,14 @@ public class WhiteBloodCellManager : MonoBehaviour
     public float limitRight { get { return _limitRight; } }
 
     public const int wbcSpawnCount = 4;
+    [SerializeField]
     private float wbcSpawnTimePeriod = 1f;
 
     private Vector3 wbcSpawnSpatialPeriod = Vector3.zero;
+
+    private bool _searching = true;
+    [SerializeField]
+    private float _detectionRadius = 7f;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -60,8 +78,8 @@ public class WhiteBloodCellManager : MonoBehaviour
             instance = this;
 
             _isAreaConstrained = (null != limitTopGO) || (null != limitBottomGO) || (null != limitLeftGO) || (null != limitRightGO);
-            _limitTop =    (null != limitTopGO)    ? limitTopGO.position.x    : _limitTop;
-            _limitBottom = (null != limitBottomGO) ? limitBottomGO.position.x : _limitBottom;
+            _limitTop =    (null != limitTopGO)    ? limitTopGO.position.z    : _limitTop;
+            _limitBottom = (null != limitBottomGO) ? limitBottomGO.position.z : _limitBottom;
             _limitLeft =   (null != limitLeftGO)   ? limitLeftGO.position.x   : _limitLeft;
             _limitRight =  (null != limitRightGO)  ? limitRightGO.position.x  : _limitRight;
 
@@ -70,7 +88,8 @@ public class WhiteBloodCellManager : MonoBehaviour
             #endif
 
             whiteBloodCells = new WhiteBloodCellMovement[wbcSpawnCount];
-            whiteBloodCellsTarget = new Enemy[wbcSpawnCount];
+            whiteBloodCellsTargetViruses = new Virus[wbcSpawnCount];
+            whiteBloodCellsTargetEnemies = new Enemy[wbcSpawnCount];
             availableWBCs = new WhiteBloodCellMovement[wbcSpawnCount];
             respawnCountdown = respawnPeriod + wbcSpawnCount * wbcSpawnTimePeriod;
 
@@ -98,40 +117,124 @@ public class WhiteBloodCellManager : MonoBehaviour
         wbcSpawnSpatialPeriod = verticalSpatialPeriod + horizontalSpatialPeriod;
     }
 
+    private int getWBCTargeting(Virus virus)
+    {
+        int result = -1;
+        if (chaseViruses && (null != virus))
+        {
+            for (int i = 0; i < whiteBloodCellsTargetViruses.Length; i++)
+            {
+                if (whiteBloodCellsTargetViruses[i] == virus)
+                {
+                    result = i;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    private int getWBCTargeting(Enemy enemy)
+    {
+        int result = -1;
+        if (null != enemy)
+        {
+            for (int i = 0; i < whiteBloodCellsTargetEnemies.Length; i++)
+            {
+                if (whiteBloodCellsTargetEnemies[i] == enemy)
+                {
+                    result = i;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    private int getWBCTargeting(GameObject go)
+    {
+        int result = -1;
+        if (null != go)
+        {
+            if (go.tag == Virus.virusTag)
+            {
+                result = getWBCTargeting(go.GetComponent<Virus>());
+            }
+            else if (go.tag == Enemy.enemyTag)
+            {
+                result = getWBCTargeting(go.GetComponent<Enemy>());
+            }
+        }
+        return result;
+    }
+
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
         // manage movement of white cells
-        for (int i = 0; i < whiteBloodCellsTarget.Length; i++)
+        for (int i = 0; i < whiteBloodCells.Length; i++)
         {
-            if ((null != whiteBloodCells[i]) && (null == whiteBloodCellsTarget[i]))
+            // is this WBC idle?
+            if ((null != whiteBloodCells[i]) && (null == whiteBloodCellsTargetEnemies[i]) && ((!chaseViruses) || (null == whiteBloodCellsTargetViruses[i])))
             {
-                for (int j = 0; j < WaveSpawner.enemiesAlive.Length; j++)
+                _searching = true;
+
+                if (chaseViruses)
                 {
-                    bool isEnemyTargetable = true;
-                    if (null != WaveSpawner.enemiesAlive[j])
+                    // first try: nearby viruses
+                    List<GameObject> nearbyGOs = whiteBloodCells[i].getNearbyGameObjects(Virus.virusTag, _detectionRadius);
+                    for (int j = 0; j < nearbyGOs.Count; j++)
                     {
-                        // control that no other WBC is targeting it
-                        for (int k = 0; k < whiteBloodCellsTarget.Length; k++)
+                        if (0 > getWBCTargeting(nearbyGOs[j]))
                         {
-                            if (whiteBloodCellsTarget[k] == WaveSpawner.enemiesAlive[j])
+                            #if VERBOSEDEBUG
+                            Debug.Log(string.Format("Allocate WBC {0} to nearby virus {1}", whiteBloodCells[i].name, nearbyGOs[j].name));
+                            #endif
+                            _searching = false;
+                            whiteBloodCellsTargetViruses[i] = nearbyGOs[j].GetComponent<Virus>();
+                            whiteBloodCells[i].setTarget(nearbyGOs[j].transform);
+                            break;
+                        }
+                    }
+
+                    // second try: all viruses
+                    if (_searching)
+                    {
+                        for (int j = 0; j < VirusManager.instance.entities.Length; j++)
+                        {
+                            // control that no other WBC is targeting it
+                            if ((null != VirusManager.instance.entities[j]) && (0 > getWBCTargeting(VirusManager.instance.entities[j])))
                             {
-                                isEnemyTargetable = false;
+                                #if VERBOSEDEBUG
+                                Debug.Log(string.Format("Allocate WBC {0} to virus {1}", whiteBloodCells[i].name, VirusManager.instance.entities[j].name));
+                                #endif
+                                _searching = false;
+                                whiteBloodCellsTargetViruses[i] = VirusManager.instance.entities[j];
+                                whiteBloodCells[i].setTarget(VirusManager.instance.entities[j].transform);
                                 break;
                             }
                         }
                     }
-                    else
+                }
+
+                // third try: enemies
+                if (_searching)
+                {
+                    for (int j = 0; j < WaveSpawner.instance.enemiesAlive.Length; j++)
                     {
-                        // enemy is null
-                        isEnemyTargetable = false;
-                    }
-                    if (isEnemyTargetable)
-                    {
-                        whiteBloodCellsTarget[i] = WaveSpawner.enemiesAlive[j];
-                        whiteBloodCells[i].setTarget(WaveSpawner.enemiesAlive[j].transform);
+                        // control that no other WBC is targeting it
+                        if ((null != WaveSpawner.instance.enemiesAlive[j]) && (0 > getWBCTargeting(WaveSpawner.instance.enemiesAlive[j])))
+                        {
+                            #if VERBOSEDEBUG
+                            Debug.Log(string.Format("Allocate WBC {0} to enemy {1}", whiteBloodCells[i].name, WaveSpawner.instance.enemiesAlive[j].name));
+                            #endif
+                            _searching = false;
+                            whiteBloodCellsTargetEnemies[i] = WaveSpawner.instance.enemiesAlive[j];
+                            whiteBloodCells[i].setTarget(WaveSpawner.instance.enemiesAlive[j].transform);
+                            break;
+                        }
                     }
                 }
             }
@@ -190,6 +293,7 @@ public class WhiteBloodCellManager : MonoBehaviour
             float t = UnityEngine.Random.Range(0f, 1f);
             Vector3 spawnPointPosition = t * BloodUtilities.instance.bloodOrigin1.position + (1 - t) * BloodUtilities.instance.bloodOrigin2.position;
             GameObject newWBC = (GameObject)Instantiate(wbcPrefab, spawnPointPosition, wbcPrefab.transform.rotation);
+            newWBC.name = "WBC" + index;
 
             WhiteBloodCellMovement wbcm = newWBC.GetComponent<WhiteBloodCellMovement>();
             whiteBloodCells[index] = wbcm;
@@ -201,6 +305,7 @@ public class WhiteBloodCellManager : MonoBehaviour
     public void reportDeath(int wbcIndex)
     {
         whiteBloodCells[wbcIndex] = null;
-        whiteBloodCellsTarget[wbcIndex] = null;
+        whiteBloodCellsTargetEnemies[wbcIndex] = null;
+        whiteBloodCellsTargetViruses[wbcIndex] = null;
     }
 }

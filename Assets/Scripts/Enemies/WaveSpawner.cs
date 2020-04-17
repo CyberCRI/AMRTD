@@ -7,8 +7,8 @@ using System.Linq;
 public class WaveSpawner : MonoBehaviour
 {
     public static WaveSpawner instance;
-    public static int enemiesAliveCount = 0;
-    public static Enemy[] enemiesAlive = new Enemy[0];
+    public int enemiesAliveCount = 0;
+    public Enemy[] enemiesAlive { get; private set; } = new Enemy[0];
 
 #if VERBOSEDEBUG
     [SerializeField]

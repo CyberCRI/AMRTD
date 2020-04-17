@@ -169,6 +169,7 @@ public class Virus : WobblyMovement
 
     public void getAbsorbed(Transform absorberTransform)
     {
+        VirusManager.instance.unregister(this);
         StartCoroutine(jumpToTransform(absorberTransform));
     }
 }

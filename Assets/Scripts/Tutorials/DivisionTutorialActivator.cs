@@ -18,7 +18,7 @@ public class DivisionTutorialActivator : TutorialActivator
     /// </summary>
     void Update()
     {
-        if (WaveSpawner.enemiesAliveCount == 2)
+        if (WaveSpawner.instance.enemiesAliveCount == 2)
         {
             Invoke("activateTutorial", additionalDelay);
             this.enabled = false;

@@ -44,6 +44,12 @@ public class GenericEntityGroupManager<T> : MonoBehaviour
         tempEntities.Add(entity);
     }
 
+    public void unregister(T entity)
+    {
+        _hasNewRegistrations = true;
+        tempEntities.Remove(entity);
+    }
+
     private void resetStatics()
     {
         _entities = null;

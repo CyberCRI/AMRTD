@@ -166,6 +166,15 @@ MonoBehaviour:
   baseSpeed: 10
   speedVariation: 1
   idlePosition: {x: 0, y: 0, z: 0}
+  hitsMaxCount: 10
+  _hitsLeft: 0
+  m_wbcm: {fileID: 0}
+  _sphericalRenderer: {fileID: 6935027291076457913}
+  _silhouetteRenderer: {fileID: 7203844366430045227}
+  colorHealthy: {r: 1, g: 1, b: 0.92941177, a: 1}
+  colorWounded: {r: 0.63529414, g: 0.5647059, b: 0.5647059, a: 1}
+  healthBar: {fileID: 5825669343276757956}
+  action: 0
 --- !u!114 &-3695565156655158682
 MonoBehaviour:
   m_ObjectHideFlags: 0

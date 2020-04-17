@@ -130,13 +130,13 @@ public class CustomData : Dictionary<string, string>
             case CustomDataTag.PATHOGENSALIVE:
                 if (null != WaveSpawner.instance)
                 {
-                    add(CustomDataTag.PATHOGENSALIVE, WaveSpawner.enemiesAliveCount);
+                    add(CustomDataTag.PATHOGENSALIVE, WaveSpawner.instance.enemiesAliveCount);
                 }
                 break;
             case CustomDataTag.MAXPATHOGENCOUNT:
                 if (null != WaveSpawner.instance)
                 {
-                    add(CustomDataTag.MAXPATHOGENCOUNT, WaveSpawner.enemiesAlive.Length);
+                    add(CustomDataTag.MAXPATHOGENCOUNT, WaveSpawner.instance.enemiesAlive.Length);
                 }
                 break;
             case CustomDataTag.TURRETCOUNT:

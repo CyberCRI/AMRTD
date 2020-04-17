@@ -1,5 +1,5 @@
 ﻿//#define DETRIMENTALOPTIMIZATION
-#define VERBOSEDEBUG
+//#define VERBOSEDEBUG
 //#define DEVMODE
 
 using System.Collections;
@@ -145,10 +145,10 @@ public class RedBloodCellManager : MonoBehaviour
                     innerSpawnRBCPosition(spawnPosition, passedPathIndex, "RBC" + rbcIndex);
 
                     #if DEVMODE && VERBOSEDEBUG 
-                    createDebugObject(spawnPosition, "RBC" + rbcIndex + "copy", 3f);
+                    CommonUtilities.createDebugObject(spawnPosition, "RBC" + rbcIndex + "copy", 3f);
 
-                    createDebugObject(BloodUtilities.instance.bloodWayPoints[passedPathIndex-1].position, string.Format("bwp[{0}][{1}]", rbcIndex, (passedPathIndex-1).ToString()));
-                    createDebugObject(BloodUtilities.instance.bloodWayPoints[passedPathIndex].position, string.Format("bwp[{0}][{1}]",   rbcIndex, passedPathIndex.ToString()));
+                    CommonUtilities.createDebugObject(BloodUtilities.instance.bloodWayPoints[passedPathIndex-1].position, string.Format("bwp[{0}][{1}]", rbcIndex, (passedPathIndex-1).ToString()));
+                    CommonUtilities.createDebugObject(BloodUtilities.instance.bloodWayPoints[passedPathIndex].position, string.Format("bwp[{0}][{1}]",   rbcIndex, passedPathIndex.ToString()));
                     #endif
                 }
                 rbcPositionsFound += rbcPositionsFoundThisIteration;
@@ -194,14 +194,6 @@ public class RedBloodCellManager : MonoBehaviour
             InvokeRepeating("randomSpawnRBC", i * rbcSpawnTimePeriod, rbcSpawnCount * rbcSpawnTimePeriod);
         }
 #endif
-    }
-
-    private void createDebugObject(Vector3 position, string _name, float scale = 1f)
-    {
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.position = position;
-        sphere.transform.localScale = scale * Vector3.one;
-        sphere.name = _name;
     }
 
     private void randomSpawnRBC()
