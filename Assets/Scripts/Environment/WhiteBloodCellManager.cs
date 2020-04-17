@@ -118,57 +118,6 @@ public class WhiteBloodCellManager : MonoBehaviour
         wbcSpawnSpatialPeriod = verticalSpatialPeriod + horizontalSpatialPeriod;
     }
 
-    private int getWBCTargeting(Virus virus)
-    {
-        int result = -1;
-        if (chaseViruses && (null != virus))
-        {
-            for (int i = 0; i < whiteBloodCellsTargetViruses.Length; i++)
-            {
-                if (whiteBloodCellsTargetViruses[i] == virus)
-                {
-                    result = i;
-                    break;
-                }
-            }
-        }
-        return result;
-    }
-
-    private int getWBCTargeting(Enemy enemy)
-    {
-        int result = -1;
-        if (null != enemy)
-        {
-            for (int i = 0; i < whiteBloodCellsTargetEnemies.Length; i++)
-            {
-                if (whiteBloodCellsTargetEnemies[i] == enemy)
-                {
-                    result = i;
-                    break;
-                }
-            }
-        }
-        return result;
-    }
-
-    private int getWBCTargeting(GameObject go)
-    {
-        int result = -1;
-        if (null != go)
-        {
-            if (go.tag == Virus.virusTag)
-            {
-                result = getWBCTargeting(go.GetComponent<Virus>());
-            }
-            else if (go.tag == Enemy.enemyTag)
-            {
-                result = getWBCTargeting(go.GetComponent<Enemy>());
-            }
-        }
-        return result;
-    }
-
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
@@ -259,6 +208,57 @@ public class WhiteBloodCellManager : MonoBehaviour
         }
     }
 
+    private int getWBCTargeting(Virus virus)
+    {
+        int result = -1;
+        if (chaseViruses && (null != virus))
+        {
+            for (int i = 0; i < whiteBloodCellsTargetViruses.Length; i++)
+            {
+                if (whiteBloodCellsTargetViruses[i] == virus)
+                {
+                    result = i;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    private int getWBCTargeting(Enemy enemy)
+    {
+        int result = -1;
+        if (null != enemy)
+        {
+            for (int i = 0; i < whiteBloodCellsTargetEnemies.Length; i++)
+            {
+                if (whiteBloodCellsTargetEnemies[i] == enemy)
+                {
+                    result = i;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    private int getWBCTargeting(GameObject go)
+    {
+        int result = -1;
+        if (null != go)
+        {
+            if (go.tag == Virus.virusTag)
+            {
+                result = getWBCTargeting(go.GetComponent<Virus>());
+            }
+            else if (go.tag == Enemy.enemyTag)
+            {
+                result = getWBCTargeting(go.GetComponent<Enemy>());
+            }
+        }
+        return result;
+    }
+
     private int getFirstNullWBCIndex()
     {
         int result = 0;
@@ -317,5 +317,11 @@ public class WhiteBloodCellManager : MonoBehaviour
         whiteBloodCells[wbcIndex] = null;
         whiteBloodCellsTargetEnemies[wbcIndex] = null;
         whiteBloodCellsTargetViruses[wbcIndex] = null;
+    }
+
+    public void triggerMassWBC()
+    {    
+        respawnPeriod /= 10f;
+        respawnCountdown = 0f;
     }
 }

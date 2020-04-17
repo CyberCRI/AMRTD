@@ -7,6 +7,7 @@ using System.Linq;
 public class WaveSpawner : MonoBehaviour
 {
     public static WaveSpawner instance;
+
     public int enemiesAliveCount = 0;
     public Enemy[] enemiesAlive { get; private set; } = new Enemy[0];
 
@@ -38,6 +39,8 @@ public class WaveSpawner : MonoBehaviour
     private Wave[] waves = null;
     private Wave currentWave = null;
     private bool prepared = false;
+    [SerializeField]
+    private bool sendWBCMsgOnLastWave = false;
 
     private enum SpawnMode
     {
@@ -105,10 +108,15 @@ public class WaveSpawner : MonoBehaviour
                     waveCountdownLocalizedText.enabled = true;
                     waveCountdownLocalizedText.setKey(waveCountdownSpawningString);
                     StartCoroutine(spawnWave());
-                    if (PlayerStatistics.instance.waves < waves.Length - 1)
+                    //if (PlayerStatistics.instance.waves < waves.Length - 1)
+                    if (waveIndex < waves.Length - 1)
                     {
                         countdown = timeBetweenWaves;
                         prepared = false;
+                    }
+                    else if (sendWBCMsgOnLastWave)
+                    {
+                        WhiteBloodCellManager.instance.triggerMassWBC();
                     }
                 }
                 else if (enemiesAliveCount <= 0)
