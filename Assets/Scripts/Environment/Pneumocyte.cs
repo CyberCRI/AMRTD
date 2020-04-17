@@ -68,11 +68,14 @@ public class Pneumocyte : MonoBehaviour
             updateHealthBar();
         }
     }
+    [SerializeField]
     private float divisionPeriod = 2f;
     private float divisionCountdown = 0f;
+    [SerializeField]
     private float healingRatioRate = .05f; // regains maxHealth * x per second
     private float healingRate = 0f; // regains maxHealth * x per second
 
+    // variables set during infection
     private int virionsSpawnCountPerLungCell = 0;
     private float lungCellRecoveryProbability = 0f;
     private float damageRatioPerSpawn = 0f;

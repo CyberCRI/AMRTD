@@ -11,9 +11,6 @@ public class Virus : WobblyMovement
 {
     [Header("Parameters")]
     public const string virusTag = "VirusTag";
-
-    [SerializeField]
-    private string prefabURI = null;
     private STATUS status = STATUS.SEARCHING_CELL;
 
     [SerializeField]
@@ -58,6 +55,7 @@ public class Virus : WobblyMovement
     private Vector3 _escapeTarget;
     private Vector3 _waypoint;
     private bool isEntering = false;
+    private float _correctAltitude = 0f;
 
     [SerializeField]
     private Pneumocyte targetPneumocyte = null;
@@ -80,6 +78,7 @@ public class Virus : WobblyMovement
     void Start()
     {
         VirusManager.instance.register(this);
+        _correctAltitude = VirusManager.derivedInstance.virusPrefab.transform.position.y;
 
         #if VERBOSEDEBUG
         Debug.Log(this.gameObject.name + " Start");
@@ -93,6 +92,7 @@ public class Virus : WobblyMovement
             #endif
             isEntering = true;
             target = _waypoint;
+            checkAltitude();
         }
         #if VERBOSEDEBUG
         else
@@ -105,6 +105,14 @@ public class Virus : WobblyMovement
         _rigidbody.AddForce(Vector3.up * startImpulse, ForceMode.Impulse);
     }
 
+    private void checkAltitude()
+    {
+        if (this.transform.position.y < _correctAltitude)
+        {
+            _rigidbody.AddForce(Vector3.up * gainAltitudeImpulse, ForceMode.Impulse);
+        }
+    }
+
     public GameObject getPrefab()
     {
         return VirusManager.derivedInstance.virusPrefab;
@@ -113,11 +121,8 @@ public class Virus : WobblyMovement
     public void setTarget(Pneumocyte pneumocyte)
     {
         targetPneumocyte = pneumocyte;
-        target = pneumocyte.transform.position;
-        if (this.transform.position.y < target.y)
-        {
-            _rigidbody.AddForce(Vector3.up * gainAltitudeImpulse, ForceMode.Impulse);
-        }
+        target = new Vector3(pneumocyte.transform.position.x, _correctAltitude, pneumocyte.transform.position.z);
+        checkAltitude();
     }
 
     private void setTarget()
@@ -171,6 +176,7 @@ public class Virus : WobblyMovement
                 isEscaping1 = false;
                 isEscaping2 = true;
                 target = _escapeTarget;
+                checkAltitude();
             }
             else if (isEscaping2)
             {
@@ -233,6 +239,7 @@ public class Virus : WobblyMovement
         isEscaping2 = false;
         VirusManager.instance.unregister(this);
         target = _waypoint;
+        checkAltitude();
         _escapeTarget = escapeTarget;
     }
 }
