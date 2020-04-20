@@ -138,17 +138,17 @@ MonoBehaviour:
   _rigidbody: {fileID: -5177389566463946072}
   repulsionForce: 10
   repulsers: []
-  prefabURI: SARS-CoV-2
-  _virionsSpawnCountPerLungCell: 2
+  _virionsSpawnCountPerLungCell: 4
   _lungCellRecoveryProbability: 0.6
   _damageRatioPerInfection: 0.4
   _damageRatioPerSpawn: 0.1
   _timeBeforeSpawnStarts: 1
   _timeBeforeRecoveryStarts: 0.5
-  _timeBetweenSpawns: 1
+  _timeBetweenSpawns: 4
   jumpPeriod: 0.7
   sqrMagnitudeProximityThreshold: 3
   absorptionImpulse: 50
+  gainAltitudeImpulse: 10
   sphereCollider: {fileID: 6707825628479614661}
   targetPneumocyte: {fileID: 0}
 --- !u!114 &-3695565156655158682

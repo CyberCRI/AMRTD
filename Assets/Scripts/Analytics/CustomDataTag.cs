@@ -28,6 +28,10 @@ public enum CustomDataTag
     GAMEOBJECT,
     POSITION,
 
+    WBCHEALTH,
+    BACTERIUM,
+    VIRUS,
+
     CONTROLS,
     LANGUAGE,
     GRAPHICS,

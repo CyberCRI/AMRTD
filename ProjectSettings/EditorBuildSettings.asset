@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/20200127India/Level8_Lungs.unity
     guid: 85724574c8fc4b844a49dc8b2e366d88
+  - enabled: 1
+    path: Assets/Scenes/20200127India/Level9_COVID-19.unity
+    guid: 593518db679de1a4b9346f03256e8050
   m_configObjects: {}

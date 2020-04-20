@@ -221,6 +221,16 @@ public class CustomData : Dictionary<string, string>
         return new CustomData(_tag, go.name).add(CustomDataTag.POSITION, go.transform.position);
     }
 
+    public static CustomData getBacteriumContext(GameObject go)
+    {
+        return new CustomData(CustomDataTag.BACTERIUM, go.name).add(CustomDataTag.POSITION, go.transform.position);
+    }
+
+    public static CustomData getVirusContext(GameObject go)
+    {
+        return new CustomData(CustomDataTag.VIRUS, go.name).add(CustomDataTag.POSITION, go.transform.position);
+    }
+
     public static CustomData getLevelEndContext()
     {
         return getContext(

@@ -321,6 +321,9 @@ public class WhiteBloodCellManager : MonoBehaviour
 
     public void triggerMassWBC()
     {    
+        #if VERBOSEDEBUG
+        Debug.Log("triggerMassWBC");
+        #endif
         respawnPeriod /= 10f;
         respawnCountdown = 0f;
     }

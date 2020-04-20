@@ -108,8 +108,8 @@ public class WaveSpawner : MonoBehaviour
                     waveCountdownLocalizedText.enabled = true;
                     waveCountdownLocalizedText.setKey(waveCountdownSpawningString);
                     StartCoroutine(spawnWave());
-                    //if (PlayerStatistics.instance.waves < waves.Length - 1)
-                    if (waveIndex < waves.Length - 1)
+                    // waveIndex is updated only when the coroutine ends
+                    if (PlayerStatistics.instance.waves < waves.Length - 1)
                     {
                         countdown = timeBetweenWaves;
                         prepared = false;

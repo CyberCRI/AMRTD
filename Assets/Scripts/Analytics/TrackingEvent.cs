@@ -108,13 +108,14 @@ public enum TrackingEvent
 
     // pathogens - pathogen context: life points, resistance level, pathogen name, position on map
     PATHOGENESCAPES, //[x]    // parameter: GAMEOBJECT pathogen
-    PATHOGENKILLEDBYWBC, //[x]  // a pathogen was swallowed by a white blood cell; parameter: GAMEOBJECT: pathogen
+    PATHOGENKILLEDBYWBC, //[x]  // a pathogen was swallowed by a white blood cell; parameter: VIRUS or BACTERIUM: pathogen - either an Enemy (bacterium) or a Virus
     PATHOGENKILLEDBYAB, //[x]   // killed pathogen with antibiotics; parameter: GAMEOBJECT: pathogen
     PATHOGENDIVIDES, //[x]
     PATHOGENSPAWNS, //[x]
     PATHOGENINBLOOD, //[x]
 
     // WBCs
+    WBCSPAWNS, //[x]
     WBCLEAVES, //[x]
 
     COMPLETEGAME, //[x]       // successfully finished the game; parameters: TIMESINCEGAMELOADED, TIMEGAMEPLAYEDNOPAUSE, TIMESINCELEVELLOADED

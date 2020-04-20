@@ -74,6 +74,8 @@ public class WhiteBloodCellMovement : WobblyMovement
         Debug.Log(string.Format("{0}: {1}: Start ", this.GetType(), this.gameObject.name));
         #endif
 
+        RedMetricsManager.instance.sendEvent(TrackingEvent.WBCSPAWNS, CustomData.getGameObjectContext(this.gameObject));
+
         //setTarget();
         setSpeed();
 
@@ -259,20 +261,20 @@ public class WhiteBloodCellMovement : WobblyMovement
 
     public void absorb(Virus virus)
     {
+        RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getVirusContext(virus.gameObject).add(CustomDataTag.WBCHEALTH, (int)hitsLeft));
         hitsLeft--;
         if (0 == hitsLeft)
         {
             prepareAbsorb();
-            RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getGameObjectContext(virus.gameObject));
         }
         virus.getAbsorbed(this.transform);
     }
 
     public void absorb(EnemyMovement enemy)
     {
+        RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getBacteriumContext(enemy.gameObject).add(CustomDataTag.WBCHEALTH, (int)hitsLeft));
         hitsLeft = 0;
         prepareAbsorb();
-        RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getGameObjectContext(enemy.gameObject));
         enemy.getAbsorbed(this.transform);
     }
 
