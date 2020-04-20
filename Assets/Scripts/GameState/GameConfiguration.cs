@@ -269,8 +269,12 @@ public class GameConfiguration : MonoBehaviour
     // test
     public const string testVersionGUIDString = "b5ba9b46-9c6d-43d6-8611-3b2af6afff48";
     public System.Guid testVersionGUID = new System.Guid(testVersionGUIDString);
+    
     // temporarily: labelled := test
-    public const string labelledGameVersionGUIDString = testVersionGUIDString;
+    // public const string labelledGameVersionGUIDString = testVersionGUIDString;
+    // 0.31
+    public const string labelledGameVersionGUIDString = "52bb6341-11a9-4439-a175-b644c2ee6d77";
+
     public System.Guid labelledGameVersionGUID = new System.Guid(labelledGameVersionGUIDString);
 
     public void reset()
