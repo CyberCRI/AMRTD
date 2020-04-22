@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89b92cc598aa09468172dfdaed3cabc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 3
+  startSpeed: 5
   minimumDistance: 2
   wobbledTransform: {fileID: 7689037423146455039}
   wobbleShiftSpeedX: 0.1
@@ -138,7 +138,7 @@ MonoBehaviour:
   _rigidbody: {fileID: -5177389566463946072}
   repulsionForce: 10
   repulsers: []
-  _virionsSpawnCountPerLungCell: 4
+  _virionsSpawnCountPerLungCell: 2
   _lungCellRecoveryProbability: 0.6
   _damageRatioPerInfection: 0.4
   _damageRatioPerSpawn: 0.1

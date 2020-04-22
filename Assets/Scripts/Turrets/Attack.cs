@@ -136,20 +136,20 @@ public class Attack : MonoBehaviour
         slowDownDivisionFactorActive =  getOverallEffectFactor(_slowDownDivisionFactorActive, resistanceFactor);
         slowDownHealingFactorActive =   getOverallEffectFactor(_slowDownHealingFactorActive, resistanceFactor);
         slowDownMovementFactorActive =  getOverallEffectFactor(_slowDownMovementFactorActive, resistanceFactor);
-        blockDivisionActive = _blockDivisionActive;
-        blockHealingActive = _blockHealingActive;
-        blockMovementActive = _blockMovementActive;
-        killAtDivisionActive = _killAtDivisionActive;
+        blockDivisionActive =           _blockDivisionActive;
+        blockHealingActive =            _blockHealingActive;
+        blockMovementActive =           _blockMovementActive;
+        killAtDivisionActive =          _killAtDivisionActive;
 
         // passive
-        damagePerSecondPassive = getOverallEffectValue(_damagePerSecondPassive, resistanceFactor);
+        damagePerSecondPassive =        getOverallEffectValue(_damagePerSecondPassive, resistanceFactor);
         slowDownDivisionFactorPassive = getOverallEffectFactor(_slowDownDivisionFactorPassive, resistanceFactor);
         slowDownHealingFactorPassive =  getOverallEffectFactor(_slowDownHealingFactorPassive, resistanceFactor);
         slowDownMovementFactorPassive = getOverallEffectFactor(_slowDownMovementFactorPassive, resistanceFactor);
-        blockDivisionPassive = _blockDivisionPassive;
-        blockHealingPassive = _blockHealingPassive;
-        blockMovementPassive = _blockMovementPassive;
-        killAtDivisionPassive = _killAtDivisionPassive;
+        blockDivisionPassive =          _blockDivisionPassive;
+        blockHealingPassive =           _blockHealingPassive;
+        blockMovementPassive =          _blockMovementPassive;
+        killAtDivisionPassive =         _killAtDivisionPassive;
     }
 
     public void initialize(

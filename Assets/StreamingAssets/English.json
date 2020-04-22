@@ -30,7 +30,7 @@
 	,{"key":"GAME.NODEUI.SELL","value":"SELL"}
 	,{"key":"GAME.NODEUI.RENEW","value":"RENEW"}
 	,{"key":"MAINMENU.TITLE.LABEL","value":"WAR & PILLS"}
-	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.31"}
+	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.32"}
 	,{"key":"MAINMENU.PLAY.LABEL","value":"PLAY"}
 	,{"key":"MAINMENU.QUIT.LABEL","value":"QUIT"}
 	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"SELECT LEVEL"}
