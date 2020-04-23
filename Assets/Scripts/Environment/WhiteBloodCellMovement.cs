@@ -1,5 +1,6 @@
 ﻿//#define VERBOSEDEBUG
 //#define DEVMODE
+//#define VERBOSEMETRICSLVL2
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,7 +75,9 @@ public class WhiteBloodCellMovement : WobblyMovement
         Debug.Log(string.Format("{0}: {1}: Start ", this.GetType(), this.gameObject.name));
         #endif
 
+        #if VERBOSEMETRICSLVL2
         RedMetricsManager.instance.sendEvent(TrackingEvent.WBCSPAWNS, CustomData.getGameObjectContext(this.gameObject));
+        #endif
 
         //setTarget();
         setSpeed();
@@ -195,7 +198,9 @@ public class WhiteBloodCellMovement : WobblyMovement
             else if (disappearing)
             {
                 // disappearing
+                #if VERBOSEMETRICSLVL2
                 RedMetricsManager.instance.sendEvent(TrackingEvent.WBCLEAVES, CustomData.getGameObjectContext(this.gameObject));
+                #endif
                 Destroy(this.gameObject);
             }
         }

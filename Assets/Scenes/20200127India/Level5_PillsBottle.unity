@@ -349,7 +349,7 @@ PrefabInstance:
     - target: {fileID: 6342658062583492236, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
       propertyPath: overrideNextLevelName
-      value: Level6_Syringe
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492236, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
@@ -984,6 +984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842145984922920472, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6713231551975978138, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}

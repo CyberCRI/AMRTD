@@ -150,7 +150,7 @@ public class WobblyMovement : MonoBehaviour
     {
         vectorToTarget = (target - this.transform.position);
         distanceTravelled = Mathf.Min(vectorToTarget.magnitude, speed * Time.deltaTime);
-        hasReachedTarget = (vectorToTarget.magnitude < minimumDistance);
+        hasReachedTarget = (vectorToTarget.sqrMagnitude < minimumDistance);
 
         if (isHoldingPosition || hasReachedTarget)
         {

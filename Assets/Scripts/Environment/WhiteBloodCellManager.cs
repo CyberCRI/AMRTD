@@ -56,6 +56,8 @@ public class WhiteBloodCellManager : MonoBehaviour
 
     [SerializeField]
     private int _wbcSpawnCount = 0;
+    public int wbcSpawnCount { get { return _wbcSpawnCount; } }
+    public int wbcsAliveCount { get; private set; }
     [SerializeField]
     private float wbcSpawnTimePeriod = 0f;
 
@@ -293,6 +295,7 @@ public class WhiteBloodCellManager : MonoBehaviour
             GameObject wbcPrefab = wbcPrefabs[UnityEngine.Random.Range(0, wbcPrefabs.Length)];
             float t = UnityEngine.Random.Range(0f, 1f);
             Vector3 spawnPointPosition = t * BloodUtilities.instance.bloodOrigin1.position + (1 - t) * BloodUtilities.instance.bloodOrigin2.position;
+            wbcsAliveCount++;
             GameObject newWBC = (GameObject)Instantiate(wbcPrefab, spawnPointPosition, wbcPrefab.transform.rotation);
             newWBC.name = "WBC" + index;
 
@@ -314,9 +317,15 @@ public class WhiteBloodCellManager : MonoBehaviour
 
     public void reportDeath(int wbcIndex)
     {
+        wbcsAliveCount--;
         whiteBloodCells[wbcIndex] = null;
         whiteBloodCellsTargetEnemies[wbcIndex] = null;
         whiteBloodCellsTargetViruses[wbcIndex] = null;
+    }
+
+    public bool isOneWBCDead()
+    {
+        return wbcsAliveCount < wbcSpawnCount;
     }
 
     public void triggerMassWBC()

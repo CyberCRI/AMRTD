@@ -107,16 +107,16 @@ public enum TrackingEvent
     CLICKTOWERBUILD, //[x]    // parameters: ELEMENT/GAMEOBJECT: tower's Blueprint or tower built depending on outcome; OUTCOME: SUCCESS/FAILURE (if not enough funds)
 
     // pathogens - pathogen context: life points, resistance level, pathogen name, position on map
-    PATHOGENESCAPES, //[x]    // parameter: GAMEOBJECT pathogen
+    PATHOGENESCAPES, //[x]      // parameter: GAMEOBJECT pathogen
     PATHOGENKILLEDBYWBC, //[x]  // a pathogen was swallowed by a white blood cell; parameter: VIRUS or BACTERIUM: pathogen - either an Enemy (bacterium) or a Virus
     PATHOGENKILLEDBYAB, //[x]   // killed pathogen with antibiotics; parameter: GAMEOBJECT: pathogen
-    PATHOGENDIVIDES, //[x]
-    PATHOGENSPAWNS, //[x]
+    PATHOGENDIVIDES, //[x]      // controlled by VERBOSEMETRICSLVL2 to avoid overburden of RedMetrics.io
+    PATHOGENSPAWNS, //[x]       // controlled by VERBOSEMETRICSLVL2 to avoid overburden of RedMetrics.io
     PATHOGENINBLOOD, //[x]
 
     // WBCs
-    WBCSPAWNS, //[x]
-    WBCLEAVES, //[x]
+    WBCSPAWNS, //[x]            // controlled by VERBOSEMETRICSLVL2 to avoid overburden of RedMetrics.io
+    WBCLEAVES, //[x]            // controlled by VERBOSEMETRICSLVL2 to avoid overburden of RedMetrics.io
 
     COMPLETEGAME, //[x]       // successfully finished the game; parameters: TIMESINCEGAMELOADED, TIMEGAMEPLAYEDNOPAUSE, TIMESINCELEVELLOADED
     NEWFURTHEST, //[x]        // reached a new furthest level; parameter: GAMELEVEL: level completed

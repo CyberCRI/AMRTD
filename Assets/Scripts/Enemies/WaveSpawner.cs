@@ -1,4 +1,5 @@
 ﻿//#define VERBOSEDEBUG
+//#define VERBOSEMETRICSLVL2
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -262,10 +263,12 @@ public class WaveSpawner : MonoBehaviour
                 enemyMotherCell = wave.enemyPrefab;
             }
             GameObject instantiatedEnemy = (GameObject)Instantiate(enemyMotherCell, spawnPointPosition, spawnPointRotation);
+            #if VERBOSEMETRICSLVL2
             if (!divisionMode)
             {
                 RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENSPAWNS, CustomData.getGameObjectContext(instantiatedEnemy));
             }
+            #endif
 
             enemy = instantiatedEnemy.GetComponent<Enemy>();
             enemy.initialize(wave, reward, health, startHealth, waypointIndex, resistances);

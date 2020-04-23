@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PathogenEscapeTutorialActivator : TutorialActivator
+public class PathogenKilledByWBCTutorialActivator : TutorialActivator
 {
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -18,7 +18,7 @@ public class PathogenEscapeTutorialActivator : TutorialActivator
         if (
             (PlayerStatistics.instance.lives < PlayerStatistics.instance.startLives)
             &&
-            (!WhiteBloodCellManager.instance.isOneWBCDead())
+            (WhiteBloodCellManager.instance.isOneWBCDead())
         )
         {
             activateTutorial();

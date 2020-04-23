@@ -1,4 +1,5 @@
 ﻿//#define VERBOSEDEBUG
+//#define VERBOSEMETRICSLVL2
 //#define MUTATIONONDIVISION
 using UnityEngine;
 using UnityEngine.UI;
@@ -314,7 +315,7 @@ public class Enemy : MonoBehaviour
 
         if (canDivide(DIVISION_STRATEGY.TIME_BASED))
         {
-            divide(enemyMovement.waypointIndex - 1);
+            divide(enemyMovement.waypointIndex);
             divisionCountdown = divisionPeriod;
         }
 
@@ -517,7 +518,9 @@ public class Enemy : MonoBehaviour
         }
         else if (null != wave)
         {
+            #if VERBOSEMETRICSLVL2
             RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENDIVIDES, CustomData.getGameObjectContext(this));
+            #endif
 
             reward /= 2;
 
@@ -716,7 +719,7 @@ public class Enemy : MonoBehaviour
         if (canDivide(DIVISION_STRATEGY.WAYPOINT_BASED))
         {
             // "this" already has the waypointIndex-th waypoint as target whereas the newly instantiated hasn't
-            divide(waypointIndex - 1);
+            divide(waypointIndex);
             divisionCountdown = divisionPeriod;
         }
     }

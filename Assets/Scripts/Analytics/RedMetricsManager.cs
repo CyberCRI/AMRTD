@@ -1,5 +1,5 @@
 //#define VERBOSEDEBUG
-#define VERBOSEMETRICS
+#define VERBOSEMETRICSLVL1
 //#define SENDMETRICS
 
 using UnityEngine;
@@ -481,7 +481,7 @@ public class RedMetricsManager : MonoBehaviour
         // // TODO: queue events that can't be sent during internet outage
         // TrackingEventDataWithoutIDs data = new TrackingEventDataWithoutIDs(trackingEvent, customData, userTime);
         // addEventToSendLater(data);
-#if VERBOSEMETRICS
+#if VERBOSEMETRICSLVL1
         CustomData context = CustomData.getEventContext();
 #if VERBOSEDEBUG
         Debug.Log(string.Format("{0} sendEvent merging context {1} into trackingEvent {2}", this.GetType(), context, data));
