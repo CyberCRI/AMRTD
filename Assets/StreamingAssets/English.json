@@ -103,5 +103,11 @@
 	,{"key":"TUTORIAL.WAVECOUNTDOWN.0","value":         "This is the countdown to the next wave of pathogenic bacteria. Brace yourself!"}
 	,{"key":"TUTORIAL.LUNGSLEVEL.0","value":            "Tuberculosis bacteria are trying to colonize the lungs!"}
 	,{"key":"TUTORIAL.LUNGSLEVEL.1","value":            "You have a limited time to rid the lungs of these pathogenic bacteria. Act now!"}
+	,{"key":"TUTORIAL.COVIDLEVELINTRO.0","value":       "Alarm!! Viruses of the COVID disease have been detected!"}
+	,{"key":"TUTORIAL.COVIDLEVELINTRO.1","value":       "Only White Blood Cells can fight viruses, antibiotics can't kill them!"}
+	,{"key":"TUTORIAL.COVIDLEVELINTRO.2","value":       "Viruses of the COVID disease will try and infect the lung cells!"}
+	,{"key":"TUTORIAL.COVIDLEVELINTRO.3","value":       "Infected lung cells produce new viruses, then die or recover slowly from the infection."}
+	,{"key":"TUTORIAL.COVIDLEVELINTRO.4","value":       "Opportunistic bacteria will try to benefit from the chaos... Beware, fight them!"}
+	,{"key":"TUTORIAL.COVIDLEVELWBCWAVE.0","value":     "At last, reinforcements! Bacteria and viruses are almost defeated!"}
 	]
 }
