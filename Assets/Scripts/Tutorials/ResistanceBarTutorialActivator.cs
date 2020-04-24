@@ -13,6 +13,7 @@ public class ResistanceBarTutorialActivator : TutorialActivator
     /// </summary>
     void Start()
     {
+        resistanceBar = resistanceBar == null ? ResistanceBarUI.instance : resistanceBar;
     }
 
     /// <summary>

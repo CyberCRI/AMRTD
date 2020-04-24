@@ -90,7 +90,8 @@
 
 	,{"key":"max help textlength2","value":           "__________________________________________________________________________________________"}
 	,{"key":"TUTORIAL.LEVEL1.0","value":              "Quick! You must set up antibiotics dispensers to destroy incoming pathogenic bacteria!"}
-	,{"key":"TUTORIAL.LEVEL1.1","value":              "Click on the antibiotic dispenser button to start setting them up."}
+	,{"key":"TUTORIAL.LEVEL1.1","value":              "You can set up antibiotics dispensers on tiles such as this one."}
+	,{"key":"TUTORIAL.LEVEL1.2","value":              "Click on the antibiotic dispenser button to start setting them up."}
 	,{"key":"TUTORIAL.RESISTANCEBAR0.0","value":      "Beware! The more you use antibiotics, the more pathogenic bacteria get resistant to them!"}
 	,{"key":"TUTORIAL.RESISTANCEBAR1.0","value":      "Beware! The resistance level is so high that antibiotics have almost no effect anymore!"}
 	,{"key":"TUTORIAL.RESISTANCEBAR2.0","value":      "Beware! You'll lose if you finish the level with more than 50% resistance!"}
@@ -98,9 +99,9 @@
 	,{"key":"TUTORIAL.PATHOGENESCAPE.0","value":      "Watch out! A pathogenic bacterium has escaped. You'll lose if this counter reaches zero!"}
 	,{"key":"TUTORIAL.PATHOGENKILLEDBYWBC.0","value": "A White Blood Cell (WBC) killed a pathogen. You only have a few WBCs in backup..."}
 	,{"key":"TUTORIAL.DIVISION.0","value":            "Watch out! A pathogenic bacterium just divided! Kill it or it'll go on dividing!"}
-	,{"key":"TUTORIAL.TOWERUPGRADE.0","value":        "You can upgrade your antibiotics dispensers if you have enough funds. Click on them!"}
+	,{"key":"TUTORIAL.TOWERUPGRADE.0","value":        "Click on your antibiotics dispensers to upgrade their range, speed, and attack."}
 	,{"key":"TUTORIAL.HELPBUTTON.0","value":          "Use this button to discover how the game works: click it then click on game elements!"}
-	,{"key":"TUTORIAL.TOWERSALE.0","value":           "You can sell your dispenser if you wish. But you won't recover all the cash!"}
+	,{"key":"TUTORIAL.TOWERSALE.0","value":           "To decrease resistance, decrease the antibiotics treatment: click and sell your dispenser."}
 	,{"key":"TUTORIAL.WAVECOUNTDOWN.0","value":       "This is the countdown to the next wave of pathogenic bacteria. Brace yourself!"}
 	,{"key":"TUTORIAL.LUNGSLEVEL.0","value":          "Tuberculosis bacteria are trying to colonize the lungs!"}
 	,{"key":"TUTORIAL.LUNGSLEVEL.1","value":          "You have a limited time to rid the lungs of these pathogenic bacteria. Act now!"}

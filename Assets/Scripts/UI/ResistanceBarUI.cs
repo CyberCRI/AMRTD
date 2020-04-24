@@ -5,6 +5,8 @@ using UnityEngine.UI;
 // Fills up when too many towers are used
 public class ResistanceBarUI : IndicatedProgressBarUI
 {
+    public static ResistanceBarUI instance = null;
+
     private float highlightImageBorders = 38f;
     [SerializeField]
     private Animator alarmer = null;
@@ -19,8 +21,17 @@ public class ResistanceBarUI : IndicatedProgressBarUI
     /// </summary>
     void Awake()
     {
-        startHighlighterSizeDelta = highlighter.sizeDelta - new Vector2(highlightImageBorders, 0f);
-        startAnchoredPosition = highlighter.anchoredPosition;
+        if (null != instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+
+            startHighlighterSizeDelta = highlighter.sizeDelta - new Vector2(highlightImageBorders, 0f);
+            startAnchoredPosition = highlighter.anchoredPosition;   
+        }
     }
 
     public override float getLatestValue()

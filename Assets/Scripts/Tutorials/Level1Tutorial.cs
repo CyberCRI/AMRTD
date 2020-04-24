@@ -14,7 +14,9 @@ public class Level1Tutorial : StepByStepTutorial
     private const string _turretButton = FocusMaskManager.standardTurretItemGOName;
 
     [SerializeField]
-    private GameObject toHide = null;
+    private GameObject toHide1 = null;
+    [SerializeField]
+    private GameObject toHide2 = null;
 
     private const string _textKeyPrefix = genericTextKeyPrefix + "LEVEL1.";
     protected override string textKeyPrefix
@@ -33,9 +35,10 @@ public class Level1Tutorial : StepByStepTutorial
         }
     }
 
-    private TutorialStep[] _steps = new TutorialStep[2] {
-        new TutorialStep(_level1Tutorial, TUTORIALACTION.SETGREYBACKGROUND)
-        , new TutorialStep(_turretButton)
+    private TutorialStep[] _steps = new TutorialStep[3] {
+        new TutorialStep(_level1Tutorial, TUTORIALACTION.SETGREYBACKGROUND),
+        new TutorialStep(_level1Tutorial, TUTORIALACTION.SETGREYBACKGROUND),
+        new TutorialStep(_turretButton)
         };
     protected override TutorialStep[] steps
     {
@@ -49,7 +52,11 @@ public class Level1Tutorial : StepByStepTutorial
     {
         if (step == 1)
         {
-            toHide.SetActive(false);
+            toHide1.SetActive(false);
+        }
+        else if (step == 2)
+        {
+            toHide2.SetActive(false);
         }
     }
 

@@ -38,28 +38,19 @@ public class CovidLevelTutorial : StepByStepTutorial
         }
     }
 
-    private TutorialStep[] _steps = new TutorialStep[2];
-    protected override TutorialStep[] steps
-    {
-        get
-        {
-            return _steps;
-        }
-    }
-
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
-    new void Awake()
-    {
-        _steps = new TutorialStep[5] {
+    private TutorialStep[] _steps = new TutorialStep[5] {
                     new TutorialStep(_covidLevelTutorial, TUTORIALACTION.SETGREYBACKGROUND),
                     new TutorialStep(_covidLevelTutorial, TUTORIALACTION.SETGREYBACKGROUND),
                     new TutorialStep(_covidLevelTutorial, TUTORIALACTION.SETGREYBACKGROUND),
                     new TutorialStep(_covidLevelTutorial, TUTORIALACTION.SETGREYBACKGROUND),
                     new TutorialStep(_covidLevelTutorial, TUTORIALACTION.SETGREYBACKGROUND),
                 };
-        base.Awake();
+    protected override TutorialStep[] steps
+    {
+        get
+        {
+            return _steps;
+        }
     }
 
     protected override void prepareStep(int step)
