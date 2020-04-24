@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#define VERBOSEDEBUG
+using UnityEngine;
 using UnityEngine.UI;
 
 public class BuildManager : MonoBehaviour
@@ -40,6 +41,10 @@ public class BuildManager : MonoBehaviour
 
     public void selectNode(Node node)
     {
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " selectNode");
+        #endif
+
         turretToBuild = null;
         setBuildCursor(null != turretToBuild);
 
@@ -51,6 +56,7 @@ public class BuildManager : MonoBehaviour
         {
             selectedNode = node;
             nodeUI.setTarget(node);
+            deselectTurretButton();
         }
     }
 
@@ -99,7 +105,7 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    // null == button means old turret button is used
+    // null == button means old turret button is used - deprecated
     // null != button means new turret toggle button is used, in which case:
     //    button.isOn: select new turret button
     //    !button.isOn: deselect current turret button

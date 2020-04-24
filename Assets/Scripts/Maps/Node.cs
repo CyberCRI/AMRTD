@@ -1,4 +1,4 @@
-﻿//#define VERBOSEDEBUG
+﻿#define VERBOSEDEBUG
 #define SELLTURRETS
 //#define TURRETLIFETIME
 #define STATICTURRETRESISTANCEPOINTSMODE
@@ -100,12 +100,12 @@ public class Node : MonoBehaviour
         }
     }
 
-    public void manageClick()
+    public void manageClick(bool fromTurret = false)
     {
 #if VERBOSEDEBUG
         Debug.Log("Node manageClick");
 #endif
-        if (!EventSystem.current.IsPointerOverGameObject())
+        if (fromTurret || !EventSystem.current.IsPointerOverGameObject())
         {
             if (turretGO != null)
             {

@@ -130,7 +130,7 @@ public class Turret : Attacker
 #endif
         if (!HelpButtonUI.instance.isHelpModeOn())
         {
-            node.manageClick();
+            node.manageClick(true);
         }
     }
 

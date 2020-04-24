@@ -137,6 +137,8 @@ public class WobblyMovement : MonoBehaviour
         if (collides)
         {
             Vector3 direction = (this.transform.position - collider.transform.position).normalized;
+            float t = Random.Range(0f, 0.1f);
+            direction = direction + new Vector3(t, 0f, 0.1f-t);
             _rigidbody.AddForce(direction * repulsionForce, ForceMode.Impulse);
         }
     }
