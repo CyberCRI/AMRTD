@@ -93,7 +93,7 @@
 	,{"key":"TUTORIAL.LEVEL1.1","value":              "You can set up antibiotics dispensers on tiles such as this one."}
 	,{"key":"TUTORIAL.LEVEL1.2","value":              "Click on the antibiotic dispenser button to start setting them up."}
 	,{"key":"TUTORIAL.LEVEL3.0","value":              "The incoming bacteria are tougher: they can acquire resistance against antibiotics!"}
-	,{"key":"TUTORIAL.LEVEL3.1","value":              "It means that our dispensers won't kill those bacteria as efficiently."}
+	,{"key":"TUTORIAL.LEVEL3.1","value":              "It means that your dispensers won't kill those bacteria as efficiently."}
 	,{"key":"TUTORIAL.LEVEL5.0","value":              "This new antibiotic dispenser damages packed groups of pathogenic bacteria. Try it out!"}
 	,{"key":"TUTORIAL.LEVEL6.0","value":              "This new antibiotic dispenser slows down its target. Try it out!"}
 	,{"key":"TUTORIAL.RESISTANCEBAR0.0","value":      "Beware! The more you use antibiotics, the more pathogenic bacteria get resistant to them!"}
@@ -109,7 +109,7 @@
 	,{"key":"TUTORIAL.WAVECOUNTDOWN.0","value":       "This is the countdown to the next wave of pathogenic bacteria. Brace yourself!"}
 	,{"key":"TUTORIAL.LUNGSLEVEL.0","value":          "Tuberculosis bacteria are trying to colonize the lungs!"}
 	,{"key":"TUTORIAL.LUNGSLEVEL.1","value":          "You have a limited time to rid the lungs of these pathogenic bacteria. Act now!"}
-	,{"key":"TUTORIAL.COVIDLEVELINTRO.0","value":     "Alarm!! Viruses of the COVID disease have been detected!"}
+	,{"key":"TUTORIAL.COVIDLEVELINTRO.0","value":     "Alert! Viruses of the COVID disease have been detected!"}
 	,{"key":"TUTORIAL.COVIDLEVELINTRO.1","value":     "Only White Blood Cells can fight viruses, antibiotics can't kill them!"}
 	,{"key":"TUTORIAL.COVIDLEVELINTRO.2","value":     "Viruses of the COVID disease will try and infect the lung cells!"}
 	,{"key":"TUTORIAL.COVIDLEVELINTRO.3","value":     "Infected lung cells produce new viruses, then die or recover slowly from the infection."}

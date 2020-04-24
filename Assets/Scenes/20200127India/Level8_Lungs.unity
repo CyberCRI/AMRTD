@@ -1601,12 +1601,12 @@ PrefabInstance:
     - target: {fileID: 6342658062583492236, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
       propertyPath: overrideNextLevelName
-      value: Level8_Lungs
+      value: LevelSelectionMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492236, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
       propertyPath: overrideNextLevelIndex
-      value: 8
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492238, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
@@ -1621,7 +1621,7 @@ PrefabInstance:
     - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
       propertyPath: startMoney
-      value: 1000
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492239, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
@@ -3554,7 +3554,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4684cfd1ce30e244cb4288b9c4c5bbd6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27326df51ece8b445be23958d7cfdaf2, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
