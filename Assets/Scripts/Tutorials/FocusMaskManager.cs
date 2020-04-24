@@ -24,6 +24,8 @@ public class FocusMaskManager : MonoBehaviour
     public const string retryGOName = "Retry";
 
     public const string standardTurretItemGOName = "StandardTurretItem";
+    public const string missileLauncherItemGOName = "MissileLauncherItem";
+    public const string laserBeamerItemGOName = "LaserBeamerItem";
 
     public const string nodeUIGOName = "NodeUI";
 #endregion

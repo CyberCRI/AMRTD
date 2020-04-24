@@ -92,6 +92,10 @@
 	,{"key":"TUTORIAL.LEVEL1.0","value":              "Quick! You must set up antibiotics dispensers to destroy incoming pathogenic bacteria!"}
 	,{"key":"TUTORIAL.LEVEL1.1","value":              "You can set up antibiotics dispensers on tiles such as this one."}
 	,{"key":"TUTORIAL.LEVEL1.2","value":              "Click on the antibiotic dispenser button to start setting them up."}
+	,{"key":"TUTORIAL.LEVEL3.0","value":              "The incoming bacteria are tougher: they can acquire resistance against antibiotics!"}
+	,{"key":"TUTORIAL.LEVEL3.1","value":              "It means that our dispensers won't kill those bacteria as efficiently."}
+	,{"key":"TUTORIAL.LEVEL5.0","value":              "This new antibiotic dispenser damages packed groups of pathogenic bacteria. Try it out!"}
+	,{"key":"TUTORIAL.LEVEL6.0","value":              "This new antibiotic dispenser slows down its target. Try it out!"}
 	,{"key":"TUTORIAL.RESISTANCEBAR0.0","value":      "Beware! The more you use antibiotics, the more pathogenic bacteria get resistant to them!"}
 	,{"key":"TUTORIAL.RESISTANCEBAR1.0","value":      "Beware! The resistance level is so high that antibiotics have almost no effect anymore!"}
 	,{"key":"TUTORIAL.RESISTANCEBAR2.0","value":      "Beware! You'll lose if you finish the level with more than 50% resistance!"}
