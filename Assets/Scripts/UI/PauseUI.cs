@@ -51,9 +51,13 @@ public class PauseUI : MonoBehaviour
 
     private void updateToggleState(bool setToPause)
     {
-        ignoreToggle = true;
-        m_Toggle.isOn = setToPause;
-        ignoreToggle = false;
+        if (null != m_Toggle)
+        {
+            bool previousIgnoreToggleState = ignoreToggle;
+            ignoreToggle = true;
+            m_Toggle.isOn = setToPause;
+            ignoreToggle = previousIgnoreToggleState;
+        }
     }
 
     public void toggle()
