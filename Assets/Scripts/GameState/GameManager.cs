@@ -3,12 +3,18 @@
 //#define LIFEPOINTSMODE
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+
+// the value "true" means that pause was set to true
+[System.Serializable]
+public class PauseEvent : UnityEvent<bool>{}
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static bool isLevelLost = false;
     public static bool isLevelWon = false;
+    public PauseEvent pauseSet = new PauseEvent();
 
     public enum GAMEMODE
     {
@@ -23,6 +29,11 @@ public class GameManager : MonoBehaviour
     private float levelDuration = 0f;
     private bool levelDurationCountdownMode = false;
     private float levelDurationCountdown = 0f;
+
+    [SerializeField]
+    private float normalSpeed = 1f;
+    [SerializeField]
+    private float highSpeed = 4f;
 
     [SerializeField]
     private GAMEMODE gameMode = GAMEMODE.PATHS;
@@ -175,16 +186,42 @@ public class GameManager : MonoBehaviour
     public void setPause(bool setToPause)
     {
         Time.timeScale = setToPause ? 0f : 1f;
+        
+        pauseSet.Invoke(setToPause);
     }
 
     public void togglePause()
     {
         Time.timeScale = 1f - Time.timeScale;
+        
+        pauseSet.Invoke(isPaused());
     }
 
     public bool isPaused()
     {
-        return Time.timeScale == 0f;
+        return (Time.timeScale == 0f);
+    }
+
+    public void toggleHighSpeed()
+    {
+        if (!isPaused())
+        {
+            Time.timeScale = highSpeed + normalSpeed - Time.timeScale;
+        }
+    }
+
+    public void setHighSpeed()
+    {
+        Time.timeScale = highSpeed;
+        
+        pauseSet.Invoke(false);
+    }
+
+    public void setNormalSpeed()
+    {
+        Time.timeScale = normalSpeed;
+        
+        pauseSet.Invoke(false);
     }
 
 #if DEVMODE

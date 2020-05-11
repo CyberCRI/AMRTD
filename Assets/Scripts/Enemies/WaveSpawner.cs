@@ -9,7 +9,23 @@ public class WaveSpawner : MonoBehaviour
 {
     public static WaveSpawner instance;
 
-    public int enemiesAliveCount = 0;
+    private int _enemiesAliveCount = 0;
+    public int enemiesAliveCount { 
+        get
+        {
+            return _enemiesAliveCount;
+        }
+        set
+        {
+            _enemiesAliveCount = value;
+            if (enemiesAliveCount >= currentWave.maxEnemyCount)
+            {
+                divisionGreenLightCountdown = divisionGreenLightTime;
+            }
+        }
+    }
+    private float divisionGreenLightCountdown = 0f;
+    public float divisionGreenLightTime = 1f;
     public Enemy[] enemiesAlive { get; private set; } = new Enemy[0];
 
 #if VERBOSEDEBUG
@@ -83,7 +99,7 @@ public class WaveSpawner : MonoBehaviour
             instance = this;
 
             countdown = timeBeforeWave1;
-            enemiesAliveCount = 0;
+            divisionGreenLightCountdown = divisionGreenLightTime;
         }
     }
 
@@ -92,6 +108,11 @@ public class WaveSpawner : MonoBehaviour
     /// </summary>
     void Update()
     {
+        if ((null != currentWave) && (enemiesAliveCount < currentWave.maxEnemyCount))
+        {
+            divisionGreenLightCountdown -= Time.deltaTime;
+        }
+
         if (
             isDoneSpawning
             &&
@@ -163,6 +184,11 @@ public class WaveSpawner : MonoBehaviour
     {
         spawnPoints = new Transform[_spawnPoints.Length];
         _spawnPoints.CopyTo(spawnPoints, 0);
+    }
+
+    public bool isEnemyDivisionAllowed()
+    {
+        return (0f >= divisionGreenLightCountdown);
     }
 
     public void setCountdownToZero()

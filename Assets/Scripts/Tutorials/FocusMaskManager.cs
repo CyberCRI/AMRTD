@@ -342,6 +342,11 @@ public class FocusMaskManager : MonoBehaviour
         arrowSystem.SetActive(showFocusMaskAndArrow);
     }
 
+    public bool isDisplaying()
+    {
+        return focusSystem.gameObject.activeSelf;
+    }
+
     public void reset(bool keepDisplayed)
     {
         // Debug.Log(this.GetType() + " reinitialize");

@@ -46,8 +46,10 @@ public class GameUI : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log("GameUI pressPauseButton");
 #endif
-        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKPAUSE);
-        PauseUI.instance.setActive(true);
+        CustomDataValue customDataValue = GameManager.instance.isPaused() ? CustomDataValue.OFF : CustomDataValue.ON;
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKPAUSE, new CustomData(CustomDataTag.OUTCOME, customDataValue));
+
+        GameManager.instance.togglePause();
     }
 
     // called from pause screen, to close the pause screen and thus go back to the game screen

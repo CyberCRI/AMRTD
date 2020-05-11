@@ -275,7 +275,9 @@ public class GameConfiguration : MonoBehaviour
     // 0.31
     // public const string labelledGameVersionGUIDString = "52bb6341-11a9-4439-a175-b644c2ee6d77";
     // 0.32 2020-04-24 playtest
-    public const string labelledGameVersionGUIDString = "c176639a-91bd-4aae-bbec-f09c7af1a0fa";
+    // public const string labelledGameVersionGUIDString = "c176639a-91bd-4aae-bbec-f09c7af1a0fa";
+    // 0.33 2020-05-12 playtest
+    public const string labelledGameVersionGUIDString = "95ef6eaa-12bc-4894-9c23-a5760f679da0";
 
     public System.Guid labelledGameVersionGUID = new System.Guid(labelledGameVersionGUIDString);
 

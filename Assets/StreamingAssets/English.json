@@ -3,7 +3,8 @@
 	{"key":"META.MAIN.LANGUAGE","value":"English"}
 	,{"key":"META.MAIN.LANGUAGECODE","value":"en"}
 	,{"key":"META.MAIN.LOCAL","value":"English"}
-	,{"key":"META.MAIN.VERSION","value":"0.1"}
+	,{"key":"META.MAIN.VERSION","value":"0.33"}
+	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.33"}
 	,{"key":"GAME.MENU.PAUSE","value":"PAUSE"}
 	,{"key":"GAME.MENU.MENU","value":"MENU"}
 	,{"key":"GAME.MENU.RETRY","value":"RETRY"}
@@ -30,12 +31,12 @@
 	,{"key":"GAME.NODEUI.SELL","value":"SELL"}
 	,{"key":"GAME.NODEUI.RENEW","value":"RENEW"}
 	,{"key":"MAINMENU.TITLE.LABEL","value":"WAR & PILLS"}
-	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.32"}
 	,{"key":"MAINMENU.PLAY.LABEL","value":"PLAY"}
 	,{"key":"MAINMENU.QUIT.LABEL","value":"QUIT"}
 	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"SELECT LEVEL"}
+	,{"key":"LEVELSELECTMENU.TUTORIALS.LABEL","value":"TUTORIALS"}
 	,{"key":"LEVELSELECTMENU.BACK.LABEL","value":"BACK"}
-	,{"key":"LEVELSELECTMENU.LEVEL01.TITLE","value":"1\nStart"}
+	,{"key":"LEVELSELECTMENU.LEVEL01.TITLE","value":"1\nBasics"}
 	,{"key":"LEVELSELECTMENU.LEVEL02.TITLE","value":"2\nDivision"}
 	,{"key":"LEVELSELECTMENU.LEVEL03.TITLE","value":"3\nResistance"}
 	,{"key":"LEVELSELECTMENU.LEVEL04.TITLE","value":"4\nResistance"}
@@ -74,6 +75,7 @@
 	,{"key":"GAME.LEVELINDICATOR.HELP","value":         "This is the current level."}
 	,{"key":"GAME.MENU.HELP","value":                   "This is the menu button."}
 	,{"key":"GAME.PAUSE.HELP","value":                  "Use this button to pause the game."}
+	,{"key":"GAME.FASTFORWARD.HELP","value":            "Use this button to temporarily increase the speed of the game."}
 	,{"key":"GAME.RETRY.HELP","value":                  "Use this button to start over this level."}
 	,{"key":"GAME.USERFEEDBACKBUTTON.HELP","value":     "Click here to give us some feedback on the game."}
 	,{"key":"GAME.UPGRADEBUTTON.HELP","value":          "Upgrade your antibiotics to kill more pathogenic bacteria!"}

@@ -415,8 +415,8 @@ public class Enemy : MonoBehaviour
     {
         return (strategy == divisionStrategy)
             && (divisionCountdown <= 0)
-            && (WaveSpawner.instance.enemiesAliveCount < wave.maxEnemyCount)
-            && (canDivideWhileWounded || health == startHealth)
+            && (WaveSpawner.instance.isEnemyDivisionAllowed())
+            && (canDivideWhileWounded || (health == startHealth))
             && isDivisionAllowedTotal();
     }
 
