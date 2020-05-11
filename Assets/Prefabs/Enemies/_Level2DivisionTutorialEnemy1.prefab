@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: minimumDistance
-      value: 1.1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
@@ -141,6 +141,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: _Level2DivisionTutorialEnemy1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513905923242067304, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0702d38ed6887458d2928b3b9c093c, type: 3}
