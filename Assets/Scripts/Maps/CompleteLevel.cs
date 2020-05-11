@@ -57,7 +57,7 @@ public class CompleteLevel : MonoBehaviour
             if (m.Success)
             {
                 int currentLevelNumber = int.Parse(m.Value);
-                nextLevelIndex = currentLevelNumber % (LevelSelectionUI.gameLevelCount);
+                nextLevelIndex = currentLevelNumber % (GameConfiguration.gameLevelCount);
                 nextLevelName = "Level" + (nextLevelIndex + 1).ToString();
                 m = m.NextMatch();
 #if VERBOSEDEBUG

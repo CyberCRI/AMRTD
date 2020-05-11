@@ -1,5 +1,5 @@
 ﻿//#define DEVMODE
-#define VERBOSEDEBUG
+//#define VERBOSEDEBUG
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;

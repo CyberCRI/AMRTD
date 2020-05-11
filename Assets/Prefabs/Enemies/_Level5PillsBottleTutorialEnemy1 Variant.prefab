@@ -27,6 +27,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9ec058d872376034e91d9c286c7c236d, type: 2}
+    - target: {fileID: 6133784739106107846, guid: 53bef8b074cf5b04ca30a9ac05debe1c,
+        type: 3}
+      propertyPath: minimumDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6647239979124677319, guid: 53bef8b074cf5b04ca30a9ac05debe1c,
         type: 3}
       propertyPath: m_SizeDelta.x

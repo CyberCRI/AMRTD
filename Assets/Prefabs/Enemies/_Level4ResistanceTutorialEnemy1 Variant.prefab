@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6133784739106107846, guid: 4194d8b152d175448afc82e1fed51224,
+        type: 3}
+      propertyPath: minimumDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7667180733465665960, guid: 4194d8b152d175448afc82e1fed51224,
         type: 3}
       propertyPath: m_Name

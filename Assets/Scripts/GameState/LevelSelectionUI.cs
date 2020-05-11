@@ -13,8 +13,6 @@ public class LevelSelectionUI : MonoBehaviour
     private Transform levelButtonsRoot = null;
     private Button[] levelButtons = null;
 
-    // TODO un-hardcode these
-    public const int gameLevelCount = 7;
     public const string lastScene = "Level8_Lungs";
 
     void Awake()
@@ -38,12 +36,13 @@ public class LevelSelectionUI : MonoBehaviour
     {
         int levelReached = GameConfiguration.instance.furthestLevel;
 
-        for (int i = 0; i < levelButtons.Length; i++)
+        levelButtons[0].interactable = true;
+        for (int i = 1; i < levelButtons.Length; i++)
         {
 #if DEVMODE
             levelButtons[i].interactable = true;
 #else
-            levelButtons[i].interactable = (i <= levelReached);
+            levelButtons[i].interactable = (i <= levelReached - GameConfiguration.tutorialLevelsCount);
 #endif
         }
     }
@@ -71,7 +70,7 @@ public class LevelSelectionUI : MonoBehaviour
 
     public static void unlockAllLevels()
     {
-        GameConfiguration.instance.furthestLevel = gameLevelCount - 1;
+        GameConfiguration.instance.furthestLevel = GameConfiguration.gameLevelCount - 1;
         if (null != instance)
         {
             instance.updateInteractables();

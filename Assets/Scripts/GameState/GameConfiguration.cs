@@ -7,6 +7,10 @@ using System;
 public class GameConfiguration : MonoBehaviour
 {
     public static GameConfiguration instance = null;
+    // TODO un-hardcode these
+    public const int gameLevelCount = 7;
+    public const int tutorialLevelsCount = 3;
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
@@ -51,7 +55,7 @@ public class GameConfiguration : MonoBehaviour
         = -1;
 
     private IntConfigurationParameter _furthestLevelReached
-        = new IntConfigurationParameter(0, 0, _furthestLevelReachedKey);
+        = new IntConfigurationParameter(tutorialLevelsCount, tutorialLevelsCount, _furthestLevelReachedKey);
     private FloatConfigurationParameter[] _bestTimes
         = null;
 
@@ -62,7 +66,7 @@ public class GameConfiguration : MonoBehaviour
 #endif
         if (null == _bestTimes)
         {
-            _bestTimes = new FloatConfigurationParameter[LevelSelectionUI.gameLevelCount];
+            _bestTimes = new FloatConfigurationParameter[GameConfiguration.gameLevelCount];
             for (int index = 0; index < _bestTimes.Length; index++)
             {
 #if VERBOSEDEBUG
