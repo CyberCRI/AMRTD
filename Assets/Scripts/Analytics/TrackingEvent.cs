@@ -70,7 +70,7 @@ public enum TrackingEvent
 
     // pause screen
     CLICKPAUSE, //[x]
-    CLICKPAUSERESUME, //[x]
+    CLICKPAUSERESUME, //[x]          // deprecated since 0.33 included
 
     // retry screen
     CLICKRETRY, //[x]

@@ -40,7 +40,7 @@ public abstract class IndicatedProgressBarUI : MonoBehaviour
     {
 
 #if VERBOSEDEBUG
-        currentValue += Time.deltaTime;
+        currentValue += Time.unscaledDeltaTime;
         setFillAmount(currentValue/maxValue);
 #else
         if (!isLerpInProgress)
@@ -65,7 +65,7 @@ public abstract class IndicatedProgressBarUI : MonoBehaviour
         float timeParameter = 0f;
         while (timeParameter <= 1f)
         {
-            timeParameter += (Time.deltaTime / animationDuration);
+            timeParameter += (Time.unscaledDeltaTime / animationDuration);
             setFillAmount(Mathf.Lerp(startValue, endValue, timeParameter));
             yield return null;
         }

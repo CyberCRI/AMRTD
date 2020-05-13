@@ -3,8 +3,8 @@
 	{"key":"META.MAIN.LANGUAGE","value":"English"}
 	,{"key":"META.MAIN.LANGUAGECODE","value":"en"}
 	,{"key":"META.MAIN.LOCAL","value":"English"}
-	,{"key":"META.MAIN.VERSION","value":"0.33"}
-	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.33"}
+	,{"key":"META.MAIN.VERSION","value":"0.34"}
+	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.34"}
 	,{"key":"GAME.MENU.PAUSE","value":"PAUSE"}
 	,{"key":"GAME.MENU.MENU","value":"MENU"}
 	,{"key":"GAME.MENU.RETRY","value":"RETRY"}

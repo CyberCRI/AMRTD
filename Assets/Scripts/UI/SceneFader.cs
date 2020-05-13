@@ -1,8 +1,9 @@
-﻿//#define VERBOSEDEBUG
+﻿#define VERBOSEDEBUG
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
 
 public class SceneFader : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class SceneFader : MonoBehaviour
     private AnimationCurve fadeCurve = null;
     public const float duration = 1f;
 
+    private IEnumerator coroutine = null;
     public delegate void FadeInEndCallback();
     private FadeInEndCallback fadeInEndCallback;
     public void setFadeInEndCallback(FadeInEndCallback _fadeInEndCallback)
@@ -38,14 +40,22 @@ public class SceneFader : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(fadeIn());
+        coroutine = fadeIn();
+        StartCoroutine(coroutine);
+    }
+
+    private Regex rgx = new Regex(@"Level\d+");
+    private bool isLevelScene(string str)
+    {
+        //return str.StartsWith(levelScenePrefix);
+        return (rgx.Matches(str).Count > 0);
     }
 
     void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-#if VERBOSEDEBUG
+        #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " onSceneLoaded: " + scene.name + " with mode " + mode);
-#endif  
+        #endif  
 
         RedMetricsManager.instance.sendEvent(
             TrackingEvent.LEVELSTARTS,
@@ -58,13 +68,40 @@ public class SceneFader : MonoBehaviour
             )
         );
 
-        StartCoroutine(fadeIn());
+        if (isLevelScene(scene.name))
+        {
+            #if VERBOSEDEBUG
+            Debug.Log(this.GetType() + " onSceneLoaded: isLevelScene");
+            #endif  
+            // show loading screen
+            LoadingScreenManagerUI.instance.startFakeLoad();
+        }
+        else
+        {
+            #if VERBOSEDEBUG
+            Debug.Log(this.GetType() + " onSceneLoaded: isMenuScene");
+            #endif  
+            coroutine = fadeIn();
+            StartCoroutine(coroutine);
+        }
 
     }
 
     public void fadeTo(string scene)
     {
-        StartCoroutine(fadeOut(scene));
+        coroutine = fadeOut(scene);
+        StartCoroutine(coroutine);
+    }
+
+    // for external calls
+    public void startFadeIn()
+    {
+        if (null != coroutine)
+        {
+            StopCoroutine(coroutine);
+        }
+        coroutine = fadeIn();
+        StartCoroutine(coroutine);
     }
 
     private IEnumerator fadeIn()
@@ -80,6 +117,10 @@ public class SceneFader : MonoBehaviour
 
         if (null != fadeInEndCallback)
         {
+            #if VERBOSEDEBUG
+            Debug.Log(this.GetType() + " fadeIn (null != fadeInEndCallback)");
+            #endif  
+
             fadeInEndCallback();
             fadeInEndCallback = null;
         }

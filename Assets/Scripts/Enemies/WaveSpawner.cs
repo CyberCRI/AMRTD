@@ -273,7 +273,7 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
-                float angle = Random.Range(0, Mathf.PI);
+                float angle = Random.Range(0f, Mathf.PI);
                 //divisionDistance
                 Vector3 divisionDisplacement = new Vector3(
                     divisionDistance * Mathf.Cos(angle),

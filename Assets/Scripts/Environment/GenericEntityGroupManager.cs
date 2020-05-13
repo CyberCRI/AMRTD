@@ -14,9 +14,9 @@ public class GenericEntityGroupManager<T> : MonoBehaviour
             if (_hasNewRegistrations || (null == _entities))
             {
                 _entities = entitiesList.ToArray();
-                //#if VERBOSEDEBUG
+                #if VERBOSEDEBUG
                 Debug.Log(" entitiesList.ToArray() with _entities.Length=" + _entities.Length);
-                //#endif
+                #endif
                 _hasNewRegistrations = false;
             }
             return _entities;
