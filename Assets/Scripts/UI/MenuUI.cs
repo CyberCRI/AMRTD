@@ -36,16 +36,4 @@ public class MenuUI : MonoBehaviour
     {
         menuUI = _menuUI;
     }
-
-    public void toggle()
-    {
-        GameManager.instance.togglePause();
-        menuUI.SetActive(GameManager.instance.isPaused());
-    }
-
-    public void setActive(bool active)
-    {
-        GameManager.instance.setPause(active);
-        menuUI.SetActive(active);
-    }
 }

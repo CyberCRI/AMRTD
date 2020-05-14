@@ -1,9 +1,10 @@
-﻿//#define VERBOSEDEBUG
+﻿#define VERBOSEDEBUG
 //#define DEVMODE
 //#define LIFEPOINTSMODE
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 // the value "true" means that pause was set to true
 [System.Serializable]
@@ -12,10 +13,11 @@ public class PauseEvent : UnityEvent<bool>{}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
     public static bool isLevelLost = false;
     public static bool isLevelWon = false;
     public PauseEvent pauseSet = new PauseEvent();
-
+    
     public enum GAMEMODE
     {
         PATHS,
@@ -34,6 +36,17 @@ public class GameManager : MonoBehaviour
     private float normalSpeed = 1f;
     [SerializeField]
     private float highSpeed = 4f;
+    #if VERBOSEDEBUG
+    [SerializeField]
+    private float timeScale = 0f;
+    #endif
+    private Dictionary<string, bool> pausers = new Dictionary<string, bool>(){
+        {"FocusMaskManager", false},
+        {"LoadingScreenManagerUI", false},
+        {"MenuUI", false},
+        {"PauseUI", false},
+        {"RetryUI", false},
+    };
 
     [SerializeField]
     private GAMEMODE gameMode = GAMEMODE.PATHS;
@@ -80,6 +93,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #if VERBOSEDEBUG
+        timeScale = Time.timeScale;
+        #endif
         if (isLevelLost || isLevelWon)
         {
             this.enabled = false;
@@ -183,11 +199,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void setPause(bool setToPause)
+    private bool isAskedToPause()
     {
-        Time.timeScale = setToPause ? 0f : 1f;
-        
-        pauseSet.Invoke(setToPause);
+        return pausers.ContainsValue(true);
+    }
+
+    public void setPause(bool setToPause, string caller) //, bool overrideAll = false)
+    {
+        #if VERBOSEDEBUG
+        Debug.Log("setPause(" + setToPause + ", " + caller + ")"); //", " + overrideAll + ")");
+        #endif
+
+        /*
+        if (overrideAll && !setToPause)
+        {
+            foreach(string _key in pausers.Keys)
+            {
+                pausers[_key] = setToPause;
+            }
+        }
+        else
+        {
+        */
+        if (pausers[caller] != setToPause)
+        {
+            pausers[caller] = setToPause;
+            Time.timeScale = isAskedToPause() ? 0f : 1f;
+            pauseSet.Invoke(setToPause);
+        }
     }
 
     public void togglePause()
@@ -212,16 +251,16 @@ public class GameManager : MonoBehaviour
 
     public void setHighSpeed()
     {
+        setPause(false, "PauseUI");
+
         Time.timeScale = highSpeed;
-        
-        pauseSet.Invoke(false);
     }
 
     public void setNormalSpeed()
     {
+        setPause(false, "PauseUI");
+
         Time.timeScale = normalSpeed;
-        
-        pauseSet.Invoke(false);
     }
 
 #if DEVMODE

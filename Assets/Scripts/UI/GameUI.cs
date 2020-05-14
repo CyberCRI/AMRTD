@@ -30,13 +30,13 @@ public class GameUI : MonoBehaviour
 
     private void goToMainMenu()
     {
-        GameManager.instance.setPause(false);
+        GameManager.instance.setPause(false, "PauseUI");
         SceneFader.instance.goToMainMenu();
     }
 
     private void retry()
     {
-        GameManager.instance.setPause(false);
+        GameManager.instance.setPause(false, "PauseUI");
         SceneFader.instance.retry();
     }
 
@@ -52,24 +52,19 @@ public class GameUI : MonoBehaviour
         GameManager.instance.togglePause();
     }
 
-    // called from pause screen, to close the pause screen and thus go back to the game screen
-    public void pressPauseResumeButton()
-    {
-        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKPAUSERESUME);
-        PauseUI.instance.setActive(false);
-    }
-
     // called from game screen, to open retry screen
     public void pressRetryButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRY);
-        RetryUI.instance.setActive(true);
+        GameManager.instance.setPause(true, "RetryUI");
+        RetryUI.instance.gameObject.SetActive(true);
     }
 
     // called from retry screen, to actually retry the level
     public void pressRetryRetryButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRYRETRY, CustomData.getLevelEndContext());
+        GameManager.instance.setPause(false, "RetryUI");
         retry();
     }
 
@@ -77,20 +72,23 @@ public class GameUI : MonoBehaviour
     public void pressRetryResumeButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRYRESUME);
-        RetryUI.instance.setActive(false);
+        GameManager.instance.setPause(false, "RetryUI");
+        RetryUI.instance.gameObject.SetActive(false);
     }
 
     // called from game screen, to open menu screen
     public void pressMenuButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKMENU);
-        MenuUI.instance.setActive(true);
+        GameManager.instance.setPause(true, "MenuUI");
+        MenuUI.instance.gameObject.SetActive(true);
     }
 
     // called from menu screen, to confirm and go to main menu screen
     public void pressMenuMenuButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKMENUMENU);
+        GameManager.instance.setPause(false, "MenuUI");
         goToMainMenu();
     }
 
@@ -98,7 +96,8 @@ public class GameUI : MonoBehaviour
     public void pressMenuResumeButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKMENURESUME);
-        MenuUI.instance.setActive(false);
+        GameManager.instance.setPause(false, "MenuUI");
+        MenuUI.instance.gameObject.SetActive(false);
     }
 
     // called from complete screen, to validate completion and go on to the next level
