@@ -1551,11 +1551,10 @@ MonoBehaviour:
   indicator: {fileID: 3416552249534824864}
   root: {fileID: 7938646881150870972}
   pictures:
-  - {fileID: 21300000, guid: 76be07facff4fe7499d95779bdb6029c, type: 3}
-  - {fileID: 21300000, guid: be0aee74c40992f4193da2d198bccc15, type: 3}
-  - {fileID: 21300000, guid: e139b3b8be77c744d9f64fad0fe1c18e, type: 3}
-  - {fileID: 21300000, guid: a0b2cb2162c3b314dae8b2d5fbcd6c72, type: 3}
-  - {fileID: 21300000, guid: e6578e69081beab4cb1020d117bf5b39, type: 3}
+  - {fileID: 21300000, guid: 60a5b130e3dbfd146a5a24d9b190f123, type: 3}
+  - {fileID: 21300000, guid: 23f35f71cb5569a418609ae56a06f5af, type: 3}
+  - {fileID: 21300000, guid: 23a816fb4a7e47a4198b6e2395263b14, type: 3}
+  - {fileID: 21300000, guid: a706974656a6e5647b25107a4ee74b44, type: 3}
   imageHolder: {fileID: 5038692357384388408}
 --- !u!1 &9005247497866056192
 GameObject:
