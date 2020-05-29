@@ -57,7 +57,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRY);
         GameManager.instance.setPause(true, "RetryUI");
-        RetryUI.instance.gameObject.SetActive(true);
+        RetryUI.instance.setActive(true);
     }
 
     // called from retry screen, to actually retry the level
@@ -73,7 +73,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRYRESUME);
         GameManager.instance.setPause(false, "RetryUI");
-        RetryUI.instance.gameObject.SetActive(false);
+        RetryUI.instance.setActive(false);
     }
 
     // called from game screen, to open menu screen
@@ -81,7 +81,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKMENU);
         GameManager.instance.setPause(true, "MenuUI");
-        MenuUI.instance.gameObject.SetActive(true);
+        MenuUI.instance.setActive(true);
     }
 
     // called from menu screen, to confirm and go to main menu screen
@@ -97,7 +97,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKMENURESUME);
         GameManager.instance.setPause(false, "MenuUI");
-        MenuUI.instance.gameObject.SetActive(false);
+        MenuUI.instance.setActive(false);
     }
 
     // called from complete screen, to validate completion and go on to the next level

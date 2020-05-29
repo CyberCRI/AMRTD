@@ -36,4 +36,9 @@ public class RetryUI : MonoBehaviour
     {
         retryUI = _retryUI;
     }
+
+    public void setActive(bool active)
+    {
+        retryUI.SetActive(active);
+    }
 }

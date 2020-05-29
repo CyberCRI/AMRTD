@@ -36,4 +36,9 @@ public class MenuUI : MonoBehaviour
     {
         menuUI = _menuUI;
     }
+
+    public void setActive(bool active)
+    {
+        menuUI.SetActive(active);
+    }
 }
