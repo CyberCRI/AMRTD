@@ -92,6 +92,13 @@ public enum TrackingEvent
     CLICKHELP, //[x]                 // parameter: OUTCOME: ON or OFF depending on desired state of button
     CLICKHELPON, //[x]               // parameters: GAMEOBJECT: GameObject clicked on, ELEMENT: code string used for translation purposes
 
+    // chatbot
+    CLICKCHATBOT, //[x]              // parameter: OUTCOME: ON or OFF depending on desired state of button
+    CHATBOTGETMESSAGE, //[x]
+    CHATBOTSENDMESSAGE, //[x]
+    CLICKCHATURL, //[x]
+    CLICKCHATBUTTON, //[x]
+
     // fast forward functionality
     CLICKFASTFORWARD, //[x]          // parameter: OUTCOME: ON or OFF depending on desired speed of game
 

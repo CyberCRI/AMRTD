@@ -12,6 +12,10 @@ public class GameUI : MonoBehaviour
 
     [SerializeField]
     private Canvas canvas = null;
+    [SerializeField]
+    private Toggle chatToggle = null;
+    [SerializeField]
+    private GameObject chatbotInteractor = null;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -133,6 +137,18 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKGAMEOVERMENU);
         goToMainMenu();
+    }
+
+    public void pressChatToggle()
+    {
+        #if VERBOSEDEBUG
+        Debug.Log("pressChatToggle");
+        #endif
+        // indicates what is the desired state of the button
+        CustomDataValue customDataValue = chatToggle.isOn ? CustomDataValue.ON : CustomDataValue.OFF;
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCHATBOT, new CustomData(CustomDataTag.OUTCOME, customDataValue));
+        GameManager.instance.setPause(chatToggle.isOn, "ChatbotUI");
+        chatbotInteractor.SetActive(chatToggle.isOn);
     }
 
     public void linkCommon(Camera camera)

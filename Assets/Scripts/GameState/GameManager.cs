@@ -1,4 +1,4 @@
-﻿#define VERBOSEDEBUG
+﻿//#define VERBOSEDEBUG
 //#define DEVMODE
 //#define LIFEPOINTSMODE
 using UnityEngine;
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         {"MenuUI", false},
         {"PauseUI", false},
         {"RetryUI", false},
+        {"ChatbotUI", false},
     };
 
     [SerializeField]
