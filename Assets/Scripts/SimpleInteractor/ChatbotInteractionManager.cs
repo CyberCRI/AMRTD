@@ -1,5 +1,6 @@
 ﻿//#define VERBOSEDEBUG
 //#define TRACKSENTMESSAGES
+#define TRACKCENSOREDSENTMESSAGES
 //#define LOGWWW
 //#define LOGINPUTS
 
@@ -344,16 +345,14 @@ public class ChatbotInteractionManager : MonoBehaviour
         #endif
     }
 
-    private void createNewMessage(
+    private string getMessageRepresentation(
         string text,
-        bool isPlayerMessage = false,
+        int inputURLButtonCount = 0,
+        int inputReplyButtonCount = 0,
         InChatButton[] urlButtons = null,
         InChatButton[] replyButtons = null
         )
     {
-        int inputURLButtonCount = urlButtons == null ? 0 : urlButtons.Length;
-        int inputReplyButtonCount = replyButtons == null ? 0 : replyButtons.Length;
-        
         string messageRepresentation = "{text: \"" + text + "\"";
         if (0 < inputURLButtonCount)
         {
@@ -385,11 +384,38 @@ public class ChatbotInteractionManager : MonoBehaviour
         #if VERBOSEDEBUG
         Debug.Log("messageRepresentation: " + messageRepresentation);
         #endif
+        return messageRepresentation;
+    }
+
+    private void createNewMessage(
+        string text,
+        bool isPlayerMessage = false,
+        InChatButton[] urlButtons = null,
+        InChatButton[] replyButtons = null
+        )
+    {
+        int inputURLButtonCount = urlButtons == null ? 0 : urlButtons.Length;
+        int inputReplyButtonCount = replyButtons == null ? 0 : replyButtons.Length;
         
-        #if TRACKSENTMESSAGES
-        TrackingEvent te = isPlayerMessage ? TrackingEvent.CHATBOTSENDMESSAGE : TrackingEvent.CHATBOTGETMESSAGE;
-        RedMetricsManager.instance.sendEvent(te, new CustomData(CustomDataTag.MESSAGE, messageRepresentation));
-        #endif
+        if (isPlayerMessage)
+        {
+            #if TRACKSENTMESSAGES || TRACKCENSOREDSENTMESSAGES
+            string messageRepresentation = getMessageRepresentation(text, inputURLButtonCount, inputReplyButtonCount, urlButtons, replyButtons);
+            #endif
+
+            #if TRACKSENTMESSAGES
+            RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTSENDMESSAGE, new CustomData(CustomDataTag.MESSAGE, messageRepresentation));
+            #elif TRACKCENSOREDSENTMESSAGES
+            RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTSENDMESSAGE, new CustomData(CustomDataTag.LENGTH, messageRepresentation.Length));
+            #else
+            RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTSENDMESSAGE);
+            #endif
+        }
+        else
+        {
+            string messageRepresentation = getMessageRepresentation(text, inputURLButtonCount, inputReplyButtonCount, urlButtons, replyButtons);
+            RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTGETMESSAGE, new CustomData(CustomDataTag.MESSAGE, messageRepresentation));
+        }
 
         #if LOGINPUTS || VERBOSEDEBUG
         Debug.Log("createNewMessage text=" + text);

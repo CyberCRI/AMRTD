@@ -27,6 +27,7 @@ public enum CustomDataTag
     COST,
     GAMEOBJECT,
     POSITION,
+    LENGTH,
 
     WBCHEALTH,
     BACTERIUM,
