@@ -326,7 +326,7 @@ public class Turret : Attacker
 
     void shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(
+        GameObject bulletGO = Instantiate(
             bulletPrefab,
             firePoint.position,
             firePoint.rotation);

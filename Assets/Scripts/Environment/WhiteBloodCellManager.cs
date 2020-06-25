@@ -296,7 +296,7 @@ public class WhiteBloodCellManager : MonoBehaviour
             float t = UnityEngine.Random.Range(0f, 1f);
             Vector3 spawnPointPosition = t * BloodUtilities.instance.bloodOrigin1.position + (1 - t) * BloodUtilities.instance.bloodOrigin2.position;
             wbcsAliveCount++;
-            GameObject newWBC = (GameObject)Instantiate(wbcPrefab, spawnPointPosition, wbcPrefab.transform.rotation);
+            GameObject newWBC = Instantiate(wbcPrefab, spawnPointPosition, wbcPrefab.transform.rotation);
             newWBC.name = "WBC" + index;
 
             WhiteBloodCellMovement wbcm = newWBC.GetComponent<WhiteBloodCellMovement>();

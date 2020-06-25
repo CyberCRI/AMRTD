@@ -183,12 +183,12 @@ public class Enemy : MonoBehaviour
         if (null == _resistanceEffectInstance)
         {
             _resistanceEffectInstance =
-                ((GameObject)Instantiate(
-                    resistanceEffect.gameObject
-                    , this.transform.position
-                    , Quaternion.identity
-                    , this.transform
-                    )).GetComponent<ParticleSystem>();
+                Instantiate(
+                        resistanceEffect.gameObject
+                        , this.transform.position
+                        , Quaternion.identity
+                        , this.transform
+                    ).GetComponent<ParticleSystem>();
 
             setResistanceEffectEmissionRate();
         }
@@ -503,7 +503,7 @@ public class Enemy : MonoBehaviour
     private void die()
     {
         isAlive = false;
-        GameObject effect = (GameObject)Instantiate(deathEffect.gameObject, this.transform.position, Quaternion.identity);
+        GameObject effect = Instantiate(deathEffect.gameObject, this.transform.position, Quaternion.identity);
         Destroy(effect.gameObject, CommonUtilities.getEffectMaxDuration(deathEffect));
         PlayerStatistics.instance.money += reward;
         Destroy(this.gameObject);

@@ -126,7 +126,7 @@ public class Node : MonoBehaviour
                     {
                         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD,
                             new CustomData(CustomDataTag.ELEMENT, blueprint.prefab).add(CustomDataTag.OUTCOME, CustomDataValue.FAILURE));
-                        GameObject effect = (GameObject)Instantiate(
+                        GameObject effect = Instantiate(
                             cantPayBuildEffect,
                             this.transform.position,
                             Quaternion.identity);
@@ -210,7 +210,7 @@ public class Node : MonoBehaviour
                 break;
         }
 
-        GameObject effect = (GameObject)Instantiate(
+        GameObject effect = Instantiate(
             effectPrefab,
             this.transform.position,
             Quaternion.identity);
@@ -231,7 +231,7 @@ public class Node : MonoBehaviour
         {
             PlayerStatistics.instance.money -= blueprint.cost;
 
-            turretGO = (GameObject)Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
+            turretGO = Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
             turretGO.transform.localScale = Vector3.Scale(this.transform.parent.localScale, turretGO.transform.localScale);
 
             RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD,
@@ -245,7 +245,7 @@ public class Node : MonoBehaviour
             //                );
             turretBlueprint = blueprint;
 
-            GameObject effect = (GameObject)Instantiate(buildEffect, this.transform.position, Quaternion.identity);
+            GameObject effect = Instantiate(buildEffect, this.transform.position, Quaternion.identity);
             Destroy(effect, CommonUtilities.getEffectMaxDuration(buildEffectPS));
         }
         else
@@ -265,7 +265,7 @@ public class Node : MonoBehaviour
         {
             PlayerStatistics.instance.money -= turretBlueprint.upgradeCost;
 
-            GameObject newTurretGO = (GameObject)Instantiate(turretBlueprint.upgradePrefab, this.transform.position, Quaternion.identity);
+            GameObject newTurretGO = Instantiate(turretBlueprint.upgradePrefab, this.transform.position, Quaternion.identity);
             newTurretGO.transform.localScale = Vector3.Scale(this.transform.parent.localScale, newTurretGO.transform.localScale);
 
             Quaternion previousRotation = turret.getPartToRotateRotation();

@@ -288,7 +288,7 @@ public class WaveSpawner : MonoBehaviour
             {
                 enemyMotherCell = wave.enemyPrefab;
             }
-            GameObject instantiatedEnemy = (GameObject)Instantiate(enemyMotherCell, spawnPointPosition, spawnPointRotation);
+            GameObject instantiatedEnemy = Instantiate(enemyMotherCell, spawnPointPosition, spawnPointRotation);
             #if VERBOSEMETRICSLVL2
             if (!divisionMode)
             {
