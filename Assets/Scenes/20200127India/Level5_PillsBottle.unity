@@ -349,7 +349,7 @@ PrefabInstance:
     - target: {fileID: 6342658062583492236, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
       propertyPath: overrideNextLevelName
-      value: MainMenu
+      value: Level6_Syringe
       objectReference: {fileID: 0}
     - target: {fileID: 6342658062583492236, guid: f0009a301641a59488c66db7eca6f476,
         type: 3}
@@ -721,7 +721,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0, y: -0.000061035156}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1925949116

@@ -84,6 +84,7 @@ public class CompleteLevel : MonoBehaviour
     {
         string sceneName = SceneManager.GetActiveScene().name.ToLowerInvariant();
         RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, CustomData.getLevelEndContext());
+        AudioManager.instance.play(AudioEvent.COMPLETELEVEL);
         
         GameConfiguration.instance.reachedLevel(nextLevelIndex, nextLevelName);
 

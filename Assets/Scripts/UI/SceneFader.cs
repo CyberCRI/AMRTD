@@ -1,4 +1,4 @@
-﻿#define VERBOSEDEBUG
+﻿//#define VERBOSEDEBUG
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -35,6 +35,16 @@ public class SceneFader : MonoBehaviour
         {
             instance = this;
             SceneManager.sceneLoaded += onSceneLoaded;
+
+            #if VERBOSEDEBUG
+            Debug.Log(this.GetType() + " Awake");
+            string debugScenes = "";
+            for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+            {
+                debugScenes += SceneUtility.GetScenePathByBuildIndex(i) + " ";
+            }
+            Debug.Log(this.GetType() + " Awake scenes: " + debugScenes);
+            #endif
         }
     }
 
@@ -67,6 +77,7 @@ public class SceneFader : MonoBehaviour
                     }
             )
         );
+        AudioManager.instance.play(AudioEvent.LEVELSTARTS, SceneManager.GetActiveScene().name);
 
         if (isLevelScene(scene.name))
         {
@@ -136,6 +147,8 @@ public class SceneFader : MonoBehaviour
             image.color = new Color(0f, 0f, 0f, a);
             yield return 0;
         }
+
+        AudioManager.instance.stop(AudioEvent.LEVELSTARTS, SceneManager.GetActiveScene().name);
 
         SceneManager.LoadScene(scene);
     }

@@ -1,5 +1,5 @@
 ﻿//#define VERBOSEDEBUG
-//#define DEVMODE
+#define DEVMODE
 //#define LIFEPOINTSMODE
 using UnityEngine;
 using UnityEngine.UI;
@@ -186,6 +186,7 @@ public class GameManager : MonoBehaviour
         if (!isLevelWon)
         {
             RedMetricsManager.instance.sendEvent(TrackingEvent.GAMEOVER, CustomData.getLevelEndContext());
+            AudioManager.instance.play(AudioEvent.GAMEOVER);
             isLevelLost = true;
             gameOverUI.SetActive(true);
         }

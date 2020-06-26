@@ -1,4 +1,6 @@
 ﻿#define VERBOSEDEBUG
+#define DEVMODE
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +36,11 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
 
     public void startFakeLoad()
     {
+#if DEVMODE
+        SceneFader.instance.startFadeIn();
+    }
+
+#else
         #if VERBOSEDEBUG
         Debug.Log("LoadingScreenManagerUI startFakeLoad starts");
         #endif
@@ -95,6 +102,7 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
         Debug.Log("LoadingScreenManagerUI fakeLoad done");
         #endif
     }
+#endif
 
     public override float getLatestValue()
     {
