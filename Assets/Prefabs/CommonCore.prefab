@@ -1429,82 +1429,95 @@ MonoBehaviour:
   audioElements:
   - audioEvent: 41
     parameter: 
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 89119a979caeab446afe253b813db20d, type: 3}
+    loop: 0
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 37
     parameter: 
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 2ed9a9d058c683b4e8750a181fb64953, type: 3}
+    loop: 0
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 28
     parameter: MainMenu
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 99bb949537be4394f948cada3dc8bbd5, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 28
     parameter: LevelSelectionMenu
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 99bb949537be4394f948cada3dc8bbd5, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 28
     parameter: Level1_nodivision
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 4a7fd0d433bd2fc45953d867399fbeac, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 28
     parameter: Level2_division
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: fc4f4e5d3cb917b469cf28bba9267ff8, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 28
     parameter: Level3_optimality
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 46506a51ca2771d4c828896ee36d68d7, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 28
     parameter: Level4_resistance
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 129b0d156bc65244abab781da8f888d0, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 28
     parameter: Level5_PillsBottle
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 1602c7901079a1d4194cd2a927a757a4, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 28
     parameter: Level6_Syringe
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 3e6a8364748e50848ab6c5e6b3117222, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 28
     parameter: Level8_Lungs
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 8da83b43bf56ced42b8bb10f85101295, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 28
     parameter: Level9_COVID-19
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 93436f3375883c3478038d068876b38f, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - audioEvent: 28
     parameter: Level7_specificity
+    source: {fileID: 0}
     clip: {fileID: 8300000, guid: 86869271798bf5442a1d876db2999213, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
-    source: {fileID: 0}
 --- !u!1 &7106440733413188949
 GameObject:
   m_ObjectHideFlags: 0

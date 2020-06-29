@@ -77,7 +77,7 @@ public class SceneFader : MonoBehaviour
                     }
             )
         );
-        AudioManager.instance.play(AudioEvent.LEVELSTARTS, SceneManager.GetActiveScene().name);
+        AudioManager.instance.playBackgroundMusic(SceneManager.GetActiveScene().name);
 
         if (isLevelScene(scene.name))
         {
@@ -148,7 +148,8 @@ public class SceneFader : MonoBehaviour
             yield return 0;
         }
 
-        AudioManager.instance.stop(AudioEvent.LEVELSTARTS, SceneManager.GetActiveScene().name);
+        // the call to play stops the music
+        //AudioManager.instance.stopBackgroundMusic();
 
         SceneManager.LoadScene(scene);
     }
