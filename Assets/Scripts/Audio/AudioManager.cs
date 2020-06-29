@@ -9,10 +9,13 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance = null;
 
-    public AudioElement[] audioElements = null;
+    [SerializeField]
+    private float pitchIncrease = 1.05f;
+    [SerializeField]
+    private AudioElement[] audioElements = null;
 
     private string backgroundMusicLevelName = "";
-    private AudioClip backgroundMusicAudioClip = null;
+    private AudioSource backgroundMusicAudioSource = null;
 
     void Awake()
     {
@@ -47,7 +50,7 @@ public class AudioManager : MonoBehaviour
             Debug.Log("stopBackgroundMusic !string.IsNullOrEmpty(backgroundMusicLevelName); backgroundMusicLevelName=" + backgroundMusicLevelName);
             #endif
             stop(AudioEvent.LEVELSTARTS, backgroundMusicLevelName);
-            backgroundMusicAudioClip = null;
+            backgroundMusicAudioSource = null;
         }
     }
 
@@ -62,14 +65,15 @@ public class AudioManager : MonoBehaviour
             #if VERBOSEDEBUG
             Debug.Log("playBackgroundMusic(" + sceneName + ") sceneName != backgroundMusicLevelName");
             #endif
-            AudioClip result = play(AudioEvent.LEVELSTARTS, sceneName, true, backgroundMusicAudioClip);
+            AudioClip _clip = (backgroundMusicAudioSource == null) ? null : backgroundMusicAudioSource.clip;
+            AudioSource result = play(AudioEvent.LEVELSTARTS, sceneName, true, _clip);
             if (null != result) // a new clip is being played, the previous one has to be stopped
             {
                 #if VERBOSEDEBUG
                 Debug.Log("playBackgroundMusic(" + sceneName + ") sceneName != backgroundMusicLevelName; null != result");
                 #endif
                 stopBackgroundMusic();
-                backgroundMusicAudioClip = result;
+                backgroundMusicAudioSource = result;
                 backgroundMusicLevelName = sceneName;
             }
         }
@@ -84,7 +88,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // returns null if the clip is not played due to the dontReplay parameter
-    public AudioClip play(AudioEvent audioEvent, string parameter = "", bool doPlay = true, AudioClip dontReplay = null)
+    public AudioSource play(AudioEvent audioEvent, string parameter = "", bool doPlay = true, AudioClip dontReplay = null)
     {
         #if VERBOSEDEBUG
         string dontReplayString = (null == dontReplay) ? "null" : dontReplay.name;
@@ -99,7 +103,6 @@ public class AudioManager : MonoBehaviour
         #endif
 
         AudioSource toManage = null;
-        AudioClip played = null;
         
         if (null != matches)
         {
@@ -128,7 +131,6 @@ public class AudioManager : MonoBehaviour
             #if VERBOSEDEBUG
             Debug.Log(this.GetType() + " play (null != toManage) && (dontReplay != toManage.clip)");
             #endif
-            played = toManage.clip;
             if (doPlay)
             {
                 #if VERBOSEDEBUG
@@ -143,17 +145,27 @@ public class AudioManager : MonoBehaviour
                 #endif
                 toManage.Stop();
             }
-        #if VERBOSEDEBUG
         }
         else
         {
+            #if VERBOSEDEBUG
             string toManageString = (null == toManage) ? "null" : toManage.ToString();
             string toManageClipString = ((null == toManage) || (null == toManage.clip)) ? "null" : toManage.clip.name;
             Debug.Log(this.GetType() + " play (toManage == " + toManageString + "), (toManage.clip == " + toManageClipString + ")");
-        #endif
+            #endif
+            // no modification of the sound, so return null
+            toManage = null;
         }
 
-        return played;
+        return toManage;
+    }
+
+    public void doFastForward(bool on)
+    {
+        if (null != backgroundMusicAudioSource)
+        {
+            backgroundMusicAudioSource.pitch = on ? pitchIncrease : 1f;
+        }
     }
 
 }

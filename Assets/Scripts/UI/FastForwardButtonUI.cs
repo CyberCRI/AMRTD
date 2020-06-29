@@ -7,6 +7,7 @@ public class FastForwardButtonUI : MonoBehaviour, IPointerDownHandler, IPointerU
     public void OnPointerDown(PointerEventData eventData)
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKFASTFORWARD, new CustomData(CustomDataTag.OUTCOME, CustomDataValue.ON));
+        AudioManager.instance.doFastForward(true);
 
         if (!FocusMaskManager.instance.isDisplaying())
         {
@@ -17,6 +18,7 @@ public class FastForwardButtonUI : MonoBehaviour, IPointerDownHandler, IPointerU
     public void OnPointerUp(PointerEventData eventData)
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKFASTFORWARD, new CustomData(CustomDataTag.OUTCOME, CustomDataValue.OFF));
+        AudioManager.instance.doFastForward(false);
 
         if (!FocusMaskManager.instance.isDisplaying())
         {
