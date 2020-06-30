@@ -32,11 +32,7 @@ public class Attacker : MonoBehaviour
                 Attack _enemyAttack = strikeAttack(_target, _enemy);
                 if (null != _enemyAttack)
                 {
-                    _enemyAttack.apply();
-                    if (0 != _event)
-                    {
-                        AudioManager.instance.play(_event);
-                    }
+                    _enemyAttack.apply(_event);
                 }
             }
             else

@@ -73,6 +73,8 @@ public class Turret : Attacker
     private Light laserImpactLight = null;
     [SerializeField]
     private float laserImpactOffsetFactor = 0f;
+    [SerializeField]
+    private AudioSource laserAudio = null;
 
 
     [Header("Unity Step Fields")]
@@ -282,6 +284,7 @@ public class Turret : Attacker
                 lineRenderer.enabled = false;
                 laserImpactPS.Stop();
                 laserImpactLight.enabled = false;
+                laserAudio.Pause();
             }
         }
     }
@@ -308,12 +311,13 @@ public class Turret : Attacker
 
     void laser()
     {
-        // graphics
+        // graphics & sound
         if (!lineRenderer.enabled)
         {
             lineRenderer.enabled = true;
             laserImpactPS.Play();
             laserImpactLight.enabled = true;
+            laserAudio.Play();
         }
 
         lineRenderer.SetPosition(0, firePoint.position);

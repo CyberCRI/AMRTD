@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -86,6 +87,7 @@ GameObject:
   - component: {fileID: -5177389566463946072}
   - component: {fileID: 3727237908718425685}
   - component: {fileID: -3695565156655158682}
+  - component: {fileID: 280472920907584206}
   m_Layer: 8
   m_Name: WhiteBloodCell
   m_TagString: WBCTag
@@ -165,16 +167,16 @@ MonoBehaviour:
   repulsers: []
   baseSpeed: 10
   speedVariation: 1
+  gainAltitudeImpulse: 10
   idlePosition: {x: 0, y: 0, z: 0}
   hitsMaxCount: 10
   _hitsLeft: 0
-  m_wbcm: {fileID: 0}
   _sphericalRenderer: {fileID: 6935027291076457913}
   _silhouetteRenderer: {fileID: 7203844366430045227}
   colorHealthy: {r: 1, g: 1, b: 0.92941177, a: 1}
   colorWounded: {r: 0.63529414, g: 0.5647059, b: 0.5647059, a: 1}
   healthBar: {fileID: 5825669343276757956}
-  action: 0
+  audioEmitter: {fileID: 280472920907584206}
 --- !u!114 &-3695565156655158682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +190,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   codeStem: WHITEBLOODCELL
+--- !u!114 &280472920907584206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864043371421780663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0192ea51557fbb647a06d7bb4d410d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioElements:
+  - audioEvent: 61
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 76e321e21906e3a449164b5dd81cd9d0, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
 --- !u!1 &6586098443449742506
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +432,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.25490198}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

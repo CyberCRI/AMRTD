@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 2619940236836669980}
   - component: {fileID: 4734184661367311785}
   - component: {fileID: 4500849788320993364}
+  - component: {fileID: -5128987683516186274}
   - component: {fileID: 5890364933850880565}
   m_Layer: 0
   m_Name: GenericEnemyTextured
@@ -422,6 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMovement: {fileID: 76248867092480059}
+  audioEmitter: {fileID: -5128987683516186274}
   defaultMutationRange: 0.2
   reward: 150
   health: 0
@@ -543,6 +545,68 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5128987683516186274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500849788320993365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0192ea51557fbb647a06d7bb4d410d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioElements:
+  - audioEvent: 63
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 350c057bdbef0e8469ad6c90388753d7, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 64
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: ee499f4ae6e48a0459ac830314f7ad0f, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 65
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 97ddf8c727fd6424f83595a45f4b635a, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 73
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 7f62b8eaea6bc7147b57625bc1e26602, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 74
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 83d3d7478790f1143831c6ecfdefa9b7, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 75
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 4241f348169fc2141b9bdcb4b7cd0420, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 76
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 1c0074b7958503a4e9c180b7ed880f17, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
 --- !u!82 &5890364933850880565
 AudioSource:
   m_ObjectHideFlags: 0

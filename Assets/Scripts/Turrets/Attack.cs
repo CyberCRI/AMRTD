@@ -298,16 +298,24 @@ public class Attack : MonoBehaviour
         return antibioticEffect * antibioticResistanceFactor;
     }
 
-    public void apply()
+    public void apply(AudioEvent _event = 0)
     {
         if (0f != damagePerSecondActive)
         {
             enemy.takeDamage(damagePerSecondActive * Time.deltaTime, Attack.SOURCE.DPSACTIVE, substance);
+            if (AudioEvent.PATHOGENHITBYLASER == _event)
+            {
+                enemy.play(_event);
+            }
         }
 
         if (0f != damageWhenHit)
         {
             enemy.takeDamage(damageWhenHit, Attack.SOURCE.HIT, substance);
+            if (AudioEvent.PATHOGENHITBYBULLET == _event || AudioEvent.PATHOGENHITBYBLAST == _event)
+            {
+                enemy.play(_event);
+            }
         }
 
         // apply active abilities

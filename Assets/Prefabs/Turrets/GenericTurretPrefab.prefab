@@ -309,6 +309,7 @@ MonoBehaviour:
   laserImpactPS: {fileID: 0}
   laserImpactLight: {fileID: 0}
   laserImpactOffsetFactor: 0
+  laserAudio: {fileID: 0}
   timeStartTurret: 0
   updatePeriod: 0.5
   partToRotate: {fileID: 5079843622002194386}

@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     private EnemyMovement enemyMovement = null;
+    [SerializeField]
+    private AudioEmitter audioEmitter = null;
 
     [Header("Mutation")]
     [SerializeField]
@@ -248,7 +250,7 @@ public class Enemy : MonoBehaviour
                 }
             );
             Invoke("cancelBursts", CommonUtilities.getEffectMaxDuration(_resistanceEffectInstance));
-            AudioManager.instance.play(AudioEvent.PATHOGENDEFLECTS);
+            audioEmitter.play(AudioEvent.PATHOGENDEFLECTS);
 #if VERBOSEDEBUG
             Debug.Log("doResistanceEffectBurst " + particleCount);
 #endif
@@ -522,7 +524,7 @@ public class Enemy : MonoBehaviour
         {
             #if VERBOSEMETRICSLVL2
             RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENDIVIDES, CustomData.getGameObjectContext(this));
-            AudioManager.instance.play(AudioEvent.PATHOGENDIVIDES);
+            audioEmitter.play(AudioEvent.PATHOGENDIVIDES);
             #endif
 
             reward /= 2;
@@ -735,6 +737,11 @@ public class Enemy : MonoBehaviour
     public void blockDivision()
     {
         divisionStrategy = DIVISION_STRATEGY.NO_DIVISION;
+    }
+
+    public AudioSource play(AudioEvent audioEvent, string parameter = "", bool doPlay = true, AudioClip dontReplay = null)
+    {
+        return audioEmitter.play(audioEvent, parameter, doPlay, dontReplay);
     }
 
     void OnDestroy()

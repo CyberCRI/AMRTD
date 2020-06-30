@@ -113,4 +113,9 @@ public class EnemyMovement : WobblyMovement
     {
         StartCoroutine(jumpToTransform(absorberTransform));
     }
+
+    public AudioSource play(AudioEvent audioEvent, string parameter = "", bool doPlay = true, AudioClip dontReplay = null)
+    {
+        return enemy.play(audioEvent, parameter, doPlay, dontReplay);
+    }
 }

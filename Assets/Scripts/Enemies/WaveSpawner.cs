@@ -289,16 +289,17 @@ public class WaveSpawner : MonoBehaviour
                 enemyMotherCell = wave.enemyPrefab;
             }
             GameObject instantiatedEnemy = Instantiate(enemyMotherCell, spawnPointPosition, spawnPointRotation);
+
+            enemy = instantiatedEnemy.GetComponent<Enemy>();
+            enemy.initialize(wave, reward, health, startHealth, waypointIndex, resistances);
+
             #if VERBOSEMETRICSLVL2
             if (!divisionMode)
             {
                 RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENSPAWNS, CustomData.getGameObjectContext(instantiatedEnemy));
-                AudioManager.instance.play(AudioEvent.PATHOGENSPAWNS);
+                enemy.play(AudioEvent.PATHOGENSPAWNS);
             }
             #endif
-
-            enemy = instantiatedEnemy.GetComponent<Enemy>();
-            enemy.initialize(wave, reward, health, startHealth, waypointIndex, resistances);
 
             enemiesAliveCount++;
             for (int i = 0; i < enemiesAlive.Length; i++)
