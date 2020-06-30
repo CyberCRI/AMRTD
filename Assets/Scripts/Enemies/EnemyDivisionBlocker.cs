@@ -16,6 +16,7 @@ public class EnemyDivisionBlocker : MonoBehaviour
         if (this.transform.position.x < xLimit)
         {   
             RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENINBLOOD, CustomData.getGameObjectContext(this));
+            AudioManager.instance.play(AudioEvent.PATHOGENINBLOOD);
             if (null == enemy)
             {
                 enemy = this.GetComponent<Enemy>();

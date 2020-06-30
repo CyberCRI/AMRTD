@@ -21,7 +21,7 @@ public class Attacker : MonoBehaviour
     [SerializeField]
     protected Attack modelAttack = null;
 
-    protected void doAttack(Transform _target, Enemy _enemy = null)
+    protected void doAttack(Transform _target, Enemy _enemy = null, AudioEvent _event = 0)
     {
         _enemy = (_enemy == null) ? _target.GetComponent<Enemy>() : _enemy;
 
@@ -33,6 +33,10 @@ public class Attacker : MonoBehaviour
                 if (null != _enemyAttack)
                 {
                     _enemyAttack.apply();
+                    if (0 != _event)
+                    {
+                        AudioManager.instance.play(_event);
+                    }
                 }
             }
             else

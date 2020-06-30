@@ -267,6 +267,7 @@ public class WhiteBloodCellMovement : WobblyMovement
     public void absorb(Virus virus)
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getVirusContext(virus.gameObject).add(CustomDataTag.WBCHEALTH, (int)hitsLeft));
+        AudioManager.instance.play(AudioEvent.PATHOGENKILLEDBYWBC);
         hitsLeft--;
         if (0 == hitsLeft)
         {
@@ -278,6 +279,7 @@ public class WhiteBloodCellMovement : WobblyMovement
     public void absorb(EnemyMovement enemy)
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getBacteriumContext(enemy.gameObject).add(CustomDataTag.WBCHEALTH, (int)hitsLeft));
+        AudioManager.instance.play(AudioEvent.PATHOGENKILLEDBYWBC);
         hitsLeft = 0;
         prepareAbsorb();
         enemy.getAbsorbed(this.transform);

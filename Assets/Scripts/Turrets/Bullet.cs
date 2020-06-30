@@ -57,7 +57,7 @@ public class Bullet : Attacker
         }
         else if (null != target)
         {
-            doAttack(target, enemy);
+            doAttack(target, enemy, AudioEvent.PATHOGENHITBYBULLET);
         }
 
         Destroy(this.gameObject);
@@ -73,7 +73,7 @@ public class Bullet : Attacker
                 Enemy _enemy = collider.transform.GetComponent<Enemy>();
                 if (null != _enemy)
                 {
-                    doAttack(collider.transform, _enemy);
+                    doAttack(collider.transform, _enemy, AudioEvent.PATHOGENHITBYBLAST);
                 }
 
             }

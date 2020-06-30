@@ -124,12 +124,14 @@ public enum AudioEvent
     CLICKTOWERBUILD = 59, //[x]    // parameters: ELEMENT/GAMEOBJECT: tower's Blueprint or tower built depending on outcome; OUTCOME: SUCCESS/FAILURE (if not enough funds)
 
     // pathogens - pathogen context: life points, resistance level, pathogen name, position on map
+    */
     PATHOGENESCAPES = 60, //[x]      // parameter: GAMEOBJECT pathogen
     PATHOGENKILLEDBYWBC = 61, //[x]  // a pathogen was swallowed by a white blood cell; parameter: VIRUS or BACTERIUM: pathogen - either an Enemy (bacterium) or a Virus
     PATHOGENKILLEDBYAB = 62, //[x]   // killed pathogen with antibiotics; parameter: GAMEOBJECT: pathogen
     PATHOGENDIVIDES = 63, //[x]      // controlled by VERBOSEMETRICSLVL2 to avoid overburden of RedMetrics.io
     PATHOGENSPAWNS = 64, //[x]       // controlled by VERBOSEMETRICSLVL2 to avoid overburden of RedMetrics.io
     PATHOGENINBLOOD = 65, //[x]
+    /*
 
     // WBCs
     WBCSPAWNS = 66, //[x]            // controlled by VERBOSEMETRICSLVL2 to avoid overburden of RedMetrics.io
@@ -143,5 +145,8 @@ public enum AudioEvent
     TUTORIALFOCUSON = 72, //[x]    // a tutorial message was displayed with focus arrow and mask; parameters: MESSAGE: the text, GAMEOBJECT: the GameObject the system focuses on
 */
     // events specific to audio
-    AMBIENTMUSIC1 = 73, //[ ]
+    PATHOGENHITBYBULLET = 73, //[ ]
+    PATHOGENHITBYBLAST = 74, //[ ]
+    PATHOGENHITBYLASER = 75, //[ ]
+    PATHOGENDEFLECTS = 76, //[ ]
 }

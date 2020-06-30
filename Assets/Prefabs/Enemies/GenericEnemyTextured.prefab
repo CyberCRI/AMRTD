@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 2619940236836669980}
   - component: {fileID: 4734184661367311785}
   - component: {fileID: 4500849788320993364}
-  - component: {fileID: 3648580510892881425}
+  - component: {fileID: 5890364933850880565}
   m_Layer: 0
   m_Name: GenericEnemyTextured
   m_TagString: EnemyTag
@@ -543,7 +543,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!82 &3648580510892881425
+--- !u!82 &5890364933850880565
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

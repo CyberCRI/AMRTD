@@ -293,6 +293,7 @@ public class WaveSpawner : MonoBehaviour
             if (!divisionMode)
             {
                 RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENSPAWNS, CustomData.getGameObjectContext(instantiatedEnemy));
+                AudioManager.instance.play(AudioEvent.PATHOGENSPAWNS);
             }
             #endif
 

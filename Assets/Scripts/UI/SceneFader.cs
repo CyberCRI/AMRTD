@@ -1,4 +1,5 @@
 ﻿//#define VERBOSEDEBUG
+//#define PLAYMUSIC
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -77,7 +78,9 @@ public class SceneFader : MonoBehaviour
                     }
             )
         );
+        #if PLAYMUSIC
         AudioManager.instance.playBackgroundMusic(SceneManager.GetActiveScene().name);
+        #endif
 
         if (isLevelScene(scene.name))
         {

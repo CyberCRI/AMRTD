@@ -248,6 +248,7 @@ public class Enemy : MonoBehaviour
                 }
             );
             Invoke("cancelBursts", CommonUtilities.getEffectMaxDuration(_resistanceEffectInstance));
+            AudioManager.instance.play(AudioEvent.PATHOGENDEFLECTS);
 #if VERBOSEDEBUG
             Debug.Log("doResistanceEffectBurst " + particleCount);
 #endif
@@ -496,6 +497,7 @@ public class Enemy : MonoBehaviour
             RedMetricsManager.instance.sendEvent(
                 TrackingEvent.PATHOGENKILLEDBYAB,
                 CustomData.getGameObjectContext(this).add(CustomDataTag.SOURCE, source.ToString()));
+            AudioManager.instance.play(AudioEvent.PATHOGENKILLEDBYAB);
             die();
         }
     }
@@ -520,6 +522,7 @@ public class Enemy : MonoBehaviour
         {
             #if VERBOSEMETRICSLVL2
             RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENDIVIDES, CustomData.getGameObjectContext(this));
+            AudioManager.instance.play(AudioEvent.PATHOGENDIVIDES);
             #endif
 
             reward /= 2;

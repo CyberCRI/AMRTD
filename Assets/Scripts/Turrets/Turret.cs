@@ -261,7 +261,7 @@ public class Turret : Attacker
 
             if (useLaser)
             {
-                doAttack(target, enemy);
+                doAttack(target, enemy, AudioEvent.PATHOGENHITBYLASER);
                 laser();
             }
             else
