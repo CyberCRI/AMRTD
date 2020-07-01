@@ -52,6 +52,7 @@ public class GameUI : MonoBehaviour
 #endif
         CustomDataValue customDataValue = GameManager.instance.isPaused() ? CustomDataValue.OFF : CustomDataValue.ON;
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKPAUSE, new CustomData(CustomDataTag.OUTCOME, customDataValue));
+        AudioManager.instance.play(AudioEvent.CLICKUI);
 
         GameManager.instance.togglePause();
     }
@@ -60,6 +61,7 @@ public class GameUI : MonoBehaviour
     public void pressRetryButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRY);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         GameManager.instance.setPause(true, "RetryUI");
         RetryUI.instance.setActive(true);
     }
@@ -68,6 +70,7 @@ public class GameUI : MonoBehaviour
     public void pressRetryRetryButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRYRETRY, CustomData.getLevelEndContext());
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         GameManager.instance.setPause(false, "RetryUI");
         retry();
     }
@@ -76,6 +79,7 @@ public class GameUI : MonoBehaviour
     public void pressRetryResumeButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRYRESUME);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         GameManager.instance.setPause(false, "RetryUI");
         RetryUI.instance.setActive(false);
     }
@@ -84,6 +88,7 @@ public class GameUI : MonoBehaviour
     public void pressMenuButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKMENU);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         GameManager.instance.setPause(true, "MenuUI");
         MenuUI.instance.setActive(true);
     }
@@ -92,6 +97,7 @@ public class GameUI : MonoBehaviour
     public void pressMenuMenuButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKMENUMENU);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         GameManager.instance.setPause(false, "MenuUI");
         goToMainMenu();
     }
@@ -100,6 +106,7 @@ public class GameUI : MonoBehaviour
     public void pressMenuResumeButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKMENURESUME);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         GameManager.instance.setPause(false, "MenuUI");
         MenuUI.instance.setActive(false);
     }
@@ -108,6 +115,7 @@ public class GameUI : MonoBehaviour
     public void pressCompleteCompleteButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCOMPLETECOMPLETE);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         CompleteLevel.instance.pressContinue();
     }
 
@@ -115,6 +123,7 @@ public class GameUI : MonoBehaviour
     public void pressCompleteMenuButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCOMPLETEMENU);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         goToMainMenu();
     }
 
@@ -122,6 +131,7 @@ public class GameUI : MonoBehaviour
     public void pressCompleteRetryButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCOMPLETERETRY);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         retry();
     }
 
@@ -129,6 +139,7 @@ public class GameUI : MonoBehaviour
     public void pressGameOverRetryButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKGAMEOVERRETRY);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         retry();
     }
 
@@ -136,6 +147,7 @@ public class GameUI : MonoBehaviour
     public void pressGameOverMenuButton()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKGAMEOVERMENU);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         goToMainMenu();
     }
 
@@ -147,6 +159,7 @@ public class GameUI : MonoBehaviour
         // indicates what is the desired state of the button
         CustomDataValue customDataValue = chatToggle.isOn ? CustomDataValue.ON : CustomDataValue.OFF;
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCHATBOT, new CustomData(CustomDataTag.OUTCOME, customDataValue));
+        AudioManager.instance.play(AudioEvent.CLICKCHATBOT);
         GameManager.instance.setPause(chatToggle.isOn, "ChatbotUI");
         chatbotInteractor.SetActive(chatToggle.isOn);
     }

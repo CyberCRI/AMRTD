@@ -1532,6 +1532,104 @@ MonoBehaviour:
     loop: 0
     volume: 1
     pitch: 1
+  - audioEvent: 45
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 551474457ae1cb44eb92d62ad1a72963, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 46
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: bbbd14461e5b28842abf70d155c9de05, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 47
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 50c827f8137412a43ac19ac99814238a, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 48
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 3ffe7a2d7d3334e47a9dc5d9bd867fad, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 49
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 918d11135b6fb094c80b7e61f06c6390, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 55
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 2193cf422e458374d8e5553d4abe7506, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 56
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: ece80358e256a174481469913ab1a2d2, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 57
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 836e89145748c9242b9484b731f9acb6, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 58
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 235d579f9cc57054b84291a884afbb11, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 59
+    parameter: success
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: bf10cd020a5bedc4782f6686b3b041ac, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 59
+    parameter: failure
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 8b9acf3b325d8fb43b3fd7e23d813c39, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 78
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 2a30cf847dfd89a4f8be297815d8d880, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 71
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: aaa165e10b16b6f4ca102765a593bb78, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 72
+    parameter: 
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 9de0b9963b49abb4ea7807afa552385b, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
   pitchIncrease: 1.05
 --- !u!1 &7106440733413188949
 GameObject:

@@ -59,6 +59,7 @@ public class HelpButtonUI : MonoBehaviour
         // indicates what is the desired state of the button
         CustomDataValue customDataValue = selected ? CustomDataValue.OFF : CustomDataValue.ON;
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKHELP, new CustomData(CustomDataTag.OUTCOME, customDataValue));
+        AudioManager.instance.play(AudioEvent.CLICKUI);
 
         // must be called before cursor setting, otherwise cancels it
         BuildManager.instance.deselectTurretButton();

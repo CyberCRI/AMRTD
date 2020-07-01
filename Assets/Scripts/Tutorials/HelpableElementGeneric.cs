@@ -20,6 +20,7 @@ public class HelpableElementGeneric : MonoBehaviour
             RedMetricsManager.instance.sendEvent(
                 TrackingEvent.CLICKHELPON,
                 CustomData.getGameObjectContext(this).add(CustomDataTag.ELEMENT, objectCode));
+            AudioManager.instance.play(AudioEvent.CLICKHELPON);
 
             string code = "GAME." + objectCode + ".HELP";
 #if VERBOSEDEBUG

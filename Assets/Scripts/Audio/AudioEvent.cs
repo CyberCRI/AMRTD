@@ -97,13 +97,17 @@ public enum AudioEvent
 
     // help functionality
     CLICKHELP = 44, //[x]                 // parameter: OUTCOME: ON or OFF depending on desired state of button
+    */
     CLICKHELPON = 45, //[x]               // parameters: GAMEOBJECT: GameObject clicked on, ELEMENT: code string used for translation purposes
+    /*
 
     // chatbot
+    */
     CLICKCHATBOT = 46, //[x]              // parameter: OUTCOME: ON or OFF depending on desired state of button
-    CHATBOTGETMESSAGE = 47, //[x]
-    CHATBOTSENDMESSAGE = 48, //[x]
-    CLICKCHATURL = 49, //[x]
+    CHATBOTGETMESSAGE = 47, //[ ]
+    CHATBOTSENDMESSAGE = 48, //[ ]
+    CLICKCHATURL = 49, //[ ]
+    /*
     CLICKCHATBUTTON = 50, //[x]
 
     // fast forward functionality
@@ -117,11 +121,13 @@ public enum AudioEvent
     CLICKTILE = 54, //[x]          // parameter: GAMEOBJECT that specifies tile's GameObject name; parameter: HELPMODE: true if Help button was active
 
     // towers
+    */
     CLICKTOWER = 55, //[x]         // parameters: GAMEOBJECT: tower's GameObject name
     CLICKTOWERSELL = 56, //[x]     // parameters: GAMEOBJECT: tower's GameObject name; COST: funds earned back from selling
     CLICKTOWERUPGRADE = 57, //[x]  // parameters: GAMEOBJECT: tower's GameObject name; COST: cost of upgrade
     CLICKTOWERBUTTON = 58, //[x]   // parameters: ELEMENT: tower's Blueprint name; OUTCOME: final state of button ON or OFF; COST: cost of construction
     CLICKTOWERBUILD = 59, //[x]    // parameters: ELEMENT/GAMEOBJECT: tower's Blueprint or tower built depending on outcome; OUTCOME: SUCCESS/FAILURE (if not enough funds)
+    /*
 
     // pathogens - pathogen context: life points, resistance level, pathogen name, position on map
     */
@@ -129,7 +135,7 @@ public enum AudioEvent
     PATHOGENKILLEDBYWBC = 61, //[x]  // a pathogen was swallowed by a white blood cell; parameter: VIRUS or BACTERIUM: pathogen - either an Enemy (bacterium) or a Virus
     PATHOGENKILLEDBYAB = 62, //[x]   // killed pathogen with antibiotics; parameter: GAMEOBJECT: pathogen
     PATHOGENDIVIDES = 63, //[x]      // controlled by VERBOSEMETRICSLVL2 to avoid overburden of RedMetrics.io
-    PATHOGENSPAWNS = 64, //[x]       // controlled by VERBOSEMETRICSLVL2 to avoid overburden of RedMetrics.io
+    PATHOGENSPAWNS = 64, //[ ]       // controlled by VERBOSEMETRICSLVL2 to avoid overburden of RedMetrics.io
     PATHOGENINBLOOD = 65, //[x]
     /*
 
@@ -140,13 +146,14 @@ public enum AudioEvent
     COMPLETEGAME = 68, //[x]       // successfully finished the game; parameters: TIMESINCEGAMELOADED, TIMEGAMEPLAYEDNOPAUSE, TIMESINCELEVELLOADED
     NEWFURTHEST = 69, //[x]        // reached a new furthest level; parameter: GAMELEVEL: level completed
     NEWOWNRECORD = 70, //[ ]       // beat own best completion time on a level - Feature not developed yet
-
+*/
     TUTORIALIMAGE = 71, //[x]      // a hint message was displayed in front of a grey background; parameters: MESSAGE: the text, ELEMENT: the image
     TUTORIALFOCUSON = 72, //[x]    // a tutorial message was displayed with focus arrow and mask; parameters: MESSAGE: the text, GAMEOBJECT: the GameObject the system focuses on
-*/
+
     // events specific to audio
-    PATHOGENHITBYBULLET = 73, //[ ]
-    PATHOGENHITBYBLAST = 74, //[ ]
-    PATHOGENHITBYLASER = 75, //[ ]
-    PATHOGENDEFLECTS = 76, //[ ]
+    PATHOGENHITBYBULLET = 73, //[x]
+    PATHOGENHITBYBLAST = 74, //[x]
+    PATHOGENHITBYLASER = 75, //[x]
+    PATHOGENDEFLECTS = 76, //[x]
+    CLICKUI = 78, //[x]
 }

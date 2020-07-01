@@ -73,6 +73,7 @@ public class PauseUI : MonoBehaviour
 
             CustomDataValue customDataValue = m_Toggle.isOn ? CustomDataValue.ON : CustomDataValue.OFF;
             RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKPAUSE, new CustomData(CustomDataTag.OUTCOME, customDataValue));
+            AudioManager.instance.play(AudioEvent.CLICKUI);
 
             GameManager.instance.setPause(m_Toggle.isOn, "PauseUI");
         }

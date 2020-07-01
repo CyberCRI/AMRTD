@@ -30,6 +30,7 @@ public class InChatButton : LinkOpener
         else
         {
             RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCHATURL, new CustomData(CustomDataTag.ELEMENT, url));
+            AudioManager.instance.play(AudioEvent.CLICKCHATURL);
 
             // TODO connect to LinkOpener
             #if VERBOSEDEBUG

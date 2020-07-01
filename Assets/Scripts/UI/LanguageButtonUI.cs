@@ -24,6 +24,7 @@ public class LanguageButtonUI : MonoBehaviour
     public void onClick()
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKLANGUAGE, new CustomData(CustomDataTag.OPTION, target.ToString()));
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         manager.selectButton(this, target);
     }
 

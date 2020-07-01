@@ -125,6 +125,7 @@ public class BuildManager : MonoBehaviour
 
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUTTON,
             new CustomData(CustomDataTag.ELEMENT, turret.prefab).add(CustomDataTag.OUTCOME, outcome).add(CustomDataTag.COST, turret.cost));
+        AudioManager.instance.play(AudioEvent.CLICKTOWERBUTTON);
 
         turretToBuild = (null == button) || button.isOn ? turret : null;
         setBuildCursor(null != turretToBuild);

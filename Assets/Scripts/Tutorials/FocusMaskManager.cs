@@ -368,6 +368,7 @@ public class FocusMaskManager : MonoBehaviour
         Debug.Log(this.GetType() + " clickNext");
 #endif
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKNEXT);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
         click();
     }
 

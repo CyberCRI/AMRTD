@@ -110,6 +110,7 @@ public class Node : MonoBehaviour
             if (turretGO != null)
             {
                 RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWER, CustomData.getGameObjectContext(turretGO));
+                AudioManager.instance.play(AudioEvent.CLICKTOWER);
                 buildManager.selectNode(this);
                 unhover();
             }
@@ -126,6 +127,7 @@ public class Node : MonoBehaviour
                     {
                         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD,
                             new CustomData(CustomDataTag.ELEMENT, blueprint.prefab).add(CustomDataTag.OUTCOME, CustomDataValue.FAILURE));
+                        AudioManager.instance.play(AudioEvent.CLICKTOWERBUILD, "failure");
                         GameObject effect = Instantiate(
                             cantPayBuildEffect,
                             this.transform.position,
@@ -236,6 +238,7 @@ public class Node : MonoBehaviour
 
             RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD,
                 CustomData.getGameObjectContext(turretGO).add(CustomDataTag.OUTCOME, CustomDataValue.SUCCESS));
+            AudioManager.instance.play(AudioEvent.CLICKTOWERBUILD, "success");
 
             turret = turretGO.GetComponent<Turret>();
             turret.node = this;

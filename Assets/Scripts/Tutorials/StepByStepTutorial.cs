@@ -200,11 +200,13 @@ public abstract class StepByStepTutorial : MonoBehaviour
                             {
                                 RedMetricsManager.instance.sendEvent(TrackingEvent.TUTORIALFOCUSON,
                                     CustomData.getGameObjectContext(go).add(CustomDataTag.MESSAGE, textHint));
+                                AudioManager.instance.play(AudioEvent.TUTORIALFOCUSON);
                             }
                             else
                             {
                                 RedMetricsManager.instance.sendEvent(TrackingEvent.TUTORIALIMAGE,
                                     new CustomData(CustomDataTag.ELEMENT, go).add(CustomDataTag.MESSAGE, textHint));
+                                AudioManager.instance.play(AudioEvent.TUTORIALIMAGE);
                             }
 
                             // Debug.Log(this.GetType() + " prepared step=" + _step);
