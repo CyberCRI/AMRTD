@@ -1540,7 +1540,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
   - audioEvent: 46
-    parameter: 
+    parameter: on
     source: {fileID: 0}
     clip: {fileID: 8300000, guid: bbbd14461e5b28842abf70d155c9de05, type: 3}
     loop: 0
@@ -1589,7 +1589,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
   - audioEvent: 58
-    parameter: 
+    parameter: on
     source: {fileID: 0}
     clip: {fileID: 8300000, guid: 235d579f9cc57054b84291a884afbb11, type: 3}
     loop: 0
@@ -1627,6 +1627,20 @@ MonoBehaviour:
     parameter: 
     source: {fileID: 0}
     clip: {fileID: 8300000, guid: 9de0b9963b49abb4ea7807afa552385b, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 46
+    parameter: off
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: bf085999bfb5e554599c21ad6840952a, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - audioEvent: 58
+    parameter: off
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 88739a6af3ffc7b48893db9b1a69b62a, type: 3}
     loop: 0
     volume: 1
     pitch: 1

@@ -157,9 +157,15 @@ public class GameUI : MonoBehaviour
         Debug.Log("pressChatToggle");
         #endif
         // indicates what is the desired state of the button
-        CustomDataValue customDataValue = chatToggle.isOn ? CustomDataValue.ON : CustomDataValue.OFF;
+        CustomDataValue customDataValue = CustomDataValue.OFF;
+        string soundParameter = "off";
+        if (chatToggle.isOn)
+        {
+            customDataValue = CustomDataValue.ON;
+            soundParameter = "on";
+        }
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCHATBOT, new CustomData(CustomDataTag.OUTCOME, customDataValue));
-        AudioManager.instance.play(AudioEvent.CLICKCHATBOT);
+        AudioManager.instance.play(AudioEvent.CLICKCHATBOT, soundParameter);
         GameManager.instance.setPause(chatToggle.isOn, "ChatbotUI");
         chatbotInteractor.SetActive(chatToggle.isOn);
     }

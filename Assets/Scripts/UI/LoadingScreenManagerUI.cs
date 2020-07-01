@@ -1,5 +1,5 @@
 ﻿#define VERBOSEDEBUG
-#define DEVMODE
+//#define QUICKTEST
 
 using System.Collections;
 using System.Collections.Generic;
@@ -36,7 +36,7 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
 
     public void startFakeLoad()
     {
-#if DEVMODE
+#if QUICKTEST
         SceneFader.instance.startFadeIn();
     }
 

@@ -410,11 +410,13 @@ public class ChatbotInteractionManager : MonoBehaviour
             #else
             RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTSENDMESSAGE);
             #endif
+            AudioManager.instance.play(AudioEvent.CHATBOTSENDMESSAGE);
         }
         else
         {
             string messageRepresentation = getMessageRepresentation(text, inputURLButtonCount, inputReplyButtonCount, urlButtons, replyButtons);
             RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTGETMESSAGE, new CustomData(CustomDataTag.MESSAGE, messageRepresentation));
+            AudioManager.instance.play(AudioEvent.CHATBOTGETMESSAGE);
         }
 
         #if LOGINPUTS || VERBOSEDEBUG
