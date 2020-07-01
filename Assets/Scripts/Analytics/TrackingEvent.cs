@@ -135,4 +135,6 @@ public enum TrackingEvent
     TUTORIALIMAGE, //[x]      // a hint message was displayed in front of a grey background; parameters: MESSAGE: the text, ELEMENT: the image
     TUTORIALFOCUSON, //[x]    // a tutorial message was displayed with focus arrow and mask; parameters: MESSAGE: the text, GAMEOBJECT: the GameObject the system focuses on
 
+    SETVOLUMESOUND, //[ ]     // parameter: float VALUE
+    SETVOLUMEMUSIC, //[ ]     // parameter: float VALUE
 }

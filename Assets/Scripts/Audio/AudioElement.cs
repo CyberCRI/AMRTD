@@ -23,6 +23,7 @@ public class AudioElement
     public float volume = 1f;
     [Range(.1f, 3f)]
     public float pitch = 1f;
+    public bool isMusic = false;
 
     public AudioElement(
         AudioEvent _audioEvent,
@@ -31,7 +32,8 @@ public class AudioElement
         AudioClip _clip = null,
         bool _loop = false,
         float _volume = 1f,
-        float _pitch = 1f
+        float _pitch = 1f,
+        bool _isMusic = false
     )
     {
         audioEvent = _audioEvent;
@@ -41,6 +43,7 @@ public class AudioElement
         loop = _loop;
         volume = _volume;
         pitch = _pitch;
+        isMusic = _isMusic;
     }
 
     public string getDebugString()
@@ -57,6 +60,7 @@ public class AudioElement
         + ", loop: " + loop
         + ", volume: " + volume
         + ", pitch: " + pitch
+        + ", isMusic: " + isMusic
         + "]";
     }
 

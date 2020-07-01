@@ -1,4 +1,4 @@
-#define VERBOSEDEBUG
+//#define VERBOSEDEBUG
 //#define DEVMODE
 
 using System;
@@ -9,9 +9,16 @@ public class AudioEmitter : MonoBehaviour
 {
     [SerializeField]
     protected AudioElement[] audioElements = null;
+    
+    public static AudioMixerGroup soundMixerGroup = null;
+    public static AudioMixerGroup musicMixerGroup = null;
 
-    protected virtual void Awake()
+    protected void Start()
     {
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " Start");
+        #endif
+
         for (int i = 0; i < audioElements.Length; i++)
         {
             this.audioElements[i].source = this.gameObject.AddComponent<AudioSource>();
@@ -20,6 +27,7 @@ public class AudioEmitter : MonoBehaviour
             this.audioElements[i].source.volume = audioElements[i].volume;
             this.audioElements[i].source.pitch = audioElements[i].pitch;
             this.audioElements[i].source.playOnAwake = false;
+            this.audioElements[i].source.outputAudioMixerGroup = audioElements[i].isMusic ? AudioEmitter.musicMixerGroup : AudioEmitter.soundMixerGroup ;
         }
     }
 
