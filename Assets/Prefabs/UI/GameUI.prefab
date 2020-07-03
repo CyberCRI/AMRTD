@@ -3898,8 +3898,8 @@ MonoBehaviour:
   waveCountdownText: {fileID: 1283043318055578876}
   levelDurationCountdownText: {fileID: 5863566177995359474}
   nodeUI: {fileID: 1283043318869310889}
-  gameOverUI: {fileID: 1283043319565029762}
-  completeLevelUI: {fileID: 1283043319146324922}
+  gameOverUI: {fileID: 8743169542223197469}
+  completeLevelUI: {fileID: 4314885900984555069}
   menuUI: {fileID: 7967964011004369593}
   pauseUI: {fileID: 1283043319592278572}
   retryUI: {fileID: 1146464556269591845}
@@ -3918,7 +3918,7 @@ MonoBehaviour:
   canvas: {fileID: 1283043318537544050}
   chatToggle: {fileID: 3840658755946374656}
   chatbotInteractor: {fileID: 5425071909495946639}
-  levelIntroUI: {fileID: 8399885709962184480}
+  levelIntroUI: {fileID: 0}
 --- !u!1 &1283043318958960587
 GameObject:
   m_ObjectHideFlags: 0
@@ -8689,7 +8689,7 @@ GameObject:
   - component: {fileID: 534369988803000724}
   - component: {fileID: 5045048679977634952}
   m_Layer: 5
-  m_Name: CompleteLevel_old
+  m_Name: CompleteLevelDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14005,7 +14005,7 @@ GameObject:
   - component: {fileID: 2663421519910390509}
   - component: {fileID: 1960103621716976445}
   m_Layer: 5
-  m_Name: GameOver_old
+  m_Name: GameOverDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

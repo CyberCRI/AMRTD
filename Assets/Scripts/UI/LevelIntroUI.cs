@@ -1,13 +1,13 @@
-#define VERBOSEDEBUG
+//#define VERBOSEDEBUG
 
 using UnityEngine;
 
 public class LevelIntroUI : MonoBehaviour
 {
-    void Awake()
+    void Start()
     {
         #if VERBOSEDEBUG
-        Debug.Log(this.GetType() + " Awake");
+        Debug.Log(this.GetType() + " Start");
         #endif
 
         GameManager.instance.setPause(true, GameManager.levelIntroUIPauserKey);

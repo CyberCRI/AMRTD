@@ -25,7 +25,7 @@ public class GameUILinkerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         CompleteLevel.instance.linkUI(completeLevelUI);
+        CompleteLevel.instance.linkUI(completeLevelUI);
         GameManager.instance.linkUI(
             levelDurationCountdownText
             ,gameOverUI

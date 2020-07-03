@@ -1,10 +1,12 @@
-﻿#define VERBOSEDEBUG
+﻿//#define VERBOSEDEBUG
 #define DEVMODE
 //#define LIFEPOINTSMODE
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using System.Linq;
 
 // the value "true" means that pause was set to true
 [System.Serializable]
@@ -93,6 +95,8 @@ public class GameManager : MonoBehaviour
                     Destroy(levelDurationCountdownText.gameObject);
                 }
             }
+
+            SceneManager.sceneLoaded += onSceneLoaded;
         }
     }
 
@@ -173,6 +177,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void onSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " onSceneLoaded: " + scene.name + " with mode " + mode);
+        #endif
+
+        pausers[completeLevelPauserKey] = false;
+        pausers[gameOverPauserKey] = false;
+        pausers[menuUIPauserKey] = false;
+        pausers[retryUIPauserKey] = false;
+    }
+
     public bool isObjectiveDefenseMode()
     {
         return gameMode == GAMEMODE.DEFEND_CAPTURABLE_OBJECTIVES;
@@ -233,9 +249,26 @@ public class GameManager : MonoBehaviour
 
     private void resetPausers()
     {
-        foreach(string _key in pausers.Keys)
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " resetPausers");
+        #endif
+
+        bool isPausedBefore = isPaused();
+        string[] keys = pausers.Keys.ToArray();
+        for (int i = 0; i < keys.Length; i++)
         {
-            pausers[_key] = false;
+            pausers[keys[i]] = false;
+        }
+        managePauseAftermath(isPausedBefore);
+    }
+
+    private void managePauseAftermath(bool isPausedBefore)
+    {
+        bool isPausedAfter = isAskedToPause();
+        if (isPausedBefore != isPausedAfter)
+        {
+            Time.timeScale = isPausedAfter ? 0f : 1f;
+            pauseSet.Invoke(isPausedAfter);
         }
     }
 
@@ -247,30 +280,14 @@ public class GameManager : MonoBehaviour
     public void setPause(bool setToPause, string caller) //, bool overrideAll = false)
     {
         #if VERBOSEDEBUG
-        Debug.Log("setPause(" + setToPause + ", " + caller + ")"); //", " + overrideAll + ")");
+        Debug.Log(this.GetType() + " setPause(" + setToPause + ", " + caller + ")"); //", " + overrideAll + ")");
         #endif
 
-        /*
-        if (overrideAll && !setToPause)
-        {
-            foreach(string _key in pausers.Keys)
-            {
-                pausers[_key] = setToPause;
-            }
-        }
-        else
-        {
-        */
         if (pausers[caller] != setToPause)
         {
             bool isPausedBefore = isPaused();
             pausers[caller] = setToPause;
-            bool isPausedAfter = isAskedToPause();
-            if (isPausedBefore != isPausedAfter)
-            {
-                Time.timeScale = isPausedAfter ? 0f : 1f;
-                pauseSet.Invoke(isPausedAfter);
-            }
+            managePauseAftermath(isPausedBefore);
         }
     }
 

@@ -20,7 +20,6 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
     private float currentLoadTime = 0f;
     private float updateBarTime = .7f;
     private float variation = 0.2f;
-    private bool pauseStateBefore = false;
 
     void Awake()
     {
@@ -48,7 +47,6 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
         root.SetActive(true);
 
         // pause the game
-        pauseStateBefore = GameManager.instance.isPaused();
         GameManager.instance.setPause(true, GameManager.loadingScreenManagerUIPauserKey);
         #if VERBOSEDEBUG
         Debug.Log("LoadingScreenManagerUI startFakeLoad setPause");
@@ -93,7 +91,7 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
         }
         //*/
         //yield return new WaitForSecondsRealtime(maxLoadTime);
-        GameManager.instance.setPause(pauseStateBefore, GameManager.loadingScreenManagerUIPauserKey);
+        GameManager.instance.setPause(false, GameManager.loadingScreenManagerUIPauserKey);
         SceneFader.instance.startFadeIn();
         root.SetActive(false);
         currentLoadTime = 0f;
