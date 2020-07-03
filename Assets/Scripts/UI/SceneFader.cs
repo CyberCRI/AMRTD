@@ -16,11 +16,17 @@ public class SceneFader : MonoBehaviour
     public const float duration = 1f;
 
     private IEnumerator coroutine = null;
-    public delegate void FadeInEndCallback();
-    private FadeInEndCallback fadeInEndCallback;
-    public void setFadeInEndCallback(FadeInEndCallback _fadeInEndCallback)
+
+    public delegate void FadeEndCallback();
+    private FadeEndCallback fadeInEndCallback;
+    public void setFadeInEndCallback(FadeEndCallback _fadeInEndCallback)
     {
         fadeInEndCallback = _fadeInEndCallback;
+    }
+    private FadeEndCallback fadeOutEndCallback;
+    public void setFadeOutEndCallback(FadeEndCallback _fadeOutEndCallback)
+    {
+        fadeOutEndCallback = _fadeOutEndCallback;
     }
 
     /// <summary>
@@ -101,7 +107,7 @@ public class SceneFader : MonoBehaviour
 
     }
 
-    public void fadeTo(string scene)
+    public void fadeTo(string scene = "")
     {
         coroutine = fadeOut(scene);
         StartCoroutine(coroutine);
@@ -123,7 +129,7 @@ public class SceneFader : MonoBehaviour
         float t = duration;
         while (t > 0f)
         {
-            t -= Time.deltaTime;
+            t -= Time.unscaledDeltaTime;
             float a = fadeCurve.Evaluate(t);
             image.color = new Color(0f, 0f, 0f, a);
             yield return 0;
@@ -145,7 +151,7 @@ public class SceneFader : MonoBehaviour
         float t = duration;
         while (t > 0f)
         {
-            t -= Time.deltaTime;
+            t -= Time.unscaledDeltaTime;
             float a = fadeCurve.Evaluate(duration - t);
             image.color = new Color(0f, 0f, 0f, a);
             yield return 0;
@@ -154,7 +160,23 @@ public class SceneFader : MonoBehaviour
         // the call to play stops the music
         //AudioManager.instance.stopBackgroundMusic();
 
-        SceneManager.LoadScene(scene);
+        if (string.IsNullOrEmpty(scene))
+        {
+            if (null != fadeOutEndCallback)
+            {
+                #if VERBOSEDEBUG
+                Debug.Log(this.GetType() + " fadeOut (null != fadeOutEndCallback)");
+                #endif  
+
+                fadeOutEndCallback();
+                fadeOutEndCallback = null;
+            }
+            startFadeIn();
+        }
+        else
+        {
+            SceneManager.LoadScene(scene);   
+        }
     }
 
     public void goToMainMenu()

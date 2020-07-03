@@ -16,6 +16,8 @@ public class GameUI : MonoBehaviour
     private Toggle chatToggle = null;
     [SerializeField]
     private GameObject chatbotInteractor = null;
+    [SerializeField]
+    private GameObject levelIntroUI = null;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -32,21 +34,30 @@ public class GameUI : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        if (null != levelIntroUI)
+        {
+            levelIntroUI.SetActive(true);
+        }
+    }
+
     private void goToMainMenu()
     {
-        GameManager.instance.setPause(false, "PauseUI");
+        GameManager.instance.setPause(false, GameManager.pauseUIPauserKey);
         SceneFader.instance.goToMainMenu();
     }
 
     private void retry()
     {
-        GameManager.instance.setPause(false, "PauseUI");
+        GameManager.instance.setPause(false, GameManager.pauseUIPauserKey);
         SceneFader.instance.retry();
     }
 
     // called from game screen, to open the pause screen
     public void pressPauseButton()
     {
+        Debug.LogError(this.GetType() + " DEPRECATED CALL");
 #if VERBOSEDEBUG
         Debug.Log("GameUI pressPauseButton");
 #endif
@@ -62,7 +73,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRY);
         AudioManager.instance.play(AudioEvent.CLICKUI);
-        GameManager.instance.setPause(true, "RetryUI");
+        GameManager.instance.setPause(true, GameManager.retryUIPauserKey);
         RetryUI.instance.setActive(true);
     }
 
@@ -71,7 +82,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRYRETRY, CustomData.getLevelEndContext());
         AudioManager.instance.play(AudioEvent.CLICKUI);
-        GameManager.instance.setPause(false, "RetryUI");
+        GameManager.instance.setPause(false, GameManager.retryUIPauserKey);
         retry();
     }
 
@@ -80,7 +91,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKRETRYRESUME);
         AudioManager.instance.play(AudioEvent.CLICKUI);
-        GameManager.instance.setPause(false, "RetryUI");
+        GameManager.instance.setPause(false, GameManager.retryUIPauserKey);
         RetryUI.instance.setActive(false);
     }
 
@@ -89,7 +100,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKMENU);
         AudioManager.instance.play(AudioEvent.CLICKUI);
-        GameManager.instance.setPause(true, "MenuUI");
+        GameManager.instance.setPause(true, GameManager.menuUIPauserKey);
         MenuUI.instance.setActive(true);
     }
 
@@ -98,7 +109,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKMENUMENU);
         AudioManager.instance.play(AudioEvent.CLICKUI);
-        GameManager.instance.setPause(false, "MenuUI");
+        GameManager.instance.setPause(false, GameManager.menuUIPauserKey);
         goToMainMenu();
     }
 
@@ -107,7 +118,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKMENURESUME);
         AudioManager.instance.play(AudioEvent.CLICKUI);
-        GameManager.instance.setPause(false, "MenuUI");
+        GameManager.instance.setPause(false, GameManager.menuUIPauserKey);
         MenuUI.instance.setActive(false);
     }
 
@@ -116,6 +127,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCOMPLETECOMPLETE);
         AudioManager.instance.play(AudioEvent.CLICKUI);
+        GameManager.instance.setPause(false, GameManager.completeLevelPauserKey);
         CompleteLevel.instance.pressContinue();
     }
 
@@ -124,6 +136,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCOMPLETEMENU);
         AudioManager.instance.play(AudioEvent.CLICKUI);
+        GameManager.instance.setPause(false, GameManager.completeLevelPauserKey);
         goToMainMenu();
     }
 
@@ -132,6 +145,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCOMPLETERETRY);
         AudioManager.instance.play(AudioEvent.CLICKUI);
+        GameManager.instance.setPause(false, GameManager.completeLevelPauserKey);
         retry();
     }
 
@@ -140,6 +154,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKGAMEOVERRETRY);
         AudioManager.instance.play(AudioEvent.CLICKUI);
+        GameManager.instance.setPause(false, GameManager.gameOverPauserKey);
         retry();
     }
 
@@ -148,6 +163,7 @@ public class GameUI : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKGAMEOVERMENU);
         AudioManager.instance.play(AudioEvent.CLICKUI);
+        GameManager.instance.setPause(false, GameManager.gameOverPauserKey);
         goToMainMenu();
     }
 
@@ -166,8 +182,17 @@ public class GameUI : MonoBehaviour
         }
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCHATBOT, new CustomData(CustomDataTag.OUTCOME, customDataValue));
         AudioManager.instance.play(AudioEvent.CLICKCHATBOT, soundParameter);
-        GameManager.instance.setPause(chatToggle.isOn, "ChatbotUI");
+        GameManager.instance.setPause(chatToggle.isOn, GameManager.chatbotUIPauserKey);
         chatbotInteractor.SetActive(chatToggle.isOn);
+    }
+
+    // called from game start intro screen, to start playing
+    public void pressStartButton(GameObject introScreen)
+    {
+        // unpause and hide
+        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKINTROSTART);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
+        introScreen.SetActive(false);
     }
 
     public void linkCommon(Camera camera)

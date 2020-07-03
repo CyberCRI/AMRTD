@@ -49,7 +49,7 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
 
         // pause the game
         pauseStateBefore = GameManager.instance.isPaused();
-        GameManager.instance.setPause(true, "LoadingScreenManagerUI");
+        GameManager.instance.setPause(true, GameManager.loadingScreenManagerUIPauserKey);
         #if VERBOSEDEBUG
         Debug.Log("LoadingScreenManagerUI startFakeLoad setPause");
         #endif
@@ -93,7 +93,7 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
         }
         //*/
         //yield return new WaitForSecondsRealtime(maxLoadTime);
-        GameManager.instance.setPause(pauseStateBefore, "LoadingScreenManagerUI");
+        GameManager.instance.setPause(pauseStateBefore, GameManager.loadingScreenManagerUIPauserKey);
         SceneFader.instance.startFadeIn();
         root.SetActive(false);
         currentLoadTime = 0f;

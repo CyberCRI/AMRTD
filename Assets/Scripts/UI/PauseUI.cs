@@ -75,7 +75,7 @@ public class PauseUI : MonoBehaviour
             RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKPAUSE, new CustomData(CustomDataTag.OUTCOME, customDataValue));
             AudioManager.instance.play(AudioEvent.CLICKUI);
 
-            GameManager.instance.setPause(m_Toggle.isOn, "PauseUI");
+            GameManager.instance.setPause(m_Toggle.isOn, GameManager.pauseUIPauserKey);
         }
     }
 }

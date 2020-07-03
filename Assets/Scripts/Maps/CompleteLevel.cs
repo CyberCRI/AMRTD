@@ -86,6 +86,7 @@ public class CompleteLevel : MonoBehaviour
         RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, CustomData.getLevelEndContext());
         AudioManager.instance.play(AudioEvent.COMPLETELEVEL);
         
+        GameManager.instance.setPause(true, GameManager.completeLevelPauserKey);
         GameConfiguration.instance.reachedLevel(nextLevelIndex, nextLevelName);
 
         // TODO assumes linear unlocking of levels

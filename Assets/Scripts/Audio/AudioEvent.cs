@@ -160,4 +160,6 @@ public enum AudioEvent
 
     SETVOLUMESOUND = 79, //[ ]     // parameter: float VALUE
     SETVOLUMEMUSIC = 80, //[ ]     // parameter: float VALUE
+
+    CLICKINTROSTART = 81, //[ ]
 }

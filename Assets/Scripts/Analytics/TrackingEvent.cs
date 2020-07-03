@@ -137,4 +137,6 @@ public enum TrackingEvent
 
     SETVOLUMESOUND, //[ ]     // parameter: float VALUE
     SETVOLUMEMUSIC, //[ ]     // parameter: float VALUE
+
+    CLICKINTROSTART, //[ ]
 }

@@ -1,4 +1,4 @@
-﻿//#define VERBOSEDEBUG
+﻿#define VERBOSEDEBUG
 //#define DEVMODE
 using UnityEngine;
 using UnityEngine.UI;
@@ -167,7 +167,7 @@ public class FocusMaskManager : MonoBehaviour
         )
     {
 #if VERBOSEDEBUG
-        Debug.Log("focusOn3");
+        Debug.Log("focusOn3 GO " + go.name);
 #endif
         // Debug.Log(this.GetType() + " focusOn(GameObject go, Callback callback,...)");
         focusOn(
@@ -192,7 +192,7 @@ public class FocusMaskManager : MonoBehaviour
         )
     {
 #if VERBOSEDEBUG
-        Debug.Log("focusOn4");
+        Debug.Log("focusOn4 GO " + go.name);
         // Debug.Log(this.GetType() + " focusOn(GameObject go, Vector3 manualScale,...) - will compute GO position");
         // Debug.Log(this.GetType() + " GO " + go.name + " position " + go.transform.position);
         // Debug.Log(this.GetType() + " GO " + go.name + " localPosition " + go.transform.localPosition);
@@ -359,7 +359,7 @@ public class FocusMaskManager : MonoBehaviour
         _callback = null;
         _advisorAndBubbleSystem.reset();
 
-        GameManager.instance.setPause(keepDisplayed, "FocusMaskManager");
+        GameManager.instance.setPause(keepDisplayed, GameManager.focusMaskManagerPauserKey);
     }
 
     public void clickNext()
