@@ -49,14 +49,24 @@ public class AudioManager : AudioEmitter
 
     public void onPointerUp(string sliderID)
     {
-        float sliderValue = (sliderID == soundGroupKey) ? soundSlider.value : musicSlider.value;
-        Debug.Log("POINTER UP! SLIDER " + sliderID + ", value=" + sliderValue);
+        float sliderValue = soundSlider.value;
+        TrackingEvent tEvent = TrackingEvent.SETVOLUMESOUND;
+        AudioEvent aEvent = AudioEvent.SETVOLUMESOUND;
+        if (sliderID == musicGroupKey)
+        {
+            sliderValue = musicSlider.value;
+            tEvent = TrackingEvent.SETVOLUMEMUSIC;
+            aEvent = AudioEvent.SETVOLUMEMUSIC;
+        }
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " onPointerUp slider " + sliderID + ", value=" + sliderValue);
+        #endif
+        RedMetricsManager.instance.sendEvent(tEvent, new CustomData(CustomDataTag.VALUE, sliderValue.ToString()));
+        play(aEvent);
     }
 
-    public void updateSoundVolume(float input)
+    private void debugMixerVariables()
     {
-        mainMixer.SetFloat(soundvolumeKey, input);
-
         string mainMixerDebugString = mainMixer == null ? "null" : mainMixer.ToString();
         string soundMixerGroupDebugString = soundMixerGroup == null ? "null" : soundMixerGroup.ToString();
         string musicMixerGroupDebugString = musicMixerGroup == null ? "null" : musicMixerGroup.ToString();
@@ -70,9 +80,22 @@ public class AudioManager : AudioEmitter
         );
     }
 
+    public void updateSoundVolume(float input)
+    {
+        mainMixer.SetFloat(soundvolumeKey, input);
+
+        #if VERBOSEDEBUG
+        debugMixerVariables();
+        #endif
+    }
+
     public void updateMusicVolume(float input)
     {
         mainMixer.SetFloat(musicvolumeKey, input);
+
+        #if VERBOSEDEBUG
+        debugMixerVariables();
+        #endif
     }
 
     public void stopBackgroundMusic()

@@ -150,10 +150,14 @@ public enum AudioEvent
     TUTORIALIMAGE = 71, //[x]      // a hint message was displayed in front of a grey background; parameters: MESSAGE: the text, ELEMENT: the image
     TUTORIALFOCUSON = 72, //[x]    // a tutorial message was displayed with focus arrow and mask; parameters: MESSAGE: the text, GAMEOBJECT: the GameObject the system focuses on
 
-    // events specific to audio
+    // events specific to audio //////////////////////////////////////////
     PATHOGENHITBYBULLET = 73, //[x]
     PATHOGENHITBYBLAST = 74, //[x]
     PATHOGENHITBYLASER = 75, //[x]
     PATHOGENDEFLECTS = 76, //[x]
     CLICKUI = 78, //[x]
+    //////////////////////////////////////////////////////////////////////
+
+    SETVOLUMESOUND = 79, //[ ]     // parameter: float VALUE
+    SETVOLUMEMUSIC = 80, //[ ]     // parameter: float VALUE
 }

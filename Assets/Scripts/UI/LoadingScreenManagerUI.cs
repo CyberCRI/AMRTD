@@ -1,4 +1,4 @@
-﻿#define VERBOSEDEBUG
+﻿//#define VERBOSEDEBUG
 //#define QUICKTEST
 
 using System.Collections;
