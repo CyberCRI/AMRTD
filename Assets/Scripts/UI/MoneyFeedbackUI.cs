@@ -11,11 +11,18 @@ public class MoneyFeedbackUI : MonoBehaviour
     private Text moneyAmount = null;
     [SerializeField]
     private float lifetime = 1f;
+    [SerializeField]
+    private Color positiveColor = Color.green;
+    [SerializeField]
+    private Color zeroColor = Color.yellow;
+    [SerializeField]
+    private Color negativeColor = Color.red;
 
     public void setup(int amount, Transform parent, Vector2 screenPosition)
     {
         Debug.Log(this.GetType() + " setup(" + amount + ", " + parent.name + ", " + screenPosition + ")");
-        moneyAmount.text = amount.ToString("+#;-#") + "€";
+        moneyAmount.text = amount.ToString("+0;-#") + "€";
+        moneyAmount.color = (amount < 0) ? negativeColor : ((amount == 0) ? zeroColor : positiveColor);
         rectTransform.SetParent(parent);
         //rectTransform.anchoredPosition = screenPosition;
         rectTransform.position = screenPosition;

@@ -25,7 +25,7 @@ public class GameUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            playMoneyFeedback(20);
+            playMoneyFeedback(Random.Range(-3, 3));
         }
     }
 
