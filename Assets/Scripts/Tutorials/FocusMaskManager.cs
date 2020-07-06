@@ -225,9 +225,9 @@ public class FocusMaskManager : MonoBehaviour
 #if VERBOSEDEBUG
                 Debug.Log(this.GetType() + " isInterfaceObject");
 #endif
-                focusSystem.transform.SetParent(go.transform);
+                focusSystem.SetParent(go.transform);
                 focusSystem.anchoredPosition = Vector2.zero;
-                focusSystem.transform.SetParent(this.transform);
+                focusSystem.SetParent(this.transform);
 
                 complete(callback, advisorTextKey, showButton, action);
             }

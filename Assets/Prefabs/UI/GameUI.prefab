@@ -3919,6 +3919,8 @@ MonoBehaviour:
   chatToggle: {fileID: 3840658755946374656}
   chatbotInteractor: {fileID: 5425071909495946639}
   levelIntroUI: {fileID: 0}
+  moneyFeedback: {fileID: 2297353215183681553, guid: 999554fb276ad514ab0e0a707196b722,
+    type: 3}
 --- !u!1 &1283043318958960587
 GameObject:
   m_ObjectHideFlags: 0

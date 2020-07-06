@@ -18,6 +18,28 @@ public class GameUI : MonoBehaviour
     private GameObject chatbotInteractor = null;
     [SerializeField]
     private GameObject levelIntroUI = null;
+    [SerializeField]
+    private GameObject moneyFeedback = null;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            playMoneyFeedback(20);
+        }
+    }
+
+    public void playMoneyFeedback(int amount)
+    {
+        Debug.Log(this.GetType() + " playMoneyFeedback(" + amount + ")");
+
+        GameObject target = (GameObject)GameObject.Find("_Level2DivisionTutorialEnemy Variant(Clone)");
+        Vector3 screenPoint = Camera.main.WorldToScreenPoint(target.transform.position);
+        GameObject feedback = Instantiate(moneyFeedback);
+        //GameObject feedback = Instantiate(moneyFeedback, new Vector3(screenPoint.x, screenPoint.y, 0), Quaternion.identity, canvas.transform);
+        MoneyFeedbackUI mfui = feedback.GetComponent<MoneyFeedbackUI>();
+        mfui.setup(amount, canvas.transform, new Vector2(screenPoint.x, screenPoint.y));
+    }
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.

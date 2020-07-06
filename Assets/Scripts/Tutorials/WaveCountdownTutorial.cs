@@ -10,7 +10,7 @@ public class WaveCountdownTutorial : FakeStepByStepTutorial { }
 public class WaveCountdownTutorial : StepByStepTutorial
 {
     [SerializeField]
-    private GameObject target = null;
+    private GameObject toPointAt = null;
 
     private const string _textKeyPrefix = genericTextKeyPrefix + "WAVECOUNTDOWN.";
     protected override string textKeyPrefix
@@ -44,7 +44,7 @@ public class WaveCountdownTutorial : StepByStepTutorial
     new void Awake()
     {
         _steps = new TutorialStep[1] {
-                    new TutorialStep(target.name)
+                    new TutorialStep(toPointAt.name)
                 };
         base.Awake();
     }
