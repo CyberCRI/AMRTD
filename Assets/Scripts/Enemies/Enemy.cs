@@ -509,7 +509,7 @@ public class Enemy : MonoBehaviour
         isAlive = false;
         GameObject effect = Instantiate(deathEffect.gameObject, this.transform.position, Quaternion.identity);
         Destroy(effect.gameObject, CommonUtilities.getEffectMaxDuration(deathEffect));
-        PlayerStatistics.instance.money += reward;
+        PlayerStatistics.instance.addMoney(reward, this.gameObject);
         Destroy(this.gameObject);
     }
 

@@ -18,7 +18,9 @@ public class PlayerStatistics : MonoBehaviour
     [Header("Money")]
     [SerializeField]
     private int startMoney = 0;
-    public int money = 0;
+    [SerializeField]
+    private int _money = 0;
+    public int money { get { return _money; } }
 
     [Header("Lives: #pathogens that may escape")]
     public int lives = 0;
@@ -162,7 +164,7 @@ public class PlayerStatistics : MonoBehaviour
             Destroy(this);
         }
 
-        money = startMoney;
+        _money = startMoney;
         lives = startLives;
         resistancePoints = startResistancePoints;
         waves = 0;
@@ -190,7 +192,7 @@ public class PlayerStatistics : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSCURRENCY);
-            money += startMoney;
+            addMoney(startMoney, Vector2.zero); 
         }
 #endif
 
@@ -201,6 +203,32 @@ public class PlayerStatistics : MonoBehaviour
 #endif
     }
 #endif
+
+    public void addMoney(int amount, Vector2 screenPosition)
+    {
+        GameUI.instance.playMoneyFeedback(amount, screenPosition);
+        innerAddMoney(amount);
+    }
+
+    public void addMoney(int amount, GameObject source)
+    {
+        if (source != null)
+        {
+            GameUI.instance.playMoneyFeedback(amount, source);
+        }
+        else
+        {
+            Debug.LogWarning(this.GetType() + " addMoney null source GameObject");
+            GameUI.instance.playMoneyFeedback(amount, Vector2.zero);
+        }
+        innerAddMoney(amount);
+    }
+
+    public void innerAddMoney(int amount)
+    {
+        _money += amount;
+        MoneyUI.instance.udpateMoneyText(_money);
+    }
 
     // updates the turret resistance points using the given value
     //   also updates the resistance points displayed in the resistance bar by using a custom function

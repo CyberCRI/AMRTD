@@ -231,7 +231,7 @@ public class Node : MonoBehaviour
     {
         if (PlayerStatistics.instance.money >= blueprint.cost)
         {
-            PlayerStatistics.instance.money -= blueprint.cost;
+            PlayerStatistics.instance.addMoney(-blueprint.cost, this.gameObject);
 
             turretGO = Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
             turretGO.transform.localScale = Vector3.Scale(this.transform.parent.localScale, turretGO.transform.localScale);
@@ -266,7 +266,7 @@ public class Node : MonoBehaviour
     {
         if (canUpgradeTurret())
         {
-            PlayerStatistics.instance.money -= turretBlueprint.upgradeCost;
+            PlayerStatistics.instance.addMoney(-turretBlueprint.upgradeCost, this.gameObject);
 
             GameObject newTurretGO = Instantiate(turretBlueprint.upgradePrefab, this.transform.position, Quaternion.identity);
             newTurretGO.transform.localScale = Vector3.Scale(this.transform.parent.localScale, newTurretGO.transform.localScale);
@@ -304,7 +304,7 @@ public class Node : MonoBehaviour
     public void sellTurret()
     {
 #if SELLTURRETS
-        PlayerStatistics.instance.money += getSellCost();
+        PlayerStatistics.instance.addMoney(getSellCost(), this.gameObject);
 #endif
 
         removeTurret(REMOVETOWER.SOLD, turretGO);

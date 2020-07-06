@@ -247,7 +247,7 @@ public class Turret : Attacker
                 }
                 else
                 {
-                    PlayerStatistics.instance.money -= upkeepCost;
+                    PlayerStatistics.instance.addMoney(-upkeepCost, this.gameObject);
                     upkeepCountdown = upkeepPeriod;
                 }
             }

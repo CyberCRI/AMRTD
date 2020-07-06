@@ -3,12 +3,30 @@ using UnityEngine.UI;
 
 public class MoneyUI : MonoBehaviour
 {
+    public static MoneyUI instance = null;
+
     [SerializeField]
     private Text moneyText = null;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        moneyText.text = PlayerStatistics.instance.money.ToString() + "€";
+        if (null == instance)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    void Start()
+    {
+        udpateMoneyText(PlayerStatistics.instance.money);
+    }
+
+    public void udpateMoneyText(int amount)
+    {
+        moneyText.text = amount.ToString() + "€";
     }
 }

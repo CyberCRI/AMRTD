@@ -29,18 +29,6 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    public void playMoneyFeedback(int amount)
-    {
-        Debug.Log(this.GetType() + " playMoneyFeedback(" + amount + ")");
-
-        GameObject target = (GameObject)GameObject.Find("_Level2DivisionTutorialEnemy Variant(Clone)");
-        Vector3 screenPoint = Camera.main.WorldToScreenPoint(target.transform.position);
-        GameObject feedback = Instantiate(moneyFeedback);
-        //GameObject feedback = Instantiate(moneyFeedback, new Vector3(screenPoint.x, screenPoint.y, 0), Quaternion.identity, canvas.transform);
-        MoneyFeedbackUI mfui = feedback.GetComponent<MoneyFeedbackUI>();
-        mfui.setup(amount, canvas.transform, new Vector2(screenPoint.x, screenPoint.y));
-    }
-
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
@@ -215,6 +203,35 @@ public class GameUI : MonoBehaviour
         RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKINTROSTART);
         AudioManager.instance.play(AudioEvent.CLICKUI);
         introScreen.SetActive(false);
+    }
+
+    public void playMoneyFeedback(int amount, GameObject moneySource = null)
+    {
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " playMoneyFeedback(" + amount + ", go)");
+        #endif
+
+        if (null != moneySource)
+        {
+            Vector3 screenPoint = Camera.main.WorldToScreenPoint(moneySource.transform.position);
+            playMoneyFeedback(amount, new Vector2(screenPoint.x, screenPoint.y));
+        }
+        else
+        {
+            Debug.LogWarning(this.GetType() + " playMoneyFeedback moneySource == null");
+            playMoneyFeedback(amount, Vector2.zero);
+        }
+    }
+
+    public void playMoneyFeedback(int amount, Vector2 moneySourcePosition)
+    {
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " playMoneyFeedback(" + amount + ", " + moneySourcePosition + ")");
+        #endif
+
+        GameObject feedback = Instantiate(moneyFeedback);
+        MoneyFeedbackUI mfui = feedback.GetComponent<MoneyFeedbackUI>();
+        mfui.setup(amount, canvas.transform, moneySourcePosition);
     }
 
     public void linkCommon(Camera camera)

@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//#define VERBOSEDEBUG
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +22,10 @@ public class MoneyFeedbackUI : MonoBehaviour
 
     public void setup(int amount, Transform parent, Vector2 screenPosition)
     {
+        #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setup(" + amount + ", " + parent.name + ", " + screenPosition + ")");
+        #endif
+
         moneyAmount.text = amount.ToString("+0;-#") + "€";
         moneyAmount.color = (amount < 0) ? negativeColor : ((amount == 0) ? zeroColor : positiveColor);
         rectTransform.SetParent(parent);
