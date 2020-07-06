@@ -1,6 +1,8 @@
 ﻿//#define VERBOSEDEBUG
 //#define VERBOSEMETRICSLVL2
 //#define MUTATIONONDIVISION
+
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
@@ -527,6 +529,7 @@ public class Enemy : MonoBehaviour
             audioEmitter.play(AudioEvent.PATHOGENDIVIDES);
             #endif
 
+            int previousReward = reward;
             reward /= 2;
 
             // delete resistance effect before division
@@ -573,12 +576,28 @@ public class Enemy : MonoBehaviour
 #endif
                 enemy.enemyMovement.enabled = true;
                 enemyMovement.transferWobbleParametersTo(enemy.enemyMovement);
+
+                // worth display coroutine
+                StartCoroutine(displayDivisionWorthCoroutine(previousReward, enemy));
             }
         }
         else
         {
             Debug.Log("Tried to divide while wave was unset.");
         }
+    }
+
+    private IEnumerator displayDivisionWorthCoroutine(int previousReward, Enemy newCell)
+    {
+        GameUI.instance.displayWorth(previousReward, this.transform, newCell.transform);
+        yield return new WaitForSeconds(.5f);
+        displayWorth();
+        newCell.displayWorth();
+    }
+
+    private void displayWorth()
+    {
+        GameUI.instance.displayWorth(reward, this.transform);
     }
 
     public enum MUTATION_VARIABLES

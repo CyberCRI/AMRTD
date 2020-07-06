@@ -20,6 +20,11 @@ public class MoneyFeedbackUI : MonoBehaviour
     [SerializeField]
     private Color negativeColor = Color.red;
 
+    void Awake()
+    {
+        StartCoroutine(autoDestructCoroutine());
+    }
+
     public void setup(int amount, Transform parent, Vector2 screenPosition)
     {
         #if VERBOSEDEBUG
@@ -29,13 +34,8 @@ public class MoneyFeedbackUI : MonoBehaviour
         moneyAmount.text = amount.ToString("+0;-#") + "€";
         moneyAmount.color = (amount < 0) ? negativeColor : ((amount == 0) ? zeroColor : positiveColor);
         rectTransform.SetParent(parent);
-        //rectTransform.anchoredPosition = screenPosition;
+        
         rectTransform.position = screenPosition;
-    }
-
-    void Awake()
-    {
-        StartCoroutine(autoDestructCoroutine());
     }
 
     private IEnumerator autoDestructCoroutine()

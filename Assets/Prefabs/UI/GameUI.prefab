@@ -3921,6 +3921,8 @@ MonoBehaviour:
   levelIntroUI: {fileID: 0}
   moneyFeedback: {fileID: 2297353215183681553, guid: 999554fb276ad514ab0e0a707196b722,
     type: 3}
+  worthDisplay: {fileID: 2297353215183681553, guid: 8f590b6c7b1aa674e8b1457893cf1f94,
+    type: 3}
 --- !u!1 &1283043318958960587
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿//#define VERBOSEDEBUG
+//#define DEVMODE
 
 using System.Collections;
 using System.Collections.Generic;
@@ -20,14 +21,25 @@ public class GameUI : MonoBehaviour
     private GameObject levelIntroUI = null;
     [SerializeField]
     private GameObject moneyFeedback = null;
+    [SerializeField]
+    private GameObject worthDisplay = null;
 
+#if DEVMODE
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            playMoneyFeedback(Random.Range(-3, 3));
+            //playMoneyFeedback(Random.Range(-3, 3));
+            
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag(Enemy.enemyTag);
+            foreach (GameObject enemyGO in enemies)
+            {
+                Enemy enemy = enemyGO.GetComponent<Enemy>();
+                enemy.displayWorth();
+            }
         }
     }
+#endif
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -232,6 +244,18 @@ public class GameUI : MonoBehaviour
         GameObject feedback = Instantiate(moneyFeedback);
         MoneyFeedbackUI mfui = feedback.GetComponent<MoneyFeedbackUI>();
         mfui.setup(amount, canvas.transform, moneySourcePosition);
+    }
+
+    public void displayWorth(int amount, Transform worthSource1, Transform worthSource2 = null)
+    {
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " displayWorth(" + amount + ", tr1, tr2)");
+        #endif
+
+        GameObject feedback = Instantiate(worthDisplay);
+        WorthDisplayUI wdui = feedback.GetComponent<WorthDisplayUI>();
+        wdui.setup(amount, canvas.transform, worthSource1, worthSource2);
+
     }
 
     public void linkCommon(Camera camera)
