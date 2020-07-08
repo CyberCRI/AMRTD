@@ -22,6 +22,7 @@ public class Advisor : MonoBehaviour
     public Vector3 currentPosition;
     public Vector3 currentLocalPosition;
     public Vector3 currentAnchoredPosition;
+    public Vector3 currentAnchoredPosition2;
 
     
     [SerializeField]
@@ -42,7 +43,8 @@ public class Advisor : MonoBehaviour
     {
         currentPosition = this.transform.position;
         currentLocalPosition = this.transform.localPosition;
-        currentAnchoredPosition = this.GetComponent<RectTransform>().anchoredPosition;
+        currentAnchoredPosition = _advisorAnchor.anchoredPosition;
+        currentAnchoredPosition2 = this.GetComponent<RectTransform>().anchoredPosition;
     }
 
     public void setSpeechBubble(FocusMaskManager.Quadrant quadrant, string text, bool showButton = false)

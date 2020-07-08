@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -532.7, y: 285.3}
+  m_AnchoredPosition: {x: -4632.7, y: 2335.3}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &76776758
@@ -734,6 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0137d5b31af402f4589861c8328ffb8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tower: {fileID: 0}
 --- !u!222 &781106856
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -742,6 +743,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781106853}
   m_CullTransparentMesh: 0
+--- !u!1 &816104866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1283043318055578851, guid: c5d44d76f273f4440974ed576ea33450,
+    type: 3}
+  m_PrefabInstance: {fileID: 1283043318676757389}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &837240935
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a390d4b5eb277d4ba7fb714fd2d243b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toHide1: {fileID: 1087230639}
+  toHide2: {fileID: 1503767192}
 --- !u!222 &866642162
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -905,6 +914,12 @@ MonoBehaviour:
   delay: 0
   additionalDelay: 0.5
   turretCountTrigger: 2
+--- !u!1 &926545899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5288558856928263717, guid: c5d44d76f273f4440974ed576ea33450,
+    type: 3}
+  m_PrefabInstance: {fileID: 1283043318676757389}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1085195016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,6 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4523b572e802c69408c1dbca486d39c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  helpButton: {fileID: 926545899}
 --- !u!1001 &1342037492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1426,6 +1442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252f124f09a8d2941800b6512a5a4414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toPointAt: {fileID: 816104866}
 --- !u!1001 &1702983316
 PrefabInstance:
   m_ObjectHideFlags: 0
