@@ -116,5 +116,9 @@
 	,{"key":"TUTORIAL.COVIDLEVELINTRO.3","value":     "Infected lung cells produce new viruses, then die or recover slowly from the infection."}
 	,{"key":"TUTORIAL.COVIDLEVELINTRO.4","value":     "Opportunistic bacteria will try to benefit from the chaos... Beware, fight them!"}
 	,{"key":"TUTORIAL.COVIDLEVELWBCWAVE.0","value":   "At last, reinforcements! Bacteria and viruses are almost defeated!"}
+
+	,{"key":"max level intro textlength3","value":    "_______________________________________________________________________________________________________________________________________________________________________________"}
+	,{"key":"LEVELINTRO.LEVEL1.0","value":            "Bacteria are very small living beings. Some of them do harm and will try and invade our body by going through wounds. Stop them before they reach the blood vessel!"}
+	,{"key":"LEVELINTRO.LEVEL2.0","value":            "Under the right conditions, when they are well-fed and warmed up, bacteria divide and can quickly reach high numbers. Some quickly reproducing bacteria are incoming. Be ready!"}
 	]
 }
