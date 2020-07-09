@@ -358,4 +358,10 @@ public class GameManager : MonoBehaviour
         }
     }
 #endif
+
+    public void reportEndLoadingScreen()
+    {
+        setPause(false, GameManager.loadingScreenManagerUIPauserKey);
+        GameUI.instance.startLevelIntro();
+    }
 }

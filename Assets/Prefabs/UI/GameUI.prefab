@@ -797,7 +797,7 @@ Animator:
   m_GameObject: {fileID: 539874469316800708}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1ab7569323f87bf4482d984215c0059d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 72c5ee0f44968ca4cab58af879986efc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -7992,7 +7992,7 @@ GameObject:
   - component: {fileID: 5265249017252124028}
   - component: {fileID: 6035301849162038824}
   m_Layer: 5
-  m_Name: Foreground
+  m_Name: Foreground1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8048,7 +8048,7 @@ Animator:
   m_GameObject: {fileID: 3534095738805652322}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4da13d590f4940b43984213782b27222, type: 2}
+  m_Controller: {fileID: 9100000, guid: 26664c181e9f5bc4d9f67c85fe207b5a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -8793,7 +8793,7 @@ Animator:
   m_GameObject: {fileID: 3977264706908092171}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d7bc8114d0d94e545847d67a015d7c2a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 404436a6f32177e4da962167feef8528, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -14301,6 +14301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3da1b65ac6fba6740a9a605444a8d949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  middlegroundAnimator: {fileID: 2552454532924946453}
+  foreground2Animator: {fileID: 9155649169745129831}
+  foreground1Animator: {fileID: 6035301849162038824}
+  startButton: {fileID: 8461513987737543640}
 --- !u!1 &8461513987737543640
 GameObject:
   m_ObjectHideFlags: 0
@@ -14319,7 +14323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7997358272079912693
 RectTransform:
   m_ObjectHideFlags: 0

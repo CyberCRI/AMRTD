@@ -91,7 +91,7 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
         }
         //*/
         //yield return new WaitForSecondsRealtime(maxLoadTime);
-        GameManager.instance.setPause(false, GameManager.loadingScreenManagerUIPauserKey);
+        GameManager.instance.reportEndLoadingScreen();
         SceneFader.instance.startFadeIn();
         root.SetActive(false);
         currentLoadTime = 0f;

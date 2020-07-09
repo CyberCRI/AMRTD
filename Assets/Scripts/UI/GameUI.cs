@@ -18,7 +18,7 @@ public class GameUI : MonoBehaviour
     [SerializeField]
     private GameObject chatbotInteractor = null;
     [SerializeField]
-    private GameObject levelIntroUI = null;
+    private LevelIntroUI levelIntroUI = null;
     [SerializeField]
     private GameObject moneyFeedback = null;
     [SerializeField]
@@ -53,14 +53,6 @@ public class GameUI : MonoBehaviour
         else
         {
             Destroy(this);
-        }
-    }
-
-    void Start()
-    {
-        if (null != levelIntroUI)
-        {
-            levelIntroUI.SetActive(true);
         }
     }
 
@@ -261,5 +253,13 @@ public class GameUI : MonoBehaviour
     public void linkCommon(Camera camera)
     {
         canvas.worldCamera = camera;
+    }
+
+    public void startLevelIntro()
+    {
+        if (null != levelIntroUI)
+        {
+            levelIntroUI.gameObject.SetActive(true);
+        }
     }
 }
