@@ -20,6 +20,8 @@ public class GameUILinkerUI : MonoBehaviour
     [SerializeField]
     private GameObject pauseUI = null;
     [SerializeField]
+    private Toggle pauseToggle = null;
+    [SerializeField]
     private GameObject retryUI = null;
 
     // Start is called before the first frame update
@@ -32,7 +34,7 @@ public class GameUILinkerUI : MonoBehaviour
             );
         BuildManager.instance.linkUI(nodeUI);
         MenuUI.instance.linkUI(menuUI);
-        PauseUI.instance.linkUI(pauseUI);
+        PauseUI.instance.linkUI(pauseUI, pauseToggle);
         RetryUI.instance.linkUI(retryUI);
         WaveSpawner.instance.linkUI(waveCountdownText);
     }

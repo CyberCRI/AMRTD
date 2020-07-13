@@ -19,7 +19,7 @@ public class PauseUI : MonoBehaviour
     {
         if (null != instance)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
@@ -44,9 +44,12 @@ public class PauseUI : MonoBehaviour
     }
 #endif
 
-    public void linkUI(GameObject _pauseUI)
+    public void linkUI(GameObject _pauseUI, Toggle _toggle)
     {
         pauseUI = _pauseUI;
+        m_Toggle = _toggle;
+
+        m_Toggle.onValueChanged.AddListener ( (value) => { toggle(); } );
     }
 
     private void updateToggleState(bool setToPause)
@@ -75,7 +78,7 @@ public class PauseUI : MonoBehaviour
             RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKPAUSE, new CustomData(CustomDataTag.OUTCOME, customDataValue));
             AudioManager.instance.play(AudioEvent.CLICKUI);
 
-            GameManager.instance.setPause(m_Toggle.isOn, GameManager.pauseUIPauserKey);
+            GameManager.instance.setPause(m_Toggle.isOn, GameManager.PAUSER.PAUSEUI);
         }
     }
 }

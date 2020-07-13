@@ -43,27 +43,21 @@ public class GameManager : MonoBehaviour
     private float timeScale = 0f;
     #endif
 
-    public const string focusMaskManagerPauserKey = "FocusMaskManager";
-    public const string loadingScreenManagerUIPauserKey = "LoadingScreenManagerUI";
-    public const string menuUIPauserKey = "MenuUI";
-    public const string pauseUIPauserKey = "PauseUI";
-    public const string retryUIPauserKey = "RetryUI";
-    public const string chatbotUIPauserKey = "ChatbotUI";
-    public const string levelIntroUIPauserKey = "LevelIntroUI";
-    public const string gameOverPauserKey = "GameOver";
-    public const string completeLevelPauserKey = "CompleteLevel";
+    public enum PAUSER {
+        FOCUSMASKMANAGER = 0,
+        LOADINGSCREENMANAGERUI = 1,
+        MENUUI = 2,
+        PAUSEUI = 3,
+        RETRYUI = 4,
+        CHATBOTUI = 5,
+        LEVELINTROUI = 6,
+        GAMEOVER = 7,
+        COMPLETELEVEL = 8,
 
-    private Dictionary<string, bool> pausers = new Dictionary<string, bool>(){
-        {focusMaskManagerPauserKey, false},
-        {loadingScreenManagerUIPauserKey, false},
-        {menuUIPauserKey, false},
-        {pauseUIPauserKey, false},
-        {retryUIPauserKey, false},
-        {chatbotUIPauserKey, false},
-        {levelIntroUIPauserKey, false},
-        {gameOverPauserKey, false},
-        {completeLevelPauserKey, false},
-    };
+        COUNT = 9
+    }
+
+    public bool[] pausers = new bool[(int)PAUSER.COUNT];
 
     [SerializeField]
     private GAMEMODE gameMode = GAMEMODE.PATHS;
@@ -97,6 +91,8 @@ public class GameManager : MonoBehaviour
             }
 
             SceneManager.sceneLoaded += onSceneLoaded;
+
+            refreshPauseState();
         }
     }
 
@@ -144,6 +140,11 @@ public class GameManager : MonoBehaviour
                 }
             }
 #if DEVMODE
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                PlayerStatistics.instance.turretResistancePoints += 1000f;
+            }
+
             if (Input.GetKeyDown(KeyCode.End))
             {
                 RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSLOSE);
@@ -183,10 +184,10 @@ public class GameManager : MonoBehaviour
         Debug.Log(this.GetType() + " onSceneLoaded: " + scene.name + " with mode " + mode);
         #endif
 
-        pausers[completeLevelPauserKey] = false;
-        pausers[gameOverPauserKey] = false;
-        pausers[menuUIPauserKey] = false;
-        pausers[retryUIPauserKey] = false;
+        pausers[(int)PAUSER.COMPLETELEVEL] = false;
+        pausers[(int)PAUSER.GAMEOVER] = false;
+        pausers[(int)PAUSER.MENUUI] = false;
+        pausers[(int)PAUSER.RETRYUI] = false;
     }
 
     public bool isObjectiveDefenseMode()
@@ -218,7 +219,7 @@ public class GameManager : MonoBehaviour
             RedMetricsManager.instance.sendEvent(TrackingEvent.GAMEOVER, CustomData.getLevelEndContext());
             AudioManager.instance.play(AudioEvent.GAMEOVER);
             isLevelLost = true;
-            setPause(true, gameOverPauserKey);
+            setPause(true, PAUSER.GAMEOVER);
             gameOverUI.SetActive(true);
         }
     }
@@ -235,13 +236,13 @@ public class GameManager : MonoBehaviour
     private void debugPausers()
     {
         string debugString = null;
-        foreach(string _key in pausers.Keys)
+        for(int i = 0; i < (int)PAUSER.COUNT; i++)
         {
             if (null != debugString)
             {
                 debugString += " ,";
             }
-            debugString += _key + ": " + pausers[_key].ToString();
+            debugString += i.ToString() + ": " + pausers[i].ToString();
         }
         debugString = "pausers[" + debugString + "]";
         Debug.Log(debugString);
@@ -253,18 +254,20 @@ public class GameManager : MonoBehaviour
         Debug.Log(this.GetType() + " resetPausers");
         #endif
 
-        bool isPausedBefore = isPaused();
-        string[] keys = pausers.Keys.ToArray();
-        for (int i = 0; i < keys.Length; i++)
+        for (int i = 0; i < (int)PAUSER.COUNT; i++)
         {
-            pausers[keys[i]] = false;
+            pausers[i] = false;
         }
-        managePauseAftermath(isPausedBefore);
+        refreshPauseState();
     }
 
     private void managePauseAftermath(bool isPausedBefore)
     {
         bool isPausedAfter = isAskedToPause();
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " managePauseAftermath(" + isPausedBefore + "), isPausedAfter=" + isPausedAfter);
+        #endif
+
         if (isPausedBefore != isPausedAfter)
         {
             Time.timeScale = isPausedAfter ? 0f : 1f;
@@ -272,21 +275,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private bool isAskedToPause()
+    private void refreshPauseState()
     {
-        return pausers.ContainsValue(true);
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " refreshPauseState");
+        #endif
+        managePauseAftermath(isPaused());
     }
 
-    public void setPause(bool setToPause, string caller) //, bool overrideAll = false)
+    private bool isAskedToPause()
+    {
+        for (int i = 0; i < (int)PAUSER.COUNT; i++)
+        {
+            if (pausers[i])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setPause(bool setToPause, PAUSER caller) //, bool overrideAll = false)
     {
         #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setPause(" + setToPause + ", " + caller + ")"); //", " + overrideAll + ")");
         #endif
 
-        if (pausers[caller] != setToPause)
+        if (pausers[(int)caller] != setToPause)
         {
             bool isPausedBefore = isPaused();
-            pausers[caller] = setToPause;
+            pausers[(int)caller] = setToPause;
             managePauseAftermath(isPausedBefore);
         }
     }
@@ -313,14 +331,14 @@ public class GameManager : MonoBehaviour
 
     public void setHighSpeed()
     {
-        setPause(false, pauseUIPauserKey);
+        setPause(false, PAUSER.PAUSEUI);
 
         Time.timeScale = highSpeed;
     }
 
     public void setNormalSpeed()
     {
-        setPause(false, pauseUIPauserKey);
+        setPause(false, PAUSER.PAUSEUI);
 
         Time.timeScale = normalSpeed;
     }
@@ -361,7 +379,7 @@ public class GameManager : MonoBehaviour
 
     public void reportEndLoadingScreen()
     {
-        setPause(false, GameManager.loadingScreenManagerUIPauserKey);
+        setPause(false, GameManager.PAUSER.LOADINGSCREENMANAGERUI);
         GameUI.instance.startLevelIntro();
     }
 }

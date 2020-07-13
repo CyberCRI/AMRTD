@@ -1,5 +1,5 @@
 ﻿//#define VERBOSEDEBUG
-//#define QUICKTEST
+#define QUICKTEST
 
 using System.Collections;
 using System.Collections.Generic;
@@ -47,7 +47,7 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
         root.SetActive(true);
 
         // pause the game
-        GameManager.instance.setPause(true, GameManager.loadingScreenManagerUIPauserKey);
+        GameManager.instance.setPause(true, GameManager.PAUSER.LOADINGSCREENMANAGERUI);
         #if VERBOSEDEBUG
         Debug.Log("LoadingScreenManagerUI startFakeLoad setPause");
         #endif

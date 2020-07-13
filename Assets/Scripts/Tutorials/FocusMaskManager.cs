@@ -359,7 +359,7 @@ public class FocusMaskManager : MonoBehaviour
         _callback = null;
         _advisorAndBubbleSystem.reset();
 
-        GameManager.instance.setPause(keepDisplayed, GameManager.focusMaskManagerPauserKey);
+        GameManager.instance.setPause(keepDisplayed, GameManager.PAUSER.FOCUSMASKMANAGER);
     }
 
     public void clickNext()

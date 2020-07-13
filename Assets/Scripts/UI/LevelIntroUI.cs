@@ -22,7 +22,7 @@ public class LevelIntroUI : MonoBehaviour
         Debug.Log(this.GetType() + " Start");
         #endif
 
-        GameManager.instance.setPause(true, GameManager.levelIntroUIPauserKey);
+        GameManager.instance.setPause(true, GameManager.PAUSER.LEVELINTROUI);
         middlegroundAnimator.SetBool("hasStarted", true);
         foreground2Animator.SetBool("hasStarted", true);
         foreground1Animator.SetBool("hasStarted", true);
@@ -60,7 +60,7 @@ public class LevelIntroUI : MonoBehaviour
         Debug.Log(this.GetType() + " onFadeOutEnded");
         #endif
 
-        GameManager.instance.setPause(false, GameManager.levelIntroUIPauserKey);
+        GameManager.instance.setPause(false, GameManager.PAUSER.LEVELINTROUI);
         Destroy(gameObject);
     }
 }
