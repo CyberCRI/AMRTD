@@ -1327,7 +1327,7 @@ PrefabInstance:
     - target: {fileID: 708034499536549265, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
       propertyPath: m_Alpha
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 864833790576100319, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
@@ -1597,6 +1597,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: II
       objectReference: {fileID: 0}
+    - target: {fileID: 3036629749983105224, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3216160162025012792, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1650,6 +1655,11 @@ PrefabInstance:
     - target: {fileID: 5265249017252124028, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
       propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6035301849162038824, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6713231551975978138, guid: c5d44d76f273f4440974ed576ea33450,
@@ -1685,7 +1695,7 @@ PrefabInstance:
     - target: {fileID: 8399885709962184480, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8420496648406872196, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
@@ -1770,6 +1780,11 @@ PrefabInstance:
     - target: {fileID: 8574834687595124794, guid: c5d44d76f273f4440974ed576ea33450,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155649169745129831, guid: c5d44d76f273f4440974ed576ea33450,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
