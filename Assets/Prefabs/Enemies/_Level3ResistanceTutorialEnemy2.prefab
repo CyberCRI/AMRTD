@@ -95,6 +95,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5455273633848552931}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &4336126984826457330 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8617641132585246993, guid: 2866061cf7ea3b042bcf556ea26df5be,
+    type: 3}
+  m_PrefabInstance: {fileID: 5455273633848552931}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6057754125359346173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,6 +178,11 @@ PrefabInstance:
       propertyPath: canDivideWhileWounded
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: _renderer
+      value: 
+      objectReference: {fileID: 4336126984826457330}
     - target: {fileID: 4500849788320993361, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: m_LocalPosition.x

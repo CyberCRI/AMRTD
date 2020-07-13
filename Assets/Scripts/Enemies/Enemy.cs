@@ -1,6 +1,7 @@
 ﻿//#define VERBOSEDEBUG
 //#define VERBOSEMETRICSLVL2
 //#define MUTATIONONDIVISION
+#define CHANGEENEMYCOLOR
 
 using System.Collections;
 using UnityEngine;
@@ -88,6 +89,18 @@ public class Enemy : MonoBehaviour
         1f,
         (int)Attack.SUBSTANCE.COUNT
         ).ToArray();
+    // http://thomasmountainborn.com/2016/05/25/materialpropertyblocks/
+    [SerializeField]
+    private Renderer _renderer = null;
+    private MaterialPropertyBlock _propBlock = null;
+    private static Color colorSusceptible = Color.white;
+    private static Color colorResistant = Color.red;
+
+    #if VERBOSEDEBUG
+    public Color currentColor = Color.white;
+    #else
+    private Color currentColor = Color.white;
+    #endif
 
     public enum DIVISION_STRATEGY
     {
@@ -165,6 +178,8 @@ public class Enemy : MonoBehaviour
         }
         isAlive = true;
         divisionCountdown = divisionPeriod;
+        _propBlock = new MaterialPropertyBlock();
+        _renderer.GetPropertyBlock(_propBlock);
 
         showResistance();
     }
@@ -220,6 +235,10 @@ public class Enemy : MonoBehaviour
 
     private void setResistanceEffectEmissionRate()
     {
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " setResistanceEffectEmissionRate");
+        #endif
+
         if (null != _resistanceEffectInstance)
         {
             float factor = (1f - getMaxResistance());
@@ -227,9 +246,10 @@ public class Enemy : MonoBehaviour
             //_resistanceEffectInstance.emission.rateOverTime = emissionRate;
             ParticleSystem.EmissionModule em = _resistanceEffectInstance.emission;
             em.rateOverTime = factor * maxEmissionRate;
-#if VERBOSEDEBUG
+
+            #if VERBOSEDEBUG
             Debug.Log("setResistanceEffectEmissionRate " + em.rateOverTime);
-#endif
+            #endif
 
             resistanceHaloBaseColor = new Color(
                 resistanceHalo.color.r,
@@ -239,6 +259,17 @@ public class Enemy : MonoBehaviour
             );
             resistanceHalo.color = resistanceHaloBaseColor;
             haloBlinkPhase = Random.Range(0f, 2f * Mathf.PI);
+            
+#if CHANGEENEMYCOLOR
+            currentColor = Color.Lerp(colorSusceptible, colorResistant, factor);
+            _propBlock.SetColor("_Color", currentColor);
+            // Apply the edited values to the renderer.
+            _renderer.SetPropertyBlock(_propBlock);
+
+            #if VERBOSEDEBUG
+            Debug.Log("setResistanceEffectEmissionRate SetColor currentColor=" + ColorUtility.ToHtmlStringRGBA(currentColor));
+            #endif
+#endif
         }
     }
 
@@ -300,6 +331,7 @@ public class Enemy : MonoBehaviour
             #endif
             */
             instantiateResistanceEffect = instantiateResistanceEffect || (0f != scale);
+
 #if VERBOSEDEBUG
             showAntibioticResistanceIndicator(substance, 0f != scale, scale);
 #endif

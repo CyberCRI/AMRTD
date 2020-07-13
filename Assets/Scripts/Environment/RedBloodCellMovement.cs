@@ -61,6 +61,8 @@ public class RedBloodCellMovement : WobblyMovement
 #if ALWAYSUPDATEBLOODCOLOR
         float t = Mathf.Clamp((Time.time - creationTime) / timeToComplete, 0f, 1f);
         _propBlock.SetColor("_Color", Color.Lerp(RedBloodCellManager.instance.deoxygenatedBloodColor, RedBloodCellManager.instance.oxygenatedBloodColor, t));
+        // Apply the edited values to the renderer.
+        _renderer.SetPropertyBlock(_propBlock);
 #endif
 
         if (hasReachedTarget)
@@ -90,8 +92,10 @@ public class RedBloodCellMovement : WobblyMovement
             Debug.Log(string.Format("{0}: {1}: setTarget() ->{2}", this.GetType(), this.gameObject.name, waypointIndex));
             #endif
             target = BloodUtilities.instance.bloodWayPoints[waypointIndex++].position;
-            
+
+#if !ALWAYSUPDATEBLOODCOLOR
             setColor();
+#endif
         }
         else
         {
@@ -110,12 +114,13 @@ public class RedBloodCellMovement : WobblyMovement
         setTarget();
     }
 
+#if !ALWAYSUPDATEBLOODCOLOR
     private void setColor()
     {
         #if VERBOSEDEBUG
         Debug.Log(string.Format("{0}: {1}: setColor ", this.GetType(), this.gameObject.name));
         #endif
-#if !ALWAYSUPDATEBLOODCOLOR
+
         lazyInitialize();
 
         //float t = (Time.time - creationTime) / timeToComplete;
@@ -129,12 +134,12 @@ public class RedBloodCellMovement : WobblyMovement
             RedBloodCellManager.instance.oxygenatedBloodColor,
             _colorLerp
             );
+        
         _propBlock.SetColor("_Color", _color);
-
-            // Apply the edited values to the renderer.
+        // Apply the edited values to the renderer.
         _renderer.SetPropertyBlock(_propBlock);
-#endif
     }
+#endif
 
     private void resetPosition()
     {
