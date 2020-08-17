@@ -7,25 +7,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1220623017808033659, guid: 429f97d4d229f34418e1b071e58d1b91,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5436004b49ba7804ba6a4d02a6ea766e, type: 2}
     - target: {fileID: 5257325638488934281, guid: 429f97d4d229f34418e1b071e58d1b91,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5257325638488934281, guid: 429f97d4d229f34418e1b071e58d1b91,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5257325638488934281, guid: 429f97d4d229f34418e1b071e58d1b91,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6133784739106107846, guid: 429f97d4d229f34418e1b071e58d1b91,
         type: 3}
@@ -107,5 +102,16 @@ PrefabInstance:
       propertyPath: divisionPeriod
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8167287571772097238, guid: 429f97d4d229f34418e1b071e58d1b91,
+        type: 3}
+      propertyPath: innerEnemy
+      value: 
+      objectReference: {fileID: 746558954811740472}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 429f97d4d229f34418e1b071e58d1b91, type: 3}
+--- !u!4 &746558954811740472 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5257325638488934281, guid: 429f97d4d229f34418e1b071e58d1b91,
+    type: 3}
+  m_PrefabInstance: {fileID: 4803523007825778353}
+  m_PrefabAsset: {fileID: 0}

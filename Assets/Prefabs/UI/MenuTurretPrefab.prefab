@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.89019614, g: 0.9450981, b: 0.87843144, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -345,6 +346,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.89019614, g: 0.9450981, b: 0.87843144, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -670,7 +672,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ba97e4b38c5e4ae4498302cb07e8df7f, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -866,6 +868,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.89019614, g: 0.9450981, b: 0.87843144, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -974,6 +977,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.89019614, g: 0.9450981, b: 0.87843144, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

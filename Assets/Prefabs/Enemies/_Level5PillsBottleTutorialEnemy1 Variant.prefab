@@ -22,11 +22,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 5196441864382724772, guid: 53bef8b074cf5b04ca30a9ac05debe1c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9ec058d872376034e91d9c286c7c236d, type: 2}
     - target: {fileID: 6133784739106107846, guid: 53bef8b074cf5b04ca30a9ac05debe1c,
         type: 3}
       propertyPath: minimumDistance
@@ -122,5 +117,16 @@ PrefabInstance:
       propertyPath: healingRatioSpeed
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 8167287571772097238, guid: 53bef8b074cf5b04ca30a9ac05debe1c,
+        type: 3}
+      propertyPath: innerEnemy
+      value: 
+      objectReference: {fileID: 8771171921736717319}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53bef8b074cf5b04ca30a9ac05debe1c, type: 3}
+--- !u!4 &8771171921736717319 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1159742519692692054, guid: 53bef8b074cf5b04ca30a9ac05debe1c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7611450372926496337}
+  m_PrefabAsset: {fileID: 0}

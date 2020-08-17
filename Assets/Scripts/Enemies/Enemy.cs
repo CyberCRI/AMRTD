@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     private EnemyMovement enemyMovement = null;
     [SerializeField]
     private AudioEmitter audioEmitter = null;
+    [SerializeField]
+    private Transform innerEnemy = null;
 
     [Header("Mutation")]
     [SerializeField]
@@ -542,6 +544,7 @@ public class Enemy : MonoBehaviour
     {
         isAlive = false;
         GameObject effect = Instantiate(deathEffect.gameObject, this.transform.position, Quaternion.identity);
+        effect.transform.localScale = this.innerEnemy.localScale;
         Destroy(effect.gameObject, CommonUtilities.getEffectMaxDuration(deathEffect));
         PlayerStatistics.instance.addMoney(reward, this.gameObject);
         Destroy(this.gameObject);

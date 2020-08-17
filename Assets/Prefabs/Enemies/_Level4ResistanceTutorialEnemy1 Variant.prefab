@@ -107,10 +107,16 @@ PrefabInstance:
       propertyPath: healingRatioSpeed
       value: 0.05
       objectReference: {fileID: 0}
-    - target: {fileID: 9073833360750998198, guid: 4194d8b152d175448afc82e1fed51224,
+    - target: {fileID: 8167287571772097238, guid: 4194d8b152d175448afc82e1fed51224,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: innerEnemy
       value: 
-      objectReference: {fileID: 2100000, guid: ef79d90dff2ec28468c7164e996eaa8f, type: 2}
+      objectReference: {fileID: 8362058039955959722}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4194d8b152d175448afc82e1fed51224, type: 3}
+--- !u!4 &8362058039955959722 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2731988046748959300, guid: 4194d8b152d175448afc82e1fed51224,
+    type: 3}
+  m_PrefabInstance: {fileID: 5900287106903961070}
+  m_PrefabAsset: {fileID: 0}

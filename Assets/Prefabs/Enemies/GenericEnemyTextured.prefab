@@ -427,7 +427,7 @@ MonoBehaviour:
   defaultMutationRange: 0.2
   reward: 150
   health: 0
-  deathEffect: {fileID: 4562425432993480917, guid: f2773845f5971f848901425ae4563d1d,
+  deathEffect: {fileID: 4562425432993480917, guid: b8c72e7971840744e81442be24de7fa7,
     type: 3}
   startHealth: 300
   healingRatioSpeed: 0.2
@@ -456,6 +456,7 @@ MonoBehaviour:
   - 1
   - 1
   - 1
+  _renderer: {fileID: 0}
   isDivisionAllowed: 010101
   isHealingAllowed: 010101
   isMovementAllowed: 010101
@@ -1099,7 +1100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.25490198}
+  m_Color: {r: 0.9926069, g: 1, b: 0, a: 0.79607844}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
