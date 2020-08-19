@@ -4,7 +4,7 @@
 	,{"key":"META.MAIN.LANGUAGECODE","value":"en"}
 	,{"key":"META.MAIN.LOCAL","value":"English"}
 	,{"key":"META.MAIN.VERSION","value":"0.35"}
-	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.35"}
+	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.35.16"}
 	,{"key":"GAME.MENU.PAUSE","value":"PAUSE"}
 	,{"key":"GAME.MENU.MENU","value":"MENU"}
 	,{"key":"GAME.MENU.RETRY","value":"RETRY"}
@@ -76,6 +76,7 @@
 	,{"key":"GAME.FASTFORWARD.HELP","value":            "Use this button to temporarily increase the speed of the game."}
 	,{"key":"GAME.RETRY.HELP","value":                  "Use this button to start over this level."}
 	,{"key":"GAME.USERFEEDBACKBUTTON.HELP","value":     "Click here to give us some feedback on the game."}
+	,{"key":"GAME.SOUNDCONTROLS.HELP","value":     		"Click here to control the volume of sound effects and music."}
 	,{"key":"GAME.UPGRADEBUTTON.HELP","value":          "Upgrade your antibiotics to kill more pathogenic bacteria!"}
 	,{"key":"GAME.SELLBUTTON.HELP","value":             "Sell your antibiotics to get money and reduce the resistance."}
 	,{"key":"GAME.RENEWBUTTON.HELP","value":            "Pay to make the antibiotics last longer."}

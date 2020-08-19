@@ -7,10 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/20200127India/MainMenu.unity
-    guid: 1ef7a0d34d7af7e48925a60e57ccccb0
+    guid: 460b6862583572e4689e801ac255b8ff
   - enabled: 1
     path: Assets/Scenes/20200127India/LevelSelectionMenu.unity
-    guid: 3cf7b37608f96cd44b9d87ab32d55b7f
+    guid: 0684c2ccba302f24e8ca39eb02c2c3a2
   - enabled: 1
     path: Assets/Scenes/20200127India/Level1_nodivision.unity
     guid: 215613959dccbaa4090ba57cf1ae1d9c
