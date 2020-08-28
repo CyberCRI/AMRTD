@@ -1,5 +1,6 @@
-﻿//#define VERBOSEDEBUG
+﻿#define VERBOSEDEBUG
 //#define DEVMODE
+//#define UNLOCKALLLEVELS
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,22 +28,33 @@ public class LevelSelectionUI : MonoBehaviour
 
             levelButtons = new Button[levelButtonsRoot.childCount];
             CommonUtilities.fillArrayFromRoot<Button>(levelButtonsRoot, ref levelButtons);
-
-            updateInteractables();
         }
+    }
+
+    void Start()
+    {
+        updateInteractables();
     }
 
     private void updateInteractables()
     {
         int levelReached = GameConfiguration.instance.furthestLevel;
 
+        #if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " levelReached=" + levelReached);
+        #endif
+
         levelButtons[0].interactable = true;
-        for (int i = 1; i < levelButtons.Length; i++)
+        for (int i = 0; i < levelButtons.Length; i++)
         {
-#if DEVMODE
+#if DEVMODE || UNLOCKALLLEVELS
             levelButtons[i].interactable = true;
 #else
-            levelButtons[i].interactable = (i <= levelReached - GameConfiguration.tutorialLevelsCount);
+            levelButtons[i].interactable = (i + GameConfiguration.tutorialLevelsCount<= levelReached);
+
+            #if VERBOSEDEBUG
+            Debug.Log(this.GetType() + " " + GameConfiguration.instance.getSceneName(i + GameConfiguration.tutorialLevelsCount) + " =" + levelButtons[i].interactable);
+            #endif
 #endif
         }
     }

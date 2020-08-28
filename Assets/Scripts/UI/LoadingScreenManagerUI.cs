@@ -1,5 +1,6 @@
 ﻿//#define VERBOSEDEBUG
-#define QUICKTEST
+//#define QUICKTEST
+#define QUICKTEST2
 
 using System.Collections;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
 
     public void startFakeLoad()
     {
-#if QUICKTEST
+#if QUICKTEST && !QUICKTEST2
         SceneFader.instance.startFadeIn();
     }
 
@@ -58,6 +59,7 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
         Debug.Log("LoadingScreenManagerUI startFakeLoad StartCoroutine");
         #endif
     }
+#endif
 
     // allows for a smooth transition from resistance(turrets_count(t+1))
     // to resistance(turrets_count(t+1))
@@ -68,6 +70,8 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
         Debug.Log("LoadingScreenManagerUI fakeLoad starts");
         #endif
         
+
+#if !QUICKTEST2
         //*
         currentLoadTime = 0f;
         while ((currentLoadTime < maxLoadTime)) // && (true))
@@ -91,6 +95,8 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
         }
         //*/
         //yield return new WaitForSecondsRealtime(maxLoadTime);
+#endif
+        yield return new WaitForSecondsRealtime(0f);
         GameManager.instance.reportEndLoadingScreen();
         SceneFader.instance.startFadeIn();
         root.SetActive(false);
@@ -100,7 +106,6 @@ public class LoadingScreenManagerUI : IndicatedProgressBarUI
         Debug.Log("LoadingScreenManagerUI fakeLoad done");
         #endif
     }
-#endif
 
     public override float getLatestValue()
     {

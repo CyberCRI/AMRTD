@@ -31,7 +31,8 @@
 	,{"key":"GAME.NODEUI.STOP","value":"STOP"}
 	,{"key":"GAME.NODEUI.SELL","value":"SELL"}
 	,{"key":"GAME.NODEUI.RENEW","value":"RENEW"}
-	,{"key":"MAINMENU.TITLE.LABEL","value":"WAR & PILLS"}
+	,{"key":"MAINMENU.TITLE.LABEL","value":"ArMoR"}
+	,{"key":"MAINMENU.SUBTITLE.LABEL","value":"The Game is On!"}
 	,{"key":"MAINMENU.PLAY.LABEL","value":"PLAY"}
 	,{"key":"MAINMENU.QUIT.LABEL","value":"QUIT"}
 	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"SELECT LEVEL"}
@@ -119,7 +120,21 @@
 	,{"key":"TUTORIAL.COVIDLEVELWBCWAVE.0","value":   "At last, reinforcements! Bacteria and viruses are almost defeated!"}
 
 	,{"key":"max level intro textlength3","value":    "_______________________________________________________________________________________________________________________________________________________________________________"}
-	,{"key":"LEVELINTRO.LEVEL1.0","value":            "Bacteria are very small living beings. Some of them do harm and will try and invade our body by going through wounds. Stop them before they reach the blood vessel!"}
-	,{"key":"LEVELINTRO.LEVEL2.0","value":            "Under the right conditions, when they are well-fed and warmed up, bacteria divide and can quickly reach high numbers. Some quickly reproducing bacteria are incoming. Be ready!"}
+	
+	,{"key":"STORY.LEVEL1.INTRO","value":             "Bacteria are very small living beings. Some of them do harm and will try and invade our body by going through wounds. Stop them before they reach the blood vessel!"}
+	,{"key":"STORY.LEVEL1.DEFEAT","value":            "Bacteria succeeded in going through our defences! You need to set up more antibiotic dispensers next time."}
+	,{"key":"STORY.LEVEL1.VICTORY","value":           "Well done! White Blood Cells can stop a few wandering bacteria, but antibiotics are needed in full-scale invasions!"}
+
+	,{"key":"STORY.LEVEL2.INTRO","value":             "Under the right conditions, when they are well-fed and warmed up, bacteria divide and can quickly reach high numbers. Some quickly reproducing bacteria are incoming. Be ready!"}
+	,{"key":"STORY.LEVEL2.DEFEAT","value":            "Let's try again. When bacteria divide, they can overwhelm our defences. Kill them early, before they divide!"}
+	,{"key":"STORY.LEVEL2.VICTORY","value":           "Congratulations! You found out that killing bacteria early prevents them from reproducing too much."}
+
+	,{"key":"STORY.LEVEL3.INTRO","value":             "Using a lot of antibiotics looks like the solution to bacteria. But is it really?"}
+	,{"key":"STORY.LEVEL3.DEFEAT","value":            "Not using enough antibiotics leads to numerous bacteria. But too much antibiotics also leads to resistance! Let's try again."}
+	,{"key":"STORY.LEVEL3.VICTORY","value":           "Good job! Bacteria become resistant when you use too much antibiotics too! It's really a matter of dosage."}
+
+	,{"key":"STORY.LEVEL4.INTRO","value":             "Beware, these new bacteria can adapt when facing antibiotics..."}
+	,{"key":"STORY.LEVEL4.DEFEAT","value":            "Oh no, they overwhelmed our defences... Next time, try and kill them quickly, don't give them time to adapt!"}
+	,{"key":"STORY.LEVEL4.VICTORY","value":           "You got it, you have to kill them as fast as possible, otherwise they'll adapt!"}
 	]
 }

@@ -1,8 +1,15 @@
-﻿using UnityEngine;
+﻿//#define VERBOSEDEBUG
+
+using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    public const string sceneName = "MainMenu";
+    public const string sceneName = "MainMenu_simple";
+    public const string sceneNameAlternate = "MainMenu";
+
+    [Tooltip("Minimum number of levels unlocked required to access the level selection screen. Otherwise, loads the furthest unlocked level.")]
+    [SerializeField]
+    private int minReqUnlocks = 0;
     
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -17,7 +24,22 @@ public class MainMenu : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKPLAY);
         AudioManager.instance.play(AudioEvent.CLICKUI);
-        SceneFader.instance.fadeTo(LevelSelectionUI.sceneName);
+
+        int levelReached = GameConfiguration.instance.furthestLevel;
+
+#if VERBOSEDEBUG
+        Debug.Log(this.GetType() + " play levelReached=" + levelReached + ", minReqUnlocks=" + minReqUnlocks);
+#endif
+        if (levelReached > minReqUnlocks)
+        {
+            // open level selection screen
+            SceneFader.instance.fadeTo(LevelSelectionUI.sceneName);
+        }
+        else
+        {
+            // open furthest unlocked level
+            SceneFader.instance.fadeTo(levelReached);
+        }
     }
 
     public void quit()
