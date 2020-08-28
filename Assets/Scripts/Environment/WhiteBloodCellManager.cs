@@ -315,12 +315,25 @@ public class WhiteBloodCellManager : MonoBehaviour
         }
     }
 
-    public void reportDeath(int wbcIndex)
+    public void reportDeath(int wbcIndex, bool isBacterium)
     {
+        if (null != _dtbcallback)
+        {
+            _dtbcallback(whiteBloodCells[wbcIndex].transform);
+            _dtbcallback = null;
+        }
+
         wbcsAliveCount--;
         whiteBloodCells[wbcIndex] = null;
         whiteBloodCellsTargetEnemies[wbcIndex] = null;
         whiteBloodCellsTargetViruses[wbcIndex] = null;
+    }
+
+    public delegate void DTBCallback(Transform t);
+    private DTBCallback _dtbcallback;
+    public void setDeathToBacteriumCallback(DTBCallback __dtbcallback)
+    {
+        _dtbcallback = __dtbcallback;
     }
 
     public bool isOneWBCDead()

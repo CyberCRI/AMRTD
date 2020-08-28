@@ -8,8 +8,15 @@ public class PathogenKilledByWBCTutorialActivator : TutorialActivator
     /// </summary>
     void Start()
     {
+        WhiteBloodCellManager.instance.setDeathToBacteriumCallback(callback);
     }
 
+    void callback(Transform wbcT)
+    {
+        activateTutorial();
+    }
+
+/*
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
@@ -24,4 +31,5 @@ public class PathogenKilledByWBCTutorialActivator : TutorialActivator
             activateTutorial();
         }
     }
+*/
 }

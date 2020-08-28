@@ -228,9 +228,9 @@ public class WhiteBloodCellMovement : WobblyMovement
         idlePosition = _idlePosition;
     }
 
-    private void prepareAbsorb()
+    private void prepareAbsorb(bool isBacterium)
     {
-        WhiteBloodCellManager.instance.reportDeath(wbcIndex);
+        WhiteBloodCellManager.instance.reportDeath(wbcIndex, isBacterium);
 
 #if VERBOSEDEBUG
         action = WBCACTION.DISAPPEARING;
@@ -273,7 +273,7 @@ public class WhiteBloodCellMovement : WobblyMovement
         hitsLeft--;
         if (0 == hitsLeft)
         {
-            prepareAbsorb();
+            prepareAbsorb(false);
         }
         virus.getAbsorbed(this.transform);
     }
@@ -283,7 +283,7 @@ public class WhiteBloodCellMovement : WobblyMovement
         RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getBacteriumContext(enemy.gameObject).add(CustomDataTag.WBCHEALTH, (int)hitsLeft));
         audioEmitter.play(AudioEvent.PATHOGENKILLEDBYWBC);
         hitsLeft = 0;
-        prepareAbsorb();
+        prepareAbsorb(true);
         enemy.getAbsorbed(this.transform);
     }
 
