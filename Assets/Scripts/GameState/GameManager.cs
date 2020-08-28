@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
         COUNT
     }
 
-    private GameObject gameOverUI = null;
     private Text levelDurationCountdownText = null;
     [SerializeField]
     private float levelDuration = 0f;
@@ -195,10 +194,7 @@ public class GameManager : MonoBehaviour
         return gameMode == GAMEMODE.DEFEND_CAPTURABLE_OBJECTIVES;
     }
 
-    public void linkUI(
-        Text _levelDurationCountdownMode
-        , GameObject _gameOverUI
-        )
+    public void linkUI(Text _levelDurationCountdownMode)
     {
         if (levelDurationCountdownMode)
         {
@@ -208,8 +204,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(_levelDurationCountdownMode.gameObject);
         }
-
-        gameOverUI = _gameOverUI;
     }
 
     public void loseLevel()
@@ -220,7 +214,7 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.play(AudioEvent.GAMEOVER);
             isLevelLost = true;
             setPause(true, PAUSER.GAMEOVER);
-            gameOverUI.SetActive(true);
+            GameUI.instance.displayLevelDefeat();
         }
     }
 
@@ -228,7 +222,12 @@ public class GameManager : MonoBehaviour
     {
         if (!isLevelLost)
         {
+            RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, CustomData.getLevelEndContext());
+            AudioManager.instance.play(AudioEvent.COMPLETELEVEL);
             isLevelWon = true;
+            setPause(true, PAUSER.GAMEOVER);
+            GameUI.instance.displayLevelVictory();
+            
             CompleteLevel.instance.completeLevel();
         }
     }
@@ -380,6 +379,6 @@ public class GameManager : MonoBehaviour
     public void reportEndLoadingScreen()
     {
         setPause(false, GameManager.PAUSER.LOADINGSCREENMANAGERUI);
-        GameUI.instance.startLevelIntro();
+        GameUI.instance.displayLevelIntro();
     }
 }

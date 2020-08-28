@@ -8,8 +8,27 @@ public class GameConfiguration : MonoBehaviour
 {
     public static GameConfiguration instance = null;
     // TODO un-hardcode these
-    public const int gameLevelCount = 7;
+    public const int gameLevelCount = 8;
+    public readonly string[] levels = new string[gameLevelCount] {
+        "Level1_nodivision",
+        "Level2_division",
+        "Level3_optimality",
+        "Level4_resistance",
+        "Level5_PillsBottle",
+        "Level6_Syringe",
+        //"Level7_specificity",
+        "Level8_Lungs",
+        "Level9_COVID-19",
+        //"LevelSelectionMenu",
+        //"MainMenu",
+        //"MainMenu_simple",
+    };
     public const int tutorialLevelsCount = 3;
+
+    public string getSceneName(int index)
+    {
+        return levels[index % gameLevelCount];
+    }
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.

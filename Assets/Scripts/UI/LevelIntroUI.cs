@@ -1,4 +1,5 @@
 //#define VERBOSEDEBUG
+#define QUICKTEST
 
 using UnityEngine;
 using System.Collections;
@@ -34,7 +35,11 @@ public class LevelIntroUI : MonoBehaviour
         #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " waitBeforeUnlockingStart");
         #endif
+        #if QUICKTEST
+        yield return new WaitForSecondsRealtime(0f);
+        #else
         yield return new WaitForSecondsRealtime(timeBeforeStartUnlocks);
+        #endif
         #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " waitBeforeUnlockingStart 2");
         #endif

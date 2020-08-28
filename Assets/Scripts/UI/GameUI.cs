@@ -20,6 +20,10 @@ public class GameUI : MonoBehaviour
     [SerializeField]
     private LevelIntroUI levelIntroUI = null;
     [SerializeField]
+    private LevelDefeatUI levelDefeatUI = null;
+    [SerializeField]
+    private LevelVictoryUI levelVictoryUI = null;
+    [SerializeField]
     private GameObject moneyFeedback = null;
     [SerializeField]
     private GameObject worthDisplay = null;
@@ -255,11 +259,27 @@ public class GameUI : MonoBehaviour
         canvas.worldCamera = camera;
     }
 
-    public void startLevelIntro()
+    public void displayLevelIntro()
     {
         if (null != levelIntroUI)
         {
             levelIntroUI.gameObject.SetActive(true);
+        }
+    }
+
+    public void displayLevelDefeat()
+    {
+        if (null != levelDefeatUI)
+        {
+            levelDefeatUI.gameObject.SetActive(true);
+        }
+    }
+
+    public void displayLevelVictory()
+    {
+        if (null != levelVictoryUI)
+        {
+            levelVictoryUI.gameObject.SetActive(true);
         }
     }
 }

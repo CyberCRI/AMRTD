@@ -107,6 +107,11 @@ public class SceneFader : MonoBehaviour
 
     }
 
+    public void fadeTo(int sceneIndex)
+    {
+        fadeTo(GameConfiguration.instance.getSceneName(sceneIndex));
+    }
+
     public void fadeTo(string scene = "")
     {
         coroutine = fadeOut(scene);

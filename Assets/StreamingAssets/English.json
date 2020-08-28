@@ -136,5 +136,10 @@
 	,{"key":"STORY.LEVEL4.INTRO","value":             "Beware, these new bacteria can adapt when facing antibiotics..."}
 	,{"key":"STORY.LEVEL4.DEFEAT","value":            "Oh no, they overwhelmed our defences... Next time, try and kill them quickly, don't give them time to adapt!"}
 	,{"key":"STORY.LEVEL4.VICTORY","value":           "You got it, you have to kill them as fast as possible, otherwise they'll adapt!"}
+
+	,{"key":"STORY.LEVEL5.INTRO","value":             "As you've seen, bacteria come in different shapes and behaviors, and there are antibiotics specially crafted to counter them."}
+	,{"key":"STORY.LEVEL5.DEFEAT","value":            "Use the pill bottle dispenser instead, because it is efficient against clumps of bacteria!"}
+	,{"key":"STORY.LEVEL5.VICTORY","value":           "Congratulations! As you saw, this new antibiotic acts very efficiently on groups of bacteria."}
+
 	]
 }
