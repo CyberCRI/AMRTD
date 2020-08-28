@@ -247,6 +247,13 @@ public class WhiteBloodCellMovement : WobblyMovement
         target = BloodUtilities.instance.bloodEnd2.position;
         targetTransform = null;
         hasReachedTarget = false;
+        
+#if !DEVMODE
+        if (!GameManager.instance.isObjectiveDefenseMode())
+        {
+            PlayerStatistics.instance.lives--;
+        }
+#endif
     }
 
     System.Collections.Generic.List<GameObject> nearbyGOs = new System.Collections.Generic.List<GameObject>();
@@ -302,14 +309,4 @@ public class WhiteBloodCellMovement : WobblyMovement
             Debug.LogError("incorrect tag " + ttransform.tag);
         }
     }
-
-#if !DEVMODE
-    void OnDestroy()
-    {
-        if (!GameManager.instance.isObjectiveDefenseMode())
-        {
-            PlayerStatistics.instance.lives--;
-        }
-    }
-#endif
 }

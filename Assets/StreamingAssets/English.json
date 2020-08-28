@@ -4,7 +4,7 @@
 	,{"key":"META.MAIN.LANGUAGECODE","value":"en"}
 	,{"key":"META.MAIN.LOCAL","value":"English"}
 	,{"key":"META.MAIN.VERSION","value":"0.35"}
-	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.35.16"}
+	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.35.17"}
 	,{"key":"GAME.MENU.PAUSE","value":"PAUSE"}
 	,{"key":"GAME.MENU.MENU","value":"MENU"}
 	,{"key":"GAME.MENU.RETRY","value":"RETRY"}
@@ -31,7 +31,7 @@
 	,{"key":"GAME.NODEUI.STOP","value":"STOP"}
 	,{"key":"GAME.NODEUI.SELL","value":"SELL"}
 	,{"key":"GAME.NODEUI.RENEW","value":"RENEW"}
-	,{"key":"MAINMENU.TITLE.LABEL","value":"ArMoR"}
+	,{"key":"MAINMENU.TITLE.LABEL","value":"<b>A</b><color=#f5c462>r</color><b>M</b><color=#f5c462>o</color><b>R</b>"}
 	,{"key":"MAINMENU.SUBTITLE.LABEL","value":"The Game is On!"}
 	,{"key":"MAINMENU.PLAY.LABEL","value":"PLAY"}
 	,{"key":"MAINMENU.QUIT.LABEL","value":"QUIT"}

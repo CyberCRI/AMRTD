@@ -1,5 +1,5 @@
 //#define VERBOSEDEBUG
-#define QUICKTEST
+//#define QUICKTEST
 
 using UnityEngine;
 using System.Collections;
