@@ -204,16 +204,51 @@ public class Enemy : MonoBehaviour
     {
         if (null == _resistanceEffectInstance)
         {
-            _resistanceEffectInstance =
-                Instantiate(
-                        resistanceEffect.gameObject
-                        , this.transform.position
-                        , Quaternion.identity
-                        , this.transform
-                    ).GetComponent<ParticleSystem>();
+            if (0f != healingRatioSpeed)
+            {
+                _resistanceEffectInstance =
+                    Instantiate(
+                            resistanceEffect.gameObject
+                            , this.transform.position
+                            , Quaternion.identity
+                            , this.transform
+                        ).GetComponent<ParticleSystem>();
 
-            setResistanceEffectEmissionRate();
+                        
+                float healingFactor = getMaxHealingFactor() * healingRatioSpeed;
+                
+                ParticleSystem.EmissionModule em = _resistanceEffectInstance.emission;  
+                #if NOEMISSIONOVERTIME
+                em.rateOverTime = 0f;
+                #else          
+                em.rateOverTime = (.7f + 5*healingFactor) * maxEmissionRate;
+                #endif
+
+                #if VERBOSEDEBUG
+                Debug.Log("setResistanceEffectEmissionRate " + em.rateOverTime);
+                #endif
+
+                resistanceHaloBaseColor = new Color(
+                    resistanceHalo.color.r,
+                    resistanceHalo.color.g,
+                    resistanceHalo.color.b,
+                    Mathf.Clamp(30f * healingFactor, 0f, 1f) //1 opaque, 0 transparent
+                );
+                resistanceHalo.color = resistanceHaloBaseColor;
+                haloBlinkPhase = Random.Range(0f, 2f * Mathf.PI);
+            }
         }
+        
+#if CHANGEENEMYCOLOR
+        currentColor = Color.Lerp(colorSusceptible, colorResistant, (1f - getMaxResistance()));
+        _propBlock.SetColor("_Color", currentColor);
+        // Apply the edited values to the renderer.
+        _renderer.SetPropertyBlock(_propBlock);
+
+        #if VERBOSEDEBUG
+        Debug.Log("setUpResistanceEffects SetColor currentColor=" + ColorUtility.ToHtmlStringRGBA(currentColor));
+        #endif
+#endif
     }
 
     private float getMaxResistance()
@@ -236,47 +271,17 @@ public class Enemy : MonoBehaviour
         return maxResistance;
     }
 
-    private void setResistanceEffectEmissionRate()
+    private float getMaxHealingFactor()
     {
-        #if VERBOSEDEBUG
-        Debug.Log(this.GetType() + " setResistanceEffectEmissionRate");
-        #endif
-
-        if (null != _resistanceEffectInstance)
+        float maxHealingFactor = 1f;
+        for (int i = 0; i < healingFactor.Length; i++)
         {
-            float factor = (1f - getMaxResistance());
-
-            ParticleSystem.EmissionModule em = _resistanceEffectInstance.emission;  
-            #if NOEMISSIONOVERTIME
-            em.rateOverTime = 0f;
-            #else          
-            em.rateOverTime = factor * maxEmissionRate;
-            #endif
-
-            #if VERBOSEDEBUG
-            Debug.Log("setResistanceEffectEmissionRate " + em.rateOverTime);
-            #endif
-
-            resistanceHaloBaseColor = new Color(
-                resistanceHalo.color.r,
-                resistanceHalo.color.g,
-                resistanceHalo.color.b,
-                factor //1 opaque, 0 transparent
-            );
-            resistanceHalo.color = resistanceHaloBaseColor;
-            haloBlinkPhase = Random.Range(0f, 2f * Mathf.PI);
-            
-#if CHANGEENEMYCOLOR
-            currentColor = Color.Lerp(colorSusceptible, colorResistant, factor);
-            _propBlock.SetColor("_Color", currentColor);
-            // Apply the edited values to the renderer.
-            _renderer.SetPropertyBlock(_propBlock);
-
-            #if VERBOSEDEBUG
-            Debug.Log("setResistanceEffectEmissionRate SetColor currentColor=" + ColorUtility.ToHtmlStringRGBA(currentColor));
-            #endif
-#endif
+            if (maxHealingFactor > healingFactor[i])
+            {
+                maxHealingFactor = healingFactor[i];
+            }
         }
+        return maxHealingFactor;
     }
 
     public void doResistanceEffectBurst(int particleCount = maxBurstCount)
@@ -507,6 +512,7 @@ public class Enemy : MonoBehaviour
             for (int i = 0; i < (int)Attack.SUBSTANCE.COUNT; i++)
             {
                 resistances[i] = Mathf.Clamp(_resistances[i], 0f, 1f);
+                healingFactor[i] *= Mathf.Max(0f, 1.7f - resistances[i] * resistances[i]);
             }
         }
 
@@ -575,9 +581,9 @@ public class Enemy : MonoBehaviour
             if (null != _resistanceEffectInstance)
             {
                 _resistanceEffectInstance.transform.parent = null;
+                Destroy(_resistanceEffectInstance);
+                _resistanceEffectInstance = null;
             }
-            Destroy(_resistanceEffectInstance);
-            _resistanceEffectInstance = null;
 
             Enemy enemy = WaveSpawner.instance.spawnEnemy(
                 wave,
@@ -667,8 +673,7 @@ public class Enemy : MonoBehaviour
     {
         // if reward is increased, letting pathogens mutate is incentivized
         startHealth = _startHealth;
-        health = _health;
-        health = Mathf.Min(startHealth, health);
+        health = Mathf.Min(startHealth, _health);
         healingRatioSpeed = _healingRatioSpeed;
         injuryFactor = Mathf.Min(1.0f, _injuryRatio);
         divisionPeriod = _divisionPeriod;
