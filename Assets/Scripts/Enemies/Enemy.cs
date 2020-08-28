@@ -1,6 +1,7 @@
 ﻿//#define VERBOSEDEBUG
 //#define VERBOSEMETRICSLVL2
 //#define MUTATIONONDIVISION
+#define NOEMISSIONOVERTIME
 #define CHANGEENEMYCOLOR
 
 using System.Collections;
@@ -244,10 +245,13 @@ public class Enemy : MonoBehaviour
         if (null != _resistanceEffectInstance)
         {
             float factor = (1f - getMaxResistance());
-            //emissionRate = 20;
-            //_resistanceEffectInstance.emission.rateOverTime = emissionRate;
-            ParticleSystem.EmissionModule em = _resistanceEffectInstance.emission;
+
+            ParticleSystem.EmissionModule em = _resistanceEffectInstance.emission;  
+            #if NOEMISSIONOVERTIME
+            em.rateOverTime = 0f;
+            #else          
             em.rateOverTime = factor * maxEmissionRate;
+            #endif
 
             #if VERBOSEDEBUG
             Debug.Log("setResistanceEffectEmissionRate " + em.rateOverTime);

@@ -207,13 +207,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 2d262984e0ff56b4a919bb1aa03090f6, type: 2}
-  m_Color: {r: 0.14266443, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.6003945, b: 0.7735849, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa386e30ac5f0614c9e530d5393babaa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 689321c8bf4c7e944bde24d09f367cfe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -424,6 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMovement: {fileID: 76248867092480059}
   audioEmitter: {fileID: -5128987683516186274}
+  innerEnemy: {fileID: 0}
   defaultMutationRange: 0.2
   reward: 150
   health: 0
