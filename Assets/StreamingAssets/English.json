@@ -35,6 +35,7 @@
 	,{"key":"MAINMENU.SUBTITLE.LABEL","value":"The Game is On!"}
 	,{"key":"MAINMENU.PLAY.LABEL","value":"PLAY"}
 	,{"key":"MAINMENU.QUIT.LABEL","value":"QUIT"}
+	,{"key":"MAINMENU.INTRO.LABEL","value":"play intro again"}
 	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"SELECT LEVEL"}
 	,{"key":"LEVELSELECTMENU.TUTORIALS.LABEL","value":"TUTORIALS"}
 	,{"key":"LEVELSELECTMENU.BACK.LABEL","value":"BACK"}
@@ -121,9 +122,17 @@
 
 	,{"key":"max level intro textlength3","value":    "_______________________________________________________________________________________________________________________________________________________________________________"}
 	
-	,{"key":"STORY.LEVEL1.INTRO","value":             "Bacteria are very small living beings. Some of them do harm and will try and invade our body by going through wounds. Stop them before they reach the blood vessel!"}
-	,{"key":"STORY.LEVEL1.DEFEAT","value":            "Bacteria succeeded in going through our defences! You need to set up more antibiotic dispensers next time."}
-	,{"key":"STORY.LEVEL1.VICTORY","value":           "Well done! White Blood Cells can stop a few wandering bacteria, but antibiotics are needed in full-scale invasions!"}
+
+	,{"key":"STORY.INTRO.1","value":                  "One day, Alex and Bobby were playing together with their dog Snowball..."}
+	,{"key":"STORY.INTRO.2","value":                  "But Alex and Bobby fell hard into a hole and hurt themselves badly!"}
+	,{"key":"STORY.INTRO.3","value":                  "The wounds look bad, let's find out if they are infected with bacteria."}
+	,{"key":"STORY.INTRO.4","value":                  "Oh, yes. Your wounds are infected.\nWe will need antibiotics to treat them."}
+	,{"key":"STORY.INTRO.5.1","value":                "One week later"}
+	,{"key":"STORY.INTRO.5.2","value":                "Alex has not followed the doctor's instructions and the wound could not be treated!"}
+	
+	,{"key":"STORY.LEVEL1.INTRO","value":             "One must follow the full course of antibiotics as prescribed by the doctor. Can you help Alex do that?"}
+	,{"key":"STORY.LEVEL1.DEFEAT","value":            "Bacteria won! Follow the doctor's prescription by setting up more antibiotic dispensers next time."}
+	,{"key":"STORY.LEVEL1.VICTORY","value":           "Well done! You see, the treatment starts to work, keep on the effort until all bacteria are dead."}
 
 	,{"key":"STORY.LEVEL2.INTRO","value":             "Under the right conditions, when they are well-fed and warmed up, bacteria divide and can quickly reach high numbers. Some quickly reproducing bacteria are incoming. Be ready!"}
 	,{"key":"STORY.LEVEL2.DEFEAT","value":            "Let's try again. When bacteria divide, they can overwhelm our defences. Kill them early, before they divide!"}
