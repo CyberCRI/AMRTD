@@ -22,6 +22,9 @@ public class GameConfiguration : MonoBehaviour
         //"LevelSelectionMenu",
         //"MainMenu",
         //"MainMenu_simple",
+        //"GameIntro",
+        //"GameOutro",
+        //"GameCredits",
     };
     public const int tutorialLevelsCount = 3;
 
@@ -211,6 +214,23 @@ public class GameConfiguration : MonoBehaviour
         }
     }
 
+    private BoolConfigurationParameter _showIntro = new BoolConfigurationParameter(true, true, _showIntroKey);
+    public bool showIntro
+    {
+        get
+        {
+            return _showIntro.val;
+        }
+        set
+        {
+            if (value != _showIntro.val)
+            {
+                _showIntro.val = value;
+                //RedMetricsManager.instance.sendEvent(TrackingEvent.);
+            }
+        }
+    }
+
     public float[] bestTimes
     {
         get
@@ -267,6 +287,7 @@ public class GameConfiguration : MonoBehaviour
     private const string _furthestLevelReachedKey = "levelReached";
     private const string _bestCompletionTimeLevelStem = "bestCompletionTimeLevel";
     private const string _isAdminKey = "isAdmin";
+    private const string _showIntroKey = "showIntro";
 
     public void load()
     {

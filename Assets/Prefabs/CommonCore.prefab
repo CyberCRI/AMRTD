@@ -2877,6 +2877,7 @@ GameObject:
   - component: {fileID: 4376900772824648630}
   - component: {fileID: 4699628411214245075}
   - component: {fileID: 5114141122017962908}
+  - component: {fileID: 1373030756367262860}
   - component: {fileID: 4414036972038794441}
   m_Layer: 5
   m_Name: UserFeedbackLabel
@@ -2932,12 +2933,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4e029ac9c9d333243b018ead0682adea, type: 3}
-    m_FontSize: 18
-    m_FontStyle: 0
-    m_BestFit: 0
+    m_Font: {fileID: 12800000, guid: f72d392c349836540a9f3d203250bb96, type: 3}
+    m_FontSize: 70
+    m_FontStyle: 1
+    m_BestFit: 1
     m_MinSize: 1
-    m_MaxSize: 40
+    m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2945,6 +2946,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: RATE THE GAME!
+--- !u!114 &1373030756367262860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7106440733413188949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406f2b8e4588f4045abc09e73465d906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: COMMONCORE.USERFEEDBACKBUTTON.LABEL
 --- !u!114 &4414036972038794441
 MonoBehaviour:
   m_ObjectHideFlags: 0

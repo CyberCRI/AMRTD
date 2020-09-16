@@ -229,9 +229,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 825a227d6669541439e04e6e8629b6f1, type: 3}
+    m_Font: {fileID: 12800000, guid: baffe877aad39cf47bb9dceac1fa8e1c, type: 3}
     m_FontSize: 25
-    m_FontStyle: 3
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 78
@@ -476,8 +476,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58, y: 117}
-  m_SizeDelta: {x: 329.5, y: 100}
+  m_AnchoredPosition: {x: -53.5, y: 109.8}
+  m_SizeDelta: {x: 278.4, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &443028392
 Animator:
@@ -546,8 +546,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f72d392c349836540a9f3d203250bb96, type: 3}
-    m_FontSize: 24
+    m_Font: {fileID: 12800000, guid: 94717adc12c8a7e4ab579939a2fc74b5, type: 3}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -6489,8 +6489,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f72d392c349836540a9f3d203250bb96, type: 3}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: 94717adc12c8a7e4ab579939a2fc74b5, type: 3}
+    m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -6618,8 +6618,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f72d392c349836540a9f3d203250bb96, type: 3}
-    m_FontSize: 23
+    m_Font: {fileID: 12800000, guid: 94717adc12c8a7e4ab579939a2fc74b5, type: 3}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -6787,9 +6787,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 825a227d6669541439e04e6e8629b6f1, type: 3}
+    m_Font: {fileID: 12800000, guid: baffe877aad39cf47bb9dceac1fa8e1c, type: 3}
     m_FontSize: 25
-    m_FontStyle: 3
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 78
@@ -7018,7 +7018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2035952435
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7184,9 +7184,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 825a227d6669541439e04e6e8629b6f1, type: 3}
+    m_Font: {fileID: 12800000, guid: baffe877aad39cf47bb9dceac1fa8e1c, type: 3}
     m_FontSize: 30
-    m_FontStyle: 3
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 78

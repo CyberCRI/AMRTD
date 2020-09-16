@@ -6,7 +6,6 @@ public class MainMenu : MonoBehaviour
 {
     public const string sceneName = "MainMenu_simple";
     public const string sceneNameAlternate = "MainMenu";
-    public const string introSceneName = "GameIntro";
 
     [Tooltip("Minimum number of levels unlocked required to access the level selection screen. Otherwise, loads the furthest unlocked level.")]
     [SerializeField]
@@ -47,7 +46,8 @@ public class MainMenu : MonoBehaviour
     {
         RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKGAMEINTRO);
         AudioManager.instance.play(AudioEvent.CLICKUI);
-        SceneFader.instance.fadeTo(MainMenu.introSceneName);
+        GameConfiguration.instance.showIntro = true;
+        SceneFader.instance.fadeTo(GameIntroUI.sceneName);
     }
 
     public void quit()

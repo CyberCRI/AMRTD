@@ -1,6 +1,6 @@
 ﻿//#define VERBOSEDEBUG
 //#define QUICKTEST
-#define QUICKTEST2
+//#define QUICKTEST2
 
 using System.Collections;
 using System.Collections.Generic;

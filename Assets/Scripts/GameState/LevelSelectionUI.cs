@@ -1,4 +1,4 @@
-﻿#define VERBOSEDEBUG
+﻿//#define VERBOSEDEBUG
 //#define DEVMODE
 //#define UNLOCKALLLEVELS
 using UnityEngine;
@@ -8,7 +8,7 @@ public class LevelSelectionUI : MonoBehaviour
 {
     public static LevelSelectionUI instance = null;
 
-    public const string sceneName = "LevelSelectionMenu";
+    public const string sceneName = "LevelSelectionMenu_simple";
 
     [SerializeField]
     private Transform levelButtonsRoot = null;

@@ -1,5 +1,6 @@
 //#define VERBOSEDEBUG
 //#define QUICKTEST
+#define ALWAYSSHOWINTRO
 
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ public class GameIntroUI : MonoBehaviour
     private float displayDuration;
     [SerializeField]
     private GameObject[] screenArray;
+
+    public const string sceneName = "GameIntro";
 
     void Start()
     {
@@ -27,15 +30,28 @@ public class GameIntroUI : MonoBehaviour
         #if QUICKTEST
         yield return new WaitForSeconds(0f);
         #else
-        yield return new WaitForSeconds(displayDuration);
-        for (int i = 0; i < screenArray.Length; i++)
+
+        #if !ALWAYSSHOWINTRO
+        if (GameConfiguration.instance.showIntro)
         {
-            screenArray[i].SetActive(true);
+        #endif
             yield return new WaitForSeconds(displayDuration);
-            screenArray[i].SetActive(false);
+            for (int i = 0; i < screenArray.Length; i++)
+            {
+                screenArray[i].SetActive(true);
+                yield return new WaitForSeconds(displayDuration);
+                screenArray[i].SetActive(false);
+            }
+            GameConfiguration.instance.showIntro = false;
+        #if !ALWAYSSHOWINTRO
+        }
+        else
+        {
+            yield return new WaitForSeconds(0f);
         }
         #endif
+        #endif
 
-        SceneFader.instance.fadeTo("MainMenu_simple");
+        SceneFader.instance.fadeTo(MainMenu.sceneName);
     }
 }
