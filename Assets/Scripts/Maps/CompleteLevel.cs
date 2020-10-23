@@ -14,6 +14,8 @@ public class CompleteLevel : MonoBehaviour
     [SerializeField]
     private int overrideNextLevelIndex = -1;
 
+    private bool displayOutro = false;
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
@@ -76,25 +78,37 @@ public class CompleteLevel : MonoBehaviour
 
     public void completeLevel()
     {
-        GameConfiguration.instance.reachedLevel(nextLevelIndex, nextLevelName);
+        bool newReached = GameConfiguration.instance.reachedLevel(nextLevelIndex, nextLevelName);
 
         string sceneName = SceneManager.GetActiveScene().name.ToLowerInvariant();        
         // TODO assumes linear unlocking of levels
         if (LevelSelectionUI.lastScene.ToLowerInvariant() == sceneName)
         {
-            RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETEGAME, CustomData.getContext(
-                    new CustomDataTag[3]{
-                        CustomDataTag.TIMESINCEGAMELOADED,
-                        CustomDataTag.TIMEGAMEPLAYEDNOPAUSE,
-                        CustomDataTag.TIMESINCELEVELLOADED,
-                        }
-                )
-            );
+            if (newReached)
+            {
+                RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETEGAME, CustomData.getContext(
+                        new CustomDataTag[3]{
+                            CustomDataTag.TIMESINCEGAMELOADED,
+                            CustomDataTag.TIMEGAMEPLAYEDNOPAUSE,
+                            CustomDataTag.TIMESINCELEVELLOADED,
+                            }
+                    )
+                );
+            }
+            displayOutro = true;
         }
     }
 
     public void pressContinue()
     {
-        SceneFader.instance.fadeTo(nextLevelName);
+        if (displayOutro)
+        {
+            SceneFader.instance.fadeTo(GameOutroUI.sceneName);
+            displayOutro = false;
+        }
+        else
+        {
+            SceneFader.instance.fadeTo(nextLevelName);
+        }
     }
 }

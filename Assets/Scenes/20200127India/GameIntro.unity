@@ -596,6 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a46b90aed272f5046a765caa793b01a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadDuration: 2
   displayDuration: 5
   screenArray:
   - {fileID: 2035952434}

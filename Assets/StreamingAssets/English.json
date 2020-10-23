@@ -150,6 +150,9 @@
 	,{"key":"STORY.LEVEL5.INTRO","value":             "As you've seen, bacteria come in different shapes and behaviors, and there are antibiotics specially crafted to counter them."}
 	,{"key":"STORY.LEVEL5.DEFEAT","value":            "Use the pill bottle dispenser instead, because it is efficient against clumps of bacteria!"}
 	,{"key":"STORY.LEVEL5.VICTORY","value":           "Congratulations! As you saw, this new antibiotic acts very efficiently on groups of bacteria."}
+	
+	,{"key":"STORY.OUTRO.1","value":                  "That was tough, but you made it! Congratulations!"}
+	,{"key":"STORY.OUTRO.2","value":                  "If I had followed your prescription, I would have been cured earlier!"}
 
 	]
 }

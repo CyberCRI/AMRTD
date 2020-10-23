@@ -14,7 +14,7 @@ public class LevelSelectionUI : MonoBehaviour
     private Transform levelButtonsRoot = null;
     private Button[] levelButtons = null;
 
-    public const string lastScene = "Level8_Lungs";
+    public const string lastScene = "Level4_resistance";
 
     void Awake()
     {

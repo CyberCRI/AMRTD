@@ -177,9 +177,11 @@ public class GameConfiguration : MonoBehaviour
     }
 
     // call only when a level is completed, not to set _furthestLevelReached
-    public void reachedLevel(int value, string levelName)
+    // returns true if value was updated
+    public bool reachedLevel(int value, string levelName)
     {
-        if (value > _furthestLevelReached.val)
+        bool result = (value > _furthestLevelReached.val);
+        if (result)
         {
 #if VERBOSEDEBUG
             Debug.Log(this.GetType() + " reachedLevel setting furthestLevel to " + value);
@@ -193,6 +195,7 @@ public class GameConfiguration : MonoBehaviour
             Debug.Log(this.GetType() + " reachedLevel already reached level " + value + " <= " + _furthestLevelReached.val);
         }
 #endif
+        return result;
     }
 
     private BoolConfigurationParameter _isAdmin = new BoolConfigurationParameter(_adminStartValue, _adminDefaultValue, _isAdminKey);

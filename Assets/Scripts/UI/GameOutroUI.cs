@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class GameOutroUI : MonoBehaviour
 {
     [SerializeField]
+    private float loadDuration;
+    [SerializeField]
     private float displayDuration;
     [SerializeField]
     private GameObject[] screenArray;
@@ -27,13 +29,13 @@ public class GameOutroUI : MonoBehaviour
     private IEnumerator animate()
     {
         #if QUICKTEST
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSecondsRealtime(0f);
         #else
-        yield return new WaitForSeconds(displayDuration);
+        yield return new WaitForSecondsRealtime(loadDuration);
         for (int i = 0; i < screenArray.Length; i++)
         {
             screenArray[i].SetActive(true);
-            yield return new WaitForSeconds(displayDuration);
+            yield return new WaitForSecondsRealtime(displayDuration);
             screenArray[i].SetActive(false);
         }
         #endif
