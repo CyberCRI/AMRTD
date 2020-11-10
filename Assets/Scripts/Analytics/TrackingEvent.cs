@@ -140,4 +140,8 @@ public enum TrackingEvent
 
     CLICKINTROSTART, //[ ]    // at each level intro
     CLICKGAMEINTRO, //[ ]         // in main game menu screen, to play intro again
+
+    CLICKCREDITMEMBER, //[ ]
+    CLICKCREDITRESOURCE, //[ ]
+    CLICKCREDITAUTHOR, //[ ]
 }

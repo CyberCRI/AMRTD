@@ -5,12 +5,16 @@ public class LocalizedText : MonoBehaviour
 {
     [SerializeField]
     private string key;
+    [SerializeField]
     private Text text = null;
 
     // Use this for initialization
     void Start()
     {
-        text = GetComponent<Text>();
+        if (null == text)
+        {
+            text = GetComponent<Text>();
+        }
         onLanguageChanged();
         LocalizationManager.languageChanged.AddListener(onLanguageChanged);
     }
@@ -21,7 +25,10 @@ public class LocalizedText : MonoBehaviour
         {
             text = GetComponent<Text>();
         }
-        text.text = LocalizationManager.instance.GetLocalizedValue(key);
+        if (!string.IsNullOrEmpty(key))
+        {
+            text.text = LocalizationManager.instance.GetLocalizedValue(key);
+        }
     }
 
     public void setKey(string _key)

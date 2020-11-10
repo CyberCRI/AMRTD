@@ -154,5 +154,74 @@
 	,{"key":"STORY.OUTRO.1","value":                  "That was tough, but you made it! Congratulations!"}
 	,{"key":"STORY.OUTRO.2","value":                  "If I had followed your prescription, I would have been cured earlier!"}
 
+	,{"key":"CREDITS.MEMBERS.TITLE","value":          "Project members"}
+
+	,{"key":"CREDITS.MEMBERS.ANSHU_NAME","value":             "Anshu Bhardwaj"}
+	,{"key":"CREDITS.MEMBERS.ANSHU_ROLE","value":             "Project leader"}
+
+	,{"key":"CREDITS.MEMBERS.RAPHAEL_NAME","value":           "Raphael Goujet"}
+	,{"key":"CREDITS.MEMBERS.RAPHAEL_ROLE","value":           "Game developer"}
+
+	,{"key":"CREDITS.MEMBERS.RADHIKA_NAME","value":           "Radhika Beaumé"}
+	,{"key":"CREDITS.MEMBERS.RADHIKA_ROLE","value":           "Artist"}
+
+	,{"key":"CREDITS.MEMBERS.RICHA_NAME","value":             "Richa Kedia"}
+	,{"key":"CREDITS.MEMBERS.RICHA_ROLE","value":             "Artist"}
+
+	,{"key":"CREDITS.RESOURCES.TITLE","value":        "Resources"}
+
+	,{"key":"CREDITS.RESOURCES.BACTERIUM_1.RESOURCE_NAME","value":                       "Bacterium 1"}
+	,{"key":"CREDITS.RESOURCES.BACTERIUM_1.RESOURCE_URL","value":                        "http://pngimg.com/download/4338"}
+	,{"key":"CREDITS.RESOURCES.BACTERIUM_2.RESOURCE_NAME","value":                       "Bacterium 2"}
+	,{"key":"CREDITS.RESOURCES.BACTERIUM_2.RESOURCE_URL","value":                        "https://www.hiclipart.com/free-transparent-background-png-clipart-zopd"}
+	,{"key":"CREDITS.RESOURCES.BACTERIUM_3.RESOURCE_NAME","value":                       "Bacterium 3"}
+	,{"key":"CREDITS.RESOURCES.BACTERIUM_3.RESOURCE_URL","value":                        "https://imgpng.ru/download/4339"}
+	,{"key":"CREDITS.RESOURCES.BACTERIUM_4.RESOURCE_NAME","value":                       "Bacterium 4"}
+	,{"key":"CREDITS.RESOURCES.BACTERIUM_4.RESOURCE_URL","value":                        "https://www.hiclipart.com/free-transparent-background-png-clipart-izkz"}
+	,{"key":"CREDITS.RESOURCES.BACTERIUM_5.RESOURCE_NAME","value":                       "Bacterium 5"}
+	,{"key":"CREDITS.RESOURCES.BACTERIUM_5.RESOURCE_URL","value":                        "https://www.hiclipart.com/free-transparent-background-png-clipart-iqvmw"}
+	,{"key":"CREDITS.RESOURCES.TABLET.RESOURCE_NAME","value":                            "Tablet"}
+	,{"key":"CREDITS.RESOURCES.TABLET.RESOURCE_URL","value":                             "https://www.turbosquid.com/FullPreview/Index.cfm/ID/971136"}
+	,{"key":"CREDITS.RESOURCES.TABLET.AUTHOR_NAME","value":                              "thesander705"}
+	,{"key":"CREDITS.RESOURCES.TABLET.AUTHOR_URL","value":                               "https://www.turbosquid.com/Search/Artists/thesander705"}
+	,{"key":"CREDITS.RESOURCES.PILL.RESOURCE_NAME","value":                              "Pill"}
+	,{"key":"CREDITS.RESOURCES.PILL.RESOURCE_URL","value":                               "https://www.turbosquid.com/FullPreview/Index.cfm/ID/586682"}
+	,{"key":"CREDITS.RESOURCES.PILL.AUTHOR_NAME","value":                                "Redfox1980"}
+	,{"key":"CREDITS.RESOURCES.PILL.AUTHOR_URL","value":                                 "https://www.turbosquid.com/Search/Artists/Redfox1980"}
+	,{"key":"CREDITS.RESOURCES.PILLS_BOTTLE.RESOURCE_NAME","value":                      "Pills bottle"}
+	,{"key":"CREDITS.RESOURCES.PILLS_BOTTLE.RESOURCE_URL","value":                       "https://www.turbosquid.com/FullPreview/Index.cfm/ID/938419"}
+	,{"key":"CREDITS.RESOURCES.PILLS_BOTTLE.AUTHOR_NAME","value":                        "romanlebedeff"}
+	,{"key":"CREDITS.RESOURCES.PILLS_BOTTLE.AUTHOR_URL","value":                         "https://www.turbosquid.com/Search/Artists/romanlebedeff"}
+	,{"key":"CREDITS.RESOURCES.SYRINGE.RESOURCE_NAME","value":                           "Syringe"}
+	,{"key":"CREDITS.RESOURCES.SYRINGE.RESOURCE_URL","value":                            "https://clara.io/view/244b0aa1-2921-4ff5-8fdf-b40072284669"}
+	,{"key":"CREDITS.RESOURCES.SYRINGE.AUTHOR_NAME","value":                             "MarianaNT"}
+	,{"key":"CREDITS.RESOURCES.SYRINGE.AUTHOR_URL","value":                              "https://clara.io/user/MarianaNT"}
+	,{"key":"CREDITS.RESOURCES.RED_BLOOD_CELL_1.RESOURCE_NAME","value":                  "Red Blood Cell 1"}
+	,{"key":"CREDITS.RESOURCES.RED_BLOOD_CELL_1.RESOURCE_URL","value":                   "https://pixabay.com/illustrations/red-blood-cell-rbc-erythrocyte-1861640/"}
+	,{"key":"CREDITS.RESOURCES.RED_BLOOD_CELL_1.AUTHOR_NAME","value":                    "sbtlneet"}
+	,{"key":"CREDITS.RESOURCES.RED_BLOOD_CELL_1.AUTHOR_URL","value":                     "https://pixabay.com/users/sbtlneet-3591002/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1861640"}
+	,{"key":"CREDITS.RESOURCES.WHITE_BLOOD_CELLS.RESOURCE_NAME","value":                 "White Blood Cells"}
+	,{"key":"CREDITS.RESOURCES.WHITE_BLOOD_CELLS.RESOURCE_URL","value":                  "https://www.flickr.com/photos/niaid/29122039942/in/photolist-rx2LVN-su1wdR-rx2WTU-LtZ1RC-ni2rkv-L6xiiJ-DHjR9E-a4RLoY-Lnq4SW-NM7i5Y"}
+	,{"key":"CREDITS.RESOURCES.WHITE_BLOOD_CELLS.AUTHOR_NAME","value":                   "NIAID"}
+	,{"key":"CREDITS.RESOURCES.WHITE_BLOOD_CELLS.AUTHOR_URL","value":                    "https://www.flickr.com/photos/niaid"}
+	,{"key":"CREDITS.RESOURCES.HELP_ICON.RESOURCE_NAME","value":                         "Help icon"}
+	,{"key":"CREDITS.RESOURCES.HELP_ICON.RESOURCE_URL","value":                          "https://www.flaticon.com/free-icon/information_906794"}
+	,{"key":"CREDITS.RESOURCES.HELP_ICON.AUTHOR_NAME","value":                           "Freepik"}
+	,{"key":"CREDITS.RESOURCES.HELP_ICON.AUTHOR_URL","value":                            "https://www.flaticon.com/authors/freepik"}
+	,{"key":"CREDITS.RESOURCES.HELP_CURSOR.RESOURCE_NAME","value":                       "Help cursor"}
+	,{"key":"CREDITS.RESOURCES.HELP_CURSOR.RESOURCE_URL","value":                        "https://www.flaticon.com/free-icon/help_1527630"}
+	,{"key":"CREDITS.RESOURCES.HELP_CURSOR.AUTHOR_NAME","value":                         "Freepik"}
+	,{"key":"CREDITS.RESOURCES.HELP_CURSOR.AUTHOR_URL","value":                          "https://www.flaticon.com/authors/freepik"}
+	,{"key":"CREDITS.RESOURCES.BUILD_CURSOR.RESOURCE_NAME","value":                      "Build cursor"}
+	,{"key":"CREDITS.RESOURCES.BUILD_CURSOR.RESOURCE_URL","value":                       "https://www.flaticon.com/free-icon/pills_1087063"}
+	,{"key":"CREDITS.RESOURCES.BUILD_CURSOR.AUTHOR_NAME","value":                        "Good Ware"}
+	,{"key":"CREDITS.RESOURCES.BUILD_CURSOR.AUTHOR_URL","value":                         "https://www.flaticon.com/authors/good-ware"}
+	,{"key":"CREDITS.RESOURCES.HEART_ICON.RESOURCE_NAME","value":                        "Heart icon"}
+	,{"key":"CREDITS.RESOURCES.HEART_ICON.RESOURCE_URL","value":                         "https://www.flaticon.com/free-icon/heart_599404"}
+	,{"key":"CREDITS.RESOURCES.HEART_ICON.AUTHOR_NAME","value":                          "Freepik"}
+	,{"key":"CREDITS.RESOURCES.HEART_ICON.AUTHOR_URL","value":                           "https://www.flaticon.com/authors/freepik"}
+	,{"key":"CREDITS.RESOURCES.FEEDBACK_BUTTON.RESOURCE_NAME","value":                   "Feedback button"}
+	,{"key":"CREDITS.RESOURCES.FEEDBACK_BUTTON.RESOURCE_URL","value":                    "https://www.kissclipart.com/feedback-icon-clipart-computer-icons-pyy1j7/"}
+	
 	]
 }

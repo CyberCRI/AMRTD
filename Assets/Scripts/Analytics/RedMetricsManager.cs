@@ -1,6 +1,6 @@
 //#define VERBOSEDEBUG
 //#define VERBOSEMETRICSLVL1
-#define SENDMETRICS
+//#define SENDMETRICS
 
 using UnityEngine;
 using System.Collections;
