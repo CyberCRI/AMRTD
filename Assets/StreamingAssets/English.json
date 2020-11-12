@@ -156,17 +156,21 @@
 
 	,{"key":"CREDITS.MEMBERS.TITLE","value":          "Project members"}
 
-	,{"key":"CREDITS.MEMBERS.ANSHU_NAME","value":             "Anshu Bhardwaj"}
-	,{"key":"CREDITS.MEMBERS.ANSHU_ROLE","value":             "Project leader"}
+	,{"key":"CREDITS.MEMBERS.ANSHU.NAME","value":             "Anshu Bhardwaj"}
+	,{"key":"CREDITS.MEMBERS.ANSHU.ROLE","value":             "Project leader"}
+	,{"key":"CREDITS.MEMBERS.ANSHU.URL","value":              "https://scholar.google.com/citations?user=lRVbF9sAAAAJ&hl=en"}
 
-	,{"key":"CREDITS.MEMBERS.RAPHAEL_NAME","value":           "Raphael Goujet"}
-	,{"key":"CREDITS.MEMBERS.RAPHAEL_ROLE","value":           "Game developer"}
+	,{"key":"CREDITS.MEMBERS.RAPHAEL.NAME","value":           "Raphael Goujet"}
+	,{"key":"CREDITS.MEMBERS.RAPHAEL.ROLE","value":           "Game developer"}
+	,{"key":"CREDITS.MEMBERS.RAPHAEL.URL","value":            "https://www.researchgate.net/profile/Raphael_Goujet"}
 
-	,{"key":"CREDITS.MEMBERS.RADHIKA_NAME","value":           "Radhika Beaumé"}
-	,{"key":"CREDITS.MEMBERS.RADHIKA_ROLE","value":           "Artist"}
+	,{"key":"CREDITS.MEMBERS.RADHIKA.NAME","value":           "Radhika Beaumé"}
+	,{"key":"CREDITS.MEMBERS.RADHIKA.ROLE","value":           "Artist"}
+	,{"key":"CREDITS.MEMBERS.RADHIKA.URL","value":            "http://radhikabeaume.com/"}
 
-	,{"key":"CREDITS.MEMBERS.RICHA_NAME","value":             "Richa Kedia"}
-	,{"key":"CREDITS.MEMBERS.RICHA_ROLE","value":             "Artist"}
+	,{"key":"CREDITS.MEMBERS.RICHA.NAME","value":             "Richa Kedia"}
+	,{"key":"CREDITS.MEMBERS.RICHA.ROLE","value":             "Artist"}
+	,{"key":"CREDITS.MEMBERS.RICHA.URL","value":              "https://www.richakedia.com"}
 
 	,{"key":"CREDITS.RESOURCES.TITLE","value":        "Resources"}
 

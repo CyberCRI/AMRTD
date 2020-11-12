@@ -6,15 +6,13 @@ public class ResourceCredits : MonoBehaviour
     [SerializeField]
     private string code = null;
     [SerializeField]
+    private CreditLinkOpener pictureCLO = null;
+    [SerializeField]
     private LocalizedText resourceNameLT = null;
-    //[SerializeField]
-    //private LocalizedText resourceURLLT = null;
     [SerializeField]
     private CreditLinkOpener resourceURLCLO = null;
     [SerializeField]
     private LocalizedText authorNameLT = null;
-    //[SerializeField]
-    //private LocalizedText authorURLLT = null;
     [SerializeField]
     private CreditLinkOpener authorURLCLO = null;
 
@@ -51,15 +49,16 @@ public class ResourceCredits : MonoBehaviour
         if (!string.IsNullOrEmpty(code))
         {
             resourceNameLT.setKey(getResourceNameCode());
-            //resourceURLLT.setKey(getResourceURLCode());
             string resourceCode = getResourceURLCode();
+            string localizedResourceURL = LocalizationManager.instance.GetLocalizedValue(resourceCode);
+            pictureCLO.setCode(resourceCode);
+            pictureCLO.setURL(localizedResourceURL);
             resourceURLCLO.setCode(resourceCode);
-            resourceURLCLO.setURL(LocalizationManager.instance.GetLocalizedValue(resourceCode));
+            resourceURLCLO.setURL(localizedResourceURL);
 
             if (null != authorNameLT)
             {
                 authorNameLT.setKey(getAuthorNameCode());
-                //authorURLLT.setKey(getAuthorURLCode());
                 string authorCode = getAuthorURLCode();
                 authorURLCLO.setCode(authorCode);
                 authorURLCLO.setURL(LocalizationManager.instance.GetLocalizedValue(authorCode));
