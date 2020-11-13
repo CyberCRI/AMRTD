@@ -32,7 +32,7 @@ public class LivesUI : MonoBehaviour
 
     private void onLanguageChanged()
     {
-        translatedValue = LocalizationManager.instance.GetLocalizedValue(livesKey);
+        translatedValue = LocalizationManager.instance.getLocalizedValue(livesKey);
     }
 #else
     }

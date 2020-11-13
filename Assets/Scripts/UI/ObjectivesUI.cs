@@ -34,7 +34,7 @@ public class ObjectivesUI : MonoBehaviour
 
     private void onLanguageChanged()
     {
-        translatedValue = LocalizationManager.instance.GetLocalizedValue(objectivesKey);
+        translatedValue = LocalizationManager.instance.getLocalizedValue(objectivesKey);
     }
 #else
     }

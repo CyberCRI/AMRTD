@@ -49,19 +49,21 @@ public class ResourceCredits : MonoBehaviour
         if (!string.IsNullOrEmpty(code))
         {
             resourceNameLT.setKey(getResourceNameCode());
-            string resourceCode = getResourceURLCode();
-            string localizedResourceURL = LocalizationManager.instance.GetLocalizedValue(resourceCode);
-            pictureCLO.setCode(resourceCode);
-            pictureCLO.setURL(localizedResourceURL);
-            resourceURLCLO.setCode(resourceCode);
-            resourceURLCLO.setURL(localizedResourceURL);
+            string resourceURLCode = getResourceURLCode();
+            string localizedResourceURL = LocalizationManager.instance.getLocalizedValue(resourceURLCode);
+            pictureCLO.setURLCode(resourceURLCode, localizedResourceURL);
+            resourceURLCLO.setURLCode(resourceURLCode, localizedResourceURL);
 
-            if (null != authorNameLT)
+            string authorNameCode = getAuthorNameCode();
+            string authorURLCode = getAuthorURLCode();
+
+            if ((null != authorNameLT)
+            && LocalizationManager.instance.hasLocalization(authorNameCode)
+            //&& LocalizationManager.instance.hasLocalization(authorURLCode)
+            )
             {
-                authorNameLT.setKey(getAuthorNameCode());
-                string authorCode = getAuthorURLCode();
-                authorURLCLO.setCode(authorCode);
-                authorURLCLO.setURL(LocalizationManager.instance.GetLocalizedValue(authorCode));
+                authorNameLT.setKey(authorNameCode);
+                authorURLCLO.setURLCode(authorURLCode);
             }
         }
     }

@@ -27,7 +27,7 @@ public class LocalizedText : MonoBehaviour
         }
         if (!string.IsNullOrEmpty(key))
         {
-            text.text = LocalizationManager.instance.GetLocalizedValue(key);
+            text.text = LocalizationManager.instance.getLocalizedValue(key);
         }
     }
 

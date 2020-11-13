@@ -47,13 +47,10 @@ public class MemberCredits : MonoBehaviour
             memberRoleLT.setKey(getMemberRoleCode());
 
             string urlCode = getMemberURLCode();
-            string localized = LocalizationManager.instance.GetLocalizedValue(urlCode);
-            pictureCLO.setCode(urlCode);
-            pictureCLO.setURL(localized);
-            memberNameCLO.setCode(urlCode);
-            memberNameCLO.setURL(localized);
-            memberRoleCLO.setCode(urlCode);
-            memberRoleCLO.setURL(localized);
+            string localized = LocalizationManager.instance.getLocalizedValue(urlCode);
+            pictureCLO.setURLCode(urlCode, localized);
+            memberNameCLO.setURLCode(urlCode, localized);
+            memberRoleCLO.setURLCode(urlCode, localized);
         }
     }
 }

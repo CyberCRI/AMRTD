@@ -150,7 +150,7 @@ public class LocalizationManager : MonoBehaviour
         return (LANGUAGES)(((int)language + 1) % ((int)LANGUAGES.COUNT));
     }
 
-    public string GetLocalizedValue(string key)
+    public string getLocalizedValue(string key)
     {
         string result = missingTextString;
         if (localizedText.ContainsKey(key))
@@ -161,7 +161,12 @@ public class LocalizationManager : MonoBehaviour
         return result;
     }
 
-    public bool GetIsReady()
+    public bool hasLocalization(string key)
+    {
+        return localizedText.ContainsKey(key);
+    }
+
+    public bool getIsReady()
     {
         return isReady;
     }

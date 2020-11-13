@@ -5,17 +5,28 @@ public class CreditLinkOpener : LinkOpener
 {
     [SerializeField]
     private TrackingEvent _te = TrackingEvent.CLICKCREDITMEMBER;
-    private string _code = null;
+    private string _urlCode = null;
     private string _url = null;
+    
+    // Use this for initialization
+    void Start()
+    {
+        onLanguageChanged();
+        LocalizationManager.languageChanged.AddListener(onLanguageChanged);
+    }
+    
+    void onLanguageChanged()
+    {
+        if (!string.IsNullOrEmpty(_urlCode))
+        {
+            setURLCode(_urlCode);
+        }
+    }
 
-    public void setCode(string code)
+    public void setURLCode(string urlCode, string url = null)
 	{
-        _code = code;
-	}
-
-    public void setURL(string url)
-	{
-        _url = url;
+        _urlCode = urlCode;
+        _url = url == null ? LocalizationManager.instance.getLocalizedValue(_urlCode) : url;
 	}
 
     protected override string getURL()
@@ -25,7 +36,7 @@ public class CreditLinkOpener : LinkOpener
 
     public void clickButton()
     {
-        RedMetricsManager.instance.sendEvent(_te, CustomData.getGameLevelContext().add(CustomDataTag.ELEMENT, _code));
+        RedMetricsManager.instance.sendEvent(_te, CustomData.getGameLevelContext().add(CustomDataTag.ELEMENT, _urlCode));
         AudioManager.instance.play(AudioEvent.CLICKUI);
         openLink();
     }
