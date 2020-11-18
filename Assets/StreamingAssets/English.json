@@ -35,8 +35,9 @@
 	,{"key":"MAINMENU.TITLE.LABEL","value":"<b>A</b><color=#f5c462>r</color><b>M</b><color=#f5c462>o</color><b>R</b>"}
 	,{"key":"MAINMENU.SUBTITLE.LABEL","value":"The Game is On!"}
 	,{"key":"MAINMENU.PLAY.LABEL","value":"PLAY"}
-	,{"key":"MAINMENU.QUIT.LABEL","value":"QUIT"}
-	,{"key":"MAINMENU.INTRO.LABEL","value":"play intro again"}
+	,{"key":"MAINMENU.QUIT.LABEL","value":"quit"}
+	,{"key":"MAINMENU.INTRO.LABEL","value":"intro"}
+	,{"key":"MAINMENU.CREDITS.LABEL","value":"credits"}
 	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"SELECT LEVEL"}
 	,{"key":"LEVELSELECTMENU.TUTORIALS.LABEL","value":"TUTORIALS"}
 	,{"key":"LEVELSELECTMENU.BACK.LABEL","value":"BACK"}

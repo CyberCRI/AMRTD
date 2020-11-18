@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43bebed9c77b15e48b06fb4ab300337d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _te: 76
+  _te: 77
 --- !u!114 &2617673715797415408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,8 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406f2b8e4588f4045abc09e73465d906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: CREDITS.ANSHU.ROLE
-  text: {fileID: 0}
+  key: 
+  text: {fileID: 4524365448751733098}
 --- !u!95 &4524365448751733079
 Animator:
   serializedVersion: 3
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43bebed9c77b15e48b06fb4ab300337d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _te: 76
+  _te: 77
 --- !u!114 &305419459614139053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,8 +523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406f2b8e4588f4045abc09e73465d906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: CREDITS.ANSHU.NAME
-  text: {fileID: 0}
+  key: 
+  text: {fileID: 4524365449575219924}
 --- !u!95 &4524365449575219921
 Animator:
   serializedVersion: 3
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43bebed9c77b15e48b06fb4ab300337d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _te: 76
+  _te: 77
 --- !u!114 &4253112390569756686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,7 +746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6302186699acf0d4884ec9a3bf73dd56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4676cac0bffe3cc418d71a27a217c1a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

@@ -139,9 +139,14 @@ public enum TrackingEvent
     SETVOLUMEMUSIC, //[ ]     // parameter: float VALUE
 
     CLICKINTROSTART, //[ ]    // at each level intro
-    CLICKGAMEINTRO, //[ ]         // in main game menu screen, to play intro again
+    CLICKGAMEINTRO, //[ ]     // in main game menu screen, to play intro again
+    CLICKCREDITS, //[ ]       // in main game menu screen, to show credits and copyleft resources
 
     CLICKCREDITMEMBER, //[ ]
     CLICKCREDITRESOURCE, //[ ]
     CLICKCREDITAUTHOR, //[ ]
+    
+    CLICKCREDITSBACK, //[ ]
+    CLICKCREDITSNEXT, //[ ]
+    CLICKCREDITSPREV, //[ ]
 }

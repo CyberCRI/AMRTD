@@ -50,6 +50,13 @@ public class MainMenu : MonoBehaviour
         SceneFader.instance.fadeTo(GameIntroUI.sceneName);
     }
 
+    public void showCredits()
+    {
+        RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKCREDITS);
+        AudioManager.instance.play(AudioEvent.CLICKUI);
+        SceneFader.instance.fadeTo(GameCreditsUI.sceneName);
+    }
+
     public void quit()
     {
         RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKQUIT);

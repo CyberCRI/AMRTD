@@ -17,16 +17,17 @@ public class CreditLinkOpener : LinkOpener
     
     void onLanguageChanged()
     {
-        if (!string.IsNullOrEmpty(_urlCode))
-        {
-            setURLCode(_urlCode);
-        }
+        setURLCode(_urlCode);
     }
 
     public void setURLCode(string urlCode, string url = null)
 	{
         _urlCode = urlCode;
-        _url = url == null ? LocalizationManager.instance.getLocalizedValue(_urlCode) : url;
+
+        this.gameObject.SetActive(!string.IsNullOrEmpty(_urlCode));
+
+        // url or translation of _urlCode
+        _url = (null == url) && (null != _urlCode) ? LocalizationManager.instance.getLocalizedValue(_urlCode) : url;
 	}
 
     protected override string getURL()

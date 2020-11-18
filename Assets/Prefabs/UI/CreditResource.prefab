@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406f2b8e4588f4045abc09e73465d906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: CREDITS.RESOURCES.WHITE_BLOOD_CELLS.RESOURCE_NAME
+  key: 
   text: {fileID: 5106710192320101190}
 --- !u!95 &5106710192320101187
 Animator:
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43bebed9c77b15e48b06fb4ab300337d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _te: 77
+  _te: 78
 --- !u!1 &5106710193115990666
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43bebed9c77b15e48b06fb4ab300337d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _te: 77
+  _te: 78
 --- !u!1 &5106710193140768963
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406f2b8e4588f4045abc09e73465d906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: CREDITS.RESOURCES.WHITE_BLOOD_CELLS.AUTHOR_NAME
+  key: 
   text: {fileID: 5106710193140769016}
 --- !u!95 &5106710193140768965
 Animator:
@@ -625,7 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43bebed9c77b15e48b06fb4ab300337d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _te: 78
+  _te: 79
 --- !u!1 &5106710194245839978
 GameObject:
   m_ObjectHideFlags: 0
