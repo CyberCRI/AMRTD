@@ -155,14 +155,14 @@
 	,{"key":"STORY.OUTRO.1","value":                  "That was tough, but you made it! Congratulations!"}
 	,{"key":"STORY.OUTRO.2","value":                  "If I had followed your prescription, I would have been cured earlier!"}
 
-	,{"key":"CREDITS.MEMBERS.TITLE","value":          "Project members"}
+	,{"key":"CREDITS.MEMBERS.TITLE","value":          "Meet the Team"}
 
 	,{"key":"CREDITS.MEMBERS.ANSHU.NAME","value":             "Anshu Bhardwaj"}
 	,{"key":"CREDITS.MEMBERS.ANSHU.ROLE","value":             "Project leader"}
 	,{"key":"CREDITS.MEMBERS.ANSHU.URL","value":              "https://scholar.google.com/citations?user=lRVbF9sAAAAJ&hl=en"}
 
 	,{"key":"CREDITS.MEMBERS.RAPHAEL.NAME","value":           "Raphael Goujet"}
-	,{"key":"CREDITS.MEMBERS.RAPHAEL.ROLE","value":           "Game developer"}
+	,{"key":"CREDITS.MEMBERS.RAPHAEL.ROLE","value":           "GD & dev"}
 	,{"key":"CREDITS.MEMBERS.RAPHAEL.URL","value":            "https://www.researchgate.net/profile/Raphael_Goujet"}
 
 	,{"key":"CREDITS.MEMBERS.RADHIKA.NAME","value":           "Radhika Beaumé"}
