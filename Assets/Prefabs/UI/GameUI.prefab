@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.MENU.MENU
+  text: {fileID: 0}
 --- !u!114 &1283043318676757401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: STORY.LEVEL1.INTRO
+  text: {fileID: 0}
 --- !u!1 &54850277920825333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,6 +1140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
+  text: {fileID: 0}
 --- !u!1 &676016698896998135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,6 +1233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.GAMEOVERSCREEN.RETRY
+  text: {fileID: 0}
 --- !u!1 &719950413966820722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,6 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.LEVELCOMPLETEDSCREEN.PLAYAGAIN
+  text: {fileID: 0}
 --- !u!1 &859802177045513481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,7 +1841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 490.3, y: 0}
+  m_AnchoredPosition: {x: 312.5, y: 0}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1283043317945385368
@@ -2386,6 +2391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.GAMEOVERSCREEN.TITLE
+  text: {fileID: 0}
 --- !u!1 &1283043318055578851
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,6 +2535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 
+  text: {fileID: 0}
 --- !u!1 &1283043318060693968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,6 +2628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.NODEUI.SELL
+  text: {fileID: 0}
 --- !u!1 &1283043318078904819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,6 +2721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.GAMEOVERSCREEN.MENU
+  text: {fileID: 0}
 --- !u!1 &1283043318125714775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,10 +2759,10 @@ RectTransform:
   m_Father: {fileID: 1283043319146324917}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -420, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0.1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!225 &1283043318125714769
 CanvasGroup:
@@ -2784,7 +2793,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 2
   m_Spacing: 20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -3050,6 +3059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.PAUSESCREEN.TITLE
+  text: {fileID: 0}
 --- !u!1 &1283043318359841387
 GameObject:
   m_ObjectHideFlags: 0
@@ -3354,6 +3364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.PAUSESCREEN.CONTINUE
+  text: {fileID: 0}
 --- !u!1 &1283043318537544049
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,7 +3593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 555.3, y: -50}
+  m_AnchoredPosition: {x: 450.40002, y: -25}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1283043318634709280
@@ -3862,6 +3873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.GAMEOVERSCREEN.WAVESSURVIVED
+  text: {fileID: 0}
 --- !u!1 &1283043318839884131
 GameObject:
   m_ObjectHideFlags: 0
@@ -4009,7 +4021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1283043318853177561
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4185,7 +4197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1283043318958960586
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4327,6 +4339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED
+  text: {fileID: 0}
 --- !u!1 &1283043319060676204
 GameObject:
   m_ObjectHideFlags: 0
@@ -4595,6 +4608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.GAMEOVERSCREEN.RETRY
+  text: {fileID: 0}
 --- !u!1 &1283043319146324922
 GameObject:
   m_ObjectHideFlags: 0
@@ -4701,7 +4715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 722.25, y: -50}
+  m_AnchoredPosition: {x: 654.9, y: -21.35}
   m_SizeDelta: {x: 93.9, y: 42.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1283043319190517305
@@ -5009,6 +5023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.NODEUI.UPGRADE
+  text: {fileID: 0}
 --- !u!1 &1283043319474126151
 GameObject:
   m_ObjectHideFlags: 0
@@ -5448,7 +5463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 619.89996, y: 0}
+  m_AnchoredPosition: {x: 442.1, y: 0}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1283043319634983228
@@ -5508,7 +5523,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.5372549}
     m_HighlightedColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -5924,6 +5939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.LEVELCOMPLETEDSCREEN.MENU
+  text: {fileID: 0}
 --- !u!1 &1283043319736420801
 GameObject:
   m_ObjectHideFlags: 0
@@ -6016,6 +6032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.LEVELCOMPLETEDSCREEN.CONTINUE
+  text: {fileID: 0}
 --- !u!1 &1283043319754283415
 GameObject:
   m_ObjectHideFlags: 0
@@ -6162,7 +6179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 127.65, y: -50}
+  m_AnchoredPosition: {x: 165.20001, y: -145.25}
   m_SizeDelta: {x: 255.3, y: 290.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1283043319807675282
@@ -6246,6 +6263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.LEVELCOMPLETEDSCREEN.TITLE
+  text: {fileID: 0}
 --- !u!1 &1322588754464343335
 GameObject:
   m_ObjectHideFlags: 0
@@ -6338,6 +6356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.NODEUI.RENEW
+  text: {fileID: 0}
 --- !u!1 &1436375330005693754
 GameObject:
   m_ObjectHideFlags: 0
@@ -6627,6 +6646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.MENUSCREEN.CANCEL
+  text: {fileID: 0}
 --- !u!1 &1582722332816586798
 GameObject:
   m_ObjectHideFlags: 0
@@ -6748,6 +6768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.LEVELCOMPLETEDSCREEN.TITLE
+  text: {fileID: 0}
 --- !u!1 &1657339162397363247
 GameObject:
   m_ObjectHideFlags: 0
@@ -6856,6 +6877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.GAMEOVERSCREEN.WAVESSURVIVED
+  text: {fileID: 0}
 --- !u!1 &1701291283522689917
 GameObject:
   m_ObjectHideFlags: 0
@@ -7276,6 +7298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.LEVELCOMPLETEDSCREEN.MENU
+  text: {fileID: 0}
 --- !u!1 &2401898913082964587
 GameObject:
   m_ObjectHideFlags: 0
@@ -7514,7 +7537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 889.2, y: -50}
+  m_AnchoredPosition: {x: 859.4, y: -21.35}
   m_SizeDelta: {x: 200, y: 42.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6874509118339123179
@@ -7813,6 +7836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.MENUSCREEN.TEXT
+  text: {fileID: 0}
 --- !u!225 &4063388153494790139
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7917,6 +7941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: TUTORIAL.UI.NEXT
+  text: {fileID: 0}
 --- !u!1 &3267861188343734469
 GameObject:
   m_ObjectHideFlags: 0
@@ -8334,6 +8359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: STORY.LEVEL1.DEFEAT
+  text: {fileID: 0}
 --- !u!1 &3448700630330912431
 GameObject:
   m_ObjectHideFlags: 0
@@ -8428,6 +8454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: STORY.LEVEL1.INTRO
+  text: {fileID: 0}
 --- !u!1 &3534095738805652322
 GameObject:
   m_ObjectHideFlags: 0
@@ -8578,6 +8605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.LEVELCOMPLETEDSCREEN.CONTINUE
+  text: {fileID: 0}
 --- !u!1 &3586870793070672670
 GameObject:
   m_ObjectHideFlags: 0
@@ -8670,6 +8698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.HELP.EXPLANATION
+  text: {fileID: 0}
 --- !u!1 &3669826520749363256
 GameObject:
   m_ObjectHideFlags: 0
@@ -8766,7 +8795,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.6862745}
     m_HighlightedColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -9777,6 +9806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.RETRYSCREEN.CONFIRM
+  text: {fileID: 0}
 --- !u!1 &4586690717669293375
 GameObject:
   m_ObjectHideFlags: 0
@@ -9885,6 +9915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.LEVELCOMPLETEDSCREEN.WAVESSURVIVED
+  text: {fileID: 0}
 --- !u!1 &4603284418128112019
 GameObject:
   m_ObjectHideFlags: 0
@@ -10459,6 +10490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.MENUSCREEN.TITLE
+  text: {fileID: 0}
 --- !u!1 &4973128961648522581
 GameObject:
   m_ObjectHideFlags: 0
@@ -11303,6 +11335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.RETRYSCREEN.CANCEL
+  text: {fileID: 0}
 --- !u!1 &5605116337476696659
 GameObject:
   m_ObjectHideFlags: 0
@@ -11471,6 +11504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.GAMEOVERSCREEN.MENU
+  text: {fileID: 0}
 --- !u!1 &5611743724172649609
 GameObject:
   m_ObjectHideFlags: 0
@@ -12155,6 +12189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.GAMEOVERSCREEN.TITLE
+  text: {fileID: 0}
 --- !u!1 &5912979950916812743
 GameObject:
   m_ObjectHideFlags: 0
@@ -12460,6 +12495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.LEVEL.1
+  text: {fileID: 0}
 --- !u!114 &2486332881419065747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12656,6 +12692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.NODEUI.UPKEEP
+  text: {fileID: 0}
 --- !u!1 &6400524588517720243
 GameObject:
   m_ObjectHideFlags: 0
@@ -13314,6 +13351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.MENUSCREEN.CONFIRM
+  text: {fileID: 0}
 --- !u!1 &7229901682920626720
 GameObject:
   m_ObjectHideFlags: 0
@@ -13568,7 +13606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8676175790084939073
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13764,6 +13802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.RETRYSCREEN.TEXT
+  text: {fileID: 0}
 --- !u!1 &7560379667097119351
 GameObject:
   m_ObjectHideFlags: 0
@@ -13856,6 +13895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.INTROSCREEN.START
+  text: {fileID: 0}
 --- !u!1 &7627216186097341840
 GameObject:
   m_ObjectHideFlags: 0
@@ -14387,6 +14427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.MENU.RETRY
+  text: {fileID: 0}
 --- !u!114 &1283043318676757399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14553,6 +14594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: STORY.LEVEL1.VICTORY
+  text: {fileID: 0}
 --- !u!1 &8226261408231341049
 GameObject:
   m_ObjectHideFlags: 0
@@ -14674,6 +14716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.RETRYSCREEN.TITLE
+  text: {fileID: 0}
 --- !u!1 &8259237244124861132
 GameObject:
   m_ObjectHideFlags: 0
@@ -15011,6 +15054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GAME.LEVELCOMPLETEDSCREEN.PLAYAGAIN
+  text: {fileID: 0}
 --- !u!1 &8727011342453198432
 GameObject:
   m_ObjectHideFlags: 0
@@ -15316,7 +15360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7052788892047021785
 RectTransform:
   m_ObjectHideFlags: 0

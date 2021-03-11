@@ -47,7 +47,7 @@ public class MemberCredits : MonoBehaviour
             memberRoleLT.setKey(getMemberRoleCode());
 
             string urlCode = getMemberURLCode();
-            string localized = LocalizationManager.instance.getLocalizedValue(urlCode);
+            string localized = CreditLinkOpener.getURLCodeLocalization(urlCode);
             pictureCLO.setURLCode(urlCode, localized);
             memberNameCLO.setURLCode(urlCode, localized);
             memberRoleCLO.setURLCode(urlCode, localized);

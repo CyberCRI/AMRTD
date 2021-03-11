@@ -50,7 +50,7 @@ public class ResourceCredits : MonoBehaviour
         {
             resourceNameLT.setKey(getResourceNameCode());
             string resourceURLCode = getResourceURLCode();
-            string localizedResourceURL = LocalizationManager.instance.getLocalizedValue(resourceURLCode);
+            string localizedResourceURL = CreditLinkOpener.getURLCodeLocalization(resourceURLCode);
             pictureCLO.setURLCode(resourceURLCode, localizedResourceURL);
             resourceURLCLO.setURLCode(resourceURLCode, localizedResourceURL);
 

@@ -27,8 +27,29 @@ public class CreditLinkOpener : LinkOpener
         this.gameObject.SetActive(!string.IsNullOrEmpty(_urlCode));
 
         // url or translation of _urlCode
-        _url = (null == url) && (null != _urlCode) ? LocalizationManager.instance.getLocalizedValue(_urlCode) : url;
+        if (!string.IsNullOrEmpty(_urlCode) && string.IsNullOrEmpty(url))
+        {
+            string localizedURL = LocalizationManager.instance.getLocalizedValue(_urlCode);
+            if (!string.IsNullOrEmpty(localizedURL))
+            {                
+                _url = localizedURL;
+            }
+            else
+            {
+                _url = "";
+            }
+        }
+        else
+        {
+            _url = url;
+        }
 	}
+
+    public static string getURLCodeLocalization(string urlCode)
+    {
+        string localized = string.IsNullOrEmpty(urlCode) ? null : LocalizationManager.instance.getLocalizedValue(urlCode);
+        return localized;
+    }
 
     protected override string getURL()
 	{
@@ -38,7 +59,10 @@ public class CreditLinkOpener : LinkOpener
     public void clickButton()
     {
         RedMetricsManager.instance.sendEvent(_te, CustomData.getGameLevelContext().add(CustomDataTag.ELEMENT, _urlCode));
-        AudioManager.instance.play(AudioEvent.CLICKUI);
-        openLink();
+        if (!string.IsNullOrEmpty(_url))
+        {
+            AudioManager.instance.play(AudioEvent.CLICKUI);
+            openLink();
+        }
     }
 }

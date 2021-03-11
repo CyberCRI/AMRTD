@@ -4,7 +4,7 @@
 	,{"key":"META.MAIN.LANGUAGECODE","value":"en"}
 	,{"key":"META.MAIN.LOCAL","value":"English"}
 	,{"key":"META.MAIN.VERSION","value":"0.40"}
-	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.40.01"}
+	,{"key":"MAINMENU.VERSION.LABEL","value":"v0.40.04"}
 	,{"key":"COMMONCORE.USERFEEDBACKBUTTON.LABEL","value":"RATE THE GAME!"}
 	,{"key":"GAME.MENU.PAUSE","value":"PAUSE"}
 	,{"key":"GAME.MENU.MENU","value":"MENU"}
@@ -173,7 +173,7 @@
 	,{"key":"CREDITS.MEMBERS.RICHA.ROLE","value":             "Artist"}
 	,{"key":"CREDITS.MEMBERS.RICHA.URL","value":              "https://www.richakedia.com"}
 
-	,{"key":"CREDITS.RESOURCES.TITLE","value":        "Resources"}
+	,{"key":"CREDITS.RESOURCES.TITLE","value":                "Resources"}
 
 	,{"key":"CREDITS.RESOURCES.BACTERIUM_1.RESOURCE_NAME","value":                       "Bacterium 1"}
 	,{"key":"CREDITS.RESOURCES.BACTERIUM_1.RESOURCE_URL","value":                        "http://pngimg.com/download/4338"}
@@ -227,6 +227,28 @@
 	,{"key":"CREDITS.RESOURCES.HEART_ICON.AUTHOR_URL","value":                           "https://www.flaticon.com/authors/freepik"}
 	,{"key":"CREDITS.RESOURCES.FEEDBACK_BUTTON.RESOURCE_NAME","value":                   "Feedback button"}
 	,{"key":"CREDITS.RESOURCES.FEEDBACK_BUTTON.RESOURCE_URL","value":                    "https://www.kissclipart.com/feedback-icon-clipart-computer-icons-pyy1j7/"}
+	
+	,{"key":"CREDITS.MUSIC.TITLE","value":                                               "Music"}
+
+	,{"key":"CREDITS.RESOURCES.SUMMERTIMEFUN_TRACK.RESOURCE_NAME","value":                        "Intro - Summertime Fun"}
+	,{"key":"CREDITS.RESOURCES.SUMMERTIMEFUN_TRACK.RESOURCE_URL","value":                         "https://soundimage.org/wp-content/uploads/2020/07/Summertime-Fun.mp3"}
+	,{"key":"CREDITS.RESOURCES.SUMMERTIMEFUN_TRACK.AUTHOR_NAME","value":                          "Eric Matyas"}
+	,{"key":"CREDITS.RESOURCES.SUMMERTIMEFUN_TRACK.AUTHOR_URL","value":                           "https://soundimage.org/"}
+
+	,{"key":"CREDITS.RESOURCES.ENIGMATIC_TRACK.RESOURCE_NAME","value":                        "Level 2 - Enigmatic"}
+	,{"key":"CREDITS.RESOURCES.ENIGMATIC_TRACK.RESOURCE_URL","value":                         "https://www.bensound.com/enigmatic"}
+	,{"key":"CREDITS.RESOURCES.ENIGMATIC_TRACK.AUTHOR_NAME","value":                          "Bensound"}
+	,{"key":"CREDITS.RESOURCES.ENIGMATIC_TRACK.AUTHOR_URL","value":                           "https://www.bensound.com/"}
+
+	,{"key":"CREDITS.RESOURCES.THEYRECLOSINGIN_TRACK.RESOURCE_NAME","value":                        "Level 3 - They're Closing In"}
+	,{"key":"CREDITS.RESOURCES.THEYRECLOSINGIN_TRACK.RESOURCE_URL","value":                         "http://soundimage.org/wp-content/uploads/2016/01/Theyre-Closing-In.mp3"}
+	,{"key":"CREDITS.RESOURCES.THEYRECLOSINGIN_TRACK.AUTHOR_NAME","value":                          "Eric Matyas"}
+	,{"key":"CREDITS.RESOURCES.THEYRECLOSINGIN_TRACK.AUTHOR_URL","value":                           "https://soundimage.org/"}
+
+	,{"key":"CREDITS.RESOURCES.EVOLUTION_TRACK.RESOURCE_NAME","value":                        "Level 4 & 5 - Evolution"}
+	,{"key":"CREDITS.RESOURCES.EVOLUTION_TRACK.RESOURCE_URL","value":                         "https://www.bensound.com/royalty-free-music/track/evolution-epic-nature"}
+	,{"key":"CREDITS.RESOURCES.EVOLUTION_TRACK.AUTHOR_NAME","value":                          "Bensound"}
+	,{"key":"CREDITS.RESOURCES.EVOLUTION_TRACK.AUTHOR_URL","value":                           "https://www.bensound.com/"}
 	
 	]
 }
