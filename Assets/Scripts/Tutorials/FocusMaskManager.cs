@@ -457,9 +457,10 @@ public class FocusMaskManager : MonoBehaviour
         //bool top = screenPos.y > _camera.pixelHeight / 2;
         //bool left = screenPos.x < _camera.pixelWidth / 2;
 
-        Vector3 maxScreenPos = _camera.WorldToScreenPoint(topRight.transform.position);
+        Vector3 maxScreenPos = _camera.WorldToScreenPoint(topRight.position);
         bool top = screenPos.y > maxScreenPos.y / 2;
-        bool left = screenPos.x < maxScreenPos.x / 2;
+        //bool left = screenPos.x < maxScreenPos.x / 2;
+        bool left = screenPos.x > maxScreenPos.x / 2;           //by Kompanions //it should be opposite as if focus point is on left than dialogue box should be on right.
 
 #if VERBOSEDEBUG
          Debug.Log("FocusMaskManager getQuadrant(" + screenPos + ") "

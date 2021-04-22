@@ -14,6 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3430969998141215203, guid: f53f999aa8533484081d9b9b19a63410,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430969998141215203, guid: f53f999aa8533484081d9b9b19a63410,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -26,11 +31,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3430969998141215203, guid: f53f999aa8533484081d9b9b19a63410,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f53f999aa8533484081d9b9b19a63410, type: 3}
@@ -55,23 +55,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: scaleAffectedTransform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: wobbledTransform
-      value: 
-      objectReference: {fileID: 2151688177819239314}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
       propertyPath: startSpeed
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: angularWobble
-      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
@@ -80,13 +65,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
+      propertyPath: angularWobble
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
       propertyPath: horizontalShift
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: wobbledTransform
+      value: 
+      objectReference: {fileID: 2151688177819239314}
+    - target: {fileID: 76248867092480059, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: scaleAffectedTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 752201964454105157, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: reward
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: _renderer
+      value: 
+      objectReference: {fileID: 5033079372192543584}
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: innerEnemy
+      value: 
+      objectReference: {fileID: 2151688177819239314}
+    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: injuryRatio
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
@@ -100,29 +120,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: injuryRatio
-      value: 1
+      propertyPath: divisionStrategy
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: healingRatioSpeed
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 3719802510603439701, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: divisionStrategy
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
+    - target: {fileID: 4500849788320993361, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
-      propertyPath: _renderer
-      value: 
-      objectReference: {fileID: 5033079372192543584}
-    - target: {fileID: 2686818901224010539, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: innerEnemy
-      value: 
-      objectReference: {fileID: 2151688177819239314}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4500849788320993361, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -137,11 +152,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -53.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500849788320993361, guid: 8a0702d38ed6887458d2928b3b9c093c,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4500849788320993361, guid: 8a0702d38ed6887458d2928b3b9c093c,
         type: 3}
@@ -162,6 +172,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: _Level1TowerPlacementTutorialEnemy1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353253310253906219, guid: 8a0702d38ed6887458d2928b3b9c093c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0702d38ed6887458d2928b3b9c093c, type: 3}

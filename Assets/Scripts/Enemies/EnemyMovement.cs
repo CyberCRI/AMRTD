@@ -28,7 +28,7 @@ public class EnemyMovement : WobblyMovement
         enemy = this.GetComponent<Enemy>();
         if (null != wobbledTransform && null != sphereCollider)
         {
-            sphereCollider.radius = wobbledTransform.localScale.x / 2f;
+          //  sphereCollider.radius = wobbledTransform.localScale.x / 2f;           //by Kompanions
         }
 
         repulsers = new string[4] {Enemy.enemyTag, RedBloodCellMovement.rbcTag, Virus.virusTag, WhiteBloodCellMovement.wbcTag};

@@ -92,6 +92,17 @@ public class Turret : Attacker
     [SerializeField]
     public Transform firePoint = null;
 
+    //by Kompanions
+    Animator turretAnimator = null;
+
+    //by Kompanions
+    //Initialize variables
+    private void Awake()
+    {
+        turretAnimator = GetComponentInChildren<Animator>();
+    }
+
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -264,12 +275,16 @@ public class Turret : Attacker
             if (useLaser)
             {
                 doAttack(target, enemy, AudioEvent.PATHOGENHITBYLASER);
-                laser();
+                laser(); 
+                if (turretAnimator != null)                     //by Kompanoins //Play turret shoot animation
+                    turretAnimator.SetTrigger("shoot");
             }
             else
             {
                 if (fireCountdown <= 0)
                 {
+                    if (turretAnimator != null)                     //by Kompanoins //Play turret shoot animation
+                        turretAnimator.SetTrigger("shoot");
                     shoot();
                     fireCountdown = fireCooldown;
                 }
@@ -286,6 +301,9 @@ public class Turret : Attacker
                 laserImpactLight.enabled = false;
                 laserAudio.Pause();
             }
+
+            if (turretAnimator != null)                     //by Kompanoins //Play turret idle animation
+                turretAnimator.SetTrigger("idle");
         }
     }
 

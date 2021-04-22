@@ -25,6 +25,7 @@ public class RedBloodCellMovement : WobblyMovement
     private Renderer _renderer = null;
     private MaterialPropertyBlock _propBlock = null;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +51,8 @@ public class RedBloodCellMovement : WobblyMovement
     {
         if (null == _propBlock)
         {
-            _renderer = GetComponent<Renderer>();
+            //_renderer = GetComponent<Renderer>();
+            _renderer = GetComponentInChildren<Renderer>();                       //by Kompanions //24032021
             _propBlock = new MaterialPropertyBlock();
             _renderer.GetPropertyBlock(_propBlock);
         }

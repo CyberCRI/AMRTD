@@ -46,6 +46,9 @@ public class Node : MonoBehaviour
 
     private BuildManager buildManager;
 
+    //by Kompanions
+    Outline outlineEffect = null;
+
     public enum REMOVETOWER
     {
         CANTPAY,
@@ -70,6 +73,9 @@ public class Node : MonoBehaviour
         expiredEffectPS = (ParticleSystem)expiredEffect.GetComponentsInChildren<ParticleSystem>()[0];
         sellEffectPS = (ParticleSystem)sellEffect.GetComponentsInChildren<ParticleSystem>()[0];
         upgradeEffectPS = (ParticleSystem)upgradeEffect.GetComponentsInChildren<ParticleSystem>()[0];
+
+        //by Kompanions
+        outlineEffect = GetComponentInChildren<Outline>();
     }
 
     /// <summary>
@@ -161,11 +167,17 @@ public class Node : MonoBehaviour
             {
                 if (buildManager.canBuy)
                 {
-                    renderor.material.color = hoverColor;
+                    //renderor.material.color = hoverColor;         //by Kompanions
+                    outlineEffect.OutlineColor = hoverColor;
+                    outlineEffect.OutlineMode = Outline.Mode.BlinkOutline;
+                    outlineEffect.OutlineWidth = 10;
                 }
                 else
                 {
-                    renderor.material.color = cantBuyColor;
+                    //renderor.material.color = cantBuyColor;
+                    outlineEffect.OutlineColor = cantBuyColor;
+                    outlineEffect.OutlineMode = Outline.Mode.BlinkOutline;
+                    outlineEffect.OutlineWidth = 10;
                 }
             }
         }
@@ -332,6 +344,9 @@ public class Node : MonoBehaviour
 
     void unhover()
     {
-        renderor.material.color = startColor;
+        //renderor.material.color = startColor;   //by Kompanions
+        outlineEffect.OutlineColor = Color.white;
+        outlineEffect.OutlineMode = Outline.Mode.OutlineHidden;
+        outlineEffect.OutlineWidth = 0;
     }
 }

@@ -39,7 +39,7 @@ public class WaveSpawner : MonoBehaviour
     private LocalizedText waveCountdownLocalizedText = null;
     private const string waveCountdownSpawningString = "GAME.WAVECOUNTDOWN.NOCOUNTDOWN";
 
-    private float divisionDistance = 1f;
+    private float divisionDistance = .2f;
     [SerializeField]
     private float resistancePointsRatioVictoryThreshold = 0f;
     [SerializeField]

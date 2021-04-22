@@ -554,9 +554,14 @@ public class Enemy : MonoBehaviour
     {
         isAlive = false;
         GameObject effect = Instantiate(deathEffect.gameObject, this.transform.position, Quaternion.identity);
-        effect.transform.localScale = this.innerEnemy.localScale;
+       // effect.transform.localScale = this.innerEnemy.localScale;                                                 // by Kompanions
         Destroy(effect.gameObject, CommonUtilities.getEffectMaxDuration(deathEffect));
         PlayerStatistics.instance.addMoney(reward, this.gameObject);
+
+        //by Kompanions //was getting null reference for particles and some of the particles were showing on the screen after the pathogen is destroyed
+        if (_resistanceEffectInstance != null)
+            Destroy(_resistanceEffectInstance);
+
         Destroy(this.gameObject);
     }
 
