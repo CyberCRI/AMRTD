@@ -80,7 +80,7 @@ public class EnemyMovement : WobblyMovement
 
     void endPath()
     {
-        RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENESCAPES, CustomData.getGameObjectContext(this));
+        //RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENESCAPES, CustomData.getGameObjectContext(this));
         AudioManager.instance.play(AudioEvent.PATHOGENESCAPES);
         PlayerStatistics.instance.lives--;
         Destroy(this.gameObject);

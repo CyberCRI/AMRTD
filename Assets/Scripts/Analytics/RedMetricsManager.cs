@@ -240,7 +240,7 @@ public class RedMetricsManager : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " sendData StartCoroutine POST with data=" + pDataString);
 #endif
-        StartCoroutine(POST(url, pData, headers, callback));
+       // StartCoroutine(POST(url, pData, headers, callback));
     }
 
     private void createPlayer(System.Action<WWW> callback)
@@ -259,7 +259,7 @@ public class RedMetricsManager : MonoBehaviour
         Debug.Log(this.GetType() + " testGet");
 #endif
         string url = redMetricsURL + redMetricsPlayer;
-        StartCoroutine(GET(url, callback));
+       // StartCoroutine(GET(url, callback));
     }
 
     private void wwwLogger(WWW www, string origin = "default")
@@ -372,24 +372,24 @@ public class RedMetricsManager : MonoBehaviour
     // Should be called only after localPlayerGUID is set
     public void sendStartEvent(bool force = false)
     {
-#if VERBOSEDEBUG
-        Debug.Log(this.GetType() + " sendStartEvent");
-#endif
+//#if VERBOSEDEBUG
+//        Debug.Log(this.GetType() + " sendStartEvent");
+//#endif
 
-#if SENDMETRICS
-        if (!_isStartEventSent || force)
-        {
-#if VERBOSEDEBUG
-            Debug.Log(this.GetType() + " sendStartEvent !isStartEventSent");
-#endif
-            // gameSessionGUID hasn't been initialized
-            createPlayer(www => trackStart(www));
-            _isStartEventSent = true;
-        }
-#if VERBOSEDEBUG
-        Debug.Log(this.GetType() + " sendStartEvent done");
-#endif
-#endif
+//#if SENDMETRICS
+//        if (!_isStartEventSent || force)
+//        {
+//#if VERBOSEDEBUG
+//            Debug.Log(this.GetType() + " sendStartEvent !isStartEventSent");
+//#endif
+//            // gameSessionGUID hasn't been initialized
+//            createPlayer(www => trackStart(www));
+//            _isStartEventSent = true;
+//        }
+//#if VERBOSEDEBUG
+//        Debug.Log(this.GetType() + " sendStartEvent done");
+//#endif
+//#endif
     }
 
     // TODO: store events that can't be sent, during internet outage for instance
@@ -429,37 +429,37 @@ public class RedMetricsManager : MonoBehaviour
 
     public void sendRichEvent(TrackingEvent trackingEvent, CustomData customData = null, string userTime = null)
     {
-#if VERBOSEDEBUG
-        string customDataString = null == customData ? "" : ", " + customData;
-        Debug.Log(this.GetType() + " sendRichEvent(" + trackingEvent + customDataString);
-#endif
+//#if VERBOSEDEBUG
+//        string customDataString = null == customData ? "" : ", " + customData;
+//        Debug.Log(this.GetType() + " sendRichEvent(" + trackingEvent + customDataString);
+//#endif
 
-        CustomData context = CustomData.getEventContext();
-        if (customData != null)
-        {
-#if VERBOSEDEBUG
-            Debug.Log(this.GetType() + " merging from trackingEvent " + trackingEvent);
-#endif
-            context.merge(customData);
-        }
-        sendEvent(trackingEvent, context, userTime);
+//        CustomData context = CustomData.getEventContext();
+//        if (customData != null)
+//        {
+//#if VERBOSEDEBUG
+//            Debug.Log(this.GetType() + " merging from trackingEvent " + trackingEvent);
+//#endif
+//            context.merge(customData);
+//        }
+//        sendEvent(trackingEvent, context, userTime);
     }
 
     public void sendEvent(TrackingEvent trackingEvent, CustomData customData = null, string userTime = null)
     {
-#if VERBOSEDEBUG
-        Debug.Log(string.Format("{0} sendEvent({1}, {2}, {3})", this.GetType(), trackingEvent, customData, userTime));
-#endif
-        TrackingEventDataWithIDs data = new TrackingEventDataWithIDs(gameSessionGUID, gameVersionGuid, trackingEvent, customData);
-        sendEvent(data);
+//#if VERBOSEDEBUG
+//        Debug.Log(string.Format("{0} sendEvent({1}, {2}, {3})", this.GetType(), trackingEvent, customData, userTime));
+//#endif
+//        TrackingEventDataWithIDs data = new TrackingEventDataWithIDs(gameSessionGUID, gameVersionGuid, trackingEvent, customData);
+//        sendEvent(data);
     }
 
     public void sendEvent(TrackingEventDataWithoutIDs data)
     {
-#if VERBOSEDEBUG
-        Debug.Log(string.Format("{0} sendEvent({1})", this.GetType(), data));
-#endif
-        sendEvent(new TrackingEventDataWithIDs(gameSessionGUID, gameVersionGuid, data));
+//#if VERBOSEDEBUG
+//        Debug.Log(string.Format("{0} sendEvent({1})", this.GetType(), data));
+//#endif
+//        sendEvent(new TrackingEventDataWithIDs(gameSessionGUID, gameVersionGuid, data));
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -471,36 +471,36 @@ public class RedMetricsManager : MonoBehaviour
 
     public void sendEvent(TrackingEventDataWithIDs data)
     {
-#if VERBOSEDEBUG
-        Debug.Log(string.Format("{0} sendEvent({1})", this.GetType(), data));
-#endif
+//#if VERBOSEDEBUG
+//        Debug.Log(string.Format("{0} sendEvent({1})", this.GetType(), data));
+//#endif
 
-#if SENDMETRICS
-        // test Application.internetReachability
+//#if SENDMETRICS
+//        // test Application.internetReachability
 
-        // // TODO: queue events that can't be sent during internet outage
-        // TrackingEventDataWithoutIDs data = new TrackingEventDataWithoutIDs(trackingEvent, customData, userTime);
-        // addEventToSendLater(data);
-#if VERBOSEMETRICSLVL1
-        CustomData context = CustomData.getEventContext();
-#if VERBOSEDEBUG
-        Debug.Log(string.Format("{0} sendEvent merging context {1} into trackingEvent {2}", this.GetType(), context, data));
-#endif
-        data.mergeCustomData(context);
-#endif
+//        // // TODO: queue events that can't be sent during internet outage
+//        // TrackingEventDataWithoutIDs data = new TrackingEventDataWithoutIDs(trackingEvent, customData, userTime);
+//        // addEventToSendLater(data);
+//#if VERBOSEMETRICSLVL1
+//        CustomData context = CustomData.getEventContext();
+//#if VERBOSEDEBUG
+//        Debug.Log(string.Format("{0} sendEvent merging context {1} into trackingEvent {2}", this.GetType(), context, data));
+//#endif
+//        data.mergeCustomData(context);
+//#endif
 
-        string json = getJsonString(data);
-#if VERBOSEDEBUG
-        Debug.Log(
-            string.Format(
-                this.GetType() + " sendEvent - _localPlayerGUID={0}, gameSessionGUID={1}, gameVersionGuid={2}, json={3}",
-                _localPlayerGUID, gameSessionGUID, gameVersionGuid, json
-                )
-            );
-#endif
-        sendData(redMetricsEvent, json, value => wwwLogger(value, "sendEvent(" + data.type + ")"));
-        //TODO pass data as parameter to sendDataStandalone so that it's serialized inside
-#endif
+//        string json = getJsonString(data);
+//#if VERBOSEDEBUG
+//        Debug.Log(
+//            string.Format(
+//                this.GetType() + " sendEvent - _localPlayerGUID={0}, gameSessionGUID={1}, gameVersionGuid={2}, json={3}",
+//                _localPlayerGUID, gameSessionGUID, gameVersionGuid, json
+//                )
+//            );
+//#endif
+//        sendData(redMetricsEvent, json, value => wwwLogger(value, "sendEvent(" + data.type + ")"));
+//        //TODO pass data as parameter to sendDataStandalone so that it's serialized inside
+//#endif
     }
 
     public override string ToString()

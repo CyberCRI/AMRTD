@@ -61,7 +61,7 @@ public class GameConfiguration : MonoBehaviour
         Debug.Log(this.GetType() + " Start");
 #endif
         load();
-        RedMetricsManager.instance.sendStartEvent();
+        //RedMetricsManager.instance.sendStartEvent();
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " Start done");
 #endif
@@ -186,7 +186,7 @@ public class GameConfiguration : MonoBehaviour
 #if VERBOSEDEBUG
             Debug.Log(this.GetType() + " reachedLevel setting furthestLevel to " + value);
 #endif
-            RedMetricsManager.instance.sendEvent(TrackingEvent.NEWFURTHEST, new CustomData(CustomDataTag.GAMELEVEL, levelName).add(CustomDataTag.ELEMENT, value));
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.NEWFURTHEST, new CustomData(CustomDataTag.GAMELEVEL, levelName).add(CustomDataTag.ELEMENT, value));
             _furthestLevelReached.val = value;
         }
 #if VERBOSEDEBUG
@@ -210,9 +210,9 @@ public class GameConfiguration : MonoBehaviour
             if (value != _isAdmin.val)
             {
                 _isAdmin.val = value;
-                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVSWITCHFROMGAMEVERSION, RedMetricsManager.instance.generateCustomDataForGuidInit());
+                //RedMetricsManager.instance.sendEvent(TrackingEvent.DEVSWITCHFROMGAMEVERSION, RedMetricsManager.instance.generateCustomDataForGuidInit());
                 setMetricsDestination(!value);
-                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVSWITCHTOGAMEVERSION, RedMetricsManager.instance.generateCustomDataForGuidInit());
+                //RedMetricsManager.instance.sendEvent(TrackingEvent.DEVSWITCHTOGAMEVERSION, RedMetricsManager.instance.generateCustomDataForGuidInit());
             }
         }
     }
@@ -297,7 +297,7 @@ public class GameConfiguration : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " load");
 #endif
-        RedMetricsManager.instance.localPlayerGUID = playerGUID;
+        //        RedMetricsManager.instance.localPlayerGUID = playerGUID;
 
         _isAdmin.initialize();
         initializeGameVersionGUID();
@@ -346,7 +346,7 @@ public class GameConfiguration : MonoBehaviour
         _playerGUID = null;
         PlayerPrefs.DeleteAll();
         load();
-        RedMetricsManager.instance.sendStartEvent(true);
+        //RedMetricsManager.instance.sendStartEvent(true);
     }
 
     private string _webGUID;
@@ -419,14 +419,14 @@ public class GameConfiguration : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " initializeGameVersionGUID with RedMetricsManager.gameVersion=" + RedMetricsManager.instance.getGameVersion());
 #endif
-        if (!RedMetricsManager.instance.isGameVersionInitialized())
-        {
-            setMetricsDestination(!isAdmin);
-        }
-        else
-        {
-            Debug.LogWarning(this.GetType() + " initializeGameVersionGUID RedMetricsManager GameVersion already initialized");
-        }
+        //if (!RedMetricsManager.instance.isGameVersionInitialized())
+        //{
+        //    setMetricsDestination(!isAdmin);
+        //}
+        //else
+        //{
+        //    Debug.LogWarning(this.GetType() + " initializeGameVersionGUID RedMetricsManager GameVersion already initialized");
+        //}
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " initializeGameVersionGUID done with"
         + " guid=" + RedMetricsManager.instance.getGameVersion()
@@ -451,10 +451,10 @@ public class GameConfiguration : MonoBehaviour
 #endif
         System.Guid guid = wantToBecomeLabelledGameVersion ? labelledGameVersionGUID : testVersionGUID;
 
-        if (guid != RedMetricsManager.instance.getGameVersion())
-        {
-            setGameVersion(guid);
-        }
+        //if (guid != RedMetricsManager.instance.getGameVersion())
+        //{
+        //    setGameVersion(guid);
+        //}
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setMetricsDestination(" + wantToBecomeLabelledGameVersion + ") done");
 #endif
@@ -465,11 +465,11 @@ public class GameConfiguration : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " setGameVersion " + guid);
 #endif
-        RedMetricsManager.instance.setGameVersion(guid);
-        if (isTestGUID() != isAdmin)
-        {
-            Debug.LogWarning(this.GetType() + " setGameVersion: incorrect status isTestGUID() != isAdmin");
-        }
+        //RedMetricsManager.instance.setGameVersion(guid);
+        //if (isTestGUID() != isAdmin)
+        //{
+        //    Debug.LogWarning(this.GetType() + " setGameVersion: incorrect status isTestGUID() != isAdmin");
+        //}
     }
 
     public bool isTestGUID()

@@ -7,7 +7,7 @@ public class FocusMaskManager : MonoBehaviour
 {
     public static FocusMaskManager instance = null;
 
-#region Interface game object names
+    #region Interface game object names
     public const string livesCounterGOName = "LivesText";
     public const string lifeBarGOName = "LifeBar";
     public const string resistanceBarGOName = "ResistanceBar";
@@ -28,7 +28,7 @@ public class FocusMaskManager : MonoBehaviour
     public const string laserBeamerItemGOName = "LaserBeamerItem";
 
     public const string nodeUIGOName = "NodeUI";
-#endregion
+    #endregion
 
     public delegate void FocusEvent();
     //public static event FocusEvent onFocusOn;
@@ -302,7 +302,7 @@ public class FocusMaskManager : MonoBehaviour
 #endif
         _target = null;
         focusSystem.position = new Vector3(position.x, position.y, focusSystem.position.z);
-        
+
         complete(
             callback
             , advisorTextKey
@@ -317,10 +317,10 @@ public class FocusMaskManager : MonoBehaviour
         , bool showButton
         , StepByStepTutorial.TUTORIALACTION action
         )
-    {        
+    {
         reset(true);
 
-        Vector3 screenPos = _camera.WorldToScreenPoint(focusSystem.position);
+        Vector3 screenPos = _camera.ScreenToViewportPoint(focusSystem.position);     //Changed from screenpoint to viewport
         Quadrant quadrant = getQuadrant(new Vector2(screenPos.x, screenPos.y));
 
         rotateArrowAt(quadrant);
@@ -367,7 +367,7 @@ public class FocusMaskManager : MonoBehaviour
 #if VERBOSEDEBUG
         Debug.Log(this.GetType() + " clickNext");
 #endif
-        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKNEXT);
+        //RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKNEXT);
         AudioManager.instance.play(AudioEvent.CLICKUI);
         click();
     }
@@ -457,10 +457,10 @@ public class FocusMaskManager : MonoBehaviour
         //bool top = screenPos.y > _camera.pixelHeight / 2;
         //bool left = screenPos.x < _camera.pixelWidth / 2;
 
-        Vector3 maxScreenPos = _camera.WorldToScreenPoint(topRight.position);
+        Vector3 maxScreenPos = Vector3.one;
         bool top = screenPos.y > maxScreenPos.y / 2;
-        //bool left = screenPos.x < maxScreenPos.x / 2;
-        bool left = screenPos.x > maxScreenPos.x / 2;           //by Kompanions //it should be opposite as if focus point is on left than dialogue box should be on right.
+        bool left = screenPos.x < maxScreenPos.x / 2;
+        // bool left = screenPos.x > maxScreenPos.x / 2;           //by Kompanions //it should be opposite as if focus point is on left than dialogue box should be on right.
 
 #if VERBOSEDEBUG
          Debug.Log("FocusMaskManager getQuadrant(" + screenPos + ") "

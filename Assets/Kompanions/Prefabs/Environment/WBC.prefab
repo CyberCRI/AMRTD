@@ -577,8 +577,8 @@ Rigidbody:
   m_GameObject: {fileID: 1220788263310893763}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 5
-  m_AngularDrag: 0.05
+  m_Drag: 10
+  m_AngularDrag: 1
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -596,21 +596,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb476f848c36b84da52c93a527b96e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 0.6
-  minimumDistance: 0.2
+  startSpeed: 1
+  minimumDistance: 0.3
   wobbledTransform: {fileID: 1220788263310893820}
   wobbleShiftSpeedX: 0
   wobbleShiftSpeedZ: 0
   horizontalShift: 0
   ratioFactor: 0
   wobbleScaleSpeed: 0
-  angularWobble: 5
+  angularWobble: 1
   wobbleRotateSpeed: 0.1
   _rigidbody: {fileID: 1220788263310893823}
   repulsionForce: 1
   repulsers: []
-  baseSpeed: 0.6
-  speedVariation: 2
+  baseSpeed: 1
+  speedVariation: 1
   gainAltitudeImpulse: 5
   idlePosition: {x: 0, y: 0, z: 0}
   hitsMaxCount: 10

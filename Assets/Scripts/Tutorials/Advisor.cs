@@ -57,19 +57,19 @@ public class Advisor : MonoBehaviour
         {
             case FocusMaskManager.Quadrant.BOTTOM_RIGHT:
                 horizontal = left;
-                vertical = top;
+                vertical = bottom;
                 break;
             case FocusMaskManager.Quadrant.TOP_RIGHT:
                 horizontal = left;
-                vertical = bottom;
+                vertical = top;
                 break;
             case FocusMaskManager.Quadrant.TOP_LEFT:
                 horizontal = right;
-                vertical = bottom;
+                vertical = top;
                 break;
             case FocusMaskManager.Quadrant.BOTTOM_LEFT:
                 horizontal = right;
-                vertical = top;
+                vertical = bottom;
                 break;
             default:
                 Debug.LogWarning("unexpected quadrant " + quadrant);

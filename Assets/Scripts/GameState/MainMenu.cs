@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
 
     public void play()
     {
-        RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKPLAY);
+        //RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKPLAY);
         AudioManager.instance.play(AudioEvent.CLICKUI);
 
         int levelReached = GameConfiguration.instance.furthestLevel;
@@ -44,7 +44,7 @@ public class MainMenu : MonoBehaviour
 
     public void playIntroAgain()
     {
-        RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKGAMEINTRO);
+        //RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKGAMEINTRO);
         AudioManager.instance.play(AudioEvent.CLICKUI);
         GameConfiguration.instance.showIntro = true;
         SceneFader.instance.fadeTo(GameIntroUI.sceneName);
@@ -52,14 +52,20 @@ public class MainMenu : MonoBehaviour
 
     public void showCredits()
     {
-        RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKCREDITS);
+        //RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKCREDITS);
         AudioManager.instance.play(AudioEvent.CLICKUI);
         SceneFader.instance.fadeTo(GameCreditsUI.sceneName);
     }
 
+    public void showAboutPage()
+    {
+        AudioManager.instance.play(AudioEvent.CLICKUI);
+        Application.OpenURL("https://sites.google.com/view/anshub/armor");
+    }
+
     public void quit()
     {
-        RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKQUIT);
+        //RedMetricsManager.instance.sendEvent (TrackingEvent.CLICKQUIT);
         AudioManager.instance.play(AudioEvent.CLICKUI);
         Application.Quit();
     }

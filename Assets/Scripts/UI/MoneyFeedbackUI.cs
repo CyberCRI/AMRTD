@@ -34,6 +34,7 @@ public class MoneyFeedbackUI : MonoBehaviour
         moneyAmount.text = amount.ToString("+0;-#") + "€";
         moneyAmount.color = (amount < 0) ? negativeColor : ((amount == 0) ? zeroColor : positiveColor);
         rectTransform.SetParent(parent);
+        rectTransform.SetAsFirstSibling();
         
         rectTransform.position = screenPosition;
     }

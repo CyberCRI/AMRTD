@@ -143,7 +143,7 @@ public class GameUI : MonoBehaviour
     // called from complete screen, to validate completion and go on to the next level
     public void pressCompleteCompleteButton()
     {
-        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCOMPLETECOMPLETE);
+        //RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCOMPLETECOMPLETE);
         AudioManager.instance.play(AudioEvent.CLICKUI);
         //GameManager.instance.setPause(false, GameManager.PAUSER.COMPLETELEVEL);
         CompleteLevel.instance.pressContinue();
@@ -152,7 +152,7 @@ public class GameUI : MonoBehaviour
     // called from complete screen, to go to the menu screen
     public void pressCompleteMenuButton()
     {
-        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCOMPLETEMENU);
+        //RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCOMPLETEMENU);
         AudioManager.instance.play(AudioEvent.CLICKUI);
         //GameManager.instance.setPause(false, GameManager.PAUSER.COMPLETELEVEL);
         goToMainMenu();

@@ -7024,7 +7024,7 @@ MonoBehaviour:
   healingRatioSpeed: 0
   healthBar: {fileID: 6994596501650389187}
   divisionPeriod: 4
-  divisionStrategy: 0
+  divisionStrategy: 2
   canDivideWhileWounded: 0
   antibioticAttackIndicators:
   - {fileID: 6994596502983476674}

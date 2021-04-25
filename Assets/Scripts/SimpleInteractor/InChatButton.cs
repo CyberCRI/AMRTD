@@ -15,7 +15,7 @@ public class InChatButton : LinkOpener
     {
         if (string.IsNullOrEmpty(url))
         {
-            RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCHATBUTTON, new CustomData(CustomDataTag.MESSAGE, label.text));
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCHATBUTTON, new CustomData(CustomDataTag.MESSAGE, label.text));
 
             ChatbotInteractionManager.instance.sendChatMessage(label.text);
 
@@ -29,7 +29,7 @@ public class InChatButton : LinkOpener
         }
         else
         {
-            RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCHATURL, new CustomData(CustomDataTag.ELEMENT, url));
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKCHATURL, new CustomData(CustomDataTag.ELEMENT, url));
             AudioManager.instance.play(AudioEvent.CLICKCHATURL);
 
             // TODO connect to LinkOpener

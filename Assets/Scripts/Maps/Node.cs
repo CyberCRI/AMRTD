@@ -102,7 +102,7 @@ public class Node : MonoBehaviour
         }
         else
         {
-            RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTILE, CustomData.getGameObjectContext(this).add(CustomDataTag.HELPMODE, true));
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTILE, CustomData.getGameObjectContext(this).add(CustomDataTag.HELPMODE, true));
         }
     }
 
@@ -115,7 +115,7 @@ public class Node : MonoBehaviour
         {
             if (turretGO != null)
             {
-                RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWER, CustomData.getGameObjectContext(turretGO));
+                //RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWER, CustomData.getGameObjectContext(turretGO));
                 AudioManager.instance.play(AudioEvent.CLICKTOWER);
                 buildManager.selectNode(this);
                 unhover();
@@ -131,8 +131,8 @@ public class Node : MonoBehaviour
                     }
                     else
                     {
-                        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD,
-                            new CustomData(CustomDataTag.ELEMENT, blueprint.prefab).add(CustomDataTag.OUTCOME, CustomDataValue.FAILURE));
+                        //RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD,
+                        //    new CustomData(CustomDataTag.ELEMENT, blueprint.prefab).add(CustomDataTag.OUTCOME, CustomDataValue.FAILURE));
                         AudioManager.instance.play(AudioEvent.CLICKTOWERBUILD, "failure");
                         GameObject effect = Instantiate(
                             cantPayBuildEffect,
@@ -143,7 +143,7 @@ public class Node : MonoBehaviour
                 }
                 else
                 {
-                    RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTILE, CustomData.getGameObjectContext(this).add(CustomDataTag.HELPMODE, false));
+                    //RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTILE, CustomData.getGameObjectContext(this).add(CustomDataTag.HELPMODE, false));
                     // no tower selected
                 }
             }
@@ -248,8 +248,8 @@ public class Node : MonoBehaviour
             turretGO = Instantiate(blueprint.prefab, this.transform.position, Quaternion.identity);
             turretGO.transform.localScale = Vector3.Scale(this.transform.parent.localScale, turretGO.transform.localScale);
 
-            RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD,
-                CustomData.getGameObjectContext(turretGO).add(CustomDataTag.OUTCOME, CustomDataValue.SUCCESS));
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUILD,
+            //    CustomData.getGameObjectContext(turretGO).add(CustomDataTag.OUTCOME, CustomDataValue.SUCCESS));
             AudioManager.instance.play(AudioEvent.CLICKTOWERBUILD, "success");
 
             turret = turretGO.GetComponent<Turret>();

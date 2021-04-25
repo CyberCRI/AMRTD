@@ -19,14 +19,15 @@ public class WhiteBloodCellMovement : WobblyMovement
     [SerializeField]
     private float gainAltitudeImpulse = 10f;
     public Vector3 idlePosition = Vector3.zero;
-    
+
     private bool disappearing = false;
-    
+
     [Header("Health")]
     [SerializeField]
     private float hitsMaxCount = 10f;
     public float _hitsLeft = 0f;
-    private float hitsLeft {
+    private float hitsLeft
+    {
         get
         {
             return _hitsLeft;
@@ -73,18 +74,18 @@ public class WhiteBloodCellMovement : WobblyMovement
     // Start is called before the first frame update
     void Start()
     {
-        #if VERBOSEDEBUG
+#if VERBOSEDEBUG
         Debug.Log(string.Format("{0}: {1}: Start ", this.GetType(), this.gameObject.name));
-        #endif
+#endif
 
-        #if VERBOSEMETRICSLVL2
+#if VERBOSEMETRICSLVL2
         RedMetricsManager.instance.sendEvent(TrackingEvent.WBCSPAWNS, CustomData.getGameObjectContext(this.gameObject));
-        #endif
+#endif
 
         //setTarget();
         setSpeed();
 
-        repulsers = new string[4] {Enemy.enemyTag, RedBloodCellMovement.rbcTag, Virus.virusTag, WhiteBloodCellMovement.wbcTag};
+        repulsers = new string[4] { Enemy.enemyTag, RedBloodCellMovement.rbcTag, Virus.virusTag, WhiteBloodCellMovement.wbcTag };
     }
 
     protected override void OnTriggerEnter(Collider collider)
@@ -92,7 +93,7 @@ public class WhiteBloodCellMovement : WobblyMovement
         if (hitsLeft > 0)
         {
             bool collides = false;
-            
+
             if (collider.tag == Enemy.enemyTag)
             {
                 absorb(collider.gameObject.GetComponent<EnemyMovement>());
@@ -113,13 +114,13 @@ public class WhiteBloodCellMovement : WobblyMovement
 
     private void updateHealthIndicators()
     {
-        healthBar.fillAmount = hitsLeft/hitsMaxCount;
+        healthBar.fillAmount = hitsLeft / hitsMaxCount;
         _color = Color.Lerp(colorWounded, colorHealthy, healthBar.fillAmount);
-        
+
         _sphericalRenderer.GetPropertyBlock(_propBlock);
         _propBlock.SetColor("_Color", _color);
         _sphericalRenderer.SetPropertyBlock(_propBlock);
-        
+
         _silhouetteRenderer.GetPropertyBlock(_propBlock);
         _propBlock.SetColor("_Color", _color);
         _silhouetteRenderer.SetPropertyBlock(_propBlock);
@@ -135,7 +136,7 @@ public class WhiteBloodCellMovement : WobblyMovement
 #endif
             hasReachedTarget = false;
             target = targetTransform.position;
-            float x,z;
+            float x, z;
             if (WhiteBloodCellManager.instance.isAreaConstrained)
             {
                 x = Mathf.Clamp(target.x, WhiteBloodCellManager.instance.limitLeft, WhiteBloodCellManager.instance.limitRight);
@@ -147,8 +148,8 @@ public class WhiteBloodCellMovement : WobblyMovement
                 z = target.z;
             }
             target = new Vector3(x, this.transform.position.y, z);
-            
-            #if DEVMODE && VERBOSEDEBUG
+
+#if DEVMODE && VERBOSEDEBUG
             if (null != _targetOriginal)
             {
                 Destroy(_targetOriginal);
@@ -156,20 +157,20 @@ public class WhiteBloodCellMovement : WobblyMovement
             }
             _targetOriginal = CommonUtilities.createDebugObject(targetTransform.position, this.name + "-target-original", 3f);
             _targetComputed = CommonUtilities.createDebugObject(target, this.name + "-target-computed", 3f);
-            #endif
+#endif
         }
         else if ((!disappearing) && (Vector3.zero == target)) // idle
         {
 #if VERBOSEDEBUG
             action = WBCACTION.IDLE;
 #endif
-            #if DEVMODE && VERBOSEDEBUG
+#if DEVMODE && VERBOSEDEBUG
             if (null != _targetOriginal)
             {
                 Destroy(_targetOriginal);
                 Destroy(_targetComputed);
             }
-            #endif
+#endif
             hasReachedTarget = false;
             target = new Vector3(idlePosition.x, this.transform.position.y, idlePosition.z);
         }
@@ -179,8 +180,8 @@ public class WhiteBloodCellMovement : WobblyMovement
 
     private bool isTargetInConstrainedArea()
     {
-        return (       (!WhiteBloodCellManager.instance.isAreaConstrained)
-                    || (   (targetTransform.position.x <= WhiteBloodCellManager.instance.limitRight)
+        return ((!WhiteBloodCellManager.instance.isAreaConstrained)
+                    || ((targetTransform.position.x <= WhiteBloodCellManager.instance.limitRight)
                         && (targetTransform.position.x >= WhiteBloodCellManager.instance.limitLeft)
                         && (targetTransform.position.z <= WhiteBloodCellManager.instance.limitTop)
                         && (targetTransform.position.z >= WhiteBloodCellManager.instance.limitBottom)
@@ -200,9 +201,9 @@ public class WhiteBloodCellMovement : WobblyMovement
             else if (disappearing)
             {
                 // disappearing
-                #if VERBOSEMETRICSLVL2
+#if VERBOSEMETRICSLVL2
                 RedMetricsManager.instance.sendEvent(TrackingEvent.WBCLEAVES, CustomData.getGameObjectContext(this.gameObject));
-                #endif
+#endif
                 Destroy(this.gameObject);
             }
         }
@@ -235,19 +236,20 @@ public class WhiteBloodCellMovement : WobblyMovement
 #if VERBOSEDEBUG
         action = WBCACTION.DISAPPEARING;
 #endif
-        #if DEVMODE && VERBOSEDEBUG
+#if DEVMODE && VERBOSEDEBUG
         if (null != _targetOriginal)
         {
             Destroy(_targetOriginal);
             Destroy(_targetComputed);
         }
-        #endif
+#endif
 
         disappearing = true;
         target = BloodUtilities.instance.bloodEnd2.position;
+        GetComponentInChildren<Animator>().SetTrigger("dead");
         targetTransform = null;
         hasReachedTarget = false;
-        
+
 #if !DEVMODE
         if (!GameManager.instance.isObjectiveDefenseMode())
         {
@@ -275,7 +277,7 @@ public class WhiteBloodCellMovement : WobblyMovement
 
     public void absorb(Virus virus)
     {
-        RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getVirusContext(virus.gameObject).add(CustomDataTag.WBCHEALTH, (int)hitsLeft));
+        //RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getVirusContext(virus.gameObject).add(CustomDataTag.WBCHEALTH, (int)hitsLeft));
         audioEmitter.play(AudioEvent.PATHOGENKILLEDBYWBC);
         hitsLeft--;
         if (0 == hitsLeft)
@@ -287,7 +289,7 @@ public class WhiteBloodCellMovement : WobblyMovement
 
     public void absorb(EnemyMovement enemy)
     {
-        RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getBacteriumContext(enemy.gameObject).add(CustomDataTag.WBCHEALTH, (int)hitsLeft));
+        //RedMetricsManager.instance.sendEvent(TrackingEvent.PATHOGENKILLEDBYWBC, CustomData.getBacteriumContext(enemy.gameObject).add(CustomDataTag.WBCHEALTH, (int)hitsLeft));
         audioEmitter.play(AudioEvent.PATHOGENKILLEDBYWBC);
         hitsLeft = 0;
         prepareAbsorb(true);

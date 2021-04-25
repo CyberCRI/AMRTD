@@ -58,7 +58,7 @@ public class CreditLinkOpener : LinkOpener
 
     public void clickButton()
     {
-        RedMetricsManager.instance.sendEvent(_te, CustomData.getGameLevelContext().add(CustomDataTag.ELEMENT, _urlCode));
+        //RedMetricsManager.instance.sendEvent(_te, CustomData.getGameLevelContext().add(CustomDataTag.ELEMENT, _urlCode));
         if (!string.IsNullOrEmpty(_url))
         {
             AudioManager.instance.play(AudioEvent.CLICKUI);

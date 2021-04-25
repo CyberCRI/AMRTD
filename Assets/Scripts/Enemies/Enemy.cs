@@ -542,9 +542,9 @@ public class Enemy : MonoBehaviour
 
         if (isAlive && health <= 0f)
         {
-            RedMetricsManager.instance.sendEvent(
-                TrackingEvent.PATHOGENKILLEDBYAB,
-                CustomData.getGameObjectContext(this).add(CustomDataTag.SOURCE, source.ToString()));
+            //RedMetricsManager.instance.sendEvent(
+            //    TrackingEvent.PATHOGENKILLEDBYAB,
+            //    CustomData.getGameObjectContext(this).add(CustomDataTag.SOURCE, source.ToString()));
             AudioManager.instance.play(AudioEvent.PATHOGENKILLEDBYAB);
             die();
         }

@@ -86,14 +86,14 @@ public class CompleteLevel : MonoBehaviour
         {
             if (newReached)
             {
-                RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETEGAME, CustomData.getContext(
-                        new CustomDataTag[3]{
-                            CustomDataTag.TIMESINCEGAMELOADED,
-                            CustomDataTag.TIMEGAMEPLAYEDNOPAUSE,
-                            CustomDataTag.TIMESINCELEVELLOADED,
-                            }
-                    )
-                );
+                //RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETEGAME, CustomData.getContext(
+                //        new CustomDataTag[3]{
+                //            CustomDataTag.TIMESINCEGAMELOADED,
+                //            CustomDataTag.TIMEGAMEPLAYEDNOPAUSE,
+                //            CustomDataTag.TIMESINCELEVELLOADED,
+                //            }
+                //    )
+                //);
             }
             displayOutro = true;
         }

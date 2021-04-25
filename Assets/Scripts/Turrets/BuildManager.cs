@@ -126,8 +126,8 @@ public class BuildManager : MonoBehaviour
             audioParameter = "on";
         }
 
-        RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUTTON,
-            new CustomData(CustomDataTag.ELEMENT, turret.prefab).add(CustomDataTag.OUTCOME, outcome).add(CustomDataTag.COST, turret.cost));
+        //RedMetricsManager.instance.sendEvent(TrackingEvent.CLICKTOWERBUTTON,
+        //    new CustomData(CustomDataTag.ELEMENT, turret.prefab).add(CustomDataTag.OUTCOME, outcome).add(CustomDataTag.COST, turret.cost));
         AudioManager.instance.play(AudioEvent.CLICKTOWERBUTTON, audioParameter);
 
         turretToBuild = (null == button) || button.isOn ? turret : null;

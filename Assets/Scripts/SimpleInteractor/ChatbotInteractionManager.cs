@@ -403,19 +403,19 @@ public class ChatbotInteractionManager : MonoBehaviour
             string messageRepresentation = getMessageRepresentation(text, inputURLButtonCount, inputReplyButtonCount, urlButtons, replyButtons);
             #endif
 
-            #if TRACKSENTMESSAGES
-            RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTSENDMESSAGE, new CustomData(CustomDataTag.MESSAGE, messageRepresentation));
-            #elif TRACKCENSOREDSENTMESSAGES
-            RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTSENDMESSAGE, new CustomData(CustomDataTag.LENGTH, messageRepresentation.Length));
-            #else
-            RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTSENDMESSAGE);
-            #endif
+            //#if TRACKSENTMESSAGES
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTSENDMESSAGE, new CustomData(CustomDataTag.MESSAGE, messageRepresentation));
+            //#elif TRACKCENSOREDSENTMESSAGES
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTSENDMESSAGE, new CustomData(CustomDataTag.LENGTH, messageRepresentation.Length));
+            //#else
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTSENDMESSAGE);
+            //#endif
             AudioManager.instance.play(AudioEvent.CHATBOTSENDMESSAGE);
         }
         else
         {
             string messageRepresentation = getMessageRepresentation(text, inputURLButtonCount, inputReplyButtonCount, urlButtons, replyButtons);
-            RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTGETMESSAGE, new CustomData(CustomDataTag.MESSAGE, messageRepresentation));
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.CHATBOTGETMESSAGE, new CustomData(CustomDataTag.MESSAGE, messageRepresentation));
             AudioManager.instance.play(AudioEvent.CHATBOTGETMESSAGE);
         }
 

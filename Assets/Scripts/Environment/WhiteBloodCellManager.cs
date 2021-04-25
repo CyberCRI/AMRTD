@@ -12,17 +12,17 @@ public class WhiteBloodCellManager : MonoBehaviour
     private bool _chaseViruses = false;
     public bool chaseViruses { get { return _chaseViruses; } }
 
-    #if VERBOSEDEBUG
+#if VERBOSEDEBUG
     [SerializeField] // for debug
-    #endif
+#endif
     private WhiteBloodCellMovement[] whiteBloodCells = null;
-    #if VERBOSEDEBUG
+#if VERBOSEDEBUG
     [SerializeField] // for debug
-    #endif
+#endif
     private Virus[] whiteBloodCellsTargetViruses = null;
-    #if VERBOSEDEBUG
+#if VERBOSEDEBUG
     [SerializeField] // for debug
-    #endif
+#endif
     private Enemy[] whiteBloodCellsTargetEnemies = null;
     private WhiteBloodCellMovement[] availableWBCs = null;
 
@@ -39,7 +39,7 @@ public class WhiteBloodCellManager : MonoBehaviour
     public bool isAreaConstrained { get { return _isAreaConstrained; } }
     [SerializeField]
     private Transform limitTopGO = null;
-    private float _limitTop    = Mathf.Infinity;
+    private float _limitTop = Mathf.Infinity;
     public float limitTop { get { return _limitTop; } }
     [SerializeField]
     private Transform limitBottomGO = null;
@@ -47,11 +47,11 @@ public class WhiteBloodCellManager : MonoBehaviour
     public float limitBottom { get { return _limitBottom; } }
     [SerializeField]
     private Transform limitLeftGO = null;
-    private float _limitLeft   = -Mathf.Infinity;
+    private float _limitLeft = -Mathf.Infinity;
     public float limitLeft { get { return _limitLeft; } }
     [SerializeField]
     private Transform limitRightGO = null;
-    private float _limitRight  = Mathf.Infinity;
+    private float _limitRight = Mathf.Infinity;
     public float limitRight { get { return _limitRight; } }
 
     [SerializeField]
@@ -81,14 +81,14 @@ public class WhiteBloodCellManager : MonoBehaviour
             instance = this;
 
             _isAreaConstrained = (null != limitTopGO) || (null != limitBottomGO) || (null != limitLeftGO) || (null != limitRightGO);
-            _limitTop =    (null != limitTopGO)    ? limitTopGO.position.z    : _limitTop;
+            _limitTop = (null != limitTopGO) ? limitTopGO.position.z : _limitTop;
             _limitBottom = (null != limitBottomGO) ? limitBottomGO.position.z : _limitBottom;
-            _limitLeft =   (null != limitLeftGO)   ? limitLeftGO.position.x   : _limitLeft;
-            _limitRight =  (null != limitRightGO)  ? limitRightGO.position.x  : _limitRight;
+            _limitLeft = (null != limitLeftGO) ? limitLeftGO.position.x : _limitLeft;
+            _limitRight = (null != limitRightGO) ? limitRightGO.position.x : _limitRight;
 
-            #if VERBOSEDEBUG
+#if VERBOSEDEBUG
             Debug.Log(string.Format("{0}: {1}: Awake ", this.GetType(), this.gameObject.name));
-            #endif
+#endif
 
             whiteBloodCells = new WhiteBloodCellMovement[_wbcSpawnCount];
             whiteBloodCellsTargetViruses = new Virus[_wbcSpawnCount];
@@ -110,9 +110,9 @@ public class WhiteBloodCellManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        #if VERBOSEDEBUG
+#if VERBOSEDEBUG
         Debug.Log(string.Format("{0}: {1}: Start ", this.GetType(), this.gameObject.name));
-        #endif
+#endif
 
         Vector3 diff = (BloodUtilities.instance.bloodEnd1.position - BloodUtilities.instance.bloodOrigin1.position);
         Vector3 verticalSpatialPeriod = diff.z / (_wbcSpawnCount + 1) * Vector3.forward;
@@ -141,9 +141,9 @@ public class WhiteBloodCellManager : MonoBehaviour
                     {
                         if (0 > getWBCTargeting(nearbyGOs[j]))
                         {
-                            #if VERBOSEDEBUG
+#if VERBOSEDEBUG
                             Debug.Log(string.Format("Allocate WBC {0} to nearby virus {1}", whiteBloodCells[i].name, nearbyGOs[j].name));
-                            #endif
+#endif
                             _searching = false;
                             whiteBloodCellsTargetViruses[i] = nearbyGOs[j].GetComponent<Virus>();
                             whiteBloodCells[i].setTarget(nearbyGOs[j].transform);
@@ -159,9 +159,9 @@ public class WhiteBloodCellManager : MonoBehaviour
                             // control that no other WBC is targeting it
                             if ((null != VirusManager.instance.entitiesList[j]) && (0 > getWBCTargeting(VirusManager.instance.entitiesList[j])))
                             {
-                                #if VERBOSEDEBUG
+#if VERBOSEDEBUG
                                 Debug.Log(string.Format("Allocate WBC {0} to virus {1}", whiteBloodCells[i].name, VirusManager.instance.entitiesList[j].name));
-                                #endif
+#endif
                                 _searching = false;
                                 whiteBloodCellsTargetViruses[i] = VirusManager.instance.entitiesList[j];
                                 whiteBloodCells[i].setTarget(VirusManager.instance.entitiesList[j].transform);
@@ -179,9 +179,9 @@ public class WhiteBloodCellManager : MonoBehaviour
                         // control that no other WBC is targeting it
                         if ((null != WaveSpawner.instance.enemiesAlive[j]) && (0 > getWBCTargeting(WaveSpawner.instance.enemiesAlive[j])))
                         {
-                            #if VERBOSEDEBUG
+#if VERBOSEDEBUG
                             Debug.Log(string.Format("Allocate WBC {0} to enemy {1}", whiteBloodCells[i].name, WaveSpawner.instance.enemiesAlive[j].name));
-                            #endif
+#endif
                             _searching = false;
                             whiteBloodCellsTargetEnemies[i] = WaveSpawner.instance.enemiesAlive[j];
                             whiteBloodCells[i].setTarget(WaveSpawner.instance.enemiesAlive[j].transform);
@@ -281,9 +281,9 @@ public class WhiteBloodCellManager : MonoBehaviour
 
     private void spawnWBC(int _index)
     {
-        #if VERBOSEDEBUG
+#if VERBOSEDEBUG
         Debug.Log(string.Format("{0}: {1}: spawnWBC({2}) ", this.GetType(), this.gameObject.name, _index));
-        #endif
+#endif
 
         int index = _index == -1 ? getFirstNullWBCIndex() : _index;
         if (index >= whiteBloodCells.Length)
@@ -295,13 +295,14 @@ public class WhiteBloodCellManager : MonoBehaviour
             GameObject wbcPrefab = wbcPrefabs[UnityEngine.Random.Range(0, wbcPrefabs.Length)];
             float t = UnityEngine.Random.Range(0f, 1f);
             Vector3 spawnPointPosition = t * BloodUtilities.instance.bloodOrigin1.position + (1 - t) * BloodUtilities.instance.bloodOrigin2.position;
+            //Vector3 spawnPointPosition = BloodUtilities.instance.bloodUnder.position * t;       //temporary changed by Kompanions
             wbcsAliveCount++;
             GameObject newWBC = Instantiate(wbcPrefab, spawnPointPosition, wbcPrefab.transform.rotation);
             newWBC.name = "WBC" + index;
 
             WhiteBloodCellMovement wbcm = newWBC.GetComponent<WhiteBloodCellMovement>();
             whiteBloodCells[index] = wbcm;
-            
+
             Vector3 idlePosition = Vector3.zero;
             if (BloodUtilities.instance.isManualIdlePositions)
             {
@@ -342,10 +343,10 @@ public class WhiteBloodCellManager : MonoBehaviour
     }
 
     public void triggerMassWBC()
-    {    
-        #if VERBOSEDEBUG
+    {
+#if VERBOSEDEBUG
         Debug.Log("triggerMassWBC");
-        #endif
+#endif
         respawnPeriod /= 10f;
         respawnCountdown = 0f;
     }

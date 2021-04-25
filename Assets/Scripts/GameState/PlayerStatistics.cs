@@ -191,7 +191,7 @@ public class PlayerStatistics : MonoBehaviour
 #if DEVMODE
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSCURRENCY);
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSCURRENCY);
             addMoney(startMoney, Vector2.zero); 
         }
 #endif

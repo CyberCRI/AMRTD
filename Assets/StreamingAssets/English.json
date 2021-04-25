@@ -38,6 +38,7 @@
 	,{"key":"MAINMENU.QUIT.LABEL","value":"quit"}
 	,{"key":"MAINMENU.INTRO.LABEL","value":"intro"}
 	,{"key":"MAINMENU.CREDITS.LABEL","value":"credits"}
+	,{"key":"MAINMENU.ABOUT.LABEL","value":"about"}
 	,{"key":"LEVELSELECTMENU.TITLE.LABEL","value":"SELECT LEVEL"}
 	,{"key":"LEVELSELECTMENU.TUTORIALS.LABEL","value":"TUTORIALS"}
 	,{"key":"LEVELSELECTMENU.BACK.LABEL","value":"BACK"}

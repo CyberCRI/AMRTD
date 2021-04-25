@@ -58,10 +58,10 @@ public class AudioManager : AudioEmitter
             tEvent = TrackingEvent.SETVOLUMEMUSIC;
             aEvent = AudioEvent.SETVOLUMEMUSIC;
         }
-        #if VERBOSEDEBUG
+#if VERBOSEDEBUG
         Debug.Log(this.GetType() + " onPointerUp slider " + sliderID + ", value=" + sliderValue);
-        #endif
-        RedMetricsManager.instance.sendEvent(tEvent, new CustomData(CustomDataTag.VALUE, sliderValue.ToString()));
+#endif
+        //RedMetricsManager.instance.sendEvent(tEvent, new CustomData(CustomDataTag.VALUE, sliderValue.ToString()));
         play(aEvent);
     }
 

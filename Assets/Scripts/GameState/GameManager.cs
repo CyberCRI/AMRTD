@@ -146,31 +146,31 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.End))
             {
-                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSLOSE);
+                //RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSLOSE);
                 loseLevel();
             }
 
             if (Input.GetKeyDown(KeyCode.Home))
             {
-                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSWIN);
+                //RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSWIN);
                 winLevel();
             }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSINJUREALL);
+                //RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSINJUREALL);
                 injureAllEnemies();
             }
 
             if (Input.GetKeyDown(KeyCode.K))
             {
-                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSKILLALLBUTONE);
+                //RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSKILLALLBUTONE);
                 killAllButOneEnemy();
             }
 
             if (Input.GetKeyDown(KeyCode.T))
             {
-                RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSDESTROYALLTURRETS);
+                //RedMetricsManager.instance.sendEvent(TrackingEvent.DEVPRESSDESTROYALLTURRETS);
                 destroyAllTurrets();
             }
 #endif
@@ -210,7 +210,7 @@ public class GameManager : MonoBehaviour
     {
         if (!isLevelWon)
         {
-            RedMetricsManager.instance.sendEvent(TrackingEvent.GAMEOVER, CustomData.getLevelEndContext());
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.GAMEOVER, CustomData.getLevelEndContext());
             AudioManager.instance.play(AudioEvent.GAMEOVER);
             isLevelLost = true;
             setPause(true, PAUSER.GAMEOVER);
@@ -222,7 +222,7 @@ public class GameManager : MonoBehaviour
     {
         if (!isLevelLost)
         {
-            RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, CustomData.getLevelEndContext());
+            //RedMetricsManager.instance.sendEvent(TrackingEvent.COMPLETELEVEL, CustomData.getLevelEndContext());
             AudioManager.instance.play(AudioEvent.COMPLETELEVEL);
             isLevelWon = true;
             setPause(true, PAUSER.GAMEOVER);
